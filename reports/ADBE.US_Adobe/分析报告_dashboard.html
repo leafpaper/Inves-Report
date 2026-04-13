@@ -3,1063 +3,543 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Adobe Inc. (ADBE.US) · 龟龟投资策略 v2</title>
+<title>Adobe Inc. (ADBE.US) · 龟龟策略分析报告</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
 :root{
   --bg:#fafaf7;--bg2:#f0efe9;--bg3:#e8e7e0;
   --text:#1c1c1a;--text2:#5c5c58;--text3:#8a8a84;
-  --border:rgba(0,0,0,.08);--accent:#1a1a18;
-  --green:#1a7a5a;--green-bg:#e6f4ee;--green-border:rgba(26,122,90,.2);
-  --red:#c0392b;--red-bg:#fceaea;--red-border:rgba(192,57,43,.2);
-  --amber:#a06c1a;--amber-bg:#faf0d8;--amber-border:rgba(160,108,26,.2);
-  --blue:#2563a0;--blue-bg:#e8f0fa;
-  --max:900px;
+  --border:rgba(0,0,0,.08);--border2:rgba(0,0,0,.14);
+  --accent:#1a1a18;
+  --green:#1a7a5a;--green-bg:rgba(26,122,90,.08);
+  --red:#b91c1c;--red-bg:rgba(185,28,28,.08);
+  --amber:#92600f;--amber-bg:rgba(146,96,15,.08);
+  --blue:#1d4ed8;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --max:760px;
 }
 @media(prefers-color-scheme:dark){:root{
-  --bg:#141414;--bg2:#1e1e1e;--bg3:#2a2a2a;
-  --text:#e8e8e4;--text2:#a8a8a0;--text3:#6e6e68;
-  --border:rgba(255,255,255,.08);--accent:#e8e8e4;
-  --green:#4ade80;--green-bg:rgba(74,222,128,.1);--green-border:rgba(74,222,128,.2);
-  --red:#f87171;--red-bg:rgba(248,113,113,.1);--red-border:rgba(248,113,113,.2);
-  --amber:#fbbf24;--amber-bg:rgba(251,191,36,.1);--amber-border:rgba(251,191,36,.2);
-  --blue:#60a5fa;--blue-bg:rgba(96,165,250,.1);
+  --bg:#141414;--bg2:#1c1c1c;--bg3:#242424;
+  --text:#e8e8e4;--text2:#a0a09a;--text3:#666660;
+  --border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.13);
+  --accent:#e8e8e4;
+  --green:#34d399;--green-bg:rgba(52,211,153,.1);
+  --red:#f87171;--red-bg:rgba(248,113,113,.1);
+  --amber:#fbbf24;--amber-bg:rgba(251,191,36,.1);
+  --blue:#60a5fa;
 }}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Noto Sans SC',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-size:15px}
+html{font-size:16px}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Noto Sans SC',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:15px;-webkit-font-smoothing:antialiased}
 
 /* Nav */
-.nav{background:var(--bg);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:100}
-.nav-brand{font-weight:600;font-size:14px;color:var(--text)}
-.nav-right{font-size:13px;color:var(--text3)}
+.nav{border-bottom:1px solid var(--border);height:50px;display:flex;align-items:center;padding:0 24px;gap:24px;position:sticky;top:0;background:var(--bg);z-index:100}
+.nav-brand{font-weight:600;font-size:14px;color:var(--text);text-decoration:none;margin-right:auto}
+.nav-link{font-size:13px;color:var(--text3);text-decoration:none}
+.nav-link:hover{color:var(--text)}
 
-/* Layout */
-.page{max-width:var(--max);margin:0 auto;padding:32px 24px 80px}
+/* Article wrapper */
+.wrap{max-width:var(--max);margin:0 auto;padding:48px 24px 96px}
 
-/* Hero */
-.hero{margin-bottom:40px}
-.hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:20px}
-.hero-title{flex:1}
-.hero-ticker{font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;font-weight:500}
-.hero-name{font-size:30px;font-weight:700;letter-spacing:-.5px;line-height:1.2;margin-bottom:6px}
-.hero-sub{font-size:14px;color:var(--text2)}
-.verdict-pill{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:8px;font-weight:600;font-size:15px;border:1.5px solid var(--amber-border);background:var(--amber-bg);color:var(--amber);white-space:nowrap}
-.verdict-pill .v-icon{font-size:18px}
+/* Header */
+.meta-line{font-size:12px;color:var(--text3);letter-spacing:.5px;text-transform:uppercase;margin-bottom:14px}
+.meta-line a{color:var(--text3);text-decoration:none}
+.meta-line a:hover{color:var(--text)}
+h1.title{font-size:26px;font-weight:700;letter-spacing:-.4px;line-height:1.3;margin-bottom:8px}
+.subtitle{font-size:15px;color:var(--text2);margin-bottom:28px;line-height:1.6}
 
-/* KPI row */
-.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:12px}
-@media(max-width:640px){.kpi-row{grid-template-columns:repeat(2,1fr)}}
-.kpi{background:var(--bg2);border-radius:10px;padding:16px;border:1px solid var(--border)}
-.kpi.good{background:var(--green-bg);border-color:var(--green-border)}
-.kpi.warn{background:var(--amber-bg);border-color:var(--amber-border)}
-.kpi.bad{background:var(--red-bg);border-color:var(--red-border)}
-.kpi-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px;font-weight:500}
-.kpi-value{font-size:22px;font-weight:700;font-family:'SF Mono','Menlo',monospace;line-height:1;margin-bottom:4px}
-.kpi.good .kpi-value{color:var(--green)}
-.kpi.warn .kpi-value{color:var(--amber)}
-.kpi.bad .kpi-value{color:var(--red)}
-.kpi-sub{font-size:12px;color:var(--text3)}
+/* Verdict banner */
+.verdict{border-left:3px solid var(--amber);background:var(--amber-bg);padding:16px 20px;border-radius:0 6px 6px 0;margin-bottom:40px}
+.verdict-label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--amber);font-weight:600;margin-bottom:4px}
+.verdict-main{font-size:22px;font-weight:700;color:var(--text);margin-bottom:6px}
+.verdict-sub{font-size:14px;color:var(--text2);line-height:1.6}
 
-/* Section headers */
-.section{margin-bottom:48px}
-.section-header{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);padding-bottom:10px;border-bottom:1px solid var(--border);margin-bottom:20px;display:flex;align-items:center;gap:8px}
-.section-header .icon{font-size:14px}
+/* Sections */
+h2.section-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin:52px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+h3.sub-title{font-size:16px;font-weight:600;margin:28px 0 10px;color:var(--text)}
 
-/* Chart containers */
-.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
-@media(max-width:600px){.chart-grid{grid-template-columns:1fr}}
-.chart-card{background:var(--bg2);border-radius:10px;padding:20px;border:1px solid var(--border)}
-.chart-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--text3);margin-bottom:14px}
-.chart-wrap{position:relative;height:200px}
-.chart-wrap-tall{position:relative;height:240px}
+/* Prose */
+p{color:var(--text2);margin-bottom:14px;line-height:1.75}
+p strong{color:var(--text);font-weight:600}
 
-/* Price position bar */
-.price-bar-card{background:var(--bg2);border-radius:10px;padding:20px;border:1px solid var(--border);margin-bottom:16px}
-.price-bar-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--text3);margin-bottom:16px}
-.price-track{position:relative;height:8px;background:var(--bg3);border-radius:4px;margin:24px 0 32px}
-.price-fill{position:absolute;left:0;top:0;height:100%;border-radius:4px;background:linear-gradient(to right,var(--green),var(--amber),var(--red))}
-.price-marker{position:absolute;top:50%;transform:translate(-50%,-50%);width:14px;height:14px;background:var(--text);border-radius:50%;border:2px solid var(--bg);box-shadow:0 0 0 2px var(--text)}
-.price-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--text3);margin-top:4px}
-.price-ticks{position:relative;height:0}
-.price-tick{position:absolute;transform:translateX(-50%);font-size:11px;color:var(--text3);top:16px;white-space:nowrap}
-.price-tick .tick-val{display:block;font-weight:600;color:var(--text2)}
-.current-label{position:absolute;transform:translateX(-50%);bottom:14px;font-size:11px;font-weight:700;color:var(--text);white-space:nowrap;background:var(--bg2);padding:2px 6px;border-radius:4px;border:1px solid var(--border)}
+/* Quick stats grid */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border2);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:40px}
+.stat{background:var(--bg);padding:16px;text-align:center}
+.stat-label{font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:var(--text3);margin-bottom:5px}
+.stat-val{font-family:var(--mono);font-size:18px;font-weight:700;color:var(--text)}
+.stat-sub{font-size:11px;color:var(--text3);margin-top:3px}
+.stat-val.green{color:var(--green)}
+.stat-val.amber{color:var(--amber)}
+.stat-val.red{color:var(--red)}
 
-/* Return rate visual */
-.return-visual{background:var(--bg2);border-radius:10px;padding:20px;border:1px solid var(--border);margin-bottom:16px}
-.return-bars{display:flex;flex-direction:column;gap:14px;margin-top:8px}
-.return-row{display:flex;align-items:center;gap:12px}
-.return-label{font-size:12px;color:var(--text2);width:90px;flex-shrink:0}
-.return-track{flex:1;height:10px;background:var(--bg3);border-radius:5px;position:relative;overflow:visible}
-.return-bar{height:100%;border-radius:5px;position:relative}
-.return-bar.gg{background:var(--green)}
-.return-bar.ii{background:var(--blue)}
-.return-bar.rf{background:var(--text3)}
-.return-val{font-size:13px;font-weight:700;font-family:'SF Mono','Menlo',monospace;width:54px;text-align:right;flex-shrink:0}
-.return-val.green{color:var(--green)}
-.return-val.blue{color:var(--blue)}
-.return-margin{display:flex;align-items:center;gap:8px;margin-top:10px;padding:10px 14px;background:var(--green-bg);border-radius:8px;border:1px solid var(--green-border)}
-.return-margin .label{font-size:12px;color:var(--text2)}
-.return-margin .val{font-size:15px;font-weight:700;color:var(--green);font-family:'SF Mono','Menlo',monospace}
+/* Quality grid 2-col */
+.quality-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:16px 0 28px}
+.qcell{background:var(--bg);padding:12px 14px}
+.qcell-label{font-size:11px;color:var(--text3);margin-bottom:3px}
+.qcell-val{font-size:14px;font-weight:600;color:var(--text)}
+.qcell-val.g{color:var(--green)}
+.qcell-val.a{color:var(--amber)}
+.qcell-val.r{color:var(--red)}
 
-/* Sensitivity table */
-.sens-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:4px}
-.sens-table th{text-align:left;padding:8px 10px;font-size:11px;font-weight:500;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border)}
-.sens-table td{padding:9px 10px;border-bottom:1px solid var(--border)}
-.sens-table tr:last-child td{border-bottom:none}
-.sens-table td.num{text-align:right;font-family:'SF Mono','Menlo',monospace}
-.row-base{font-weight:600}
-.row-ok td{background:rgba(26,122,90,.04)}
-.row-warn td{background:rgba(160,108,26,.04)}
-.row-bad td{background:rgba(192,57,43,.04)}
-.badge{display:inline-block;font-size:11px;font-weight:600;padding:2px 7px;border-radius:4px}
+/* Badge inline */
+.badge{display:inline-block;font-size:11px;padding:2px 7px;border-radius:4px;font-weight:500;vertical-align:middle;margin-left:6px}
 .badge-green{background:var(--green-bg);color:var(--green)}
 .badge-amber{background:var(--amber-bg);color:var(--amber)}
 .badge-red{background:var(--red-bg);color:var(--red)}
-.badge-blue{background:var(--blue-bg);color:var(--blue)}
-.badge-gray{background:var(--bg3);color:var(--text3)}
+.badge-neutral{background:var(--bg2);color:var(--text3)}
 
-/* Dimension cards */
-.dim-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:580px){.dim-grid{grid-template-columns:1fr}}
-.dim-card{background:var(--bg2);border-radius:10px;padding:16px 18px;border:1px solid var(--border)}
-.dim-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.dim-card-num{font-size:11px;color:var(--text3);font-weight:500;letter-spacing:.5px}
-.dim-card-title{font-size:14px;font-weight:600;margin-bottom:4px}
-.dim-card-body{font-size:13px;color:var(--text2);line-height:1.55}
-.dim-rating{font-size:12px;font-weight:600;padding:3px 9px;border-radius:5px}
-.dim-rating.strong{background:var(--green-bg);color:var(--green)}
-.dim-rating.medium{background:var(--amber-bg);color:var(--amber)}
-.dim-rating.neutral{background:var(--bg3);color:var(--text3)}
+/* Tables */
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:16px 0 28px;color:var(--text2)}
+th{text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;color:var(--text3);padding:8px 10px;border-bottom:1px solid var(--border2)}
+td{padding:9px 10px;border-bottom:1px solid var(--border)}
+tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--bg2)}
+td.mono,th.mono{font-family:var(--mono)}
+td.r{text-align:right}
+td.bold{font-weight:600;color:var(--text)}
+td.g{color:var(--green);font-weight:600}
+td.a{color:var(--amber);font-weight:600}
+td.re{color:var(--red);font-weight:600}
 
-/* Value trap checklist */
-.trap-list{display:flex;flex-direction:column;gap:0}
-.trap-row{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}
-.trap-row:last-child{border-bottom:none}
-.trap-icon{font-size:16px;flex-shrink:0;margin-top:1px}
-.trap-content{flex:1}
-.trap-title{font-size:13px;font-weight:600;margin-bottom:2px}
-.trap-desc{font-size:12px;color:var(--text3)}
-.trap-result{font-size:12px;font-weight:600;flex-shrink:0;align-self:center}
-.trap-result.pass{color:var(--green)}
-.trap-result.fail{color:var(--red)}
+/* Chart containers */
+.chart-box{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:20px 20px 16px;margin:16px 0 28px}
+.chart-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;color:var(--text3);margin-bottom:14px}
+.chart-wrap{position:relative;height:200px}
+.chart-wrap-tall{position:relative;height:240px}
 
-/* Valuation table */
-.val-table{width:100%;border-collapse:collapse;font-size:13px}
-.val-table th{text-align:left;padding:8px 10px;font-size:11px;font-weight:500;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border)}
-.val-table td{padding:10px 10px;border-bottom:1px solid var(--border)}
-.val-table tr:last-child td{border-bottom:none}
-.val-table td.num{text-align:right;font-family:'SF Mono','Menlo',monospace}
-.val-table td.signal{text-align:right}
+/* Sensitivity bars */
+.sens-item{display:flex;align-items:center;gap:12px;margin-bottom:10px;font-size:13px}
+.sens-scenario{width:100px;color:var(--text2);flex-shrink:0}
+.sens-bar-wrap{flex:1;background:var(--bg3);border-radius:3px;height:20px;overflow:hidden}
+.sens-bar{height:100%;border-radius:3px;display:flex;align-items:center;padding:0 8px;font-family:var(--mono);font-size:11px;font-weight:700;color:#fff}
+.sens-bar.pass{background:var(--green)}
+.sens-bar.fail{background:var(--red)}
+.sens-val{width:52px;font-family:var(--mono);font-size:12px;font-weight:700;text-align:right;flex-shrink:0}
+.sens-val.pass{color:var(--green)}
+.sens-val.fail{color:var(--red)}
 
-/* Assumptions */
-.assume-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-@media(max-width:520px){.assume-grid{grid-template-columns:1fr}}
-.assume-item{background:var(--bg2);border-radius:8px;padding:12px 14px;border:1px solid var(--border)}
-.assume-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
-.assume-val{font-size:14px;font-weight:600}
-.assume-alt{font-size:11px;color:var(--text3);margin-top:2px}
+/* Checklist */
+.checklist{list-style:none;margin:12px 0 24px}
+.checklist li{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text2)}
+.checklist li:last-child{border-bottom:none}
+.check-icon{flex-shrink:0;margin-top:1px;font-size:15px}
+.check-text strong{color:var(--text)}
 
-/* Thesis card */
-.thesis{background:var(--bg2);border-radius:10px;padding:20px;border:1px solid var(--border)}
-.thesis-section{margin-bottom:16px}
-.thesis-section:last-child{margin-bottom:0}
-.thesis-section-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--text3);margin-bottom:10px}
-.thesis-items{display:flex;flex-direction:column;gap:6px}
-.thesis-item{display:flex;gap:8px;font-size:13px;color:var(--text2);align-items:flex-start}
-.thesis-item .bullet{flex-shrink:0;font-size:13px;margin-top:1px}
-.thesis-item strong{color:var(--text)}
+/* Calculation block */
+.calc{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:16px 18px;font-family:var(--mono);font-size:13px;line-height:1.9;color:var(--text2);margin:12px 0 24px;overflow-x:auto}
+.calc .hl{color:var(--text);font-weight:700}
 
-/* Stop loss */
-.stop-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:4px}
-.stop-table th{text-align:left;padding:7px 10px;font-size:11px;font-weight:500;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border)}
-.stop-table td{padding:9px 10px;border-bottom:1px solid var(--border)}
-.stop-table tr:last-child td{border-bottom:none}
-.severity-critical{color:var(--red);font-weight:600;font-size:11px}
-.severity-warning{color:var(--amber);font-weight:600;font-size:11px}
+/* Footnote */
+.footnote{font-size:12px;color:var(--text3);margin-top:-16px;margin-bottom:24px;line-height:1.6}
 
-/* Summary box */
-.summary-box{background:var(--bg2);border-left:4px solid var(--amber);border-radius:0 10px 10px 0;padding:20px 24px;margin-bottom:16px}
-.summary-verdict{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--amber);margin-bottom:6px}
-.summary-text{font-size:15px;line-height:1.6;color:var(--text2)}
-.summary-text strong{color:var(--text)}
+/* Divider */
+hr.divider{border:none;border-top:1px solid var(--border);margin:48px 0}
 
-/* Pros/Cons */
-.pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
-@media(max-width:560px){.pros-cons{grid-template-columns:1fr}}
-.pros-card,.cons-card{background:var(--bg2);border-radius:10px;padding:16px;border:1px solid var(--border)}
-.pros-card{border-top:3px solid var(--green)}
-.cons-card{border-top:3px solid var(--red)}
-.pc-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px}
-.pros-card .pc-title{color:var(--green)}
-.cons-card .pc-title{color:var(--red)}
-.pc-item{font-size:13px;color:var(--text2);margin-bottom:6px;padding-left:16px;position:relative;line-height:1.5}
-.pc-item::before{position:absolute;left:0;top:0}
-.pros-card .pc-item::before{content:"✓";color:var(--green);font-weight:700}
-.cons-card .pc-item::before{content:"✗";color:var(--red);font-weight:700}
-
-/* Footer */
-.footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--border);font-size:12px;color:var(--text3);line-height:1.9}
-
-/* Misc */
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media(max-width:580px){.two-col{grid-template-columns:1fr}}
-.mono{font-family:'SF Mono','Menlo',monospace}
-.text-green{color:var(--green)}
-.text-red{color:var(--red)}
-.text-amber{color:var(--amber)}
-.text-dim{color:var(--text3)}
-code{font-family:'SF Mono','Menlo',monospace;font-size:12px;background:var(--bg3);padding:2px 5px;border-radius:3px}
+/* Return to index */
+.back-link{display:inline-block;font-size:13px;color:var(--text3);text-decoration:none;margin-bottom:32px}
+.back-link:hover{color:var(--text)}
 </style>
 </head>
 <body>
 
-<!-- Nav -->
 <nav class="nav">
-  <span class="nav-brand">龟龟投资策略 v2</span>
-  <span class="nav-right">ADBE.US · 2026-04-14</span>
+  <a href="../../index.html" class="nav-brand">叶纸的投资报告</a>
+  <a href="../../index.html" class="nav-link">个股研究</a>
+  <a href="#" class="nav-link">关于</a>
 </nav>
 
-<div class="page">
+<div class="wrap">
 
-<!-- ═══ HERO ═══ -->
-<div class="hero">
-  <div class="hero-top">
-    <div class="hero-title">
-      <div class="hero-ticker">ADBE.US · NASDAQ · 软件 SaaS</div>
-      <div class="hero-name">Adobe Inc.</div>
-      <div class="hero-sub">数字媒体与数字体验订阅平台 · FY2025 Form 10-K · US GAAP</div>
+  <a href="../../index.html" class="back-link">← 返回报告列表</a>
+
+  <!-- Header -->
+  <div class="meta-line">ADBE.US &nbsp;·&nbsp; 软件 SaaS &nbsp;·&nbsp; 美股 &nbsp;·&nbsp; 2026-04-14</div>
+  <h1 class="title">Adobe Inc.</h1>
+  <p class="subtitle">创意软件平台 + 数字营销云。订阅制 SaaS，生态护城河，龟龟策略 v2 精算穿透回报率分析。</p>
+
+  <!-- Verdict -->
+  <div class="verdict">
+    <div class="verdict-label">仓位建议</div>
+    <div class="verdict-main">观察（30%）</div>
+    <div class="verdict-sub">精算穿透回报率 GG = <strong>8.24%</strong>，略超门槛 II = 7.321%，安全边际 KK = +0.92 pct。收入仅需下滑 6% 即触及门槛，护城河评级"较强"但 AI 工具民主化渐进施压，建议轻仓观察。</div>
+  </div>
+
+  <!-- Quick Stats -->
+  <div class="stats-grid">
+    <div class="stat">
+      <div class="stat-label">精算回报 GG</div>
+      <div class="stat-val green">8.24%</div>
+      <div class="stat-sub">vs 门槛 7.321%</div>
     </div>
-    <div class="verdict-pill">
-      <span class="v-icon">👁</span>
-      <span>观察 · 30% 仓位</span>
+    <div class="stat">
+      <div class="stat-label">安全边际 KK</div>
+      <div class="stat-val amber">+0.92 pct</div>
+      <div class="stat-sub">勉强通过</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">股价分位</div>
+      <div class="stat-val green">21.8%</div>
+      <div class="stat-sub">10 年历史分位</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">FCF 收益率</div>
+      <div class="stat-val">9.4%</div>
+      <div class="stat-sub">$8,852M / $94,148M</div>
     </div>
   </div>
 
-  <!-- KPI 4格 -->
-  <div class="kpi-row">
-    <div class="kpi good">
-      <div class="kpi-label">精算穿透回报率</div>
-      <div class="kpi-value">8.24%</div>
-      <div class="kpi-sub">GG &gt; 门槛 ✓</div>
-    </div>
-    <div class="kpi warn">
-      <div class="kpi-label">安全边际</div>
-      <div class="kpi-value">+0.92<span style="font-size:14px">pct</span></div>
-      <div class="kpi-sub">勉强达标，非宽裕</div>
-    </div>
-    <div class="kpi">
-      <div class="kpi-label">FCF 收益率</div>
-      <div class="kpi-value">9.40%</div>
-      <div class="kpi-sub">$8,852M / $94,148M</div>
-    </div>
-    <div class="kpi good">
-      <div class="kpi-label">10年价格分位</div>
-      <div class="kpi-value">21.8%</div>
-      <div class="kpi-sub">距ATH回撤 67%</div>
-    </div>
-  </div>
-  <div class="kpi-row">
-    <div class="kpi">
-      <div class="kpi-label">当前股价</div>
-      <div class="kpi-value">$231</div>
-      <div class="kpi-sub">总市值 $94.1B</div>
-    </div>
-    <div class="kpi">
-      <div class="kpi-label">FY2025 营收</div>
-      <div class="kpi-value">$23.8B</div>
-      <div class="kpi-sub">+10.5% YoY</div>
-    </div>
-    <div class="kpi good">
-      <div class="kpi-label">扣现金 PE</div>
-      <div class="kpi-value">12.5x</div>
-      <div class="kpi-sub">ROIC 约35-40%</div>
-    </div>
-    <div class="kpi warn">
-      <div class="kpi-label">临界收入跌幅</div>
-      <div class="kpi-value">−6%</div>
-      <div class="kpi-sub">触及门槛安全边际</div>
-    </div>
-  </div>
-</div>
 
-<!-- ═══ 一句话结论 ═══ -->
-<div class="summary-box" style="margin-bottom:40px">
-  <div class="summary-verdict">综合结论</div>
-  <div class="summary-text">
-    Adobe 是一家<strong>商业质量卓越、护城河较强、现金生成能力突出</strong>的优质SaaS公司，当前股价处于10年历史低位（21.8%分位）。精算穿透回报率 <strong>GG = 8.24%</strong> 勉强超过门槛 <strong>II = 7.321%</strong>，安全边际仅 +0.92pct，收入仅需下滑6%即触及门槛——<strong>基本面足够好，但价格安全垫偏薄</strong>，建议观察（30%仓位），等待更宽安全边际或基本面催化剂确认后加仓。
-  </div>
-</div>
+  <!-- SECTION 1: BUSINESS -->
+  <h2 class="section-title">商业模式</h2>
 
-<!-- ═══ 财务趋势 ═══ -->
-<div class="section">
-  <div class="section-header"><span class="icon">📈</span> 财务趋势（FY2021–2025）</div>
+  <p><strong>Adobe 的赚钱逻辑极为清晰：</strong>向全球创意专业人士和企业营销团队销售订阅制软件套餐，通过高转换成本和生态系统锁定实现持续经常性收入增长，形成"订阅锁定 → 平台扩展 → ARPU 提升"正反馈循环。</p>
 
-  <div class="chart-grid">
-    <div class="chart-card">
-      <div class="chart-title">营收与净利润（百万美元）</div>
-      <div class="chart-wrap-tall"><canvas id="chartRevenue"></canvas></div>
-    </div>
-    <div class="chart-card">
-      <div class="chart-title">现金流量（百万美元）</div>
-      <div class="chart-wrap-tall"><canvas id="chartCash"></canvas></div>
-    </div>
+  <p>FY2025 营业收入 $23,769M，订阅收入占比超 95%。递延收入余额 $7,030M（合同负债），RPO 约 $22,520M，收入能见度极强。</p>
+
+  <div class="chart-box">
+    <div class="chart-title">营业收入与净利润（FY2021–FY2025，百万美元）</div>
+    <div class="chart-wrap"><canvas id="cRevenue"></canvas></div>
   </div>
 
-  <div class="chart-grid">
-    <div class="chart-card">
-      <div class="chart-title">毛利率 / 经营利润率 / FCF利润率</div>
-      <div class="chart-wrap"><canvas id="chartMargins"></canvas></div>
-    </div>
-    <div class="chart-card">
-      <div class="chart-title">营收分板块 FY2025</div>
-      <div class="chart-wrap"><canvas id="chartSegments"></canvas></div>
-    </div>
-  </div>
-</div>
+  <table>
+    <thead><tr><th>业务板块</th><th class="r">FY2025 收入</th><th class="r">YoY</th><th class="r">毛利率</th></tr></thead>
+    <tbody>
+      <tr><td>Digital Media（数字媒体）</td><td class="r mono">$17,649M</td><td class="r g">+11.2%</td><td class="r">95%</td></tr>
+      <tr><td>Digital Experience（数字体验）</td><td class="r mono">$5,864M</td><td class="r g">+9.3%</td><td class="r">72%</td></tr>
+      <tr><td>Publishing &amp; Advertising</td><td class="r mono">$256M</td><td class="r re">-6.9%</td><td class="r">67%</td></tr>
+      <tr><td class="bold">合计</td><td class="r mono bold">$23,769M</td><td class="r g bold">+10.5%</td><td class="r bold">89%</td></tr>
+    </tbody>
+  </table>
 
-<!-- ═══ 穿透回报率 ═══ -->
-<div class="section">
-  <div class="section-header"><span class="icon">🎯</span> 穿透回报率分析</div>
-
-  <div class="two-col">
-    <!-- Return rate visual -->
-    <div class="return-visual">
-      <div class="chart-title">回报率 vs 门槛对比</div>
-      <div class="return-bars">
-        <div class="return-row">
-          <div class="return-label">精算 GG</div>
-          <div class="return-track">
-            <div class="return-bar gg" style="width:56.3%"></div>
-          </div>
-          <div class="return-val green">8.24%</div>
-        </div>
-        <div class="return-row">
-          <div class="return-label">门槛 II</div>
-          <div class="return-track">
-            <div class="return-bar ii" style="width:50.0%"></div>
-          </div>
-          <div class="return-val blue">7.32%</div>
-        </div>
-        <div class="return-row">
-          <div class="return-label">无风险利率 Rf</div>
-          <div class="return-track">
-            <div class="return-bar rf" style="width:29.5%"></div>
-          </div>
-          <div class="return-val" style="color:var(--text3)">4.32%</div>
-        </div>
-        <div class="return-row">
-          <div class="return-label">FCF收益率</div>
-          <div class="return-track">
-            <div class="return-bar gg" style="width:64.2%;opacity:.6"></div>
-          </div>
-          <div class="return-val green">9.40%</div>
-        </div>
-      </div>
-      <div class="return-margin" style="margin-top:14px">
-        <span class="label">安全边际（GG − II）</span>
-        <span class="val">+0.92 pct</span>
-        <span class="label" style="margin-left:4px">→ 勉强达标</span>
-      </div>
-      <div style="margin-top:10px;font-size:12px;color:var(--text3)">
-        门槛公式：II = max(5%, Rf + 3%) = max(5%, 4.321% + 3%) = <strong>7.321%</strong><br>
-        GG公式：[AA × 0% × 1 + O] / 市值 = $7,760M / $94,148M（M=0，纯回购）
-      </div>
-    </div>
-
-    <!-- OE breakdown -->
-    <div class="chart-card">
-      <div class="chart-title">Owner Earnings 拆解（FY2025）</div>
-      <div class="chart-wrap"><canvas id="chartOE"></canvas></div>
-      <div style="margin-top:12px;font-size:12px;color:var(--text3)">
-        G系数 = 0.80（轻资产SaaS）<br>
-        OE = C + D − H = $7,130M + $1,008M − $806M = <strong>$7,332M</strong>
-      </div>
-    </div>
+  <div class="chart-box">
+    <div class="chart-title">业务板块收入占比（FY2025）</div>
+    <div class="chart-wrap"><canvas id="cSegments"></canvas></div>
   </div>
 
-  <!-- Distributable cash trend -->
-  <div class="chart-card" style="margin-top:16px">
-    <div class="chart-title">真实可支配现金结余（OCF − 资本支出，百万美元）</div>
-    <div class="chart-wrap"><canvas id="chartResidual"></canvas></div>
-    <div style="margin-top:10px;font-size:12px;color:var(--text3)">
-      FY2024含Figma终止费$1B（已计入OCF现金流出）· 选用基准 AA = AA_2y = <strong>$7,776M</strong>（近2年均值）
-    </div>
+  <div class="chart-box">
+    <div class="chart-title">盈利能力趋势（净利润率 / FCF 利润率，%）</div>
+    <div class="chart-wrap"><canvas id="cMargins"></canvas></div>
   </div>
 
-  <!-- Buyback trend -->
-  <div class="chart-card" style="margin-top:16px">
-    <div class="chart-title">年均股票回购（百万美元）— 唯一分配渠道（无股息自2005年）</div>
-    <div class="chart-wrap"><canvas id="chartBuyback"></canvas></div>
-    <div style="margin-top:10px;font-size:12px;color:var(--text3)">
-      3年均值 O = $7,760M · 2024年批准$250亿回购授权（有效至2028年，剩余约$59亿）
-    </div>
+  <p>资本消耗轻：Capex/收入约 4%，FCF 利润率 37.2%，FCF/净利润 1.24x。现金收款先款后货（年度订阅预付），OCF/净利润约 1.41x。</p>
+
+
+  <!-- SECTION 2: MOAT -->
+  <h2 class="section-title">护城河</h2>
+
+  <p><strong>Adobe 拥有科技类企业中最典型的"双层护城河"结构</strong>：第一层（转换成本 + 无形资产 + 规模效应）极为深厚；第二层（数据 + AI 算法）正在强化，同时面临外部挑战。综合评级：<span class="badge badge-green">较强</span></p>
+
+  <div class="quality-grid">
+    <div class="qcell"><div class="qcell-label">转换成本</div><div class="qcell-val g">强</div></div>
+    <div class="qcell"><div class="qcell-label">无形资产</div><div class="qcell-val g">强</div></div>
+    <div class="qcell"><div class="qcell-label">规模效应</div><div class="qcell-val g">较强</div></div>
+    <div class="qcell"><div class="qcell-label">网络效应</div><div class="qcell-val a">中等</div></div>
+    <div class="qcell"><div class="qcell-label">AI/数据资产</div><div class="qcell-val a">较强（成长中）</div></div>
+    <div class="qcell"><div class="qcell-label">飞轮效应</div><div class="qcell-val a">初步形成</div></div>
+    <div class="qcell"><div class="qcell-label">ROE（FY2025）</div><div class="qcell-val g">约 55%</div></div>
+    <div class="qcell"><div class="qcell-label">ROIC</div><div class="qcell-val g">约 35–40%</div></div>
   </div>
-</div>
 
-<!-- ═══ 股价位置 ═══ -->
-<div class="section">
-  <div class="section-header"><span class="icon">📍</span> 股价历史位置（10年周线，523个数据点）</div>
+  <p><strong>.psd / .ai / .indd</strong> 专有格式深度嵌入全球创意工作流，数百万设计师技能积累构成转换障碍；"Photoshop"已成图像处理代名词；2023 年 Creative Cloud 提价约 10% 未见大量用户流失，定价权验证充分。</p>
 
-  <div class="price-bar-card">
-    <div class="price-bar-title">价格百分位分布 — 当前股价 $231 处于 <span class="text-green" style="font-weight:700">21.8% 分位</span>（历史低位区间）</div>
-    <div style="position:relative;margin:30px 0 20px">
-      <!-- gradient track -->
-      <div style="height:10px;background:linear-gradient(to right,#1a7a5a,#f0c040,#c0392b);border-radius:5px;position:relative">
-        <!-- current price marker -->
-        <div style="position:absolute;left:21.8%;top:50%;transform:translate(-50%,-50%);width:16px;height:16px;background:var(--text);border-radius:50%;border:2.5px solid var(--bg2);box-shadow:0 0 0 2px var(--text)"></div>
-      </div>
-      <!-- tick labels below -->
-      <div style="position:relative;margin-top:10px;height:36px">
-        <div style="position:absolute;left:0%;transform:translateX(0)">
-          <div style="font-size:10px;color:var(--text3)">最低</div>
-          <div style="font-size:12px;font-weight:600;color:var(--text2)">$90</div>
-        </div>
-        <div style="position:absolute;left:21.8%;transform:translateX(-50%)">
-          <div style="font-size:10px;color:var(--green);font-weight:700">▲ 当前</div>
-          <div style="font-size:13px;font-weight:700;color:var(--text)">$231</div>
-        </div>
-        <div style="position:absolute;left:25%;transform:translateX(-50%)">
-          <div style="font-size:10px;color:var(--text3)">P25</div>
-          <div style="font-size:12px;font-weight:600;color:var(--text2)">$246</div>
-        </div>
-        <div style="position:absolute;left:50%;transform:translateX(-50%)">
-          <div style="font-size:10px;color:var(--text3)">P50</div>
-          <div style="font-size:12px;font-weight:600;color:var(--text2)">$351</div>
-        </div>
-        <div style="position:absolute;left:75%;transform:translateX(-50%)">
-          <div style="font-size:10px;color:var(--text3)">P75</div>
-          <div style="font-size:12px;font-weight:600;color:var(--text2)">$479</div>
-        </div>
-        <div style="position:absolute;left:100%;transform:translateX(-100%)">
-          <div style="font-size:10px;color:var(--text3)">最高</div>
-          <div style="font-size:12px;font-weight:600;color:var(--text2)">$700</div>
-        </div>
-      </div>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px">
-      <div style="background:var(--bg3);border-radius:7px;padding:10px 12px;font-size:12px">
-        <span style="color:var(--text3)">目标买入价</span><br>
-        <span style="font-weight:700;color:var(--text)">$252/股</span>
-        <span style="color:var(--text3)"> ≈ P27</span>
-      </div>
-      <div style="background:var(--bg3);border-radius:7px;padding:10px 12px;font-size:12px">
-        <span style="color:var(--text3)">当前 vs 目标</span><br>
-        <span style="font-weight:700;color:var(--green)">−8.5%</span>
-        <span style="color:var(--text3)"> 低于目标价 ✓</span>
-      </div>
-      <div style="background:var(--bg3);border-radius:7px;padding:10px 12px;font-size:12px">
-        <span style="color:var(--text3)">距ATH（$700）</span><br>
-        <span style="font-weight:700;color:var(--red)">−67%</span>
-        <span style="color:var(--text3)"> 2021-11-22</span>
-      </div>
-    </div>
+  <p>最大隐患：Figma 独立后加速巩固 UI/UX 优势；Midjourney / Sora / Runway 等 AI 工具民主化持续降低创意软件使用门槛，渐进施压高价壁垒。</p>
+
+  <table>
+    <thead><tr><th>对手</th><th>定位</th><th>订阅 ARR</th><th>对 Adobe 威胁</th></tr></thead>
+    <tbody>
+      <tr><td>Canva</td><td>简易设计（中小用户）</td><td>~$3–4B（估）</td><td class="a">中等（向上渗透）</td></tr>
+      <tr><td>Figma（独立）</td><td>协同 UI/UX 设计</td><td>~$1B+（估）</td><td class="re">高（协同设计已占优）</td></tr>
+      <tr><td>Microsoft Designer</td><td>生产力 + 入门创意</td><td>捆绑式</td><td class="a">中（入门级替代）</td></tr>
+    </tbody>
+  </table>
+
+
+  <!-- SECTION 3: MANAGEMENT -->
+  <h2 class="section-title">管理层与治理</h2>
+
+  <p>CEO Shantanu Narayen 任期超 17 年，最大成就是 2013 年主导"永久授权 → Creative Cloud 订阅"转型——过去 20 年软件行业最成功的商业模式转型案例之一。</p>
+
+  <div class="quality-grid">
+    <div class="qcell"><div class="qcell-label">审计意见</div><div class="qcell-val g">正常（KPMG 无保留）</div></div>
+    <div class="qcell"><div class="qcell-label">财务造假</div><div class="qcell-val g">无 SEC 执法记录</div></div>
+    <div class="qcell"><div class="qcell-label">控股股东</div><div class="qcell-val g">无（机构分散持股）</div></div>
+    <div class="qcell"><div class="qcell-label">关联交易</div><div class="qcell-val g">规模极小，无异常</div></div>
+    <div class="qcell"><div class="qcell-label">内部人交易</div><div class="qcell-val a">关注（SBC 变现为主）</div></div>
+    <div class="qcell"><div class="qcell-label">管理层综评</div><div class="qcell-val a">合格</div></div>
+    <div class="qcell"><div class="qcell-label">最大失误</div><div class="qcell-val a">Figma $20B 收购失败</div></div>
+    <div class="qcell"><div class="qcell-label">2024 回购授权</div><div class="qcell-val g">$250 亿（至 2028）</div></div>
   </div>
-</div>
 
-<!-- ═══ 收入敏感性 ═══ -->
-<div class="section">
-  <div class="section-header"><span class="icon">⚠️</span> 收入敏感性分析</div>
+  <p>资本配置记录：Omniture（2009，$1.8B）和 Marketo（2018，$4.75B）收购回报率高；FY2025 回购 $11,281M，长期系统性回购计划执行稳定。最大偏差来自外部监管因素（Figma），非管理层能力失误。</p>
 
-  <div class="two-col">
-    <div class="chart-card">
-      <div class="chart-title">穿透回报率 vs 收入情景（%）</div>
-      <div class="chart-wrap-tall"><canvas id="chartSensBar"></canvas></div>
+
+  <!-- SECTION 4: OWNER EARNINGS -->
+  <h2 class="section-title">Owner Earnings</h2>
+
+  <p>Owner Earnings 衡量企业真实可供股东支配的现金，等于净利润加回折旧摊销、扣除维持性资本开支。Adobe 为轻资产 SaaS，G 系数取 0.80。</p>
+
+  <div class="calc">
+    <span class="hl">归母净利润 C</span> = $7,130M（FY2025 GAAP，含 SBC $1,942M 费用）<br>
+    <span class="hl">折旧摊销 D</span> = $1,008M（折旧 $208M + 无形资产摊销 $800M）<br>
+    <span class="hl">G 系数</span> = 0.80（轻资产 SaaS，Capex/D&A 三年中位数 0.82x）<br>
+    <span class="hl">维持性 Capex H</span> = D × G = $1,008M × 0.80 = $806M<br>
+    <span class="hl">Owner Earnings I</span> = C + D − H = $7,130M + $1,008M − $806M = <strong>$7,332M</strong>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">OCF vs Owner Earnings（FY2023–FY2025，百万美元）</div>
+    <div class="chart-wrap"><canvas id="cOE"></canvas></div>
+  </div>
+
+  <p><strong>真实可支配现金（OCF 直接法）</strong>：近 2 年均值 AA<sub>2y</sub> = ($6,750M + $8,802M) / 2 = <strong>$7,776M</strong>。FY2025 为干净年份，无重大一次性项目。</p>
+
+  <div class="chart-box">
+    <div class="chart-title">FCF 与回购规模（FY2023–FY2025，百万美元）</div>
+    <div class="chart-wrap"><canvas id="cBuyback"></canvas></div>
+  </div>
+
+
+  <!-- SECTION 5: RETURN CALC -->
+  <h2 class="section-title">穿透回报率计算</h2>
+
+  <p>龟龟框架核心公式：<strong>GG = [AA × M × (1−Q%) + O] / 市值</strong>。Adobe 无股息（M = 0%），回购 O 是唯一分配口径；税率 Q = 0%（美股源头不征资本利得税）。</p>
+
+  <div class="calc">
+    年均回购 O = $7,760M（3 年均值：$5,000M + $7,000M + $11,281M）<br>
+    GG = [$7,776M × 0% + $7,760M] / $94,148M<br>
+    <span class="hl">精算 GG = 8.24%</span><br><br>
+    Rf = 4.321%（美国 10 年期国债，2026-04-13）<br>
+    门槛 II = max(5%, 4.321% + 3%) = <span class="hl">7.321%</span><br>
+    安全边际 KK = 8.24% − 7.321% = <span class="hl">+0.92 pct ✓</span>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">GG vs 门槛 II — 残差安全边际</div>
+    <div class="chart-wrap"><canvas id="cResidual"></canvas></div>
+  </div>
+
+  <table>
+    <thead><tr><th>指标</th><th>数值</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>目标买入价</td><td class="mono">$252.3 / 股</td><td>市值 × (GG/II) / 420M 股</td></tr>
+      <tr><td>当前股价</td><td class="mono g">$230.96（已低于目标价）</td><td>相当于实际 GG = 8.24%</td></tr>
+      <tr><td>10 年历史分位</td><td class="mono g">21.8%</td><td>10 年最低 $90.35，最高 $699.54</td></tr>
+      <tr><td>25% 分位价</td><td class="mono">$245.80</td><td>距当前 +6.4%</td></tr>
+      <tr><td>50% 分位价</td><td class="mono">$351.14</td><td>中位数价格</td></tr>
+      <tr><td>距历史高点</td><td class="mono re">-67.0%</td><td>高点 $699.54（2021-11）</td></tr>
+    </tbody>
+  </table>
+
+
+  <!-- SECTION 6: SENSITIVITY -->
+  <h2 class="section-title">下行敏感性</h2>
+
+  <p>安全边际韧性偏低：收入仅需下滑 <strong>6%</strong> 即触及门槛（临界倍数 0.94×）。以下情景模拟收入持续下滑时 GG 的变化。</p>
+
+  <h3 class="sub-title">收入情景（单年冲击）</h3>
+
+  <div class="chart-box">
+    <div class="chart-title">收入情景 × GG（%）</div>
+    <div class="chart-wrap"><canvas id="cSens"></canvas></div>
+  </div>
+
+  <div style="margin:16px 0 28px">
+    <div class="sens-item">
+      <div class="sens-scenario">基准 (1.0×)</div>
+      <div class="sens-bar-wrap"><div class="sens-bar pass" style="width:100%">8.24%</div></div>
+      <div class="sens-val pass">+0.92</div>
     </div>
-    <div style="background:var(--bg2);border-radius:10px;padding:20px;border:1px solid var(--border)">
-      <div class="chart-title">逐年累积下滑（每年−10%）</div>
-      <table class="sens-table">
-        <thead><tr><th>情景</th><th style="text-align:right">结余</th><th style="text-align:right">GG</th><th style="text-align:right">vs门槛</th><th style="text-align:right">门槛价</th></tr></thead>
-        <tbody>
-          <tr class="row-base row-ok">
-            <td>基准（1.0×）</td>
-            <td class="num">$7,776M</td>
-            <td class="num text-green">8.24%</td>
-            <td class="num"><span class="badge badge-green">+0.92pct</span></td>
-            <td class="num">$252</td>
-          </tr>
-          <tr class="row-ok">
-            <td>1年后（×0.9）</td>
-            <td class="num">$6,999M</td>
-            <td class="num text-amber">7.42%</td>
-            <td class="num"><span class="badge badge-amber">+0.10pct</span></td>
-            <td class="num">$227</td>
-          </tr>
-          <tr class="row-bad">
-            <td>2年后（×0.81）</td>
-            <td class="num">$6,299M</td>
-            <td class="num text-red">6.68%</td>
-            <td class="num"><span class="badge badge-red">−0.64pct</span></td>
-            <td class="num">$205</td>
-          </tr>
-          <tr class="row-bad">
-            <td>3年后（×0.729）</td>
-            <td class="num">$5,669M</td>
-            <td class="num text-red">6.01%</td>
-            <td class="num"><span class="badge badge-red">−1.31pct</span></td>
-            <td class="num">$184</td>
-          </tr>
-        </tbody>
-      </table>
-      <div style="margin-top:14px;padding:10px 14px;background:var(--red-bg);border-radius:7px;border:1px solid var(--red-border);font-size:12px;color:var(--text2)">
-        ⚠️ <strong>临界收入倍数 0.94×</strong> — 仅需 <strong>−6% 收入下滑</strong>即触及门槛。<br>
-        仅能承受约1年连续−10%下滑；第2年后GG跌破门槛。
-      </div>
+    <div class="sens-item">
+      <div class="sens-scenario">-10% (0.9×)</div>
+      <div class="sens-bar-wrap"><div class="sens-bar fail" style="width:81.7%">6.73%</div></div>
+      <div class="sens-val fail">-0.59</div>
+    </div>
+    <div class="sens-item">
+      <div class="sens-scenario">-20% (0.8×)</div>
+      <div class="sens-bar-wrap"><div class="sens-bar fail" style="width:63.4%">5.22%</div></div>
+      <div class="sens-val fail">-2.10</div>
+    </div>
+    <div class="sens-item">
+      <div class="sens-scenario">-30% (0.7×)</div>
+      <div class="sens-bar-wrap"><div class="sens-bar fail" style="width:45.1%">3.71%</div></div>
+      <div class="sens-val fail">-3.61</div>
     </div>
   </div>
 
-  <!-- Single-year sensitivity -->
-  <div class="chart-card" style="margin-top:16px">
-    <div class="chart-title">单年收入冲击情景</div>
-    <table class="sens-table">
-      <thead><tr><th>单年下滑幅度</th><th style="text-align:right">情景结余</th><th style="text-align:right">精算GG</th><th style="text-align:right">vs门槛7.321%</th><th style="text-align:right">对应门槛价格</th></tr></thead>
-      <tbody>
-        <tr class="row-ok"><td>−6%（临界）</td><td class="num">$7,310M</td><td class="num text-amber">7.32%</td><td class="num"><span class="badge badge-amber">≈ 0pct</span></td><td class="num">$237</td></tr>
-        <tr class="row-bad"><td>−10%</td><td class="num">$6,350M</td><td class="num text-red">6.73%</td><td class="num"><span class="badge badge-red">−0.59pct</span></td><td class="num">$218</td></tr>
-        <tr class="row-bad"><td>−20%</td><td class="num">$4,924M</td><td class="num text-red">5.22%</td><td class="num"><span class="badge badge-red">−2.10pct</span></td><td class="num">$169</td></tr>
-        <tr class="row-bad"><td>−30%</td><td class="num">$3,497M</td><td class="num text-red">3.71%</td><td class="num"><span class="badge badge-red">−3.61pct</span></td><td class="num">$120</td></tr>
-      </tbody>
-    </table>
+  <h3 class="sub-title">逐年累积下滑（每年 -10%，复利）</h3>
+  <table>
+    <thead><tr><th>情景</th><th class="r">可支配现金</th><th class="r">GG</th><th>vs 门槛</th><th class="r">门槛价格</th></tr></thead>
+    <tbody>
+      <tr><td>基准</td><td class="r mono">$7,776M</td><td class="r mono g bold">8.24%</td><td><span class="badge badge-green">✓ +0.92pct</span></td><td class="r mono">$252/股</td></tr>
+      <tr><td>第 1 年后</td><td class="r mono">$6,999M</td><td class="r mono a bold">7.42%</td><td><span class="badge badge-amber">勉强 +0.10pct</span></td><td class="r mono">$227/股</td></tr>
+      <tr><td>第 2 年后</td><td class="r mono">$6,299M</td><td class="r mono re bold">6.68%</td><td><span class="badge badge-red">✗ -0.64pct</span></td><td class="r mono">$205/股</td></tr>
+      <tr><td>第 3 年后</td><td class="r mono">$5,669M</td><td class="r mono re bold">6.01%</td><td><span class="badge badge-red">✗ -1.31pct</span></td><td class="r mono">$184/股</td></tr>
+    </tbody>
+  </table>
+
+
+  <!-- SECTION 7: VALUE TRAP -->
+  <h2 class="section-title">价值陷阱排查</h2>
+
+  <ul class="checklist">
+    <li>
+      <span class="check-icon">✅</span>
+      <span class="check-text"><strong>现金流无趋势性恶化</strong> — FY2023→2025 结余持续改善：$6,551M → $6,750M → $8,802M</span>
+    </li>
+    <li>
+      <span class="check-icon">✅</span>
+      <span class="check-text"><strong>护城河未见急性收窄</strong> — 评级"较强"，AI 工具侵蚀属渐进，5 年内核心壁垒难被根本瓦解</span>
+    </li>
+    <li>
+      <span class="check-icon">✅</span>
+      <span class="check-text"><strong>行业无结构性衰退</strong> — 创意软件 TAM 增速约 7–9%/年（2024–2027），非周期，无不可逆萎缩</span>
+    </li>
+    <li>
+      <span class="check-icon">✅</span>
+      <span class="check-text"><strong>分配意愿非"弱"</strong> — 评级"中"，$250 亿回购授权实质约束；历史上始终大规模回购</span>
+    </li>
+    <li>
+      <span class="check-icon">✅</span>
+      <span class="check-text"><strong>管理层未损害价值</strong> — 评级"合格"，Figma 失误系监管判断失误而非主动损害</span>
+    </li>
+  </ul>
+
+  <div class="verdict" style="border-left-color:var(--green);background:var(--green-bg)">
+    <div class="verdict-label" style="color:var(--green)">价值陷阱风险</div>
+    <div class="verdict-main" style="font-size:18px">低（5 项均不存在）</div>
+    <div class="verdict-sub">无系统性价值毁损信号，当前低估更多来自市场对 AI 冲击的悲观定价。</div>
   </div>
-</div>
 
-<!-- ═══ 商业质量 6维度 ═══ -->
-<div class="section">
-  <div class="section-header"><span class="icon">🏛</span> 商业质量评估 · 6维度</div>
-  <div class="dim-grid">
 
-    <div class="dim-card">
-      <div class="dim-card-header">
-        <span class="dim-card-num">维度 01</span>
-        <span class="dim-rating strong">capital-light</span>
-      </div>
-      <div class="dim-card-title">商业模式与资本特征</div>
-      <div class="dim-card-body">
-        订阅制SaaS，Digital Media（74%）+ Digital Experience（25%）。毛利率89.5%，FCF利润率37.2%，Capex/收入仅4%。递延收入$7.03B，RPO $22.5B，收入能见度极强。先款后货（订阅预收），现金转化比率1.41x。
-        <br><br>
-        <span class="badge badge-green">先款后货</span> &nbsp;<span class="badge badge-green">FCF margin 37%</span> &nbsp;<span class="badge badge-blue">Capex/Rev 4%</span>
-      </div>
-    </div>
+  <!-- SECTION 8: CONCLUSION -->
+  <h2 class="section-title">综合结论</h2>
 
-    <div class="dim-card">
-      <div class="dim-card-header">
-        <span class="dim-card-num">维度 02</span>
-        <span class="dim-rating strong">护城河：较强</span>
-      </div>
-      <div class="dim-card-title">竞争优势与护城河</div>
-      <div class="dim-card-body">
-        <strong>转换成本（强）</strong>：.psd/.ai/.indd格式深度嵌入工作流，技能积累难以迁移。<strong>无形资产（强）</strong>："Photoshop"成为代名词，高校授权培养原生用户。<strong>规模效应（较强）</strong>：研发$3.7B被庞大用户摊薄。ROIC约35-40%，远超25%卓越门槛。
-        <br><br>
-        <span class="badge badge-green">ROIC 35-40%</span> &nbsp;<span class="badge badge-amber">Figma缺口存在</span>
-      </div>
-    </div>
+  <p><strong>Adobe 是一家具备深厚护城河的高质量 SaaS 企业，当前股价处于 10 年 21.8% 历史低分位，精算穿透回报率 8.24% 略超门槛 7.321%，但安全边际仅 +0.92 pct，属于勉强通过而非宽裕区间。</strong></p>
 
-    <div class="dim-card">
-      <div class="dim-card-header">
-        <span class="dim-card-num">维度 03</span>
-        <span class="dim-rating medium">非周期 · 增速平台期</span>
-      </div>
-      <div class="dim-card-title">外部环境</div>
-      <div class="dim-card-body">
-        非周期业务（历经疫情/高利率均保持增长）。收入增速稳定在10%，未见衰退。正面驱动：生成式AI需求、企业MarTech。负面：AI工具民主化（Midjourney/Canva）、大型收购受监管阻碍。TAM增速7-9%/年。
-        <br><br>
-        <span class="badge badge-blue">非周期</span> &nbsp;<span class="badge badge-amber">监管风险：中</span>
-      </div>
-    </div>
+  <p>核心逻辑支柱：① 3,000 万+ 专业用户深度锁定，格式标准 + 转换成本 + 订阅预收三重护城河；② FCF 收益率 9.4%，市场已 price in 了相当悲观预期；③ 无股息、纯回购结构，Q = 0% 税率优势；④ $250 亿回购授权（至 2028），系统性股本缩减。</p>
 
-    <div class="dim-card">
-      <div class="dim-card-header">
-        <span class="dim-card-num">维度 04</span>
-        <span class="dim-rating medium">管理层：合格</span>
-      </div>
-      <div class="dim-card-title">管理层与公司治理</div>
-      <div class="dim-card-body">
-        CEO Narayen（2007至今）主导2013年订阅化转型，是软件行业教科书级别的商业模式重构。机构分散持股（Vanguard 10.2%，Blackrock 10.0%），无控股股东。KPMG审计，无财务造假记录。<strong>主要失误</strong>：$200亿追购Figma失败，付$10亿终止费。
-        <br><br>
-        <span class="badge badge-green">审计：清洁</span> &nbsp;<span class="badge badge-amber">Figma失误</span>
-      </div>
-    </div>
+  <p>主要风险：① AI 工具民主化（Midjourney / Sora / Runway）持续降低创意软件使用门槛；② Figma 协同设计缺口扩大；③ 临界收入倍数仅 0.94×，安全边际薄；④ 商誉 $13,000M 占总资产 43%，仓位上限 50%。</p>
 
-    <div class="dim-card">
-      <div class="dim-card-header">
-        <span class="dim-card-num">维度 05</span>
-        <span class="dim-rating medium">MD&A：中性</span>
-      </div>
-      <div class="dim-card-title">MD&A 解读</div>
-      <div class="dim-card-body">
-        指引偏差连续多年&lt;5%，体现订阅模式高可预测性。乐观信号：Firefly累计生成90亿次，AI附加包开始创收。审慎信号：未给出重返&gt;15%增速时间线，首次将AI竞争列为独立风险项。<strong>"未说的"</strong>：未披露个人版净增用户数、Firefly付费渗透率。
-        <br><br>
-        <span class="badge badge-green">指引偏差 &lt;5%</span> &nbsp;<span class="badge badge-amber">AI变现待量化</span>
-      </div>
-    </div>
-
-    <div class="dim-card">
-      <div class="dim-card-header">
-        <span class="dim-card-num">维度 06</span>
-        <span class="dim-rating neutral">不适用</span>
-      </div>
-      <div class="dim-card-title">控股结构</div>
-      <div class="dim-card-body">
-        Adobe为标准上市公司，无上市子公司，母公司报表与合并报表无显著差异。投资收益占利润比例&lt;5%。维度六不触发。
-        <br><br>
-        <span class="badge badge-gray">无控股结构</span> &nbsp;<span class="badge badge-gray">单一运营主体</span>
-      </div>
-    </div>
+  <div class="quality-grid">
+    <div class="qcell"><div class="qcell-label">外推可信度</div><div class="qcell-val a">中（2高3中）</div></div>
+    <div class="qcell"><div class="qcell-label">护城河</div><div class="qcell-val g">较强</div></div>
+    <div class="qcell"><div class="qcell-label">价值陷阱</div><div class="qcell-val g">低</div></div>
+    <div class="qcell"><div class="qcell-label">商誉/总资产</div><div class="qcell-val a">43%（上限50%）</div></div>
+    <div class="qcell"><div class="qcell-label">GG</div><div class="qcell-val g">8.24%</div></div>
+    <div class="qcell"><div class="qcell-label">II</div><div class="qcell-val">7.321%</div></div>
+    <div class="qcell"><div class="qcell-label">KK</div><div class="qcell-val a">+0.92 pct</div></div>
+    <div class="qcell"><div class="qcell-label">仓位建议</div><div class="qcell-val a">观察（30%）</div></div>
   </div>
-</div>
 
-<!-- ═══ 价值陷阱排查 ═══ -->
-<div class="section">
-  <div class="section-header"><span class="icon">🪤</span> 价值陷阱排查 · 5项全通过</div>
-  <div style="background:var(--bg2);border-radius:10px;padding:8px 16px;border:1px solid var(--border)">
-    <div class="trap-list">
-      <div class="trap-row">
-        <div class="trap-icon">✅</div>
-        <div class="trap-content">
-          <div class="trap-title">现金流趋势性恶化</div>
-          <div class="trap-desc">结余序列持续改善：FY2023 $6,551M → FY2024 $6,750M → FY2025 $8,802M，无连续2年下降</div>
-        </div>
-        <div class="trap-result pass">不存在</div>
-      </div>
-      <div class="trap-row">
-        <div class="trap-icon">✅</div>
-        <div class="trap-content">
-          <div class="trap-title">护城河正在收窄</div>
-          <div class="trap-desc">护城河评级"较强"，AI侵蚀属渐进而非突变，5年内核心壁垒难被根本瓦解</div>
-        </div>
-        <div class="trap-result pass">不存在</div>
-      </div>
-      <div class="trap-row">
-        <div class="trap-icon">✅</div>
-        <div class="trap-content">
-          <div class="trap-title">行业结构性衰退</div>
-          <div class="trap-desc">创意软件TAM增速约7-9%/年，非周期，Adobe各宏观环境下均保持订阅收入正增长</div>
-        </div>
-        <div class="trap-result pass">不存在</div>
-      </div>
-      <div class="trap-row">
-        <div class="trap-icon">✅</div>
-        <div class="trap-content">
-          <div class="trap-title">分配意愿存疑</div>
-          <div class="trap-desc">分配意愿评级"中"（非"弱"）；$250亿回购授权（有效至2028），有实质约束</div>
-        </div>
-        <div class="trap-result pass">不存在</div>
-      </div>
-      <div class="trap-row">
-        <div class="trap-icon">✅</div>
-        <div class="trap-content">
-          <div class="trap-title">管理层损害价值</div>
-          <div class="trap-desc">管理层评级"合格"；Figma失误系监管判断失误而非主动损害股东价值</div>
-        </div>
-        <div class="trap-result pass">不存在</div>
-      </div>
-    </div>
-    <div style="margin-top:10px;padding:10px 14px;background:var(--green-bg);border-radius:7px;border:1px solid var(--green-border);font-size:13px;color:var(--green);font-weight:600">
-      ✓ 5项全部通过 → 价值陷阱风险：低
-    </div>
-  </div>
-</div>
+  <p class="footnote">数据来源：Adobe FY2025 Form 10-K（SEC EDGAR，财年截止 2025-11-28）· yfinance（市场行情）· US Treasury（Rf）· 龟龟投资策略 v2 框架。本报告由 AI 自动生成，仅供参考，不构成投资建议。ᵉ = 估算值。</p>
 
-<!-- ═══ 绝对估值 ═══ -->
-<div class="section">
-  <div class="section-header"><span class="icon">💰</span> 绝对估值指标</div>
-  <div style="background:var(--bg2);border-radius:10px;padding:0 0 0 0;border:1px solid var(--border);overflow:hidden">
-    <table class="val-table">
-      <thead><tr><th>估值指标</th><th style="text-align:right">数值</th><th style="text-align:right">参考阈值</th><th style="text-align:right">信号</th></tr></thead>
-      <tbody>
-        <tr>
-          <td>EV / EBITDA</td>
-          <td class="num">10.6×</td>
-          <td class="num text-dim">&lt;8x偏低 / &lt;15x合理</td>
-          <td class="signal"><span class="badge badge-green">合理偏低</span></td>
-        </tr>
-        <tr>
-          <td>FCF收益率（FCF / 市值）</td>
-          <td class="num">9.40%</td>
-          <td class="num text-dim">&gt;8% 丰厚</td>
-          <td class="signal"><span class="badge badge-green">丰厚 ✓</span></td>
-        </tr>
-        <tr>
-          <td>扣现金PE（$89,453M / $7,130M）</td>
-          <td class="num">12.5×</td>
-          <td class="num text-dim">&lt;10x强 / &lt;20x合理</td>
-          <td class="signal"><span class="badge badge-green">合理偏低</span></td>
-        </tr>
-        <tr>
-          <td>净负债 / EBITDA</td>
-          <td class="num">0.05×</td>
-          <td class="num text-dim">&lt;2x 风险可控</td>
-          <td class="signal"><span class="badge badge-green">极低杠杆</span></td>
-        </tr>
-        <tr>
-          <td>商誉 / 总资产（$13B / $30B）</td>
-          <td class="num" style="color:var(--amber);font-weight:700">43%</td>
-          <td class="num text-dim">&gt;30% 仓位上限50%</td>
-          <td class="signal"><span class="badge badge-amber">⚠ 上限50%</span></td>
-        </tr>
-        <tr>
-          <td>EV / 营收</td>
-          <td class="num">3.94×</td>
-          <td class="num text-dim">SaaS参考&lt;5x合理</td>
-          <td class="signal"><span class="badge badge-green">合理</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
-    <div style="background:var(--bg2);border-radius:8px;padding:12px;border:1px solid var(--border);font-size:13px">
-      <div style="font-size:11px;color:var(--text3);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">EV</div>
-      <div style="font-weight:700">$93,703M</div>
-      <div style="font-size:11px;color:var(--text3)">市值+债−现金</div>
-    </div>
-    <div style="background:var(--bg2);border-radius:8px;padding:12px;border:1px solid var(--border);font-size:13px">
-      <div style="font-size:11px;color:var(--text3);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">EBITDA</div>
-      <div style="font-weight:700">$8,876M</div>
-      <div style="font-size:11px;color:var(--text3)">营业利润+D&A</div>
-    </div>
-    <div style="background:var(--bg2);border-radius:8px;padding:12px;border:1px solid var(--border);font-size:13px">
-      <div style="font-size:11px;color:var(--text3);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">净负债</div>
-      <div style="font-weight:700;color:var(--green)">−$445M</div>
-      <div style="font-size:11px;color:var(--text3)">净现金（接近中性）</div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══ 优势与风险 ═══ -->
-<div class="section">
-  <div class="section-header"><span class="icon">⚖️</span> 优势 vs 风险</div>
-  <div class="pros-cons">
-    <div class="pros-card">
-      <div class="pc-title">核心优势</div>
-      <div class="pc-item">3,000万+专业用户深度锁定，格式标准不可绕过</div>
-      <div class="pc-item">FCF收益率9.4%，无风险利率溢价+5.1pct，风险补偿充分</div>
-      <div class="pc-item">扣现金PE仅12.5x，对应ROIC 35-40%的优质SaaS资产</div>
-      <div class="pc-item">10年历史21.8%分位，市场已price in悲观预期</div>
-      <div class="pc-item">Firefly商业授权数据优势，AI版权合规壁垒正形成</div>
-      <div class="pc-item">净负债近乎为零，财务健康无杠杆风险</div>
-    </div>
-    <div class="cons-card">
-      <div class="pc-title">核心风险</div>
-      <div class="pc-item">收入仅需下滑6%即触及门槛，安全边际韧性偏低</div>
-      <div class="pc-item">AI工具民主化（Midjourney/DALL-E/Runway）持续降低创意壁垒</div>
-      <div class="pc-item">Figma独立加速巩固UI/UX协同设计优势，结构性缺口存在</div>
-      <div class="pc-item">商誉占总资产43%，收购整合风险（含Semrush $1.9B待完成）</div>
-      <div class="pc-item">FY2025回购$11.3B超FCF，靠借债支撑，可持续性存疑</div>
-      <div class="pc-item">收入增速放缓至10%，AI变现时间线不明确</div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══ 投资论点卡 ═══ -->
-<div class="section">
-  <div class="section-header"><span class="icon">📋</span> 投资论点卡（Thesis Card）</div>
-  <div class="thesis">
-    <div class="thesis-section">
-      <div class="thesis-section-title">核心论点</div>
-      <div style="font-size:14px;color:var(--text2);line-height:1.65;padding:12px 14px;background:var(--bg);border-radius:7px;border-left:3px solid var(--amber)">
-        Adobe是一家具备深度护城河的优质SaaS公司，当前股价已反映市场对AI竞争和增速放缓的悲观预期（历史低位21.8%分位），FCF收益率9.4%提供充足风险溢价。但安全边际仅+0.92pct，收入临界韧性偏低。<strong>以观察仓位（30%）持有，等待收入增速重新加速（Firefly付费渗透量化披露）或股价进一步调整至更宽安全边际后加仓。</strong>
-      </div>
-    </div>
-
-    <div class="thesis-section">
-      <div class="thesis-section-title">买入理由</div>
-      <div class="thesis-items">
-        <div class="thesis-item"><span class="bullet">①</span><span><strong>FCF yield 9.4%</strong> 在4.32%无风险利率下提供+5.1pct溢价，风险补偿充分</span></div>
-        <div class="thesis-item"><span class="bullet">②</span><span><strong>扣现金PE 12.5x</strong>，对应ROIC约35-40%的优质SaaS资产，处历史估值低位</span></div>
-        <div class="thesis-item"><span class="bullet">③</span><span><strong>10年历史21.8%分位</strong>，距ATH回撤67%，市场对AI替代风险定价已相对悲观</span></div>
-        <div class="thesis-item"><span class="bullet">④</span><span><strong>$250亿回购授权</strong>（至2028年），EPS加速稀释提升回报率，下行支撑明确</span></div>
-        <div class="thesis-item"><span class="bullet">⑤</span><span><strong>Firefly AI合规数据护城河</strong>正在形成，竞争对手面临更大版权监管风险</span></div>
-      </div>
-    </div>
-
-    <div class="thesis-section">
-      <div class="thesis-section-title">预期催化剂</div>
-      <div class="thesis-items">
-        <div class="thesis-item"><span class="bullet">🔑</span><span>Firefly付费渗透率首次量化披露（证明AI变现已进入加速轨道）</span></div>
-        <div class="thesis-item"><span class="bullet">🔑</span><span>Creative Cloud ARR增速重回12%+（打破"10%增速平台期"叙事）</span></div>
-        <div class="thesis-item"><span class="bullet">🔑</span><span>Semrush整合超预期或加速Digital Experience业务增长</span></div>
-      </div>
-    </div>
-
-    <div class="thesis-section">
-      <div class="thesis-section-title">基本面止损条件</div>
-      <table class="stop-table">
-        <thead><tr><th>#</th><th>指标</th><th>条件</th><th>严重度</th></tr></thead>
-        <tbody>
-          <tr><td>1</td><td>FCF Yield</td><td>&lt; 5%（自由现金流恶化）</td><td><span class="severity-critical">CRITICAL</span></td></tr>
-          <tr><td>2</td><td>FCF</td><td>连续2季 &lt; 0</td><td><span class="severity-critical">CRITICAL</span></td></tr>
-          <tr><td>3</td><td>营收同比</td><td>&lt; −10%（超过临界6%阈值）</td><td><span class="severity-critical">CRITICAL</span></td></tr>
-          <tr><td>4</td><td>毛利率</td><td>&lt; 80%（定价权侵蚀信号）</td><td><span class="severity-warning">WARNING</span></td></tr>
-          <tr><td>5</td><td>回购 / 净利润</td><td>&lt; 50%（分配意愿减弱）</td><td><span class="severity-warning">WARNING</span></td></tr>
-          <tr><td>6</td><td>商誉减值</td><td>&gt; $500M单次（收购整合失败）</td><td><span class="severity-warning">WARNING</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="thesis-section" style="margin-bottom:0">
-      <div class="thesis-section-title">事件监控关键词</div>
-      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">
-        <span class="badge badge-red">ADBE profit warning</span>
-        <span class="badge badge-red">Adobe revenue guidance cut</span>
-        <span class="badge badge-amber">Adobe Firefly monetization</span>
-        <span class="badge badge-amber">Adobe CEO CFO change</span>
-        <span class="badge badge-blue">Adobe buyback repurchase</span>
-        <span class="badge badge-blue">Canva enterprise market share</span>
-        <span class="badge badge-gray">Adobe Semrush integration</span>
-        <span class="badge badge-gray">AI creative tools regulation</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══ 关键假设 ═══ -->
-<div class="section">
-  <div class="section-header"><span class="icon">🔧</span> 关键假设</div>
-  <div class="assume-grid">
-    <div class="assume-item">
-      <div class="assume-label">维持性Capex系数 G</div>
-      <div class="assume-val">0.80</div>
-      <div class="assume-alt">可替代：0.70（纯平台）～1.00（中等） | G±0.1 → OE ±$101M</div>
-    </div>
-    <div class="assume-item">
-      <div class="assume-label">利润口径</div>
-      <div class="assume-val">GAAP归母净利润 $7,130M</div>
-      <div class="assume-alt">Non-GAAP约$8,800M（含SBC $1,924M费用，不采用）</div>
-    </div>
-    <div class="assume-item">
-      <div class="assume-label">现金分配方式</div>
-      <div class="assume-val">M = 0%（纯回购，无股息）</div>
-      <div class="assume-alt">O = $7,760M/年（3年均值）| 税率Q = 0%</div>
-    </div>
-    <div class="assume-item">
-      <div class="assume-label">可自由支配现金 FF</div>
-      <div class="assume-val">$4,695M（扣Semrush $1.9B）</div>
-      <div class="assume-alt">广义FF = $6,595M（不扣收购款）| 保守处理</div>
-    </div>
-    <div class="assume-item">
-      <div class="assume-label">基准结余 AA</div>
-      <div class="assume-val">$7,776M（AA_2y，近2年均值）</div>
-      <div class="assume-alt">AA_all = $7,368M → GG降至7.81%，边际收窄至0.49pct</div>
-    </div>
-    <div class="assume-item">
-      <div class="assume-label">外推可信度</div>
-      <div class="assume-val">中（2高3中，无低）</div>
-      <div class="assume-alt">主要不确定性：AI冲击幅度 + Semrush整合效果</div>
-    </div>
-  </div>
-</div>
-
-<!-- Footer -->
-<div class="footer">
-  <strong>数据来源</strong>：Adobe FY2025 Form 10-K（SEC EDGAR，财年截止2025-11-28）· yfinance（市场行情）· US Treasury（无风险利率）· /business-analysis 定性分析模块<br>
-  <strong>分析日期</strong>：2026-04-14 &nbsp;·&nbsp; <strong>框架</strong>：龟龟投资策略 v2 &nbsp;·&nbsp; <strong>Warnings</strong>：Tushare API token失效，财务数据降级使用10-K实际数字；FY2023/FY2024 Capex及回购含估算值（标注ᵉ）<br>
-  <span style="color:var(--text3);margin-top:4px;display:block">本报告由AI模型基于龟龟投资策略v2框架自动生成，仅供参考，不构成投资建议。投资者应自行核实数据并根据自身风险承受能力决策。</span>
-</div>
-
-</div><!-- end page -->
+</div><!-- /wrap -->
 
 <script>
-// ─── Color helpers ───
-const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const dark = window.matchMedia('(prefers-color-scheme:dark)').matches;
 const C = {
-  text: isDark ? '#e8e8e4' : '#1c1c1a',
-  text2: isDark ? '#a8a8a0' : '#5c5c58',
-  text3: isDark ? '#6e6e68' : '#8a8a84',
-  border: isDark ? 'rgba(255,255,255,.08)' : 'rgba(0,0,0,.08)',
-  bg2: isDark ? '#1e1e1e' : '#f0efe9',
-  green: isDark ? '#4ade80' : '#1a7a5a',
-  red: isDark ? '#f87171' : '#c0392b',
-  amber: isDark ? '#fbbf24' : '#a06c1a',
-  blue: isDark ? '#60a5fa' : '#2563a0',
+  text:   dark ? '#e8e8e4' : '#1c1c1a',
+  text2:  dark ? '#a0a09a' : '#5c5c58',
+  text3:  dark ? '#666660' : '#8a8a84',
+  grid:   dark ? 'rgba(255,255,255,.06)' : 'rgba(0,0,0,.06)',
+  bg2:    dark ? '#1c1c1c' : '#f0efe9',
+  green:  dark ? '#34d399' : '#1a7a5a',
+  red:    dark ? '#f87171' : '#b91c1c',
+  amber:  dark ? '#fbbf24' : '#92600f',
+  blue:   dark ? '#60a5fa' : '#1d4ed8',
 };
-Chart.defaults.color = C.text2;
-Chart.defaults.borderColor = C.border;
-Chart.defaults.font.family = "-apple-system, 'PingFang SC', system-ui, sans-serif";
 
-const years = ['FY2021','FY2022','FY2023','FY2024','FY2025'];
+const base = {
+  responsive:true,maintainAspectRatio:false,
+  plugins:{legend:{display:false},tooltip:{backgroundColor:dark?'#2a2a2a':'#fff',titleColor:C.text,bodyColor:C.text2,borderColor:dark?'rgba(255,255,255,.1)':'rgba(0,0,0,.1)',borderWidth:1,padding:10}},
+  scales:{x:{grid:{display:false},ticks:{color:C.text3,font:{size:11}}},y:{grid:{color:C.grid},ticks:{color:C.text3,font:{size:11}}}}
+};
+const noScales = {...base, scales:{}};
 
-// ─── 1. Revenue & Net Income ───
-new Chart(document.getElementById('chartRevenue'), {
-  type: 'bar',
-  data: {
-    labels: years,
-    datasets: [
-      { label: '营收', data: [15785,17606,19409,21505,23769],
-        backgroundColor: isDark ? 'rgba(96,165,250,.7)' : 'rgba(37,99,160,.7)',
-        borderRadius: 4, order: 1 },
-      { label: '净利润', data: [4756,4756,5763,5560,7130],
-        backgroundColor: isDark ? 'rgba(74,222,128,.7)' : 'rgba(26,122,90,.7)',
-        borderRadius: 4, order: 1 },
+// Revenue + Net Income
+new Chart(document.getElementById('cRevenue'),{
+  type:'bar',
+  data:{
+    labels:['FY21','FY22','FY23','FY24','FY25'],
+    datasets:[
+      {label:'营业收入',data:[15785,17606,19409,21505,23769],backgroundColor:C.blue+'33',borderColor:C.blue,borderWidth:1.5,borderRadius:4},
+      {label:'归母净利润',data:[4756,4756,5763,5560,7130],type:'line',borderColor:C.green,backgroundColor:C.green+'22',fill:true,tension:.4,pointRadius:3,pointBackgroundColor:C.green}
     ]
   },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    plugins: { legend: { position: 'bottom', labels: { font:{size:11}, boxWidth:10, padding:12 }},
-      tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: $${ctx.raw.toLocaleString()}M` }}},
-    scales: { x: { grid:{display:false}, ticks:{font:{size:11}} },
-      y: { grid:{color:C.border}, ticks:{font:{size:10}, callback: v => '$'+v/1000+'B' }} }
-  }
+  options:{...base,plugins:{...base.plugins,legend:{display:true,labels:{color:C.text2,font:{size:11},boxWidth:12}}}}
 });
 
-// ─── 2. Cash Flow ───
-new Chart(document.getElementById('chartCash'), {
-  type: 'bar',
-  data: {
-    labels: years,
-    datasets: [
-      { label: 'OCF', data: [6870,7100,7301,7600,9808],
-        backgroundColor: isDark ? 'rgba(96,165,250,.7)' : 'rgba(37,99,160,.7)',
-        borderRadius: 4 },
-      { label: 'FCF', data: [6170,6300,6601,6800,8852],
-        backgroundColor: isDark ? 'rgba(74,222,128,.7)' : 'rgba(26,122,90,.7)',
-        borderRadius: 4 },
+// Segments doughnut
+new Chart(document.getElementById('cSegments'),{
+  type:'doughnut',
+  data:{
+    labels:['Digital Media','Digital Experience','Publishing & Advertising'],
+    datasets:[{data:[17649,5864,256],backgroundColor:[C.blue,C.green,C.amber],borderWidth:0,hoverOffset:4}]
+  },
+  options:{...noScales,plugins:{legend:{display:true,position:'right',labels:{color:C.text2,font:{size:11},padding:12,boxWidth:10}}}}
+});
+
+// Margins
+new Chart(document.getElementById('cMargins'),{
+  type:'line',
+  data:{
+    labels:['FY21','FY22','FY23','FY24','FY25'],
+    datasets:[
+      {label:'净利润率 %',data:[30.1,27.0,29.7,25.9,30.0],borderColor:C.blue,backgroundColor:C.blue+'22',fill:true,tension:.4,pointRadius:3,pointBackgroundColor:C.blue},
+      {label:'FCF 利润率 %',data:[null,null,34.0,31.6,37.2],borderColor:C.green,backgroundColor:'transparent',tension:.4,pointRadius:3,pointBackgroundColor:C.green,borderDash:[4,3]}
     ]
   },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    plugins: { legend: { position: 'bottom', labels: { font:{size:11}, boxWidth:10, padding:12 }},
-      tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: $${ctx.raw.toLocaleString()}M` }}},
-    scales: { x: { grid:{display:false}, ticks:{font:{size:11}} },
-      y: { grid:{color:C.border}, ticks:{font:{size:10}, callback: v => '$'+v/1000+'B' }} }
-  }
+  options:{...base,plugins:{...base.plugins,legend:{display:true,labels:{color:C.text2,font:{size:11},boxWidth:12}}},scales:{...base.scales,y:{...base.scales.y,min:20,max:45}}}
 });
 
-// ─── 3. Margins ───
-new Chart(document.getElementById('chartMargins'), {
-  type: 'line',
-  data: {
-    labels: years,
-    datasets: [
-      { label: '毛利率', data: [87,88,88,89,89.5],
-        borderColor: C.blue, backgroundColor: 'transparent',
-        pointBackgroundColor: C.blue, tension: 0.3, pointRadius: 4 },
-      { label: '经营利润率', data: [32,30,31,18,33],
-        borderColor: C.green, backgroundColor: 'transparent',
-        pointBackgroundColor: C.green, tension: 0.3, pointRadius: 4 },
-      { label: 'FCF利润率', data: [39,36,34,32,37.2],
-        borderColor: C.amber, backgroundColor: 'transparent',
-        pointBackgroundColor: C.amber, tension: 0.3, pointRadius: 4 },
+// OE bars
+new Chart(document.getElementById('cOE'),{
+  type:'bar',
+  data:{
+    labels:['FY23','FY24','FY25'],
+    datasets:[
+      {label:'OCF',data:[7301,7600,9808],backgroundColor:C.blue+'44',borderColor:C.blue,borderWidth:1.5,borderRadius:4},
+      {label:'Owner Earnings',data:[null,null,7332],backgroundColor:C.green+'55',borderColor:C.green,borderWidth:1.5,borderRadius:4},
+      {label:'结余 AA',data:[6551,6750,8802],backgroundColor:C.amber+'44',borderColor:C.amber,borderWidth:1.5,borderRadius:4}
     ]
   },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    plugins: { legend: { position: 'bottom', labels:{font:{size:11},boxWidth:10,padding:12}},
-      tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: ${ctx.raw}%` }}},
-    scales: { x: { grid:{display:false}, ticks:{font:{size:11}} },
-      y: { grid:{color:C.border}, ticks:{font:{size:10}, callback: v => v+'%'}, min:0, max:100 }}
-  }
+  options:{...base,plugins:{...base.plugins,legend:{display:true,labels:{color:C.text2,font:{size:11},boxWidth:12}}}}
 });
 
-// ─── 4. Segments Donut ───
-new Chart(document.getElementById('chartSegments'), {
-  type: 'doughnut',
-  data: {
-    labels: ['Digital Media $17,649M','Digital Experience $5,864M','Publishing $256M'],
-    datasets: [{ data: [17649,5864,256],
-      backgroundColor: [C.blue, C.green, C.text3],
-      borderWidth: 0, hoverOffset: 6 }]
-  },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    cutout: '62%',
-    plugins: { legend: { position: 'bottom', labels:{font:{size:11},boxWidth:10,padding:10}},
-      tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${(ctx.raw/23769*100).toFixed(1)}%` }}}
-  }
-});
-
-// ─── 5. OE Waterfall (bar) ───
-new Chart(document.getElementById('chartOE'), {
-  type: 'bar',
-  data: {
-    labels: ['GAAP净利润 C', '+ D&A', '− 维持性Capex H', '= Owner Earnings'],
-    datasets: [{ data: [7130, 1008, -806, 7332],
-      backgroundColor: [C.blue, C.green, C.red, C.amber],
-      borderRadius: 5 }]
-  },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    plugins: { legend:{display:false},
-      tooltip: { callbacks: { label: ctx => ` $${Math.abs(ctx.raw).toLocaleString()}M` }}},
-    scales: { x: { grid:{display:false}, ticks:{font:{size:10}} },
-      y: { grid:{color:C.border}, ticks:{font:{size:10}, callback: v => '$'+v/1000+'B' }} }
-  }
-});
-
-// ─── 6. Residual cash ───
-new Chart(document.getElementById('chartResidual'), {
-  type: 'bar',
-  data: {
-    labels: ['FY2023 (ᵉ)','FY2024 (含Figma)','FY2025 (10-K)'],
-    datasets: [
-      { label: 'OCF', data: [7301,7600,9808],
-        backgroundColor: isDark ? 'rgba(96,165,250,.5)':'rgba(37,99,160,.5)',
-        borderRadius: 4 },
-      { label: '真实可支配现金结余', data: [6551,6750,8802],
-        backgroundColor: isDark ? 'rgba(74,222,128,.8)':'rgba(26,122,90,.8)',
-        borderRadius: 4 },
+// Buyback
+new Chart(document.getElementById('cBuyback'),{
+  type:'bar',
+  data:{
+    labels:['FY23','FY24','FY25'],
+    datasets:[
+      {label:'FCF',data:[6601,6800,8852],backgroundColor:C.green+'44',borderColor:C.green,borderWidth:1.5,borderRadius:4},
+      {label:'股票回购',data:[5000,7000,11281],backgroundColor:C.red+'44',borderColor:C.red,borderWidth:1.5,borderRadius:4}
     ]
   },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    plugins: { legend:{position:'bottom',labels:{font:{size:11},boxWidth:10,padding:10}},
-      tooltip:{callbacks:{label: ctx => ` ${ctx.dataset.label}: $${ctx.raw.toLocaleString()}M`}}},
-    scales: { x:{grid:{display:false},ticks:{font:{size:11}}},
-      y:{grid:{color:C.border},ticks:{font:{size:10},callback: v => '$'+v/1000+'B'}} },
-    annotation: { annotations: {
-      line1: { type:'line', yMin:7776, yMax:7776, borderColor:C.amber,
-        borderDash:[4,4], label:{content:'AA基准 $7,776M',display:true,color:C.amber} }
-    }}
-  }
+  options:{...base,plugins:{...base.plugins,legend:{display:true,labels:{color:C.text2,font:{size:11},boxWidth:12}}}}
 });
 
-// ─── 7. Buyback ───
-new Chart(document.getElementById('chartBuyback'), {
-  type: 'bar',
-  data: {
-    labels: ['FY2023 (ᵉ)','FY2024 (ᵉ)','FY2025 (10-K)','3年均值 O'],
-    datasets: [{ data: [5000,7000,11281,7760],
-      backgroundColor: [isDark?'rgba(96,165,250,.5)':'rgba(37,99,160,.5)',
-        isDark?'rgba(96,165,250,.5)':'rgba(37,99,160,.5)',
-        isDark?'rgba(74,222,128,.8)':'rgba(26,122,90,.8)',
-        C.amber],
-      borderRadius: 5 }]
+// Residual bar: GG vs II
+new Chart(document.getElementById('cResidual'),{
+  type:'bar',
+  data:{
+    labels:['门槛 II','精算 GG'],
+    datasets:[{data:[7.321,8.24],backgroundColor:[C.amber+'55',C.green+'88'],borderColor:[C.amber,C.green],borderWidth:1.5,borderRadius:6}]
   },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    plugins: { legend:{display:false},
-      tooltip:{callbacks:{label: ctx => ` $${ctx.raw.toLocaleString()}M`}}},
-    scales: { x:{grid:{display:false},ticks:{font:{size:11}}},
-      y:{grid:{color:C.border},ticks:{font:{size:10},callback: v => '$'+v/1000+'B'}} }
-  }
+  options:{...base,indexAxis:'y',scales:{x:{grid:{color:C.grid},ticks:{color:C.text3,font:{size:11}},min:0,max:12},y:{grid:{display:false},ticks:{color:C.text3,font:{size:11}}}}}
 });
 
-// ─── 8. Sensitivity bar ───
-new Chart(document.getElementById('chartSensBar'), {
-  type: 'bar',
-  data: {
-    labels: ['基准\n(0%)', '−6%\n(临界)', '−10%', '−20%', '−30%'],
-    datasets: [
-      { label: '精算GG (%)',
-        data: [8.24, 7.32, 6.73, 5.22, 3.71],
-        backgroundColor: [C.green, C.amber, C.red, C.red, C.red],
-        borderRadius: 5 },
-      { label: '门槛II (7.321%)',
-        data: [7.321, 7.321, 7.321, 7.321, 7.321],
-        type: 'line',
-        borderColor: isDark ? 'rgba(255,255,255,.4)' : 'rgba(0,0,0,.3)',
-        borderDash: [5,3],
-        backgroundColor: 'transparent',
-        pointRadius: 0,
-        tension: 0 }
+// Sensitivity
+new Chart(document.getElementById('cSens'),{
+  type:'bar',
+  data:{
+    labels:['基准 1.0×','0.9× (-10%)','0.8× (-20%)','0.7× (-30%)'],
+    datasets:[
+      {label:'GG (%)',data:[8.24,6.73,5.22,3.71],backgroundColor:[C.green+'88',C.red+'66',C.red+'66',C.red+'66'],borderColor:[C.green,C.red,C.red,C.red],borderWidth:1.5,borderRadius:4},
+      {label:'门槛 II',type:'line',data:[7.321,7.321,7.321,7.321],borderColor:C.amber,borderDash:[5,4],pointRadius:0,borderWidth:1.5}
     ]
   },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    plugins: { legend:{position:'bottom',labels:{font:{size:11},boxWidth:10,padding:10}},
-      tooltip:{callbacks:{label: ctx => ` ${ctx.dataset.label}: ${ctx.raw}%`}}},
-    scales: { x:{grid:{display:false},ticks:{font:{size:11}}},
-      y:{grid:{color:C.border},ticks:{font:{size:10},callback: v => v+'%'},min:0,max:10} }
-  }
+  options:{...base,plugins:{...base.plugins,legend:{display:true,labels:{color:C.text2,font:{size:11},boxWidth:12}}},scales:{...base.scales,y:{...base.scales.y,min:0,max:12}}}
 });
 </script>
 </body>
