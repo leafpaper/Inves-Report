@@ -29,6 +29,14 @@
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif; color: var(--c-gray-900); background: var(--c-gray-50); line-height: 1.7; }
   .container { max-width: 1100px; margin: 0 auto; padding: 24px 20px 80px; }
 
+  /* Top Nav */
+  .top-nav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--c-gray-200); height: 50px; display: flex; align-items: center; padding: 0 24px; gap: 20px; }
+  .top-nav a { text-decoration: none; font-size: 13px; color: var(--c-gray-500); transition: color .15s; }
+  .top-nav a:hover { color: var(--c-gray-900); }
+  .top-nav .nav-brand { font-weight: 600; font-size: 14px; color: var(--c-gray-900); margin-right: auto; }
+  .top-nav .nav-back { display: inline-flex; align-items: center; gap: 4px; }
+  .top-nav .nav-back::before { content: '←'; }
+
   /* Header */
   .header { background: linear-gradient(135deg, #1e3a5f 0%, #1a56db 100%); color: #fff; padding: 48px 40px; border-radius: var(--radius); margin-bottom: 32px; position: relative; overflow: hidden; }
   .header::after { content: ''; position: absolute; top: -60px; right: -60px; width: 240px; height: 240px; background: rgba(255,255,255,.06); border-radius: 50%; }
@@ -199,7 +207,14 @@
 </style>
 </head>
 <body>
-<div class="container">
+<nav class="top-nav">
+  <a href="../../index.html" class="nav-brand">叶纸的投资报告</a>
+  <a href="../../index.html" class="nav-back">返回首页</a>
+  <a href="#scoring">评分</a>
+  <a href="#detail">详细分析</a>
+  <a href="#invest-sim">投资模拟</a>
+</nav>
+<div class="container" style="padding-top:32px">
 
 <!-- HEADER -->
 <div class="header">
@@ -248,7 +263,7 @@
 
 <!-- SCORING OVERVIEW -->
 <div class="section">
-  <h2><span class="num">1</span> 评分总览</h2>
+  <h2 id="scoring"><span class="num">1</span> 评分总览</h2>
   <div class="dim-grid">
     <div class="dim-row">
       <span class="dim-name">商业模式与单位经济</span>
@@ -327,7 +342,7 @@
 
 <!-- DETAILED: BUSINESS MODEL -->
 <div class="section">
-  <h2><span class="num">3</span> 详细分析</h2>
+  <h2 id="detail"><span class="num">3</span> 详细分析</h2>
 
   <h3>3.1 商业模式与单位经济 — 6/10</h3>
   <p>纽瑞芯采用 Fabless（无晶圆厂）芯片设计模式，由中芯国际代工生产，面向下游终端品牌和 Tier1 厂商销售 UWB 芯片及配套解决方案。收入结构呈多元化雏形：手机/手表（华为旗舰机量产）、汽车（吉利数字钥匙、塞力斯CPD）、电视（海信遥指遥控器）、智慧交通（过百万片合同订单）、IoT（路由器、无人机等）。</p>
@@ -551,7 +566,7 @@
 
 <!-- INVESTMENT SIMULATION -->
 <div class="section">
-  <h2><span class="num">6</span> 投资回报模拟</h2>
+  <h2 id="invest-sim"><span class="num">6</span> 投资回报模拟</h2>
   <p style="color:var(--c-gray-500); font-size:13px; margin-bottom:16px">以下模拟基于当前可获取数据和合理假设，仅供参考，不构成投资建议。</p>
 
   <h3>投资参数</h3>
