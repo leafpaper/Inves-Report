@@ -5,123 +5,218 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Inves Reports · 龟龟投资策略</title>
 <style>
-:root{--bg:#fafaf7;--bg2:#f0efe9;--text:#1c1c1a;--text2:#5c5c58;--text3:#8a8a84;--border:rgba(0,0,0,.08);--accent:#1a1a18;--green:#1a7a5a;--green-bg:#e6f4ee;--amber:#a06c1a;--amber-bg:#faf0d8;--blue:#2563a0}
-@media(prefers-color-scheme:dark){:root{--bg:#141414;--bg2:#1e1e1e;--text:#e8e8e4;--text2:#a8a8a0;--text3:#6e6e68;--border:rgba(255,255,255,.08);--accent:#e8e8e4;--green:#4ade80;--green-bg:rgba(74,222,128,.1);--amber:#fbbf24;--amber-bg:rgba(251,191,36,.1);--blue:#60a5fa}}
+:root{--bg:#fafaf7;--bg2:#f0efe9;--bg3:#e6e5df;--text:#1c1c1a;--text2:#5c5c58;--text3:#8a8a84;--border:rgba(0,0,0,.08);--border2:rgba(0,0,0,.12);--accent:#1a1a18;--green:#1a7a5a;--green-bg:#e6f4ee;--amber:#a06c1a;--amber-bg:#faf0d8;--blue:#2563a0;--blue-bg:#eff6ff;--red:#b91c1c;--red-bg:#fef2f2;--mono:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace}
+@media(prefers-color-scheme:dark){:root{--bg:#111111;--bg2:#1a1a1a;--bg3:#242424;--text:#e8e8e4;--text2:#a8a8a0;--text3:#6e6e68;--border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.12);--accent:#e8e8e4;--green:#4ade80;--green-bg:rgba(74,222,128,.1);--amber:#fbbf24;--amber-bg:rgba(251,191,36,.1);--blue:#60a5fa;--blue-bg:rgba(96,165,250,.08);--red:#f87171;--red-bg:rgba(248,113,113,.08)}}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Noto Sans SC',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:15px;min-height:100vh}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 32px;border-bottom:1px solid var(--border)}
-.nav-logo{font-weight:600;font-size:15px;color:var(--text);text-decoration:none}
-.nav-sub{font-size:13px;color:var(--text3)}
-.hero{max-width:860px;margin:0 auto;padding:64px 32px 40px}
-.hero h1{font-size:32px;font-weight:600;letter-spacing:-.5px;margin-bottom:10px}
-.hero p{color:var(--text2);font-size:15px;max-width:520px}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Noto Sans SC',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:15px;min-height:100vh;-webkit-font-smoothing:antialiased}
+
+/* Nav */
+.nav{display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:52px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--bg);z-index:100;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(250,250,247,.88)}
+@media(prefers-color-scheme:dark){.nav{background:rgba(17,17,17,.88)}}
+.nav-logo{font-weight:600;font-size:15px;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:8px}
+.nav-logo-dot{width:8px;height:8px;background:var(--green);border-radius:50%;display:inline-block}
+.nav-links{display:flex;gap:20px;align-items:center}
+.nav-links a{font-size:13px;color:var(--text3);text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:var(--text)}
+.nav-gh{display:inline-flex;align-items:center;gap:4px}
+
+/* Hero */
+.hero{max-width:860px;margin:0 auto;padding:56px 32px 20px}
+.hero h1{font-size:30px;font-weight:700;letter-spacing:-.5px;margin-bottom:8px}
+.hero p{color:var(--text2);font-size:14px;max-width:560px;line-height:1.65}
+
+/* Stats strip */
+.stats-strip{max-width:860px;margin:0 auto;padding:0 32px}
+.stats-row{display:flex;gap:1px;background:var(--border2);border:1px solid var(--border2);border-radius:10px;overflow:hidden;margin:20px 0 40px}
+.stat-cell{flex:1;background:var(--bg);padding:16px 20px;text-align:center}
+.stat-num{font-family:var(--mono);font-size:22px;font-weight:700;color:var(--text);margin-bottom:2px}
+.stat-num.green{color:var(--green)}
+.stat-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;font-weight:500}
+
+/* Reports */
 .reports{max-width:860px;margin:0 auto;padding:0 32px 80px}
-.section-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-.cards{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));margin-bottom:48px}
-.card{background:var(--bg2);border-radius:12px;padding:24px;border:1px solid var(--border);text-decoration:none;color:inherit;transition:border-color .15s}
-.card:hover{border-color:var(--accent)}
-.card-ticker{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text3);letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px}
-.card-name{font-size:17px;font-weight:600;margin-bottom:4px}
-.card-desc{font-size:13px;color:var(--text2);margin-bottom:16px;line-height:1.5}
-.card-meta{display:flex;gap:8px;flex-wrap:wrap}
-.badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:4px;font-weight:500}
+.section-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.section-count{font-family:var(--mono);background:var(--bg2);padding:1px 7px;border-radius:10px;font-size:10px}
+.cards{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));margin-bottom:48px}
+
+/* Card */
+.rpt-card{background:var(--bg2);border-radius:12px;border:1px solid var(--border);overflow:hidden;transition:border-color .2s,box-shadow .2s,transform .2s}
+.rpt-card:hover{border-color:var(--border2);box-shadow:0 4px 16px rgba(0,0,0,.06);transform:translateY(-2px)}
+.card-body{padding:24px}
+.card-ticker{font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px}
+.card-name{font-size:18px;font-weight:700;margin-bottom:4px;letter-spacing:-.2px}
+.card-desc{font-size:13px;color:var(--text2);margin-bottom:16px;line-height:1.55}
+
+/* Badges */
+.card-meta{display:flex;gap:6px;flex-wrap:wrap}
+.badge{display:inline-block;font-size:10px;padding:3px 8px;border-radius:5px;font-weight:600;letter-spacing:.2px}
 .badge-green{background:var(--green-bg);color:var(--green)}
 .badge-amber{background:var(--amber-bg);color:var(--amber)}
-.card-links{display:flex;gap:12px;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
-.card-link{font-size:13px;color:var(--blue);text-decoration:none}
-.card-link:hover{text-decoration:underline}
-.card-link-arrow::after{content:" →"}
-.footer{max-width:860px;margin:0 auto;padding:0 32px 40px;font-size:12px;color:var(--text3);border-top:1px solid var(--border);padding-top:20px}
+.badge-blue{background:var(--blue-bg);color:var(--blue)}
+.badge-ghost{background:transparent;color:var(--text3);border:1px solid var(--border2)}
+
+/* Metric grid inside card */
+.card-metrics{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:16px}
+.cm{background:var(--bg);border-radius:8px;padding:10px 12px}
+.cm-label{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;font-weight:500;margin-bottom:3px}
+.cm-val{font-family:var(--mono);font-size:14px;font-weight:700}
+.cm-val.green{color:var(--green)}
+.cm-val.amber{color:var(--amber)}
+
+/* Card footer link */
+.card-foot{border-top:1px solid var(--border);display:flex}
+.card-foot a{flex:1;display:block;padding:12px 16px;font-size:13px;color:var(--blue);text-decoration:none;text-align:center;transition:background .15s}
+.card-foot a:hover{background:var(--blue-bg)}
+.card-foot a::after{content:' \2192';font-size:14px}
+
+/* Empty state */
+.empty{border:2px dashed var(--border2);border-radius:12px;padding:40px;text-align:center;color:var(--text3);font-size:13px}
+
+/* Footer */
+.footer{max-width:860px;margin:0 auto;padding:24px 32px 40px;font-size:12px;color:var(--text3);border-top:1px solid var(--border)}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer a{color:var(--text3);text-decoration:none}
+.footer a:hover{color:var(--text2)}
+
+/* Responsive */
+@media(max-width:640px){
+  .cards{grid-template-columns:1fr}
+  .hero h1{font-size:24px}
+  .stats-row{flex-direction:column}
+  .nav{padding:0 16px}
+  .hero,.stats-strip,.reports,.footer{padding-left:16px;padding-right:16px}
+}
 </style>
 </head>
 <body>
+
+<!-- Nav -->
 <nav class="nav">
-  <span class="nav-logo">叶纸的投资报告</span>
-  <span class="nav-sub">龟龟投资策略 v2</span>
+  <a href="index.html" class="nav-logo"><span class="nav-logo-dot"></span> 叶纸的投资报告</a>
+  <div class="nav-links">
+    <a href="#us-equities">美股</a>
+    <a href="#pe-vc">一级市场</a>
+    <a href="https://github.com/leafpaper/Inves-Report" target="_blank" class="nav-gh">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      GitHub
+    </a>
+  </div>
 </nav>
 
+<!-- Hero -->
 <div class="hero">
   <h1>投资分析报告</h1>
   <p>基于龟龟投资策略 v2 框架生成的定性分析与穿透回报率计算报告，覆盖美股二级市场及一级市场 VC/PE 投资机会</p>
 </div>
 
+<!-- Stats -->
+<div class="stats-strip">
+  <div class="stats-row">
+    <div class="stat-cell">
+      <div class="stat-num">2</div>
+      <div class="stat-label">分析报告</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">2</div>
+      <div class="stat-label">覆盖板块</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num green">1</div>
+      <div class="stat-label">看好标的</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">2026-04</div>
+      <div class="stat-label">最新更新</div>
+    </div>
+  </div>
+</div>
+
+<!-- Reports -->
 <div class="reports">
-  <div class="section-label">美股 · US Equities</div>
+
+  <!-- US Equities -->
+  <div class="section-label" id="us-equities">美股 · US Equities <span class="section-count">1</span></div>
   <div class="cards">
 
     <!-- ADBE -->
-    <div style="background:var(--bg2);border-radius:12px;border:1px solid var(--border);overflow:hidden">
-      <div style="padding:24px">
+    <div class="rpt-card">
+      <div class="card-body">
         <div class="card-ticker">ADBE.US · 软件 SaaS</div>
         <div class="card-name">Adobe Inc.</div>
         <div class="card-desc">创意软件平台 + 数字营销云。订阅制SaaS，生态护城河，FCF yield 9.4%</div>
         <div class="card-meta">
           <span class="badge badge-amber">观察（30%）</span>
           <span class="badge badge-green">护城河：较强</span>
-          <span class="badge" style="background:var(--bg2);color:var(--text3);border:1px solid var(--border)">2026-04-14</span>
+          <span class="badge badge-ghost">2026-04-14</span>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:16px;font-size:12px">
-          <div style="background:var(--bg);border-radius:6px;padding:8px 10px">
-            <div style="color:var(--text3);margin-bottom:2px;font-size:10px;text-transform:uppercase;letter-spacing:.5px">GG 精算回报</div>
-            <div style="font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--green)">8.24%</div>
+        <div class="card-metrics">
+          <div class="cm">
+            <div class="cm-label">GG 精算回报</div>
+            <div class="cm-val green">8.24%</div>
           </div>
-          <div style="background:var(--bg);border-radius:6px;padding:8px 10px">
-            <div style="color:var(--text3);margin-bottom:2px;font-size:10px;text-transform:uppercase;letter-spacing:.5px">门槛 II</div>
-            <div style="font-family:'JetBrains Mono',monospace;font-weight:600">7.32%</div>
+          <div class="cm">
+            <div class="cm-label">门槛 II</div>
+            <div class="cm-val">7.32%</div>
           </div>
-          <div style="background:var(--bg);border-radius:6px;padding:8px 10px">
-            <div style="color:var(--text3);margin-bottom:2px;font-size:10px;text-transform:uppercase;letter-spacing:.5px">股价分位</div>
-            <div style="font-family:'JetBrains Mono',monospace;font-weight:600">21.8%</div>
+          <div class="cm">
+            <div class="cm-label">股价分位</div>
+            <div class="cm-val">21.8%</div>
           </div>
         </div>
       </div>
-      <div style="border-top:1px solid var(--border)">
-        <a href="reports/ADBE.US_Adobe/分析报告_dashboard.html" style="display:block;padding:12px 16px;font-size:13px;color:var(--blue);text-decoration:none;text-align:center">📊 查看完整分析报告 →</a>
+      <div class="card-foot">
+        <a href="reports/ADBE.US_Adobe/分析报告_dashboard.html">查看完整分析报告</a>
       </div>
     </div>
 
   </div>
 
-  <div class="section-label">一级市场 · Private Equity / VC</div>
+  <!-- PE / VC -->
+  <div class="section-label" id="pe-vc">一级市场 · Private Equity / VC <span class="section-count">1</span></div>
   <div class="cards">
 
     <!-- NewRadioTech 纽瑞芯 -->
-    <div style="background:var(--bg2);border-radius:12px;border:1px solid var(--border);overflow:hidden">
-      <div style="padding:24px">
-        <div class="card-ticker">纽瑞芯科技 · UWB芯片设计</div>
-        <div class="card-name">NewRadioTech 纽瑞芯</div>
-        <div class="card-desc">国产UWB超宽带芯片领导者，全正向自研IP，覆盖手机/汽车/电视/IoT四大场景。华为/吉利/海信量产出货。</div>
+    <div class="rpt-card">
+      <div class="card-body">
+        <div class="card-ticker">纽瑞芯科技 NewRadioTech · UWB 芯片设计</div>
+        <div class="card-name">纽瑞芯 NewRadioTech</div>
+        <div class="card-desc">国产 UWB 超宽带芯片领导者，全正向自研IP，覆盖手机 / 汽车 / 电视 / IoT 四大场景。华为、吉利、海信量产出货。</div>
         <div class="card-meta">
-          <span class="badge badge-amber">有条件看好（6.7/10）</span>
+          <span class="badge badge-amber">有条件看好 6.7/10</span>
           <span class="badge badge-green">技术护城河：强</span>
-          <span class="badge" style="background:var(--bg2);color:var(--text3);border:1px solid var(--border)">2026-04-16</span>
+          <span class="badge badge-ghost">2026-04-16</span>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:16px;font-size:12px">
-          <div style="background:var(--bg);border-radius:6px;padding:8px 10px">
-            <div style="color:var(--text3);margin-bottom:2px;font-size:10px;text-transform:uppercase;letter-spacing:.5px">融资阶段</div>
-            <div style="font-family:'JetBrains Mono',monospace;font-weight:600">B轮→C轮</div>
+        <div class="card-metrics">
+          <div class="cm">
+            <div class="cm-label">融资阶段</div>
+            <div class="cm-val">B→C轮</div>
           </div>
-          <div style="background:var(--bg);border-radius:6px;padding:8px 10px">
-            <div style="color:var(--text3);margin-bottom:2px;font-size:10px;text-transform:uppercase;letter-spacing:.5px">期望回报</div>
-            <div style="font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--green)">2.1x</div>
+          <div class="cm">
+            <div class="cm-label">期望回报</div>
+            <div class="cm-val green">2.1x</div>
           </div>
-          <div style="background:var(--bg);border-radius:6px;padding:8px 10px">
-            <div style="color:var(--text3);margin-bottom:2px;font-size:10px;text-transform:uppercase;letter-spacing:.5px">营收增速</div>
-            <div style="font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--green)">~200%</div>
+          <div class="cm">
+            <div class="cm-label">营收增速</div>
+            <div class="cm-val green">~200%</div>
           </div>
         </div>
       </div>
-      <div style="border-top:1px solid var(--border)">
-        <a href="reports/NewRadioTech_纽瑞芯/分析报告_dashboard.html" style="display:block;padding:12px 16px;font-size:13px;color:var(--blue);text-decoration:none;text-align:center">📊 查看完整分析报告 →</a>
+      <div class="card-foot">
+        <a href="reports/NewRadioTech_纽瑞芯/分析报告_dashboard.html">查看完整分析报告</a>
       </div>
     </div>
 
   </div>
+
 </div>
 
+<!-- Footer -->
 <div class="footer">
-  本站报告由 AI 模型基于龟龟投资策略 v2 框架自动生成，仅供参考，不构成投资建议。<br>
-  数据来源：SEC Form 10-K · yfinance · US Treasury
+  <div class="footer-inner">
+    <span>本站报告由 AI 基于龟龟投资策略 v2 框架自动生成，仅供参考，不构成投资建议。</span>
+    <span><a href="https://github.com/leafpaper/Inves-Report" target="_blank">GitHub</a> · <a href="https://github.com/leafpaper/claude-company-analysis" target="_blank">公司分析 Skill</a></span>
+  </div>
 </div>
+
 </body>
 </html>
