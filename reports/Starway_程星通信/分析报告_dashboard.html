@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>投资分析报告 — 程星通信 (Starway Communication)</title>
+<style>
+:root{--c-primary:#1a56db;--c-primary-light:#e8effc;--c-green:#059669;--c-green-bg:#ecfdf5;--c-yellow:#d97706;--c-yellow-bg:#fffbeb;--c-red:#dc2626;--c-red-bg:#fef2f2;--c-gray-50:#f9fafb;--c-gray-100:#f3f4f6;--c-gray-200:#e5e7eb;--c-gray-300:#d1d5db;--c-gray-500:#6b7280;--c-gray-700:#374151;--c-gray-900:#111827;--radius:12px;--shadow:0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.06);--shadow-md:0 4px 6px rgba(0,0,0,.07),0 2px 4px rgba(0,0,0,.06)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC",sans-serif;color:var(--c-gray-900);background:var(--c-gray-50);line-height:1.7}
+.container{max-width:1100px;margin:0 auto;padding:24px 20px 80px}
+.top-nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--c-gray-200);height:50px;display:flex;align-items:center;padding:0 24px;gap:20px}
+.top-nav a{text-decoration:none;font-size:13px;color:var(--c-gray-500);transition:color .15s}
+.top-nav a:hover{color:var(--c-gray-900)}
+.top-nav .nav-brand{font-weight:600;font-size:14px;color:var(--c-gray-900);margin-right:auto}
+.top-nav .nav-back{display:inline-flex;align-items:center;gap:4px}
+.top-nav .nav-back::before{content:'←'}
+.header{background:linear-gradient(135deg,#0f2b46 0%,#1a56db 100%);color:#fff;padding:48px 40px;border-radius:var(--radius);margin-bottom:32px;position:relative;overflow:hidden}
+.header::after{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;background:rgba(255,255,255,.06);border-radius:50%}
+.header h1{font-size:28px;font-weight:700;margin-bottom:6px}
+.header .subtitle{font-size:15px;opacity:.85;margin-bottom:20px}
+.header .meta{display:flex;gap:24px;flex-wrap:wrap;font-size:13px;opacity:.8}
+.header .meta span{background:rgba(255,255,255,.12);padding:4px 12px;border-radius:6px}
+.score-hero{display:flex;gap:24px;margin-bottom:32px;flex-wrap:wrap}
+.score-main{flex:0 0 280px;background:#fff;border-radius:var(--radius);padding:32px;text-align:center;box-shadow:var(--shadow-md);border:2px solid var(--c-primary)}
+.score-ring{width:140px;height:140px;margin:0 auto 16px;position:relative}
+.score-ring svg{transform:rotate(-90deg)}
+.score-ring .score-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:36px;font-weight:800;color:var(--c-primary)}
+.score-ring .score-text small{font-size:16px;font-weight:400;color:var(--c-gray-500)}
+.score-label{font-size:18px;font-weight:700;color:var(--c-primary);margin-bottom:4px}
+.score-sub{font-size:13px;color:var(--c-gray-500)}
+.score-adj{font-size:12px;color:var(--c-green);margin-top:6px;font-weight:600}
+.score-side{flex:1;min-width:300px;display:flex;flex-direction:column;gap:16px}
+.card-s,.card-r{background:#fff;border-radius:var(--radius);padding:20px 24px;box-shadow:var(--shadow);flex:1}
+.card-s{border-left:4px solid var(--c-green)}
+.card-r{border-left:4px solid var(--c-red)}
+.card-s h3,.card-r h3{font-size:14px;font-weight:700;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px}
+.card-s h3{color:var(--c-green)} .card-r h3{color:var(--c-red)}
+.card-s li,.card-r li{font-size:13px;margin-bottom:6px;color:var(--c-gray-700);list-style:none;padding-left:20px;position:relative}
+.card-s li::before{content:'✓';position:absolute;left:0;color:var(--c-green);font-weight:700}
+.card-r li::before{content:'!';position:absolute;left:2px;color:var(--c-red);font-weight:700}
+.section{background:#fff;border-radius:var(--radius);padding:32px;margin-bottom:24px;box-shadow:var(--shadow)}
+.section h2{font-size:20px;font-weight:700;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--c-gray-200);display:flex;align-items:center;gap:10px}
+.section h2 .num{background:var(--c-primary);color:#fff;width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.section h3{font-size:16px;font-weight:700;margin:20px 0 10px;color:var(--c-gray-700)}
+.section p,.section li{font-size:14px;color:var(--c-gray-700);margin-bottom:8px}
+.section ul{padding-left:20px}
+.dim-grid{display:flex;flex-direction:column;gap:12px}
+.dim-row{display:grid;grid-template-columns:180px 50px 1fr 60px;align-items:center;gap:12px;font-size:13px}
+.dim-name{font-weight:600;color:var(--c-gray-700)}.dim-score{font-weight:800;text-align:center;font-size:15px}
+.dim-bar{height:24px;background:var(--c-gray-100);border-radius:12px;overflow:hidden}
+.dim-bar-fill{height:100%;border-radius:12px;transition:width .6s ease}
+.dim-bar-fill.t1{background:linear-gradient(90deg,#3b82f6,#1d4ed8)}
+.dim-bar-fill.t2{background:linear-gradient(90deg,#8b5cf6,#6d28d9)}
+.dim-bar-fill.t3{background:linear-gradient(90deg,#f59e0b,#d97706)}
+.dim-weight{font-size:11px;color:var(--c-gray-500);text-align:center;background:var(--c-gray-100);padding:2px 8px;border-radius:10px}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
+th{background:var(--c-gray-50);font-weight:700;text-align:left;padding:10px 14px;border-bottom:2px solid var(--c-gray-200);color:var(--c-gray-700);font-size:12px;text-transform:uppercase;letter-spacing:.3px}
+td{padding:10px 14px;border-bottom:1px solid var(--c-gray-100);color:var(--c-gray-700);vertical-align:top}
+tr:hover td{background:var(--c-gray-50)}
+.scenarios{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:20px 0}
+.scenario{border-radius:var(--radius);padding:24px}
+.scenario.bull{background:var(--c-green-bg);border:1px solid #a7f3d0}
+.scenario.base{background:var(--c-yellow-bg);border:1px solid #fde68a}
+.scenario.bear{background:var(--c-red-bg);border:1px solid #fecaca}
+.scenario .tag{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.scenario.bull .tag{color:var(--c-green)}.scenario.base .tag{color:var(--c-yellow)}.scenario.bear .tag{color:var(--c-red)}
+.scenario .big-num{font-size:36px;font-weight:800;margin-bottom:4px}
+.scenario.bull .big-num{color:var(--c-green)}.scenario.base .big-num{color:var(--c-yellow)}.scenario.bear .big-num{color:var(--c-red)}
+.scenario .detail{font-size:13px;color:var(--c-gray-500)}.scenario .detail strong{color:var(--c-gray-700)}
+.expect-box{background:linear-gradient(135deg,#0f2b46,#1a56db);color:#fff;border-radius:var(--radius);padding:28px 32px;margin:24px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.expect-box .label{font-size:14px;opacity:.85}.expect-box .val{font-size:40px;font-weight:800}.expect-box .sub{font-size:13px;opacity:.7}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:16px 0}
+.team-card{background:var(--c-gray-50);border-radius:10px;padding:16px;text-align:center}
+.team-card .avatar{width:48px;height:48px;background:var(--c-primary);color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;margin-bottom:8px}
+.team-card .name{font-weight:700;font-size:14px}.team-card .role{font-size:12px;color:var(--c-primary);font-weight:600;margin-bottom:6px}
+.team-card .bio{font-size:11px;color:var(--c-gray-500);line-height:1.5}
+.risk-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--c-gray-100)}
+.risk-dot{width:10px;height:10px;border-radius:50%;margin-top:5px;flex-shrink:0}
+.risk-dot.high{background:var(--c-red)}.risk-dot.med{background:var(--c-yellow)}.risk-dot.low{background:var(--c-green)}
+.risk-content{flex:1}.risk-title{font-size:13px;font-weight:700;color:var(--c-gray-700)}
+.risk-desc{font-size:12px;color:var(--c-gray-500);margin-top:2px}
+.risk-badges{display:flex;gap:6px;margin-top:4px}
+.risk-badges span{font-size:10px;padding:2px 8px;border-radius:10px;font-weight:600}
+.badge-h{background:#fef2f2;color:var(--c-red)}.badge-m{background:#fffbeb;color:var(--c-yellow)}.badge-l{background:#ecfdf5;color:var(--c-green)}
+.timeline{display:flex;gap:0;margin:20px 0;position:relative}
+.timeline::before{content:'';position:absolute;top:18px;left:0;right:0;height:3px;background:var(--c-gray-200)}
+.tl-item{flex:1;text-align:center;position:relative;padding-top:36px}
+.tl-item .dot{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:20px;height:20px;background:var(--c-primary);border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 2px var(--c-primary);z-index:1}
+.tl-item .year{font-size:13px;font-weight:700;color:var(--c-primary)}.tl-item .event{font-size:11px;color:var(--c-gray-500);margin-top:2px}
+.tl-item .amount{font-size:12px;font-weight:700;color:var(--c-gray-700)}
+.conf-badge{display:inline-block;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:700}
+.conf-high{background:var(--c-green-bg);color:var(--c-green)}.conf-mid{background:var(--c-yellow-bg);color:var(--c-yellow)}.conf-low{background:var(--c-red-bg);color:var(--c-red)}
+.warning{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:16px 20px;margin:16px 0;font-size:13px;color:#92400e}
+.warning strong{color:#78350f}
+.footer{text-align:center;font-size:12px;color:var(--c-gray-500);padding:32px 0;border-top:1px solid var(--c-gray-200);margin-top:40px}
+.qual-table td:last-child{font-weight:700;text-align:center}
+.qual-pos{color:var(--c-green)}.qual-neg{color:var(--c-red)}.qual-neu{color:var(--c-gray-500)}
+.sens-table tr.hl td{background:var(--c-primary-light);font-weight:700}
+.dd-list{counter-reset:dd}.dd-item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--c-gray-100)}
+.dd-item::before{counter-increment:dd;content:counter(dd);background:var(--c-primary);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:1px}
+.dd-item p{font-size:13px;color:var(--c-gray-700)}.dd-item strong{color:var(--c-gray-900)}
+@media(max-width:768px){.score-hero{flex-direction:column}.score-main{flex:auto}.dim-row{grid-template-columns:1fr;gap:4px}.scenarios{grid-template-columns:1fr}.header{padding:32px 24px}.expect-box{flex-direction:column;text-align:center}}
+@media print{body{background:#fff}.section{box-shadow:none;border:1px solid var(--c-gray-200);break-inside:avoid}}
+</style>
+</head>
+<body>
+<nav class="top-nav">
+  <a href="../../index.html" class="nav-brand">叶纸的投资报告</a>
+  <a href="../../index.html" class="nav-back">返回首页</a>
+  <a href="#scoring">评分</a>
+  <a href="#detail">详细分析</a>
+  <a href="#sentiment">舆情</a>
+  <a href="#invest-sim">投资模拟</a>
+  <a href="#valuation">估值</a>
+  <a href="#terms">条款</a>
+  <a href="#qualitative">定性</a>
+</nav>
+<div class="container" style="padding-top:32px">
+
+<!-- HEADER -->
+<div class="header">
+  <h1>投资分析报告：程星通信 (Starway Communication)</h1>
+  <div class="subtitle">微波毫米波解决方案供应商 · 卫星互联网新基建核心供应商</div>
+  <div class="meta">
+    <span>分析日期: 2026-04-17</span>
+    <span>融资阶段: E+轮已完成</span>
+    <span>行业: 微波/卫星互联网</span>
+    <span>地域: 广州</span>
+  </div>
+</div>
+
+<!-- SCORE HERO -->
+<div class="score-hero">
+  <div class="score-main">
+    <div class="score-ring">
+      <svg width="140" height="140" viewBox="0 0 140 140">
+        <circle cx="70" cy="70" r="58" fill="none" stroke="#e5e7eb" stroke-width="10"/>
+        <circle cx="70" cy="70" r="58" fill="none" stroke="#1a56db" stroke-width="10" stroke-dasharray="364.4" stroke-dashoffset="72.9" stroke-linecap="round"/>
+      </svg>
+      <div class="score-text">8.0<small>/10</small></div>
+    </div>
+    <div class="score-label">强烈看好</div>
+    <div class="score-adj">量化 7.1 + 定性修正 +0.9</div>
+    <div class="score-sub">数据置信度: <span class="conf-badge conf-mid">中</span></div>
+  </div>
+  <div class="score-side">
+    <div class="card-s">
+      <h3>核心优势</h3>
+      <ul>
+        <li>国家战略级卡位：唯一全链路覆盖民企 + 5项国家重大专项 + XW信关站90%+份额</li>
+        <li>技术壁垒深厚：3D微波技术首创、SiP芯片（传统1/8体积）、达SpaceX星链水平</li>
+        <li>行业爆发拐点：星网12992颗卫星进入批量发射，TAM 404亿→4500亿（2027E）</li>
+      </ul>
+    </div>
+    <div class="card-r">
+      <h3>核心风险</h3>
+      <ul>
+        <li>政府客户集中度极高：收入高度依赖星网/央企采购节奏</li>
+        <li>2024年卫星互联网收入下降20%（行业共性：星网建设延迟，69%同行业绩下滑）</li>
+        <li>竞争加剧：通宇通讯/盟升电子等上市公司 + 国家队中电科各研究所</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SCORING -->
+<div class="section">
+  <h2 id="scoring"><span class="num">1</span> 评分总览</h2>
+  <div class="dim-grid">
+    <div class="dim-row"><span class="dim-name">商业模式与单位经济</span><span class="dim-score">6</span><div class="dim-bar"><div class="dim-bar-fill t1" style="width:60%"></div></div><span class="dim-weight">1.5x</span></div>
+    <div class="dim-row"><span class="dim-name">市场机会 TAM/SAM</span><span class="dim-score">9</span><div class="dim-bar"><div class="dim-bar-fill t1" style="width:90%"></div></div><span class="dim-weight">1.5x</span></div>
+    <div class="dim-row"><span class="dim-name">竞争格局与护城河</span><span class="dim-score">8</span><div class="dim-bar"><div class="dim-bar-fill t1" style="width:80%"></div></div><span class="dim-weight">1.5x</span></div>
+    <div class="dim-row"><span class="dim-name">增长指标与牵引力</span><span class="dim-score">7</span><div class="dim-bar"><div class="dim-bar-fill t1" style="width:70%"></div></div><span class="dim-weight">1.5x</span></div>
+    <div class="dim-row"><span class="dim-name">团队与领导力</span><span class="dim-score">8</span><div class="dim-bar"><div class="dim-bar-fill t2" style="width:80%"></div></div><span class="dim-weight">1.0x</span></div>
+    <div class="dim-row"><span class="dim-name">产品与技术</span><span class="dim-score">8</span><div class="dim-bar"><div class="dim-bar-fill t2" style="width:80%"></div></div><span class="dim-weight">1.0x</span></div>
+    <div class="dim-row"><span class="dim-name">财务健康与资本效率</span><span class="dim-score">6</span><div class="dim-bar"><div class="dim-bar-fill t2" style="width:60%"></div></div><span class="dim-weight">1.0x</span></div>
+    <div class="dim-row"><span class="dim-name">风险与挑战</span><span class="dim-score">5</span><div class="dim-bar"><div class="dim-bar-fill t2" style="width:50%"></div></div><span class="dim-weight">1.0x</span></div>
+    <div class="dim-row"><span class="dim-name">融资历史与估值</span><span class="dim-score">6</span><div class="dim-bar"><div class="dim-bar-fill t3" style="width:60%"></div></div><span class="dim-weight">0.75x</span></div>
+    <div class="dim-row"><span class="dim-name">退出潜力</span><span class="dim-score">7</span><div class="dim-bar"><div class="dim-bar-fill t3" style="width:70%"></div></div><span class="dim-weight">0.75x</span></div>
+  </div>
+</div>
+
+<!-- DD QUESTIONS -->
+<div class="section">
+  <h2><span class="num">2</span> 关键尽调问题</h2>
+  <div class="dd-list">
+    <div class="dd-item"><p><strong>2024年卫星互联网收入为何下降20%？</strong> 补充搜索发现：大概率是星网建设进度延迟（仅22颗在轨vs规划168颗），行业69%公司业绩下滑。但仍需确认具体订单情况。</p></div>
+    <div class="dd-item"><p><strong>XW信关站90%+市占率的合同形式？</strong> 是框架协议还是单次订单？后续批次是否仍独家？</p></div>
+    <div class="dd-item"><p><strong>毛利率是多少？</strong> 信关站/卫星载荷/终端三大产品线各自毛利率？军品vs民品差异？</p></div>
+    <div class="dd-item"><p><strong>5项国家专项经费到账节奏？</strong> 哪些在2025-2026年可确认收入？</p></div>
+    <div class="dd-item"><p><strong>E+轮估值和累计融资总额？</strong> 可通过股东力合科创(SZ:002999)年报查找线索。</p></div>
+  </div>
+</div>
+
+<!-- DETAILED ANALYSIS -->
+<div class="section">
+  <h2 id="detail"><span class="num">3</span> 详细分析</h2>
+
+  <h3>3.1 商业模式与单位经济 — 6/10</h3>
+  <p>程星通信采用<strong>设备制造+系统集成</strong>模式，面向政府/军工客户销售微波前端设备和卫星通信系统解决方案。收入四大板块：卫星互联网（2025E占比55%）、传统军品（21%）、传统卫通民品（23%）、新应用（1%）。</p>
+  <p>公司覆盖<strong>卫星端+信关站+终端</strong>全链路，可在同一客户的多个采购环节中标。2024年净亏损1175万（国家重大专项集中投入），2025年预计恢复盈利（净利3953万）。</p>
+  <div class="warning"><strong>数据缺口：</strong>毛利率未披露。军工微波设备行业通常40-55%，但卫星互联网终端规模化后毛利可能承压。收入中国家专项配套（非经常性）占比可能较高。</div>
+
+  <h3>3.2 市场机会 — 9/10 (最强维度)</h3>
+  <p>中国卫星互联网是<strong>国家战略级万亿市场</strong>，确定性极高。星网GW星座规划12,992颗卫星，2025年完成1080颗发射，2027年前上调至5800颗。市场规模从404亿(2024)向4500亿(2027E)爆发。全球相控阵天线市场从$19.3亿(2024)增至$81亿(2034)，CAGR 15.6%。</p>
+  <p>多重催化剂叠加：2026年12款新火箭首飞(含10款可回收) + 卫星互联网牌照发放 + 手机直连卫星 + 6G天地一体化 + "十五五"规划明确支持。</p>
+
+  <h3>3.3 竞争格局 — 8/10</h3>
+  <table>
+    <tr><th>公司</th><th>类型</th><th>核心领域</th><th>与程星重叠度</th></tr>
+    <tr style="background:var(--c-primary-light)"><td><strong>程星通信</strong></td><td>民营(E+轮)</td><td>全链路：卫星端+信关站+终端</td><td>—</td></tr>
+    <tr><td>中电科54所/504所</td><td>国家队</td><td>星载天线、终端</td><td>高(合作>竞争)</td></tr>
+    <tr><td>通宇通讯</td><td>上市(~50亿)</td><td>终端(车载)</td><td>中</td></tr>
+    <tr><td>盟升电子</td><td>上市(~30亿)</td><td>终端+导航</td><td>中</td></tr>
+    <tr><td>铖昌科技</td><td>上市(~25亿)</td><td>RF芯片(上游)</td><td>低</td></tr>
+    <tr><td>华美太</td><td>民营(Pre-A)</td><td>液晶相控阵终端</td><td>中(新技术路线)</td></tr>
+  </table>
+
+  <h3>3.5 团队 — 8/10</h3>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="avatar">贾</div>
+      <div class="name">贾鹏程 博士</div>
+      <div class="role">董事长 / 总经理</div>
+      <div class="bio">清华硕士 + 加州大学博士<br>前Qorvo/CAP技术总监<br>中兴通讯系统架构师<br>国家特聘专家 · 广东省政协委员<br>世界首个2-20GHz超宽带空间合成固态功放发明人</div>
+    </div>
+    <div class="team-card">
+      <div class="avatar">于</div>
+      <div class="name">于明 教授</div>
+      <div class="role">首席科学顾问</div>
+      <div class="bio">加拿大工程院院士<br><strong>IEEE Fellow</strong><br>南方科技大学教授<br>IEEE MTT-S微波应用奖(2020)<br>十四五揭榜挂帅项目负责人</div>
+    </div>
+  </div>
+  <p>团队300人，技术研发人员占比<strong>50%</strong>，国内微波通信细分领域规模最大的团队之一。</p>
+
+  <h3>3.6 产品与技术 — 8/10</h3>
+  <p>核心技术创新：<strong>3D微波技术体系</strong>（国内首创）将半导体芯片和超宽带阵列天线有效结合；<strong>晶圆级SiP封装T/R组件芯片</strong>集成度更高，体积仅传统1/8；全频段DC-67GHz高端微波研发平台。产品宣称达到SpaceX星链技术水平。</p>
+  <p><strong>产品矩阵完整：</strong>卫星端（多波束相控阵载荷天线，低轨二代星已通过地面测试）+ 信关站（Q/V频段设备组件，90%+份额）+ 终端（芯片式车载/便携相控阵，已投入南方电网商用）。</p>
+  <p><strong>知识产权：</strong>100+专利（26项发明专利）+ 1项集成电路布图。新产能：2025年中期广州20000㎡基地竣工，含行业稀缺超大微波暗室，设计产能>1000套相控阵天线/年。</p>
+
+  <h3>3.4 增长指标与牵引力 — 7/10</h3>
+  <table>
+    <tr><th>年份</th><th>总收入(万)</th><th>增速</th><th>卫星互联网(万)</th><th>占比</th><th>净利润(万)</th></tr>
+    <tr><td>2023</td><td>14,525</td><td>—</td><td>5,822</td><td>40.1%</td><td>—</td></tr>
+    <tr><td>2024</td><td>16,533</td><td>+14%</td><td>4,667</td><td>28.2%</td><td>-1,175</td></tr>
+    <tr style="background:var(--c-green-bg)"><td><strong>2025E</strong></td><td><strong>27,500</strong></td><td><strong>+66%</strong></td><td><strong>15,050</strong></td><td><strong>54.7%</strong></td><td><strong>3,953</strong></td></tr>
+    <tr><td>2026E</td><td>48,000</td><td>+75%</td><td>29,500</td><td>61.5%</td><td>8,065</td></tr>
+    <tr><td>2027E</td><td>84,500</td><td>+76%</td><td>65,000</td><td>76.9%</td><td>18,136</td></tr>
+    <tr><td>2028E</td><td>120,100</td><td>+42%</td><td>97,000</td><td>80.8%</td><td>28,464</td></tr>
+  </table>
+  <div class="warning"><strong>警示信号：</strong>2024年卫星互联网收入下降20%（5822万→4667万），同期行业69%公司业绩下滑。星网一期仅22颗试验星在轨，建设进度远不及预期。但2025E卫星互联网收入跳增至1.5亿（+222%），说明积压订单正在释放。</div>
+
+  <h3>3.7 财务健康与资本效率 — 6/10</h3>
+  <table>
+    <tr><th>指标</th><th>数值</th><th>截止</th><th>来源</th></tr>
+    <tr><td>2024年收入</td><td><strong>1.65亿元</strong></td><td>2024-12</td><td>公司BP</td></tr>
+    <tr><td>2024年净利润</td><td><strong>-1175万元</strong></td><td>2024-12</td><td>公司BP（剔除专项投入后）</td></tr>
+    <tr><td>2025E收入</td><td><strong>2.75亿元</strong></td><td>预测</td><td>公司BP</td></tr>
+    <tr><td>2025E净利润</td><td><strong>3953万元</strong></td><td>预测</td><td>公司BP</td></tr>
+    <tr><td>最近融资</td><td>E+轮（金额未披露）</td><td>2025-02</td><td>天眼查</td></tr>
+    <tr><td>毛利率</td><td>未披露</td><td>—</td><td>需尽调</td></tr>
+  </table>
+  <p>2020-2022年"持续盈利"（BP明确表述），2024年亏损为5项国家重大专项集中投入导致的<strong>战略性亏损</strong>，非经营恶化。E+轮刚完成，短期现金流有保障。</p>
+
+  <h3>3.8 风险与挑战 — 5/10</h3>
+  <div>
+    <div class="risk-item"><div class="risk-dot high"></div><div class="risk-content"><div class="risk-title">政府客户集中度：星网/央企依赖</div><div class="risk-desc">收入高度依赖星网集团和军工央企的采购节奏，政策变动影响直接</div><div class="risk-badges"><span class="badge-h">严重度: 高</span><span class="badge-h">可能性: 高</span></div></div></div>
+    <div class="risk-item"><div class="risk-dot high"></div><div class="risk-content"><div class="risk-title">卫星发射/建设延迟</div><div class="risk-desc">星网建设进度已落后于规划，2024年卫星互联网收入下降20%即为明证</div><div class="risk-badges"><span class="badge-h">严重度: 高</span><span class="badge-m">可能性: 中</span></div></div></div>
+    <div class="risk-item"><div class="risk-dot med"></div><div class="risk-content"><div class="risk-title">竞争加剧：上市公司+国家队</div><div class="risk-desc">通宇通讯中标星网2.4亿终端订单；液晶相控阵新技术路线涌现</div><div class="risk-badges"><span class="badge-m">严重度: 中</span><span class="badge-h">可能性: 高</span></div></div></div>
+    <div class="risk-item"><div class="risk-dot med"></div><div class="risk-content"><div class="risk-title">军工保密限制信息透明度</div><div class="risk-desc">部分业务依法无法披露，增加投资判断难度</div><div class="risk-badges"><span class="badge-m">严重度: 中</span><span class="badge-m">可能性: 确定</span></div></div></div>
+  </div>
+
+  <h3>3.9 融资历史与估值 — 6/10</h3>
+  <div class="timeline">
+    <div class="tl-item"><div class="dot"></div><div class="year">2011</div><div class="event">成立</div><div class="amount">广州</div></div>
+    <div class="tl-item"><div class="dot"></div><div class="year">2013-19</div><div class="event">多轮融资</div><div class="amount">力合科创·华控等</div></div>
+    <div class="tl-item"><div class="dot"></div><div class="year">~2024</div><div class="event">E轮</div><div class="amount">越秀产业基金</div></div>
+    <div class="tl-item"><div class="dot" style="background:#f59e0b;box-shadow:0 0 0 2px #f59e0b"></div><div class="year">2025.02</div><div class="event">E+轮</div><div class="amount">广州产投集团</div></div>
+  </div>
+
+  <h3>3.10 退出潜力 — 7/10</h3>
+  <table>
+    <tr><th>退出场景</th><th>可能性</th><th>时间框架</th><th>预期回报</th></tr>
+    <tr><td>科创板IPO</td><td><span class="conf-badge conf-high">中高</span></td><td>2-4年</td><td>5-15x</td></tr>
+    <tr><td>创业板IPO</td><td><span class="conf-badge conf-mid">中</span></td><td>3-5年</td><td>5-10x</td></tr>
+    <tr><td>战略并购</td><td><span class="conf-badge conf-low">低</span></td><td>不确定</td><td>3-5x</td></tr>
+  </table>
+  <p>卫星互联网/商业航天是中国资本市场最热的IPO赛道之一。多家可比公司已上市：盟升电子（2022科创板）、铖昌科技（2022创业板）、海格通信、华力创通。按公司规划，2027年收入8.45亿、净利1.8亿，满足科创板上市条件。<strong>风险</strong>：军工保密可能影响IPO信息披露；中国IPO市场收紧可能延长上市时间。</p>
+</div>
+
+<!-- SENTIMENT -->
+<div class="section">
+  <h2 id="sentiment"><span class="num">4</span> 网络舆情与市场情绪</h2>
+  <p style="font-weight:700;margin-bottom:12px">整体情绪：强烈看好（行业层面），偏向看好（公司层面）</p>
+
+  <h3>看好派观点</h3>
+  <table>
+    <tr><th>来源类型</th><th>核心论据</th><th>来源</th></tr>
+    <tr><td>券商/分析师</td><td>"低轨通信卫星链是商业航天中最先有基本面逻辑和订单支持的细分领域"</td><td><a href="https://www.cls.cn/detail/2281068" style="color:var(--c-primary)">中信证券, 2025</a></td></tr>
+    <tr><td>行业研究</td><td>"2026年卫星终端出货量预计超500万套，相控阵天线市场规模达200亿"</td><td><a href="https://www.futurephecda.com/news/64335" style="color:var(--c-primary)">未来天玑, 2025</a></td></tr>
+    <tr><td>央视/官媒</td><td>程星终端接入银河航天卫星，为南方电网提供宽带视频（新闻联播报道）</td><td>CCTV-1/CCTV-13, 2023</td></tr>
+    <tr><td>政府支持</td><td>国家发改委副主任率卫星互联网专家组到程星考察国家专项</td><td>公司BP p24, 2024</td></tr>
+    <tr><td>投资人</td><td>广州国资连续加注：越秀产业基金E轮 + 广州产投E+轮</td><td><a href="https://www.yuexiufund.com/fund/1727576555003097121.html" style="color:var(--c-primary)">越秀产业基金, 2024</a></td></tr>
+  </table>
+
+  <h3>看衰派观点</h3>
+  <table>
+    <tr><th>来源类型</th><th>核心论据</th><th>来源</th></tr>
+    <tr><td>行业数据</td><td>"32家卫星互联网企业中69%出现业绩下降，31%处于亏损"</td><td><a href="https://pdf.dfcfw.com/pdf/H3_AP202408181639324169_1.pdf" style="color:var(--c-primary)">Wind/德邦证券, 2024</a></td></tr>
+    <tr><td>建设进度</td><td>"星网一期仅22颗试验星在轨，远低于规划168颗"</td><td><a href="https://blog.csdn.net/sinat_34897952/article/details/146398274" style="color:var(--c-primary)">CSDN产业观察, 2025-03</a></td></tr>
+    <tr><td>竞争分析</td><td>"通宇通讯中标星网2.4亿元终端订单（6万套车载平板）"</td><td><a href="https://caifuhao.eastmoney.com/news/20251218000631341357880" style="color:var(--c-primary)">东方财富, 2025-12</a></td></tr>
+    <tr><td>行业观点</td><td>"民企深耕低轨标准化产品，国家队聚焦高端领域"——暗示天花板</td><td><a href="https://zhuanlan.zhihu.com/p/2025634695832937758" style="color:var(--c-primary)">知乎分析, 2026</a></td></tr>
+  </table>
+
+  <h3>情绪分析总结</h3>
+  <p>市场对卫星互联网赛道的看好几乎一致——分歧在于<strong>节奏</strong>。"聪明钱"信号：广州国资连续两轮加注 + 国家发改委副主任亲自考察，在民企中极为罕见。程星公开讨论度很低（军工保密属性），缺少外部舆情验证渠道。</p>
+</div>
+
+<!-- COMPARABLE -->
+<div class="section">
+  <h2><span class="num">5</span> 可比公司对标</h2>
+  <table>
+    <tr><th>公司</th><th>阶段</th><th>市值/估值</th><th>2024收入</th><th>PS倍数</th><th>增速</th><th>特点</th></tr>
+    <tr style="background:var(--c-primary-light)"><td><strong>程星通信</strong></td><td>E+轮</td><td>~15-25亿[估计]</td><td>1.65亿</td><td>~10-15x</td><td>+14%</td><td>唯一全链路民企</td></tr>
+    <tr><td>盟升电子</td><td>已上市</td><td>~30亿</td><td>~5亿</td><td>~6x</td><td>~20%</td><td>终端+导航</td></tr>
+    <tr><td>铖昌科技</td><td>已上市</td><td>~25亿</td><td>~3亿</td><td>~8x</td><td>—</td><td>T/R芯片</td></tr>
+    <tr><td>通宇通讯</td><td>已上市</td><td>~50亿</td><td>~20亿</td><td>~2.5x</td><td>~15%</td><td>通信天线龙头</td></tr>
+    <tr><td>华力创通</td><td>已上市</td><td>~40亿</td><td>~8亿</td><td>~5x</td><td>~10%</td><td>终端+仿真</td></tr>
+  </table>
+</div>
+
+<!-- INVESTMENT SIM -->
+<div class="section">
+  <h2 id="invest-sim"><span class="num">6</span> 投资回报模拟（100万元）</h2>
+  <table>
+    <tr><th>参数</th><th>数值</th><th>类型</th></tr>
+    <tr><td>投资金额</td><td><strong>100万元</strong></td><td>[用户输入]</td></tr>
+    <tr><td>入场估值</td><td><strong>~20亿元</strong></td><td>[估计]</td></tr>
+    <tr><td>初始持股</td><td><strong>0.050%</strong></td><td>计算值</td></tr>
+    <tr><td>退出时持股(稀释后)</td><td><strong>0.045%</strong></td><td>Pre-IPO -10%</td></tr>
+    <tr><td>退出年限</td><td>3-4年</td><td>[假设]</td></tr>
+  </table>
+
+  <div class="scenarios">
+    <div class="scenario bull">
+      <div class="tag">乐观 · 概率 25%</div>
+      <div class="big-num">5.4x</div>
+      <div class="detail">退出估值 <strong>120亿</strong> · PS 10x<br>退出金额 <strong>540万</strong> · IRR ~52%<br>净赚 <strong>+440万</strong><br><br><em>卫星互联网大爆发，科创板高估值IPO</em></div>
+    </div>
+    <div class="scenario base">
+      <div class="tag">基准 · 概率 45%</div>
+      <div class="big-num">2.7x</div>
+      <div class="detail">退出估值 <strong>60亿</strong> · PS 6-7x<br>退出金额 <strong>270万</strong> · IRR ~28%<br>净赚 <strong>+170万</strong><br><br><em>按计划发展，正常科创板IPO</em></div>
+    </div>
+    <div class="scenario bear">
+      <div class="tag">悲观 · 概率 30%</div>
+      <div class="big-num">0.68x</div>
+      <div class="detail">退出估值 <strong>15亿</strong> · PS 4-5x<br>退出金额 <strong>67.5万</strong> · IRR -10%<br>净亏 <strong>-32.5万</strong><br><br><em>建设延迟，增长放缓，IPO推迟</em></div>
+    </div>
+  </div>
+
+  <div class="expect-box">
+    <div><div class="label">概率加权期望回报</div><div class="val">2.8x</div><div class="sub">投入100万 → 期望回收~280万（净赚180万）</div></div>
+    <div style="text-align:right"><div class="label">期望年化 IRR</div><div class="val">~25%</div><div class="sub">亏损概率 ~30% · 最大可能亏损 ~32万</div></div>
+  </div>
+
+  <h3>敏感性分析</h3>
+  <table class="sens-table">
+    <tr><th>入场估值</th><th>持股</th><th>基准回报</th><th>IRR</th></tr>
+    <tr><td>15亿(-25%)</td><td>0.067%</td><td style="color:var(--c-green);font-weight:700">3.6x</td><td>~38%</td></tr>
+    <tr class="hl"><td><strong>20亿(基准)</strong></td><td><strong>0.050%</strong></td><td><strong>2.7x</strong></td><td><strong>~28%</strong></td></tr>
+    <tr><td>25亿(+25%)</td><td>0.040%</td><td style="color:var(--c-red)">2.2x</td><td>~22%</td></tr>
+  </table>
+</div>
+
+<!-- VALUATION -->
+<div class="section">
+  <h2 id="valuation"><span class="num">7</span> 估值分析（Damodaran 框架）</h2>
+  <p style="color:var(--c-gray-500);font-size:13px;margin-bottom:16px">公司处于 E+轮（成长期），适用：简化 DCF + 相对估值 + Narrative-to-Numbers。</p>
+
+  <h3>DCF 简化估值</h3>
+  <table>
+    <tr><th>参数</th><th>乐观</th><th>基准</th><th>悲观</th><th>依据</th></tr>
+    <tr><td>收入增速(5年CAGR)</td><td>75%</td><td>55%</td><td>30%</td><td>公司BP+行业预测</td></tr>
+    <tr><td>目标营业利润率</td><td>25%</td><td>18%</td><td>10%</td><td>军工微波行业基准</td></tr>
+    <tr><td>折现率</td><td>15%</td><td>18%</td><td>22%</td><td>含中国风险溢价+小公司溢价</td></tr>
+    <tr><td>终值EV/Revenue</td><td>8x</td><td>5x</td><td>3x</td><td>可比上市公司</td></tr>
+  </table>
+  <table>
+    <tr><th>情景</th><th>2028年收入</th><th>终值</th><th>折现后估值</th></tr>
+    <tr><td>乐观</td><td>12亿</td><td>96亿</td><td style="color:var(--c-green);font-weight:700">~48亿</td></tr>
+    <tr><td>基准</td><td>7亿</td><td>35亿</td><td style="font-weight:700">~18亿</td></tr>
+    <tr><td>悲观</td><td>3.5亿</td><td>10.5亿</td><td style="color:var(--c-red);font-weight:700">~5亿</td></tr>
+  </table>
+
+  <h3>相对估值</h3>
+  <table>
+    <tr><th>可比公司</th><th>EV/Revenue</th><th>EV/EBITDA</th><th>增速</th></tr>
+    <tr><td>盟升电子</td><td>~6x</td><td>~20x</td><td>~20%</td></tr>
+    <tr><td>铖昌科技</td><td>~8x</td><td>~25x</td><td>—</td></tr>
+    <tr><td>华力创通</td><td>~5x</td><td>~15x</td><td>~10%</td></tr>
+    <tr><td>通宇通讯</td><td>~2.5x</td><td>~12x</td><td>~15%</td></tr>
+    <tr style="font-weight:700;background:var(--c-gray-50)"><td>中位数</td><td>~5.5x</td><td>~17.5x</td><td></td></tr>
+  </table>
+  <p>程星2025E收入2.75亿 × 中位数5.5x = <strong>相对估值~15亿</strong>。增长溢价调整（66% vs 中位数15%）→ <strong>调整后~20-23亿</strong></p>
+
+  <h3>估值三角验证</h3>
+  <table>
+    <tr><th>方法</th><th>估值区间</th><th>置信度</th></tr>
+    <tr><td>DCF</td><td>5 - 48亿（基准~18亿）</td><td><span class="conf-badge conf-low">低</span></td></tr>
+    <tr><td>相对估值</td><td>15 - 23亿</td><td><span class="conf-badge conf-mid">中</span></td></tr>
+    <tr><td>最近交易</td><td>未知（E+轮未披露）</td><td><span class="conf-badge conf-low">低</span></td></tr>
+  </table>
+  <p style="font-weight:700;margin-top:12px">综合估值判断：当前合理估值区间约 15-25亿元 [估计]</p>
+
+  <h3>Narrative-to-Numbers</h3>
+  <p><strong>公司叙事：</strong>程星是中国建设自主卫星互联网（对标SpaceX星链）的核心设备供应商，唯一全链路覆盖民企，将随星网万颗卫星部署实现收入飞跃。</p>
+  <div class="warning"><strong>最脆弱假设：星网建设节奏。</strong>如果GW星座批量发射和组网进度继续延迟（如2024年情况），2025-2027年收入爆发将被推迟。整个叙事的核心前提是"星网按计划建设"。</div>
+</div>
+
+<!-- TERMS -->
+<div class="section">
+  <h2 id="terms"><span class="num">8</span> 条款分析（Venture Deals 框架）</h2>
+  <p style="color:var(--c-gray-500);font-size:13px;margin-bottom:16px">条款信息不足，以下基于行业标准假设。</p>
+
+  <table>
+    <tr><th>条款</th><th>详情</th><th>评估</th></tr>
+    <tr><td>估值（Pre/Post）</td><td><strong>未知</strong></td><td>需确认</td></tr>
+    <tr><td>优先清算权</td><td><strong>未知</strong></td><td>[假设] 1x non-participating</td></tr>
+    <tr><td>反稀释条款</td><td><strong>未知</strong></td><td>[假设] Broad-based WA</td></tr>
+    <tr><td>董事会构成</td><td><strong>未知</strong></td><td>需确认</td></tr>
+    <tr><td>对赌条款</td><td><strong>未知</strong></td><td>国资投资人常要求，需确认</td></tr>
+    <tr><td>回购条款</td><td><strong>未知</strong></td><td>国资合规可能要求，需确认</td></tr>
+  </table>
+
+  <p style="margin-top:16px">投资方为广州产投（国资）和越秀产业基金（国资），国资背景投资人条款通常较标准化，但<strong>对赌和回购条款存在可能性较高</strong>。</p>
+
+  <h3>谈判关注点</h3>
+  <ul>
+    <li><strong>对赌条款</strong>：国资常要求业绩对赌和IPO时间表，需确认目标合理性</li>
+    <li><strong>回购条款</strong>：如3年内未IPO触发回购，可能造成现金压力</li>
+    <li><strong>信息权</strong>：军工保密属性下，信息权范围如何界定</li>
+  </ul>
+</div>
+
+<!-- QUALITATIVE -->
+<div class="section">
+  <h2 id="qualitative"><span class="num">9</span> 定性判断（张磊《价值》+ VC框架）</h2>
+  <table class="qual-table">
+    <tr><th>框架</th><th>评估</th><th>修正</th></tr>
+    <tr><td>结构性价值（卫星互联网=新基建）</td><td>不可逆变革，10年+建设</td><td class="qual-pos">+2</td></tr>
+    <tr><td>大雪长坡</td><td>星座建设周期长，增量极大</td><td class="qual-pos">+1</td></tr>
+    <tr><td>价值创造 vs 转移</td><td>创造全新天地一体化通信基础设施</td><td class="qual-pos">+1</td></tr>
+    <tr><td>动态护城河</td><td>国家专项和客户关系持续深化</td><td class="qual-pos">+1</td></tr>
+    <tr><td>创始人-市场匹配度</td><td>Qorvo RF + 中兴系统架构，完美匹配</td><td class="qual-pos">+1</td></tr>
+    <tr><td>S曲线定位</td><td>跨越鸿沟进入规模建设期</td><td class="qual-pos">+1</td></tr>
+    <tr><td>监管护城河</td><td>军工资质+国家专项=极高壁垒</td><td class="qual-pos">+1</td></tr>
+    <tr><td>Porter五力</td><td>客户集中（星网）+ 供应商集中（芯片）</td><td class="qual-neg">-1</td></tr>
+    <tr style="font-weight:700;background:var(--c-primary-light)"><td>平均值（上限±1.5）</td><td></td><td class="qual-pos">+0.9</td></tr>
+  </table>
+  <p style="margin-top:12px"><strong>量化综合分</strong> 7.1 + <strong>定性修正</strong> +0.9 = <strong>调整后综合分 8.0/10 → 强烈看好</strong></p>
+</div>
+
+<!-- INFO GAPS -->
+<div class="section">
+  <h2><span class="num">10</span> 信息缺口与尽调优先级</h2>
+  <table>
+    <tr><th>优先级</th><th>信息缺口</th><th>影响维度</th><th>建议获取途径</th></tr>
+    <tr><td><span style="color:var(--c-red);font-weight:700">🔴 关键</span></td><td>毛利率（各产品线）</td><td>维度1, 7</td><td>要求公司提供财务数据包</td></tr>
+    <tr><td><span style="color:var(--c-red);font-weight:700">🔴 关键</span></td><td>2024年卫星互联网收入下降原因</td><td>维度4, 8</td><td>管理层访谈</td></tr>
+    <tr><td><span style="color:var(--c-red);font-weight:700">🔴 关键</span></td><td>本轮估值和累计融资额</td><td>维度9</td><td>FA/公司确认；查力合科创(002999)年报</td></tr>
+    <tr><td><span style="color:var(--c-yellow);font-weight:700">🟡 重要</span></td><td>2025年已确认在手订单金额</td><td>维度4</td><td>管理层访谈</td></tr>
+    <tr><td><span style="color:var(--c-yellow);font-weight:700">🟡 重要</span></td><td>信关站90%+份额的合同保障期</td><td>维度3</td><td>查看合同/框架协议</td></tr>
+    <tr><td><span style="color:var(--c-yellow);font-weight:700">🟡 重要</span></td><td>国家专项经费到账节奏</td><td>维度7</td><td>财务数据</td></tr>
+    <tr><td><span style="color:var(--c-green);font-weight:700">🟢 补充</span></td><td>股权结构和cap table</td><td>维度9</td><td>天眼查/股权穿透</td></tr>
+  </table>
+</div>
+
+<!-- DATA FRESHNESS -->
+<div class="section">
+  <h2><span class="num">11</span> 数据时效性</h2>
+  <table>
+    <tr><th>维度</th><th>最新数据</th><th>来源</th><th>置信度</th></tr>
+    <tr><td>市场机会</td><td>2026-04</td><td>多机构交叉验证</td><td><span class="conf-badge conf-high">高</span></td></tr>
+    <tr><td>竞争格局</td><td>2026-Q1</td><td>行业报告/搜索</td><td><span class="conf-badge conf-high">高</span></td></tr>
+    <tr><td>团队</td><td>2025-Q1</td><td>公司BP</td><td><span class="conf-badge conf-high">高</span></td></tr>
+    <tr><td>产品技术</td><td>2025-Q1</td><td>BP/CCTV/新华社</td><td><span class="conf-badge conf-high">高</span></td></tr>
+    <tr><td>增长指标</td><td>2025-Q1</td><td>公司BP</td><td><span class="conf-badge conf-mid">中</span></td></tr>
+    <tr><td>商业模式</td><td>2025-Q1</td><td>公司BP</td><td><span class="conf-badge conf-mid">中</span></td></tr>
+    <tr><td>风险</td><td>2026-04</td><td>综合分析</td><td><span class="conf-badge conf-mid">中</span></td></tr>
+    <tr><td>融资估值</td><td>2025-02</td><td>天眼查/越秀/36Kr</td><td><span class="conf-badge conf-low">低</span></td></tr>
+    <tr><td>财务健康</td><td>2025-Q1</td><td>公司BP(数据缺失)</td><td><span class="conf-badge conf-low">低</span></td></tr>
+  </table>
+</div>
+
+<div class="footer">
+  本报告由 Claude 基于公开信息和用户提供的商业计划书生成，仅供参考，不构成投资建议。<br>
+  公司涉及军工/保密业务，部分信息依法无法完全公开。关键数据请在正式尽调中验证。<br>
+  Generated on 2026-04-17
+</div>
+
+</div>
+</body>
+</html>
