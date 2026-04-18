@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>投资分析报告 — Adobe Inc. (ADBE)</title>
+<style>
+:root{--c-primary:#1a56db;--c-primary-light:#e8effc;--c-green:#059669;--c-green-bg:#ecfdf5;--c-yellow:#d97706;--c-yellow-bg:#fffbeb;--c-red:#dc2626;--c-red-bg:#fef2f2;--c-gray-50:#f9fafb;--c-gray-100:#f3f4f6;--c-gray-200:#e5e7eb;--c-gray-500:#6b7280;--c-gray-700:#374151;--c-gray-900:#111827;--radius:12px;--shadow:0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.06);--shadow-md:0 4px 6px rgba(0,0,0,.07),0 2px 4px rgba(0,0,0,.06)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC",sans-serif;color:var(--c-gray-900);background:var(--c-gray-50);line-height:1.7}
+.container{max-width:1100px;margin:0 auto;padding:24px 20px 80px}
+.top-nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--c-gray-200);height:50px;display:flex;align-items:center;padding:0 24px;gap:20px}
+.top-nav a{text-decoration:none;font-size:13px;color:var(--c-gray-500);transition:color .15s}
+.top-nav a:hover{color:var(--c-gray-900)}
+.top-nav .nav-brand{font-weight:600;font-size:14px;color:var(--c-gray-900);margin-right:auto}
+.top-nav .nav-back::before{content:'← '}
+.header{background:linear-gradient(135deg,#1e3a5f 0%,#dc2626 100%);color:#fff;padding:48px 40px;border-radius:var(--radius);margin-bottom:32px;position:relative;overflow:hidden}
+.header::after{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;background:rgba(255,255,255,.06);border-radius:50%}
+.header h1{font-size:28px;font-weight:700;margin-bottom:6px}
+.header .subtitle{font-size:15px;opacity:.85;margin-bottom:20px}
+.header .meta{display:flex;gap:24px;flex-wrap:wrap;font-size:13px;opacity:.8}
+.header .meta span{background:rgba(255,255,255,.12);padding:4px 12px;border-radius:6px}
+.score-hero{display:flex;gap:24px;margin-bottom:32px;flex-wrap:wrap}
+.score-main{flex:0 0 280px;background:#fff;border-radius:var(--radius);padding:32px;text-align:center;box-shadow:var(--shadow-md);border:2px solid var(--c-primary)}
+.score-ring{width:140px;height:140px;margin:0 auto 16px;position:relative}
+.score-ring svg{transform:rotate(-90deg)}
+.score-ring .score-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:36px;font-weight:800;color:var(--c-primary)}
+.score-ring .score-text small{font-size:16px;font-weight:400;color:var(--c-gray-500)}
+.score-label{font-size:18px;font-weight:700;color:var(--c-primary);margin-bottom:4px}
+.score-adj{font-size:12px;color:var(--c-green);margin-top:6px;font-weight:600}
+.score-sub{font-size:13px;color:var(--c-gray-500)}
+.score-side{flex:1;min-width:300px;display:flex;flex-direction:column;gap:16px}
+.card-s,.card-r{background:#fff;border-radius:var(--radius);padding:20px 24px;box-shadow:var(--shadow);flex:1}
+.card-s{border-left:4px solid var(--c-green)}.card-r{border-left:4px solid var(--c-red)}
+.card-s h3{color:var(--c-green);font-size:14px;font-weight:700;margin-bottom:10px}
+.card-r h3{color:var(--c-red);font-size:14px;font-weight:700;margin-bottom:10px}
+.card-s li,.card-r li{font-size:13px;margin-bottom:6px;color:var(--c-gray-700);list-style:none;padding-left:20px;position:relative}
+.card-s li::before{content:'✓';position:absolute;left:0;color:var(--c-green);font-weight:700}
+.card-r li::before{content:'!';position:absolute;left:2px;color:var(--c-red);font-weight:700}
+.section{background:#fff;border-radius:var(--radius);padding:32px;margin-bottom:24px;box-shadow:var(--shadow)}
+.section h2{font-size:20px;font-weight:700;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--c-gray-200);display:flex;align-items:center;gap:10px}
+.section h2 .num{background:var(--c-primary);color:#fff;width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.section h3{font-size:16px;font-weight:700;margin:20px 0 10px;color:var(--c-gray-700)}
+.section p,.section li{font-size:14px;color:var(--c-gray-700);margin-bottom:8px}
+.section ul{padding-left:20px}
+.dim-grid{display:flex;flex-direction:column;gap:12px}
+.dim-row{display:grid;grid-template-columns:180px 50px 1fr 60px;align-items:center;gap:12px;font-size:13px}
+.dim-name{font-weight:600;color:var(--c-gray-700)}.dim-score{font-weight:800;text-align:center;font-size:15px}
+.dim-bar{height:24px;background:var(--c-gray-100);border-radius:12px;overflow:hidden}
+.dim-bar-fill{height:100%;border-radius:12px}
+.dim-bar-fill.t1{background:linear-gradient(90deg,#3b82f6,#1d4ed8)}
+.dim-bar-fill.t2{background:linear-gradient(90deg,#8b5cf6,#6d28d9)}
+.dim-bar-fill.t3{background:linear-gradient(90deg,#f59e0b,#d97706)}
+.dim-weight{font-size:11px;color:var(--c-gray-500);text-align:center;background:var(--c-gray-100);padding:2px 8px;border-radius:10px}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
+th{background:var(--c-gray-50);font-weight:700;text-align:left;padding:10px 14px;border-bottom:2px solid var(--c-gray-200);color:var(--c-gray-700);font-size:12px;text-transform:uppercase;letter-spacing:.3px}
+td{padding:10px 14px;border-bottom:1px solid var(--c-gray-100);color:var(--c-gray-700);vertical-align:top}
+tr:hover td{background:var(--c-gray-50)}
+.scenarios{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:20px 0}
+.scenario{border-radius:var(--radius);padding:24px}
+.scenario.bull{background:var(--c-green-bg);border:1px solid #a7f3d0}
+.scenario.base{background:var(--c-yellow-bg);border:1px solid #fde68a}
+.scenario.bear{background:var(--c-red-bg);border:1px solid #fecaca}
+.scenario .tag{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.scenario.bull .tag{color:var(--c-green)}.scenario.base .tag{color:var(--c-yellow)}.scenario.bear .tag{color:var(--c-red)}
+.scenario .big-num{font-size:36px;font-weight:800;margin-bottom:4px}
+.scenario.bull .big-num{color:var(--c-green)}.scenario.base .big-num{color:var(--c-yellow)}.scenario.bear .big-num{color:var(--c-red)}
+.scenario .detail{font-size:13px;color:var(--c-gray-500)}.scenario .detail strong{color:var(--c-gray-700)}
+.expect-box{background:linear-gradient(135deg,#1e3a5f,#1a56db);color:#fff;border-radius:var(--radius);padding:28px 32px;margin:24px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.expect-box .label{font-size:14px;opacity:.85}.expect-box .val{font-size:40px;font-weight:800}.expect-box .sub{font-size:13px;opacity:.7}
+.persona{border:2px solid var(--c-gray-200);border-radius:var(--radius);padding:24px;margin-bottom:20px}
+.persona-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.persona-avatar{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#fff}
+.persona-name{font-size:18px;font-weight:700}.persona-phil{font-size:12px;color:var(--c-gray-500)}
+.persona-verdict{font-size:24px;font-weight:800;margin:12px 0 4px}
+.persona-reason{font-size:13px;color:var(--c-gray-500);font-style:italic}
+.verdict-buy{color:var(--c-green)}.verdict-hold{color:var(--c-yellow)}.verdict-sell{color:var(--c-red)}
+.conf-badge{display:inline-block;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:700}
+.conf-high{background:var(--c-green-bg);color:var(--c-green)}.conf-mid{background:var(--c-yellow-bg);color:var(--c-yellow)}.conf-low{background:var(--c-red-bg);color:var(--c-red)}
+.warning{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:16px 20px;margin:16px 0;font-size:13px;color:#92400e}
+.footer{text-align:center;font-size:12px;color:var(--c-gray-500);padding:32px 0;border-top:1px solid var(--c-gray-200);margin-top:40px}
+@media(max-width:768px){.score-hero{flex-direction:column}.score-main{flex:auto}.dim-row{grid-template-columns:1fr;gap:4px}.scenarios{grid-template-columns:1fr}.header{padding:32px 24px}.expect-box{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<nav class="top-nav">
+  <a href="../../index.html" class="nav-brand">叶纸的投资报告</a>
+  <a href="../../index.html" class="nav-back">返回首页</a>
+  <a href="#scoring">评分</a>
+  <a href="#industry">行业</a>
+  <a href="#detail">详细分析</a>
+  <a href="#sentiment">舆情</a>
+  <a href="#sim">回报模拟</a>
+  <a href="#valuation">估值</a>
+  <a href="#personas">角色结论</a>
+</nav>
+<div class="container" style="padding-top:32px">
+
+<div class="header">
+  <h1>投资分析报告：Adobe Inc. (ADBE)</h1>
+  <div class="subtitle">创意软件/数字营销 SaaS 龙头 · 全球8.5亿月活用户</div>
+  <div class="meta">
+    <span>分析日期: 2026-04-19</span>
+    <span>市场: 美股 NASDAQ</span>
+    <span>行业: 创意软件 SaaS</span>
+    <span>股价: ~$270 (近12月-43%)</span>
+  </div>
+</div>
+
+<div class="score-hero">
+  <div class="score-main">
+    <div class="score-ring">
+      <svg width="140" height="140" viewBox="0 0 140 140">
+        <circle cx="70" cy="70" r="58" fill="none" stroke="#e5e7eb" stroke-width="10"/>
+        <circle cx="70" cy="70" r="58" fill="none" stroke="#1a56db" stroke-width="10" stroke-dasharray="364.4" stroke-dashoffset="80.2" stroke-linecap="round"/>
+      </svg>
+      <div class="score-text">7.8<small>/10</small></div>
+    </div>
+    <div class="score-label">有条件看好</div>
+    <div class="score-adj">量化 7.3 + 定性修正 +0.5</div>
+    <div class="score-sub">数据置信度: <span class="conf-badge conf-high">高</span></div>
+  </div>
+  <div class="score-side">
+    <div class="card-s">
+      <h3>核心优势</h3>
+      <ul>
+        <li>现金流机器：FY2025 FCF $9.85B（+25%），FCF收益率~9%</li>
+        <li>AI变现初显：AI相关ARR同比3倍增长至>$400M</li>
+        <li>估值历史低位：前瞻PE 10.3x、EV/FCF 9.8x，近十年最低</li>
+      </ul>
+    </div>
+    <div class="card-r">
+      <h3>核心风险</h3>
+      <ul>
+        <li>CEO交接：Narayen退休，继任者未定，领导力真空期</li>
+        <li>AI颠覆："SaaSpocalypse"——AI可能缩小按席位订阅的TAM</li>
+        <li>FTC诉讼：订阅取消做法被起诉，品牌声誉风险</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2 id="scoring"><span class="num">1</span> 评分总览</h2>
+  <div class="dim-grid">
+    <div class="dim-row"><span class="dim-name">商业模式与单位经济</span><span class="dim-score">9</span><div class="dim-bar"><div class="dim-bar-fill t1" style="width:90%"></div></div><span class="dim-weight">1.5x</span></div>
+    <div class="dim-row"><span class="dim-name">市场机会 TAM/SAM</span><span class="dim-score">7</span><div class="dim-bar"><div class="dim-bar-fill t1" style="width:70%"></div></div><span class="dim-weight">1.5x</span></div>
+    <div class="dim-row"><span class="dim-name">竞争格局与护城河</span><span class="dim-score">7</span><div class="dim-bar"><div class="dim-bar-fill t1" style="width:70%"></div></div><span class="dim-weight">1.5x</span></div>
+    <div class="dim-row"><span class="dim-name">增长指标</span><span class="dim-score">7</span><div class="dim-bar"><div class="dim-bar-fill t1" style="width:70%"></div></div><span class="dim-weight">1.5x</span></div>
+    <div class="dim-row"><span class="dim-name">管理层与治理</span><span class="dim-score">6</span><div class="dim-bar"><div class="dim-bar-fill t2" style="width:60%"></div></div><span class="dim-weight">1.0x</span></div>
+    <div class="dim-row"><span class="dim-name">产品与技术</span><span class="dim-score">8</span><div class="dim-bar"><div class="dim-bar-fill t2" style="width:80%"></div></div><span class="dim-weight">1.0x</span></div>
+    <div class="dim-row"><span class="dim-name">财务健康</span><span class="dim-score">9</span><div class="dim-bar"><div class="dim-bar-fill t2" style="width:90%"></div></div><span class="dim-weight">1.0x</span></div>
+    <div class="dim-row"><span class="dim-name">风险与挑战</span><span class="dim-score">5</span><div class="dim-bar"><div class="dim-bar-fill t2" style="width:50%"></div></div><span class="dim-weight">1.0x</span></div>
+    <div class="dim-row"><span class="dim-name">市场估值</span><span class="dim-score">9</span><div class="dim-bar"><div class="dim-bar-fill t3" style="width:90%"></div></div><span class="dim-weight">0.75x</span></div>
+    <div class="dim-row"><span class="dim-name">回报潜力</span><span class="dim-score">8</span><div class="dim-bar"><div class="dim-bar-fill t3" style="width:80%"></div></div><span class="dim-weight">0.75x</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2 id="industry"><span class="num">2</span> 行业与公司基本面</h2>
+  <h3>行业基本面</h3>
+  <p><strong>行业生命周期:</strong> 成熟期，但AI正触发行业重塑。2026年初SaaS板块经历"SaaSpocalypse"——$2万亿市值蒸发。Gartner预测企业软件支出到2027年仍将增长≥40%。</p>
+  <p><strong>AI双面影响:</strong> 需求侧——AI降低创意门槛，扩大创作者群体（MAU→8.5亿）；供给侧——AI使每人效率10倍提升，可能减少企业所需Adobe席位。市场当前定价偏向悲观。</p>
+
+  <h3>公司基本面</h3>
+  <table>
+    <tr><th>指标</th><th>数值</th><th>趋势</th><th>行业对比</th></tr>
+    <tr><td>收入(FY2025)</td><td>$23.77B</td><td>+10.5% ↑</td><td>行业领先</td></tr>
+    <tr><td>毛利率</td><td>89.3%</td><td>稳定 →</td><td>远超行业(~70%)</td></tr>
+    <tr><td>净利率</td><td>30.0%</td><td>+4.1ppt ↑</td><td>行业顶尖</td></tr>
+    <tr><td>ROE</td><td>58.77%</td><td>极高</td><td>Top 5%</td></tr>
+    <tr><td>FCF</td><td>$9.85B</td><td>+25% ↑</td><td>绝对值前列</td></tr>
+    <tr><td>MAU</td><td>8.5亿</td><td>+17% ↑</td><td>—</td></tr>
+  </table>
+</div>
+
+<div class="section">
+  <h2 id="detail"><span class="num">3</span> 详细分析（10维度）</h2>
+
+  <h3>3.1 商业模式 — 9/10</h3>
+  <p>订阅制SaaS典范。Creative Cloud+Document Cloud+Experience Cloud构成全生命周期产品生态。89%毛利率、30%净利率、$10B级FCF。订阅收入>90%，高度可预测。定价权强——近年持续提价而用户流失有限。</p>
+
+  <h3>3.2 市场机会 — 7/10</h3>
+  <p>创意软件TAM庞大但增速放缓。AI的出现可能扩大TAM（非设计师群体）也可能缩小TAM（每人需要更少工具）。Express和Firefly正在触及新用户群。Gartner预测企业软件支出将持续增长。</p>
+
+  <h3>3.3 竞争格局 — 7/10</h3>
+  <p>58.2%市场份额+Photoshop 70%图像编辑份额。护城河: 文件格式标准(PSD/PDF)+用户习惯锁定+企业级整合。但Figma在UX/UI超越Adobe XD，Canva侵蚀非专业市场，AI原生工具(Midjourney/Runway)绕过Adobe。</p>
+
+  <h3>3.4 增长指标 — 7/10</h3>
+  <p>Q1 FY2026收入+11%、订阅+13%、MAU+17%。AI ARR 3倍增长至>$400M。但FY2026指引隐含全年增速~9-10%，增速方向趋缓。企业解决方案ARR>30%增长是亮点。</p>
+
+  <h3>3.5 管理层 — 6/10</h3>
+  <p>Narayen是传奇CEO（主导订阅制转型），但即将离任。继任者未定是最大变量。内部候选人Wadhwani和Chakravarthy。内部人持股仅0.83%偏低。</p>
+
+  <h3>3.6 产品与技术 — 8/10</h3>
+  <p>产品矩阵行业最全面。Firefly AI整合到主要产品，GenStudio提供企业级AI内容创作。Express面向非设计师扩大TAM。AI ARR $400M+证明产品创新转化为收入。</p>
+
+  <h3>3.7 财务健康 — 9/10</h3>
+  <p>ROE 58.77%极为出色。毛利率89%意味着$1收入有$0.89用于运营和利润。FCF $9.85B同比+25%。每年回购$5-8B股票。经营现金流持续超过净利润，盈利质量高。</p>
+
+  <h3>3.8 风险与挑战 — 5/10</h3>
+  <p>三重风险叠加: (1) CEO交接不确定性; (2) AI颠覆SaaS商业模式风险; (3) FTC订阅取消做法诉讼; (4) Figma在UX/UI领域已失守; (5) SaaS板块系统性抛售。</p>
+
+  <h3>3.9 市场估值 — 9/10</h3>
+  <p>前瞻PE 10.3x、EV/FCF 9.8x、EV/EBITDA 10.65x——全部为近十年最低。历史PE通常25-50x。当前估值隐含了增长显著放缓甚至下滑的预期。如维持~10%增速，安全边际显著。</p>
+
+  <h3>3.10 回报潜力 — 8/10</h3>
+  <p>盈利增长~10%/年 + PE从10x回到15-20x = 50-100%上行 + 每年回购3-4%股份。催化剂: CEO继任者公布、AI ARR持续增长、FTC和解。</p>
+</div>
+
+<div class="section">
+  <h2 id="sentiment"><span class="num">4</span> 网络舆情</h2>
+  <p style="font-weight:700;margin-bottom:12px">整体情绪：中性偏分歧</p>
+  <h3>看好派</h3>
+  <table>
+    <tr><th>来源</th><th>核心观点</th><th>链接</th></tr>
+    <tr><td>Seeking Alpha</td><td>"SaaS抛售过度，10x P/FCF是强力买入"</td><td><a href="https://seekingalpha.com/article/4878855-adobe-1q-fy2026-preview-the-saas-selloff-is-overdone-trading-at-10x-pfcf-is-a-strong-buy" style="color:var(--c-primary)">链接</a></td></tr>
+    <tr><td>Motley Fool</td><td>"AI不会摧毁Adobe，反而可能使其繁荣"</td><td><a href="https://www.fool.com/investing/2026/02/10/ai-will-destroy-adobe-business-why-wrong-adbe/" style="color:var(--c-primary)">链接</a></td></tr>
+    <tr><td>Morgan Stanley</td><td>最高目标价$510</td><td><a href="https://www.marketbeat.com/stocks/NASDAQ/ADBE/forecast/" style="color:var(--c-primary)">链接</a></td></tr>
+  </table>
+  <h3>看衰派</h3>
+  <table>
+    <tr><th>来源</th><th>核心观点</th><th>链接</th></tr>
+    <tr><td>Seeking Alpha</td><td>"停止一厢情愿，面对现实：AI竞争侵蚀增长"</td><td><a href="https://seekingalpha.com/article/4888743-adobe-stop-the-wishful-thinking-and-face-the-reality" style="color:var(--c-primary)">链接</a></td></tr>
+    <tr><td>Goldman Sachs</td><td>最低目标价$220</td><td><a href="https://www.marketbeat.com/stocks/NASDAQ/ADBE/forecast/" style="color:var(--c-primary)">链接</a></td></tr>
+    <tr><td>Jefferies</td><td>降级至Hold，"有限AI拐点"</td><td><a href="https://seekingalpha.com/news/4536717-adobe-downgraded-to-hold-on-limited-ai-inflection-jefferies" style="color:var(--c-primary)">链接</a></td></tr>
+  </table>
+</div>
+
+<div class="section">
+  <h2><span class="num">5</span> 可比公司</h2>
+  <table>
+    <tr><th>公司</th><th>市值</th><th>收入</th><th>净利率</th><th>PE(FWD)</th><th>EV/FCF</th></tr>
+    <tr style="background:var(--c-primary-light)"><td><strong>Adobe (ADBE)</strong></td><td>~$120B</td><td>$23.8B</td><td>30%</td><td>10.3x</td><td>9.8x</td></tr>
+    <tr><td>Microsoft</td><td>~$2.8T</td><td>$260B</td><td>37%</td><td>28x</td><td>30x</td></tr>
+    <tr><td>Salesforce</td><td>~$220B</td><td>$38B</td><td>20%</td><td>22x</td><td>20x</td></tr>
+    <tr><td>Intuit</td><td>~$140B</td><td>$17B</td><td>22%</td><td>25x</td><td>28x</td></tr>
+  </table>
+  <p style="font-size:13px;color:var(--c-gray-500);margin-top:8px">Adobe的PE和EV/FCF远低于所有可比上市公司，同时利润率更优。</p>
+</div>
+
+<div class="section">
+  <h2 id="sim"><span class="num">6</span> 投资回报模拟（100万元）</h2>
+  <div class="scenarios">
+    <div class="scenario bull">
+      <div class="tag">乐观 · 25%</div>
+      <div class="big-num">+67%</div>
+      <div class="detail">目标价 <strong>$450</strong><br>PE恢复至18-20x<br>投资价值 <strong>167万</strong></div>
+    </div>
+    <div class="scenario base">
+      <div class="tag">基准 · 45%</div>
+      <div class="big-num">+26%</div>
+      <div class="detail">目标价 <strong>$340</strong><br>PE修复至14-15x<br>投资价值 <strong>126万</strong></div>
+    </div>
+    <div class="scenario bear">
+      <div class="tag">悲观 · 30%</div>
+      <div class="big-num">-26%</div>
+      <div class="detail">目标价 <strong>$200</strong><br>AI颠覆加速+CEO拖延<br>投资价值 <strong>74万</strong></div>
+    </div>
+  </div>
+  <div class="expect-box">
+    <div><div class="label">概率加权期望收益</div><div class="val">+19%</div><div class="sub">投入100万 → 期望价值~119万</div></div>
+    <div style="text-align:right"><div class="label">共识目标价</div><div class="val">$349</div><div class="sub">vs 当前~$270 → 上行29%</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2 id="valuation"><span class="num">7</span> 估值分析</h2>
+  <h3>估值三角验证</h3>
+  <table>
+    <tr><th>方法</th><th>估值</th><th>每股</th><th>置信度</th></tr>
+    <tr><td>DCF(保守15x终值)</td><td>$195B</td><td>~$450</td><td><span class="conf-badge conf-mid">中</span></td></tr>
+    <tr><td>可比倍数(15x PE)</td><td>$160B</td><td>~$370</td><td><span class="conf-badge conf-high">高</span></td></tr>
+    <tr><td>分析师共识</td><td>—</td><td>$349</td><td><span class="conf-badge conf-mid">中</span></td></tr>
+    <tr style="font-weight:700"><td>当前市值</td><td>$120B</td><td>~$270</td><td>—</td></tr>
+  </table>
+  <p style="margin-top:12px;font-weight:700">综合判断: 当前估值<span style="color:var(--c-green)">显著低估</span>。三种方法均指向$350-450区间，当前$270有30-65%上行空间。</p>
+</div>
+
+<div class="section">
+  <h2 id="personas"><span class="num">8</span> 多角色投资结论</h2>
+
+  <div class="persona">
+    <div class="persona-header">
+      <div class="persona-avatar" style="background:#1e3a5f">巴</div>
+      <div><div class="persona-name">沃伦·巴菲特</div><div class="persona-phil">以合理价格买入优秀企业，长期持有</div></div>
+    </div>
+    <p>这是一台年产$10B现金流的印钞机——毛利率89%、净利率30%、FCF同比+25%。只有退潮时才知道谁在裸泳，Adobe在SaaS板块$2万亿蒸发后仍然穿着衣服。58.2%市场份额和PSD/PDF标准构成看不见的护城河。10倍前瞻PE对这样的公司是极其罕见的便宜价格。</p>
+    <p>但我担忧CEO交接——不知道继任者是谁是我最大的障碍。名誉建立20年，毁掉只需5分钟——FTC诉讼也让我不安。</p>
+    <div class="persona-verdict verdict-buy">买入</div>
+    <div class="persona-reason">"以低价买入优秀公司，$10B FCF印钞机以10x PE出售，安全边际充足。" — 置信度: 中</div>
+  </div>
+
+  <div class="persona">
+    <div class="persona-header">
+      <div class="persona-avatar" style="background:#dc2626">木</div>
+      <div><div class="persona-name">凯西·伍德 (ARK Invest)</div><div class="persona-phil">颠覆性创新投资，5年维度，技术融合</div></div>
+    </div>
+    <p>Adobe不是颠覆者，是被颠覆的一方。AI ARR增长3倍到$400M听起来不错，但只占$24B总收入的2%——如果AI真在驱动增量，总增速不该只有11%。从5年维度看，当技术使工作效率提升10倍，历史上最终结果是需要更少的工具和席位。SaaSpocalypse不是空穴来风。</p>
+    <p>10倍PE不是我买入的理由——我需要看到收入加速和AI改变增长轨迹的证据。</p>
+    <div class="persona-verdict verdict-hold" style="color:var(--c-yellow)">观望</div>
+    <div class="persona-reason">"优秀的传统软件公司，但在AI颠覆大潮中是防守方——需看到AI收入占比从2%到10%+。" — 置信度: 中</div>
+  </div>
+
+  <div class="persona">
+    <div class="persona-header">
+      <div class="persona-avatar" style="background:#059669">林</div>
+      <div><div class="persona-name">彼得·林奇</div><div class="persona-phil">投资你了解的，PEG比率，公司分类法</div></div>
+    </div>
+    <p>Adobe正从"快速增长股"变成"稳健增长股"(stalwart)。PEG = 10/12 = 0.83，低于1！在大型科技股中极罕见。鸡尾酒会测试——所有人都说"Adobe要被AI干掉了"——这恰恰是买入的时机。走进任何广告公司，每台电脑上都有Adobe——这种护城河是真实可触的。$10B FCF意味着即使最坏情况也不会倒。</p>
+    <div class="persona-verdict verdict-buy">买入</div>
+    <div class="persona-reason">"PEG 0.83 + 每台电脑都有的产品 = 被过度恐惧的stalwart，有2-3倍回归空间。" — 置信度: 高</div>
+  </div>
+
+  <h3>分歧总结</h3>
+  <p><strong>共识:</strong> 三位都认可基本面强劲和估值便宜。<strong>分歧:</strong> 巴菲特/林奇建议买入（看重安全边际），木头姐观望（认为AI可能结构性改变商业模式）。核心分歧: AI会增强Adobe还是替代Adobe？</p>
+</div>
+
+<div class="section">
+  <h2><span class="num">9</span> 信息缺口</h2>
+  <table>
+    <tr><th>优先级</th><th>信息缺口</th><th>影响</th><th>获取途径</th></tr>
+    <tr><td><span style="color:var(--c-red);font-weight:700">🔴</span></td><td>CEO遴选进展和时间表</td><td>维度5</td><td>官方公告 / Q2财报电话会</td></tr>
+    <tr><td><span style="color:var(--c-red);font-weight:700">🔴</span></td><td>AI ARR构成（新增vs升级vs独立）</td><td>维度4,6</td><td>管理层Q&A</td></tr>
+    <tr><td><span style="color:var(--c-yellow);font-weight:700">🟡</span></td><td>FTC诉讼审判时间和潜在罚款</td><td>维度8</td><td>法律文书</td></tr>
+    <tr><td><span style="color:var(--c-yellow);font-weight:700">🟡</span></td><td>企业客户NDR具体数值</td><td>维度1,4</td><td>10-K年报</td></tr>
+  </table>
+</div>
+
+<div class="section">
+  <h2><span class="num">10</span> 数据时效性</h2>
+  <table>
+    <tr><th>维度</th><th>最新数据</th><th>来源</th><th>置信度</th></tr>
+    <tr><td>财务数据</td><td>2026-03 (Q1)</td><td>SEC/官方财报</td><td><span class="conf-badge conf-high">高</span></td></tr>
+    <tr><td>估值指标</td><td>2026-04</td><td>多平台交叉验证</td><td><span class="conf-badge conf-high">高</span></td></tr>
+    <tr><td>市场份额</td><td>2026</td><td>6wresearch</td><td><span class="conf-badge conf-mid">中</span></td></tr>
+    <tr><td>社区舆情</td><td>2026-04</td><td>SeekingAlpha等</td><td><span class="conf-badge conf-high">高</span></td></tr>
+    <tr><td>行业数据</td><td>2026-Q1</td><td>Gartner/Deloitte</td><td><span class="conf-badge conf-high">高</span></td></tr>
+  </table>
+</div>
+
+<div class="footer">
+  本报告由 Claude 基于公开财务数据和市场信息生成，仅供参考，不构成投资建议。<br>
+  Generated on 2026-04-19 · Data as of Q1 FY2026
+</div>
+
+</div>
+</body>
+</html>
