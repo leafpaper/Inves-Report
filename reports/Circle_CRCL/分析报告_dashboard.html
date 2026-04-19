@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>投资分析报告 — Circle Internet Group (CRCL)</title>
+<style>
+:root{--c-primary:#7c3aed;--c-primary-light:#ede9fe;--c-green:#059669;--c-green-bg:#ecfdf5;--c-yellow:#d97706;--c-yellow-bg:#fffbeb;--c-red:#dc2626;--c-red-bg:#fef2f2;--c-gray-50:#f9fafb;--c-gray-100:#f3f4f6;--c-gray-200:#e5e7eb;--c-gray-500:#6b7280;--c-gray-700:#374151;--c-gray-900:#111827;--radius:12px;--shadow:0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.06);--shadow-md:0 4px 6px rgba(0,0,0,.07),0 2px 4px rgba(0,0,0,.06)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC",sans-serif;color:var(--c-gray-900);background:var(--c-gray-50);line-height:1.7}
+.container{max-width:1100px;margin:0 auto;padding:24px 20px 80px}
+.top-nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--c-gray-200);height:50px;display:flex;align-items:center;padding:0 24px;gap:20px}
+.top-nav a{text-decoration:none;font-size:13px;color:var(--c-gray-500);transition:color .15s}
+.top-nav a:hover{color:var(--c-gray-900)}
+.top-nav .nav-brand{font-weight:600;font-size:14px;color:var(--c-gray-900);margin-right:auto}
+.top-nav .nav-back::before{content:'← '}
+.header{background:linear-gradient(135deg,#4c1d95 0%,#7c3aed 50%,#2563eb 100%);color:#fff;padding:48px 40px;border-radius:var(--radius);margin-bottom:32px;position:relative;overflow:hidden}
+.header::after{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;background:rgba(255,255,255,.06);border-radius:50%}
+.header h1{font-size:28px;font-weight:700;margin-bottom:6px}
+.header .subtitle{font-size:15px;opacity:.85;margin-bottom:20px}
+.header .meta{display:flex;gap:24px;flex-wrap:wrap;font-size:13px;opacity:.8}
+.header .meta span{background:rgba(255,255,255,.12);padding:4px 12px;border-radius:6px}
+.score-hero{display:flex;gap:24px;margin-bottom:32px;flex-wrap:wrap}
+.score-main{flex:0 0 280px;background:#fff;border-radius:var(--radius);padding:32px;text-align:center;box-shadow:var(--shadow-md);border:2px solid var(--c-primary)}
+.score-ring{width:140px;height:140px;margin:0 auto 16px;position:relative}
+.score-ring svg{transform:rotate(-90deg)}
+.score-ring .score-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:36px;font-weight:800;color:var(--c-primary)}
+.score-ring .score-text small{font-size:16px;font-weight:400;color:var(--c-gray-500)}
+.score-label{font-size:18px;font-weight:700;color:var(--c-primary);margin-bottom:4px}
+.score-adj{font-size:12px;color:var(--c-green);margin-top:6px;font-weight:600}
+.score-sub{font-size:13px;color:var(--c-gray-500)}
+.score-side{flex:1;min-width:300px;display:flex;flex-direction:column;gap:16px}
+.card-s,.card-r{background:#fff;border-radius:var(--radius);padding:20px 24px;box-shadow:var(--shadow);flex:1}
+.card-s{border-left:4px solid var(--c-green)}.card-r{border-left:4px solid var(--c-red)}
+.card-s h3{color:var(--c-green);font-size:14px;font-weight:700;margin-bottom:10px}
+.card-r h3{color:var(--c-red);font-size:14px;font-weight:700;margin-bottom:10px}
+.card-s li,.card-r li{font-size:13px;margin-bottom:6px;color:var(--c-gray-700);list-style:none;padding-left:20px;position:relative}
+.card-s li::before{content:'✓';position:absolute;left:0;color:var(--c-green);font-weight:700}
+.card-r li::before{content:'!';position:absolute;left:2px;color:var(--c-red);font-weight:700}
+.section{background:#fff;border-radius:var(--radius);padding:32px;margin-bottom:24px;box-shadow:var(--shadow)}
+.section h2{font-size:20px;font-weight:700;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--c-gray-200);display:flex;align-items:center;gap:10px}
+.section h2 .num{background:var(--c-primary);color:#fff;width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.section h3{font-size:16px;font-weight:700;margin:20px 0 10px;color:var(--c-gray-700)}
+.section p,.section li{font-size:14px;color:var(--c-gray-700);margin-bottom:8px}
+.dim-grid{display:flex;flex-direction:column;gap:12px}
+.dim-row{display:grid;grid-template-columns:180px 50px 1fr 60px;align-items:center;gap:12px;font-size:13px}
+.dim-name{font-weight:600;color:var(--c-gray-700)}.dim-score{font-weight:800;text-align:center;font-size:15px}
+.dim-bar{height:24px;background:var(--c-gray-100);border-radius:12px;overflow:hidden}
+.dim-bar-fill{height:100%;border-radius:12px}
+.dim-bar-fill.t1{background:linear-gradient(90deg,#7c3aed,#4c1d95)}
+.dim-bar-fill.t2{background:linear-gradient(90deg,#8b5cf6,#6d28d9)}
+.dim-bar-fill.t3{background:linear-gradient(90deg,#f59e0b,#d97706)}
+.dim-weight{font-size:11px;color:var(--c-gray-500);text-align:center;background:var(--c-gray-100);padding:2px 8px;border-radius:10px}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
+th{background:var(--c-gray-50);font-weight:700;text-align:left;padding:10px 14px;border-bottom:2px solid var(--c-gray-200);color:var(--c-gray-700);font-size:12px;text-transform:uppercase;letter-spacing:.3px}
+td{padding:10px 14px;border-bottom:1px solid var(--c-gray-100);color:var(--c-gray-700);vertical-align:top}
+tr:hover td{background:var(--c-gray-50)}
+.scenarios{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:20px 0}
+.scenario{border-radius:var(--radius);padding:24px}
+.scenario.bull{background:var(--c-green-bg);border:1px solid #a7f3d0}
+.scenario.base{background:var(--c-yellow-bg);border:1px solid #fde68a}
+.scenario.bear{background:var(--c-red-bg);border:1px solid #fecaca}
+.scenario .tag{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.scenario.bull .tag{color:var(--c-green)}.scenario.base .tag{color:var(--c-yellow)}.scenario.bear .tag{color:var(--c-red)}
+.scenario .big-num{font-size:36px;font-weight:800;margin-bottom:4px}
+.scenario.bull .big-num{color:var(--c-green)}.scenario.base .big-num{color:var(--c-yellow)}.scenario.bear .big-num{color:var(--c-red)}
+.scenario .detail{font-size:13px;color:var(--c-gray-500)}.scenario .detail strong{color:var(--c-gray-700)}
+.expect-box{background:linear-gradient(135deg,#4c1d95,#7c3aed);color:#fff;border-radius:var(--radius);padding:28px 32px;margin:24px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.expect-box .label{font-size:14px;opacity:.85}.expect-box .val{font-size:40px;font-weight:800}.expect-box .sub{font-size:13px;opacity:.7}
+.persona{border:2px solid var(--c-gray-200);border-radius:var(--radius);padding:24px;margin-bottom:20px}
+.persona-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.persona-avatar{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#fff}
+.persona-name{font-size:18px;font-weight:700}.persona-phil{font-size:12px;color:var(--c-gray-500)}
+.persona-verdict{font-size:24px;font-weight:800;margin:12px 0 4px}
+.persona-reason{font-size:13px;color:var(--c-gray-500);font-style:italic}
+.verdict-buy{color:var(--c-green)}.verdict-hold{color:var(--c-yellow)}.verdict-sell{color:var(--c-red)}
+.conf-badge{display:inline-block;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:700}
+.conf-high{background:var(--c-green-bg);color:var(--c-green)}.conf-mid{background:var(--c-yellow-bg);color:var(--c-yellow)}.conf-low{background:var(--c-red-bg);color:var(--c-red)}
+.warning{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:16px 20px;margin:16px 0;font-size:13px;color:#92400e}
+.footer{text-align:center;font-size:12px;color:var(--c-gray-500);padding:32px 0;border-top:1px solid var(--c-gray-200);margin-top:40px}
+@media(max-width:768px){.score-hero{flex-direction:column}.score-main{flex:auto}.dim-row{grid-template-columns:1fr;gap:4px}.scenarios{grid-template-columns:1fr}.header{padding:32px 24px}.expect-box{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<nav class="top-nav">
+  <a href="../../index.html" class="nav-brand">叶纸的投资报告</a>
+  <a href="../../index.html" class="nav-back">返回首页</a>
+  <a href="#scoring">评分</a>
+  <a href="#detail">详细分析</a>
+  <a href="#sim">回报模拟</a>
+  <a href="#dcf">DCF估值</a>
+  <a href="#personas">角色结论</a>
+</nav>
+<div class="container" style="padding-top:32px">
+
+<div class="header">
+  <h1>投资分析报告：Circle Internet Group (CRCL)</h1>
+  <div class="subtitle">USDC稳定币发行方 · $790亿数字美元流通 · 全球支付基础设施重构者</div>
+  <div class="meta">
+    <span>分析日期: 2026-04-19</span>
+    <span>市场: NYSE</span>
+    <span>行业: 稳定币/加密金融基础设施</span>
+    <span>股价: ~$107 (从高点-64%)</span>
+  </div>
+</div>
+
+<div class="score-hero">
+  <div class="score-main">
+    <div class="score-ring">
+      <svg width="140" height="140" viewBox="0 0 140 140">
+        <circle cx="70" cy="70" r="58" fill="none" stroke="#e5e7eb" stroke-width="10"/>
+        <circle cx="70" cy="70" r="58" fill="none" stroke="#7c3aed" stroke-width="10" stroke-dasharray="364.4" stroke-dashoffset="98" stroke-linecap="round"/>
+      </svg>
+      <div class="score-text">7.3<small>/10</small></div>
+    </div>
+    <div class="score-label">有条件看好</div>
+    <div class="score-adj">量化 6.5 + 定性修正 +0.8</div>
+    <div class="score-sub">数据置信度: <span class="conf-badge conf-high">高</span></div>
+  </div>
+  <div class="score-side">
+    <div class="card-s">
+      <h3>核心优势</h3>
+      <ul>
+        <li>USDC增速超越USDT：2025年+73% vs USDT +36%，连续两年领先</li>
+        <li>合规先发：49州MTLs + GENIUS Act + MiCA，竞争者需数年复制</li>
+        <li>FCF强劲：FY2025 $530M（+62%），Capex仅$12M极致轻资产</li>
+      </ul>
+    </div>
+    <div class="card-r">
+      <h3>核心风险</h3>
+      <ul>
+        <li>利率依赖：96%收入来自储备利息，每100bp降息=$28亿影响</li>
+        <li>Coinbase议价权：获51%储备收入分成，控制67%美国交易所份额</li>
+        <li>CLARITY Act：拟禁稳定币支付利息→股价单日-20%</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2 id="scoring"><span class="num">1</span> 评分总览</h2>
+  <div class="dim-grid">
+    <div class="dim-row"><span class="dim-name">商业模式与单位经济</span><span class="dim-score">6</span><div class="dim-bar"><div class="dim-bar-fill t1" style="width:60%"></div></div><span class="dim-weight">1.5x</span></div>
+    <div class="dim-row"><span class="dim-name">市场机会 TAM</span><span class="dim-score">9</span><div class="dim-bar"><div class="dim-bar-fill t1" style="width:90%"></div></div><span class="dim-weight">1.5x</span></div>
+    <div class="dim-row"><span class="dim-name">竞争格局与护城河</span><span class="dim-score">6</span><div class="dim-bar"><div class="dim-bar-fill t1" style="width:60%"></div></div><span class="dim-weight">1.5x</span></div>
+    <div class="dim-row"><span class="dim-name">增长指标</span><span class="dim-score">8</span><div class="dim-bar"><div class="dim-bar-fill t1" style="width:80%"></div></div><span class="dim-weight">1.5x</span></div>
+    <div class="dim-row"><span class="dim-name">管理层与治理</span><span class="dim-score">7</span><div class="dim-bar"><div class="dim-bar-fill t2" style="width:70%"></div></div><span class="dim-weight">1.0x</span></div>
+    <div class="dim-row"><span class="dim-name">产品与技术</span><span class="dim-score">7</span><div class="dim-bar"><div class="dim-bar-fill t2" style="width:70%"></div></div><span class="dim-weight">1.0x</span></div>
+    <div class="dim-row"><span class="dim-name">财务健康</span><span class="dim-score">6</span><div class="dim-bar"><div class="dim-bar-fill t2" style="width:60%"></div></div><span class="dim-weight">1.0x</span></div>
+    <div class="dim-row"><span class="dim-name">风险与挑战</span><span class="dim-score">4</span><div class="dim-bar"><div class="dim-bar-fill t2" style="width:40%"></div></div><span class="dim-weight">1.0x</span></div>
+    <div class="dim-row"><span class="dim-name">市场估值</span><span class="dim-score">5</span><div class="dim-bar"><div class="dim-bar-fill t3" style="width:50%"></div></div><span class="dim-weight">0.75x</span></div>
+    <div class="dim-row"><span class="dim-name">回报潜力</span><span class="dim-score">7</span><div class="dim-bar"><div class="dim-bar-fill t3" style="width:70%"></div></div><span class="dim-weight">0.75x</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2 id="detail"><span class="num">2</span> 关键发现</h2>
+  <h3>快筛否决检查: PASS ✓</h3>
+  <p>5项快筛全部通过。Drift Protocol $285M黑客诉讼和CLARITY Act提案需关注，但非存亡级威胁。</p>
+
+  <h3>收入结构 — 最大弱点</h3>
+  <div class="warning"><strong>96%收入来自储备利息。</strong>Coinbase拿走51%。每100bp降息=$28亿收入损失。这使Circle更像利率对冲基金而非科技公司。CPN/CCTP等新收入仅占4%。</div>
+
+  <h3>4年财务趋势</h3>
+  <table>
+    <tr><th>年度</th><th>收入</th><th>增速</th><th>毛利率</th><th>净利润</th><th>FCF</th></tr>
+    <tr><td>FY2022</td><td>$772M</td><td>—</td><td>60.0%</td><td>-$769M</td><td>-$76M</td></tr>
+    <tr><td>FY2023</td><td>$1,450M</td><td>+88%</td><td>49.8%</td><td>$268M</td><td>$139M</td></tr>
+    <tr><td>FY2024</td><td>$1,676M</td><td>+16%</td><td>39.3%</td><td>$156M</td><td>$326M</td></tr>
+    <tr style="background:var(--c-primary-light)"><td><strong>FY2025</strong></td><td><strong>$2,747M</strong></td><td><strong>+64%</strong></td><td><strong>39.4%</strong></td><td><strong>-$70M</strong></td><td><strong>$530M</strong></td></tr>
+  </table>
+
+  <h3>行业：稳定币 = 结构性爆发</h3>
+  <p>稳定币总市值$320B+，2035年交易量预测$719万亿（20x增长）。GENIUS Act提供联邦监管框架。AI代理经济(McKinsey: $3-5万亿)可能创造全新使用场景。但CLARITY Act拟禁止支付利息，Tether USAT(合规版)挑战Circle监管护城河。</p>
+</div>
+
+<div class="section">
+  <h2 id="sim"><span class="num">3</span> 投资回报模拟（100万元）</h2>
+  <div class="scenarios">
+    <div class="scenario bull">
+      <div class="tag">乐观 · 25%</div>
+      <div class="big-num">+87%</div>
+      <div class="detail">目标价 <strong>$200</strong><br>USDC份额30%+利率维持+AI催化<br>投资价值 <strong>187万</strong></div>
+    </div>
+    <div class="scenario base">
+      <div class="tag">基准 · 45%</div>
+      <div class="big-num">+21%</div>
+      <div class="detail">目标价 <strong>$130</strong><br>USDC 40%CAGR+利率温和下降<br>投资价值 <strong>121万</strong></div>
+    </div>
+    <div class="scenario bear">
+      <div class="tag">悲观 · 30%</div>
+      <div class="big-num">-44%</div>
+      <div class="detail">目标价 <strong>$60</strong><br>利率骤降+CLARITY通过+白标侵蚀<br>投资价值 <strong>56万</strong></div>
+    </div>
+  </div>
+  <div class="expect-box">
+    <div><div class="label">概率加权期望收益</div><div class="val">+10%</div><div class="sub">投入100万 → 期望价值~110万</div></div>
+    <div style="text-align:right"><div class="label">分析师共识目标价</div><div class="val">$124-132</div><div class="sub">vs 当前$107 → 上行16-23%</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2 id="dcf"><span class="num">4</span> DCF 估值（完整计算）</h2>
+  <h3>5年预测表（基准情景）</h3>
+  <table>
+    <tr><th></th><th>Y1</th><th>Y2</th><th>Y3</th><th>Y4</th><th>Y5</th></tr>
+    <tr><td>收入</td><td>$3.85B</td><td>$5.0B</td><td>$6.5B</td><td>$7.8B</td><td>$9.4B</td></tr>
+    <tr><td>调整后FCF</td><td>$750M</td><td>$1.05B</td><td>$1.4B</td><td>$1.7B</td><td>$2.2B</td></tr>
+    <tr><td>折现后FCF</td><td>$658M</td><td>$808M</td><td>$945M</td><td>$1.01B</td><td>$1.14B</td></tr>
+  </table>
+  <p>Σ折现FCF=$4.56B + 终值(15x×$2.2B折现)=$17.1B → <strong>企业价值=$21.7B → 每股~$88</strong></p>
+
+  <h3>敏感性矩阵</h3>
+  <table>
+    <tr><th></th><th>WACC 12%</th><th>WACC 14%</th><th>WACC 16%</th></tr>
+    <tr><td>增速+20%</td><td style="color:var(--c-green)">$138</td><td>$112</td><td>$92</td></tr>
+    <tr style="font-weight:700"><td>增速基准</td><td>$112</td><td style="background:var(--c-primary-light)">$88</td><td>$71</td></tr>
+    <tr><td>增速-20%</td><td>$86</td><td>$68</td><td style="color:var(--c-red)">$54</td></tr>
+  </table>
+  <p style="font-weight:700;margin-top:12px">估值判断: 当前$107 <span style="color:var(--c-red)">偏高</span>。DCF基准$88、可比$47-67均低于当前价。</p>
+</div>
+
+<div class="section">
+  <h2 id="personas"><span class="num">5</span> 多角色投资结论</h2>
+
+  <div class="persona">
+    <div class="persona-header">
+      <div class="persona-avatar" style="background:#1e3a5f">巴</div>
+      <div><div class="persona-name">沃伦·巴菲特</div><div class="persona-phil">以合理价格买入优秀企业</div></div>
+    </div>
+    <p>96%收入来自利率——这不是"护城河"，这是"天气"。Coinbase拿走51%——你最大的"客户"同时也是你最大的"房东"。前瞻PE 129倍，DCF估值$88——这不是打折品，是溢价彩票。</p>
+    <div class="persona-verdict verdict-sell">放弃</div>
+    <div class="persona-reason">"永远不要投资你不理解其定价权从何而来的公司。" — 置信度: 高</div>
+  </div>
+
+  <div class="persona">
+    <div class="persona-header">
+      <div class="persona-avatar" style="background:#dc2626">木</div>
+      <div><div class="persona-name">凯西·伍德 (ARK)</div><div class="persona-phil">颠覆性创新，5年维度</div></div>
+    </div>
+    <p>稳定币是全球支付系统从SWIFT向区块链转型的核心基础设施——$35T→$719T的20倍增长曲线。AI代理经济($3-5万亿)需要不依赖银行的支付方式——x402已验证AI-USDC闭环。CPN就是早期Visa，从55家金融机构开始。</p>
+    <div class="persona-verdict verdict-buy">买入</div>
+    <div class="persona-reason">"Circle是全球支付区块链化的核心基础设施，$700万亿交易量是5年后的终态。" — 置信度: 高</div>
+  </div>
+
+  <div class="persona">
+    <div class="persona-header">
+      <div class="persona-avatar" style="background:#059669">林</div>
+      <div><div class="persona-name">彼得·林奇</div><div class="persona-phil">投资你了解的，PEG比率</div></div>
+    </div>
+    <p>好的增长故事（+64%收入），但DCF给$88、可比给$47-67——当前$107已超过内在价值。机构持股仅42.84%有"被发现"空间。但定价权缺失让我不安——利率和Coinbase分成都不是Circle能控制的。等$70-80再考虑。</p>
+    <div class="persona-verdict verdict-hold" style="color:var(--c-yellow)">观望</div>
+    <div class="persona-reason">"好增长故事但价格偏高——等$70-80才有安全边际。" — 置信度: 中</div>
+  </div>
+
+  <h3>分歧核心</h3>
+  <p>巴菲特看到"靠天吃饭的利息套利"；木头姐看到"全球支付基础设施重构者"；林奇看到"好股票但价格不对"。<strong>核心问题：Circle的价值来自利率（当前），还是交易量和网络效应（终态）？</strong></p>
+</div>
+
+<div class="section">
+  <h2><span class="num">6</span> 信息缺口</h2>
+  <table>
+    <tr><th>优先级</th><th>缺口</th><th>影响</th><th>途径</th></tr>
+    <tr><td><span style="color:var(--c-red);font-weight:700">🔴</span></td><td>资产负债表完整数据</td><td>维度7</td><td>10-K年报</td></tr>
+    <tr><td><span style="color:var(--c-red);font-weight:700">🔴</span></td><td>Coinbase分成协议细节</td><td>维度1,3,8</td><td>S-1/10-K附注</td></tr>
+    <tr><td><span style="color:var(--c-red);font-weight:700">🔴</span></td><td>CLARITY Act立法进展</td><td>维度8</td><td>国会跟踪</td></tr>
+    <tr><td><span style="color:var(--c-yellow);font-weight:700">🟡</span></td><td>CPN收入详细数据</td><td>维度2,6</td><td>Q2财报(2026-05-11)</td></tr>
+  </table>
+</div>
+
+<div class="footer">
+  本报告由 Claude 基于公开财务数据和市场信息生成，仅供参考，不构成投资建议。<br>
+  Generated on 2026-04-19 · Data as of FY2025/Q4
+</div>
+
+</div>
+</body>
+</html>
