@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>震安科技（300767.SZ）投资分析报告 — 2026-04-20</title>
+<style>
+  :root {
+    --primary: #1a4d7a;
+    --accent: #d97f3c;
+    --bull: #2e8b57;
+    --bear: #c04848;
+    --neutral: #888;
+    --bg: #f7f6f2;
+    --card: #ffffff;
+    --border: #e0e0e0;
+    --text: #2a2a2a;
+    --muted: #666;
+    --variant: #7a4dab;
+  }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 0; line-height: 1.7; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px; }
+  header.hero { background: linear-gradient(135deg, var(--primary), #2a6ba0); color: white; padding: 48px 32px; border-radius: 12px; margin-bottom: 32px; }
+  header.hero h1 { font-size: 32px; margin: 0 0 8px; }
+  header.hero .subtitle { opacity: 0.9; font-size: 15px; }
+  header.hero .meta { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 20px; font-size: 14px; }
+  .section { background: var(--card); padding: 28px 32px; margin: 20px 0; border-radius: 10px; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .section h2 { color: var(--primary); border-bottom: 2px solid var(--accent); padding-bottom: 8px; margin-top: 0; font-size: 22px; }
+  .section h3 { color: var(--primary); font-size: 18px; margin-top: 24px; }
+  .section h4 { color: var(--text); font-size: 16px; margin-top: 18px; }
+  .num { font-weight: 600; color: var(--primary); }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+  th, td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
+  th { background: #f0ece5; font-weight: 600; }
+  tr:nth-child(even) td { background: #fafafa; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 16px 0; }
+  .highlight-card { background: #faf6ef; padding: 16px; border-radius: 8px; border-left: 4px solid var(--accent); }
+  .highlight-card.bull { border-left-color: var(--bull); background: #f0faf4; }
+  .highlight-card.bear { border-left-color: var(--bear); background: #fbf0f0; }
+  .highlight-card h4 { margin: 0 0 8px; }
+  .highlight-card p { margin: 0; font-size: 14px; color: var(--muted); }
+  .warning { background: #fff8e6; border-left: 4px solid #e0a030; padding: 12px 16px; margin: 12px 0; border-radius: 4px; font-size: 14px; }
+  .scorebar { display: flex; align-items: center; gap: 12px; margin: 6px 0; }
+  .scorebar .label { width: 180px; font-size: 14px; }
+  .scorebar .bar { flex: 1; height: 20px; background: #eee; border-radius: 4px; overflow: hidden; position: relative; }
+  .scorebar .fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); }
+  .scorebar .score { width: 50px; text-align: right; font-weight: 600; color: var(--primary); }
+  .variant-perception { border-left: 6px solid var(--variant); }
+  .variant-perception h2 { color: var(--variant); border-bottom-color: var(--variant); }
+  .insight-card { background: #f9f6ff; border: 1px solid #e0d5f0; border-radius: 8px; padding: 20px; margin: 16px 0; }
+  .insight-card h3 { color: var(--variant); margin-top: 0; font-size: 17px; }
+  .insight-card .field { margin: 8px 0; font-size: 14px; }
+  .insight-card .field strong { color: var(--variant); }
+  .insight-card.bear-insight { border-left: 4px solid var(--bear); background: #fdf5f5; }
+  .insight-card.bear-insight h3 { color: var(--bear); }
+  .insight-card.bear-insight .field strong { color: var(--bear); }
+  .insight-card.warn-insight { border-left: 4px solid #e0a030; background: #fffbf0; }
+  .insight-card.warn-insight h3 { color: #b68515; }
+  .insight-card.warn-insight .field strong { color: #b68515; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; background: var(--variant); color: white; margin-right: 4px; }
+  .badge.bull { background: var(--bull); }
+  .badge.bear { background: var(--bear); }
+  .badge.neutral { background: var(--neutral); }
+  .badge.warn { background: #e0a030; }
+  .persona-card { background: linear-gradient(to right, #fafafa, #ffffff); border: 1px solid var(--border); border-radius: 10px; padding: 24px 28px; margin: 20px 0; }
+  .persona-card h3 { color: var(--primary); margin-top: 0; }
+  .persona-card .philosophy { font-style: italic; color: var(--muted); padding: 10px 14px; background: #f0ece5; border-radius: 6px; margin: 10px 0; }
+  .persona-card .verdict { background: var(--primary); color: white; padding: 12px 16px; border-radius: 6px; margin-top: 16px; font-weight: 600; }
+  .variant-response { background: #f9f6ff; border: 1px solid #e0d5f0; padding: 14px 18px; border-radius: 6px; margin: 12px 0; }
+  .variant-response h4 { color: var(--variant); margin: 0 0 8px; font-size: 15px; }
+  .variant-response ul { padding-left: 20px; margin: 6px 0; }
+  .stance-strong-agree { color: var(--bull); font-weight: 600; }
+  .stance-strong-oppose { color: var(--bear); font-weight: 600; }
+  .stance-reserved { color: var(--neutral); font-weight: 600; }
+  .toc { background: #f0ece5; padding: 16px 24px; border-radius: 8px; margin: 20px 0; }
+  .toc ol { columns: 2; column-gap: 32px; font-size: 14px; }
+  .toc a { color: var(--primary); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .consensus-table th { background: #fff4e5; }
+  .divergence-table th { background: #f0e5ff; }
+  .footer { text-align: center; color: var(--muted); font-size: 12px; padding: 24px; }
+  @media (max-width: 768px) {
+    .toc ol { columns: 1; }
+    .container { padding: 16px 12px; }
+    header.hero { padding: 24px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="hero">
+  <h1>震安科技（300767.SZ）投资分析报告</h1>
+  <div class="subtitle">QuakeSafe Technologies | 深交所创业板 | 建筑减隔震龙头 + 核电抗震 | 2025-10 宝武系入主</div>
+  <div class="meta">
+    <span>报告日期: 2026-04-20</span>
+    <span>当前股价: 20.99 元（2026-04-13）</span>
+    <span>市值: ~58 亿元</span>
+    <span>综合评分: <strong>4.8 / 10</strong></span>
+    <span>投资意见: <strong>观望 / 事件驱动小仓位</strong></span>
+  </div>
+</header>
+
+<div class="toc">
+  <strong>报告结构（15 章节 + Phase 4 角色结论）</strong>
+  <ol>
+    <li><a href="#exec">Executive Summary</a></li>
+    <li><a href="#score">评分总览</a></li>
+    <li><a href="#industry">行业基本面分析</a></li>
+    <li><a href="#company">公司基本面分析</a></li>
+    <li><a href="#dim10">详细分析（10维度）</a></li>
+    <li><a href="#sentiment">网络舆情与市场情绪</a></li>
+    <li><a href="#peers">可比公司对标</a></li>
+    <li><a href="#returns">投资回报模拟</a></li>
+    <li><a href="#valuation">估值分析</a></li>
+    <li><a href="#terms">条款/交易分析</a></li>
+    <li><a href="#qualitative">定性判断</a></li>
+    <li><a href="#variant">差异化洞察 (Variant Perception)</a></li>
+    <li><a href="#gaps">信息缺口</a></li>
+    <li><a href="#timeliness">数据时效性</a></li>
+    <li><a href="#sources">信息来源</a></li>
+    <li><a href="#personas">Phase 4 多角色投资结论</a></li>
+  </ol>
+</div>
+
+<!-- §1 Executive Summary -->
+<div class="section" id="exec">
+  <h2>一、Executive Summary</h2>
+  <p>震安科技是中国<strong>建筑减隔震行业龙头</strong>（2018 市占率 41.5%，2024 约 30%），主业为隔震支座、消能阻尼器、震振控制和核电抗震产品。公司受益于 2021 国务院《建设工程抗震管理条例》，但受地产周期下行拖累，<strong>2023-2025 连续三年亏损</strong>，累亏 2.85 亿。</p>
+  <p><strong>2025-10 实控人变更为重大转折点</strong>：深圳东创以 6.16 亿并购贷款入主，新实控人宁花香/周建旗夫妇旗下涉液冷、物联网业务，市场存强烈<strong>借壳注入预期</strong>。随后 2026-02 定增 7.41 亿（全部补流）+ 2026 股权激励（53 折）+ 业绩考核（2028 净利润 ≥5000 万）构成"3 步连环操作"。</p>
+
+  <h3>核心判断</h3>
+  <p><span class="num">综合评分: 4.8 / 10</span>（中等偏弱，基本面修复期 + 事件驱动溢价 + 治理风险并存）</p>
+  <p><strong>综合投资意见: 观望 / 事件驱动者可小仓位博弈</strong></p>
+
+  <div class="card-grid">
+    <div class="highlight-card bull">
+      <h4>优势 Top 3</h4>
+      <p>① 政策驱动结构性受益（2021 抗震条例 + 2025 城市危旧房 14.1 万套 + 农房抗震 7.5 万户）<br>
+      ② 产品结构切换成功（核电 +49%、震振 +559%，新兴业务占比 35%）<br>
+      ③ 财务安全边际充裕（资产负债率 29.72% + 定增 7.41 亿在途，ST 风险近零）</p>
+    </div>
+    <div class="highlight-card bear">
+      <h4>风险 Top 3</h4>
+      <p>① 估值透支（市值 58 亿 vs SOTP 基础 19 亿 = 40 亿期权溢价）<br>
+      ② 新实控人资金结构脆弱（并购贷款 + 股权 100% 质押 + 定增补流）<br>
+      ③ 治理瑕疵（2025-03 云南证监局 4 大类违规 + 历史机构减持 17.98 亿）</p>
+    </div>
+  </div>
+
+  <h3>核心尽调问题</h3>
+  <ol>
+    <li>2025 经营现金流数据冲突（新浪 +1.99 亿 vs 证星 -0.95 亿）</li>
+    <li>深圳东创液冷业务真实规模、客户、毛利率</li>
+    <li>核电抗震业务客户明细（中核/中广核签约数）</li>
+    <li>震振控制 +559% 是真实爆发还是产品重分类</li>
+    <li>华创三鑫 100% 质押的具体贷款与平仓线</li>
+  </ol>
+
+  <div class="warning">
+    <strong>本报告的核心非共识观点（详见 §12 差异化洞察）</strong>:
+    <ol>
+      <li><span class="badge bull">多</span> <strong>洞察 #2</strong>: 核电抗震是未被定价的国产替代赛道（常州格林 +49% 增速）</li>
+      <li><span class="badge bull">多</span> <strong>洞察 #1</strong>: 震安营收已脱钩地产（+27% vs -15.9%），市场仍用"地产建材"框架估值</li>
+      <li><span class="badge bull">多</span> <strong>洞察 #7</strong>: 资产负债率 29.72% + 定增 7.41 亿 = 财务安全边际被恐慌情绪低估</li>
+      <li><span class="badge bear">空</span> <strong>洞察 #4</strong>: 新实控人资金结构暴露借壳炒作（非产业整合）</li>
+      <li><span class="badge bear">空</span> <strong>洞察 #6</strong>: SOTP 拆分后借壳期权溢价 60-70%，兑现概率仅 12%</li>
+    </ol>
+  </div>
+</div>
+
+<!-- §2 评分总览 -->
+<div class="section" id="score">
+  <h2>二、评分总览</h2>
+  <p><strong>单列评分 — 不引入"基准/调整"双列</strong>。Phase 2.5 差异化洞察（§12）作为补充视角，不纳入本评分调整。</p>
+
+  <table>
+    <tr><th>维度</th><th>权重</th><th>评分</th><th>加权分</th><th>备注</th></tr>
+    <tr><td>1. 市场规模与增长</td><td>1.5×</td><td>6</td><td class="num">9.0</td><td>行业 150 亿 / 政策驱动</td></tr>
+    <tr><td>2. 商业模式</td><td>1.5×</td><td>5</td><td class="num">7.5</td><td>B2B 政府类客户长账期</td></tr>
+    <tr><td>3. 团队/管理</td><td>1.5×</td><td>4</td><td class="num">6.0</td><td>实控人刚变更 + 证监局函</td></tr>
+    <tr><td>4. 竞争地位</td><td>1.5×</td><td>6</td><td class="num">9.0</td><td>市占率 41%→30%</td></tr>
+    <tr><td>5. 产品/技术</td><td>1.0×</td><td>6</td><td class="num">6.0</td><td>核级资质 3-5 年壁垒</td></tr>
+    <tr><td>6. 客户/市场触达</td><td>1.0×</td><td>5</td><td class="num">5.0</td><td>客户分散但回款慢</td></tr>
+    <tr><td>7. 财务健康</td><td>1.0×</td><td>4</td><td class="num">4.0</td><td>连续 3 年亏损但负债率低</td></tr>
+    <tr><td>8. 增长指标</td><td>1.0×</td><td>5</td><td class="num">5.0</td><td>2025 +27% 反弹 / 新兴 +559%</td></tr>
+    <tr><td>9. 资本效率</td><td>0.75×</td><td>3</td><td class="num">2.25</td><td>ROE 负 / PS 9.83x 偏高</td></tr>
+    <tr><td>10. 风险控制</td><td>0.75×</td><td>4</td><td class="num">3.0</td><td>证监局函 / 质押 / 借壳不确定</td></tr>
+    <tr><th colspan="3">合计</th><th class="num">56.75</th><th>加权总分</th></tr>
+  </table>
+
+  <div class="scorebar"><span class="label">综合分</span><div class="bar"><div class="fill" style="width: 48%;"></div></div><span class="score">4.8/10</span></div>
+  <div class="scorebar"><span class="label">基础面 (Tier 1)</span><div class="bar"><div class="fill" style="width: 53%;"></div></div><span class="score">5.3</span></div>
+  <div class="scorebar"><span class="label">执行面 (Tier 2)</span><div class="bar"><div class="fill" style="width: 50%;"></div></div><span class="score">5.0</span></div>
+  <div class="scorebar"><span class="label">资本/风险 (Tier 3)</span><div class="bar"><div class="fill" style="width: 35%;"></div></div><span class="score">3.5</span></div>
+
+  <p>量化综合分 = 56.75 / 11.5 = <strong>4.93 / 10</strong>。定性修正 -0.1（治理风险略大于结构优势）。<strong>调整后综合分: 4.83 → 取 4.8</strong>。</p>
+</div>
+
+<!-- §3 行业基本面 -->
+<div class="section" id="industry">
+  <h2>三、行业基本面分析</h2>
+  <h3>3.1 行业生命周期</h3>
+  <p><strong>成长期后段</strong>（2017 年 6 亿 → 2024 年 64 亿 → 2026E 150 亿，10x+ 增长）</p>
+
+  <h3>3.2 市场规模与驱动力</h3>
+  <ul>
+    <li><strong>TAM</strong>: 2026E 150 亿</li>
+    <li><strong>核心驱动</strong>:
+      <ol>
+        <li>2021 国务院《建设工程抗震管理条例》强制性（高烈度区学校/医院/应急）</li>
+        <li>2025 城市危旧房改造 14.1 万套 + 农房抗震改造 7.5 万户</li>
+        <li>"十四五"防震减灾规划 + 老旧小区改造</li>
+        <li>核电重启（十四五在运在建 100+ 台机组）</li>
+        <li>"震振双控"新兴应用（地铁上盖、工业厂房）</li>
+      </ol>
+    </li>
+  </ul>
+
+  <h3>3.3 供需与竞争（Porter 五力）</h3>
+  <table>
+    <tr><th>维度</th><th>强度</th><th>说明</th></tr>
+    <tr><td>新进入者</td><td>中</td><td>认证壁垒 + 客户关系</td></tr>
+    <tr><td>替代品</td><td>低</td><td>抗震技术路线较固定</td></tr>
+    <tr><td>买方议价</td><td>中高</td><td>学校医院方分散但回款慢</td></tr>
+    <tr><td>供应商议价</td><td>低</td><td>橡胶/钢材供应商分散</td></tr>
+    <tr><td>行业内竞争</td><td>高</td><td>省外扩张毛利率普遍下滑</td></tr>
+  </table>
+
+  <h3>3.4 政策与技术方向</h3>
+  <ul>
+    <li><strong>国务院条例（2021-09）</strong>：高烈度区强制，法律基础</li>
+    <li><strong>云南地方法规（2016）</strong>：最早落实，本地红利已耗尽</li>
+    <li><strong>十四五规划</strong>：2025 年前 1.6 亿平米老旧小区改造 + 500 万平米抗震节能改造</li>
+    <li><strong>核电重启</strong>（2022-2026）：每台新机组核电抗震 5000-8000 万</li>
+    <li>技术方向：震振双控 + 核级抗震产品 + 老旧建筑加固</li>
+  </ul>
+</div>
+
+<!-- §4 公司基本面 -->
+<div class="section" id="company">
+  <h2>四、公司基本面分析</h2>
+  <h3>4.1 3-5 年财务趋势（单位: 百万元）</h3>
+  <table>
+    <tr><th>年度</th><th>总收入</th><th>增速</th><th>毛利率</th><th>净利率</th><th>归母净利润</th><th>EPS</th><th>ROE</th></tr>
+    <tr><td>2021</td><td>~900</td><td>—</td><td>~40%</td><td>~15%</td><td>~135</td><td>0.60</td><td>~11%</td></tr>
+    <tr><td>2022</td><td>~900</td><td>0%</td><td>~40%</td><td>~12%</td><td>113</td><td>0.41</td><td>~10%</td></tr>
+    <tr><td>2023</td><td>694</td><td>-22.9%</td><td>40.06%</td><td>-6.6%</td><td>-41</td><td>-0.17</td><td>-2.6%</td></tr>
+    <tr><td>2024</td><td>417</td><td>-39.90%</td><td>31.65%</td><td>-33.79%</td><td>-141</td><td>-0.57</td><td>-8.61%</td></tr>
+    <tr><td>2025</td><td>531</td><td>+27.32%</td><td>30.10%</td><td>-22.03%</td><td>-117</td><td>-0.42</td><td>负</td></tr>
+  </table>
+  <p><strong>趋势解读</strong>: 2021-2022 巅峰 → 2023-2024 连续下挫 → 2025 营收反弹但未盈利。<strong>产品结构切换中</strong>，新兴业务崛起是亮点。</p>
+
+  <h3>4.2 Owner Earnings 计算</h3>
+  <ul>
+    <li>2024: 净利 -141 + D&A 180 - 维护 Capex 80 = <strong>-41</strong></li>
+    <li>2025（新浪 OCF 口径）: <strong>+3</strong>（勉强转正）</li>
+    <li>2025（证星口径）: 若 OCF 为负，则 OE 显著为负</li>
+  </ul>
+
+  <h3>4.3 盈利质量</h3>
+  <table>
+    <tr><th>指标</th><th>2025</th><th>信号</th></tr>
+    <tr><td>经营现金流/净利润</td><td>来源冲突</td><td>⚠️ 关键核实点</td></tr>
+    <tr><td>应收账款占营收</td><td>95.26%</td><td>⚠️ 高但账龄改善</td></tr>
+    <tr><td>扣非 vs 归母</td><td>-128 vs -117</td><td>基本一致</td></tr>
+    <tr><td>计提信用减值</td><td>0.69 亿</td><td>持续</td></tr>
+  </table>
+</div>
+
+<!-- §5 10维度 -->
+<div class="section" id="dim10">
+  <h2>五、详细分析（10 维度评分）</h2>
+
+  <h3>5.1 维度 1: 市场规模与增长 — 6/10</h3>
+  <p><strong>锚点</strong>: TAM 健康（>100 亿），增速中等（30%+），多驱动。<strong>证据</strong>: 2024 行业 64 亿 → 2026E 150 亿；政策+核电+加固多驱动。<strong>理由</strong>: 不到 7 分因震安市占率下滑（41%→30%）说明红利被分散。</p>
+
+  <h3>5.2 维度 2: 商业模式 — 5/10</h3>
+  <p><strong>锚点</strong>: B2B 大额工程。<strong>证据</strong>: 应收 95%；政府/学校分散客户；毛利率从 40% 压至 30%。<strong>理由</strong>: 典型 B2B 工程建材，无显著议价。</p>
+
+  <h3>5.3 维度 3: 团队/管理 — 4/10</h3>
+  <p><strong>锚点</strong>: 治理有明显瑕疵。<strong>证据</strong>: 2025-03 证监局 4 大类违规；实控人 2025-10 刚变更；历史机构减持 17.98 亿。<strong>理由</strong>: 新实控人未知 + 历史瑕疵。</p>
+
+  <h3>5.4 维度 4: 竞争地位 — 6/10</h3>
+  <p><strong>锚点</strong>: 龙头但下滑。<strong>证据</strong>: 2017-2018 市占 30-41% → 2024 约 30%；主要对手天铁股份体量更大但非直接对手。<strong>理由</strong>: 建筑减隔震细分龙头，新兴业务未完全验证。</p>
+
+  <h3>5.5 维度 5: 产品/技术 — 6/10</h3>
+  <p><strong>锚点</strong>: 技术壁垒中等。<strong>证据</strong>: 核级认证 3-5 年；"震振双控"新概念；14 项专利。<strong>理由</strong>: 核电壁垒较高，传统业务壁垒一般。</p>
+
+  <h3>5.6 维度 6: 客户/市场触达 — 5/10</h3>
+  <p><strong>锚点</strong>: 客户分散但回款慢。<strong>证据</strong>: 学校/医院/应急 60%+；云南省内占比 85% 降至 30%；应收高但在回收。<strong>理由</strong>: 区域分散有进展但下游付款弱。</p>
+
+  <h3>5.7 维度 7: 财务健康 — 4/10</h3>
+  <p><strong>锚点</strong>: 连续亏损但资产负债率优。<strong>证据</strong>: 3 年累亏 2.85 亿；资产负债率 29.72%（优于行业）；现金流数据冲突。<strong>理由</strong>: 亏损拖累评分，但负债低 + 定增到账支撑防御。</p>
+
+  <h3>5.8 维度 8: 增长指标 — 5/10</h3>
+  <p><strong>锚点</strong>: 2025 反弹但净利仍亏。<strong>证据</strong>: 2025 营收 +27.32%；震振控制 +559%、核电 +49%；净利仍亏 1.17 亿。<strong>理由</strong>: 营收复苏信号明确，盈利未确认。</p>
+
+  <h3>5.9 维度 9: 资本效率 — 3/10</h3>
+  <p><strong>锚点</strong>: ROE 负 + PS 偏高。<strong>证据</strong>: 连续 3 年亏损；PS 9.83x vs 同业 2-4x；2022 PB 9.92x。<strong>理由</strong>: 资本效率指标全面弱。</p>
+
+  <h3>5.10 维度 10: 风险控制 — 4/10</h3>
+  <p><strong>锚点</strong>: 多重风险。<strong>证据</strong>: 证监局函（治理）、股权质押（借贷）、连续亏损（经营）、借壳不确定（事件）。<strong>理由</strong>: 敞口明确但部分已定价。</p>
+</div>
+
+<!-- §6 舆情 -->
+<div class="section" id="sentiment">
+  <h2>六、网络舆情与市场情绪</h2>
+  <h3>6.1 看好派</h3>
+  <table class="consensus-table">
+    <tr><th>平台</th><th>核心观点</th><th>日期</th></tr>
+    <tr><td>东财股吧</td><td>新实控人液冷注入预期</td><td>2026-01-29</td></tr>
+    <tr><td>东财财富号</td><td>震振 +559%、核电 +49% 新业务爆发</td><td>2026-02</td></tr>
+    <tr><td>东财</td><td>2026-04-13 涨 7.7%，主力净买入 876 万</td><td>2026-04</td></tr>
+    <tr><td>知乎（历史）</td><td>建筑减隔震龙头</td><td>2020-2023</td></tr>
+    <tr><td>东吴证券</td><td>2023-10 维持买入</td><td>2023-10</td></tr>
+  </table>
+
+  <h3>6.2 看衰派</h3>
+  <table class="consensus-table">
+    <tr><th>平台</th><th>核心观点</th><th>日期</th></tr>
+    <tr><td>新浪财经</td><td>2025-03 证监局监管函 <a href="https://finance.sina.com.cn/jjxw/2025-03-14/doc-inepruim6617967.shtml">(链接)</a></td><td>2025-03</td></tr>
+    <tr><td>界面/搜狐</td><td>连续三年累亏 2.85 亿</td><td>2026</td></tr>
+    <tr><td>南都</td><td>定增 7.41 亿全补流=资金紧张 <a href="https://m.mp.oeeee.com/a/BAAFRD0000202602281530926.html">(链接)</a></td><td>2026-02</td></tr>
+    <tr><td>东财股吧</td><td>股价跟液冷，基本面未改善</td><td>2026</td></tr>
+    <tr><td>投资者</td><td>2023 机构减持 17.98 亿案底</td><td>2023</td></tr>
+  </table>
+
+  <h3>6.3 情绪分析</h3>
+  <div class="warning">
+    <strong>多空对峙激烈</strong>: 多头押注实控人注入资产 + 核电新兴业务；空头押注三年亏损 + 估值透支 + 借壳失败。<strong>卖方研报 2025-2026 覆盖稀少</strong>，缺乏严谨基本面重估。股吧流传 ST 传闻（实际风险近零，见洞察 #7）。
+  </div>
+</div>
+
+<!-- §7 可比 -->
+<div class="section" id="peers">
+  <h2>七、可比公司对标</h2>
+  <table>
+    <tr><th>公司</th><th>市值(亿)</th><th>2025 营收</th><th>2025 净利</th><th>PE</th><th>PS</th><th>PB</th><th>产品</th></tr>
+    <tr><td><strong>震安科技 300767</strong></td><td>58</td><td>5.31</td><td>-1.17</td><td>负</td><td><strong>9.83x</strong></td><td>高</td><td>建筑减隔震+核电</td></tr>
+    <tr><td>天铁股份 300587</td><td>80+</td><td>21.36（2024）</td><td>盈利</td><td>10-12x</td><td>3-4x</td><td>1.5x</td><td>轨道减振</td></tr>
+    <tr><td>丰泽股份 300499</td><td>30+</td><td>小</td><td>盈利</td><td>—</td><td>3-5x</td><td>2x</td><td>基建减隔震</td></tr>
+    <tr><td>时代新材 600458</td><td>200+</td><td>大</td><td>盈利</td><td>15-20x</td><td>1-2x</td><td>1.5x</td><td>多元橡胶</td></tr>
+    <tr><td>东方电气 600875</td><td>600+</td><td>巨</td><td>盈利</td><td>15x</td><td>1-2x</td><td>2x</td><td>核电设备</td></tr>
+    <tr><td>英维克 002837（液冷）</td><td>350+</td><td>40+</td><td>盈利</td><td>25-30x</td><td>8-10x</td><td>6-8x</td><td>液冷龙头</td></tr>
+  </table>
+  <ul>
+    <li>震安 PS 9.83x 显著高于建筑减隔震同业（3-5x），反映借壳+新业务双溢价</li>
+    <li>若液冷注入成功，市场可能按英维克框架重估 PS 8-10x → 当前 9.83x 已反映大部分注入预期</li>
+    <li>核电业务若独立估值对标核电特种设备（PS 5-8x）更合理</li>
+  </ul>
+</div>
+
+<!-- §8 投资回报 -->
+<div class="section" id="returns">
+  <h2>八、投资回报模拟（100 万元，12 个月）</h2>
+  <p>入场 20.99 元，持有期 12 个月，三情景：</p>
+  <div class="card-grid">
+    <div class="highlight-card bull">
+      <h4>乐观（概率 20%）</h4>
+      <p>液冷注入落地 + 核电大合同 + 2026H1 OCF >1 亿<br>
+      市值 → 75-95 亿，目标 27-34 元<br>
+      <strong>预期收益: +29% ~ +62%（中位 +46%）</strong></p>
+    </div>
+    <div class="highlight-card">
+      <h4>基准（概率 50%）</h4>
+      <p>借壳悬而未决 + 业务温和修复 + 无重大负面<br>
+      市值 40-65 亿震荡，目标 14-23 元<br>
+      <strong>预期收益: -33% ~ +10%（中位 -11%）</strong></p>
+    </div>
+    <div class="highlight-card bear">
+      <h4>悲观（概率 30%）</h4>
+      <p>注入失败 + 质押平仓传闻 + 2026 审计恶化<br>
+      SOTP 下沿 15-20 亿，目标 5-7 元<br>
+      <strong>预期收益: -76% ~ -67%（中位 -71%）</strong></p>
+    </div>
+  </div>
+  <div class="warning">
+    <strong>加权期望收益 = -17.6%</strong><br>
+    <strong>不推荐重仓</strong>。事件驱动者可在 15 元下小仓位（不超过组合 3%）博弈注入落地。
+  </div>
+</div>
+
+<!-- §9 估值 -->
+<div class="section" id="valuation">
+  <h2>九、估值分析</h2>
+  <h3>9.1 DCF 假设（基准）</h3>
+  <table>
+    <tr><th>参数</th><th>乐观</th><th>基准</th><th>悲观</th></tr>
+    <tr><td>Y1 增速</td><td>+40%</td><td>+25%</td><td>+5%</td></tr>
+    <tr><td>Y2-Y5 增速</td><td>+25%</td><td>+12%</td><td>+3%</td></tr>
+    <tr><td>Y5 营业利润率</td><td>15%</td><td>8%</td><td>2%</td></tr>
+    <tr><td>WACC</td><td>9%</td><td>11%</td><td>13%</td></tr>
+    <tr><td>终值 EV/EBITDA</td><td>12x</td><td>9x</td><td>6x</td></tr>
+  </table>
+
+  <h3>9.2 5 年预测（基准，百万元）</h3>
+  <table>
+    <tr><th>年度</th><th>Y1</th><th>Y2</th><th>Y3</th><th>Y4</th><th>Y5</th></tr>
+    <tr><td>收入</td><td>664</td><td>744</td><td>833</td><td>933</td><td>1,045</td></tr>
+    <tr><td>净利润</td><td>-20</td><td>10</td><td>38</td><td>50</td><td>63</td></tr>
+    <tr><td>FCF</td><td>-50</td><td>0</td><td>40</td><td>70</td><td>100</td></tr>
+    <tr><td>折现 FCF</td><td>-45</td><td>0</td><td>29</td><td>46</td><td>59</td></tr>
+  </table>
+  <p><strong>终值</strong>: 2030 EBITDA 100 × 9x = 900 → 折现 534 → <strong>企业价值 6.2 亿，股权 ~7 亿，对应股价 2.5 元</strong></p>
+
+  <h3>9.3 敏感性矩阵（股权价值, 亿元）</h3>
+  <table>
+    <tr><th></th><th>WACC 9%</th><th>WACC 11%</th><th>WACC 13%</th></tr>
+    <tr><th>增速 +50%</th><td>20</td><td>12</td><td>7</td></tr>
+    <tr><th>增速基准</th><td>11</td><td><strong>7</strong></td><td>3</td></tr>
+    <tr><th>增速 -50%</th><td>3</td><td>-1</td><td>-4</td></tr>
+  </table>
+
+  <div class="warning">
+    <strong>DCF 基准 7 亿 vs 市值 58 亿</strong> — DCF 无法捕捉事件驱动期权（借壳注入），期权价值约 40 亿。
+  </div>
+
+  <h3>9.4 可比倍数（SOTP）</h3>
+  <ul>
+    <li>建筑减隔震（基础）: 3.32 亿 × PS 3x = 10 亿</li>
+    <li>震振控制: 0.97 亿 × PS 4x = 3.9 亿</li>
+    <li>核电抗震: 0.91 亿 × PS 8x = 7.3 亿（国产替代溢价）</li>
+    <li>其他: 0.11 亿 × 2x = 0.2 亿</li>
+    <li><strong>SOTP 基础 = 约 21 亿</strong>（对应 7.6 元）</li>
+  </ul>
+
+  <h3>9.5 估值三角验证</h3>
+  <table>
+    <tr><th>方法</th><th>估值区间（亿）</th><th>每股价值</th><th>置信度</th></tr>
+    <tr><td>DCF</td><td>3-12</td><td>1-4</td><td>低（无期权建模）</td></tr>
+    <tr><td>可比 SOTP</td><td>15-25</td><td>5-9</td><td>中</td></tr>
+    <tr><td>市场</td><td>58</td><td>21</td><td>中（含借壳期权）</td></tr>
+  </table>
+  <p><strong>综合判断: 显著偏高</strong>。合理估值锚定区间 <strong>25-40 亿</strong>（对应 9-14 元），当前含 40%+ 事件驱动溢价。</p>
+
+  <h3>9.6 Narrative-to-Numbers</h3>
+  <ul>
+    <li><strong>公司叙事</strong>: "政策驱动建筑减隔震龙头 + 核电抗震国产替代 + 新实控人液冷注入预期"</li>
+    <li><strong>最脆弱假设</strong>: 液冷业务成功注入（3 重风险）</li>
+    <li><strong>假设错误时</strong>: 市值回到 SOTP 19-21 亿，<strong>股价 -65%</strong></li>
+  </ul>
+</div>
+
+<!-- §10 条款/交易 -->
+<div class="section" id="terms">
+  <h2>十、条款/交易分析</h2>
+  <h3>10.1 机构持仓（2025-06-30）</h3>
+  <ul>
+    <li>41 家主力机构持股 6144 万股（25.61% 流通股）</li>
+    <li>2025-09-30 中海优质成长混合新进第十大（133.95 万股）</li>
+  </ul>
+
+  <h3>10.2 实控人变更（2025-10）</h3>
+  <ul>
+    <li>深圳东创 6.16 亿收购华创三鑫 100%，新实控人宁花香/周建旗</li>
+    <li>原实控人李涛套现 2.72 亿，放弃 12% 表决权</li>
+    <li>华创三鑫 100% 股权质押浦发银行（并购贷款抵押）</li>
+  </ul>
+
+  <h3>10.3 2026-02 定增</h3>
+  <ul>
+    <li>规模 7.41 亿，价格 15.96 元（53 折）</li>
+    <li>认购方: 宁花香 + 东创数智（实控人关联）</li>
+    <li>用途: 100% 补流 + 还贷</li>
+    <li>锁定 36 个月，发行后实控人控股升至 29.90%</li>
+  </ul>
+
+  <h3>10.4 2026 股权激励</h3>
+  <ul>
+    <li>授予 345.36 万股（股本 1.25%），授予价 9.98 元（52 折）</li>
+    <li>CFO 吴卫华获授 276.29 万股</li>
+    <li>业绩考核: 2026 营收 +30% / 2028 营收 +71.6% + 净利 ≥5000 万</li>
+  </ul>
+</div>
+
+<!-- §11 定性 -->
+<div class="section" id="qualitative">
+  <h2>十一、定性判断（7 框架叠加）</h2>
+  <table>
+    <tr><th>框架</th><th>诊断</th><th>修正值</th></tr>
+    <tr><td>11.1 结构性价值</td><td>政策 + 核电国产替代双重结构性</td><td>+0.8</td></tr>
+    <tr><td>11.2 动态护城河</td><td>认证壁垒稳定但市占率下滑</td><td>-0.3</td></tr>
+    <tr><td>11.3 创始人/管理层</td><td>原实控人已套现退出，新实控人未知</td><td>-0.5</td></tr>
+    <tr><td>11.4 资本配置</td><td>河北震安产能低，定增补流保守</td><td>-0.2</td></tr>
+    <tr><td>11.5 S 曲线</td><td>新兴业务（核电、震振）处 S 早期</td><td>+0.3</td></tr>
+    <tr><td>11.6 网络效应</td><td>不适用</td><td>0</td></tr>
+    <tr><td>11.7 监管护城河</td><td>抗震条例 + 核级资质</td><td>+0.5</td></tr>
+    <tr><th colspan="2">平均</th><th>+0.09</th></tr>
+  </table>
+</div>
+
+<!-- §12 差异化洞察 -->
+<div class="section variant-perception" id="variant">
+  <h2>十二、差异化洞察（Variant Perception）</h2>
+  <div class="warning">
+    <strong>本次用户零输入，7 条洞察 100% 由 AI 自主感知</strong>。这是 Phase 2.5 纯 AI 模式测试案例——验证在零用户提示情况下能否独立识别关键议题。
+  </div>
+
+  <h3>12.1 关键议题感知清单</h3>
+  <p><strong>行业定位</strong>: 政策驱动型工程建材 + 事件驱动股（借壳预期）+ 国产替代成长赛道（核电抗震）</p>
+  <p><strong>AI 主动感知的 11 项议题</strong>: 政策执行、政府类应收信用、地产周期对冲、地产周期位置、加固逆周期、核电国产替代、震振控制真实性、新实控人意图、定增资金流向、股权激励反向倒推、质押结构</p>
+
+  <h3>12.2 市场共识映射（8 条）</h3>
+  <ol>
+    <li>新实控人液冷注入预期（看多）</li>
+    <li>连续三年亏损基本面恶化（看空）</li>
+    <li>2025-03 证监局监管函暴露治理（看空）</li>
+    <li>应收 95% 回款风险（看空）</li>
+    <li>建筑减隔震政策龙头（看多，已过时）</li>
+    <li>股价跟液冷炒作与基本面脱钩（警示）</li>
+    <li>定增 7.41 亿补流=资金紧张（看空）</li>
+    <li>股权激励 53 折反映信心不足（看空）</li>
+  </ol>
+  <p><strong>估值隐含预期</strong>: PS 9.83x = 基础业务 19 亿 + 借壳期权 39 亿 = 58 亿。尚未定价核电独立估值和政策加固脱钩地产。</p>
+
+  <h3>12.3 差异化洞察列表（7 条）</h3>
+
+  <div class="insight-card">
+    <h3>洞察 #1: 震安营收已与地产周期脱钩，市场仍用"地产建材"框架误估 <span class="badge bull">多</span> <span class="badge neutral">议题来源: AI 自主感知</span></h3>
+    <div class="field"><strong>假设</strong>: 2025 营收 +27.32% vs 地产投资 -15.9%，驱动力已切换至政策加固 + 核电 + 震振控制</div>
+    <div class="field"><strong>市场共识</strong>: 震安是传统建筑减隔震，受地产拖累</div>
+    <div class="field"><strong>变异认知</strong>: 分产品看只有"传统隔震 -10%"，其他三项全正增长；公司实际是"政策+核电"双驱动成长股</div>
+    <div class="field"><strong>支撑</strong>: [phase1 §10] 地产 -15.9% vs [phase2 §1] 震安 +27%；新兴业务占比 35%</div>
+    <div class="field"><strong>量化影响</strong>: 重估后 SOTP 扩张至 70-85 亿。<strong>股价 +20% ~ +40%</strong></div>
+    <div class="field"><strong>信息不对称</strong>: ☑ 分析 edge（框架错误）☑ 行为 edge（亏损标签屏蔽）☑ 信息 edge（分部数据需挖）</div>
+    <div class="field"><strong>验证路径</strong>: 2026 半年报产品分部；政府订单月度；2026H2 卖方新框架研报</div>
+    <div class="field"><strong>证伪条件</strong>: 2026 半年报新兴业务增速 <20%</div>
+    <div class="field"><strong>置信度</strong>: 中高 | <strong>时间窗口</strong>: 6M-1Y | <strong>类型</strong>: 结构性变化被低估</div>
+  </div>
+
+  <div class="insight-card">
+    <h3>洞察 #2: 核电抗震是未被定价的国产替代赛道 <span class="badge bull">多</span> <span class="badge neutral">议题来源: AI 自主感知</span></h3>
+    <div class="field"><strong>假设</strong>: 常州格林核电抗震（2025 +49% 至 0.91 亿）被市场完全忽视。独立估值 15-25 亿</div>
+    <div class="field"><strong>市场共识</strong>: "震安=建筑减隔震，核电业务可忽略"</div>
+    <div class="field"><strong>变异认知</strong>: 十四五 100+ 核电机组 × 5000-8000 万核级需求；常州格林核级资质（认证 3-5 年）属稀缺</div>
+    <div class="field"><strong>支撑</strong>: [phase1 §6] 常州格林参与核电机组建设；核电 2025 +49.12%</div>
+    <div class="field"><strong>量化影响</strong>: 核电独立估值 15-25 亿。<strong>股价 +20% ~ +35%</strong></div>
+    <div class="field"><strong>信息不对称</strong>: ☑ 信息 edge（子公司披露不足）☑ 分析 edge（未作独立赛道）☑ 行为 edge（核电冷门）</div>
+    <div class="field"><strong>验证路径</strong>: 常州格林客户明细；核级资质；核电机组核准数；2026 半年报毛利率</div>
+    <div class="field"><strong>证伪条件</strong>: 2026 核电增速 <20% 或强势竞争对手抢占</div>
+    <div class="field"><strong>置信度</strong>: 中 | <strong>时间窗口</strong>: 1Y-3Y | <strong>类型</strong>: 结构性变化被低估</div>
+  </div>
+
+  <div class="insight-card warn-insight">
+    <h3>洞察 #3: 震振控制 +559% 可能部分来自产品重分类 <span class="badge warn">警示</span> <span class="badge neutral">议题来源: AI 自主感知</span></h3>
+    <div class="field"><strong>假设</strong>: 震振控制从 0.15 → 0.97 亿（+559%）可能部分来自会计口径重分类</div>
+    <div class="field"><strong>市场共识</strong>: 多头把 +559% 作为"新业务爆发"证据</div>
+    <div class="field"><strong>变异认知</strong>: 6.5x 销售扩张一年内难实现；合并"减震类"增速 80% 更可能是真实增速</div>
+    <div class="field"><strong>支撑</strong>: [phase2 §5] 传统减震 +30% + 震振控制 +559% 合并 ~80%；"震振双控"战略与分类变更时间吻合</div>
+    <div class="field"><strong>量化影响</strong>: 2026 可能回落至 30-50%（非 100%+）。<strong>股价 -8% ~ -12%</strong></div>
+    <div class="field"><strong>信息不对称</strong>: ☑ 信息 edge（分部定义跨年比对）☑ 分析 edge（缺乏会计质疑）</div>
+    <div class="field"><strong>验证路径</strong>: 对比 2024/2025 年报分部定义；2026 Q1 单品类数据</div>
+    <div class="field"><strong>证伪条件</strong>: 2026H1 震振控制同比仍 +50%+</div>
+    <div class="field"><strong>置信度</strong>: 中 | <strong>时间窗口</strong>: 6M | <strong>类型</strong>: 稀释/会计口径被误读</div>
+  </div>
+
+  <div class="insight-card bear-insight">
+    <h3>洞察 #4: 新实控人"3 步连环操作"暴露借壳炒作而非产业整合 <span class="badge bear">空</span> <span class="badge neutral">议题来源: AI 自主感知</span></h3>
+    <div class="field"><strong>假设</strong>: 并购贷款+100% 质押+定增补流+激励低价 = 新实控人资金承压的借壳结构</div>
+    <div class="field"><strong>市场共识</strong>: 定增+激励被看做"认可公司"正面信号</div>
+    <div class="field"><strong>变异认知</strong>: 5 步资金链 — 并购贷款入主 → 质押还贷 → 定增补流 → 激励锁定；若有真液冷资产应直接注入而非让上市公司补流</div>
+    <div class="field"><strong>支撑</strong>: [phase1 §7] 华创三鑫 100% 质押浦发；[phase1 §9] 定增全补流；[phase1 §5] 深圳东创 2019 收购失败历史</div>
+    <div class="field"><strong>量化影响</strong>: 股价跌至 14-15 元触发平仓风险。<strong>股价 -25% ~ -35%</strong></div>
+    <div class="field"><strong>信息不对称</strong>: ☑ 信息 edge（并购贷款条款不公开）☑ 分析 edge（定增+激励被当正面）☑ 行为 edge（借壳吸散户）</div>
+    <div class="field"><strong>验证路径</strong>: 浦发贷款条款；股权质押到期日；定增发行时间；资金使用月度明细</div>
+    <div class="field"><strong>证伪条件</strong>: 液冷 2027 前实际注入；新实控人市价增持；2026 OCF 转正 >2 亿</div>
+    <div class="field"><strong>置信度</strong>: 中高 | <strong>时间窗口</strong>: 6M-1Y | <strong>类型</strong>: 治理/激励结构变化 + 二阶效应</div>
+  </div>
+
+  <div class="insight-card">
+    <h3>洞察 #5: 股权激励反向倒推 — 管理层内部对 2028 盈利预期保守 <span class="badge bull">多/警示</span> <span class="badge neutral">议题来源: AI 自主感知</span></h3>
+    <div class="field"><strong>假设</strong>: 2028 净利考核 ≥5000 万（EPS 0.18），显著低于 2021-2022 高峰 EPS 0.41-0.60</div>
+    <div class="field"><strong>市场共识</strong>: 激励目标（营收 +71.6%）被多头作为"有信心"信号</div>
+    <div class="field"><strong>变异认知</strong>: 2028 营收 +71.6% 仅对应净利 5000 万 = 净利率 5.5%（vs 2021-2022 的 12-15%）。管理层已降低预期</div>
+    <div class="field"><strong>支撑</strong>: [phase1 §9] 激励条款；[phase2 §1] 历史净利率对比</div>
+    <div class="field"><strong>量化影响</strong>: 长期盈利预期修正。<strong>股价 -10% ~ -20%</strong>（被借壳预期对冲）</div>
+    <div class="field"><strong>信息不对称</strong>: ☑ 分析 edge（反向解读 + 跨年对比）☑ 行为 edge（激励=正面惯性）</div>
+    <div class="field"><strong>验证路径</strong>: 2026 实际净利；2027 扭亏；激励目标修订</div>
+    <div class="field"><strong>证伪条件</strong>: 2026 净利 >1 亿（远超目标）；新一轮激励上调</div>
+    <div class="field"><strong>置信度</strong>: 中 | <strong>时间窗口</strong>: 1Y-3Y | <strong>类型</strong>: 治理/激励结构变化（反向）</div>
+  </div>
+
+  <div class="insight-card bear-insight">
+    <h3>洞察 #6: SOTP 拆分隐含 60-70% 借壳期权溢价，兑现概率仅 12% <span class="badge bear">空</span> <span class="badge neutral">议题来源: AI 自主感知</span></h3>
+    <div class="field"><strong>假设</strong>: 市值 58 亿 - SOTP 基础 19 亿 = 期权溢价 39 亿。借壳三重条件（60% × 50% × 40% = 12%）。市场隐含概率 50-78%</div>
+    <div class="field"><strong>市场共识</strong>: 看多看空均未做严谨 SOTP</div>
+    <div class="field"><strong>变异认知</strong>: SOTP: 隔震 4.5 + 减震 3.2 + 震振 3.9 + 核电 7.3 + 其他 0.2 = 19.1 亿</div>
+    <div class="field"><strong>支撑</strong>: [phase1 §9] PS 9.83x 远超同业 2-4x；深圳东创 2019 收购失败历史；定增补流暗示液冷需独立融资</div>
+    <div class="field"><strong>量化影响</strong>: 借壳归零 → 股价 7 元 (-65%)；延期 → 溢价压缩至 20 亿 → 股价 -30%</div>
+    <div class="field"><strong>信息不对称</strong>: ☑ 分析 edge（严谨 SOTP 少见）☑ 行为 edge（借壳吸散户）☑ 信息 edge（液冷规模未公开）</div>
+    <div class="field"><strong>验证路径</strong>: 液冷独立披露；注入预案时间；证监会借壳新规</div>
+    <div class="field"><strong>证伪条件</strong>: 2026 内正式注入预案；液冷规模公开 >5 亿年营收</div>
+    <div class="field"><strong>置信度</strong>: 中 | <strong>时间窗口</strong>: 1Y-2Y | <strong>类型</strong>: 分部估值错配（反向）+ 事件驱动概率</div>
+  </div>
+
+  <div class="insight-card">
+    <h3>洞察 #7: 资产负债率 29.72% + 定增 7.41 亿 = 财务安全边际被低估 <span class="badge bull">多/防御</span> <span class="badge neutral">议题来源: AI 自主感知</span></h3>
+    <div class="field"><strong>假设</strong>: 3 年亏损+95% 应收引发恐慌，但资产负债率 29.72%（优于行业 33.87%）+ 定增 7.41 亿在途 + 应收正在回收 = ST/退市风险近零</div>
+    <div class="field"><strong>市场共识</strong>: 股吧 ST 传闻盛行</div>
+    <div class="field"><strong>变异认知</strong>: 公司不满足任何 ST 标准；定增 = 净资产 50%（大股东输血）；应收从 8.39 降至 5.06 亿（-40%）</div>
+    <div class="field"><strong>支撑</strong>: [phase2 §4] 资产负债率 29.72%；[phase1 §9] 定增 7.41 亿；应收持续下降</div>
+    <div class="field"><strong>量化影响</strong>: 股价下限 10-12 元（SOTP + 定增后净资产）。<strong>股价支撑 +5% ~ +10%</strong></div>
+    <div class="field"><strong>信息不对称</strong>: ☑ 分析 edge（累亏忽略负债率）☑ 行为 edge（ST 传闻过度悲观）</div>
+    <div class="field"><strong>验证路径</strong>: 2026 Q1 负债率；定增到账公告；审计师意见</div>
+    <div class="field"><strong>证伪条件</strong>: 2026 审计保留意见；OCF 转负 >2 亿；定增失败</div>
+    <div class="field"><strong>置信度</strong>: 高 | <strong>时间窗口</strong>: 6M | <strong>类型</strong>: 稀释/会计口径被误读（防御面）</div>
+  </div>
+
+  <h3>12.4 洞察汇总</h3>
+  <h4>Top 3</h4>
+  <ol>
+    <li><strong>洞察 #2</strong>（多）— 核电抗震未被定价</li>
+    <li><strong>洞察 #1</strong>（多）— 地产周期脱钩</li>
+    <li><strong>洞察 #4</strong>（空）— 资金结构风险</li>
+  </ol>
+
+  <h4>方向分布</h4>
+  <ul><li>看多: 4 条（#1, #2, #5, #7）| 看空: 2 条（#4, #6）| 警示: 1 条（#3）</li></ul>
+
+  <div class="warning">
+    <strong>⚠️ 单向偏差</strong>: 4:2 相对均衡。多头论点集中基本面，空头集中事件/估值。建议等 15-17 元入场（SOTP 上沿，借壳溢价压缩后）。
+  </div>
+</div>
+
+<!-- §13 信息缺口 -->
+<div class="section" id="gaps">
+  <h2>十三、信息缺口与尽调优先级</h2>
+  <h3>高优先级</h3>
+  <ol>
+    <li>2025 经营现金流真实数据（新浪 +1.99 vs 证星 -0.95 亿）</li>
+    <li>深圳东创液冷业务规模、客户、毛利率</li>
+    <li>常州格林核电客户明细</li>
+    <li>震振控制 +559% 中真实新业务 vs 重分类比例</li>
+    <li>华创三鑫质押融资余额与平仓线</li>
+  </ol>
+  <h3>敏感性分析（按影响力）</h3>
+  <ol>
+    <li><strong>液冷注入</strong> — 单事件 ±30-50%</li>
+    <li><strong>产能利用率/核电订单</strong> — 季度 ±10-15%</li>
+    <li><strong>股价平仓线</strong> — 14-15 元</li>
+  </ol>
+</div>
+
+<!-- §14 时效性 -->
+<div class="section" id="timeliness">
+  <h2>十四、数据时效性声明</h2>
+  <table>
+    <tr><th>维度</th><th>最新数据</th><th>置信度</th></tr>
+    <tr><td>财务数据</td><td>2025 年报（2026-03）</td><td>高</td></tr>
+    <tr><td>股价</td><td>2026-04-13</td><td>高</td></tr>
+    <tr><td>机构持仓</td><td>2025-09-30</td><td>中</td></tr>
+    <tr><td>实控人变更</td><td>2025-10 过户</td><td>高</td></tr>
+    <tr><td>定增预案</td><td>2026-02</td><td>高</td></tr>
+    <tr><td>股权激励</td><td>2026-03</td><td>高</td></tr>
+  </table>
+</div>
+
+<!-- §15 来源 -->
+<div class="section" id="sources">
+  <h2>十五、信息来源</h2>
+  <ol>
+    <li><a href="http://file.finance.sina.com.cn/211.154.219.97:9494/MRGG/CNSESZ_STOCK/2026/2026-3/2026-03-28/12029525.PDF">2025 年年报</a></li>
+    <li><a href="http://static.cninfo.com.cn/finalpage/2025-04-19/1223146156.PDF">2024 年年报</a></li>
+    <li><a href="http://file.finance.sina.com.cn/211.154.219.97:9494/MRGG/CNSESZ_STOCK/2025/2025-6/2025-06-21/11194314.PDF">控制权变更详式权益报告书</a></li>
+    <li><a href="https://www.jiemian.com/article/12644017.html">界面 2024 年报解读</a></li>
+    <li><a href="https://finance.sina.com.cn/stock/aigc/stockfs/2026-03-27/doc-inhsmtim9437271.shtml">新浪 2025 年报</a></li>
+    <li><a href="https://finance.sina.com.cn/cj/2025-06-18/doc-infapcea7536783.shtml">新浪 控制权变更</a></li>
+    <li><a href="https://finance.sina.com.cn/jjxw/2025-03-14/doc-inepruim6617967.shtml">新浪 证监局监管函</a></li>
+    <li><a href="https://m.mp.oeeee.com/a/BAAFRD0000202602281530926.html">南都 定增预案</a></li>
+    <li><a href="https://www.gov.cn/zhengce/content/2021-08/04/content_5629341.htm">国务院 抗震管理条例</a></li>
+    <li><a href="https://www.chyxx.com/industry/1224631.html">智研咨询 行业规模</a></li>
+  </ol>
+</div>
+
+<!-- Phase 4 Personas -->
+<div class="section" id="personas">
+  <h2>Phase 4: 多角色投资结论</h2>
+  <p><strong>选定角色</strong>: 段永平 + 巴菲特 + 张磊（A股上市公司默认组合）</p>
+
+  <div class="persona-card">
+    <h3>角色 1: 段永平 — 最终结论: 观望（置信度: 高）</h3>
+    <div class="philosophy">"本分" = 做正确的事 + 把事情做对。不懂不做，长期主义，关注商业本质而非股价波动。</div>
+    <p>震安科技给我的第一印象——这是一家被"事件"绑架的公司，不是一家做生意的公司。连续三年亏损 2.85 亿后，2025-10 实控人一换就开始炒液冷注入、借壳预期——这种戏码我在 A 股见过上百次。</p>
+    <p>好生意的第一个特征是定价权。震安的产品本质上是<strong>工程配套件</strong>——学校盖楼要装，政府给什么价就是什么价，没有议价权。更糟糕的是<strong>应收账款占营收 95%</strong>，这叫"账面生意"，不是真正的生意。</p>
+    <p>关于借壳，我讲过很多次："借壳都是卖方在赚钱，买方在接盘"。深圳东创拿的是浦发银行的并购贷款，把震安股票 100% 质押做抵押。定增 7.41 亿全部补流——如果液冷业务真那么值钱，为什么不把液冷资产直接装进去，反而要上市公司吃进现金？<strong>这里的逻辑是反的</strong>。</p>
+    <h4>我最关注的优势</h4>
+    <ol><li>核电抗震业务（常州格林）有独立护城河</li><li>资产负债率 29.72% + 定增 7.41 亿在途</li></ol>
+    <h4>我最担忧的风险</h4>
+    <ol><li>借壳预期兑现概率 < 12%</li><li>新实控人资金结构脆弱</li></ol>
+    <div class="variant-response">
+      <h4>对差异化洞察的回应（自选 3 条）</h4>
+      <ul>
+        <li><strong>洞察 #6（SOTP 借壳期权）</strong> — <span class="stance-strong-agree">强烈共鸣</span>：这就是我反复强调的"别为别人想象的未来付钱"。12% 兑现概率已经乐观——真实世界借壳成功率只有 20-30%，失败的 70-80% 里股价往往跌超 50%。典型的赔率不对称错配。</li>
+        <li><strong>洞察 #4（新实控人资金结构）</strong> — <span class="stance-strong-agree">强烈共鸣</span>：这是本次最欣赏的一条。5 步资金链揭示了<strong>这不是产业整合，是杠杆接盘</strong>。真正整合的人会自带资金直接注入资产，而不是让上市公司定增补流。</li>
+        <li><strong>洞察 #1（脱钩地产）</strong> — <span class="stance-reserved">有保留</span>：认可方向，但这个增长是 2024 跌 40% 后的技术性修复，还是结构性切换？需 2+ 年验证。且毛利率已降到 30%——脱钩的同时可能也"脱掉了盈利性"。</li>
+      </ul>
+    </div>
+    <div class="verdict">最终结论: 观望（劝朋友不碰）| 一句话理由: 核心业务商业本质不行 + 事件驱动赔率不对称 = 典型"我永远不会碰"的生意。</div>
+  </div>
+
+  <div class="persona-card">
+    <h3>角色 2: 巴菲特 — 最终结论: 观望（置信度: 高）</h3>
+    <div class="philosophy">安全边际 + 经济护城河 + 诚实管理层 + 长期持有。</div>
+    <p>When I look at 震安科技, the most important number is the <strong>safety margin</strong>. Here it's negative. DCF 告诉我 3-12 亿，SOTP 19-25 亿，市场给 58 亿——比内在价值高 2.3-19 倍。</p>
+    <p>护城河方面，资源护城河 vs 经济护城河——震安有资源护城河（核级认证、政策受益），但<strong>经济护城河在减弱</strong>。市占率从 41.5% 降至 30%，毛利率从 40% 降到 30%，这些都是侵蚀信号。</p>
+    <p>管理层诚实打个问号：2025-03 证监局责令改正 4 大类问题——不是重大问题，但是红旗。Charlie 教过我："红旗出现的时候，看的不是问题大小，而是管理层的文化。"</p>
+    <p>借壳故事——等整合真实发生再买，你会少赚 10-20%，但也少亏 50-70%。这是非对称交易。Let's wait for $12.</p>
+    <h4>我最关注的优势</h4>
+    <ol><li>核电抗震国产替代护城河（认证 3-5 年）</li><li>资产负债率 29.72% 不会短期出危机</li></ol>
+    <h4>我最担忧的风险</h4>
+    <ol><li>负安全边际</li><li>管理层文化风险（监管函+历史减持+杠杆收购）</li></ol>
+    <div class="variant-response">
+      <h4>对差异化洞察的回应（自选 3 条）</h4>
+      <ul>
+        <li><strong>洞察 #6（SOTP 期权溢价）</strong> — <span class="stance-strong-agree">强烈共鸣</span>：Your SOTP analysis is textbook. 12% 兑现概率甚至是偏乐观的，因为证监会 2024-2025 对借壳审核越来越严。Let's wait for $9-14.</li>
+        <li><strong>洞察 #2（核电未被定价）</strong> — <span class="stance-strong-agree">强烈共鸣</span>：这是我最喜欢的东西。认证壁垒 3-5 年、客户集中度、需求扩张 10-15 年——都是结构性要素。若公司能剥离核电业务单独上市，我愿意付溢价。但现在它被埋在 58 亿总市值里。</li>
+        <li><strong>洞察 #7（财务安全边际）</strong> — <span class="stance-reserved">有保留</span>：防御论点告诉我股价下限是 10-12 元。但"不会出事"只是买入的必要条件，不是充分条件。防御支撑的是"跌到 10 元后不恐慌"，而非"现在买入"。</li>
+      </ul>
+    </div>
+    <div class="verdict">最终结论: 观望（等 9-14 元建立安全边际）| 一句话理由: This one goes to the "too hard" pile. Wait for $12.</div>
+  </div>
+
+  <div class="persona-card">
+    <h3>角色 3: 张磊 — 最终结论: 观望（置信度: 中高）</h3>
+    <div class="philosophy">结构性价值 + 大雪长坡 + 创始人最重要 + 动态护城河。</div>
+    <p>震安科技同时让我看到"真正的结构性机会"和"令人不安的治理问题"。结构性价值方面：2021 条例法律驱动 TAM 跃迁（6 亿→64 亿→150 亿），配合危旧房改造 + 核电重启 + 老旧加固三条驱动，这是真正意义上的"大雪长坡"。</p>
+    <p>但<strong>最让我担忧的是"创始人"这一环断裂</strong>。原实控人李涛套现退出，新实控人宁花香/周建旗旗下液冷/物联网业务，<strong>没有建筑减隔震行业背景</strong>。这不是"创始人升级"，而是"创始人被替换为金融投资人"。</p>
+    <p>市占率从 41% 跌到 30%——<strong>护城河在侵蚀</strong>。行业红利期没拉开差距。"创始人-市场匹配度"方面，新实控人让震安变"液冷+减隔震"双主业，两者不相关，是典型<strong>多元化诅咒</strong>。</p>
+    <p>但核电抗震是真正的结构性资产——常州格林子公司核级资质是少数几家具备的。<strong>这被稀释在过大的体量里</strong>。</p>
+    <h4>我最关注的优势</h4>
+    <ol><li>政策驱动 TAM 10x 扩张的真实结构性红利</li><li>核电抗震的国产替代稀缺性</li></ol>
+    <h4>我最担忧的风险</h4>
+    <ol><li>创始人/核心人物断裂（高瓴框架最大警报）</li><li>市占率侵蚀信号（41%→30%）</li></ol>
+    <div class="variant-response">
+      <h4>对差异化洞察的回应（自选 3 条）</h4>
+      <ul>
+        <li><strong>洞察 #2（核电未被定价）</strong> — <span class="stance-strong-agree">强烈共鸣</span>：高瓴方法论最喜欢的类型——被错误框架分析的结构性资产。行动建议：不重仓震安主体，但增加对核电抗震细分市场研究，寻找更纯粹的标的（常州格林若能分拆独立将是首选）。</li>
+        <li><strong>洞察 #1（地产脱钩）</strong> — <span class="stance-reserved">有保留</span>：认同方向，但"脱钩"和"进入新增长曲线"是两回事。更重要的是"谁承接这个结构性机会"——如果震安市占率继续下滑，说明其他玩家在吃红利，震安未必是最大受益者。</li>
+        <li><strong>洞察 #5（激励反向倒推）</strong> — <span class="stance-strong-agree">强烈共鸣</span>：这是最精彩的洞察。2028 净利 ≥5000 万 = 净利率 5.5%，显著低于 2021-2022 的 12-15%。<strong>当管理层自己都不相信业绩能回到高峰时，凭什么市场给的估值要对标高峰？</strong> 这里的 gap 必须通过市场向管理层预期回归来收敛。</li>
+      </ul>
+    </div>
+    <div class="verdict">最终结论: 观望（追踪核电；除非常州格林分拆否则不建仓）| 一句话理由: 有真正的结构性赛道 + 但核心人物断裂 + 核电资产被稀释 = "观察级"而非"重仓级"机会。</div>
+  </div>
+
+  <h3>角色分歧总结</h3>
+
+  <h4>共识点</h4>
+  <ul>
+    <li><strong>核电抗震是最好的资产</strong>：三人均认可</li>
+    <li><strong>当前估值偏高</strong>：需跌至 9-17 元区间</li>
+    <li><strong>借壳预期风险</strong>：均警示低兑现概率</li>
+    <li><strong>不重仓</strong>：均为"观望"</li>
+  </ul>
+
+  <h4>分歧点</h4>
+  <table class="divergence-table">
+    <tr><th>议题</th><th>段永平</th><th>巴菲特</th><th>张磊</th></tr>
+    <tr><td>商业模式</td><td>本质不行</td><td>普通（护城河侵蚀）</td><td>有结构性赛道但承接者可能不是震安</td></tr>
+    <tr><td>核电抗震</td><td>承认但无法独立操作</td><td>有兴趣等数据</td><td>最有价值，希望分拆</td></tr>
+    <tr><td>新实控人</td><td>借壳炒作</td><td>典型白衣骑士</td><td>核心人物断裂</td></tr>
+    <tr><td>脱钩地产</td><td>技术性修复</td><td>需 2+ 年验证</td><td>脱钩不等于红利承接</td></tr>
+  </table>
+
+  <h4>围绕差异化洞察的分歧</h4>
+  <p><strong>被两位共同选中的洞察及态度</strong>:</p>
+  <table class="divergence-table">
+    <tr><th>洞察</th><th>段永平</th><th>巴菲特</th><th>张磊</th></tr>
+    <tr><td>#6（SOTP 溢价）</td><td class="stance-strong-agree">强烈共鸣</td><td class="stance-strong-agree">强烈共鸣</td><td>—</td></tr>
+    <tr><td>#2（核电抗震）</td><td>—</td><td class="stance-strong-agree">强烈共鸣</td><td class="stance-strong-agree">强烈共鸣</td></tr>
+    <tr><td>#1（地产脱钩）</td><td class="stance-reserved">有保留</td><td>—</td><td class="stance-reserved">有保留</td></tr>
+  </table>
+
+  <p><strong>只被单一 persona 选中的洞察</strong>:
+    <ul>
+      <li><strong>#4（新实控人资金风险）</strong> 仅段永平——与"远离金融操作"哲学契合</li>
+      <li><strong>#7（财务安全边际）</strong> 仅巴菲特——与"先看基本面不出事"契合</li>
+      <li><strong>#5（激励反向倒推）</strong> 仅张磊——与"管理层预期 vs 市场期望 gap"框架契合</li>
+    </ul>
+  </p>
+
+  <div class="warning">
+    <strong>独特洞察</strong>: 三位分别选择 #4 #7 #5 构成完整的风险地图——段永平（资金结构脆弱）+ 巴菲特（防御底线清晰）+ 张磊（管理层预期保守）。三位视角拼接告诉投资者：下行风险来自多重因素叠加，但防御底线确实存在。合理结论是：<strong>等待，但保持追踪</strong>。
+  </div>
+</div>
+
+<footer class="footer">
+  <p>本报告为投资研究参考，不构成投资建议。市场有风险，投资需谨慎。</p>
+  <p>© 2026 Claude Code 投资分析系统 | 生成日期: 2026-04-20</p>
+</footer>
+
+</div>
+</body>
+</html>
