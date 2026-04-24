@@ -1,0 +1,436 @@
+{
+  "schema_version": "v1",
+  "last_updated": "2026-04-24",
+  "reports": [
+    {
+      "slug": "Wingtech_闻泰科技",
+      "ticker": "600745.SH",
+      "name": "Wingtech",
+      "name_cn": "闻泰科技",
+      "sector": "半导体(Nexperia 安世)+ ODM 剥离",
+      "market": "a",
+      "report_date": "2026-04-24",
+      "version": "v2",
+      "composite_score": 4.66,
+      "verdict": "中性-分歧",
+      "verdict_tone": "neutral",
+      "valuation_tag": "估值:折让 8.6%",
+      "one_liner": "v2 修订:新增若安世剥离后剩余资产清单(80-100 亿净现金+壳,底价 7.6 元),§九 DCF 4 情景,§十 投资回报含最差情景下行地板。全球 Top 3 功率分立器件 Nexperia 母公司,2025 全年预亏 90-135 亿。三角色分歧:段永平不碰、林奇 0.5-1% 试水止损 22 元、张磊观察重仓。",
+      "metrics": [
+        {
+          "label": "综合评分",
+          "value": "4.66/10",
+          "tone": "neutral"
+        },
+        {
+          "label": "期望收益",
+          "value": "+8.5%",
+          "tone": "positive"
+        },
+        {
+          "label": "底价",
+          "value": "7.6 元",
+          "tone": "negative"
+        }
+      ],
+      "expected_return_short": "+8.5%",
+      "badges": [
+        {
+          "label": "中性-分歧 4.66/10",
+          "variant": "amber"
+        },
+        {
+          "label": "估值:折让 8.6%",
+          "variant": "amber"
+        }
+      ]
+    },
+    {
+      "slug": "ShifengCulture_实丰文化",
+      "ticker": "002862.SZ",
+      "name": "实丰文化",
+      "name_cn": "实丰文化",
+      "sector": "玩具 + 游戏 + 光伏参股",
+      "market": "a",
+      "report_date": "2026-04-24",
+      "version": "v4.1",
+      "composite_score": 4.0,
+      "verdict": "中性-分歧偏空",
+      "verdict_tone": "bearish",
+      "valuation_tag": "估值锚 10.1 元",
+      "one_liner": "看空倾向修正为中性-分歧偏空 — 2025 实际亏损 -1.748 亿(完美落入预告区间 97% 位置,验证 v3.1 洞察 #1 \"big bath 至上限\");超隆光电长期股权投资已完全清零(3,526 万 → 0);核心 red flag 从\"治理\"升级为\"业务模式崩塌\" — 游戏业务净利从 1,240 万 → 76 万(-94%),是 v3.1 完全没有预见的信号。但 2026 Q1 扭亏 +668 万(+200.9% YoY,扣非 +670 万),主业已企稳,所以结论从\"看空 -44%\"软化为\"中性-分歧\"。",
+      "metrics": [
+        {
+          "label": "综合评分",
+          "value": "4.0/10",
+          "tone": "neutral"
+        },
+        {
+          "label": "期望收益",
+          "value": "-44.1%",
+          "tone": "negative"
+        },
+        {
+          "label": "估值锚",
+          "value": "10.1元",
+          "tone": "neutral"
+        }
+      ],
+      "expected_return_short": "-44.1%",
+      "badges": [
+        {
+          "label": "中性-分歧偏空 4.0/10",
+          "variant": "amber"
+        },
+        {
+          "label": "估值锚 10.1 元",
+          "variant": "amber"
+        }
+      ]
+    },
+    {
+      "slug": "TibetMining_西藏矿业",
+      "ticker": "000762.SZ",
+      "name": "Tibet Mining",
+      "name_cn": "西藏矿业",
+      "sector": "有色金属 / 锂·铬双资源",
+      "market": "a",
+      "report_date": "2026-04-20",
+      "version": "v1",
+      "composite_score": 5.2,
+      "verdict": "观望",
+      "verdict_tone": "neutral",
+      "valuation_tag": "估值:偏高",
+      "one_liner": "世界第三大富锂盐湖扎布耶(50.72%控股)+ 国内最优品位罗布莎铬矿。宝武入主第6年,扎布耶二期 2025-09 投产爬坡中。PB 5.53x 含三重期权溢价,2025 五年首亏。三角色分歧:段永平/巴菲特观望,张磊持有观察。",
+      "metrics": [
+        {
+          "label": "综合评分",
+          "value": "5.2/10",
+          "tone": "neutral"
+        },
+        {
+          "label": "期望收益",
+          "value": "-20.8%",
+          "tone": "negative"
+        },
+        {
+          "label": "PB",
+          "value": "5.53x",
+          "tone": "neutral"
+        }
+      ],
+      "expected_return_short": "-20.8%",
+      "badges": [
+        {
+          "label": "观望 5.2/10",
+          "variant": "amber"
+        },
+        {
+          "label": "估值:偏高",
+          "variant": "amber"
+        }
+      ]
+    },
+    {
+      "slug": "ZhenAn_震安科技",
+      "ticker": "300767.SZ",
+      "name": "QuakeSafe",
+      "name_cn": "震安科技",
+      "sector": "建筑减隔震 + 核电抗震",
+      "market": "a",
+      "report_date": "2026-04-20",
+      "version": "v1",
+      "composite_score": 4.8,
+      "verdict": "观望",
+      "verdict_tone": "neutral",
+      "valuation_tag": "估值:显著偏高",
+      "one_liner": "建筑减隔震行业龙头(2024 市占率 30%)+ 核电抗震国产替代。2025-10 实控人变更为深圳东创,市场存液冷借壳预期。2025 营收 +27.32% 反弹但连续三年亏损。PS 9.83x 含 40 亿期权溢价,三位大佬一致观望。",
+      "metrics": [
+        {
+          "label": "综合评分",
+          "value": "4.8/10",
+          "tone": "negative"
+        },
+        {
+          "label": "期望收益",
+          "value": "-17.6%",
+          "tone": "negative"
+        },
+        {
+          "label": "PS",
+          "value": "9.83x",
+          "tone": "neutral"
+        }
+      ],
+      "expected_return_short": "-17.6%",
+      "badges": [
+        {
+          "label": "观望 4.8/10",
+          "variant": "amber"
+        },
+        {
+          "label": "估值:显著偏高",
+          "variant": "amber"
+        }
+      ]
+    },
+    {
+      "slug": "Tongtaiyi_同泰怡",
+      "ticker": "同泰怡",
+      "name": "Tongtaiyi",
+      "name_cn": "深圳同泰怡",
+      "sector": "服务器制造(AI + 信创)",
+      "market": "pe",
+      "report_date": "2026-04-20",
+      "version": "v1",
+      "composite_score": 6.3,
+      "verdict": "有条件投资",
+      "verdict_tone": "bullish",
+      "valuation_tag": "双生态稀缺卡位",
+      "one_liner": "国内唯一华为鲲鹏/昇腾双钻石 + NVIDIA OEM 双生态服务器商。CEO 李健航(清华+同方+曙光)带队 3 年营收 10x(1.27→13.15 亿)。张磊强烈共鸣、段永平深度反对 — 分歧在商业本质判断。21 项 DD 风险含 5 项 IPO 致命障碍。",
+      "metrics": [
+        {
+          "label": "融资阶段",
+          "value": "B 轮(IPO 前)",
+          "tone": "neutral"
+        },
+        {
+          "label": "合理估值",
+          "value": "15-22 亿",
+          "tone": "positive"
+        },
+        {
+          "label": "营收 CAGR",
+          "value": "+117%",
+          "tone": "positive"
+        }
+      ],
+      "expected_return_short": "15-22 亿",
+      "badges": [
+        {
+          "label": "有条件投资 6.3/10",
+          "variant": "amber"
+        },
+        {
+          "label": "双生态稀缺卡位",
+          "variant": "green"
+        }
+      ]
+    },
+    {
+      "slug": "Adobe_ADBE",
+      "ticker": "ADBE",
+      "name": "Adobe Inc.",
+      "name_cn": "Adobe v3·5阶段分析",
+      "sector": "美股 NASDAQ",
+      "market": "us",
+      "report_date": "2026-04-19",
+      "version": "v3",
+      "composite_score": 7.8,
+      "verdict": "有条件看好",
+      "verdict_tone": "bullish",
+      "valuation_tag": "估值:显著低估",
+      "one_liner": "创意软件龙头,58%市占率,8.5亿MAU。股价12月跌43%至十年最低PE 10x,AI颠覆恐惧 vs $10B FCF基本面。巴菲特/林奇建议买入,木头姐观望。",
+      "metrics": [
+        {
+          "label": "前瞻PE",
+          "value": "10.3x",
+          "tone": "positive"
+        },
+        {
+          "label": "期望收益",
+          "value": "+19%",
+          "tone": "positive"
+        },
+        {
+          "label": "FCF收益率",
+          "value": "~9%",
+          "tone": "positive"
+        }
+      ],
+      "expected_return_short": "+19%",
+      "badges": [
+        {
+          "label": "有条件看好 7.8/10",
+          "variant": "amber"
+        },
+        {
+          "label": "估值:显著低估",
+          "variant": "green"
+        }
+      ]
+    },
+    {
+      "slug": "Circle_CRCL",
+      "ticker": "CRCL",
+      "name": "Circle Internet Group",
+      "name_cn": "Circle",
+      "sector": "稳定币/加密金融基础设施",
+      "market": "us",
+      "report_date": "2026-04-19",
+      "version": "v1",
+      "composite_score": 7.3,
+      "verdict": "有条件看好",
+      "verdict_tone": "bullish",
+      "valuation_tag": "估值:偏高",
+      "one_liner": "USDC稳定币发行方,$790亿数字美元流通。收入+64%但96%依赖利率。巴菲特放弃/木头姐买入/林奇观望 — 三角色严重分歧。",
+      "metrics": [
+        {
+          "label": "收入增速",
+          "value": "+64%",
+          "tone": "positive"
+        },
+        {
+          "label": "期望收益",
+          "value": "+10%",
+          "tone": "neutral"
+        },
+        {
+          "label": "DCF估值",
+          "value": "$88/股",
+          "tone": "neutral"
+        }
+      ],
+      "expected_return_short": "+10%",
+      "badges": [
+        {
+          "label": "有条件看好 7.3/10",
+          "variant": "amber"
+        },
+        {
+          "label": "估值:偏高",
+          "variant": "amber"
+        }
+      ]
+    },
+    {
+      "slug": "Starway_程星通信",
+      "ticker": "程星通信",
+      "name": "Starway Communication",
+      "name_cn": "程星通信",
+      "sector": "微波/卫星互联网",
+      "market": "pe",
+      "report_date": "2026-04-17",
+      "version": "v1",
+      "composite_score": 8.0,
+      "verdict": "强烈看好",
+      "verdict_tone": "bullish",
+      "valuation_tag": "国家战略级卡位",
+      "one_liner": "微波毫米波核心前端技术 + 卫星互联网新基建核心供应商。行业唯一全链路覆盖(卫星端+信关站+终端)民企,独揽 5 项国家重大专项。",
+      "metrics": [
+        {
+          "label": "融资阶段",
+          "value": "E+轮",
+          "tone": "neutral"
+        },
+        {
+          "label": "期望回报",
+          "value": "2.8x",
+          "tone": "positive"
+        },
+        {
+          "label": "营收增速",
+          "value": "+66%",
+          "tone": "positive"
+        }
+      ],
+      "expected_return_short": "2.8x",
+      "badges": [
+        {
+          "label": "强烈看好 8.0/10",
+          "variant": "green"
+        },
+        {
+          "label": "国家战略级卡位",
+          "variant": "green"
+        }
+      ]
+    },
+    {
+      "slug": "NewRadioTech_纽瑞芯",
+      "ticker": "纽瑞芯",
+      "name": "NewRadioTech",
+      "name_cn": "纽瑞芯",
+      "sector": "UWB 芯片设计",
+      "market": "pe",
+      "report_date": "2026-04-16",
+      "version": "v1",
+      "composite_score": 6.7,
+      "verdict": "有条件看好",
+      "verdict_tone": "bullish",
+      "valuation_tag": "技术护城河:强",
+      "one_liner": "国产 UWB 超宽带芯片领导者,全正向自研IP,覆盖手机 / 汽车 / 电视 / IoT 四大场景。华为、吉利、海信量产出货。",
+      "metrics": [
+        {
+          "label": "融资阶段",
+          "value": "B→C轮",
+          "tone": "neutral"
+        },
+        {
+          "label": "期望回报",
+          "value": "2.1x",
+          "tone": "positive"
+        },
+        {
+          "label": "营收增速",
+          "value": "~200%",
+          "tone": "positive"
+        }
+      ],
+      "expected_return_short": "2.1x",
+      "badges": [
+        {
+          "label": "有条件看好 6.7/10",
+          "variant": "amber"
+        },
+        {
+          "label": "技术护城河:强",
+          "variant": "green"
+        }
+      ]
+    },
+    {
+      "slug": "ADBE.US_Adobe",
+      "ticker": "ADBE.US",
+      "name": "Adobe Inc.",
+      "name_cn": "Adobe 旧版·龟龟策略",
+      "sector": "软件 SaaS",
+      "market": "us",
+      "report_date": "2026-04-14",
+      "version": "v1",
+      "composite_score": null,
+      "verdict": "观察(30%)",
+      "verdict_tone": "neutral",
+      "valuation_tag": "护城河:较强",
+      "one_liner": "创意软件平台 + 数字营销云。订阅制SaaS,生态护城河,FCF yield 9.4%",
+      "metrics": [
+        {
+          "label": "GG 精算回报",
+          "value": "8.24%",
+          "tone": "positive"
+        },
+        {
+          "label": "门槛 II",
+          "value": "7.32%",
+          "tone": "neutral"
+        },
+        {
+          "label": "股价分位",
+          "value": "21.8%",
+          "tone": "neutral"
+        }
+      ],
+      "expected_return_short": "+8.24%",
+      "badges": [
+        {
+          "label": "观察(30%)",
+          "variant": "amber"
+        },
+        {
+          "label": "护城河:较强",
+          "variant": "green"
+        }
+      ]
+    }
+  ]
+}

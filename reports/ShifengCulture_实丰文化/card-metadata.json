@@ -1,0 +1,43 @@
+{
+  "slug": "ShifengCulture_实丰文化",
+  "ticker": "002862.SZ",
+  "name": "实丰文化",
+  "name_cn": "实丰文化",
+  "sector": "玩具 + 游戏 + 光伏参股",
+  "market": "a",
+  "report_date": "2026-04-24",
+  "version": "v4.1",
+  "composite_score": 4.0,
+  "verdict": "中性-分歧偏空",
+  "verdict_tone": "bearish",
+  "valuation_tag": "估值锚 10.1 元",
+  "one_liner": "看空倾向修正为中性-分歧偏空 — 2025 实际亏损 -1.748 亿(完美落入预告区间 97% 位置,验证 v3.1 洞察 #1 \"big bath 至上限\");超隆光电长期股权投资已完全清零(3,526 万 → 0);核心 red flag 从\"治理\"升级为\"业务模式崩塌\" — 游戏业务净利从 1,240 万 → 76 万(-94%),是 v3.1 完全没有预见的信号。但 2026 Q1 扭亏 +668 万(+200.9% YoY,扣非 +670 万),主业已企稳,所以结论从\"看空 -44%\"软化为\"中性-分歧\"。",
+  "metrics": [
+    {
+      "label": "综合评分",
+      "value": "4.0/10",
+      "tone": "neutral"
+    },
+    {
+      "label": "期望收益",
+      "value": "-44.1%",
+      "tone": "negative"
+    },
+    {
+      "label": "估值锚",
+      "value": "10.1元",
+      "tone": "neutral"
+    }
+  ],
+  "expected_return_short": "-44.1%",
+  "badges": [
+    {
+      "label": "中性-分歧偏空 4.0/10",
+      "variant": "amber"
+    },
+    {
+      "label": "估值锚 10.1 元",
+      "variant": "amber"
+    }
+  ]
+}
