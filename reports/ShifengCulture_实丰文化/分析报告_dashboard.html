@@ -545,24 +545,53 @@ footer {
 .risk-card-v2.risk-medium   .sev-badge { background: var(--c-risk-yellow); color: var(--c-gray-900); }
 .risk-card-v2.risk-low      .sev-badge { background: var(--c-risk-green);  color: white; }
 
-/* ---------- v4.6-3. 粘性侧边栏 (Bloomberg 关键指标面板) ---------- */
-.container.has-sidebar {
+/* ---------- v4.6.1. 关键指标横排面板 (顶部, 替代 v4.6 的粘性侧边栏) ---------- */
+.metric-strip {
   display: grid;
-  grid-template-columns: 1fr var(--sidebar-width);
-  gap: var(--sidebar-gap);
-  align-items: start;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin: 0 0 24px;
+  padding: 16px;
+  background: white;
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
-.container.has-sidebar > main { min-width: 0; }
+.metric-strip .metric-chip {
+  padding: 10px 14px;
+  text-align: center;
+  border-right: 1px dashed var(--c-gray-100);
+}
+.metric-strip .metric-chip:last-child { border-right: none; }
+.metric-strip .metric-chip .metric-label {
+  font-size: 10px;
+  color: var(--c-gray-500);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.metric-strip .metric-chip .metric-value {
+  font-size: 18px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--c-gray-900);
+}
+.metric-strip .metric-chip .metric-value.positive { color: var(--c-risk-green); }
+.metric-strip .metric-chip .metric-value.negative { color: var(--c-risk-red); }
+.metric-strip .metric-chip .metric-value.risk     { color: var(--c-risk-amber); }
+.metric-strip .metric-chip .metric-value.critical { color: var(--c-risk-red); font-weight: 900; }
+.metric-strip .metric-chip .metric-value.neutral  { color: var(--c-gray-900); }
+
+/* ---------- v4.6 兼容: .metric-sidebar/metric-row 保留(弃用但不破坏存量报告) ---------- */
 .metric-sidebar {
-  position: sticky;
-  top: 70px;
+  /* 降级为块式显示, 不再粘性 */
   background: white;
   border: 1px solid var(--c-card-border);
   border-radius: var(--radius);
   padding: 20px 18px;
   box-shadow: var(--shadow);
-  max-height: calc(100vh - 100px);
-  overflow-y: auto;
+  margin: 0 0 24px;
 }
 .metric-sidebar h4 {
   font-size: 11px;
@@ -584,11 +613,7 @@ footer {
 }
 .metric-sidebar .metric-row:last-child { border-bottom: none; }
 .metric-sidebar .metric-row span { color: var(--c-gray-700); }
-.metric-sidebar .metric-row strong {
-  font-weight: 700;
-  color: var(--c-gray-900);
-  font-variant-numeric: tabular-nums;
-}
+.metric-sidebar .metric-row strong { font-weight: 700; color: var(--c-gray-900); font-variant-numeric: tabular-nums; }
 .metric-sidebar .metric-row strong.positive { color: var(--c-risk-green); }
 .metric-sidebar .metric-row strong.negative { color: var(--c-risk-red); }
 .metric-sidebar .metric-row strong.risk     { color: var(--c-risk-amber); font-weight: 800; }
@@ -697,13 +722,13 @@ footer {
 /* ---------- 响应式 ---------- */
 @media (max-width: 768px) {
   .container { padding: 20px 16px 60px; }
-  .container.has-sidebar { display: block; }  /* v4.6: 移动端侧边栏折叠成顺序 */
-  .metric-sidebar { position: static; margin-top: 24px; max-height: none; }
   header.hero { padding: 24px 16px; }
   header.hero h1 { font-size: 24px; }
   .section { padding: 16px; }
   .scenario-grid, .team-grid, .rating-trio { grid-template-columns: 1fr; }
   .comparison-card { grid-template-columns: 1fr; }
+  .metric-strip { grid-template-columns: repeat(2, 1fr); }
+  .metric-strip .metric-chip { border-right: none; border-bottom: 1px dashed var(--c-gray-100); }
   table { font-size: 12px; }
   table th, table td { padding: 6px 8px; }
 }
@@ -714,8 +739,7 @@ footer {
   .top-nav { display: none; }
   .section { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; }
   header.hero { break-inside: avoid; }
-  .container.has-sidebar { display: block; }
-  .metric-sidebar { position: static; break-inside: avoid; }
+  .metric-strip { break-inside: avoid; }
   .deep-link { color: var(--c-gray-900); background: transparent; border-color: var(--c-gray-500); }
   .deep-link::before { content: ''; }
   .deep-link::after { content: ' (见对应章节)'; font-size: 10px; color: var(--c-gray-500); }
@@ -746,21 +770,20 @@ footer {
   <a href="#sources">来源</a>
 </nav>
 
-<div class="container has-sidebar">
-<main>
+<div class="container">
 
 <!-- ============================================================
      Header Hero
      ============================================================ -->
 <header class="hero">
   <h1>实丰文化（002862.SZ）投资分析报告</h1>
-  <div class="subtitle">Claude Opus 4.7 · company-analysis skill v4.6 · 6+1 阶段流水线 + 11 大师框架审计</div>
+  <div class="subtitle">Claude Opus 4.7 · company-analysis skill v4.6.1 · 6+1 阶段流水线 + 11 大师框架审计</div>
   <div class="meta">
     <span>📅 2026-04-24</span>
     <span>💵 收盘 17.82 元</span>
     <span>📊 PB 7.33 · 市值 29.94 亿</span>
     <span>🎯 估值锚 10.1 元</span>
-    <span>⚠️ 最差情景 5.4 元</span>
+    <span>⚠️ 最差情景 – 元</span>
   </div>
 </header>
 
@@ -787,10 +810,48 @@ footer {
 </div>
 
 <!-- ============================================================
+     v4.6.1 关键指标横排面板(替代 v4.6 的粘性侧边栏,更简洁)
+     ============================================================ -->
+<div class="metric-strip">
+
+  <div class="metric-chip">
+    <div class="metric-label">PE (TTM)</div>
+    <div class="metric-value neutral">–</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">PB</div>
+    <div class="metric-value neutral">7.33x</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">市值(亿)</div>
+    <div class="metric-value neutral">29.94 亿</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">ROE</div>
+    <div class="metric-value negative">-46.60%</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">毛利率</div>
+    <div class="metric-value neutral">36.96%</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">资产负债率</div>
+    <div class="metric-value risk">57.22%</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">股东户数</div>
+    <div class="metric-value neutral">25481</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">家族持股</div>
+    <div class="metric-value risk">40.77%</div>
+  </div>
+</div>
+
+<!-- ============================================================
      §一 执行摘要
      ============================================================ -->
 <div class="section" id="exec-summary">
-
 <h2>§一 执行摘要</h2>
 <blockquote>
 <p><strong>✅ v4 重大更新(2026-04-24 用户提供 PDF URL)</strong>: <strong>2025 年度报告 + 2026 Q1 季报今日上线</strong>(非预约的 4/25)! 已下载并解析 <a href="https://static.cninfo.com.cn/finalpage/2026-04-25/1225188928.PDF">年报全文 181 页</a> + <a href="https://static.cninfo.com.cn/finalpage/2026-04-25/1225188938.PDF">Q1 报告 13 页</a>。Tushare API 实时查仍 0 行(T+1 未同步,明天自动同步)。本节以下数据<strong>全部从年报 PDF 直读</strong>,非估算。</p>
@@ -812,14 +873,12 @@ footer {
 3. 🆕 <strong>新洞察</strong>:<strong>蔡俊权 2025 年增持 1,280 万股 + 同期质押暴涨</strong> = 典型"加杠杆押注自家公司" — 这是"对赌"而非"看好"的信号,若业绩持续恶化容易触发平仓踩踏</p>
 <p><strong>投资方向综合判定</strong>: <strong>中性-分歧偏空</strong>(v3.1 "看空"软化 — Q1 扭亏是实质性利好,但游戏业务崩塌 + 质押率 65% 仍构成系统性压制)</p>
 <hr />
-
 </div>
 
 <!-- ============================================================
      §二 评分总览（10 维度单列）
      ============================================================ -->
 <div class="section" id="scoring">
-
 <h2>§二 事实评分总览(10 维度)</h2>
 <table>
 <thead>
@@ -902,14 +961,12 @@ footer {
 <p>v4 调整后综合分: <strong>4.0/10</strong>(维度 5 治理 -0.5 / 维度 3 盈利 +0.5 受 Q1 扭亏支撑,净值略升)</p>
 <p><em>详细证据见 §六。评分标尺见 <code>references/scoring-rubric.md</code>。</em></p>
 <hr />
-
 </div>
 
 <!-- ============================================================
      §三 快速筛选
      ============================================================ -->
 <div class="section" id="screening">
-
 <h2>§三 快速筛选(致命看空条款 - 6 项)</h2>
 <table>
 <thead>
@@ -961,14 +1018,12 @@ footer {
 </table>
 <p><strong>结果</strong>: <strong>2 项触发</strong>(#1 单季亏损 + #3 大股东质押循环)+ 1 项观察(#6 audit 红旗)。<strong>快筛否决风险 中-高</strong>。§十一 定性判断直接引用本节结果。</p>
 <hr />
-
 </div>
 
 <!-- ============================================================
      §四 公司基本面（含剥离后剩余资产清单若触发）
      ============================================================ -->
 <div class="section" id="fundamentals">
-
 <h2>§四 公司基本面</h2>
 <h3>业务板块(2024 全年结构)</h3>
 <p><strong>v4 按 2025 年报实际数据重算</strong>[PDF:annual_2025, 子公司表]:</p>
@@ -1525,14 +1580,12 @@ footer {
 <p><strong>"扣超隆壳价值"估算</strong>:主业(游戏 + 玩具)2024 合计净利 700-800 万, 给 15x PE = 1.2 亿 + 净资产 3.0 亿 = 约 <strong>4.2 亿</strong>,对应股价 <strong>~25 元</strong>。</p>
 <p>但此测算假设 ①游戏业务 Q3 失速是暂时 ②超隆不再拖累。现实更悲观(见 §九 DCF 悲观情景)。</p>
 <hr />
-
 </div>
 
 <!-- ============================================================
      §五 行业与竞争格局
      ============================================================ -->
 <div class="section" id="industry">
-
 <h2>§五 行业与竞争格局</h2>
 <h3>5.1 玩具行业</h3>
 <ul>
@@ -1620,14 +1673,12 @@ footer {
 <p><em>数据源: [Tushare:daily_basic, 20260423] + [Tushare:fina_indicator, 20241231]</em>
 <em>观察: 2024 玩具行业全面承压,3 家 peer 全部亏损,实丰因游戏业务扭亏是"例外"。但 2025 预亏后实丰将回落至 peer 平均水平。</em></p>
 <hr />
-
 </div>
 
 <!-- ============================================================
      §六 10 维度详细证据
      ============================================================ -->
 <div class="section" id="detail">
-
 <h2>§六 10 维度详细证据</h2>
 <h3>维度 1 · 市场规模与结构(5.0/10)</h3>
 <ul>
@@ -1717,14 +1768,12 @@ footer {
 - 游戏推广费 ROI 恶化
 - 玩具出口关税</p>
 <hr />
-
 </div>
 
 <!-- ============================================================
      §七 网络舆情与市场情绪
      ============================================================ -->
 <div class="section" id="sentiment">
-
 <h2>§七 网络舆情与市场情绪</h2>
 <h3>看多派声音</h3>
 <table>
@@ -1790,15 +1839,13 @@ footer {
 <li>综合:<strong>无外资 + 无杠杆 + 主力本地震荡</strong>,反弹主要由散户和游资驱动</li>
 </ul>
 <hr />
-
 </div>
 
 <!-- ============================================================
      §八 可比公司对标
      ============================================================ -->
 <div class="section" id="peers">
-
-<h2>§八 可比公司对标(v4.4 — Read <code>peer_analysis.md</code>)</h2>
+<h2>§八 可比公司对标(v4.4 — Read `peer_analysis.md`)</h2>
 <h3>§8.1 A 股同行业对标(自动采集)</h3>
 <table>
 <thead>
@@ -2010,14 +2057,12 @@ footer {
 - 但考虑实丰有"游戏业务溢价" + "深圳高新投国资背景",再加 30% 溢价 = 16.5 亿 / 9.8 元
 - 与 §九 DCF 基准情景 9.5 元 <strong>高度自洽</strong> ✅</p>
 <hr />
-
 </div>
 
 <!-- ============================================================
      §九 估值与回报模拟
      ============================================================ -->
 <div class="section" id="valuation">
-
 <h2>§九 估值与回报模拟</h2>
 <blockquote>
 <p><strong>方法论</strong>: DCF 概率加权为唯一估值锚;§十 投资回报测算共用同一组情景。</p>
@@ -2152,14 +2197,12 @@ footer {
 <li>若向上突破 18.50 元阻力 + 放量 → 短线买点,但结合基本面首亏预告,<strong>纯属赌事件性反弹</strong></li>
 </ul>
 <hr />
-
 </div>
 
 <!-- ============================================================
      §十 投资回报测算（与 §九 共用情景）
      ============================================================ -->
 <div class="section" id="invest-sim">
-
 <h2>§十 投资回报测算(与 §九 共用情景)</h2>
 <p><strong>初始仓位</strong>: 100 万元人民币
 <strong>当前买入</strong>: 17.82 元 × 56,000 股 ≈ 100 万元</p>
@@ -2207,14 +2250,12 @@ footer {
 <p><strong>年化 ≈ -24.9%</strong>,<strong>显著跑输大盘</strong>。</p>
 <p><strong>结论</strong>: <strong>不建议买入</strong>。最佳策略:若已持仓,设 <strong>止损 15.15 元</strong>(60 日支撑);若考虑短线,仅适合"赌年报利空出尽 + 户数集中后情绪反弹"的事件驱动,仓位 <strong>≤ 0.5%</strong>,严格止损。</p>
 <hr />
-
 </div>
 
 <!-- ============================================================
      §十一 定性判断（3 框架，无打分）
      ============================================================ -->
 <div class="section" id="qualitative">
-
 <h2>§十一 定性判断(3 框架,v4.1 — 无打分)</h2>
 <blockquote>
 <p><em>会计红旗检查见 <code>audit_report.md</code>(Buffett Quality + Sloan Accrual);估值分析见 §九。</em></p>
@@ -2247,14 +2288,12 @@ footer {
 <p><strong>综合</strong>: 3 框架中 <strong>2 看空 + 1 中性-分歧</strong> → 总基调<strong>看空</strong>。</p>
 <p><strong>致命看空条款检查</strong>: 见 §三 快筛结果(1 项触发 + 2 项观察 → 快筛否决风险 中)。</p>
 <hr />
-
 </div>
 
 <!-- ============================================================
      §十二 差异化洞察（紫色强调，9 字段卡片）
      ============================================================ -->
 <div class="section variant-perception" id="variant">
-
 <h2>§十二 差异化洞察(9 字段卡片 × 3 条)</h2>
 <blockquote>
 <p><strong>主清单</strong>: 3 条 Level A/B 洞察。深度附件(Level C / 议题感知 / 共识映射 / 被拒候选)见 <a href="./phase5-variant-perception.md"><code>phase5-variant-perception.md</code></a>。</p>
@@ -2403,14 +2442,12 @@ footer {
 </table>
 <hr />
 <hr />
-
 </div>
 
 <!-- ============================================================
      §十三 多角色投资结论（Phase 4 回写）
      ============================================================ -->
 <div class="section" id="personas">
-
 <h2>§十三 多角色投资结论(精简版)</h2>
 <blockquote>
 <p><strong>深度版</strong>(完整 3 段论述 + 哲学分歧展开)见 <a href="./phase4-personas.md"><code>phase4-personas.md</code></a></p>
@@ -2433,14 +2470,12 @@ footer {
 <p><strong>分歧</strong>: ①段永平完全回避 / 林奇 0.3% 事件驱动 / 张磊永久排除 — 哲学差异,不是基本面差异 ②下行目标:林奇 9.5 元 / 张磊 10-12 元 / 段永平不量化</p>
 <hr />
 <hr />
-
 </div>
 
 <!-- ============================================================
      §十四 信息缺口与尽调优先级
      ============================================================ -->
 <div class="section" id="gaps">
-
 <h2>§十四 信息缺口与尽调优先级</h2>
 <table>
 <thead>
@@ -2491,14 +2526,12 @@ footer {
 </tbody>
 </table>
 <hr />
-
 </div>
 
 <!-- ============================================================
      §十五 数据可审计性（时效性+来源+audit 红旗）
      ============================================================ -->
 <div class="section" id="sources">
-
 <h2>§十五 数据可审计性(时效性 + 来源 3 类分组)</h2>
 <p><strong>截止日期</strong>: 2025-09-30 财报 + 2026-01-31 预告 + 2026-04-22 股价。<strong>关键待披露</strong>: 2025 年度报告(预计 2026-04 披露)。</p>
 <h3>[Tushare API]</h3>
@@ -2553,33 +2586,157 @@ footer {
 <p><em>本报告由 Claude Code company-analysis skill v4.4 生成(6+1 阶段流水线 + 11 大师框架审计 + peer/capital_flow/TA 新模块)。</em>
 <em>禁止用于实际投资决策,仅作研究参考。</em></p>
 <hr />
+</div>
 
+<!-- ============================================================
+     v4.6.1: 附录/补丁章节追加区(避免 MD→HTML 内容丢失)
+     主报告 §十五 之后的所有 ## 章节(如"附录 v4 修订日志" / "v4.1 补丁")
+     Phase 6 Part B 必须追加到这里, 不得丢弃
+     ============================================================ -->
+<div class="section" id="extra-1">
+<h2>附录 · v4 修订日志(2026-04-25 年报披露触发)</h2>
+<p><strong>触发源</strong>:用户于 2026-04-25 提供 2 份 PDF URL(<a href="https://static.cninfo.com.cn/finalpage/2026-04-25/1225188928.PDF">2025 年报</a> + <a href="https://static.cninfo.com.cn/finalpage/2026-04-25/1225188938.PDF">2026 Q1</a>)。Tushare API 同日 0 行(T+1 未同步),报告完全基于 PDF 原文 Read。</p>
+<h3>v4 验证 v3.1 的 3 条洞察</h3>
+<table>
+<thead>
+<tr>
+<th>洞察</th>
+<th>v3.1 假设</th>
+<th>v4 实测</th>
+<th style="text-align: center;">结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>#1 · 2025 big bath 至上限 -1.8 亿</td>
+<td>接近上限</td>
+<td>实际 -1.748 亿(97% 位置)</td>
+<td style="text-align: center;">✅ 命中</td>
+</tr>
+<tr>
+<td>#2 · 户数 -22% 是散户割肉不是机构吸筹</td>
+<td>需验证</td>
+<td>2026 Q1 户数 <strong>18,758</strong>(再 -26% from 25,481),仍在分散</td>
+<td style="text-align: center;">✅ 方向命中</td>
+</tr>
+<tr>
+<td>#3 · PB 溢价 → 年报后 30-40% 下调</td>
+<td>预期 10-12 元</td>
+<td>净资产 -38.56% 至 2.84 亿验证,但 Q1 扭亏令"下调幅度"减半</td>
+<td style="text-align: center;">⚠️ 部分命中</td>
+</tr>
+</tbody>
+</table>
+<h3>v4 新发现 / 纠错 5 条</h3>
+<ol>
+<li>🔴 <strong>游戏业务崩塌</strong>: 实丰深圳网络科技 2025 净利 <strong>1,240 → 76 万(-94%)</strong>,v3.1 完全未预见 — "2024 扭亏靠游戏" thesis 已破</li>
+<li>🔴 <strong>蔡俊权真实持股 31.29%</strong>(v1/v2/v3/v3.1 全错):之前看 Q3 "流通股东"漏了 3,942 万限售股</li>
+<li>🔴 <strong>蔡氏家族合计 39.99%</strong>(v3.1 说 15.91%) — 严重低估实控集中度</li>
+<li>🔴 <strong>质押率实测</strong>:蔡俊权 64% / 蔡俊淞 <strong>99.5%</strong> / 蔡锦贤 59.2% / 家族合计 65%</li>
+<li>🟢 <strong>2026 Q1 扭亏 +668 万</strong>(扣非 +670 万,营收 +26.4%)— v3.1 完全没预见的阳性信号,令综合评分微升</li>
+</ol>
+<h3>v4 新洞察(未进入主清单)</h3>
+<ul>
+<li><strong>蔡俊权 2025 年内增持 1,280 万股 + 同期大额质押</strong>:典型 "加杠杆押注自家公司" 模式 — 若股价跌 20-30% 或触发家族质押平仓踩踏</li>
+<li><strong>游戏 ETF 被动配置</strong>:华夏中证动漫游戏 ETF(2.31%)+ 国泰中证动漫游戏 ETF(0.60%)新进 — 解释 Q4/Q1 反弹动能</li>
+<li><strong>新增"灵优智学"子公司</strong>(AI 玩具+教育)— 对应预告的 AI 战略投入已落地</li>
+</ul>
+<h3>v4 结论调整</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th style="text-align: center;">v3.1</th>
+<th style="text-align: center;"><strong>v4</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>综合评分</td>
+<td style="text-align: center;">3.8/10</td>
+<td style="text-align: center;"><strong>4.0/10</strong></td>
+</tr>
+<tr>
+<td>投资方向</td>
+<td style="text-align: center;">看空</td>
+<td style="text-align: center;"><strong>中性-分歧偏空</strong></td>
+</tr>
+<tr>
+<td>估值锚</td>
+<td style="text-align: center;">10.1 元(-44%)</td>
+<td style="text-align: center;"><strong>~10 元(-44%)</strong> 微调</td>
+</tr>
+<tr>
+<td>维度 3 盈利</td>
+<td style="text-align: center;">2.0</td>
+<td style="text-align: center;"><strong>2.5</strong> (Q1 扭亏)</td>
+</tr>
+<tr>
+<td>维度 5 治理</td>
+<td style="text-align: center;">4.0</td>
+<td style="text-align: center;"><strong>2.5</strong> (质押 65% + 增持杠杆)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>核心判断</strong>:业务层面 Q1 扭亏是实质利好,但<strong>治理层面质押率 65% + 蔡俊淞 99.5% 接近爆仓</strong>形成系统性压制。结论从 v3.1 "纯看空 -44%"软化为 <strong>"中性-分歧,短期赌技术反弹 + 中期警惕质押踩踏"</strong>。</p>
+<hr />
+</div>
+<div class="section" id="extra-2">
+<h2>附录 · v4.1 修订(2026-04-25 capital_flow 口径修正)</h2>
+<p><strong>触发源</strong>:用户精准追问 "你是如何分析出最大股东有 40% 股本然后主力控盘只有 22.61%?" —— 暴露 <code>capital_flow.py</code> v4.4 的 bug:
+- v4.4 控盘度用 <code>top10_floatholders</code>(仅流通,不含限售)→ 限售股占比高的公司严重低估
+- 实丰蔡俊权账面持股 5,256 万中 <strong>79% 为限售股</strong>(4,175 万),v4.4 全部漏掉</p>
+<h3>v4.5 skill 修复 + v4.1 报告更新</h3>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th style="text-align: center;">v4 (2026-04-24)</th>
+<th style="text-align: center;"><strong>v4.1 (2026-04-25)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主力控盘度</td>
+<td style="text-align: center;">22.61% 🟢 分散(错)</td>
+<td style="text-align: center;"><strong>47.46% 🟡 中度控盘</strong></td>
+</tr>
+<tr>
+<td>实控人家族合计</td>
+<td style="text-align: center;">无此指标</td>
+<td style="text-align: center;"><strong>🔴 蔡俊权家族 40.77%</strong></td>
+</tr>
+<tr>
+<td>对"户数 -22%"解读</td>
+<td style="text-align: center;">"可能散户割肉,证据不足"</td>
+<td style="text-align: center;"><strong>明确为"家族关联方增持 + 蔡俊权 2025 增持 1,280 万股"</strong></td>
+</tr>
+<tr>
+<td>结论自洽性</td>
+<td style="text-align: center;">主力控盘 22.61% 🟢 vs 家族 40% 🔴 矛盾</td>
+<td style="text-align: center;">47.46% + 家族 40.77% <strong>与洞察 #2 完美自洽</strong></td>
+</tr>
+</tbody>
+</table>
+<h3>skill 同步改动(claude-company-analysis v4.5)</h3>
+<ul>
+<li><code>scripts/capital_flow.py</code>:新增 <code>top10_all</code> 数据源 + <code>_family_control()</code> 家族识别启发式</li>
+<li>§1 表从 6 → 7 维度(新增"实控人家族合计持股"独立行)</li>
+<li>§8 警示规则:家族 ≥40% 触发 🔴 关联交易/大股东占款风险</li>
+</ul>
+<h3>已知局限(v4.5)</h3>
+<ul>
+<li><code>_family_control()</code> 只识别"同姓自然人家族",对<strong>非同姓一致行动人 / 控股公司结构</strong>识别不全(如闻泰的"张学政 → 闻天下科技集团"路径,只能识别到张学政 2.97%,漏闻天下 12.37%)</li>
+<li>Phase 3 §四 LLM 仍应<strong>手工核对</strong>年报"实际控制人"章节</li>
+</ul>
+<p><strong>结论不变</strong> — 中性-分歧偏空(但 §四 "主力控盘"部分的定性结论从 v4 的"🟢 分散"反转为 v4.1 的"🟡中度 + 🔴 家族绝对控盘",此反转进一步支持"治理 red flag"的评分下调)。</p>
 </div>
 
 <footer>
-  本报告由 Claude Code company-analysis skill v4.6 生成 · 6+1 阶段流水线 · 11 大师框架审计<br>
+  本报告由 Claude Code company-analysis skill v4.6.1 生成 · 6+1 阶段流水线 · 11 大师框架审计<br>
   数据源：Tushare Pro / yfinance / 巨潮资讯 PDF / WebSearch · 不构成投资建议<br>
   <a href="https://github.com/leafpaper/claude-company-analysis">skill 代码</a> · <a href="https://github.com/leafpaper/Inves-Report">报告归档</a>
 </footer>
-
-</main>
-
-<!-- ============================================================
-     v4.6 新增: 粘性侧边栏 — 关键指标面板 (Bloomberg 风格, 滚动常驻)
-     ============================================================ -->
-<aside class="metric-sidebar">
-  <h4>关键指标</h4>
-
-  <div class="metric-row"><span>PE (TTM)</span><strong class="neutral">– (亏损)</strong></div>
-  <div class="metric-row"><span>PB</span><strong class="neutral">7.33x</strong></div>
-  <div class="metric-row"><span>市值</span><strong>29.94 亿</strong></div>
-  <div class="metric-row"><span>2025 ROE</span><strong class="negative">-46.6%</strong></div>
-  <div class="metric-row"><span>毛利率</span><strong>36.96%</strong></div>
-  <div class="metric-row"><span>资产负债率</span><strong class="risk">57.22%</strong></div>
-  <div class="metric-row"><span>股东户数</span><strong>25,481</strong></div>
-  <div class="metric-row"><span>家族持股</span><strong class="risk">40.77%</strong></div>
-  <div class="metric-row"><span>最大质押率</span><strong class="critical">99.5%</strong></div>
-</aside>
 
 </div>
 </body>
