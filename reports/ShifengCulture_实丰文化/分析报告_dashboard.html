@@ -545,6 +545,30 @@ footer {
 .risk-card-v2.risk-medium   .sev-badge { background: var(--c-risk-yellow); color: var(--c-gray-900); }
 .risk-card-v2.risk-low      .sev-badge { background: var(--c-risk-green);  color: white; }
 
+/* ---------- v4.6.2. Preamble 区 (hero 之后、rating-trio 之前) ---------- */
+.preamble {
+  background: var(--c-gray-50);
+  border-left: 3px solid var(--c-accent);
+  border-radius: 6px;
+  padding: 14px 20px;
+  margin: -8px 0 20px;
+  font-size: 13px;
+  color: var(--c-gray-700);
+  line-height: 1.7;
+}
+.preamble:empty { display: none; }
+.preamble blockquote {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-size: 13px;
+}
+.preamble blockquote p { margin: 6px 0; }
+.preamble p { margin: 6px 0; }
+.preamble strong { color: var(--c-primary-dark); }
+.preamble hr { display: none; }  /* 吃掉 --- 分隔符,避免视觉噪音 */
+
 /* ---------- v4.6.1. 关键指标横排面板 (顶部, 替代 v4.6 的粘性侧边栏) ---------- */
 .metric-strip {
   display: grid;
@@ -777,7 +801,7 @@ footer {
      ============================================================ -->
 <header class="hero">
   <h1>实丰文化（002862.SZ）投资分析报告</h1>
-  <div class="subtitle">Claude Opus 4.7 · company-analysis skill v4.6.1 · 6+1 阶段流水线 + 11 大师框架审计</div>
+  <div class="subtitle">Claude Opus 4.7 · company-analysis skill v4.6.2 · 6+1 阶段流水线 + 11 大师框架审计</div>
   <div class="meta">
     <span>📅 2026-04-24</span>
     <span>💵 收盘 17.82 元</span>
@@ -786,6 +810,22 @@ footer {
     <span>⚠️ 最差情景 – 元</span>
   </div>
 </header>
+
+<!-- ============================================================
+     v4.6.2 新增: Preamble 区 — 主报告第一个 ## 之前的 blockquote / 段落
+     (版本切换说明 / 数据截止注意 / meta 行的详细补充等),否则会丢失
+     ============================================================ -->
+<div class="preamble">
+<p><strong>报告日期</strong>: 2026-04-24
+<strong>报告期</strong>: 覆盖 2022-2025 数据,以 2025 Q3 财报(2025-10-28 披露)+ 2026-01-31 业绩预告为锚
+<strong>最新收盘</strong>: 17.82 元(2026-04-22)
+<strong>总市值</strong>: 29.94 亿元 · PB 7.33 · PE_TTM 不适用(亏损)
+<strong>分析师</strong>: Claude Opus 4.7 · Skill v4.4(首次接入 peer_collector / capital_flow / technical_analysis 三新模块)</p>
+<blockquote>
+<p>本报告为 v3 全新版(基于 2025 Q3 + 2026-01-31 最新预告数据), 历史版本: <a href="./实丰文化-analysis-2026-04-16.md">v1 2026-04-16</a> / <a href="./实丰文化-analysis-2026-04-21.md">v2 2026-04-21</a></p>
+</blockquote>
+<hr />
+</div>
 
 <!-- ============================================================
      v4.6 新增: 前置评级三件套(Goldman 风格, hero 下方醒目位置)
@@ -2733,7 +2773,7 @@ footer {
 </div>
 
 <footer>
-  本报告由 Claude Code company-analysis skill v4.6.1 生成 · 6+1 阶段流水线 · 11 大师框架审计<br>
+  本报告由 Claude Code company-analysis skill v4.6.2 生成 · 6+1 阶段流水线 · 11 大师框架审计<br>
   数据源：Tushare Pro / yfinance / 巨潮资讯 PDF / WebSearch · 不构成投资建议<br>
   <a href="https://github.com/leafpaper/claude-company-analysis">skill 代码</a> · <a href="https://github.com/leafpaper/Inves-Report">报告归档</a>
 </footer>
