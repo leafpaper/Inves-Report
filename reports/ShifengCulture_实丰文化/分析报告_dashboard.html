@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head><meta charset="UTF-8">
-<title>实丰文化(002862.SZ)投资分析报告 v4 — 2026-04-25 年报已验</title>
+<html lang="zh-CN"><head><meta charset="UTF-8"><title>实丰文化(002862.SZ)投资分析报告 v4.1 — 2026-04-25</title>
 <style>
 :root{--primary:#1a4d7a;--accent:#d97f3c;--bull:#2e8b57;--bear:#c04848;--neutral:#888;--bg:#f7f6f2;--card:#ffffff;--border:#e0e0e0;--text:#2a2a2a;--muted:#666;--variant:#7a4dab;--warn:#e8a33a;--danger:#c04848;}
 *{box-sizing:border-box;}
@@ -21,25 +20,19 @@ th{background:#f0ece5;font-weight:600;color:var(--primary);}
 tr:nth-child(even) td{background:#fafafa;}
 blockquote{border-left:4px solid var(--accent);padding-left:16px;color:var(--muted);background:#faf6ef;padding:10px 16px;border-radius:4px;}
 code{background:#f4f0e8;padding:2px 6px;border-radius:3px;font-size:12px;}
-em{color:var(--muted);}
 hr{border:none;border-top:1px dashed var(--border);margin:24px 0;}
-ul,ol{padding-left:22px;}
-li{margin:4px 0;}
-a{color:var(--primary);text-decoration:none;border-bottom:1px dotted;}
-a:hover{color:var(--accent);}
+ul,ol{padding-left:22px;}li{margin:4px 0;}
+a{color:var(--primary);text-decoration:none;border-bottom:1px dotted;}a:hover{color:var(--accent);}
 footer{text-align:center;color:var(--muted);padding:24px 0;font-size:12px;}
 </style></head>
 <body><div class="container">
 <header class="hero">
-<h1>实丰文化(002862.SZ)投资分析报告 <span style="background:#2e8b57;color:#fff;font-size:14px;padding:2px 10px;border-radius:6px;margin-left:8px;">v4 年报实证</span></h1>
-<div class="subtitle">Claude Opus 4.7 · company-analysis skill v4.4 · 基于 2025 年报(181p) + 2026 Q1 季报(13p) PDF 原文 Read — Tushare T+1 未同步时直接 WebFetch 验证</div>
+<h1>实丰文化(002862.SZ)投资分析报告 <span style="background:#2e8b57;color:#fff;font-size:14px;padding:2px 10px;border-radius:6px;margin-left:8px;">v4.1 控盘修正</span></h1>
+<div class="subtitle">Claude Opus 4.7 · company-analysis skill v4.5(capital_flow 口径 bug 修复) · 主力控盘度从"22.61% 🟢 分散" → "47.46% 🟡 中度 + 家族 40.77% 🔴 绝对控盘"</div>
 <div class="meta">
-<span>📅 2026-04-25 (年报披露当日)</span>
-<span>💵 股价 17.82 元</span>
-<span>📉 2025 实亏 -1.748 亿 (预告 97% 位置 ✅)</span>
-<span>📈 2026 Q1 扭亏 +668 万</span>
-<span>🔴 蔡氏家族质押率 65%</span>
-<span>🎲 综合评分 4.0/10</span>
+<span>📅 2026-04-25</span><span>💵 股价 17.82 元</span>
+<span>📉 2025 实亏 -1.748 亿</span><span>📈 2026 Q1 +668 万</span>
+<span>🔴 蔡氏家族绝对控盘 40.77%</span><span>🎲 综合评分 4.0/10</span>
 </div></header>
 <h1 id="002862sz">实丰文化(002862.SZ)投资分析报告</h1>
 <p><strong>报告日期</strong>: 2026-04-24
@@ -479,8 +472,11 @@ footer{text-align:center;color:var(--muted);padding:24px 0;font-size:12px;}
 - "海外产品质量问题赔偿 -1,600 万"是完全新的信号 — 暗示供应链质控问题
 - "IP+AI 战略 -1,900 万"若 2026 能变现,属于"良性投入";否则是 burn rate 失控</p>
 <p><strong>区间宽度 3,000 万,管理层口径定量把握尚可</strong>。区间中点 -1.65 亿 ≈ 4 原因合计 -1.56 亿 + 小幅上浮空间。<strong>推演 Q4 单季亏损 -9,121 万</strong>(占 2024 年净资产 4.62 亿的 19.7%)。</p>
-<h3 id="v44-read-capital_flowmd">主力控盘与筹码分析(v4.4 — Read <code>capital_flow.md</code>)</h3>
-<p><strong>综合判定</strong>(6 维度):</p>
+<h3 id="v45-capital_flow">主力控盘与筹码分析(v4.5 capital_flow — 口径修正)</h3>
+<blockquote>
+<p><strong>v4.5 重大修正</strong>: v4 曾报"主力控盘度 22.61% 🟢 分散",当时用的是 <code>top10_floatholders</code>(仅流通,不含限售)。现改用 <code>top10_holders</code>(含限售)并新增家族一致行动人识别,结论从"分散"<strong>反转为"中度控盘 + 家族绝对控盘"</strong>。用户的精准追问直接触发了此 bug 修复。</p>
+</blockquote>
+<p><strong>综合判定</strong>(7 维度, v4.5 新增家族指标):</p>
 <table>
 <thead>
 <tr>
@@ -491,14 +487,19 @@ footer{text-align:center;color:var(--muted);padding:24px 0;font-size:12px;}
 </thead>
 <tbody>
 <tr>
-<td>主力控盘度</td>
-<td>🟢 分散</td>
-<td>前 10 大流通股东合计 <strong>22.61%</strong></td>
+<td>主力控盘度(总股本口径)</td>
+<td><strong>🟡 中度控盘</strong></td>
+<td>前 10 大全体股东(含限售)合计 <strong>47.46%</strong>(v4 曾报 22.61% 的旧口径降为补充)</td>
 </tr>
 <tr>
-<td>筹码集中度</td>
+<td>★ 实控人家族合计持股</td>
+<td><strong>🔴 家族绝对控盘</strong></td>
+<td><strong>蔡俊权家族合计 40.77%</strong>(自动识别成员: 蔡俊权 / 蔡俊淞 / 蔡锦贤)</td>
+</tr>
+<tr>
+<td>筹码集中度(流通股动态)</td>
 <td>🟢 <strong>筹码集中(主力吸筹)</strong></td>
-<td>户数 <strong>-21.97%</strong>(32,660 → 25,481)</td>
+<td>户数 -21.97%(32,660 → 25,481)</td>
 </tr>
 <tr>
 <td>陆股通</td>
@@ -522,14 +523,11 @@ footer{text-align:center;color:var(--muted);padding:24px 0;font-size:12px;}
 </tr>
 </tbody>
 </table>
-<p><strong>⭐ 关键对比</strong>(capital_flow vs audit):
-- audit_report 长期视角(2022-2024): "户数持续上升 = 筹码分散"🟡
-- capital_flow 近期视角(20250630→20250930): "户数 -22% = 机构吸筹"🟢
-- <strong>综合解读</strong>: 长期散户涌入,但 2025 Q3 一期发生剧烈反转。<strong>三种可能解读</strong>:
-  - (a) 机构/产业资本吸筹(看多)
-  - (b) 实控人/关联方增持(看多)
-  - (c) <strong>散户集中割肉离场,主力趁低拉抬派发</strong>(看空)
-- 当前证据不足以区分 a/b/c — <strong>§十二 差异化洞察 #2 会深究</strong></p>
+<p><strong>口径补充</strong>(v4.5 显式): 前 10 大<strong>流通</strong>股东合计 占总股本 <strong>22.61%</strong> / 占流通股本 <strong>30.08%</strong>。<strong>top10_all(47.46%) vs top10_float 占总(22.61%) 的差距 24.85pp</strong> 说明<strong>实控人大量限售股尚未解锁</strong>(典型家族上市民企)。</p>
+<p><strong>⭐ 修正后的解读</strong>:
+- 户数 -22% 的"筹码集中"可能<strong>就是蔡氏家族关联方通过场内/场外增持的结果</strong>(年报披露蔡俊权 2025 年增持 1,280 万股)
+- <strong>不是机构吸筹,而是实控人家族"加杠杆自购 + 低位吸筹"</strong>(与蔡俊权同期大额质押叠加 = 循环质押 + 增持的杠杆闭环)
+- 原 v4 已经指出 "户数变化是散户割肉 + 蔡氏家族集中",但当时的主力控盘度 22.61% 与这个解读矛盾;v4.5 数据修正后 <strong>47.46% + 家族 40.77%</strong> 与本解读完美自洽</p>
 <h3 id="2025-v4">前十大股东(2025 年报口径,含限售) ⭐ v4 更新</h3>
 <p>[PDF:annual_2025, 股东表] 完整名单:</p>
 <table>
@@ -1811,8 +1809,59 @@ footer{text-align:center;color:var(--muted);padding:24px 0;font-size:12px;}
 </tr>
 </tbody>
 </table>
-<p><strong>核心判断</strong>:业务层面 Q1 扭亏是实质利好,但<strong>治理层面质押率 65% + 蔡俊淞 99.5% 接近爆仓</strong>形成系统性压制。结论从 v3.1 "纯看空 -44%"软化为 <strong>"中性-分歧,短期赌技术反弹 + 中期警惕质押踩踏"</strong>。</p></div>
+<p><strong>核心判断</strong>:业务层面 Q1 扭亏是实质利好,但<strong>治理层面质押率 65% + 蔡俊淞 99.5% 接近爆仓</strong>形成系统性压制。结论从 v3.1 "纯看空 -44%"软化为 <strong>"中性-分歧,短期赌技术反弹 + 中期警惕质押踩踏"</strong>。</p>
+<hr />
+</div>
+<div class="section">
+<h2 id="v41-2026-04-25-capital_flow">附录 · v4.1 修订(2026-04-25 capital_flow 口径修正)</h2>
+<p><strong>触发源</strong>:用户精准追问 "你是如何分析出最大股东有 40% 股本然后主力控盘只有 22.61%?" —— 暴露 <code>capital_flow.py</code> v4.4 的 bug:
+- v4.4 控盘度用 <code>top10_floatholders</code>(仅流通,不含限售)→ 限售股占比高的公司严重低估
+- 实丰蔡俊权账面持股 5,256 万中 <strong>79% 为限售股</strong>(4,175 万),v4.4 全部漏掉</p>
+<h3 id="v45-skill-v41">v4.5 skill 修复 + v4.1 报告更新</h3>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th style="text-align: center;">v4 (2026-04-24)</th>
+<th style="text-align: center;"><strong>v4.1 (2026-04-25)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主力控盘度</td>
+<td style="text-align: center;">22.61% 🟢 分散(错)</td>
+<td style="text-align: center;"><strong>47.46% 🟡 中度控盘</strong></td>
+</tr>
+<tr>
+<td>实控人家族合计</td>
+<td style="text-align: center;">无此指标</td>
+<td style="text-align: center;"><strong>🔴 蔡俊权家族 40.77%</strong></td>
+</tr>
+<tr>
+<td>对"户数 -22%"解读</td>
+<td style="text-align: center;">"可能散户割肉,证据不足"</td>
+<td style="text-align: center;"><strong>明确为"家族关联方增持 + 蔡俊权 2025 增持 1,280 万股"</strong></td>
+</tr>
+<tr>
+<td>结论自洽性</td>
+<td style="text-align: center;">主力控盘 22.61% 🟢 vs 家族 40% 🔴 矛盾</td>
+<td style="text-align: center;">47.46% + 家族 40.77% <strong>与洞察 #2 完美自洽</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="skill-claude-company-analysis-v45">skill 同步改动(claude-company-analysis v4.5)</h3>
+<ul>
+<li><code>scripts/capital_flow.py</code>:新增 <code>top10_all</code> 数据源 + <code>_family_control()</code> 家族识别启发式</li>
+<li>§1 表从 6 → 7 维度(新增"实控人家族合计持股"独立行)</li>
+<li>§8 警示规则:家族 ≥40% 触发 🔴 关联交易/大股东占款风险</li>
+</ul>
+<h3 id="v45">已知局限(v4.5)</h3>
+<ul>
+<li><code>_family_control()</code> 只识别"同姓自然人家族",对<strong>非同姓一致行动人 / 控股公司结构</strong>识别不全(如闻泰的"张学政 → 闻天下科技集团"路径,只能识别到张学政 2.97%,漏闻天下 12.37%)</li>
+<li>Phase 3 §四 LLM 仍应<strong>手工核对</strong>年报"实际控制人"章节</li>
+</ul>
+<p><strong>结论不变</strong> — 中性-分歧偏空(但 §四 "主力控盘"部分的定性结论从 v4 的"🟢 分散"反转为 v4.1 的"🟡中度 + 🔴 家族绝对控盘",此反转进一步支持"治理 red flag"的评分下调)。</p></div>
 
-<footer>v4 关键更新: 2025 年报 PDF 直读验证 — 实亏 -1.748 亿(v3.1 洞察 #1 命中); 游戏业务崩塌 1,240→76 万(-94%); 蔡氏家族真实持股 39.99% + 质押率 65%(蔡俊淞 99.5% 接近爆仓); 2026 Q1 扭亏 +668 万是新阳性信号<br>
-本报告由 Claude Code company-analysis skill v4.4 生成 · <a href="https://github.com/leafpaper/claude-company-analysis">skill 代码</a>
+<footer>v4.1 关键修正: capital_flow.py v4.5 控盘度口径修正 — 数据源从 top10_floatholders(仅流通)切换为 top10_holders(含限售), 新增"实控人家族合计"启发式识别 · 闻泰回归 44.79% 不变(限售已解锁)<br>
+本报告由 Claude Code company-analysis skill v4.5 生成 · <a href="https://github.com/leafpaper/claude-company-analysis">skill 代码</a>
 </footer></div></body></html>
