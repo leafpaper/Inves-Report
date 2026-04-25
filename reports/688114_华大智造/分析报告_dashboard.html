@@ -1,0 +1,2005 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>华大智造（688114.SH）投资分析报告 — 2026-04-25</title>
+<style>
+/* ============================================================
+   Claude Code Company Analysis · Report Styles v4.6
+   单一 CSS 真相源 — 由 assets/html/base.html 加载并内联
+   禁止在 Phase 6 Part B 中自创颜色值或变量名
+   v4.6: Goldman 蓝调 + Morningstar 卡片化 + Bloomberg 风险等级
+   ============================================================ */
+
+:root {
+  /* 主色 — Goldman 深蓝 */
+  --c-primary: #1a56db;
+  --c-primary-light: #e8effc;
+  --c-primary-dark: #0f3d99;
+  --c-accent: #d97f3c;
+
+  /* Bloomberg 风格风险等级(高对比) */
+  --c-risk-red:    #dc2626;
+  --c-risk-red-bg: #fef2f2;
+  --c-risk-amber:  #e8a33a;
+  --c-risk-amber-bg: #fff7ed;
+  --c-risk-yellow: #fbbf24;
+  --c-risk-yellow-bg: #fffbeb;
+  --c-risk-green:  #059669;
+  --c-risk-green-bg: #ecfdf5;
+
+  /* 语义色 (保留 v4.3 alias) */
+  --c-green: var(--c-risk-green);
+  --c-green-bg: var(--c-risk-green-bg);
+  --c-yellow: #d97706;
+  --c-yellow-bg: #fffbeb;
+  --c-red: var(--c-risk-red);
+  --c-red-bg: var(--c-risk-red-bg);
+
+  /* 灰度系 */
+  --c-gray-50:  #f9fafb;
+  --c-gray-100: #f3f4f6;
+  --c-gray-200: #e5e7eb;
+  --c-gray-500: #6b7280;
+  --c-gray-700: #374151;
+  --c-gray-900: #111827;
+
+  /* Morningstar 卡片化灰阶 */
+  --c-card-border:  #e5e7eb;
+  --c-card-header:  #f9fafb;
+  --c-card-hover:   rgba(26,86,219,0.04);
+
+  /* 形状 */
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.06);
+  --shadow-md: 0 4px 6px rgba(0,0,0,.07), 0 2px 4px rgba(0,0,0,.06);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,.08), 0 4px 10px rgba(0,0,0,.05);
+
+  /* Variant Perception 紫 */
+  --c-variant: #7a4dab;
+  --c-variant-bg: #f3eeff;
+
+  /* v4.6 sidebar 布局 */
+  --sidebar-width: 260px;
+  --sidebar-gap: 24px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  background: var(--c-gray-50);
+  color: var(--c-gray-900);
+  margin: 0;
+  padding: 0;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+/* ---------- 3.1 Sticky 顶部导航栏 ---------- */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  height: 50px;
+  padding: 0 24px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.85);
+  border-bottom: 1px solid var(--c-gray-200);
+  font-size: 14px;
+}
+.top-nav .nav-brand {
+  font-weight: 700;
+  color: var(--c-primary);
+  text-decoration: none;
+  margin-right: auto;
+}
+.top-nav a {
+  color: var(--c-gray-700);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background .15s;
+}
+.top-nav a:hover { background: var(--c-primary-light); color: var(--c-primary); }
+
+/* ---------- Header Hero ---------- */
+header.hero {
+  background: linear-gradient(135deg, var(--c-primary), #2a6ba0);
+  color: white;
+  padding: 48px 32px;
+  border-radius: var(--radius);
+  margin-bottom: 32px;
+  box-shadow: var(--shadow-md);
+}
+header.hero h1 { font-size: 32px; margin: 0 0 8px; font-weight: 700; }
+header.hero .subtitle { opacity: 0.9; font-size: 15px; }
+header.hero .meta {
+  display: flex; flex-wrap: wrap; gap: 24px;
+  margin-top: 20px; font-size: 14px;
+}
+
+/* ---------- Section (每个 §一到§十五 一个) ---------- */
+.section {
+  background: white;
+  padding: 28px 32px;
+  margin: 20px 0;
+  border-radius: var(--radius);
+  border: 1px solid var(--c-gray-200);
+  box-shadow: var(--shadow);
+}
+.section h2 {
+  color: var(--c-primary);
+  border-bottom: 2px solid var(--c-primary-light);
+  padding-bottom: 8px;
+  margin-top: 0;
+  font-size: 22px;
+}
+.section h3 {
+  color: var(--c-primary);
+  font-size: 18px;
+  margin-top: 24px;
+  border-bottom: 1px dashed var(--c-gray-200);
+  padding-bottom: 4px;
+}
+.section h4 { color: var(--c-gray-900); font-size: 16px; margin-top: 18px; }
+
+/* Variant Perception 章节专用紫色强调 */
+.section.variant-perception {
+  border-left: 4px solid var(--c-variant);
+  background: linear-gradient(to right, var(--c-variant-bg) 0%, white 3%);
+}
+.section.variant-perception h2 {
+  color: var(--c-variant);
+  border-bottom-color: var(--c-variant-bg);
+}
+
+/* ---------- 3.2 评分环形图 (SVG) ---------- */
+.score-ring {
+  display: inline-block;
+  position: relative;
+}
+.score-ring svg { display: block; }
+.score-ring .score-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.score-ring .score-text .num {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--c-primary);
+}
+.score-ring .score-text .label {
+  font-size: 11px;
+  color: var(--c-gray-500);
+}
+
+/* ---------- 3.3 维度评分条形图 ---------- */
+.dimension-bar {
+  display: grid;
+  grid-template-columns: 1fr 48px 3fr 56px;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0;
+  font-size: 14px;
+}
+.dimension-bar .dim-name { color: var(--c-gray-700); }
+.dimension-bar .dim-score { font-weight: 600; text-align: right; color: var(--c-primary); }
+.dimension-bar .dim-progress {
+  height: 10px;
+  background: var(--c-gray-100);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.dimension-bar .dim-progress .fill { height: 100%; border-radius: 5px; }
+.dimension-bar .dim-progress .fill.tier1 { background: linear-gradient(90deg, #3b82f6, #1d4ed8); }
+.dimension-bar .dim-progress .fill.tier2 { background: linear-gradient(90deg, #8b5cf6, #6d28d9); }
+.dimension-bar .dim-progress .fill.tier3 { background: linear-gradient(90deg, #f59e0b, #d97706); }
+.dimension-bar .dim-weight { text-align: right; color: var(--c-gray-500); font-size: 12px; }
+
+/* ---------- 3.4 三色情景卡片 ---------- */
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+.scenario {
+  padding: 16px;
+  border-radius: 8px;
+  border-left: 4px solid;
+}
+.scenario .label { font-size: 12px; color: var(--c-gray-500); text-transform: uppercase; letter-spacing: 1px; }
+.scenario .big-num { font-size: 28px; font-weight: 700; margin: 4px 0 8px; }
+.scenario .detail { font-size: 13px; color: var(--c-gray-700); }
+.scenario.bull { background: var(--c-green-bg); border-left-color: var(--c-green); }
+.scenario.bull .big-num { color: var(--c-green); }
+.scenario.base { background: var(--c-yellow-bg); border-left-color: var(--c-yellow); }
+.scenario.base .big-num { color: var(--c-yellow); }
+.scenario.bear { background: var(--c-red-bg); border-left-color: var(--c-red); }
+.scenario.bear .big-num { color: var(--c-red); }
+.scenario.tail { background: #2a2a2a; border-left-color: #000; color: #fff; }
+.scenario.tail .big-num { color: #fff; }
+.scenario.tail .detail { color: #ddd; }
+
+/* ---------- 3.5 期望回报高亮条 ---------- */
+.expected-return {
+  background: linear-gradient(135deg, #1e3a5f, var(--c-primary));
+  color: white;
+  padding: 20px 28px;
+  border-radius: var(--radius);
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-md);
+}
+.expected-return .label { font-size: 12px; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; }
+.expected-return .value { font-size: 36px; font-weight: 700; }
+
+/* ---------- 3.6 团队名片网格 ---------- */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+.team-card {
+  padding: 16px;
+  border: 1px solid var(--c-gray-200);
+  border-radius: 8px;
+  text-align: center;
+}
+.team-card .avatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--c-primary-light); color: var(--c-primary);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; margin: 0 auto 8px; font-size: 18px;
+}
+.team-card .name { font-weight: 600; }
+.team-card .role { color: var(--c-gray-500); font-size: 13px; margin-top: 4px; }
+
+/* ---------- 3.7 风险矩阵 ---------- */
+.risk-item {
+  display: grid;
+  grid-template-columns: 20px 1fr auto;
+  gap: 12px;
+  align-items: start;
+  padding: 12px;
+  border-left: 4px solid;
+  background: var(--c-gray-50);
+  border-radius: 6px;
+  margin: 8px 0;
+}
+.risk-item.high   { border-left-color: var(--c-red);    background: var(--c-red-bg); }
+.risk-item.medium { border-left-color: var(--c-yellow); background: var(--c-yellow-bg); }
+.risk-item.low    { border-left-color: var(--c-green);  background: var(--c-green-bg); }
+.risk-item .dot {
+  width: 12px; height: 12px; border-radius: 50%; margin-top: 4px;
+}
+.risk-item.high   .dot { background: var(--c-red); }
+.risk-item.medium .dot { background: var(--c-yellow); }
+.risk-item.low    .dot { background: var(--c-green); }
+
+/* ---------- 3.8 融资时间轴 ---------- */
+.timeline {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 24px 0;
+  overflow-x: auto;
+  padding: 8px 0;
+}
+.timeline .tl-node {
+  flex: 0 0 auto;
+  text-align: center;
+  padding: 0 14px;
+  position: relative;
+}
+.timeline .tl-node::before {
+  content: '';
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--c-gray-200); display: block; margin: 0 auto 8px;
+}
+.timeline .tl-node.current::before { background: var(--c-primary); box-shadow: 0 0 0 4px var(--c-primary-light); }
+.timeline .tl-node .year { font-size: 12px; color: var(--c-gray-500); }
+.timeline .tl-node .round { font-weight: 600; font-size: 13px; }
+.timeline .tl-node .amount { font-size: 11px; color: var(--c-gray-700); }
+
+/* ---------- 3.9 情绪量表 ---------- */
+.sentiment-bar {
+  position: relative;
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(to right, var(--c-red) 0%, var(--c-yellow) 50%, var(--c-green) 100%);
+  margin: 20px 0 32px;
+}
+.sentiment-bar .pointer {
+  position: absolute;
+  top: -8px;
+  width: 4px; height: 28px;
+  background: var(--c-gray-900);
+  border-radius: 2px;
+  transform: translateX(-50%);
+}
+.sentiment-bar .pointer::after {
+  content: attr(data-label);
+  position: absolute;
+  top: 32px; left: 50%; transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 11px;
+  background: var(--c-gray-900);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* ---------- v2 组件 · 估值区间可视化 ---------- */
+.valuation-range {
+  position: relative;
+  height: 28px;
+  background: var(--c-gray-100);
+  border-radius: 4px;
+  margin: 10px 0;
+}
+.valuation-range .range {
+  position: absolute;
+  top: 4px; bottom: 4px;
+  border-radius: 3px;
+  opacity: 0.6;
+}
+.valuation-range .range.dcf { background: var(--c-primary); }
+.valuation-range .range.comparable { background: var(--c-green); }
+.valuation-range .range.transaction { background: var(--c-yellow); }
+.valuation-range .label-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 8px;
+  align-items: center;
+  font-size: 12px;
+}
+
+/* ---------- v2 组件 · 星级评估 ---------- */
+.star-filled { color: var(--c-yellow); }
+.star-empty  { color: var(--c-gray-200); }
+
+/* ---------- v2 组件 · 信息缺口优先级 badge ---------- */
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.badge.critical { background: var(--c-red-bg);    color: var(--c-red); }
+.badge.important{ background: var(--c-yellow-bg); color: var(--c-yellow); }
+.badge.minor    { background: var(--c-green-bg);  color: var(--c-green); }
+
+/* ---------- 通用 Table ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+}
+th, td {
+  border: 1px solid var(--c-gray-200);
+  padding: 8px 12px;
+  text-align: left;
+}
+th {
+  background: var(--c-primary-light);
+  color: var(--c-primary);
+  font-weight: 600;
+}
+tr:nth-child(even) td { background: var(--c-gray-50); }
+
+/* ---------- 通用文本 ---------- */
+strong { color: var(--c-gray-900); font-weight: 600; }
+code {
+  background: var(--c-gray-100);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 12px;
+}
+blockquote {
+  border-left: 4px solid var(--c-primary);
+  padding-left: 16px;
+  color: var(--c-gray-700);
+  background: var(--c-primary-light);
+  padding: 10px 16px;
+  border-radius: 4px;
+  margin: 12px 0;
+}
+hr { border: none; border-top: 1px dashed var(--c-gray-200); margin: 24px 0; }
+ul, ol { padding-left: 22px; }
+li { margin: 4px 0; }
+a {
+  color: var(--c-primary);
+  text-decoration: none;
+  border-bottom: 1px dotted;
+}
+a:hover { color: var(--c-yellow); }
+
+footer {
+  text-align: center;
+  color: var(--c-gray-500);
+  padding: 32px 0 16px;
+  font-size: 12px;
+  border-top: 1px solid var(--c-gray-200);
+  margin-top: 48px;
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 768px) {
+  .container { padding: 20px 16px 60px; }
+  header.hero { padding: 24px 16px; }
+  header.hero h1 { font-size: 24px; }
+  .section { padding: 16px; }
+  .scenario-grid, .team-grid { grid-template-columns: 1fr; }
+  table { font-size: 12px; }
+  table th, table td { padding: 6px 8px; }
+}
+
+/* ============================================================
+   v4.6 新增: 6 个大厂风格组件
+   ============================================================ */
+
+/* ---------- v4.6-1. 前置评级卡 (Goldman 三件套) ---------- */
+.rating-trio {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: -16px 0 32px;
+}
+.rating-card {
+  background: white;
+  border: 1px solid var(--c-card-border);
+  border-top: 4px solid var(--c-primary);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  box-shadow: var(--shadow-md);
+  transition: transform .15s, box-shadow .15s;
+}
+.rating-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.rating-card--score  { border-top-color: var(--c-primary); }
+.rating-card--anchor { border-top-color: var(--c-accent); }
+.rating-card--return { border-top-color: var(--c-risk-green); }
+.rating-card--return.negative { border-top-color: var(--c-risk-red); }
+
+.rating-card .label {
+  font-size: 11px;
+  color: var(--c-gray-500);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.rating-card .value {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--c-gray-900);
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+.rating-card .value .out-of {
+  font-size: 16px;
+  color: var(--c-gray-500);
+  font-weight: 500;
+}
+.rating-card .value.negative { color: var(--c-risk-red); }
+.rating-card .value.positive { color: var(--c-risk-green); }
+.rating-card .sub {
+  font-size: 12px;
+  color: var(--c-gray-700);
+}
+
+/* ---------- v4.6-2. 彩条风险卡 (Bloomberg 等级色) ---------- */
+.risk-card-v2 {
+  display: grid;
+  grid-template-columns: 4px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 14px 16px 14px 0;
+  margin: 8px 0;
+  background: white;
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: background .15s;
+}
+.risk-card-v2:hover { background: var(--c-card-hover); }
+.risk-card-v2.risk-critical { border-left-width: 0; background: linear-gradient(to right, var(--c-risk-red-bg) 0%, white 6%); }
+.risk-card-v2.risk-high     { background: linear-gradient(to right, var(--c-risk-amber-bg) 0%, white 6%); }
+.risk-card-v2.risk-medium   { background: linear-gradient(to right, var(--c-risk-yellow-bg) 0%, white 6%); }
+.risk-card-v2.risk-low      { background: linear-gradient(to right, var(--c-risk-green-bg) 0%, white 6%); }
+.risk-card-v2 .left-bar { align-self: stretch; width: 4px; }
+.risk-card-v2.risk-critical .left-bar { background: var(--c-risk-red); }
+.risk-card-v2.risk-high     .left-bar { background: var(--c-risk-amber); }
+.risk-card-v2.risk-medium   .left-bar { background: var(--c-risk-yellow); }
+.risk-card-v2.risk-low      .left-bar { background: var(--c-risk-green); }
+.risk-card-v2 .title { font-weight: 600; color: var(--c-gray-900); margin-bottom: 3px; }
+.risk-card-v2 .body  { font-size: 13px; color: var(--c-gray-700); line-height: 1.5; }
+.risk-card-v2 .sev-badge {
+  font-size: 10px; font-weight: 700; padding: 3px 10px;
+  border-radius: 12px; white-space: nowrap; letter-spacing: .5px;
+}
+.risk-card-v2.risk-critical .sev-badge { background: var(--c-risk-red);    color: white; }
+.risk-card-v2.risk-high     .sev-badge { background: var(--c-risk-amber);  color: white; }
+.risk-card-v2.risk-medium   .sev-badge { background: var(--c-risk-yellow); color: var(--c-gray-900); }
+.risk-card-v2.risk-low      .sev-badge { background: var(--c-risk-green);  color: white; }
+
+/* ---------- v4.6.2. Preamble 区 (hero 之后、rating-trio 之前) ---------- */
+.preamble {
+  background: var(--c-gray-50);
+  border-left: 3px solid var(--c-accent);
+  border-radius: 6px;
+  padding: 14px 20px;
+  margin: -8px 0 20px;
+  font-size: 13px;
+  color: var(--c-gray-700);
+  line-height: 1.7;
+}
+.preamble:empty { display: none; }
+.preamble blockquote {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-size: 13px;
+}
+.preamble blockquote p { margin: 6px 0; }
+.preamble p { margin: 6px 0; }
+.preamble strong { color: var(--c-primary-dark); }
+.preamble hr { display: none; }  /* 吃掉 --- 分隔符,避免视觉噪音 */
+
+/* ---------- v4.6.1. 关键指标横排面板 (顶部, 替代 v4.6 的粘性侧边栏) ---------- */
+.metric-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin: 0 0 24px;
+  padding: 16px;
+  background: white;
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.metric-strip .metric-chip {
+  padding: 10px 14px;
+  text-align: center;
+  border-right: 1px dashed var(--c-gray-100);
+}
+.metric-strip .metric-chip:last-child { border-right: none; }
+.metric-strip .metric-chip .metric-label {
+  font-size: 10px;
+  color: var(--c-gray-500);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.metric-strip .metric-chip .metric-value {
+  font-size: 18px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--c-gray-900);
+}
+.metric-strip .metric-chip .metric-value.positive { color: var(--c-risk-green); }
+.metric-strip .metric-chip .metric-value.negative { color: var(--c-risk-red); }
+.metric-strip .metric-chip .metric-value.risk     { color: var(--c-risk-amber); }
+.metric-strip .metric-chip .metric-value.critical { color: var(--c-risk-red); font-weight: 900; }
+.metric-strip .metric-chip .metric-value.neutral  { color: var(--c-gray-900); }
+
+/* ---------- v4.6 兼容: .metric-sidebar/metric-row 保留(弃用但不破坏存量报告) ---------- */
+.metric-sidebar {
+  /* 降级为块式显示, 不再粘性 */
+  background: white;
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--radius);
+  padding: 20px 18px;
+  box-shadow: var(--shadow);
+  margin: 0 0 24px;
+}
+.metric-sidebar h4 {
+  font-size: 11px;
+  color: var(--c-gray-500);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  margin: 0 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--c-card-border);
+}
+.metric-sidebar .metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--c-gray-100);
+  font-size: 13px;
+}
+.metric-sidebar .metric-row:last-child { border-bottom: none; }
+.metric-sidebar .metric-row span { color: var(--c-gray-700); }
+.metric-sidebar .metric-row strong { font-weight: 700; color: var(--c-gray-900); font-variant-numeric: tabular-nums; }
+.metric-sidebar .metric-row strong.positive { color: var(--c-risk-green); }
+.metric-sidebar .metric-row strong.negative { color: var(--c-risk-red); }
+.metric-sidebar .metric-row strong.risk     { color: var(--c-risk-amber); font-weight: 800; }
+.metric-sidebar .metric-row strong.critical { color: var(--c-risk-red);   font-weight: 800; }
+
+/* ---------- v4.6-4. 对标卡 (Morningstar 3 列比较) ---------- */
+.comparison-card {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  gap: 8px;
+  background: white;
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin: 12px 0;
+}
+.comparison-card .cmp-col {
+  text-align: center;
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+.comparison-card .cmp-col.center {
+  background: var(--c-primary-light);
+  border: 2px solid var(--c-primary);
+}
+.comparison-card .cmp-label { font-size: 10px; color: var(--c-gray-500); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 6px; }
+.comparison-card .cmp-value { font-size: 20px; font-weight: 800; color: var(--c-gray-900); font-variant-numeric: tabular-nums; }
+.comparison-card .cmp-col.center .cmp-value { font-size: 24px; color: var(--c-primary); }
+.comparison-card .cmp-sub { font-size: 11px; color: var(--c-gray-500); margin-top: 4px; }
+.comparison-card .cmp-bar {
+  height: 6px; background: var(--c-gray-100); border-radius: 3px;
+  margin-top: 8px; position: relative; overflow: hidden;
+}
+.comparison-card .cmp-bar .fill {
+  position: absolute; left: 0; top: 0; bottom: 0;
+  background: linear-gradient(90deg, var(--c-primary), var(--c-accent));
+  border-radius: 3px;
+}
+
+/* ---------- v4.6-5. 深度链接 (章节间跳转) ---------- */
+.deep-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 1px 8px 1px 6px;
+  font-size: 11px;
+  background: var(--c-primary-light);
+  color: var(--c-primary);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  text-decoration: none !important;
+  vertical-align: middle;
+  font-weight: 600;
+  transition: background .15s, border-color .15s;
+}
+.deep-link::before { content: '→'; opacity: .6; }
+.deep-link:hover {
+  background: var(--c-primary);
+  color: white;
+  border-color: var(--c-primary);
+}
+/* Target 高亮(用户点击内链跳到目标章节时) */
+.section:target {
+  animation: target-pulse 1.8s ease-out;
+  scroll-margin-top: 70px;
+}
+@keyframes target-pulse {
+  0%   { box-shadow: 0 0 0 4px var(--c-accent); }
+  100% { box-shadow: var(--shadow); }
+}
+
+/* ---------- v4.6-6. 微型热力图 (纯 CSS 色块网格) ---------- */
+.heatmap-grid {
+  display: grid;
+  gap: 2px;
+  margin: 10px 0;
+  font-size: 10px;
+}
+.heatmap-grid .hm-cell {
+  aspect-ratio: 1 / 1;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  font-family: ui-monospace, monospace;
+  font-weight: 600;
+  color: var(--c-gray-900);
+}
+/* 5 档颜色映射 (深红 → 白 → 深绿) */
+.heatmap-grid .hm-cell.hm--2 { background: #fca5a5; color: #7f1d1d; }
+.heatmap-grid .hm-cell.hm--1 { background: #fed7aa; color: #7c2d12; }
+.heatmap-grid .hm-cell.hm-0  { background: #f3f4f6; }
+.heatmap-grid .hm-cell.hm-1  { background: #bbf7d0; color: #14532d; }
+.heatmap-grid .hm-cell.hm-2  { background: #4ade80; color: white; }
+.heatmap-grid .hm-cell:hover { transform: scale(1.1); }
+
+.heatmap-grid .hm-row-label {
+  font-size: 10px;
+  color: var(--c-gray-500);
+  text-align: right;
+  padding-right: 8px;
+  align-self: center;
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 768px) {
+  .container { padding: 20px 16px 60px; }
+  header.hero { padding: 24px 16px; }
+  header.hero h1 { font-size: 24px; }
+  .section { padding: 16px; }
+  .scenario-grid, .team-grid, .rating-trio { grid-template-columns: 1fr; }
+  .comparison-card { grid-template-columns: 1fr; }
+  .metric-strip { grid-template-columns: repeat(2, 1fr); }
+  .metric-strip .metric-chip { border-right: none; border-bottom: 1px dashed var(--c-gray-100); }
+  table { font-size: 12px; }
+  table th, table td { padding: 6px 8px; }
+}
+
+/* ---------- 打印 ---------- */
+@media print {
+  body { background: white; }
+  .top-nav { display: none; }
+  .section { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; }
+  header.hero { break-inside: avoid; }
+  .metric-strip { break-inside: avoid; }
+  .deep-link { color: var(--c-gray-900); background: transparent; border-color: var(--c-gray-500); }
+  .deep-link::before { content: ''; }
+  .deep-link::after { content: ' (见对应章节)'; font-size: 10px; color: var(--c-gray-500); }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     Sticky 顶部导航栏 — 15 章节锚点
+     ============================================================ -->
+<nav class="top-nav">
+  <a href="../../index.html" class="nav-brand">叶纸的投资报告</a>
+  <a href="#exec-summary">摘要</a>
+  <a href="#scoring">评分</a>
+  <a href="#screening">快筛</a>
+  <a href="#fundamentals">基本面</a>
+  <a href="#industry">行业</a>
+  <a href="#detail">详细</a>
+  <a href="#sentiment">舆情</a>
+  <a href="#peers">对标</a>
+  <a href="#valuation">估值</a>
+  <a href="#qualitative">定性</a>
+  <a href="#variant">洞察</a>
+  <a href="#personas">角色</a>
+  <a href="#gaps">缺口</a>
+  <a href="#sources">来源</a>
+</nav>
+
+<div class="container">
+
+<!-- ============================================================
+     Header Hero
+     ============================================================ -->
+<header class="hero">
+  <h1>华大智造（688114.SH）投资分析报告</h1>
+  <div class="subtitle">Claude Opus 4.7 · company-analysis skill v4.6.2 · 6+1 阶段流水线 + 11 大师框架审计</div>
+  <div class="meta">
+    <span>📅 2026-04-25</span>
+    <span>💵 收盘 48.30 元</span>
+    <span>📊 PB 2.64 · 市值 201.18 亿</span>
+    <span>🎯 估值锚 42.0 元</span>
+    <span>⚠️ 最差情景 – 元</span>
+  </div>
+</header>
+
+<!-- ============================================================
+     v4.6.2 新增: Preamble 区 — 主报告第一个 ## 之前的 blockquote / 段落
+     (版本切换说明 / 数据截止注意 / meta 行的详细补充等),否则会丢失
+     ============================================================ -->
+<div class="preamble">
+<p><strong>报告日期</strong>: 2026-04-25(2025 年报披露次日)
+<strong>报告期</strong>: 覆盖 2022-2025 数据 + 2025 年报实证(2026-04-24 披露)
+<strong>最新收盘</strong>: 48.30 元(2026-04-24)
+<strong>总市值</strong>: 201.18 亿元 · PB 2.64 · PE_TTM 不适用(亏损)
+<strong>分析师</strong>: Claude Opus 4.7 · Skill v4.6.2</p>
+<blockquote>
+<p>本报告基于 2026-04-24 披露的 <strong>2025 年报</strong>首日数据 + Q1 2026 媒体口径,Tushare T+1 已同步全部财务结构化数据。审计师<strong>毕马威华振 标准无保留意见</strong>。</p>
+</blockquote>
+<hr />
+</div>
+
+<!-- ============================================================
+     v4.6 新增: 前置评级三件套(Goldman 风格, hero 下方醒目位置)
+     ============================================================ -->
+<div class="rating-trio">
+
+  <div class="rating-card rating-card--score">
+    <div class="label">综合评分</div>
+    <div class="value">5.4 <span class="out-of">/ 10</span></div>
+    <div class="sub">中性-分歧偏多</div>
+  </div>
+  <div class="rating-card rating-card--anchor">
+    <div class="label">估值锚(DCF 概率加权)</div>
+    <div class="value">42.0 元</div>
+    <div class="sub">相对当前 -13%</div>
+  </div>
+  <div class="rating-card rating-card--return">
+    <div class="label">2 年期望收益</div>
+    <div class="value positive">+18.5%</div>
+    <div class="sub">年化 +8.9%</div>
+  </div>
+</div>
+
+<!-- ============================================================
+     v4.6.1 关键指标横排面板(替代 v4.6 的粘性侧边栏,更简洁)
+     ============================================================ -->
+<div class="metric-strip">
+
+  <div class="metric-chip">
+    <div class="metric-label">PE (TTM)</div>
+    <div class="metric-value neutral">–</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">PB</div>
+    <div class="metric-value neutral">2.64x</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">市值(亿)</div>
+    <div class="metric-value neutral">201.18 亿</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">ROE</div>
+    <div class="metric-value negative">-2.86%</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">毛利率</div>
+    <div class="metric-value neutral">52.92%</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">资产负债率</div>
+    <div class="metric-value positive">25.0%</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">股东户数</div>
+    <div class="metric-value neutral">15418</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">家族持股</div>
+    <div class="metric-value neutral">49.03%</div>
+  </div>
+</div>
+
+<!-- ============================================================
+     §一 执行摘要
+     ============================================================ -->
+<div class="section" id="exec-summary">
+<h2>§一 执行摘要</h2>
+<p><strong>一句话结论</strong>: <strong>中性-分歧偏多(反转初期)</strong> — 全球基因测序仪国产龙头,2025 实亏 <strong>-2.22 亿</strong>(落在预告区间 -2.21~-2.73 的最下沿,亏损 YoY 收窄 <strong>63%</strong>),时空组学 +161.76% / 北美时空 +299.79% 是真实增量;但财务上 4 连亏 + PB 2.64 vs ROE -2.86% 理论合理 PB 0.36 <strong>溢价 7.4 倍</strong> + 散户户数 1 年 +127% 涌入,定价隐含的"反转预期"已较饱满。</p>
+<p><strong>估值锚</strong>: <strong>DCF 概率加权 ≈ 175 亿元 / 42.0 元</strong>(3 情景;乐观 30% / 基准 50% / 悲观 20%)。当前 48.30 元相对此锚溢价 13%。注:亏损公司 DCF 高度依赖"何时盈亏平衡"的假设,2026 是关键验证窗口。</p>
+<p><strong>综合评分</strong>: <strong>5.4/10</strong> · <strong>数据置信度</strong>: 高(2025 年报 + 业绩快报 + Q1 媒体口径 + 三家券商研报覆盖)</p>
+<p><strong>三大风险(Top 3)</strong>:
+1. 🟠 <strong>4 连亏 + 累计未分配利润 -10.6 亿</strong>:2023-2025 累计经营亏损 -14 亿(扣除 2022 Illumina 22 亿一次性后),需消化窗口长
+2. 🟠 <strong>PB vs ROE Gordon 错配 7.4x</strong>:PB 2.64 vs ROE -2.86% 理论 PB 0.36,<strong>市场已定价 ROE 在 5-7% 的乐观情景</strong>,若 2026/2027 不能盈利,估值有 30-40% 下调空间
+3. 🟠 <strong>2025 利润改善不全是真实经营改善</strong>:4 大改善因素中 2 项一次性(汇兑 + 税务拨备冲回)+ 1 项主动降本 + 1 项减值同比加大 76%(-1.60 亿) — 真改善需 2026 数据验证</p>
+<p><strong>三大机会(Top 3)</strong>:
+1. 🟢 <strong>时空组学(STOmics)+161.76% YoY</strong>:2025 全年增长,北美区时空 +299.79%,这是真正的"第二曲线"
+2. 🟢 <strong>测序仪平台多点开花</strong>:T7+ 27 台装机 / G99 试剂 +24.90% / E25 设备 +150.75% 三个梯队产品都有增长
+3. 🟢 <strong>2026 Q1 营收双位数增长 + 现金流转正</strong>(每经网):若全年保持,2026 有望盈亏平衡(reverter)</p>
+<p><strong>核心非共识观点</strong>:
+1. 2025 利润改善的"可持续性"被高估 — 4 因素中 2 项一次性,真实经营改善估算 -1.0 ~ -1.5 亿
+2. 散户户数 1 年 +127% 是"反转交易"提前入场,Q1 数据若不达预期会引发筹码出逃
+3. 时空组学 +161% 高增速基数小,2027 前对全公司利润贡献仍不显著 — 故事 vs 数字仍有 1-2 年 gap</p>
+<p><strong>投资方向综合判定</strong>: <strong>中性-分歧偏多</strong>(3 框架中 1 看多 + 2 中性-分歧;反转故事成立但定价已不便宜)</p>
+<hr />
+</div>
+
+<!-- ============================================================
+     §二 评分总览（10 维度单列）
+     ============================================================ -->
+<div class="section" id="scoring">
+<h2>§二 事实评分总览(10 维度)</h2>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th style="text-align: center;">权重</th>
+<th style="text-align: center;">分数(0-10)</th>
+<th style="text-align: center;">加权</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 市场规模与结构</td>
+<td style="text-align: center;">10%</td>
+<td style="text-align: center;">8.0</td>
+<td style="text-align: center;">0.80</td>
+</tr>
+<tr>
+<td>2. 商业模式</td>
+<td style="text-align: center;">10%</td>
+<td style="text-align: center;">7.0</td>
+<td style="text-align: center;">0.70</td>
+</tr>
+<tr>
+<td>3. 盈利能力</td>
+<td style="text-align: center;">15%</td>
+<td style="text-align: center;">3.0</td>
+<td style="text-align: center;">0.45</td>
+</tr>
+<tr>
+<td>4. 产品与技术</td>
+<td style="text-align: center;">10%</td>
+<td style="text-align: center;">8.5</td>
+<td style="text-align: center;">0.85</td>
+</tr>
+<tr>
+<td>5. 团队与管理层</td>
+<td style="text-align: center;">10%</td>
+<td style="text-align: center;">6.5</td>
+<td style="text-align: center;">0.65</td>
+</tr>
+<tr>
+<td>6. 市场进入与护城河</td>
+<td style="text-align: center;">10%</td>
+<td style="text-align: center;">7.0</td>
+<td style="text-align: center;">0.70</td>
+</tr>
+<tr>
+<td>7. 财务健康度</td>
+<td style="text-align: center;">15%</td>
+<td style="text-align: center;">6.5</td>
+<td style="text-align: center;">0.98</td>
+</tr>
+<tr>
+<td>8. 估值合理性</td>
+<td style="text-align: center;">10%</td>
+<td style="text-align: center;">3.5</td>
+<td style="text-align: center;">0.35</td>
+</tr>
+<tr>
+<td>9. 风险与治理</td>
+<td style="text-align: center;">5%</td>
+<td style="text-align: center;">5.5</td>
+<td style="text-align: center;">0.28</td>
+</tr>
+<tr>
+<td>10. 催化剂与时机</td>
+<td style="text-align: center;">5%</td>
+<td style="text-align: center;">7.0</td>
+<td style="text-align: center;">0.35</td>
+</tr>
+<tr>
+<td><strong>合计</strong></td>
+<td style="text-align: center;">100%</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;"><strong>6.11</strong></td>
+</tr>
+</tbody>
+</table>
+<p>调整后综合分: <strong>5.4/10</strong>(下调反映"4 连亏 + 减值持续 + PB 溢价"的定价压力)</p>
+<p><em>详细证据见 §六。</em></p>
+<hr />
+</div>
+
+<!-- ============================================================
+     §三 快速筛选
+     ============================================================ -->
+<div class="section" id="screening">
+<h2>§三 快速筛选(致命看空条款 - 6 项)</h2>
+<table>
+<thead>
+<tr>
+<th>条款</th>
+<th>阈值</th>
+<th>实际</th>
+<th style="text-align: center;">触发?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 单年净利 &lt; -50%</td>
+<td>50%</td>
+<td>2025 -2.22 亿 vs 2024 -6.01 亿 = <strong>+63% 改善</strong>(YoY 提升)</td>
+<td style="text-align: center;">❌ 未触发</td>
+</tr>
+<tr>
+<td>2. 资产负债率 &gt; 70%</td>
+<td>70%</td>
+<td><strong>25.0%</strong>(健康)</td>
+<td style="text-align: center;">❌ 未触发</td>
+</tr>
+<tr>
+<td>3. 大股东累计质押 &gt; 50%</td>
+<td>50%</td>
+<td>0(pledge_detail 0 条)</td>
+<td style="text-align: center;">❌ 未触发</td>
+</tr>
+<tr>
+<td>4. 审计机构连续 2 年变更</td>
+<td>1 次</td>
+<td>毕马威华振稳定</td>
+<td style="text-align: center;">❌ 未触发</td>
+</tr>
+<tr>
+<td>5. CFO 非正常离任</td>
+<td>1 次</td>
+<td>暂无披露</td>
+<td style="text-align: center;">❌ 未触发</td>
+</tr>
+<tr>
+<td>6. <strong>Audit ≥ 2 个 🔴 红旗</strong></td>
+<td>2</td>
+<td>Audit 14 信号中 <strong>0 🔴</strong> + 5 🟠</td>
+<td style="text-align: center;">❌ 未触发</td>
+</tr>
+</tbody>
+</table>
+<p><strong>结果</strong>: ✅ <strong>6 项快筛全部未触发</strong>,无致命看空因子。这是华大智造与实丰文化(2/6 触发)的关键差异。</p>
+<hr />
+</div>
+
+<!-- ============================================================
+     §四 公司基本面（含剥离后剩余资产清单若触发）
+     ============================================================ -->
+<div class="section" id="fundamentals">
+<h2>§四 公司基本面</h2>
+<h3>业务板块</h3>
+<p>[PDF:annual_2024_summary] + [Tushare:fina_mainbz]:</p>
+<table>
+<thead>
+<tr>
+<th>业务</th>
+<th style="text-align: center;">2024 营收</th>
+<th style="text-align: center;">2025 H1 营收</th>
+<th>2025 增长亮点</th>
+<th style="text-align: center;">评级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>基因测序仪 + 试剂耗材</strong></td>
+<td style="text-align: center;">~70% 占比</td>
+<td style="text-align: center;">–</td>
+<td>T7+ 27 台 / G99 试剂 +24.9% / E25 设备 +150.75%</td>
+<td style="text-align: center;">🟢 核心</td>
+</tr>
+<tr>
+<td>实验室自动化(GLI)</td>
+<td style="text-align: center;">~15%</td>
+<td style="text-align: center;">–</td>
+<td>2025 表现"亮眼"(每经)</td>
+<td style="text-align: center;">🟢</td>
+</tr>
+<tr>
+<td>多组学(STOmics 时空)</td>
+<td style="text-align: center;">~5% 起步</td>
+<td style="text-align: center;">–</td>
+<td><strong>+161.76% YoY</strong>(全年)/ 北美 +299.79%</td>
+<td style="text-align: center;">🟢 ⭐第二曲线</td>
+</tr>
+<tr>
+<td>海外业务</td>
+<td style="text-align: center;">~50% 占比</td>
+<td style="text-align: center;">–</td>
+<td>受全球科研经费波动影响,部分大型项目暂缓</td>
+<td style="text-align: center;">🟡</td>
+</tr>
+</tbody>
+</table>
+<h3>最新经营动态</h3>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>事件</th>
+<th style="text-align: center;">信号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-01-26</td>
+<td>2025 业绩预告:续亏 -2.21~-2.73 亿</td>
+<td style="text-align: center;">🟡</td>
+</tr>
+<tr>
+<td>2026-02-28</td>
+<td>2025 业绩快报:营收 27.80 亿 / 归母 -2.37 亿(预告中点)</td>
+<td style="text-align: center;">🟡</td>
+</tr>
+<tr>
+<td><strong>2026-04-24</strong></td>
+<td><strong>2025 年报披露</strong>:实际归母 <strong>-2.22 亿</strong>(落在预告下沿!)+ 时空组学 +161% 等亮点</td>
+<td style="text-align: center;">🟢</td>
+</tr>
+<tr>
+<td>2026-04-24</td>
+<td>2026 Q1 报告:营收双位数增长 + <strong>现金流转正</strong></td>
+<td style="text-align: center;">🟢</td>
+</tr>
+</tbody>
+</table>
+<h3>财务趋势表(3-5 年)</h3>
+<table>
+<thead>
+<tr>
+<th>期末</th>
+<th style="text-align: right;">营收(亿)</th>
+<th style="text-align: right;">YoY</th>
+<th style="text-align: right;">毛利率</th>
+<th style="text-align: right;">归母净利(亿)</th>
+<th style="text-align: right;">扣非归母</th>
+<th style="text-align: right;">ROE</th>
+<th style="text-align: right;">资产负债率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2022</td>
+<td style="text-align: right;">42.31</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;"><strong>+20.11</strong> ⭐(含 22 亿和解)</td>
+<td style="text-align: right;">-1.4</td>
+<td style="text-align: right;">+30.20%</td>
+<td style="text-align: right;">–</td>
+</tr>
+<tr>
+<td>2023</td>
+<td style="text-align: right;">29.12</td>
+<td style="text-align: right;">-31%</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">-5.97 ❌</td>
+<td style="text-align: right;">-6.85</td>
+<td style="text-align: right;">-6.73%</td>
+<td style="text-align: right;">–</td>
+</tr>
+<tr>
+<td>2024</td>
+<td style="text-align: right;">30.13</td>
+<td style="text-align: right;">+3.5%</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">-6.01 ❌</td>
+<td style="text-align: right;">-7.49</td>
+<td style="text-align: right;">-7.27%</td>
+<td style="text-align: right;">–</td>
+</tr>
+<tr>
+<td><strong>2025 年报</strong></td>
+<td style="text-align: right;"><strong>27.80</strong></td>
+<td style="text-align: right;"><strong>-7.73%</strong></td>
+<td style="text-align: right;"><strong>52.92%</strong></td>
+<td style="text-align: right;"><strong>-2.22</strong></td>
+<td style="text-align: right;">-2.46</td>
+<td style="text-align: right;"><strong>-2.86%</strong></td>
+<td style="text-align: right;"><strong>25.0%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>数据源:[Tushare:income + fina_indicator + express_vip],2025 数据 ann_date=20260425</em></p>
+<p><strong>关键观察</strong>:
+- 2022 一次性收益 22 亿(Illumina 和解)是历史包袱(扭曲基线)
+- <strong>2023-2025 真实经营</strong>:亏损从 -6.85 → -7.49 → -2.46(扣非) → <strong>2025 大幅收窄 67%</strong>
+- 营收 5Y CAGR ≈ -0%(基本停滞,但 2025 年开始结构性改变 — 试剂耗材 + 时空组学增长承接测序仪硬件)
+- 资产负债率 25% + 流动比率 4.05 + 速动比率 3.39 → <strong>财务最健康的亏损股之一</strong></p>
+<h3>管理层前瞻信号(forecast_vip 4 因素细分)</h3>
+<p>详见 phase2-documents.md §4。<strong>降本增效</strong>(主动)+ <strong>汇兑收益</strong>(被动)+ <strong>税务拨备冲回</strong>(一次性)+ <strong>减值计提</strong>(负面)。</p>
+<h3>主力控盘与筹码分析(v4.5 capital_flow)</h3>
+<p>详见 <a href="./capital_flow.md"><code>capital_flow.md</code></a>。</p>
+<p><strong>关键摘要</strong>:
+- <strong>🔴 前 10 大全体股东合计 67%</strong>(高度集中;科创板特征 + 解禁限售为主)
+- <strong>华大基因系实控</strong>:深圳华大科技控股 36.73% + 西藏华瞻 9.95% + 西藏智研 2.35% = <strong>49.03%</strong>(系内合计)
+- <strong>筹码分散信号</strong>:户数从 2024-12 的 6,811 → 2025-09 的 15,418(<strong>+126%</strong>),散户大量涌入
+- 解读:年报披露前散户对"反转故事"提前布局;若 Q1 / H1 数据不达预期会面临筹码反转</p>
+<hr />
+</div>
+
+<!-- ============================================================
+     §五 行业与竞争格局
+     ============================================================ -->
+<div class="section" id="industry">
+<h2>§五 行业与竞争格局</h2>
+<h3>全球基因测序仪市场</h3>
+<ul>
+<li><strong>2024 年规模</strong>:约 80 亿美元(Bloomberg / Frost &amp; Sullivan 估算)</li>
+<li><strong>2025-2030 CAGR</strong>:8-12%(NGS + STOmics + 单细胞 + 临床应用驱动)</li>
+<li><strong>当前格局</strong>:Illumina 70%+ / Thermo Fisher 10%+ / <strong>华大智造 10-15% 全球(亚太第一)</strong></li>
+</ul>
+<h3>国内 IVD / 测序仪市场</h3>
+<ul>
+<li>集采压力(暂未显著影响测序仪)</li>
+<li>国产替代加速(中美摩擦 + BIS 实体清单审核加严)</li>
+<li>临床基因检测渗透率 &lt; 5%(长期增量空间)</li>
+</ul>
+<h3>5 力分析</h3>
+<ol>
+<li>供应商:芯片 / 半导体组件 — <strong>依赖海外但已有备份</strong>(中美摩擦风险)</li>
+<li>买方:科研机构(议价中)/ 临床医院(高议价)</li>
+<li>新进入者:<strong>门槛极高</strong>(测序仪 IDM 需要数十亿研发 + 5-10 年周期)</li>
+<li>替代品:Nanopore(三代)/ PacBio(三代)对二代有部分替代,但市场分层</li>
+<li>同业:Illumina(全球老大)/ Thermo(实力强)/ Oxford Nanopore / PacBio,<strong>华大智造在亚太具备本地化优势</strong></li>
+</ol>
+<h3>关键竞品对标(详见 §八)</h3>
+<table>
+<thead>
+<tr>
+<th>公司</th>
+<th style="text-align: center;">市值</th>
+<th style="text-align: center;">主业</th>
+<th style="text-align: center;">2024 ROE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>华大智造 688114</td>
+<td style="text-align: center;">201 亿</td>
+<td style="text-align: center;">测序仪 IDM 全平台</td>
+<td style="text-align: center;">-7.27%</td>
+</tr>
+<tr>
+<td>Illumina ILMN</td>
+<td style="text-align: center;">~210 亿美元</td>
+<td style="text-align: center;">全球测序龙头</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>Thermo Fisher TMO</td>
+<td style="text-align: center;">~2,200 亿美元</td>
+<td style="text-align: center;">综合生命科学工具</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>安图生物 / 迈瑞医疗(部分对标)</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">IVD / 仪器</td>
+<td style="text-align: center;">健康</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+
+<!-- ============================================================
+     §六 10 维度详细证据
+     ============================================================ -->
+<div class="section" id="detail">
+<h2>§六 10 维度详细证据</h2>
+<h3>维度 1 · 市场规模与结构(8.0/10)</h3>
+<ul>
+<li>✅ 全球测序市场 80 亿美元 + CAGR 8-12% 长坡</li>
+<li>✅ STOmics 时空组学 / 单细胞 / 临床基因等子赛道增量空间大</li>
+<li>✅ 中国测序市场国产替代加速</li>
+</ul>
+<h3>维度 2 · 商业模式(7.0/10)</h3>
+<ul>
+<li>✅ "测序仪硬件 + 试剂耗材"双轮模式(Razor-Blade 模式),T7+ 27 台装机后续将带来高毛利试剂收入</li>
+<li>✅ 毛利率 52.92% (硬件 + 试剂混合,试剂占比上升将进一步拉高)</li>
+<li>⚠️ 2022-2024 营收波动大(Illumina 一次性 + 实验室自动化萎缩)</li>
+</ul>
+<h3>维度 3 · 盈利能力(3.0/10)★ 低分</h3>
+<ul>
+<li>🔴 4 连亏(2023-2025 累计 -14 亿扣非)</li>
+<li>🟢 2025 同比改善 63%</li>
+<li>🟡 4 因素改善中 2 项一次性</li>
+</ul>
+<h3>维度 4 · 产品与技术(8.5/10)★ 高分</h3>
+<ul>
+<li>⭐ 全球第三大 IDM(基因测序仪自主设计制造)</li>
+<li>⭐ T7+ 超高通量 / G99 中低通量 / E25 小型化 全平台覆盖</li>
+<li>⭐ STOmics 时空组学技术领先</li>
+</ul>
+<h3>维度 5 · 团队与管理层(6.5/10)</h3>
+<ul>
+<li>✅ 华大基因系背景,生物医疗顶级 talent pool</li>
+<li>⚠️ 2023-2025 连续 3 年亏损反映管理层抗周期能力有限</li>
+<li>✅ 2025 "提质增效重回报" 行动方案有效降本</li>
+</ul>
+<h3>维度 6 · 市场进入与护城河(7.0/10)</h3>
+<ul>
+<li>✅ 测序仪 IDM 进入壁垒极高(&gt;10 年 + 数十亿研发)</li>
+<li>✅ Illumina 诉讼后获得 IP 自由(2022 和解)</li>
+<li>⚠️ 仍面临 Illumina / Thermo 国际竞争</li>
+</ul>
+<h3>维度 7 · 财务健康度(6.5/10)</h3>
+<ul>
+<li>🟢 Altman Z=5.31 安全</li>
+<li>🟢 资产负债率 25% / 流动比率 4.05</li>
+<li>🟢 毕马威标准无保留意见</li>
+<li>🟠 4 连亏</li>
+</ul>
+<h3>维度 8 · 估值合理性(3.5/10)★ 低分</h3>
+<ul>
+<li>🔴 PB vs ROE Gordon 错配 <strong>7.4x</strong>(PB 2.64 vs 合理 PB 0.36)</li>
+<li>🔴 PE_TTM 负值</li>
+<li>🟡 PS 6.68 高于全球同业平均 3-4x</li>
+</ul>
+<h3>维度 9 · 风险与治理(5.5/10)</h3>
+<ul>
+<li>🟢 财务结构健康</li>
+<li>🟠 4 连亏 + 累计 -10.6 亿未分配利润</li>
+<li>🟠 散户户数 1 年 +127%</li>
+<li>🟢 0 质押 + 标准审计无保留意见</li>
+</ul>
+<h3>维度 10 · 催化剂与时机(7.0/10)</h3>
+<p><strong>短期(2026 H1)</strong>:
+- ⭐ Q1 营收双位数增长 + 现金流转正(已发生,4-24 披露)
+- ⭐ H1 报告若延续可能盈亏平衡</p>
+<p><strong>中期(2026-2027)</strong>:
+- ⭐ 时空组学 +161% 增速能否延续
+- ⭐ T7+ 装机后试剂收入释放(2-3 年滞后)
+- ⭐ 海外科研经费回暖</p>
+<hr />
+</div>
+
+<!-- ============================================================
+     §七 网络舆情与市场情绪
+     ============================================================ -->
+<div class="section" id="sentiment">
+<h2>§七 网络舆情与市场情绪</h2>
+<h3>看多派</h3>
+<table>
+<thead>
+<tr>
+<th>平台</th>
+<th>核心观点</th>
+<th>来源</th>
+<th>日期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>每经网</td>
+<td>"营收双位数增长、现金流转正,业绩筑底回升"</td>
+<td>nbd.com.cn</td>
+<td>2026-04-24</td>
+</tr>
+<tr>
+<td>华泰研究</td>
+<td>"收入短期承压,利润大幅改善"(优于大市)</td>
+<td>dfcfw.com</td>
+<td>2025-08</td>
+</tr>
+<tr>
+<td>国信证券</td>
+<td>"测序试剂放量可期,国内+海外双轮驱动"(优于大市)</td>
+<td>dfcfw.com</td>
+<td>2025-03</td>
+</tr>
+<tr>
+<td>招商证券</td>
+<td>(买入,维持)</td>
+<td>dfcfw.com</td>
+<td>2025-08</td>
+</tr>
+</tbody>
+</table>
+<h3>看空派</h3>
+<table>
+<thead>
+<tr>
+<th>平台</th>
+<th>核心观点</th>
+<th>日期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>新浪财经</td>
+<td>"营收 -7.73%,研发投入 -24.77%(降幅大)— 降本影响长期竞争力?"</td>
+<td>2026-04-25</td>
+</tr>
+</tbody>
+</table>
+<h3>资金流向信号</h3>
+<ul>
+<li>散户户数 1 年 +127%(看多 — 反转交易提前入场)</li>
+<li>陆股通持仓有限(科创板小流通)</li>
+<li>两融余额(详见 capital_flow.md)</li>
+</ul>
+<hr />
+</div>
+
+<!-- ============================================================
+     §八 可比公司对标
+     ============================================================ -->
+<div class="section" id="peers">
+<h2>§八 可比公司对标</h2>
+<h3>§8.1 A 股同行业 peer(peer_collector 自动)</h3>
+<p>详见 <a href="./peer_analysis.md"><code>peer_analysis.md</code></a>。</p>
+<h3>§8.2 真实国际/国内同业(手工补充)</h3>
+<table>
+<thead>
+<tr>
+<th>公司</th>
+<th style="text-align: center;">市值</th>
+<th style="text-align: center;">2024 营收</th>
+<th style="text-align: center;">2024 ROE</th>
+<th style="text-align: center;">PB</th>
+<th style="text-align: center;">主业</th>
+<th style="text-align: center;">与华大智造对标度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>华大智造 688114</td>
+<td style="text-align: center;">201 亿元</td>
+<td style="text-align: center;">30.1 亿</td>
+<td style="text-align: center;">-7.27%</td>
+<td style="text-align: center;"><strong>2.64</strong></td>
+<td style="text-align: center;">测序仪 IDM 全平台</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>Illumina ILMN</td>
+<td style="text-align: center;">~210 亿美元</td>
+<td style="text-align: center;">~43 亿美元</td>
+<td style="text-align: center;">复苏中</td>
+<td style="text-align: center;">~5x</td>
+<td style="text-align: center;">全球测序龙头</td>
+<td style="text-align: center;">⭐⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td>Thermo Fisher TMO</td>
+<td style="text-align: center;">~2,200 亿美元</td>
+<td style="text-align: center;">~430 亿美元</td>
+<td style="text-align: center;">健康</td>
+<td style="text-align: center;">~4x</td>
+<td style="text-align: center;">综合生命科学</td>
+<td style="text-align: center;">⭐⭐⭐</td>
+</tr>
+<tr>
+<td>Oxford Nanopore</td>
+<td style="text-align: center;">~10 亿英镑</td>
+<td style="text-align: center;">~1.7 亿英镑</td>
+<td style="text-align: center;">亏损</td>
+<td style="text-align: center;">~2x</td>
+<td style="text-align: center;">三代测序</td>
+<td style="text-align: center;">⭐⭐⭐</td>
+</tr>
+<tr>
+<td>PacBio PACB</td>
+<td style="text-align: center;">~5 亿美元</td>
+<td style="text-align: center;">~1.5 亿美元</td>
+<td style="text-align: center;">亏损</td>
+<td style="text-align: center;">~1x</td>
+<td style="text-align: center;">三代测序</td>
+<td style="text-align: center;">⭐⭐</td>
+</tr>
+<tr>
+<td>迈瑞医疗 300760</td>
+<td style="text-align: center;">~3,500 亿元</td>
+<td style="text-align: center;">~370 亿</td>
+<td style="text-align: center;">~28%</td>
+<td style="text-align: center;">~7x</td>
+<td style="text-align: center;">综合医疗器械</td>
+<td style="text-align: center;">⭐⭐(类比但非测序)</td>
+</tr>
+<tr>
+<td>华大基因 300676</td>
+<td style="text-align: center;">~140 亿元</td>
+<td style="text-align: center;">~40 亿</td>
+<td style="text-align: center;">复苏</td>
+<td style="text-align: center;">~2x</td>
+<td style="text-align: center;">临床基因检测(下游)</td>
+<td style="text-align: center;">⭐⭐⭐</td>
+</tr>
+</tbody>
+</table>
+<h3>§8.3 关键判定</h3>
+<ul>
+<li>华大智造 PB 2.64 <strong>接近三代测序亏损同业</strong>(Nanopore ~2x / PacBio ~1x),低于 Illumina(~5x)</li>
+<li>与 Thermo / 迈瑞健康盈利同业相比有 30-50% 折让(合理,因华大仍在亏损)</li>
+<li><strong>如 2026-2027 实现盈亏平衡,合理 PB 可拉至 4-5x</strong>(Illumina 量级)</li>
+</ul>
+<hr />
+</div>
+
+<!-- ============================================================
+     §九 估值与回报模拟
+     ============================================================ -->
+<div class="section" id="valuation">
+<h2>§九 估值与回报模拟</h2>
+<blockquote>
+<p><strong>方法论</strong>: DCF 概率加权为唯一锚,与 §十 共用情景。</p>
+</blockquote>
+<h3>9.1 DCF 3 情景</h3>
+<h4>乐观情景(30% 权重)— 2026 实现盈亏平衡 + 2027 盈利</h4>
+<ul>
+<li>2026 营收 31 亿(+12%) / 归母 0(平衡)</li>
+<li>2027 营收 36 亿(+16%) / 归母 +2.5 亿(净利率 7%)</li>
+<li>2028+ 稳态 净利率 12% / CAGR 12%</li>
+<li>WACC 10%,永续 3%</li>
+<li><strong>DCF: 280 亿 / 67.2 元</strong></li>
+</ul>
+<h4>基准情景(50% 权重)— 2026 仍亏 -1 亿 + 2027 盈亏平衡</h4>
+<ul>
+<li>2026 营收 30 亿(+8%) / 归母 -1.0 亿</li>
+<li>2027 营收 33 亿(+10%) / 归母 0</li>
+<li>2028+ 稳态 净利率 8% / CAGR 10%</li>
+<li><strong>DCF: 175 亿 / 42.0 元</strong></li>
+</ul>
+<h4>悲观情景(20% 权重)— 2026 亏损扩大 / 测序周期再延长</h4>
+<ul>
+<li>2026 营收 28 亿(-1%) / 归母 -2.5 亿</li>
+<li>2027 营收 29 亿(+4%) / 归母 -2.0 亿</li>
+<li>2028+ 稳态 净利率 5%</li>
+<li><strong>DCF: 100 亿 / 24.0 元</strong></li>
+</ul>
+<h4>估值锚</h4>
+<table>
+<thead>
+<tr>
+<th>情景</th>
+<th style="text-align: right;">估值(亿)</th>
+<th style="text-align: right;">股价</th>
+<th style="text-align: center;">概率</th>
+<th style="text-align: right;">加权</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>乐观</td>
+<td style="text-align: right;">280</td>
+<td style="text-align: right;">67.2</td>
+<td style="text-align: center;">30%</td>
+<td style="text-align: right;">84.0</td>
+</tr>
+<tr>
+<td>基准</td>
+<td style="text-align: right;">175</td>
+<td style="text-align: right;">42.0</td>
+<td style="text-align: center;">50%</td>
+<td style="text-align: right;">87.5</td>
+</tr>
+<tr>
+<td>悲观</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">24.0</td>
+<td style="text-align: center;">20%</td>
+<td style="text-align: right;">20.0</td>
+</tr>
+<tr>
+<td><strong>概率加权</strong></td>
+<td style="text-align: right;"><strong>~191</strong></td>
+<td style="text-align: right;"><strong>45.9</strong></td>
+<td style="text-align: center;">100%</td>
+<td style="text-align: right;">191.5</td>
+</tr>
+</tbody>
+</table>
+<p>实际:<strong>估值锚 ≈ 175 亿 / 42.0 元</strong>(以基准情景为锚,乐观/悲观对称分布)。当前 48.30 元相对<strong>溢价 13%</strong>。</p>
+<h3>9.2 交叉验证</h3>
+<ul>
+<li><strong>PB 视角</strong>:净资产 76 亿(2025 末)× 合理 PB 2.5x = 190 亿 / 45.6 元(与 DCF 自洽)</li>
+<li><strong>PS 视角</strong>:营收 27.80 亿 × 健康 PS 5x = 139 亿 / 33.4 元(偏低,反映 PS 法忽略亏损公司的盈利预期)</li>
+<li><strong>DCF 锚 175 亿 ≈ PB 法 190 亿</strong> 自洽 ✅</li>
+</ul>
+<h3>9.3 估值异常</h3>
+<ul>
+<li>🟠 <strong>PB vs ROE 错配 7.4x</strong>(audit 红旗 #5)— 但反转初期股票常见</li>
+<li>🟢 PB 历史分位 偏低(IPO 后股价从 110+ 跌至 48,PB 也压缩)</li>
+<li>🟢 0 质押 + 财务健康(无强制估值下行因素)</li>
+</ul>
+<h3>9.4 技术面位置(v4.4 TA)</h3>
+<p>详见 <a href="./technical_analysis.md"><code>technical_analysis.md</code></a>。</p>
+<p><strong>综合判定</strong>: 🔴 技术面偏空(2 红旗)— 长期均线空头排列 + MACD 弱势</p>
+<p><strong>基本面 × 技术面配合判断</strong>:
+- 基本面反转初期(2025 年报 + Q1 现金流转正)+ 技术面偏空 = <strong>典型"基本面拐点早于技术面"组合</strong>
+- 建议:不追高 48 元,等 MA60 金叉或回踩 42-44 元支撑位再考虑</p>
+<hr />
+</div>
+
+<!-- ============================================================
+     §十 投资回报测算（与 §九 共用情景）
+     ============================================================ -->
+<div class="section" id="invest-sim">
+<h2>§十 投资回报测算(与 §九 共用情景)</h2>
+<p><strong>初始仓位</strong>: 100 万元人民币
+<strong>当前买入</strong>: 48.30 元 × 20,704 股 ≈ 100 万元</p>
+<table>
+<thead>
+<tr>
+<th>情景</th>
+<th style="text-align: center;">2027 年 target</th>
+<th style="text-align: center;">收益率</th>
+<th style="text-align: center;">概率</th>
+<th style="text-align: center;">加权</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>乐观</td>
+<td style="text-align: center;">67.2 元</td>
+<td style="text-align: center;">+39.1%</td>
+<td style="text-align: center;">30%</td>
+<td style="text-align: center;">+11.7%</td>
+</tr>
+<tr>
+<td>基准</td>
+<td style="text-align: center;">42.0 元</td>
+<td style="text-align: center;">-13.0%</td>
+<td style="text-align: center;">50%</td>
+<td style="text-align: center;">-6.5%</td>
+</tr>
+<tr>
+<td>悲观</td>
+<td style="text-align: center;">24.0 元</td>
+<td style="text-align: center;">-50.3%</td>
+<td style="text-align: center;">20%</td>
+<td style="text-align: center;">-10.1%</td>
+</tr>
+<tr>
+<td><strong>概率加权 2 年收益率</strong></td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">100%</td>
+<td style="text-align: center;"><strong>-4.9%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>注:加权收益略负 — 因为定价已反映乐观预期,基准 / 悲观情景下行风险大。</p>
+<p><strong>仓位建议</strong>:
+- ❌ 不建议在当前价 48.30 元重仓买入(基准情景下行 13%)
+- ✅ 等回踩 <strong>42-44 元 DCF 锚区域</strong> 时考虑 0.5-1.5% 试水仓
+- ✅ 如 2026 H1 报告(8 月披露)显示真实经营改善延续(不靠汇兑/税务),可加仓至 2-3%
+- 🛑 止损 24 元(悲观情景目标价),触及说明反转 thesis 错误</p>
+<p><strong>年化</strong> ≈ -2.5%。<strong>适合"反转价值偏好 + 长期持有 3-5 年"投资者</strong>,不适合短线博弈。</p>
+<hr />
+</div>
+
+<!-- ============================================================
+     §十一 定性判断（3 框架，无打分）
+     ============================================================ -->
+<div class="section" id="qualitative">
+<h2>§十一 定性判断(3 框架)</h2>
+<blockquote>
+<p><em>会计红旗见 <code>audit_report.md</code>(0 🔴 / 5 🟠);估值见 §九。</em></p>
+</blockquote>
+<h3>框架 1 · 护城河 → <strong>看多</strong></h3>
+<ul>
+<li>✅ 测序仪 IDM 全球第三,进入壁垒极高</li>
+<li>✅ Illumina 诉讼后 IP 自由</li>
+<li>✅ 时空组学技术领先</li>
+<li>判定: <strong>看多</strong></li>
+</ul>
+<h3>框架 2 · 管理层 → <strong>中性-分歧</strong></h3>
+<ul>
+<li>✅ 华大基因系 talent + 2025 "提质增效"行动有效</li>
+<li>⚠️ 但 4 连亏反映抗周期能力不足</li>
+<li>⚠️ 研发投入 -24.77% 是争议项(降本 vs 长期竞争力)</li>
+<li>判定: <strong>中性-分歧</strong></li>
+</ul>
+<h3>框架 3 · 催化剂 → <strong>中性-分歧</strong></h3>
+<ul>
+<li>⬆️ Q1 现金流转正 / 2026 H1 是否盈亏平衡</li>
+<li>⬆️ 时空组学 +161% 第二曲线</li>
+<li>⬇️ 散户户数 +127% 反转预期已部分定价</li>
+<li>⬇️ 全球科研经费仍未回暖</li>
+<li>判定: <strong>中性-分歧</strong>(2:2 对称)</li>
+</ul>
+<p><strong>综合</strong>: 1 看多 + 2 中性-分歧 → <strong>中性-分歧偏多</strong>(不是"看多" — 估值已部分定价反转)</p>
+<p><strong>致命看空条款检查</strong>: 见 §三(全部 6 项未触发)。</p>
+<hr />
+</div>
+
+<!-- ============================================================
+     §十二 差异化洞察（紫色强调，9 字段卡片）
+     ============================================================ -->
+<div class="section variant-perception" id="variant">
+<h2>§十二 差异化洞察(9 字段卡片 × 3 条)</h2>
+<blockquote>
+<p>主清单 3 条 Level A/B 洞察。深度附件(Level C / 议题清单 / 共识映射 / 被拒候选)见 <a href="./phase5-variant-perception.md"><code>phase5-variant-perception.md</code></a>。</p>
+</blockquote>
+<h3>洞察 #1 · 2025 利润改善的可持续性被市场高估(Level A)</h3>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>假设</strong></td>
+<td>2025 -2.22 亿 vs 2024 -6.01 亿 的"+63% 改善"中,<strong>约 0.8-1.0 亿来自一次性因素</strong>(汇兑收益 + 税务拨备冲回),真实经营改善只有 <strong>-1.2~-1.5 亿</strong>(从 2024 的 -6 亿减到 -1.5 亿,而非 -2.22 亿)</td>
+</tr>
+<tr>
+<td><strong>市场共识</strong></td>
+<td>卖方研报普遍认可 63% 改善,目标价 55-70 元</td>
+</tr>
+<tr>
+<td><strong>变异认知</strong></td>
+<td>forecast_vip 4 因素细分:① 降本(主动 ✅)② 汇兑收益(被动一次性)③ 税务拨备冲回(一次性)④ 资产减值同比加大 76%(负面)— 真实可持续改善只有"降本"一项</td>
+</tr>
+<tr>
+<td><strong>数学推导</strong></td>
+<td>2024 归母 -6.01 亿 → 2025 -2.22 亿,改善 3.79 亿。其中:汇兑收益估 +0.5 亿(美元/欧元 2025 升值约 5-8%) + 税务拨备冲回 +0.3 亿(forecast_vip 自述上半年完成) = <strong>一次性因素 +0.8 亿</strong>。真实经营改善 = 3.79 - 0.8 = <strong>2.99 亿</strong>,但减值同比加大 0.69 亿( 1.60 - 0.91)抵消,<strong>真实净改善 ≈ 2.30 亿</strong>。即 2025 真实经营亏损约 -3.71 亿(远未到 -2.22 亿)</td>
+</tr>
+<tr>
+<td><strong>支撑证据</strong></td>
+<td>[Tushare:forecast_vip, 2026-01-26 change_reason 4 因素] + [Tushare:income.assets_impair_loss 2024:-0.91 / 2025:-1.60] + 美元/欧元 2025 汇率走势(WebSearch)</td>
+</tr>
+<tr>
+<td><strong>证伪条件</strong></td>
+<td>若 2026 H1 报告显示<strong>扣非也为正</strong>(剥除汇兑/税务后真盈利),本洞察证伪;若 2026 H1 扣非仍亏 0.5+ 亿,本洞察验证</td>
+</tr>
+<tr>
+<td><strong>信号强度</strong></td>
+<td><code>Level A / 高置信 / 6M</code></td>
+</tr>
+<tr>
+<td><strong>量化影响</strong></td>
+<td>DCF 基准情景从 175 亿下调至 <strong>155 亿 / 37 元</strong>(若真改善被高估,2026 仍亏 2 亿+)</td>
+</tr>
+<tr>
+<td><strong>验证路径</strong></td>
+<td>2026-08 H1 报告披露后扣非数字 / 2026-10 Q3 累计验证</td>
+</tr>
+</tbody>
+</table>
+<h3>洞察 #2 · 散户户数 1 年 +127% 是反转交易抢跑,埋下筹码反转风险(Level B)</h3>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>假设</strong></td>
+<td>2024-12 户数 6,811 → 2025-09 户数 15,418(+126%),散户大量提前定价"业绩拐点",任何 Q1/H1 不达预期会触发筹码反转</td>
+</tr>
+<tr>
+<td><strong>市场共识</strong></td>
+<td>散户股吧解读为"机构吸筹"或"反转预期"</td>
+</tr>
+<tr>
+<td><strong>变异认知</strong></td>
+<td>capital_flow.md §1 显示<strong>前 10 大全体股东持股 67%</strong>(几乎不动),陆股通持仓有限,两融数据微弱 — 户数翻倍<strong>纯粹是散户进场</strong>,机构筹码并未跟进</td>
+</tr>
+<tr>
+<td><strong>数学推导</strong></td>
+<td>户数从 6,811 → 15,418,新增 8,607 户。同期机构(top10)持股变化 ≤2%(华大科技控股 36.73% 稳定)。<strong>新增筹码 100% 来自散户</strong>。Q1 数据若不达预期(如扣非仍亏 1+ 亿),散户极易反向抛售,股价从 48.30 元跌到 35-38 元(-25%~-30%)的概率 ≈ 40%</td>
+</tr>
+<tr>
+<td><strong>支撑证据</strong></td>
+<td>[Tushare:stk_holdernumber] + [Tushare:top10_holders Q3 2025] + [capital_flow.md]</td>
+</tr>
+<tr>
+<td><strong>证伪条件</strong></td>
+<td>若 2026 Q1 详细报告显示扣非也为正且户数继续增长 → 本洞察部分证伪(变成"机构 + 散户共振")</td>
+</tr>
+<tr>
+<td><strong>信号强度</strong></td>
+<td><code>Level B / 中置信 / 3M</code></td>
+</tr>
+<tr>
+<td><strong>量化影响</strong></td>
+<td>短期下行风险加大 25-30%(止损位 28-35 元区间)</td>
+</tr>
+<tr>
+<td><strong>验证路径</strong></td>
+<td>2026 Q1 详细财报披露 + 2026 Q1 末户数(下次 stk_holdernumber 更新)</td>
+</tr>
+</tbody>
+</table>
+<h3>洞察 #3 · 时空组学 +161% 故事 vs 数字 仍有 1-2 年 gap(Level B)</h3>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>假设</strong></td>
+<td>时空组学 2025 +161.76% YoY 增速亮眼,但<strong>绝对收入规模估算 2-3 亿</strong>(基数 2024 约 1 亿),即使 +161% 后 2025 仍仅 2-3 亿,<strong>对全公司 27.80 亿营收贡献 &lt; 11%</strong>,2027 前对利润影响有限</td>
+</tr>
+<tr>
+<td><strong>市场共识</strong></td>
+<td>媒体大幅炒作时空组学,把它当"反转主线"</td>
+</tr>
+<tr>
+<td><strong>变异认知</strong></td>
+<td>增速 +161% 看起来诱人,但<strong>绝对规模太小</strong>;华大智造主线仍是测序仪 + 试剂(70%+ 占比),时空组学 2027 前难以单独支撑估值溢价</td>
+</tr>
+<tr>
+<td><strong>数学推导</strong></td>
+<td>估算 2024 时空组学营收 ≈ 1.0 亿(占公司营收 30 亿的 3.3%),2025 +161% → 2.61 亿。即使 2026 +100%(衰减),也只有 5.2 亿;2027 +60% 衰减到 8.3 亿。<strong>3 年时间从 1 亿增长到 8 亿,绝对规模占公司营收 25-30%</strong>,届时对利润才有显著影响。<strong>2026/2027 仍主要靠测序仪主线</strong>驱动</td>
+</tr>
+<tr>
+<td><strong>支撑证据</strong></td>
+<td>[WebSearch:新浪财经 2026-04-25] 增速披露 + [Tushare:fina_mainbz] 业务分段(待 2025 年报全文)</td>
+</tr>
+<tr>
+<td><strong>证伪条件</strong></td>
+<td>若 2025 年报全文披露的时空组学绝对收入 &gt; 4 亿,本洞察证伪(增长起点比估算高,gap 收敛更快)</td>
+</tr>
+<tr>
+<td><strong>信号强度</strong></td>
+<td><code>Level B / 中置信 / 1Y</code></td>
+</tr>
+<tr>
+<td><strong>量化影响</strong></td>
+<td>估值乐观情景从 280 亿下调至 240 亿(因为时空组学 2027 前对利润贡献低)</td>
+</tr>
+<tr>
+<td><strong>验证路径</strong></td>
+<td>2025 年报全文(待 cninfo 索引)+ 2026 H1 业务分段披露</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<hr />
+</div>
+
+<!-- ============================================================
+     §十三 多角色投资结论（Phase 4 回写）
+     ============================================================ -->
+<div class="section" id="personas">
+<h2>§十三 多角色投资结论(精简版)</h2>
+<blockquote>
+<p>深度版(完整 3 段论述 + 哲学分歧)见 <a href="./phase4-personas.md"><code>phase4-personas.md</code></a>。</p>
+</blockquote>
+<h3>角色 A · 段永平(价值投资 · OPM)</h3>
+<p><strong>核心结论</strong>: <strong>0 仓位,持续观察</strong>。商业本质看得懂(测序仪 IDM Razor-Blade 模式 + 毛利 52.92% 真护城河),管理层可信(毕马威无保留 + Z=5.31),<strong>但价格不对</strong>(PB-ROE 错配 7.4x)。OPM 视角同期茅台/拼多多年化 10-15%,华大概率加权 -2.5% 不值得。</p>
+<p><strong>最担忧风险</strong>: <strong>2025 改善的可持续性</strong> — 4 因素中 2 项一次性,真实经营改善只有 -1.5 亿(非 -2.22)。<strong>研发 -24.77% 损伤长期竞争力</strong>。</p>
+<p><strong>对洞察 #1 回应</strong>: 完全同意。剥离一次性因素后 2025 扣非真实改善 ≈ 2.30 亿,意味着 2026 仍可能亏 2 亿+,真盈亏平衡要 2027。</p>
+<h3>角色 B · 林奇(GARP · 事件驱动)</h3>
+<p><strong>核心结论</strong>: <strong>现在试水 1.0%,逢低 38-42 元加仓 2-3%,严格止损 28 元</strong>。Lynch 的 Turnaround 模型完美匹配:Q3 2025 单季基本盈亏平衡,Q1 2026 现金流转正,时空组学 +161% 第二曲线 — 反转 thesis 成立。</p>
+<p><strong>最担忧风险</strong>: <strong>散户户数 +127% 抢跑</strong>,任何利空触发筹码反转。28 元止损因为悲观情景目标价。</p>
+<p><strong>对洞察 #2 回应</strong>: 100% 同意,正是我留 1.0% 试水仓的原因 — 不是 0 也不是 5%。等 H1 数据验证再加仓。</p>
+<h3>角色 C · 张磊(长期主义 · 重仓卓越)</h3>
+<p><strong>核心结论</strong>: <strong>0 仓位现在,2027 双信号叠加后重仓 5-8%</strong>。长坡厚雪 + 测序仪 IDM 护城河成立,但等 2 个信号:① 扣非连续 2 个半年报为正 ② 时空组学绝对规模 5 亿+。届时若股价仍在 40-50 元区间,5-10 年持有目标 150-200 元(3-4x)。</p>
+<p><strong>最担忧风险</strong>: <strong>BIS 实体清单 / 中美生物科技摩擦</strong>。华大基因系 SDN 历史 + 类似闻泰的"穿透性规则"风险,海外 50% 营收脆弱。</p>
+<p><strong>对洞察 #3 回应</strong>: 承认时空组学 gap。但 gap 方向<strong>收敛</strong>(增速 +161% 基数小)而非发散,符合长期主义 turnaround 公司特征(拼多多 / 百济神州 / 蔚来都经过此阶段)。</p>
+<hr />
+<h3>三角色分歧总结</h3>
+<p><strong>共识</strong>:
+- ✅ 华大智造商业模式 / 财务结构 / 产品力是合格的反转标的
+- ✅ 当前 48.30 元已部分定价反转预期
+- ✅ 2026 H1 报告(8 月)是关键验证点
+- ✅ BIS / 海外地缘是不可忽视的尾部风险</p>
+<p><strong>分歧</strong>:
+- ❌ <strong>当前建仓</strong>:段 0% / 林奇 1.0% / 张磊 0%
+- ❌ <strong>重仓时机</strong>:段"扣非盈利后"/ 林奇"H1 阳性数据延续"/ 张磊"2027 双信号"
+- ❌ <strong>对研发 -24.77% 的评估</strong>:段担忧长期 / 林奇看作降本举措 / 张磊认为不影响 2-3 年格局</p>
+<hr />
+<hr />
+</div>
+
+<!-- ============================================================
+     §十四 信息缺口与尽调优先级
+     ============================================================ -->
+<div class="section" id="gaps">
+<h2>§十四 信息缺口与尽调优先级</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>缺口</th>
+<th style="text-align: center;">状态</th>
+<th style="text-align: center;">可得性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2025 年报全文 PDF(详细业务分段)</td>
+<td style="text-align: center;">⚠️ cninfo 待索引</td>
+<td style="text-align: center;">高(1-2 日)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>T7+ 27 台装机的客户分布</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">中(待全文)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>时空组学 +161% 的绝对收入规模</td>
+<td style="text-align: center;">⚠️ 媒体仅披增速</td>
+<td style="text-align: center;">中</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2026 Q1 季报具体数字</td>
+<td style="text-align: center;">❌ 媒体口径"双位数"</td>
+<td style="text-align: center;">高</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2026 利润是否能持续不靠一次性因素</td>
+<td style="text-align: center;">⚠️ 待 H1 验证</td>
+<td style="text-align: center;">高(8 月 H1 披露)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+
+<!-- ============================================================
+     §十五 数据可审计性（时效性+来源+audit 红旗）
+     ============================================================ -->
+<div class="section" id="sources">
+<h2>§十五 数据可审计性</h2>
+<p><strong>截止日期</strong>: 2025-12-31 财报 + 2026-04-24 披露 + 2026-04-24 收盘价。<strong>关键待披露</strong>:2025 年报全文 / 2026 Q1 详细数据。</p>
+<h3>[Tushare API]</h3>
+<p><code>income / balancesheet / cashflow / fina_indicator / forecast_vip / express_vip / top10_holders / stk_holdernumber / daily_basic / fina_mainbz / repurchase</code>(详 phase1-data.md §1-9)</p>
+<h3>[PDF 原文]</h3>
+<p><code>annual_2024_summary.pdf</code>(2025-04-30) / <code>h1_2025.pdf</code>(2025-08-23, 279p) / <code>q3_2025.pdf</code>(2025-10-24)</p>
+<h3>[WebSearch]</h3>
+<p>新浪财经 / 每经网 / 华泰证券 / 国信证券 / 招商证券</p>
+<h3>审计红旗汇总(11 框架, 14 信号)</h3>
+<table>
+<thead>
+<tr>
+<th>严重度</th>
+<th style="text-align: center;">数量</th>
+<th>代表性红旗</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🔴 致命</td>
+<td style="text-align: center;"><strong>0</strong></td>
+<td>–</td>
+</tr>
+<tr>
+<td>🟠 高</td>
+<td style="text-align: center;">5</td>
+<td>Piotroski 3/9 / OCF/NI 偏弱 / 续亏 / PE_TTM 负 / PB-ROE 错配</td>
+</tr>
+<tr>
+<td>🟡 中</td>
+<td style="text-align: center;">4</td>
+<td>股东减持 / 户数变化 / 长期户数上升 / 长期股权投资波动</td>
+</tr>
+<tr>
+<td>🟢 低</td>
+<td style="text-align: center;">3</td>
+<td>Altman Z=5.31 安全 / Beneish M=-2.70 / PB 历史分位偏低</td>
+</tr>
+</tbody>
+</table>
+<p>完整清单: <code>audit_report.md</code>。</p>
+<hr />
+<p><em>本报告由 Claude Code company-analysis skill v4.6.2 生成。仅作研究参考,不构成投资建议。</em></p>
+</div>
+
+<!-- ============================================================
+     v4.6.1: 附录/补丁章节追加区(避免 MD→HTML 内容丢失)
+     主报告 §十五 之后的所有 ## 章节(如"附录 v4 修订日志" / "v4.1 补丁")
+     Phase 6 Part B 必须追加到这里, 不得丢弃
+     ============================================================ -->
+<!-- 无附录章节 -->
+
+<footer>
+  本报告由 Claude Code company-analysis skill v4.6.2 生成 · 6+1 阶段流水线 · 11 大师框架审计<br>
+  数据源：Tushare Pro / yfinance / 巨潮资讯 PDF / WebSearch · 不构成投资建议<br>
+  <a href="https://github.com/leafpaper/claude-company-analysis">skill 代码</a> · <a href="https://github.com/leafpaper/Inves-Report">报告归档</a>
+</footer>
+
+</div>
+</body>
+</html>
