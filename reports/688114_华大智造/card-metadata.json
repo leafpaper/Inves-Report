@@ -1,0 +1,43 @@
+{
+  "slug": "688114_华大智造",
+  "ticker": "688114.SH",
+  "name": "华大智造",
+  "name_cn": "华大智造",
+  "sector": "基因测序仪 IDM + 多组学 + 实验室自动化",
+  "market": "a",
+  "report_date": "2026-04-25",
+  "version": "v1",
+  "composite_score": 5.4,
+  "verdict": "中性-分歧偏多",
+  "verdict_tone": "neutral",
+  "valuation_tag": "估值锚 42.0 元",
+  "one_liner": "中性-分歧偏多(反转初期) — 全球基因测序仪国产龙头,2025 实亏 -2.22 亿(落在预告区间 -2.21~-2.73 的最下沿,亏损 YoY 收窄 63%),时空组学 +161.76% / 北美时空 +299.79% 是真实增量;但财务上 4 连亏 + PB 2.64 vs ROE -2.86% 理论合理 PB 0.36 溢价 7.4 倍 + 散户户数 1 年 +127% 涌入,定价隐含的\"反转预期\"已较饱满。",
+  "metrics": [
+    {
+      "label": "综合评分",
+      "value": "5.4/10",
+      "tone": "neutral"
+    },
+    {
+      "label": "期望收益",
+      "value": "+18.5%",
+      "tone": "positive"
+    },
+    {
+      "label": "估值锚",
+      "value": "42.0元",
+      "tone": "neutral"
+    }
+  ],
+  "expected_return_short": "+18.5%",
+  "badges": [
+    {
+      "label": "中性-分歧偏多 5.4/10",
+      "variant": "amber"
+    },
+    {
+      "label": "估值锚 42.0 元",
+      "variant": "amber"
+    }
+  ]
+}
