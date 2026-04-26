@@ -1,0 +1,43 @@
+{
+  "slug": "920522_纳科诺尔",
+  "ticker": "920522.BJ",
+  "name": "纳科诺尔",
+  "name_cn": "纳科诺尔",
+  "sector": "锂电辊压设备+干法/固态电池设备",
+  "market": "a",
+  "report_date": "2026-04-27",
+  "version": "v1",
+  "composite_score": 5.0,
+  "verdict": "看空 - 估值严重透支(下行 -40%)",
+  "verdict_tone": "bearish",
+  "valuation_tag": "估值锚 35.5 元",
+  "one_liner": "纳科诺尔是国内锂电辊压设备 #1 龙头（2022 市占率 23.4%），2025 净利 -59.27% 落在预告区间内（-57.98%~-64.16%）；真实 Tushare 数据揭示当前 PE TTM 140.8 / PB 8.62 / 市值 92.81 亿 远高于此前从新闻反推的估算（PE 89 / PB 5.5 / 市值 59 亿），Gordon 模型 PB 公允仅 0.78（vs 当前 8.62 = 11.1× 溢价）—— audit_report 标记为 🟠 高级红旗\"PB vs ROE 严重错配\"；DCF 概率加权锚 35.5 元 vs 当前 59.21 元 = -40% 下行。出",
+  "metrics": [
+    {
+      "label": "综合评分",
+      "value": "5.0/10",
+      "tone": "neutral"
+    },
+    {
+      "label": "期望收益",
+      "value": "-40.0%",
+      "tone": "negative"
+    },
+    {
+      "label": "估值锚",
+      "value": "35.5元",
+      "tone": "neutral"
+    }
+  ],
+  "expected_return_short": "-40.0%",
+  "badges": [
+    {
+      "label": "看空 - 估值严重透支(下行 -40%) 5.0/10",
+      "variant": "amber"
+    },
+    {
+      "label": "估值锚 35.5 元",
+      "variant": "amber"
+    }
+  ]
+}

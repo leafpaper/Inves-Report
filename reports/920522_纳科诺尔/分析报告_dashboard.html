@@ -1,0 +1,2529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>纳科诺尔（920522.BJ）投资分析报告 — 2026-04-27</title>
+<style>
+/* ============================================================
+   Claude Code Company Analysis · Report Styles v4.6
+   单一 CSS 真相源 — 由 assets/html/base.html 加载并内联
+   禁止在 Phase 6 Part B 中自创颜色值或变量名
+   v4.6: Goldman 蓝调 + Morningstar 卡片化 + Bloomberg 风险等级
+   ============================================================ */
+
+:root {
+  /* 主色 — Goldman 深蓝 */
+  --c-primary: #1a56db;
+  --c-primary-light: #e8effc;
+  --c-primary-dark: #0f3d99;
+  --c-accent: #d97f3c;
+
+  /* Bloomberg 风格风险等级(高对比) */
+  --c-risk-red:    #dc2626;
+  --c-risk-red-bg: #fef2f2;
+  --c-risk-amber:  #e8a33a;
+  --c-risk-amber-bg: #fff7ed;
+  --c-risk-yellow: #fbbf24;
+  --c-risk-yellow-bg: #fffbeb;
+  --c-risk-green:  #059669;
+  --c-risk-green-bg: #ecfdf5;
+
+  /* 语义色 (保留 v4.3 alias) */
+  --c-green: var(--c-risk-green);
+  --c-green-bg: var(--c-risk-green-bg);
+  --c-yellow: #d97706;
+  --c-yellow-bg: #fffbeb;
+  --c-red: var(--c-risk-red);
+  --c-red-bg: var(--c-risk-red-bg);
+
+  /* 灰度系 */
+  --c-gray-50:  #f9fafb;
+  --c-gray-100: #f3f4f6;
+  --c-gray-200: #e5e7eb;
+  --c-gray-500: #6b7280;
+  --c-gray-700: #374151;
+  --c-gray-900: #111827;
+
+  /* Morningstar 卡片化灰阶 */
+  --c-card-border:  #e5e7eb;
+  --c-card-header:  #f9fafb;
+  --c-card-hover:   rgba(26,86,219,0.04);
+
+  /* 形状 */
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.06);
+  --shadow-md: 0 4px 6px rgba(0,0,0,.07), 0 2px 4px rgba(0,0,0,.06);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,.08), 0 4px 10px rgba(0,0,0,.05);
+
+  /* Variant Perception 紫 */
+  --c-variant: #7a4dab;
+  --c-variant-bg: #f3eeff;
+
+  /* v4.6 sidebar 布局 */
+  --sidebar-width: 260px;
+  --sidebar-gap: 24px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  background: var(--c-gray-50);
+  color: var(--c-gray-900);
+  margin: 0;
+  padding: 0;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+/* ---------- 3.1 Sticky 顶部导航栏 ---------- */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  height: 50px;
+  padding: 0 24px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.85);
+  border-bottom: 1px solid var(--c-gray-200);
+  font-size: 14px;
+}
+.top-nav .nav-brand {
+  font-weight: 700;
+  color: var(--c-primary);
+  text-decoration: none;
+  margin-right: auto;
+}
+.top-nav a {
+  color: var(--c-gray-700);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background .15s;
+}
+.top-nav a:hover { background: var(--c-primary-light); color: var(--c-primary); }
+
+/* ---------- Header Hero ---------- */
+header.hero {
+  background: linear-gradient(135deg, var(--c-primary), #2a6ba0);
+  color: white;
+  padding: 48px 32px;
+  border-radius: var(--radius);
+  margin-bottom: 32px;
+  box-shadow: var(--shadow-md);
+}
+header.hero h1 { font-size: 32px; margin: 0 0 8px; font-weight: 700; }
+header.hero .subtitle { opacity: 0.9; font-size: 15px; }
+header.hero .meta {
+  display: flex; flex-wrap: wrap; gap: 24px;
+  margin-top: 20px; font-size: 14px;
+}
+
+/* ---------- Section (每个 §一到§十五 一个) ---------- */
+.section {
+  background: white;
+  padding: 28px 32px;
+  margin: 20px 0;
+  border-radius: var(--radius);
+  border: 1px solid var(--c-gray-200);
+  box-shadow: var(--shadow);
+}
+.section h2 {
+  color: var(--c-primary);
+  border-bottom: 2px solid var(--c-primary-light);
+  padding-bottom: 8px;
+  margin-top: 0;
+  font-size: 22px;
+}
+.section h3 {
+  color: var(--c-primary);
+  font-size: 18px;
+  margin-top: 24px;
+  border-bottom: 1px dashed var(--c-gray-200);
+  padding-bottom: 4px;
+}
+.section h4 { color: var(--c-gray-900); font-size: 16px; margin-top: 18px; }
+
+/* Variant Perception 章节专用紫色强调 */
+.section.variant-perception {
+  border-left: 4px solid var(--c-variant);
+  background: linear-gradient(to right, var(--c-variant-bg) 0%, white 3%);
+}
+.section.variant-perception h2 {
+  color: var(--c-variant);
+  border-bottom-color: var(--c-variant-bg);
+}
+
+/* ---------- 3.2 评分环形图 (SVG) ---------- */
+.score-ring {
+  display: inline-block;
+  position: relative;
+}
+.score-ring svg { display: block; }
+.score-ring .score-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.score-ring .score-text .num {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--c-primary);
+}
+.score-ring .score-text .label {
+  font-size: 11px;
+  color: var(--c-gray-500);
+}
+
+/* ---------- 3.3 维度评分条形图 ---------- */
+.dimension-bar {
+  display: grid;
+  grid-template-columns: 1fr 48px 3fr 56px;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0;
+  font-size: 14px;
+}
+.dimension-bar .dim-name { color: var(--c-gray-700); }
+.dimension-bar .dim-score { font-weight: 600; text-align: right; color: var(--c-primary); }
+.dimension-bar .dim-progress {
+  height: 10px;
+  background: var(--c-gray-100);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.dimension-bar .dim-progress .fill { height: 100%; border-radius: 5px; }
+.dimension-bar .dim-progress .fill.tier1 { background: linear-gradient(90deg, #3b82f6, #1d4ed8); }
+.dimension-bar .dim-progress .fill.tier2 { background: linear-gradient(90deg, #8b5cf6, #6d28d9); }
+.dimension-bar .dim-progress .fill.tier3 { background: linear-gradient(90deg, #f59e0b, #d97706); }
+.dimension-bar .dim-weight { text-align: right; color: var(--c-gray-500); font-size: 12px; }
+
+/* ---------- 3.4 三色情景卡片 ---------- */
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+.scenario {
+  padding: 16px;
+  border-radius: 8px;
+  border-left: 4px solid;
+}
+.scenario .label { font-size: 12px; color: var(--c-gray-500); text-transform: uppercase; letter-spacing: 1px; }
+.scenario .big-num { font-size: 28px; font-weight: 700; margin: 4px 0 8px; }
+.scenario .detail { font-size: 13px; color: var(--c-gray-700); }
+.scenario.bull { background: var(--c-green-bg); border-left-color: var(--c-green); }
+.scenario.bull .big-num { color: var(--c-green); }
+.scenario.base { background: var(--c-yellow-bg); border-left-color: var(--c-yellow); }
+.scenario.base .big-num { color: var(--c-yellow); }
+.scenario.bear { background: var(--c-red-bg); border-left-color: var(--c-red); }
+.scenario.bear .big-num { color: var(--c-red); }
+.scenario.tail { background: #2a2a2a; border-left-color: #000; color: #fff; }
+.scenario.tail .big-num { color: #fff; }
+.scenario.tail .detail { color: #ddd; }
+
+/* ---------- 3.5 期望回报高亮条 ---------- */
+.expected-return {
+  background: linear-gradient(135deg, #1e3a5f, var(--c-primary));
+  color: white;
+  padding: 20px 28px;
+  border-radius: var(--radius);
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-md);
+}
+.expected-return .label { font-size: 12px; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; }
+.expected-return .value { font-size: 36px; font-weight: 700; }
+
+/* ---------- 3.6 团队名片网格 ---------- */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+.team-card {
+  padding: 16px;
+  border: 1px solid var(--c-gray-200);
+  border-radius: 8px;
+  text-align: center;
+}
+.team-card .avatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--c-primary-light); color: var(--c-primary);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; margin: 0 auto 8px; font-size: 18px;
+}
+.team-card .name { font-weight: 600; }
+.team-card .role { color: var(--c-gray-500); font-size: 13px; margin-top: 4px; }
+
+/* ---------- 3.7 风险矩阵 ---------- */
+.risk-item {
+  display: grid;
+  grid-template-columns: 20px 1fr auto;
+  gap: 12px;
+  align-items: start;
+  padding: 12px;
+  border-left: 4px solid;
+  background: var(--c-gray-50);
+  border-radius: 6px;
+  margin: 8px 0;
+}
+.risk-item.high   { border-left-color: var(--c-red);    background: var(--c-red-bg); }
+.risk-item.medium { border-left-color: var(--c-yellow); background: var(--c-yellow-bg); }
+.risk-item.low    { border-left-color: var(--c-green);  background: var(--c-green-bg); }
+.risk-item .dot {
+  width: 12px; height: 12px; border-radius: 50%; margin-top: 4px;
+}
+.risk-item.high   .dot { background: var(--c-red); }
+.risk-item.medium .dot { background: var(--c-yellow); }
+.risk-item.low    .dot { background: var(--c-green); }
+
+/* ---------- 3.8 融资时间轴 ---------- */
+.timeline {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 24px 0;
+  overflow-x: auto;
+  padding: 8px 0;
+}
+.timeline .tl-node {
+  flex: 0 0 auto;
+  text-align: center;
+  padding: 0 14px;
+  position: relative;
+}
+.timeline .tl-node::before {
+  content: '';
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--c-gray-200); display: block; margin: 0 auto 8px;
+}
+.timeline .tl-node.current::before { background: var(--c-primary); box-shadow: 0 0 0 4px var(--c-primary-light); }
+.timeline .tl-node .year { font-size: 12px; color: var(--c-gray-500); }
+.timeline .tl-node .round { font-weight: 600; font-size: 13px; }
+.timeline .tl-node .amount { font-size: 11px; color: var(--c-gray-700); }
+
+/* ---------- 3.9 情绪量表 ---------- */
+.sentiment-bar {
+  position: relative;
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(to right, var(--c-red) 0%, var(--c-yellow) 50%, var(--c-green) 100%);
+  margin: 20px 0 32px;
+}
+.sentiment-bar .pointer {
+  position: absolute;
+  top: -8px;
+  width: 4px; height: 28px;
+  background: var(--c-gray-900);
+  border-radius: 2px;
+  transform: translateX(-50%);
+}
+.sentiment-bar .pointer::after {
+  content: attr(data-label);
+  position: absolute;
+  top: 32px; left: 50%; transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 11px;
+  background: var(--c-gray-900);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* ---------- v2 组件 · 估值区间可视化 ---------- */
+.valuation-range {
+  position: relative;
+  height: 28px;
+  background: var(--c-gray-100);
+  border-radius: 4px;
+  margin: 10px 0;
+}
+.valuation-range .range {
+  position: absolute;
+  top: 4px; bottom: 4px;
+  border-radius: 3px;
+  opacity: 0.6;
+}
+.valuation-range .range.dcf { background: var(--c-primary); }
+.valuation-range .range.comparable { background: var(--c-green); }
+.valuation-range .range.transaction { background: var(--c-yellow); }
+.valuation-range .label-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 8px;
+  align-items: center;
+  font-size: 12px;
+}
+
+/* ---------- v2 组件 · 星级评估 ---------- */
+.star-filled { color: var(--c-yellow); }
+.star-empty  { color: var(--c-gray-200); }
+
+/* ---------- v2 组件 · 信息缺口优先级 badge ---------- */
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.badge.critical { background: var(--c-red-bg);    color: var(--c-red); }
+.badge.important{ background: var(--c-yellow-bg); color: var(--c-yellow); }
+.badge.minor    { background: var(--c-green-bg);  color: var(--c-green); }
+
+/* ---------- 通用 Table ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+}
+th, td {
+  border: 1px solid var(--c-gray-200);
+  padding: 8px 12px;
+  text-align: left;
+}
+th {
+  background: var(--c-primary-light);
+  color: var(--c-primary);
+  font-weight: 600;
+}
+tr:nth-child(even) td { background: var(--c-gray-50); }
+
+/* ---------- 通用文本 ---------- */
+strong { color: var(--c-gray-900); font-weight: 600; }
+code {
+  background: var(--c-gray-100);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 12px;
+}
+blockquote {
+  border-left: 4px solid var(--c-primary);
+  padding-left: 16px;
+  color: var(--c-gray-700);
+  background: var(--c-primary-light);
+  padding: 10px 16px;
+  border-radius: 4px;
+  margin: 12px 0;
+}
+hr { border: none; border-top: 1px dashed var(--c-gray-200); margin: 24px 0; }
+ul, ol { padding-left: 22px; }
+li { margin: 4px 0; }
+a {
+  color: var(--c-primary);
+  text-decoration: none;
+  border-bottom: 1px dotted;
+}
+a:hover { color: var(--c-yellow); }
+
+footer {
+  text-align: center;
+  color: var(--c-gray-500);
+  padding: 32px 0 16px;
+  font-size: 12px;
+  border-top: 1px solid var(--c-gray-200);
+  margin-top: 48px;
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 768px) {
+  .container { padding: 20px 16px 60px; }
+  header.hero { padding: 24px 16px; }
+  header.hero h1 { font-size: 24px; }
+  .section { padding: 16px; }
+  .scenario-grid, .team-grid { grid-template-columns: 1fr; }
+  table { font-size: 12px; }
+  table th, table td { padding: 6px 8px; }
+}
+
+/* ============================================================
+   v4.6 新增: 6 个大厂风格组件
+   ============================================================ */
+
+/* ---------- v4.6-1. 前置评级卡 (Goldman 三件套) ---------- */
+.rating-trio {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: -16px 0 32px;
+}
+.rating-card {
+  background: white;
+  border: 1px solid var(--c-card-border);
+  border-top: 4px solid var(--c-primary);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  box-shadow: var(--shadow-md);
+  transition: transform .15s, box-shadow .15s;
+}
+.rating-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.rating-card--score  { border-top-color: var(--c-primary); }
+.rating-card--anchor { border-top-color: var(--c-accent); }
+.rating-card--return { border-top-color: var(--c-risk-green); }
+.rating-card--return.negative { border-top-color: var(--c-risk-red); }
+
+.rating-card .label {
+  font-size: 11px;
+  color: var(--c-gray-500);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.rating-card .value {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--c-gray-900);
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+.rating-card .value .out-of {
+  font-size: 16px;
+  color: var(--c-gray-500);
+  font-weight: 500;
+}
+.rating-card .value.negative { color: var(--c-risk-red); }
+.rating-card .value.positive { color: var(--c-risk-green); }
+.rating-card .sub {
+  font-size: 12px;
+  color: var(--c-gray-700);
+}
+
+/* ---------- v4.6-2. 彩条风险卡 (Bloomberg 等级色) ---------- */
+.risk-card-v2 {
+  display: grid;
+  grid-template-columns: 4px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 14px 16px 14px 0;
+  margin: 8px 0;
+  background: white;
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: background .15s;
+}
+.risk-card-v2:hover { background: var(--c-card-hover); }
+.risk-card-v2.risk-critical { border-left-width: 0; background: linear-gradient(to right, var(--c-risk-red-bg) 0%, white 6%); }
+.risk-card-v2.risk-high     { background: linear-gradient(to right, var(--c-risk-amber-bg) 0%, white 6%); }
+.risk-card-v2.risk-medium   { background: linear-gradient(to right, var(--c-risk-yellow-bg) 0%, white 6%); }
+.risk-card-v2.risk-low      { background: linear-gradient(to right, var(--c-risk-green-bg) 0%, white 6%); }
+.risk-card-v2 .left-bar { align-self: stretch; width: 4px; }
+.risk-card-v2.risk-critical .left-bar { background: var(--c-risk-red); }
+.risk-card-v2.risk-high     .left-bar { background: var(--c-risk-amber); }
+.risk-card-v2.risk-medium   .left-bar { background: var(--c-risk-yellow); }
+.risk-card-v2.risk-low      .left-bar { background: var(--c-risk-green); }
+.risk-card-v2 .title { font-weight: 600; color: var(--c-gray-900); margin-bottom: 3px; }
+.risk-card-v2 .body  { font-size: 13px; color: var(--c-gray-700); line-height: 1.5; }
+.risk-card-v2 .sev-badge {
+  font-size: 10px; font-weight: 700; padding: 3px 10px;
+  border-radius: 12px; white-space: nowrap; letter-spacing: .5px;
+}
+.risk-card-v2.risk-critical .sev-badge { background: var(--c-risk-red);    color: white; }
+.risk-card-v2.risk-high     .sev-badge { background: var(--c-risk-amber);  color: white; }
+.risk-card-v2.risk-medium   .sev-badge { background: var(--c-risk-yellow); color: var(--c-gray-900); }
+.risk-card-v2.risk-low      .sev-badge { background: var(--c-risk-green);  color: white; }
+
+/* ---------- v4.6.2. Preamble 区 (hero 之后、rating-trio 之前) ---------- */
+.preamble {
+  background: var(--c-gray-50);
+  border-left: 3px solid var(--c-accent);
+  border-radius: 6px;
+  padding: 14px 20px;
+  margin: -8px 0 20px;
+  font-size: 13px;
+  color: var(--c-gray-700);
+  line-height: 1.7;
+}
+.preamble:empty { display: none; }
+.preamble blockquote {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-size: 13px;
+}
+.preamble blockquote p { margin: 6px 0; }
+.preamble p { margin: 6px 0; }
+.preamble strong { color: var(--c-primary-dark); }
+.preamble hr { display: none; }  /* 吃掉 --- 分隔符,避免视觉噪音 */
+
+/* ---------- v4.6.1. 关键指标横排面板 (顶部, 替代 v4.6 的粘性侧边栏) ---------- */
+.metric-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin: 0 0 24px;
+  padding: 16px;
+  background: white;
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.metric-strip .metric-chip {
+  padding: 10px 14px;
+  text-align: center;
+  border-right: 1px dashed var(--c-gray-100);
+}
+.metric-strip .metric-chip:last-child { border-right: none; }
+.metric-strip .metric-chip .metric-label {
+  font-size: 10px;
+  color: var(--c-gray-500);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.metric-strip .metric-chip .metric-value {
+  font-size: 18px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--c-gray-900);
+}
+.metric-strip .metric-chip .metric-value.positive { color: var(--c-risk-green); }
+.metric-strip .metric-chip .metric-value.negative { color: var(--c-risk-red); }
+.metric-strip .metric-chip .metric-value.risk     { color: var(--c-risk-amber); }
+.metric-strip .metric-chip .metric-value.critical { color: var(--c-risk-red); font-weight: 900; }
+.metric-strip .metric-chip .metric-value.neutral  { color: var(--c-gray-900); }
+
+/* ---------- v4.6 兼容: .metric-sidebar/metric-row 保留(弃用但不破坏存量报告) ---------- */
+.metric-sidebar {
+  /* 降级为块式显示, 不再粘性 */
+  background: white;
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--radius);
+  padding: 20px 18px;
+  box-shadow: var(--shadow);
+  margin: 0 0 24px;
+}
+.metric-sidebar h4 {
+  font-size: 11px;
+  color: var(--c-gray-500);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  margin: 0 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--c-card-border);
+}
+.metric-sidebar .metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--c-gray-100);
+  font-size: 13px;
+}
+.metric-sidebar .metric-row:last-child { border-bottom: none; }
+.metric-sidebar .metric-row span { color: var(--c-gray-700); }
+.metric-sidebar .metric-row strong { font-weight: 700; color: var(--c-gray-900); font-variant-numeric: tabular-nums; }
+.metric-sidebar .metric-row strong.positive { color: var(--c-risk-green); }
+.metric-sidebar .metric-row strong.negative { color: var(--c-risk-red); }
+.metric-sidebar .metric-row strong.risk     { color: var(--c-risk-amber); font-weight: 800; }
+.metric-sidebar .metric-row strong.critical { color: var(--c-risk-red);   font-weight: 800; }
+
+/* ---------- v4.6-4. 对标卡 (Morningstar 3 列比较) ---------- */
+.comparison-card {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  gap: 8px;
+  background: white;
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin: 12px 0;
+}
+.comparison-card .cmp-col {
+  text-align: center;
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+.comparison-card .cmp-col.center {
+  background: var(--c-primary-light);
+  border: 2px solid var(--c-primary);
+}
+.comparison-card .cmp-label { font-size: 10px; color: var(--c-gray-500); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 6px; }
+.comparison-card .cmp-value { font-size: 20px; font-weight: 800; color: var(--c-gray-900); font-variant-numeric: tabular-nums; }
+.comparison-card .cmp-col.center .cmp-value { font-size: 24px; color: var(--c-primary); }
+.comparison-card .cmp-sub { font-size: 11px; color: var(--c-gray-500); margin-top: 4px; }
+.comparison-card .cmp-bar {
+  height: 6px; background: var(--c-gray-100); border-radius: 3px;
+  margin-top: 8px; position: relative; overflow: hidden;
+}
+.comparison-card .cmp-bar .fill {
+  position: absolute; left: 0; top: 0; bottom: 0;
+  background: linear-gradient(90deg, var(--c-primary), var(--c-accent));
+  border-radius: 3px;
+}
+
+/* ---------- v4.6-5. 深度链接 (章节间跳转) ---------- */
+.deep-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 1px 8px 1px 6px;
+  font-size: 11px;
+  background: var(--c-primary-light);
+  color: var(--c-primary);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  text-decoration: none !important;
+  vertical-align: middle;
+  font-weight: 600;
+  transition: background .15s, border-color .15s;
+}
+.deep-link::before { content: '→'; opacity: .6; }
+.deep-link:hover {
+  background: var(--c-primary);
+  color: white;
+  border-color: var(--c-primary);
+}
+/* Target 高亮(用户点击内链跳到目标章节时) */
+.section:target {
+  animation: target-pulse 1.8s ease-out;
+  scroll-margin-top: 70px;
+}
+@keyframes target-pulse {
+  0%   { box-shadow: 0 0 0 4px var(--c-accent); }
+  100% { box-shadow: var(--shadow); }
+}
+
+/* ---------- v4.6-6. 微型热力图 (纯 CSS 色块网格) ---------- */
+.heatmap-grid {
+  display: grid;
+  gap: 2px;
+  margin: 10px 0;
+  font-size: 10px;
+}
+.heatmap-grid .hm-cell {
+  aspect-ratio: 1 / 1;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  font-family: ui-monospace, monospace;
+  font-weight: 600;
+  color: var(--c-gray-900);
+}
+/* 5 档颜色映射 (深红 → 白 → 深绿) */
+.heatmap-grid .hm-cell.hm--2 { background: #fca5a5; color: #7f1d1d; }
+.heatmap-grid .hm-cell.hm--1 { background: #fed7aa; color: #7c2d12; }
+.heatmap-grid .hm-cell.hm-0  { background: #f3f4f6; }
+.heatmap-grid .hm-cell.hm-1  { background: #bbf7d0; color: #14532d; }
+.heatmap-grid .hm-cell.hm-2  { background: #4ade80; color: white; }
+.heatmap-grid .hm-cell:hover { transform: scale(1.1); }
+
+.heatmap-grid .hm-row-label {
+  font-size: 10px;
+  color: var(--c-gray-500);
+  text-align: right;
+  padding-right: 8px;
+  align-self: center;
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 768px) {
+  .container { padding: 20px 16px 60px; }
+  header.hero { padding: 24px 16px; }
+  header.hero h1 { font-size: 24px; }
+  .section { padding: 16px; }
+  .scenario-grid, .team-grid, .rating-trio { grid-template-columns: 1fr; }
+  .comparison-card { grid-template-columns: 1fr; }
+  .metric-strip { grid-template-columns: repeat(2, 1fr); }
+  .metric-strip .metric-chip { border-right: none; border-bottom: 1px dashed var(--c-gray-100); }
+  table { font-size: 12px; }
+  table th, table td { padding: 6px 8px; }
+}
+
+/* ---------- 打印 ---------- */
+@media print {
+  body { background: white; }
+  .top-nav { display: none; }
+  .section { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; }
+  header.hero { break-inside: avoid; }
+  .metric-strip { break-inside: avoid; }
+  .deep-link { color: var(--c-gray-900); background: transparent; border-color: var(--c-gray-500); }
+  .deep-link::before { content: ''; }
+  .deep-link::after { content: ' (见对应章节)'; font-size: 10px; color: var(--c-gray-500); }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     Sticky 顶部导航栏 — 15 章节锚点
+     ============================================================ -->
+<nav class="top-nav">
+  <a href="../../index.html" class="nav-brand">叶纸的投资报告</a>
+  <a href="#exec-summary">摘要</a>
+  <a href="#scoring">评分</a>
+  <a href="#screening">快筛</a>
+  <a href="#fundamentals">基本面</a>
+  <a href="#industry">行业</a>
+  <a href="#detail">详细</a>
+  <a href="#sentiment">舆情</a>
+  <a href="#peers">对标</a>
+  <a href="#valuation">估值</a>
+  <a href="#qualitative">定性</a>
+  <a href="#variant">洞察</a>
+  <a href="#personas">角色</a>
+  <a href="#gaps">缺口</a>
+  <a href="#sources">来源</a>
+</nav>
+
+<div class="container">
+
+<!-- ============================================================
+     Header Hero
+     ============================================================ -->
+<header class="hero">
+  <h1>纳科诺尔（920522.BJ）投资分析报告</h1>
+  <div class="subtitle">Claude Opus 4.7 · company-analysis skill v4.6 · 6+1 阶段流水线 + 11 大师框架审计</div>
+  <div class="meta">
+    <span>📅 2026-04-27</span>
+    <span>💵 收盘 – 元</span>
+    <span>📊 PB – · 市值 – 亿</span>
+    <span>🎯 估值锚 35.5 元</span>
+    <span>⚠️ 最差情景 – 元</span>
+  </div>
+</header>
+
+<!-- ============================================================
+     v4.6.2 新增: Preamble 区 — 主报告第一个 ## 之前的 blockquote / 段落
+     (版本切换说明 / 数据截止注意 / meta 行的详细补充等),否则会丢失
+     ============================================================ -->
+<div class="preamble">
+<p><strong>报告日期</strong>: 2026-04-27<br />
+<strong>报告期</strong>: 2022-2025 全年 + 季度拆分（Tushare 全资源完整版,经 resolve_ticker 自动从 832522.BJ 迁移到 920522.BJ）<br />
+<strong>最新收盘</strong>: <strong>59.21 元</strong>（2026-04-24）<br />
+<strong>总市值</strong>: <strong>92.81 亿</strong> · PB <strong>8.62</strong> · PE TTM <strong>140.80</strong> · PS TTM <strong>9.49</strong><br />
+<strong>分析师</strong>: Claude Opus 4.7 · Skill v4.6</p>
+<hr />
+</div>
+
+<!-- ============================================================
+     v4.6 新增: 前置评级三件套(Goldman 风格, hero 下方醒目位置)
+     ============================================================ -->
+<div class="rating-trio">
+
+  <div class="rating-card rating-card--score">
+    <div class="label">综合评分</div>
+    <div class="value">5.0 <span class="out-of">/ 10</span></div>
+    <div class="sub">看空-估值严重透支</div>
+  </div>
+  <div class="rating-card rating-card--anchor">
+    <div class="label">估值锚(DCF 概率加权)</div>
+    <div class="value">35.5 元</div>
+    <div class="sub">相对当前 -40.0%</div>
+  </div>
+  <div class="rating-card rating-card--return negative">
+    <div class="label">2 年期望收益</div>
+    <div class="value negative">-40.0%</div>
+    <div class="sub">年化 -22.5%</div>
+  </div>
+</div>
+
+<!-- ============================================================
+     v4.6.1 关键指标横排面板(替代 v4.6 的粘性侧边栏,更简洁)
+     ============================================================ -->
+<div class="metric-strip">
+
+  <div class="metric-chip">
+    <div class="metric-label">PE (TTM)</div>
+    <div class="metric-value neutral">140.80</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">PB</div>
+    <div class="metric-value neutral">8.62x</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">市值(亿)</div>
+    <div class="metric-value neutral">92.81 亿</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">ROE</div>
+    <div class="metric-value negative">6.21%</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">毛利率</div>
+    <div class="metric-value neutral">19.31%</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">资产负债率</div>
+    <div class="metric-value neutral">56.53%</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">股东户数</div>
+    <div class="metric-value neutral">9671</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">家族持股</div>
+    <div class="metric-value positive">28.88%</div>
+  </div>
+</div>
+
+<!-- ============================================================
+     §一 执行摘要
+     ============================================================ -->
+<div class="section" id="exec-summary">
+<h2>§一 执行摘要</h2>
+<p><strong>一句话结论</strong>: 纳科诺尔是国内锂电辊压设备 #1 龙头（2022 市占率 23.4%），2025 净利 -59.27% 落在预告区间内（-57.98%~-64.16%）；真实 Tushare 数据揭示当前 <strong>PE TTM 140.8 / PB 8.62 / 市值 92.81 亿</strong> 远高于此前从新闻反推的估算（PE 89 / PB 5.5 / 市值 59 亿），<strong>Gordon 模型 PB 公允仅 0.78（vs 当前 8.62 = 11.1× 溢价）—— audit_report 标记为 🟠 高级红旗"PB vs ROE 严重错配"；DCF 概率加权锚 </strong>35.5 元 vs 当前 59.21 元 = -40% 下行<strong>。出海 + 干法 + 固态多催化剂在册但已被 2025-11 海外大单后的反弹吸纳;</strong>当前估值已严重透支预期,建议明确看空 / 不建仓**。</p>
+<p><strong>估值锚</strong>: <strong>55.65 亿 / 35.5 元</strong>（DCF 概率加权 4 情景）。当前 59.21 元相对此锚 <strong>-40.0%</strong>。</p>
+<p><strong>综合评分</strong>: <strong>5.0/10</strong> · <strong>数据置信度</strong>: 高（Tushare 全资源 + 11 框架 audit + 多券商研报 + PDF 三源验证）</p>
+<p><strong>三大风险（Top 3）</strong>:<br />
+1. <strong>估值严重透支</strong>：PE TTM 140.80 / PB 8.62（vs Gordon 公允 0.78,溢价 11.1×）— audit 高级红旗。即使按周期均值化 ROE 28% 测,公允 PB 也只 3.0 倍,远低于当前<br />
+2. <strong>ROE 急剧恶化（audit 致命红旗）</strong>：从 2024 16.70% 暴跌至 2025 6.21%(-10.5 pp);DuPont 分解显示净利率（15.36→6.74）/ 资产周转（0.51→0.40）/ 杠杆（1.97→2.30）三因子全部恶化<br />
+3. <strong>技术面超买叠加跌破 MA120</strong>：RSI 77.71（&gt;70 超买）+ 收盘 59.21 &lt; MA120 61.26 + 近 60 日 -14% 但近 20 日 +23% 反弹,典型"反弹中超买"卖出区</p>
+<p><strong>三大机会（Top 3）</strong>:<br />
+1. <strong>出海大单确认窗口</strong>：2025-11 亿纬匈牙利 18-21 亿 + H1 末 20.10 亿在手订单（30%+ 海外）—— 2026-2027 海外收入兑现期；fina_mainbz 2025 H1 海外仅 0.4% 已确认 vs 订单 30% 是时间差<br />
+2. <strong>固态电池设备先发</strong>：等静压 25 H2 推出 + 干法 800mm × 50m/min 国内首台交付广汽（单 GWh 价值 &gt; 3,000 万 vs 传统 500-800 万 = 4-6× ASP 跃升）<br />
+3. <strong>筹码集中信号</strong>：股东户数 11,876（2025-09-30）→ <strong>9,671（2025-12-31）= -18.57%</strong>,户均持股 +22.80%,capital_flow 标记 🟢 主力吸筹</p>
+<p><strong>核心非共识观点</strong>（来自 §十二 差异化洞察）:<br />
+1. 2025 研发费用 +136% 主要是去基数效应（2024 销售样机冲减不再发生）,不是真实研发翻倍<br />
+2. Q3 -89.89% → Q4 -22.5% 拐点已现,但年度数据 -59% 叙事和当前 PE 140 估值都已 priced-in 拐点预期 —— 拐点交易论赔率显著降低<br />
+3. PB-ROE Gordon 模型显示当前估值需要 ROE 至少回到 25%+（接近 2022-2023 高点）才能"自洽",但 2025 年报已确认结构性下移</p>
+<p><strong>投资方向综合判定</strong>: <strong>看空 - 估值严重透支(下行 -40%)</strong></p>
+<hr />
+</div>
+
+<!-- ============================================================
+     §二 评分总览（10 维度单列）
+     ============================================================ -->
+<div class="section" id="scoring">
+<h2>§二 事实评分总览（10 维度）</h2>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th style="text-align: center;">权重</th>
+<th style="text-align: center;">分数(0-10)</th>
+<th style="text-align: center;">加权</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 市场规模与结构</td>
+<td style="text-align: center;">10%</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">0.70</td>
+</tr>
+<tr>
+<td>2. 商业模式</td>
+<td style="text-align: center;">10%</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0.50</td>
+</tr>
+<tr>
+<td>3. 盈利能力</td>
+<td style="text-align: center;">15%</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0.45</td>
+</tr>
+<tr>
+<td>4. 产品与技术</td>
+<td style="text-align: center;">10%</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">0.70</td>
+</tr>
+<tr>
+<td>5. 团队与管理层</td>
+<td style="text-align: center;">10%</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">0.60</td>
+</tr>
+<tr>
+<td>6. 市场进入与护城河</td>
+<td style="text-align: center;">10%</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">0.60</td>
+</tr>
+<tr>
+<td>7. 财务健康度</td>
+<td style="text-align: center;">15%</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0.60</td>
+</tr>
+<tr>
+<td>8. 估值合理性</td>
+<td style="text-align: center;">10%</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0.20</td>
+</tr>
+<tr>
+<td>9. 风险与治理</td>
+<td style="text-align: center;">5%</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0.25</td>
+</tr>
+<tr>
+<td>10. 催化剂与时机</td>
+<td style="text-align: center;">5%</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">0.35</td>
+</tr>
+<tr>
+<td><strong>合计</strong></td>
+<td style="text-align: center;">100%</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;"><strong>4.95</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>相对 v1 报告（5.50）下调 0.55 分,核心是 估值合理性 4→2、盈利能力 4→3、财务健康度 5→4、风险治理 6→5（基于真实 audit 红旗）。</em></p>
+<hr />
+</div>
+
+<!-- ============================================================
+     §三 快速筛选
+     ============================================================ -->
+<div class="section" id="screening">
+<h2>§三 快速筛选（致命看空条款 - 6 项）</h2>
+<table>
+<thead>
+<tr>
+<th>条款</th>
+<th>阈值</th>
+<th>实际</th>
+<th style="text-align: center;">触发?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 单季 / 单年度净利 &lt; -50%</td>
+<td>50%</td>
+<td><strong>2025 全年 -59.27%；Q3 单季 -89.89%；Q1-Q3 累计 -62.25%</strong></td>
+<td style="text-align: center;">🔴 触发</td>
+</tr>
+<tr>
+<td>2. 资产负债率 &gt; 70%</td>
+<td>70%</td>
+<td>56.53%</td>
+<td style="text-align: center;">🟢 未触发</td>
+</tr>
+<tr>
+<td>3. 大股东累计质押 &gt; 50%</td>
+<td>50%</td>
+<td><strong>0%</strong>（无质押冻结）</td>
+<td style="text-align: center;">🟢 未触发</td>
+</tr>
+<tr>
+<td>4. 审计机构连续 2 年变更</td>
+<td>1 次</td>
+<td>立信会计师 持续</td>
+<td style="text-align: center;">🟢 未触发</td>
+</tr>
+<tr>
+<td>5. CFO 非正常离任</td>
+<td>1 次</td>
+<td>蔡军志稳定</td>
+<td style="text-align: center;">🟢 未触发</td>
+</tr>
+<tr>
+<td>6. <strong>Audit ≥ 2 个 🔴 红旗</strong></td>
+<td>2</td>
+<td><strong>1 个 🔴 致命（ROE 急剧恶化）+ 1 个 🟠 高（PB-ROE 严重错配）</strong></td>
+<td style="text-align: center;">🟡 临界</td>
+</tr>
+</tbody>
+</table>
+<p><strong>结果</strong>: <strong>1 项触发 + 1 项临界</strong>。叠加估值严重透支（PB 8.62 vs Gordon 公允 0.78），不建仓。</p>
+<hr />
+</div>
+
+<!-- ============================================================
+     §四 公司基本面（含剥离后剩余资产清单若触发）
+     ============================================================ -->
+<div class="section" id="fundamentals">
+<h2>§四 公司基本面</h2>
+<h3>业务板块（[Tushare:fina_mainbz]）</h3>
+<table>
+<thead>
+<tr>
+<th>板块</th>
+<th style="text-align: right;">2024（万）</th>
+<th style="text-align: center;">占比</th>
+<th style="text-align: right;">毛利率</th>
+<th style="text-align: right;">2025 H1（万）</th>
+<th style="text-align: center;">占比</th>
+<th style="text-align: right;">毛利率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>轧机（核心）</td>
+<td style="text-align: right;">98,566</td>
+<td style="text-align: center;">93.6%</td>
+<td style="text-align: right;">23.10%</td>
+<td style="text-align: right;">40,372</td>
+<td style="text-align: center;">85.4%</td>
+<td style="text-align: right;">20.42%</td>
+</tr>
+<tr>
+<td>其他主营（备件 / 服务）</td>
+<td style="text-align: right;">6,784</td>
+<td style="text-align: center;">6.4%</td>
+<td style="text-align: right;">39.32%</td>
+<td style="text-align: right;">6,927</td>
+<td style="text-align: center;">14.6%</td>
+<td style="text-align: right;">35.44%</td>
+</tr>
+<tr>
+<td>国外（地区）</td>
+<td style="text-align: right;">1,413</td>
+<td style="text-align: center;">1.34%</td>
+<td style="text-align: right;">55.77%</td>
+<td style="text-align: right;">193</td>
+<td style="text-align: center;">0.41%</td>
+<td style="text-align: right;">46.24%</td>
+</tr>
+<tr>
+<td>中国大陆</td>
+<td style="text-align: right;">103,938</td>
+<td style="text-align: center;">98.66%</td>
+<td style="text-align: right;">23.71%</td>
+<td style="text-align: right;">47,106</td>
+<td style="text-align: center;">99.59%</td>
+<td style="text-align: right;">22.52%</td>
+</tr>
+</tbody>
+</table>
+<h3>最新经营动态（近 12 个月）</h3>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>事件</th>
+<th>影响</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025-02-14</td>
+<td>国内头部客户 2.35 亿合同</td>
+<td>大额订单</td>
+</tr>
+<tr>
+<td>2025-04-18</td>
+<td>2024 年报披露,营收 10.54 亿（+11.42%）</td>
+<td>业绩高峰</td>
+</tr>
+<tr>
+<td>2025-06</td>
+<td><strong>入选北证 50 + 北证专精特新双指数股</strong></td>
+<td>流动性受益</td>
+</tr>
+<tr>
+<td>2025-07-24</td>
+<td>清研纳科 800mm × 50m/min 干法电极国内首台交付广汽研究院</td>
+<td>产品里程碑</td>
+</tr>
+<tr>
+<td>2025-08-21</td>
+<td>H1 报告：营收 4.73 亿（-16.4%），净利 5,164 万（-47.8%）</td>
+<td><strong>业绩首次下滑</strong></td>
+</tr>
+<tr>
+<td>2025-10-XX</td>
+<td>2025 三季报：Q1-Q3 累计 -62.25%；<strong>Q3 单季 -89.89%</strong></td>
+<td>业绩坍塌</td>
+</tr>
+<tr>
+<td>2025-10-XX</td>
+<td><strong>入选国家级单项冠军</strong></td>
+<td>政策催化</td>
+</tr>
+<tr>
+<td>2025-11-XX</td>
+<td>100 车次出海,<strong>亿纬匈牙利 30 GWh 工厂直供 18-21 亿大单</strong></td>
+<td>拐点催化</td>
+</tr>
+<tr>
+<td>2026-01-30</td>
+<td><strong>业绩预告：预减 -57.98% ~ -64.16%</strong></td>
+<td>提前预告</td>
+</tr>
+<tr>
+<td>2026-04-13</td>
+<td>2025 年报披露：营收 9.78 亿（-7.14%），净利 6,592 万（-59.27%）</td>
+<td>实际兑现落区间内</td>
+</tr>
+</tbody>
+</table>
+<h3>财务趋势表（近 4 年 + 季度）</h3>
+<table>
+<thead>
+<tr>
+<th>期末</th>
+<th style="text-align: right;">营收（亿）</th>
+<th style="text-align: right;">YoY</th>
+<th style="text-align: right;">毛利率</th>
+<th style="text-align: right;">净利率</th>
+<th style="text-align: right;">归母净利（万）</th>
+<th style="text-align: right;">ROE</th>
+<th style="text-align: right;">资产负债率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2022</td>
+<td style="text-align: right;">7.56</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">25.13%</td>
+<td style="text-align: right;">14.97%</td>
+<td style="text-align: right;">11,326</td>
+<td style="text-align: right;">44.61%</td>
+<td style="text-align: right;">82.07%</td>
+</tr>
+<tr>
+<td>2023</td>
+<td style="text-align: right;">9.46</td>
+<td style="text-align: right;">+25.1%</td>
+<td style="text-align: right;">25.21%</td>
+<td style="text-align: right;">13.10%</td>
+<td style="text-align: right;">12,383</td>
+<td style="text-align: right;">20.53%</td>
+<td style="text-align: right;">64.93%</td>
+</tr>
+<tr>
+<td>2024</td>
+<td style="text-align: right;">10.54</td>
+<td style="text-align: right;">+11.4%</td>
+<td style="text-align: right;">24.15%</td>
+<td style="text-align: right;">15.36%</td>
+<td style="text-align: right;">16,183</td>
+<td style="text-align: right;"><strong>16.70%</strong></td>
+<td style="text-align: right;">49.30%</td>
+</tr>
+<tr>
+<td>2025 H1</td>
+<td style="text-align: right;">4.73</td>
+<td style="text-align: right;">-16.4%</td>
+<td style="text-align: right;">22.62%</td>
+<td style="text-align: right;">10.92%</td>
+<td style="text-align: right;">5,164</td>
+<td style="text-align: right;">4.90%</td>
+<td style="text-align: right;">54.10%</td>
+</tr>
+<tr>
+<td>2025 Q1-Q3</td>
+<td style="text-align: right;">6.95</td>
+<td style="text-align: right;">-18.6%</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">~8.2%</td>
+<td style="text-align: right;">5,701</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+</tr>
+<tr>
+<td><strong>2025</strong></td>
+<td style="text-align: right;"><strong>9.78</strong></td>
+<td style="text-align: right;"><strong>-7.1%</strong></td>
+<td style="text-align: right;"><strong>19.31%</strong></td>
+<td style="text-align: right;"><strong>6.74%</strong></td>
+<td style="text-align: right;"><strong>6,592</strong></td>
+<td style="text-align: right;"><strong>6.21%</strong></td>
+<td style="text-align: right;"><strong>56.53%</strong></td>
+</tr>
+</tbody>
+</table>
+<h3>管理层前瞻信号（[Tushare:forecast_vip / express_vip]）</h3>
+<p><strong>2026-01-30 业绩预告</strong>：预减 -57.98% ~ -64.16%（预 5,824~6,816 万）。<strong>实际 6,592 万落在区间内</strong> —— 预告主动性正常,市场已 priced-in。</p>
+<h3>主力控盘与筹码分析（来自 capital_flow.md）</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>信号</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主力控盘度（总股本口径）</td>
+<td>🟡 中度控盘</td>
+<td>前 10 大合计 <strong>41.22%</strong></td>
+</tr>
+<tr>
+<td>实控人家族</td>
+<td>🟢 非控盘</td>
+<td>付建新家族 14.39%</td>
+</tr>
+<tr>
+<td>筹码集中度（户数变化）</td>
+<td>🟢 <strong>主力吸筹</strong></td>
+<td>户数 11,876 → 9,671（<strong>-18.57%</strong>），户均 +22.80%</td>
+</tr>
+<tr>
+<td>陆股通</td>
+<td>–</td>
+<td>北交所暂未开通</td>
+</tr>
+<tr>
+<td>两融</td>
+<td>⚪ 平稳</td>
+<td>融资余额 17,862 万,相对 60 日中位 +9.6%</td>
+</tr>
+<tr>
+<td>龙虎榜</td>
+<td>⚪ 无活跃</td>
+<td>近 30 日 0 次</td>
+</tr>
+</tbody>
+</table>
+<p><strong>前十大全体股东（2025-12-31）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>股东</th>
+<th style="text-align: right;">持股数（万）</th>
+<th style="text-align: center;">占总股本%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>付建新（实控人）</td>
+<td style="text-align: right;">2,255</td>
+<td style="text-align: center;">14.39</td>
+</tr>
+<tr>
+<td>穆吉峰（一致行动人）</td>
+<td style="text-align: right;">1,267</td>
+<td style="text-align: center;">8.08</td>
+</tr>
+<tr>
+<td>京津冀产业协同发展投资基金</td>
+<td style="text-align: right;">1,057</td>
+<td style="text-align: center;">6.74</td>
+</tr>
+<tr>
+<td>耿建华（一致行动人）</td>
+<td style="text-align: right;">1,005</td>
+<td style="text-align: center;">6.41</td>
+</tr>
+<tr>
+<td>李志刚</td>
+<td style="text-align: right;">192</td>
+<td style="text-align: center;">1.22</td>
+</tr>
+<tr>
+<td>工银瑞信新能源汽车主题混合基金</td>
+<td style="text-align: right;">161</td>
+<td style="text-align: center;">1.03</td>
+</tr>
+<tr>
+<td>景顺长城新能源产业股票基金</td>
+<td style="text-align: right;">143</td>
+<td style="text-align: center;">0.91</td>
+</tr>
+<tr>
+<td>博时主题行业混合 LOF</td>
+<td style="text-align: right;">136</td>
+<td style="text-align: center;">0.87</td>
+</tr>
+<tr>
+<td>永赢新材料智选混合基金</td>
+<td style="text-align: right;">128</td>
+<td style="text-align: center;">0.82</td>
+</tr>
+<tr>
+<td>富国低碳新经济混合基金</td>
+<td style="text-align: right;">118</td>
+<td style="text-align: center;">0.75</td>
+</tr>
+</tbody>
+</table>
+<p><strong>重要</strong>：京津冀产业协同基金从 8.01%（2025 H1）降至 6.74%（2025-12）= 解禁后<strong>减持 198 万股</strong> —— audit_report 标记为 🟡 中级红旗"前十大股东减持"。</p>
+<h3>★ SOTP 触发判定</h3>
+<p>❌ <strong>未触发</strong>：业务高度集中辊压机（93.6%）+ 备件（6.4%），无可剥离独立业务线。</p>
+<hr />
+</div>
+
+<!-- ============================================================
+     §五 行业与竞争格局
+     ============================================================ -->
+<div class="section" id="industry">
+<h2>§五 行业与竞争格局</h2>
+<h3>行业规模与趋势</h3>
+<ul>
+<li>2025 中国锂电辊压设备市场 ~60 亿（+20% YoY）；2019-2022 CAGR 56.8%；2022-2025 CAGR ~23%</li>
+<li>2024 中国锂电池出货 1,214.6 GWh（vs 2019 的 117 GWh，10×）</li>
+<li>储能出海 2025 H1 +131.75% 订单</li>
+<li>固态电池量产临近（比亚迪 2027 起批），干法 / 等静压等关键设备进入装备拐点</li>
+</ul>
+<h3>Porter 五力分析</h3>
+<table>
+<thead>
+<tr>
+<th>力量</th>
+<th style="text-align: center;">强度</th>
+<th>主要因素</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>现有竞争</td>
+<td style="text-align: center;">🟠 中-强</td>
+<td>CR4 65%；纳科 23.4% / 赢合 21.9% / 先导 14.1% / 海源百特</td>
+</tr>
+<tr>
+<td>新进入者</td>
+<td style="text-align: center;">🟢 弱</td>
+<td>高精度辊压认证 12-18 月,技术 + 客户双壁垒</td>
+</tr>
+<tr>
+<td>替代品</td>
+<td style="text-align: center;">🟡 弱-中</td>
+<td>短期辊压无替代;但<strong>干法部分替代湿法</strong>带结构性影响</td>
+</tr>
+<tr>
+<td>供应商议价</td>
+<td style="text-align: center;">🟢 弱</td>
+<td>外协模式,标准件采购</td>
+</tr>
+<tr>
+<td>客户议价</td>
+<td style="text-align: center;">🔴 <strong>强</strong></td>
+<td>头部 5 家电池厂占主要订单,头部宁德/比亚迪议价能力极强</td>
+</tr>
+</tbody>
+</table>
+<h3>关键竞品对标（来自 peer_analysis.md，专用机械同业）</h3>
+<p>详见 §八 完整 6 行对比表。要点：<br />
+- 纳科 PB 8.62 是 peer 中位 3.95 的 <strong>2.18 倍</strong> —— 在专用机械同业中估值最贵之一<br />
+- 纳科 营收 YoY -7.14% 是 6 家中<strong>最差</strong>（peer 中位 +24%，正帆 +43% / 田中 +40% / 利元亨 +24%）<br />
+- 纳科 ROE 5.32% 和净利率 16.72% 仍领先（peer 多家亏损：田中 -33% / 利元亨 -24%）—— 但绝对水平已逼近联赢激光（ROE 0.94% / 净利率 3.79%）等盈利同业<br />
+- 海外参考 PNT（KOSDAQ 137400, PE ~30 / PB ~3）—— 纳科 PE 140 / PB 8.62 是其 4-5 倍溢价</p>
+<h3>行业景气拐点判读</h3>
+<p>2024-2025 是<strong>电池设备产能去库存周期</strong>，核心信号：<br />
+- 国内电池厂资本开支：CATL 2024 年资本开支 -27%（vs 2023）；亿纬锂能 2025 H1 -18%；蜂巢能源已推迟二期项目<br />
+- 国内储能价格：2024 年储能电芯均价从 0.5+ 元/Wh 跌至 0.3 元/Wh,设备厂订单延迟确认<br />
+- 但 2025 H2 起边际改善信号：(a) 储能出海 +131.75%；(b) 海外建厂带动设备出海；(c) 固态电池量产确认<br />
+- 纳科 2025 Q3 -89% 净利谷底 → Q4 -22% 改善与行业拐点时点吻合</p>
+<p><strong>结论</strong>：纳科是行业 #1 的 beta 股,行业景气拐点 = 公司业绩拐点；但当前估值（PE 140 / PB 8.62）已 priced-in 拐点 50%+,继续上行需要业绩超预期兑现。</p>
+<hr />
+</div>
+
+<!-- ============================================================
+     §六 10 维度详细证据
+     ============================================================ -->
+<div class="section" id="detail">
+<h2>§六 10 维度详细证据</h2>
+<h3>维度 1 · 市场规模与结构（7/10）</h3>
+<ul>
+<li>锂电辊压设备 2025 市场 60 亿 / 行业 CR4 65% / 纳科 #1 23.4%</li>
+<li>行业增速从 56.8% 回落至 ~23% 但中高速</li>
+<li>固态电池量产驱动新设备需求（单 GWh 4-6× ASP）</li>
+</ul>
+<h3>维度 2 · 商业模式（5/10）</h3>
+<ul>
+<li>直销定制 + 备件服务（弹性收入）；项目周期 12-24 月</li>
+<li>客户集中度高：前 5 大 ~18.22%（披露反推）</li>
+<li><strong>回款质量信号</strong>：2024 Q3 销售商品收到现金 -38.31%（票据为主含迪链）</li>
+<li>加分：定制化替换成本高 / 扣分：单台 ASP 弹性低</li>
+</ul>
+<h3>维度 3 · 盈利能力（3/10）</h3>
+<ul>
+<li><strong>DuPont 分解恶化</strong> ([audit])：</li>
+<li>2024：净利率 15.36% × 周转 0.51 × 杠杆 1.97 = ROE 15.49%</li>
+<li>2025：净利率 6.74% × 周转 0.40 × 杠杆 2.30 = <strong>ROE 6.12%（-9.4 pp）</strong></li>
+<li>三因子全部恶化（净利率 -8.6 pp / 周转 -22% / 唯一上升的杠杆是被动）</li>
+<li>毛利率 25.1 → 19.31%（4 年 -5.8 pp）</li>
+<li>vs peer 中位（peer_analysis.md §2）：纳科 ROE 5.32% vs 中位 0.82% = 100% 分位领先（<strong>但绝对水平已逼近行业平均</strong>）</li>
+</ul>
+<h3>维度 4 · 产品与技术（7/10）</h3>
+<ul>
+<li>累计 252 项专利（发明 31 / 实用新型 218 / 外观 3）</li>
+<li>研发人员 95 人（+37.68% YoY）</li>
+<li>干法电极（清研纳科）、等静压（25 H2）、固态电池（锂带压延 / 电解质成膜 / 转印）、与四川新能源汽车创新中心共建实验室</li>
+<li>国家级单项冠军 + 北证专精特新成分股</li>
+<li>募投项目（邢台二期）截至 2025 H1 进度 12.62%，延至 2026-06</li>
+</ul>
+<h3>维度 5 · 团队与管理层（6/10）</h3>
+<h4>利益对齐（[Tushare:stk_rewards] 40 条 + 一致行动人）</h4>
+<ul>
+<li>实控人付建新 + 穆吉峰 + 耿建华三人,2024-05 协议续签 3 年至 2027-05</li>
+<li>无质押冻结</li>
+<li>2025 H1 核心员工持股净减 10 万股（少量,可能离职）</li>
+</ul>
+<h4>综合</h4>
+<ul>
+<li>加分：26 年技术沉淀（2000 创立）/ 治理稳定 / 业绩预告主动</li>
+<li>扣分：派现从 10 派 3 → 10 派 1（-67%）/ 募投项目延期 / 股息率 0.36% &lt; 0.5% Graham 防御阈值</li>
+</ul>
+<h3>维度 6 · 市场进入与护城河（6/10）</h3>
+<ul>
+<li>行业 #1 + 头部客户绑定 + 12-18 月切换成本</li>
+<li>干法 / 等静压先发</li>
+<li>vs 综合厂商（先导 / 赢合）的多元化矩阵：聚焦护城河窄但深；行业 beta 风险大</li>
+</ul>
+<h3>维度 7 · 财务健康度（4/10）</h3>
+<ul>
+<li><strong>Altman Z = 5.15（安全 ≥ 2.99）✅</strong> [audit]</li>
+<li><strong>Beneish M = -2.50（安全 &lt; -1.78）✅</strong> —— 盈余操纵概率低</li>
+<li><strong>Piotroski F = 4/9（中等）⚠️</strong> —— 5 个未达标项中 4 个是恶化指标（资产负债率上升 / 流动比率下降 / 毛利率下降 / 资产周转下降 / ROA 下降）</li>
+<li><strong>现金流</strong>：</li>
+<li>OCF 1.39 亿（vs 2024 1.75 亿,-21%）</li>
+<li>FCF 0.98 亿（FCF Yield 1.05%）</li>
+<li>Owner Earnings 0.43 亿</li>
+<li><strong>资产负债率</strong> 56.53%（+7.2 pp YoY，源于在建工程 + 合同负债）</li>
+<li><strong>速动比率 0.77 &lt; 1</strong>（货币资金 5.22 亿 / 短期借款仅 3,500 万 / 净现金 4.87 亿仍稳健）</li>
+<li><strong>资产减值损失 -3,239 万</strong>（存货跌价持续）+ <strong>信用减值 -233 万</strong>（应收坏账）</li>
+</ul>
+<h3>维度 8 · 估值合理性（2/10）</h3>
+<p><strong>这是本报告最致命的扣分维度</strong>，3 项独立估值方法都指向"严重高估"：</p>
+<h4>8.1 PE 角度</h4>
+<ul>
+<li><strong>PE TTM 140.80</strong> —— 历史最高</li>
+<li>PE FY24 = 92.81 / 1.62 = 57.3 —— 即使用 2024 年高峰净利,仍处行业上限</li>
+<li>PE 2026E 假设 1.0 亿净利 → PE = 92.8（基准情景仍 90+）</li>
+<li>vs 同业先导智能 ~40 / 联赢激光 54 / 昌红科技 146 —— <strong>纳科处分位 60%（中等）但绝对值过高</strong></li>
+</ul>
+<h4>8.2 PB 角度（★ audit 高级红旗）</h4>
+<ul>
+<li><strong>PB 8.62</strong> —— 行业第 80% 分位</li>
+<li><strong>Gordon 模型公允 PB</strong>: (ROE - g) / (r - g) = (6.21 - 4) / (12 - 4) = <strong>0.28 倍</strong></li>
+<li><strong>按周期均值 ROE 28% 测</strong>: (28 - 4) / (12 - 4) = 3.0 倍 —— 仍远低于 8.62</li>
+<li><strong>按 Gordon 公允/合理 PB ≈ ROE/r = 0.78 倍</strong> —— 当前 8.62 / 0.78 = <strong>11.1× 溢价</strong>（[audit_report] 🟠 高级红旗）</li>
+</ul>
+<h4>8.3 PB-ROE 隐含市场预期</h4>
+<ul>
+<li>当前 PB 5.5 + ROE 6.2 自洽要求 ROE 在 2-3 年内回到 ~28%（接近 2022-2023 高点）</li>
+<li>但 2024-2025 行业产能过剩、毛利率压缩、客户折让加大已显示<strong>结构性下移</strong></li>
+<li>即使乐观情景（2027 净利 2.4 亿,东吴预测）, ROE 也仅约 18-22%（按 2024 净资产 10.45 亿摊薄计）</li>
+</ul>
+<h3>维度 9 · 风险与治理（5/10）</h3>
+<ul>
+<li>立信会计师 标准无保留意见 ✅</li>
+<li>一致行动人 28.88% / 无质押 ✅</li>
+<li>业绩预告主动 (2026-01 提前预告) ✅</li>
+<li>扣分：京津冀基金减持 198 万股 / 派现砍半 / 减值持续</li>
+</ul>
+<h3>维度 10 · 催化剂与时机（7/10）</h3>
+<table>
+<thead>
+<tr>
+<th>催化剂</th>
+<th style="text-align: center;">时点</th>
+<th style="text-align: center;">强度</th>
+<th style="text-align: center;">是否 priced-in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>出海大单（亿纬匈牙利 18-21 亿）</td>
+<td style="text-align: center;">2025-11</td>
+<td style="text-align: center;">🟢 高</td>
+<td style="text-align: center;">50% priced-in（Q4 营收 +41.7% 已反映部分）</td>
+</tr>
+<tr>
+<td>等静压设备首批交付</td>
+<td style="text-align: center;">25 H2 → 2026</td>
+<td style="text-align: center;">🟡 中</td>
+<td style="text-align: center;">部分</td>
+</tr>
+<tr>
+<td>干法电极放量</td>
+<td style="text-align: center;">2025-07 → 2026 复制</td>
+<td style="text-align: center;">🟡 中</td>
+<td style="text-align: center;">部分</td>
+</tr>
+<tr>
+<td>固态电池量产（比亚迪 2027 起）</td>
+<td style="text-align: center;">2026-2027</td>
+<td style="text-align: center;">🟢 高</td>
+<td style="text-align: center;">部分</td>
+</tr>
+<tr>
+<td>北交所流动性改善</td>
+<td style="text-align: center;">2025-06 北证 50 入选</td>
+<td style="text-align: center;">🟡 中</td>
+<td style="text-align: center;">已 priced-in</td>
+</tr>
+<tr>
+<td>拐点确认（Q1 季报）</td>
+<td style="text-align: center;">2026-04 末-05 月</td>
+<td style="text-align: center;">🟢 关键</td>
+<td style="text-align: center;">即将兑现</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+
+<!-- ============================================================
+     §七 网络舆情与市场情绪
+     ============================================================ -->
+<div class="section" id="sentiment">
+<h2>§七 网络舆情与市场情绪</h2>
+<h3>看多派声音</h3>
+<table>
+<thead>
+<tr>
+<th>平台</th>
+<th>核心观点</th>
+<th style="text-align: center;">时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>东吴证券</td>
+<td>在手订单 20.10 亿 / 等静压 H2 推出；25-27 净利 1.6/2.4/3.7 亿,买入</td>
+<td style="text-align: center;">2025-08-24</td>
+</tr>
+<tr>
+<td>国联证券</td>
+<td>锂电辊压龙头 + 干法 / 固态 赋予新成长；2024-26 净利 1.50/1.75/1.99 亿</td>
+<td style="text-align: center;">2024</td>
+</tr>
+<tr>
+<td>开源证券</td>
+<td>头部客户订单 + 募投调向固态电池,全年 +32%</td>
+<td style="text-align: center;">2025-02-28</td>
+</tr>
+<tr>
+<td>媒体催化</td>
+<td>2025-11 18-21 亿亿纬匈牙利大单</td>
+<td style="text-align: center;">2025-11-25</td>
+</tr>
+<tr>
+<td>雪球用户 @穆穆</td>
+<td>"主升途中" / "30cm 诱惑"</td>
+<td style="text-align: center;">2025</td>
+</tr>
+</tbody>
+</table>
+<h3>看空派声音</h3>
+<table>
+<thead>
+<tr>
+<th>平台</th>
+<th>核心观点</th>
+<th style="text-align: center;">时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>财报披露</td>
+<td>2025 净利 -59.27%（实际 vs 东吴 1.6 亿 = 仅 41% 兑现）</td>
+<td style="text-align: center;">2026-04-13</td>
+</tr>
+<tr>
+<td>audit_report</td>
+<td>ROE 急剧恶化 致命红旗 + PB-ROE 严重错配 高级红旗</td>
+<td style="text-align: center;">2026-04-27</td>
+</tr>
+<tr>
+<td>technical_analysis</td>
+<td>RSI 77.71 超买 + 跌破 MA120</td>
+<td style="text-align: center;">2026-04-24</td>
+</tr>
+<tr>
+<td>雪球 @追蓄电池</td>
+<td>国内扩产放缓 + 公司无海外可对冲（部分预言成真）</td>
+<td style="text-align: center;">早期</td>
+</tr>
+</tbody>
+</table>
+<h3>资金流向信号（来自 capital_flow.md）</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>信号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>公募基金（5 只）2025 H1 增持进入前十大</td>
+<td>🟢 中线买入</td>
+</tr>
+<tr>
+<td>户数 -18.57%（11,876 → 9,671），户均 +22.80%</td>
+<td>🟢 主力吸筹</td>
+</tr>
+<tr>
+<td>京津冀产业协同基金减持 198 万股</td>
+<td>🟡 限售解禁部分减持</td>
+</tr>
+<tr>
+<td>两融 平稳（+9.6% vs 中位）</td>
+<td>⚪ 中性</td>
+</tr>
+<tr>
+<td>龙虎榜 近 30 日 0 次</td>
+<td>⚪ 无短线异动</td>
+</tr>
+</tbody>
+</table>
+<p><strong>综合</strong>：业绩低谷期出现"散户离场 + 机构吸筹"的非典型形态,<strong>机构对长期催化（固态 / 出海）有信心</strong>。</p>
+<h3>舆情情绪量化</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>信号</th>
+<th style="text-align: center;">强度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主流券商一致评级</td>
+<td>东吴 / 国联 / 开源 均给"买入"或"增持"</td>
+<td style="text-align: center;">🟢 看多</td>
+</tr>
+<tr>
+<td>业绩预期</td>
+<td>25-27 净利预测 1.6/2.4/3.7 亿（东吴最乐观）</td>
+<td style="text-align: center;">🟢 看多</td>
+</tr>
+<tr>
+<td>实际兑现</td>
+<td>2025 实际仅 0.66 亿（41% 兑现东吴）</td>
+<td style="text-align: center;">🔴 严重低于预期</td>
+</tr>
+<tr>
+<td>公募基金动作</td>
+<td>5 只新进前十大（北证 50 ETF / 工银 / 景顺 / 博时 / 永赢 / 富国系）</td>
+<td style="text-align: center;">🟢 中线买入</td>
+</tr>
+<tr>
+<td>京津冀基金</td>
+<td>减持 198 万股（限售解禁）</td>
+<td style="text-align: center;">🟡 中性</td>
+</tr>
+<tr>
+<td>散户离场</td>
+<td>户数 -18.57%</td>
+<td style="text-align: center;">🟢 主力吸筹</td>
+</tr>
+<tr>
+<td>雪球 / 股吧</td>
+<td>"30cm 诱惑" / "突破之势" / "等业绩" 多空并存</td>
+<td style="text-align: center;">⚪ 中性</td>
+</tr>
+</tbody>
+</table>
+<p><strong>舆情整体</strong>：研报口径 2025-08 后未及时下修（东吴仍维持 1.6 亿）→ 实际兑现 0.66 亿（缺口 -59%）→ 但价格未明显下跌（亿纬大单催化吸纳了利空）→ <strong>市场预期与基本面背离,定价向乐观主题倾斜</strong>,这本身就是估值透支信号。</p>
+<hr />
+</div>
+
+<!-- ============================================================
+     §八 可比公司对标
+     ============================================================ -->
+<div class="section" id="peers">
+<h2>§八 可比公司对标（来自 peer_analysis.md）</h2>
+<h3>§8.1 同行业 Top 5 相近市值（专用机械）</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">股票</th>
+<th style="text-align: center;">公司</th>
+<th style="text-align: right;">市值（亿）</th>
+<th style="text-align: right;">PE TTM</th>
+<th style="text-align: right;">PB</th>
+<th style="text-align: right;">PS TTM</th>
+<th style="text-align: right;">ROE</th>
+<th style="text-align: right;">毛利率</th>
+<th style="text-align: right;">净利率</th>
+<th style="text-align: right;">资产负债率</th>
+<th style="text-align: right;">营收 YoY</th>
+<th style="text-align: right;">股息率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>920522.BJ</strong> ⭐</td>
+<td style="text-align: center;"><strong>纳科诺尔</strong></td>
+<td style="text-align: right;"><strong>92.81</strong></td>
+<td style="text-align: right;"><strong>140.80</strong></td>
+<td style="text-align: right;"><strong>8.62</strong></td>
+<td style="text-align: right;">9.49</td>
+<td style="text-align: right;">5.32</td>
+<td style="text-align: right;">23.82</td>
+<td style="text-align: right;">16.72</td>
+<td style="text-align: right;">60.81</td>
+<td style="text-align: right;">-7.14</td>
+<td style="text-align: right;">0.36</td>
+</tr>
+<tr>
+<td style="text-align: center;">300461.SZ</td>
+<td style="text-align: center;">田中精机</td>
+<td style="text-align: right;">92.84</td>
+<td style="text-align: right;">591.00</td>
+<td style="text-align: right;">16.73</td>
+<td style="text-align: right;">29.35</td>
+<td style="text-align: right;">-1.84</td>
+<td style="text-align: right;">24.21</td>
+<td style="text-align: right;">-33.23</td>
+<td style="text-align: right;">33.78</td>
+<td style="text-align: right;">39.90</td>
+<td style="text-align: right;">–</td>
+</tr>
+<tr>
+<td style="text-align: center;">688499.SH</td>
+<td style="text-align: center;">利元亨</td>
+<td style="text-align: right;">91.13</td>
+<td style="text-align: right;">176.93</td>
+<td style="text-align: right;">3.95</td>
+<td style="text-align: right;">2.96</td>
+<td style="text-align: right;">-8.04</td>
+<td style="text-align: right;">17.38</td>
+<td style="text-align: right;">-24.85</td>
+<td style="text-align: right;">77.81</td>
+<td style="text-align: right;">23.98</td>
+<td style="text-align: right;">–</td>
+</tr>
+<tr>
+<td style="text-align: center;">688518.SH</td>
+<td style="text-align: center;">联赢激光</td>
+<td style="text-align: right;">94.58</td>
+<td style="text-align: right;">54.91</td>
+<td style="text-align: right;">2.90</td>
+<td style="text-align: right;">2.90</td>
+<td style="text-align: right;">0.94</td>
+<td style="text-align: right;">29.23</td>
+<td style="text-align: right;">3.79</td>
+<td style="text-align: right;">55.65</td>
+<td style="text-align: right;">3.55</td>
+<td style="text-align: right;">0.54</td>
+</tr>
+<tr>
+<td style="text-align: center;">300151.SZ</td>
+<td style="text-align: center;">昌红科技</td>
+<td style="text-align: right;">94.68</td>
+<td style="text-align: right;">146.59</td>
+<td style="text-align: right;">6.04</td>
+<td style="text-align: right;">9.53</td>
+<td style="text-align: right;">1.51</td>
+<td style="text-align: right;">28.40</td>
+<td style="text-align: right;">9.14</td>
+<td style="text-align: right;">33.23</td>
+<td style="text-align: right;">-4.34</td>
+<td style="text-align: right;">0.42</td>
+</tr>
+<tr>
+<td style="text-align: center;">688596.SH</td>
+<td style="text-align: center;">正帆科技</td>
+<td style="text-align: right;">94.95</td>
+<td style="text-align: right;">124.47</td>
+<td style="text-align: right;">2.62</td>
+<td style="text-align: right;">1.82</td>
+<td style="text-align: right;">0.82</td>
+<td style="text-align: right;">27.41</td>
+<td style="text-align: right;">5.95</td>
+<td style="text-align: right;">63.70</td>
+<td style="text-align: right;">43.35</td>
+<td style="text-align: right;">0.86</td>
+</tr>
+</tbody>
+</table>
+<h3>§8.2 在 peer 中的分位</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th style="text-align: center;">纳科</th>
+<th style="text-align: center;">Peer 中位</th>
+<th style="text-align: center;">分位</th>
+<th>解读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ROE(%)</td>
+<td style="text-align: center;">5.32</td>
+<td style="text-align: center;">0.82</td>
+<td style="text-align: center;"><strong>100%</strong> 🟢</td>
+<td>领先（绝对 6% 仍弱）</td>
+</tr>
+<tr>
+<td>毛利率(%)</td>
+<td style="text-align: center;">23.82</td>
+<td style="text-align: center;">27.41</td>
+<td style="text-align: center;"><strong>20%</strong> ⚠️</td>
+<td>低于中位</td>
+</tr>
+<tr>
+<td>净利率(%)</td>
+<td style="text-align: center;">16.72</td>
+<td style="text-align: center;">3.79</td>
+<td style="text-align: center;"><strong>100%</strong> 🟢</td>
+<td>领先</td>
+</tr>
+<tr>
+<td>资产负债率(%)</td>
+<td style="text-align: center;">60.81</td>
+<td style="text-align: center;">55.65</td>
+<td style="text-align: center;"><strong>40%</strong> 🟡</td>
+<td>中位略高</td>
+</tr>
+<tr>
+<td>PE TTM</td>
+<td style="text-align: center;">140.80</td>
+<td style="text-align: center;">146.59</td>
+<td style="text-align: center;"><strong>60%</strong> ✅</td>
+<td>中等</td>
+</tr>
+<tr>
+<td><strong>PB</strong></td>
+<td style="text-align: center;"><strong>8.62</strong></td>
+<td style="text-align: center;"><strong>3.95</strong></td>
+<td style="text-align: center;"><strong>20%</strong> ⚠️</td>
+<td><strong>偏贵</strong></td>
+</tr>
+<tr>
+<td>营收 YoY(%)</td>
+<td style="text-align: center;">-7.14</td>
+<td style="text-align: center;">23.98</td>
+<td style="text-align: center;"><strong>0%</strong> 🔴</td>
+<td><strong>行业最差</strong></td>
+</tr>
+</tbody>
+</table>
+<h3>§8.3 硬判定洞察</h3>
+<ul>
+<li>🟢 ROE 5.32% / 净利率 16.72% 显著领先 peer 中位（peer 多家亏损）</li>
+<li>⚠️ <strong>PB 8.62 远高于 peer 中位 3.95（0.46×）</strong> —— 即使在专用机械同业中也偏贵</li>
+<li>🔴 <strong>营收 YoY -7.14% 是 6 家中最差</strong> —— 2025 增长劣势确认</li>
+<li>✅ 估值角度：联赢激光（PE 55 / PB 2.9）/ 正帆科技（PE 124 / PB 2.62）是更合理的参考</li>
+</ul>
+<h3>§8.4 海外同业（LLM 整理）</h3>
+<ul>
+<li><strong>PNT (KOSDAQ 137400)</strong>：韩国锂电辊压龙头,服务 LG/SK/三星 SDI；2024 营收 ~25 亿 RMB；PE ~30 / PB ~3</li>
+<li><strong>CIS Co. (KOSDAQ 222080)</strong>：韩国二次电池设备综合</li>
+<li><strong>Hirano Tecseed</strong>（日本不上市）：涂布 / 辊压设备日系 #1</li>
+<li><strong>Manz AG</strong>：德国（已被中资部分收购）</li>
+</ul>
+<p><strong>纳科 vs PNT</strong>: PE 140 vs 30 / PB 8.62 vs 3 —— <strong>海外同业看也是 4-5× 溢价</strong>。</p>
+<hr />
+</div>
+
+<!-- ============================================================
+     §九 估值与回报模拟
+     ============================================================ -->
+<div class="section" id="valuation">
+<h2>§九 估值与回报模拟</h2>
+<h3>9.1 DCF 4 情景</h3>
+<h4>乐观（25%）</h4>
+<ul>
+<li>2026 营收 14 亿（+43%），净利率 12% → 净利 1.68 亿</li>
+<li>2027 营收 18 亿，净利率 13.5% → 2.43 亿（与东吴乐观一致）</li>
+<li>2028+ 增 15%，长期净利率 14%</li>
+<li>折现 12%，永续 4%</li>
+<li>估值 <strong>~90 亿</strong></li>
+</ul>
+<h4>基准（45%）</h4>
+<ul>
+<li>2026 营收 12 亿（+22%），净利率 8.5% → 1.02 亿</li>
+<li>2027 营收 14 亿，净利 1.4 亿</li>
+<li>2028+ 增 10%，长期净利率 11%</li>
+<li>估值 <strong>~55 亿</strong></li>
+</ul>
+<h4>悲观（25%）</h4>
+<ul>
+<li>2026 营收 9.5 亿（持平），净利 0.67 亿</li>
+<li>2027 营收 10 亿，净利 0.85 亿</li>
+<li>2028+ 增 6%，长期净利率 8%</li>
+<li>估值 <strong>~30 亿</strong></li>
+</ul>
+<h4>最差（5%）</h4>
+<ul>
+<li>客户大额订单取消 + 减值集中（应收 + 存货 ≥ 1.5 亿）</li>
+<li>2026 亏损 -0.5 亿</li>
+<li>估值 <strong>~18 亿</strong>（净资产 + 残值溢价）</li>
+</ul>
+<h4>估值锚</h4>
+<table>
+<thead>
+<tr>
+<th>情景</th>
+<th style="text-align: right;">估值（亿）</th>
+<th style="text-align: right;">对应股价</th>
+<th style="text-align: center;">概率</th>
+<th style="text-align: right;">加权</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>乐观</td>
+<td style="text-align: right;">90</td>
+<td style="text-align: right;">57.4</td>
+<td style="text-align: center;">25%</td>
+<td style="text-align: right;">22.50</td>
+</tr>
+<tr>
+<td>基准</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">35.1</td>
+<td style="text-align: center;">45%</td>
+<td style="text-align: right;">24.75</td>
+</tr>
+<tr>
+<td>悲观</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">19.1</td>
+<td style="text-align: center;">25%</td>
+<td style="text-align: right;">7.50</td>
+</tr>
+<tr>
+<td>最差</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">11.5</td>
+<td style="text-align: center;">5%</td>
+<td style="text-align: right;">0.90</td>
+</tr>
+<tr>
+<td><strong>概率加权</strong></td>
+<td style="text-align: right;"><strong>55.65</strong></td>
+<td style="text-align: right;"><strong>35.5</strong></td>
+<td style="text-align: center;">100%</td>
+<td style="text-align: right;"><strong>55.65</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>vs 当前市值 92.81 亿（59.21 元）</strong>：估值锚 <strong>-40%</strong>！这是 v1 报告（基于反推 -5.6%）的真实修订。</p>
+<h3>9.2 交叉验证</h3>
+<ul>
+<li><strong>可比 PE 法</strong>: 假设 2026 净利 1.0 亿（基准），PE 30× → 30 亿；PE 50× → 50 亿（行业上限）</li>
+<li><strong>有形 PB 法</strong>: 净资产 10.77 亿 × 同业 PB 中位 3.95 = 42.5 亿</li>
+<li><strong>Gordon PB 法</strong>: (ROE 6.21 - g 4) / (r 12 - g 4) × 净资产 10.77 = 3.0 亿 / 0.28 × 10.77 = <strong>3.0 亿</strong>（极端悲观）</li>
+<li><strong>DCF 锚</strong> 55.65 亿 vs 可比 PE 30-50 亿 vs PB 42.5 亿 —— 三角差异在 16-31% 区间,基本一致；<strong>真实公允价值在 30-55 亿区间</strong></li>
+</ul>
+<h3>9.3 估值异常（★ audit_report 复用）</h3>
+<p>🟠 <strong>PB vs ROE 严重错配</strong>（audit_report 第 2 红旗）<br />
+- 当前 PB 8.62 / 合理 PB (ROE/8%) ≈ 0.78 = <strong>11.1× 溢价</strong><br />
+- 即使 ROE 恢复至 12% → 公允 PB = 1.5 / 仍是 5.7× 溢价<br />
+- 即使 ROE 恢复至 28% → 公允 PB = 3.5 / 仍是 2.5× 溢价</p>
+<h3>9.4 技术面位置（来自 technical_analysis.md）</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>信号</th>
+<th style="text-align: center;">数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>均线排列</td>
+<td>均线纠缠 🟡</td>
+<td style="text-align: center;">MA5/20/60/120 = 59.88/52.29/60.61/61.26</td>
+</tr>
+<tr>
+<td><strong>中长期趋势</strong></td>
+<td><strong>长期弱势 🔴</strong></td>
+<td style="text-align: center;">收盘 59.21 &lt; MA60 60.61 / <strong>&lt; MA120 61.26</strong></td>
+</tr>
+<tr>
+<td>MACD</td>
+<td>无交叉 ⚪</td>
+<td style="text-align: center;">DIFF 1.12 / DEA -0.55</td>
+</tr>
+<tr>
+<td><strong>RSI(14)</strong></td>
+<td><strong>超买 🔴</strong></td>
+<td style="text-align: center;"><strong>77.71</strong></td>
+</tr>
+<tr>
+<td>布林带</td>
+<td>中轨之上</td>
+<td style="text-align: center;">上 62.96 / 中 52.29 / 下 41.63</td>
+</tr>
+<tr>
+<td>成交量</td>
+<td>正常 0.9×</td>
+<td style="text-align: center;">–</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>价格位置</th>
+<th style="text-align: center;">数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>近 20 日涨跌</td>
+<td style="text-align: center;"><strong>+23.2%</strong>（短线反弹）</td>
+</tr>
+<tr>
+<td>近 60 日涨跌</td>
+<td style="text-align: center;">-14.03%</td>
+</tr>
+<tr>
+<td>近 1 年涨跌</td>
+<td style="text-align: center;">+9.85%</td>
+</tr>
+<tr>
+<td>近 60 日支撑</td>
+<td style="text-align: center;">45.7（下方 22.82%）</td>
+</tr>
+<tr>
+<td>近 60 日阻力</td>
+<td style="text-align: center;">78.28（上方 32.21%）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>基本面 × 技术面综合判断</strong>:<br />
+- DCF 基准 + 技术面偏空 = 好公司但<strong>时点不对</strong><br />
+- 当前 RSI 超买 + 跌破 MA120 + 短线反弹 +23% → <strong>明显的"反弹中卖点"</strong><br />
+- 若止损,参考 60 日支撑 45.7 元<br />
+- 若加仓信号,参考 60 日阻力 78.28 突破</p>
+<hr />
+</div>
+
+<!-- ============================================================
+     §十 投资回报测算（与 §九 共用情景）
+     ============================================================ -->
+<div class="section" id="invest-sim">
+<h2>§十 投资回报测算（与 §九 共用情景）</h2>
+<p><strong>初始仓位</strong>: 100 万元<br />
+<strong>当前买入</strong>: 59.21 元 × 16,890 股 ≈ 100 万元</p>
+<table>
+<thead>
+<tr>
+<th>情景</th>
+<th style="text-align: center;">目标价</th>
+<th style="text-align: center;">收益率</th>
+<th style="text-align: center;">概率</th>
+<th style="text-align: center;">加权</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>乐观</td>
+<td style="text-align: center;">57.4</td>
+<td style="text-align: center;">-3.1%</td>
+<td style="text-align: center;">25%</td>
+<td style="text-align: center;">-0.78%</td>
+</tr>
+<tr>
+<td>基准</td>
+<td style="text-align: center;">35.1</td>
+<td style="text-align: center;">-40.7%</td>
+<td style="text-align: center;">45%</td>
+<td style="text-align: center;">-18.32%</td>
+</tr>
+<tr>
+<td>悲观</td>
+<td style="text-align: center;">19.1</td>
+<td style="text-align: center;">-67.7%</td>
+<td style="text-align: center;">25%</td>
+<td style="text-align: center;">-16.93%</td>
+</tr>
+<tr>
+<td>最差</td>
+<td style="text-align: center;">11.5</td>
+<td style="text-align: center;">-80.6%</td>
+<td style="text-align: center;">5%</td>
+<td style="text-align: center;">-4.03%</td>
+</tr>
+<tr>
+<td><strong>加权 2 年收益率</strong></td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">100%</td>
+<td style="text-align: center;"><strong>-40.0%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>年化</strong> ≈ <strong>-22.5%</strong>（不含股息 0.36%）；含股息 <strong>年化 -22.1%</strong></p>
+<h3>关键假设与敏感性</h3>
+<p><strong>当前估值已严重透支</strong>:<br />
+1. 即使乐观情景兑现（2026 净利 1.68 亿,+155%）,股价仍仅 57.4 元（-3% 横盘）<br />
+2. 基准情景（2026 净利 1.0 亿,+52%）下行 -40.7%<br />
+3. 悲观情景（持平）下行 -67.7%</p>
+<p><strong>仓位执行</strong>:<br />
+- <strong>当前阶段</strong>: <strong>不建仓</strong>（建议明确卖出/不持有）<br />
+- <strong>若必须配置</strong>: 0% （非 1%）<br />
+- <strong>重新评估时点</strong>:<br />
+  - 股价跌至 DCF 基准锚 35-40 元 → 转为"建立 1-2% 观察仓"（拐点交易者信号）<br />
+  - 股价跌至 25-30 元（接近悲观情景）+ ROE 重回 15%+ → 转为"建立 5-8%"（巴菲特派条件）</p>
+<hr />
+</div>
+
+<!-- ============================================================
+     §十一 定性判断（3 框架，无打分）
+     ============================================================ -->
+<div class="section" id="qualitative">
+<h2>§十一 定性判断（3 框架）</h2>
+<blockquote>
+<p>会计红旗见 §十五 / audit_report.md；估值见 §九。</p>
+</blockquote>
+<h3>框架 1 · 护城河（Moat）→ <strong>中等-收窄中</strong></h3>
+<ul>
+<li>✅ 行业 #1（市占率 23.4%）+ 头部客户绑定 + 12-18 月切换成本</li>
+<li>✅ 干法电极国内首台 + 等静压先发</li>
+<li>🟡 聚焦护城河 vs 综合护城河：相对赢合 / 先导多元化矩阵,纳科聚焦窄</li>
+<li>🔴 2025 验证护城河韧性：行业下行期净利 -59% 与亏损的赢合差距收窄</li>
+<li><strong>判断</strong>: 中等护城河,正被周期下行测试；2026 拐点确认后可升级为强</li>
+</ul>
+<h3>框架 2 · 管理层（Management）→ <strong>稳定且适当主动</strong></h3>
+<ul>
+<li>✅ 26 年技术沉淀 + 一致行动人续签至 2027-05 + 无质押冻结</li>
+<li>✅ <strong>2026-01-30 提前业绩预告（-57.98%~-64.16%）</strong>,实际兑现落区间内 —— 披露主动性正常</li>
+<li>🟡 派现砍半（10 派 3 → 10 派 1）+ 募投延期 = 周期下保守化</li>
+<li><strong>判断</strong>: 稳定可信,适合长期持有非短期催化</li>
+</ul>
+<h3>框架 3 · 催化剂（Catalyst）→ <strong>存在但已部分 priced-in</strong></h3>
+<ul>
+<li>🟢 拐点信号: Q3 -89.89% → Q4 -22.5%; 但年度 -59% 叙事和 PE 140 估值已 priced-in</li>
+<li>🟢 海外大单: 亿纬匈牙利 18-21 亿（2025-11 已发）→ Q4 营收 +41.7% 部分确认,2026 H1-H2 完整确认</li>
+<li>🟢 等静压 + 干法 + 固态 ≥ 2026 兑现窗口</li>
+<li>🟡 政策催化（北证 50 + 单项冠军）已 priced-in</li>
+<li>🟡 Q1 季报（2026-04 末-05 月）是关键确认时点</li>
+<li><strong>判断</strong>: 催化剂多但兑现已 priced-in,赔率收窄</li>
+</ul>
+<p><strong>综合判断</strong>: 护城河（中等）+ 管理层（稳定）+ 催化剂（priced-in）→ 单看护城河和管理层应"持有"，但 §九 估值显示 -40% 下行 —— <strong>应'估值优先 / 不投资'</strong>。</p>
+<p><strong>致命看空检查</strong>: §三 1 项触发 + 1 项临界。</p>
+<hr />
+</div>
+
+<!-- ============================================================
+     §十二 差异化洞察（紫色强调，9 字段卡片）
+     ============================================================ -->
+<div class="section variant-perception" id="variant">
+<h2>§十二 差异化洞察（Phase 5 回写）</h2>
+<h3>卡片 1 · 季度拐点已 priced-in（信号 5 / 中 / Q1 季报）</h3>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 命题</td>
+<td>2025 -59% 净利的"年度叙事"和当前 PE 140.80 估值都已 priced-in 拐点预期；Q4 单季 +41.7% 营收 / -22.5% 净利改善已被 2025-11 大单后的反弹（近 20 日 +23%）吸纳</td>
+</tr>
+<tr>
+<td>2. 共识对比</td>
+<td>共识 v1：拐点是赔率（建仓信号）/ 我（v2 修订）：拐点是已知数据、已被价格反映,赔率显著收窄</td>
+</tr>
+<tr>
+<td>3. 数据锚</td>
+<td>Q3 单季 500 万 → Q4 870 万 = +74% QoQ；Q4 营收 2.83 亿 = +41.7% YoY；股价从 2025-11-25（亿纬大单）后涨至 60 元区间</td>
+</tr>
+<tr>
+<td>4. ★ 数学推导</td>
+<td>DCF 锚 35.5 元 vs 当前 59.21 元 = -40% 下行；即使乐观情景股价 57.4 元仍 -3%；说明定价已透支</td>
+</tr>
+<tr>
+<td>5. 反例</td>
+<td>反例：2026 Q1 季报若超预期同比转正 → 价格仍可能上行突破 78.28 阻力；但概率有限（基准情景隐含 +30~40% 才能合理化当前 PE）</td>
+</tr>
+<tr>
+<td>6. ★ 信号强度</td>
+<td>Level A 5 / 置信度 中 / 时间窗 2026-04 末-05 月</td>
+</tr>
+<tr>
+<td>7. 如果错了</td>
+<td>2026 Q1 季报营收 / 净利同比 +50% 以上 → 拐点真实兑现,需要重估估值</td>
+</tr>
+<tr>
+<td>8. 操作映射</td>
+<td>当前不建仓; 等价格回到 DCF 锚区间 35-40 元再考虑</td>
+</tr>
+<tr>
+<td>9. 跟踪指标</td>
+<td>Q1 季报 / 2026 H1 海外收入占比 / 干法电极复制订单数</td>
+</tr>
+</tbody>
+</table>
+<h3>卡片 2 · 研发 +136% 是去基数效应（费用忧虑被高估）（信号 5 / 中-高 / 2026 H1）</h3>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 命题</td>
+<td>2025 研发费用 +136%中,<strong>约 90% 来自 2024 销售样机冲减不再发生</strong>；剔除后真实增加仅 ~5.8%</td>
+</tr>
+<tr>
+<td>2. 共识</td>
+<td>共识：研发翻倍压缩利润 / 我：去基数主导</td>
+</tr>
+<tr>
+<td>3. 数据锚</td>
+<td>[PDF:q3_2024,P.5]"销售研发样机冲减研发费用 -64.43%"；2025 年报"上年同期销售样机冲减...本期未发生"</td>
+</tr>
+<tr>
+<td>4. ★ 数学</td>
+<td>2024 账面 812 万 + 推算冲减 ~1,000 万 = 真实 1,812 万；2025 账面 1,917 万 / 1,812 - 1 = <strong>+5.8%</strong></td>
+</tr>
+<tr>
+<td>5. 反例</td>
+<td>年报"材料支出为核心驱动" → 但占比上升 ≠ 总额翻倍是材料突击</td>
+</tr>
+<tr>
+<td>6. ★ 信号</td>
+<td>Level A 5 / 置信度 中-高 / 时间窗 2026 H1</td>
+</tr>
+<tr>
+<td>7. 如果错了</td>
+<td>2026 H1 研发年化 2,000 万+ → 证明真实战略投入</td>
+</tr>
+<tr>
+<td>8. 操作</td>
+<td>利润模型可下修 800-1,000 万的"费用拖累"</td>
+</tr>
+<tr>
+<td>9. 跟踪</td>
+<td>2026 H1 研发费用绝对值</td>
+</tr>
+</tbody>
+</table>
+<h3>卡片 3 · PB-ROE 严重错配是主导扣分项（信号 6 / 高 / 即时）</h3>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 命题</td>
+<td>当前 PB 8.62 vs Gordon 公允 PB 0.78 = <strong>11.1× 溢价</strong> —— audit_report 已标记为 🟠 高级红旗。真实数据(非反推)显示估值远比市场感知更贵</td>
+</tr>
+<tr>
+<td>2. 共识</td>
+<td>共识：PE 高位但行业溢价合理 / 我：PB 是更准确锚,显示 11x 透支</td>
+</tr>
+<tr>
+<td>3. 数据锚</td>
+<td>PB 8.62 / ROE 6.21% / 资产负债率 56.53% / 速动比率 0.77 / 货币资金 5.22 亿 / 净现金 4.87 亿</td>
+</tr>
+<tr>
+<td>4. ★ 数学</td>
+<td>Gordon PB = (ROE - g)/(r - g) = (6.21 - 4)/(12 - 4) = 0.276；公允 PB = ROE/r = 0.78；当前 PB / 公允 = 11.1</td>
+</tr>
+<tr>
+<td>5. 反例</td>
+<td>周期均值化 ROE 28% → 公允 PB 3.0 倍,但仍 &lt; 当前 8.62（2.9× 溢价）</td>
+</tr>
+<tr>
+<td>6. ★ 信号</td>
+<td>Level A 6 / 置信度 高 / 时间窗 即时</td>
+</tr>
+<tr>
+<td>7. 如果错了</td>
+<td>ROE 在 12 个月内回到 25-28%（接近 2022-2023 高点）→ 公允 PB 3.0 倍可吸收 1/3 当前估值</td>
+</tr>
+<tr>
+<td>8. 操作</td>
+<td>估值优先,不建仓；等 PB 跌至 3-5 倍区间再考虑</td>
+</tr>
+<tr>
+<td>9. 跟踪</td>
+<td>季度 ROE 重新计算 / PB 历史分位</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+
+<!-- ============================================================
+     §十三 多角色投资结论（Phase 4 回写）
+     ============================================================ -->
+<div class="section" id="personas">
+<h2>§十三 多角色投资结论（Phase 4 回写,基于真实数据修订）</h2>
+<h3>角色 A · 巴菲特价值派（Quality + Margin of Safety）</h3>
+<p><strong>核心结论：明确不投资。</strong> v1 我已说不投资,v2 真实数据更强化此判断。<strong>PB 8.62 vs Gordon 公允 0.78 = 11.1× 透支</strong>（audit_report 高级红旗）；即使按 2022-2024 周期均值 ROE 28% 测,公允 PB 也只 3.0 倍,远低于 8.62。ROE 4 年单调下行（44.6 → 20.5 → 16.7 → <strong>6.21</strong>）更是验证结构性恶化。</p>
+<p><strong>最担忧风险：估值透支叠加应收质量。</strong> 真实数据揭示估值比市场感知更贵：当前 92.81 亿市值 vs DCF 基准 55 亿 = <strong>-40% 透支</strong>。叠加 2024 Q3 销售商品收到现金 -38.31% 的票据化（迪链供应链金融）、2025 年报资产减值持续 -3,239 万 / 信用减值 -233 万、应收账款"放贷给客户"模式 —— 我看不到任何理由在此点位买入。</p>
+<p><strong>对洞察 #3（PB-ROE 严重错配）的回应：完全认同,这是我离场的核心理由。</strong> 即使 ROE 12 个月内恢复至 12%（极乐观）, 公允 PB 也只 1.5 倍(vs 8.62 = 5.7× 溢价)。<strong>我宁可等 PB 跌至 3 倍以下、ROE 重回 15%+ 时买入,而不是在 PB 8.62 + ROE 6.2 时建仓</strong>。</p>
+<h3>角色 B · 北交所拐点交易者（Mean Reversion + Catalyst）</h3>
+<p><strong>核心结论：v2 修订 — 不建仓 / 已错过最佳建仓窗口。</strong> v1 我说轻仓 1-2%,但 v2 真实数据揭示当前价 59.21 元远高于 DCF 锚 35.5 元(-40%)；技术面 RSI 77.71 超买 + 跌破 MA120 + 近 20 日 +23% 反弹。<strong>最佳建仓窗口在 2025-11 亿纬大单消息前的 45-50 元区间,现在已错过</strong>。</p>
+<p><strong>最担忧风险：拐点已 priced-in,赔率收窄。</strong> Q1 季报（2026-04 末-05 月）即使转正,涨幅可能受估值压制（PE 140 难以扩张）。但若季报令市场失望（同比仍 -10% 以上）,跌至 60 日支撑 45.7 元只是 -23%,不算最差。</p>
+<p><strong>对洞察 #1（季度拐点已 priced-in）的回应：完全认同,这是我修订持仓的核心。</strong> 当前 PE 140 已隐含 2026 净利 1.6+ 亿乐观预期；如果实际兑现 1.0 亿,估值需修正至 PE 90,股价跌至 60 亿市值 = 38 元。<strong>最佳策略是等价格回到 DCF 锚 35-40 元,而非现在追涨</strong>。</p>
+<h3>角色 C · ARK / 张磊 主题成长派（Disruptive Innovation + Long Compounding）</h3>
+<p><strong>核心结论：耐心等待 — 2026 Q3 三催化剂同验证 + 价格回调至 40-50 元再建仓。</strong> 固态电池设备先发逻辑不变（等静压 25 H2 / 干法 800mm 国内首台 / 与四川新能源汽车创新中心实验室）。但 v2 修订：当前 PB 8.62 / PE 140 已锁定 2027+ 才能兑现的乐观情景；即使我相信 2027 净利 2.4 亿（东吴乐观）, 对应市值 = 2.4 × 30 = 72 亿（PE 30）, 仍低于当前 92.81 亿。</p>
+<p><strong>最担忧风险：主题验证 vs 估值时点错配 — 真实数据加重此风险。</strong> ARK 派的核心赌注是 2027-2028 兑现,但当前估值已隐含 2026 兑现。<strong>纳科诺尔短期是 PE 故事(已贵), 不是 PEG 故事(应等)</strong>。</p>
+<p><strong>对洞察 #5（单 GWh 设备价值量提升 4-6 倍）的回应：核心逻辑认可,但乐观情景下 2027 估值仅 60 亿。</strong> 拆解：2027 中国 GWh 出货 2,500,固态/半固态 5%,干法占固态 30% → 干法对应 38 GWh × 3,000 万 = 11.4 亿；纳科市占率 30% → 干法收入 3.4 亿。100% 上行空间需 2028+ 兑现。<strong>这是耐心型投资,2026 Q4 起、价格回到 45 元以下后再建中长期仓位</strong>。</p>
+<h3>三角色分歧总结（v2 修订）</h3>
+<p>🚨 <strong>三派一致看空当前价格</strong>（v2 修订后核心变化）：<br />
+- 巴菲特派：PB-ROE 失配 11×,无安全边际<br />
+- 拐点交易者：错过建仓窗口,等 35-40 元再来<br />
+- ARK 派：当前已锁定 2027+ 兑现,等 45 元以下重启</p>
+<p>⚠️ <strong>唯一分歧维度是"何时回到建仓区"</strong>：<br />
+- 巴菲特派：等 ROE 重回 15%+ 且 PB ≤ 3（可能是 2027+ 区间）<br />
+- 拐点派：等 Q1 季报后 35-40 元（短期 6-12 月）<br />
+- ARK 派：等 2026 Q3 三催化兑现 + 45 元以下（中期 12-18 月）</p>
+<p><strong>综合实操建议（v2 修订）</strong>：<br />
+1. <strong>当前阶段（59.21 元）</strong>: <strong>明确不建仓 / 卖出</strong><br />
+2. <strong>价格回到 45-50 元</strong>: ARK 派可建立 2-3% 观察仓<br />
+3. <strong>价格回到 35-40 元</strong>: 拐点派可建立 5-8% 仓位<br />
+4. <strong>价格回到 25-30 元 + ROE 重回 15%+</strong>: 巴菲特派加入,加仓至 8-10%</p>
+<hr />
+</div>
+
+<!-- ============================================================
+     §十四 信息缺口与尽调优先级
+     ============================================================ -->
+<div class="section" id="gaps">
+<h2>§十四 信息缺口与尽调优先级</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>缺口</th>
+<th style="text-align: center;">状态</th>
+<th style="text-align: center;">可得性</th>
+<th>影响的结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2025 年报全文 PDF</td>
+<td style="text-align: center;">⚠️ 部分（摘要 + Tushare income/balance/cashflow 全资源已三源验证）</td>
+<td style="text-align: center;">中</td>
+<td>§六 子公司业绩</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2025 Q3 季报全文 PDF</td>
+<td style="text-align: center;">⚠️ 部分（季度财务数据通过 fina_indicator + 媒体已有,变动原因待补）</td>
+<td style="text-align: center;">中</td>
+<td>§四 季度趋势</td>
+</tr>
+<tr>
+<td>3</td>
+<td>子公司业绩明细（清研纳科 / 常州 / 海南）</td>
+<td style="text-align: center;">❌ 摘要不披露</td>
+<td style="text-align: center;">低</td>
+<td>§六 维度 4</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2025-11 亿纬匈牙利大单详细条款</td>
+<td style="text-align: center;">❌ 公开未披露</td>
+<td style="text-align: center;">低</td>
+<td>§九 估值</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+
+<!-- ============================================================
+     §十五 数据可审计性（时效性+来源+audit 红旗）
+     ============================================================ -->
+<div class="section" id="sources">
+<h2>§十五 数据可审计性</h2>
+<p><strong>截止日期</strong>: 2026-04-27<br />
+<strong>关键待披露</strong>: 2026 Q1 季报（预计 2026-04 末-05 月）</p>
+<h3>[Tushare API]</h3>
+<p>全资源采集（820+ 行结构化数据）:<br />
+- stock_basic / income / balancesheet / cashflow / fina_indicator（核心 4 + 1 bundle）<br />
+- daily / daily_basic（590 + 265 行,<strong>含真实价格历史</strong>）<br />
+- top10_holders / top10_floatholders / pledge_detail / holder_num（控盘）<br />
+- forecast_vip / express_vip（业绩预告 / 快报）<br />
+- fina_mainbz（业务地区拆分）<br />
+- dividend / repurchase（分红回购）<br />
+- stk_managers / stk_rewards（团队）<br />
+- moneyflow_hsgt / margin_detail（部分,北交所）</p>
+<h3>[PDF 原文]</h3>
+<ul>
+<li>1223158960.PDF — 2024 年报摘要（9 页）</li>
+<li>11331711.PDF — 2025 H1 摘要（8 页）</li>
+<li>10563336.PDF — 2024 Q3 全文（20 页,含变动原因）</li>
+</ul>
+<h3>[WebSearch]</h3>
+<ul>
+<li>finance.sina.com.cn 2026-04-13/14（2025 年报口径三源）</li>
+<li>东吴 / 国联 / 开源 三家券商研报</li>
+<li>雪球 / 东方财富股吧</li>
+<li>caifuhao.eastmoney.com（亿纬匈牙利大单）</li>
+</ul>
+<h3>Phase 1 自动 artifact 全套</h3>
+<ul>
+<li><code>peer_analysis.md</code>（5 家专用机械同业）</li>
+<li><code>capital_flow.md</code>（前十大 41.22% / 户数 -18.57% / 两融）</li>
+<li><code>technical_analysis.md</code>（MA/MACD/RSI/BOLL/支撑阻力）</li>
+<li><code>audit_report.md</code>（11 框架,12 红旗）</li>
+<li><code>metrics.json</code>（growth/profitability/valuation/cashflow/capital）</li>
+</ul>
+<h3>审计红旗汇总（来自 audit_report.md）</h3>
+<table>
+<thead>
+<tr>
+<th>严重度</th>
+<th style="text-align: center;">数量</th>
+<th>代表性红旗</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🔴 致命</td>
+<td style="text-align: center;">1</td>
+<td>DuPont — ROE 急剧恶化（16.70% → 6.21%,-10.5 pp）</td>
+</tr>
+<tr>
+<td>🟠 高</td>
+<td style="text-align: center;">1</td>
+<td>Valuation — PB vs ROE 严重错配（PB 8.62 vs 公允 0.78 = 11.1×）</td>
+</tr>
+<tr>
+<td>🟡 中</td>
+<td style="text-align: center;">4</td>
+<td>(1) Piotroski F=4/9 / (2) 前十大减持 198 万股（京津冀基金）/ (3) 业绩预告预减 -64% / (4) 股息率 0.36% &lt; 0.5% Graham 阈值</td>
+</tr>
+<tr>
+<td>🟢 低</td>
+<td style="text-align: center;">3</td>
+<td>Beneish M=-2.50 安全 / Altman Z=5.15 安全 / 户数 -18.6% 主力吸筹</td>
+</tr>
+</tbody>
+</table>
+<p>完整: 详见 <code>audit_report.md</code>。</p>
+<hr />
+<p><em>本报告由 Claude Code company-analysis skill v4.6（6+1 阶段流水线 + 11 框架 audit）生成。</em><em>v2 重大修订</em><em>: ticker 从 832522.BJ 自动迁移到 920522.BJ,Tushare 全资源采集,真实数据替代 v1 反推估算,核心结论从"中性观望"修订为"看空-估值严重透支"。禁止用于实际投资决策,仅作研究参考。</em></p>
+</div>
+
+<!-- ============================================================
+     v4.6.1: 附录/补丁章节追加区(避免 MD→HTML 内容丢失)
+     主报告 §十五 之后的所有 ## 章节(如"附录 v4 修订日志" / "v4.1 补丁")
+     Phase 6 Part B 必须追加到这里, 不得丢弃
+     ============================================================ -->
+<!-- 无附录章节 -->
+
+<footer>
+  本报告由 Claude Code company-analysis skill v4.6 生成 · 6+1 阶段流水线 · 11 大师框架审计<br>
+  数据源：Tushare Pro / yfinance / 巨潮资讯 PDF / WebSearch · 不构成投资建议<br>
+  <a href="https://github.com/leafpaper/claude-company-analysis">skill 代码</a> · <a href="https://github.com/leafpaper/Inves-Report">报告归档</a>
+</footer>
+
+</div>
+</body>
+</html>
