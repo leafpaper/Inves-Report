@@ -1,7 +1,50 @@
 {
   "schema_version": "v1",
-  "last_updated": "2026-04-27",
+  "last_updated": "2026-04-28",
   "reports": [
+    {
+      "slug": "688082_盛美上海",
+      "ticker": "688082.SH",
+      "name": "盛美上海",
+      "name_cn": "盛美上海",
+      "sector": "半导体设备",
+      "market": "a",
+      "report_date": "2026-04-28",
+      "version": "v1",
+      "composite_score": 6.3,
+      "verdict": "中性偏空 — 高景气龙头但估值严重透支 + 财务质量隐忧, 等待 2026 H1 验证",
+      "verdict_tone": "bearish",
+      "valuation_tag": "估值锚 129.4 元",
+      "one_liner": "盛美上海是国内单晶圆清洗设备 #2 + 全球 #4 龙头(ACMR 母公司 NASDAQ:ACMR 持 74.49%),受益国产替代主线,2025 营收 67.86 亿(+20.8%)、归母净利 13.96 亿(+21%)延续高增长,在手订单 2025-09 末 90.72 亿(+34.10% YoY)= 1.34 倍当年营收 锁定中期需求。但 v4.8.1 数据快照揭示三大隐忧:(1) OCF 仅 2.39 亿(-80.36% YoY),OCF/NI 0.171 严重低于 0.8 阈值;(2) 应收账款增速 +48.2% vs 营收 +20.8%,差 +27.4 pp,信用条件大幅放宽;(3",
+      "metrics": [
+        {
+          "label": "综合评分",
+          "value": "6.3/10",
+          "tone": "neutral"
+        },
+        {
+          "label": "期望收益",
+          "value": "-22.0%",
+          "tone": "negative"
+        },
+        {
+          "label": "估值锚",
+          "value": "129.4元",
+          "tone": "neutral"
+        }
+      ],
+      "expected_return_short": "-22.0%",
+      "badges": [
+        {
+          "label": "中性偏空 — 高景气龙头但估值严重透支 + 财务质量隐忧, 等待 2026 H1 验证 6.3/10",
+          "variant": "amber"
+        },
+        {
+          "label": "估值锚 129.4 元",
+          "variant": "amber"
+        }
+      ]
+    },
     {
       "slug": "920522_纳科诺尔",
       "ticker": "920522.BJ",
