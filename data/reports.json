@@ -1,7 +1,50 @@
 {
   "schema_version": "v1",
-  "last_updated": "2026-04-28",
+  "last_updated": "2026-05-11",
   "reports": [
+    {
+      "slug": "002030_达安基因",
+      "ticker": "002030.SZ",
+      "name": "达安基因",
+      "name_cn": "达安基因",
+      "sector": "体外诊断(IVD) / 分子诊断 / 医疗保健",
+      "market": "a",
+      "report_date": "2026-05-11",
+      "version": "v1",
+      "composite_score": 3.89,
+      "verdict": "看空方向",
+      "verdict_tone": "bearish",
+      "valuation_tag": "估值锚 1.09 元",
+      "one_liner": "看空方向 —— 2025 年归母净利 -7.44 亿元(续亏第二年)、2026Q1 续亏 -0.98 亿元(YoY -285%),扣非口径 5 个季度连负且未减轻;但 PB 已在近 1 年 99% 分位(1.32 vs 合理 PB 0.50 ≈ 2.65x 透支)、PS 98% 分位、RSI 76 超买——基本面持续恶化与估值严重透支同时发生,DCF 概率加权公允价值 1.09 元 vs 当前 6.64 元,偏离 -83.6%;唯一买入逻辑(SOTP 安杰思+安必平 8.6 亿、国资重组期权、流感/尼帕主题)均已在股价中 pricing-in。",
+      "metrics": [
+        {
+          "label": "综合评分",
+          "value": "3.89/10",
+          "tone": "neutral"
+        },
+        {
+          "label": "期望收益",
+          "value": "-83.6%",
+          "tone": "negative"
+        },
+        {
+          "label": "估值锚",
+          "value": "1.09元",
+          "tone": "neutral"
+        }
+      ],
+      "expected_return_short": "-83.6%",
+      "badges": [
+        {
+          "label": "看空方向 3.89/10",
+          "variant": "amber"
+        },
+        {
+          "label": "估值锚 1.09 元",
+          "variant": "amber"
+        }
+      ]
+    },
     {
       "slug": "688082_盛美上海",
       "ticker": "688082.SH",
