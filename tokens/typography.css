@@ -1,0 +1,45 @@
+/* ============================================================
+   叶纸投资报告 · Typography tokens
+   Display/UI: Zen Maru Gothic (圆润 · 二次元)
+   Numbers:    JetBrains Mono (tabular · ticker · 表格)
+   ============================================================ */
+
+:root {
+  /* ---- 字族 ---- */
+  --font-display: 'Zen Maru Gothic', -apple-system, 'PingFang SC', 'Noto Sans SC', sans-serif;
+  --font-body:    'Zen Maru Gothic', -apple-system, 'PingFang SC', 'Noto Sans SC', sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+  /* ---- 字号阶梯 ---- */
+  --fs-hero:   32px;  /* 主页 H1 / 报告标题 */
+  --fs-h1:     28px;
+  --fs-h2:     22px;  /* section 标题 */
+  --fs-h3:     18px;
+  --fs-lg:     19px;  /* 卡片标题 */
+  --fs-md:     15px;  /* 正文 */
+  --fs-sm:     13px;  /* 次要 */
+  --fs-xs:     11px;  /* 标签 / caption */
+  --fs-2xs:    10px;  /* uppercase micro label */
+
+  /* 数据展示用大字号 */
+  --fs-stat:   28px;  /* rating value */
+  --fs-stat-lg:36px;  /* expected-return / score ring */
+
+  /* ---- 字重 ---- */
+  --fw-regular: 400;  /* @kind font */
+  --fw-medium:  500;  /* @kind font */
+  --fw-bold:    700;  /* @kind font */
+  --fw-black:   900;  /* @kind font */
+
+  /* ---- 行高 ---- */
+  --lh-tight:   1.25;  /* @kind font */
+  --lh-snug:    1.5;   /* @kind font */
+  --lh-body:    1.7;   /* @kind font */
+
+  /* ---- 字距 ---- */
+  --ls-label:   1px;     /* uppercase micro labels */
+  --ls-tight:   -0.5px;  /* 大标题收紧 */
+
+  /* tabular 数字 */
+  --num: var(--font-mono);
+}
