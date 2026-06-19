@@ -113,8 +113,17 @@
 </script>
 
 <script type="text/babel" data-presets="react,env">
-const { ReportCard, Tabs, SearchInput, Button, Mascot } = window.DesignSystem_a138b7;
+const DS = window.DesignSystem_a138b7 || {};
+const { ReportCard, Tabs, SearchInput, Button, Mascot } = DS;
 const HoldingsTablePro = window.HoldingsTablePro;
+(function(){
+  var reg = { ReportCard:ReportCard, Tabs:Tabs, SearchInput:SearchInput, Button:Button, Mascot:Mascot, HoldingsTablePro:HoldingsTablePro };
+  var miss = Object.keys(reg).filter(function(k){ return typeof reg[k] !== 'function'; });
+  if (miss.length){
+    document.getElementById('root').innerHTML = '<div style="max-width:680px;margin:40px auto;padding:24px;font-family:system-ui;color:#b00;border:2px dashed #f99;border-radius:12px"><h2>⚠️ 组件加载失败</h2><p>未能加载: <b>'+miss.join(', ')+'</b><br>请检查这些 JS 文件是否都正常加载。</p><pre style="white-space:pre-wrap;color:#666">'+JSON.stringify(DS.__errors||[],null,2)+'</pre></div>';
+    throw new Error('DesignSystem load failed: '+miss.join(','));
+  }
+})();
 const HOLDINGS = window.HOLDINGS;
 const GH = (window.SITE && window.SITE.github) || '#';
 const MARKETS = { us:'📈 美股 · US Equities', a:'🇨🇳 A股 · China A-Shares', hk:'🇭🇰 港股 · Hong Kong', pe:'🚀 一级市场 · Private Equity / VC' };

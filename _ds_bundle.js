@@ -1369,7 +1369,7 @@ function Tabs({
   className = ''
 }) {
   useStyle('ds-tabs-css', CSS);
-  const [internal, setInternal] = useState(defaultValue ?? (items[0] && items[0].value));
+  const [internal, setInternal] = useState(defaultValue != null ? defaultValue : (items[0] && items[0].value));
   const active = value !== undefined ? value : internal;
   const pick = v => {
     if (value === undefined) setInternal(v);
