@@ -286,7 +286,7 @@
             h('td', null, h('span', { className: `hp__chip ${r.dayPct >= 0 ? 'pos' : 'neg'}` }, pct(r.dayPct))),
             h('td', { className: `hp__num ${r.plAmt >= 0 ? 'pos' : 'neg'}` },
               h('div', null, money(currency, r.plAmt)),
-              h('div', { className: 'hp__sub2 ' + (r.plAmt >= 0 ? 'pos' : 'neg') }, pct(r.plPct))));
+              h('div', { className: 'hp__sub2 ' + (r.plAmt >= 0 ? 'pos' : 'neg') }, pct(r.plPct)))));
 
     if (editing && rows.length > 0) {
       body.push(h('tr', { key: 'add', className: 'hp__addrow' },
