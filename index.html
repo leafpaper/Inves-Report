@@ -1,117 +1,253 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>叶纸的投资分析报告 · Inves Reports</title>
-<meta name="description" content="AI 自动生成的投资分析报告 · 美股 / A股 / 一级市场 · 搜索筛选 · Claude Code company-analysis skill v4.6">
-<link rel="stylesheet" href="./assets/css/main.css">
+<title>叶纸的投资报告 · AI 投研分析聚合</title>
+
+<!-- SEO / 分享 -->
+<meta name="description" content="叶纸的投资分析报告 —— 基于 11 大师框架的定量审计 + DCF 概率加权估值 + 多角色投资哲学分歧。覆盖美股 / A 股 / 港股 / 一级市场,报告由 company-analysis skill 自动生成。投资有风险,仅供参考。">
+<meta name="theme-color" content="#e8457a">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="叶纸的投资报告 · AI 投研分析聚合">
+<meta property="og:description" content="11 大师框架定量审计 + DCF 概率加权估值 + 多角色分歧。覆盖美股 / A 股 / 港股 / 一级市场。">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<!-- 设计系统样式 (自托管字体, 不依赖 Google) -->
+<link rel="stylesheet" href="styles.css">
+
+<!-- 自托管运行时: 不依赖 unpkg / CDN, 国内可正常加载 -->
+<script src="vendor/react.production.min.js"></script>
+<script src="vendor/react-dom.production.min.js"></script>
+<script src="vendor/babel.min.js"></script>
+<script src="_ds_bundle.js"></script>
+<script src="holdings.js"></script>
+<!-- 本地预览兜底数据; 线上以 fetch data/reports.json 为准 -->
+<script src="reports.data.js"></script>
+
+<style>
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);font-family:var(--font-body);color:var(--text);line-height:1.7;overflow-x:hidden;}
+  body::before,body::after{content:'';position:fixed;border-radius:50%;pointer-events:none;z-index:0;opacity:.35;}
+  body::before{width:400px;height:400px;background:radial-gradient(circle,var(--pink-glow),transparent 70%);top:-80px;right:-100px;}
+  body::after{width:500px;height:500px;background:radial-gradient(circle,var(--purple-glow),transparent 70%);bottom:-120px;left:-150px;}
+  .star{position:fixed;pointer-events:none;z-index:0;}
+  .star::before{content:'✦';}
+  .s1{top:12%;left:8%;font-size:14px;color:var(--pink);animation:ds-twinkle 3s infinite;}
+  .s2{top:25%;right:12%;font-size:10px;color:var(--purple);animation:ds-twinkle 2.5s infinite .5s;}
+  .s3{top:60%;left:5%;font-size:12px;color:var(--neutral);animation:ds-twinkle 4s infinite 1s;}
+  .s4{top:45%;right:6%;font-size:16px;color:var(--pink);animation:ds-twinkle 3.5s infinite 1.5s;}
+  .s5{top:80%;right:15%;font-size:11px;color:var(--purple);animation:ds-twinkle 2.8s infinite .8s;}
+
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:56px;
+    border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;
+    backdrop-filter:var(--glass-blur);background:var(--glass-bg);}
+  .nav-logo{font-weight:700;font-size:15px;color:var(--pink);text-decoration:none;display:flex;align-items:center;gap:8px;background:none;border:none;cursor:pointer;font-family:var(--font-body);}
+  .nav-logo .turtle{font-size:22px;animation:ds-bounce 2s infinite;}
+  .nav-links{display:flex;gap:8px;align-items:center;}
+  .nav-links button.nl{font-size:13px;color:var(--text-3);background:none;border:none;font-family:var(--font-body);font-weight:500;padding:5px 10px;border-radius:999px;transition:all .2s;cursor:pointer;}
+  .nav-links button.nl:hover,.nav-links button.nl:focus-visible{color:var(--pink);background:var(--pink-bg);outline:none;}
+
+  .wrap{max-width:920px;margin:0 auto;padding:0 32px;position:relative;z-index:1;}
+  .hero{display:flex;align-items:center;gap:32px;padding:48px 0 10px;}
+  .hero-text{flex:1;}
+  .hero-badge{display:inline-block;font-size:11px;font-weight:700;color:var(--purple);background:var(--purple-bg);
+    padding:4px 14px;border-radius:999px;margin-bottom:16px;letter-spacing:.5px;border:1px solid rgba(139,92,246,.15);}
+  .hero h1{font-size:32px;font-weight:900;letter-spacing:-.5px;margin:0 0 10px;
+    background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    background-size:200% auto;animation:ds-shimmer 6s linear infinite;}
+  .hero p{color:var(--text-2);font-size:14px;max-width:480px;margin:0;}
+  .hero-mascot{flex:none;}
+
+  .reveal{animation:ds-rise .6s var(--ease) both;}
+  .pop{animation:ds-pop-in .7s var(--ease-spring) both;}
+  @media (prefers-reduced-motion:reduce){ .reveal,.pop,.hero h1{animation:none;} }
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:28px 0 24px;}
+  .stat{background:var(--surface);padding:18px 16px;text-align:center;border-radius:16px;border:1px solid var(--border);box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s;}
+  .stat:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);}
+  .stat .n{font-family:var(--font-mono);font-size:22px;font-weight:900;}
+  .stat .n.pink{color:var(--pink);} .stat .n.purple{color:var(--purple);} .stat .n.green{color:var(--bull-strong);}
+  .stat .l{font-size:10px;color:var(--text-3);text-transform:uppercase;letter-spacing:1px;font-weight:700;}
+
+  .toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:24px;}
+  .toolbar .grow{flex:1;min-width:220px;}
+  .sortsel{padding:9px 14px;font-size:12px;font-weight:600;border:2px solid var(--border);border-radius:14px;background:var(--surface);color:var(--text);cursor:pointer;font-family:var(--font-body);}
+  .sortsel:focus{outline:none;border-color:var(--purple);}
+  .results{font-size:12px;color:var(--text-3);margin-bottom:14px;}
+
+  .section-label{font-size:12px;font-weight:700;letter-spacing:1px;color:var(--purple);padding-bottom:10px;
+    border-bottom:2px dashed var(--border);display:flex;align-items:center;gap:8px;margin:8px 0 20px;}
+  .section-label .ic{font-size:18px;}
+  .section-label .c{font-family:var(--font-mono);background:var(--purple-bg);color:var(--purple);padding:2px 8px;border-radius:10px;font-size:10px;}
+  .cards{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));margin-bottom:40px;}
+  .cardwrap{animation:ds-rise .5s var(--ease) both;}
+  .empty{text-align:center;padding:60px 20px;color:var(--text-3);background:var(--surface);border-radius:20px;border:2px dashed var(--border);}
+  .empty .ic{font-size:42px;opacity:.5;margin-bottom:10px;}
+  .footer{padding:24px 0 48px;font-size:12px;color:var(--text-3);border-top:2px dashed var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+  .footer a{color:var(--purple);text-decoration:none;font-weight:500;}
+  .footer a:hover{text-decoration:underline;}
+  @media (max-width:640px){ .stats{grid-template-columns:repeat(2,1fr);} .hero{flex-direction:column;text-align:center;} }
+</style>
 </head>
 <body>
+<span class="star s1"></span><span class="star s2"></span><span class="star s3"></span><span class="star s4"></span><span class="star s5"></span>
+<div id="root"></div>
 
-<span class="star s1"></span><span class="star s2"></span><span class="star s3"></span>
-<span class="star s4"></span><span class="star s5"></span><span class="star s6"></span>
+<!-- 配置 -->
+<script>
+  window.SITE = { github: 'https://github.com/leafpaper/Inves-Report' };
+  // 持仓默认值 (上线后可在页面上「✎ 编辑持仓」自由修改, 存本机浏览器)
+  window.HOLDINGS = {
+    owner: '叶纸', cash: 48000,
+    positions: [
+      { name:'华大智造', ticker:'688114.SH', shares:3000, cost:38.5,  price:42.10, prevClose:40.90 },
+      { name:'Adobe',    ticker:'ADBE',      shares:40,   cost:402,   price:466,   prevClose:471 },
+      { name:'华凯易佰', ticker:'300592.SZ', shares:8000, cost:12.60, price:13.93, prevClose:13.55 },
+      { name:'Circle',   ticker:'CRCL',      shares:120,  cost:74,    price:81,    prevClose:79.40 },
+      { name:'盛美上海', ticker:'688082.SH', shares:500,  cost:148,   price:166,   prevClose:170 },
+    ],
+  };
+</script>
 
-<!-- Nav -->
-<nav class="nav">
-  <a href="./" class="nav-logo"><span class="turtle">🐢</span> 叶纸的投资报告</a>
-  <div class="nav-links">
-    <a href="#us-equities">📈 美股</a>
-    <a href="#a-shares">🇨🇳 A股</a>
-    <a href="#pe-vc">🚀 一级市场</a>
-    <a href="https://github.com/leafpaper/Inves-Report" target="_blank" class="nav-gh">
-      <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" style="opacity:.6">
-        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-      </svg>
-      GitHub
-    </a>
-  </div>
-</nav>
+<script type="text/babel">
+const { ReportCard, Tabs, SearchInput, Button, Mascot } = window.DesignSystem_a138b7;
+const HoldingsTablePro = window.HoldingsTablePro;
+const HOLDINGS = window.HOLDINGS;
+const GH = (window.SITE && window.SITE.github) || '#';
+const MARKETS = { us:'📈 美股 · US Equities', a:'🇨🇳 A股 · China A-Shares', hk:'🇭🇰 港股 · Hong Kong', pe:'🚀 一级市场 · Private Equity / VC' };
 
-<!-- Hero + meme1 -->
-<div class="hero">
-  <div class="hero-inner">
-    <div class="hero-text">
-      <div class="hero-badge">✦ AI 投资分析 v4.6 ✦</div>
-      <h1>叶纸的投资分析报告</h1>
-      <p>基于 11 大师框架的定量审计 + DCF 概率加权估值 + 多角色投资哲学分歧。覆盖美股二级市场 / A 股 / 港股 / 一级市场 VC/PE。报告由 Claude Code company-analysis skill v4.6 自动生成。</p>
-    </div>
-    <div class="hero-meme">
-      <img src="assets/meme1.jpg" alt="现在买,一定爆赚!">
-      <span class="meme-caption">投资心态 ✓</span>
-    </div>
-  </div>
-</div>
+// reports.json 原始字段 → ReportCard 所需 props
+const BADGE_MAP = { amber:'neutral', green:'bull', red:'bear', bull:'bull', bear:'bear', neutral:'neutral' };
+const METRIC_MAP = { negative:'neg', positive:'pos', neg:'neg', pos:'pos', neutral:'neutral' };
+function mapReport(r){
+  return {
+    slug: r.slug, ticker: r.ticker, sector: r.sector, name: r.name || r.name_cn,
+    version: r.version, market: r.market, date: r.report_date, score: r.composite_score,
+    tone: r.verdict_tone === 'bullish' ? 'bullish' : r.verdict_tone === 'bearish' ? 'bearish' : 'neutral',
+    one: r.one_liner,
+    badges: (r.badges||[]).map(b=>({ label:b.label, variant: BADGE_MAP[b.variant] || 'ghost' })),
+    metrics: (r.metrics||[]).map(m=>({ label:m.label, value:m.value, tone: METRIC_MAP[m.tone] || 'neutral' })),
+    href: `reports/${encodeURIComponent(r.slug)}/分析报告_dashboard.html`,
+  };
+}
+function pickReports(json){ return (json && Array.isArray(json.reports)) ? json.reports.map(mapReport) : []; }
 
-<!-- Stats(JS 动态填充) -->
-<div class="stats-strip">
-  <div class="stats-row" id="stats-row">
-    <!-- render.js 会在这里注入 4 个 stat-cell -->
-  </div>
-</div>
+function App(){
+  const [reports,setReports] = React.useState(()=> window.REPORTS_RAW ? pickReports(window.REPORTS_RAW) : []);
+  const [loading,setLoading] = React.useState(true);
+  const [q,setQ] = React.useState('');
+  const [market,setMarket] = React.useState('all');
+  const [sort,setSort] = React.useState('score-desc');
 
-<!-- v4.6 新增: 搜索 / 市场 tab / 排序 / 评分筛选 -->
-<div class="toolbar">
-  <div class="search-box">
-    <input type="text" id="search-input" placeholder="搜索 ticker / 公司名 / 业务描述..." autocomplete="off">
-  </div>
-  <div class="tab-group" role="tablist">
-    <button class="tab-btn active" data-market="all">全部</button>
-    <button class="tab-btn" data-market="us">📈 美股</button>
-    <button class="tab-btn" data-market="a">🇨🇳 A股</button>
-    <button class="tab-btn" data-market="hk">🇭🇰 港股</button>
-    <button class="tab-btn" data-market="pe">🚀 一级</button>
-  </div>
-  <select class="sort-select" id="sort-select">
-    <option value="date-desc">🕐 最新披露</option>
-    <option value="date-asc">🕐 最早披露</option>
-    <option value="score-desc">⭐ 评分高→低</option>
-    <option value="score-asc">⭐ 评分低→高</option>
-  </select>
-  <select class="sort-select" id="min-score">
-    <option value="0">全部评分</option>
-    <option value="4">≥ 4.0 (可考虑)</option>
-    <option value="6">≥ 6.0 (看好)</option>
-    <option value="7.5">≥ 7.5 (强烈看好)</option>
-  </select>
-</div>
+  // 线上实时读取 data/reports.json (本地 file:// 失败则用兜底)
+  React.useEffect(()=>{
+    fetch('data/reports.json').then(r=>r.json()).then(j=>{ setReports(pickReports(j)); setLoading(false); })
+      .catch(()=>{ setLoading(false); });
+  },[]);
 
-<div class="results-info" id="results-info">加载中...</div>
+  const counts = React.useMemo(()=>{ const c={}; reports.forEach(r=>c[r.market]=(c[r.market]||0)+1); return c; },[reports]);
 
-<!-- Reports(JS 动态渲染) -->
-<div class="reports">
-  <div id="reports-container">
-    <!-- render.js 会在这里注入所有 section + cards -->
-  </div>
-</div>
+  let list = reports.filter(r=>{
+    if(market!=='all' && r.market!==market) return false;
+    if(q.trim()){ const hay=[r.ticker,r.name,r.sector,r.one].join(' ').toLowerCase(); if(!hay.includes(q.trim().toLowerCase())) return false; }
+    return true;
+  });
+  list = [...list].sort((a,b)=>{
+    if(sort==='score-desc') return b.score-a.score;
+    if(sort==='score-asc') return a.score-b.score;
+    if(sort==='date-desc') return (b.date||'').localeCompare(a.date||'');
+    return (a.date||'').localeCompare(b.date||'');
+  });
 
-<!-- Bottom meme banner -->
-<div class="meme-banner">
-  <div class="meme-banner-inner">
-    <div class="meme-banner-img">
-      <img src="assets/meme4.jpg" alt="在座里面只有我没有赚到钱">
-    </div>
-    <div class="meme-banner-text">
-      <p class="big">「在座里面只有我没有赚到钱...」</p>
-      <p>投资有风险,入市需谨慎。本站报告仅供参考,不构成投资建议。</p>
-    </div>
-    <div class="meme-banner-img">
-      <img src="assets/meme4.jpg" alt="" style="transform:scaleX(-1)">
-    </div>
-  </div>
-</div>
+  const byMarket={}; list.forEach(r=>(byMarket[r.market]=byMarket[r.market]||[]).push(r));
+  const total=reports.length;
+  const bullish=reports.filter(r=>r.tone==='bullish').length;
+  const latest=reports.reduce((m,r)=>(r.date>m?r.date:m),'').slice(5).replace('-','/');
 
-<!-- Footer -->
-<div class="footer">
-  <div class="footer-inner">
-    <span>AI 自动生成 · v4.6 动态联动 · 11 大师框架审计</span>
-    <span>
-      <a href="https://github.com/leafpaper/Inves-Report" target="_blank">GitHub</a> ·
-      <a href="https://github.com/leafpaper/claude-company-analysis" target="_blank">分析 Skill</a>
-    </span>
-  </div>
-</div>
+  const tabItems=[{value:'all',label:'全部'}];
+  ['us','a','hk','pe'].forEach(m=>{ if(counts[m]) tabItems.push({value:m,label:MARKETS[m].slice(0,5),count:counts[m]}); });
 
-<script src="./assets/js/render.js"></script>
+  return (
+    <React.Fragment>
+      <nav className="nav">
+        <button className="nav-logo" onClick={()=>{setMarket('all');setQ('');window.scrollTo({top:0,behavior:'smooth'});}}>
+          <span className="turtle">🐢</span> 叶纸的投资报告
+        </button>
+        <div className="nav-links">
+          {counts.us && <button className="nl" onClick={()=>setMarket('us')}>📈 美股</button>}
+          {counts.a && <button className="nl" onClick={()=>setMarket('a')}>🇨🇳 A股</button>}
+          {counts.pe && <button className="nl" onClick={()=>setMarket('pe')}>🚀 一级市场</button>}
+          <Button as="a" variant="ghost" size="sm" href={GH} target="_blank" rel="noopener">GitHub</Button>
+        </div>
+      </nav>
+
+      <div className="wrap">
+        <div className="hero">
+          <div className="hero-text reveal">
+            <span className="hero-badge">✦ AI 投资分析 v4.6 ✦</span>
+            <h1>叶纸的投资分析报告</h1>
+            <p>基于 11 大师框架的定量审计 + DCF 概率加权估值 + 多角色投资哲学分歧。覆盖美股 / A 股 / 港股 / 一级市场。报告由 company-analysis skill 自动生成。</p>
+          </div>
+          <div className="hero-mascot pop" style={{animationDelay:'.15s'}}>
+            <Mascot src="assets/mascot-placeholder.jpg" name="叶纸" bubbleSide="left"
+              quotes={['我是叶纸,慢即是稳 🐢','看 OCF,别只看利润表~','估值透支了哦,冷静一下','DCF 概率加权,稳一点!','戳我换台词!']} />
+          </div>
+        </div>
+
+        <div className="stats reveal" style={{animationDelay:'.28s'}}>
+          <div className="stat"><div className="n pink">{total}</div><div className="l">分析报告</div></div>
+          <div className="stat"><div className="n purple">{Object.keys(counts).length}</div><div className="l">覆盖板块</div></div>
+          <div className="stat"><div className="n green">{bullish}</div><div className="l">看好标的</div></div>
+          <div className="stat"><div className="n">{latest||'—'}</div><div className="l">最新更新</div></div>
+        </div>
+
+        <div className="reveal" style={{animationDelay:'.4s',marginBottom:'28px'}}>
+          <HoldingsTablePro owner={HOLDINGS.owner} cash={HOLDINGS.cash} positions={HOLDINGS.positions}
+            note="手动维护持仓 · 点「✎ 编辑持仓」即可改 / 增 / 删, 改动自动保存到本机浏览器 · 不构成投资建议" />
+        </div>
+
+        <div className="toolbar">
+          <div className="grow"><SearchInput placeholder="搜索 ticker / 公司名 / 业务描述..." value={q} onChange={e=>setQ(e.target.value)} /></div>
+          <Tabs value={market} onChange={setMarket} items={tabItems}/>
+          <select className="sortsel" value={sort} onChange={e=>setSort(e.target.value)}>
+            <option value="score-desc">⭐ 评分高→低</option>
+            <option value="score-asc">⭐ 评分低→高</option>
+            <option value="date-desc">🕐 最新披露</option>
+            <option value="date-asc">🕐 最早披露</option>
+          </select>
+        </div>
+        <div className="results">{loading && total===0 ? '加载中...' : (list.length===total?`共 ${total} 份分析报告`:`当前显示 ${list.length} / ${total} 份报告`)}</div>
+
+        {total===0 ? (
+          <div className="empty"><div className="ic">🐢</div><div>{loading?'正在读取报告数据...':'暂无报告数据 (请确认 data/reports.json 可访问)'}</div></div>
+        ) : list.length===0 ? (
+          <div className="empty"><div className="ic">🔍</div><div>没有匹配的报告</div></div>
+        ) : Object.keys(MARKETS).filter(m=>byMarket[m]&&byMarket[m].length).map(m=>(
+          <div key={m}>
+            <div className="section-label"><span className="ic">{MARKETS[m].slice(0,2)}</span>{MARKETS[m].slice(2).trim()}<span className="c">{byMarket[m].length}</span></div>
+            <div className="cards">
+              {byMarket[m].map((r,i)=>(
+                <div className="cardwrap" key={r.slug} style={{animationDelay:`${i*0.05}s`}}>
+                  <ReportCard ticker={r.ticker} sector={r.sector} name={r.name} version={r.version} tone={r.tone}
+                    oneLiner={r.one} badges={r.badges} metrics={r.metrics} href={r.href} />
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+
+        <div className="footer">
+          <span>AI 自动生成 · v4.6 动态联动 · 11 大师框架审计</span>
+          <span><a href={GH} target="_blank" rel="noopener">GitHub</a> · <a href="https://github.com/leafpaper/claude-company-analysis" target="_blank" rel="noopener">分析 Skill</a></span>
+        </div>
+      </div>
+    </React.Fragment>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
 </body>
 </html>

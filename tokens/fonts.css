@@ -1,0 +1,71 @@
+/* ============================================================
+   叶纸投资报告 · Fonts (自托管 · 不依赖 Google Fonts)
+   Zen Maru Gothic — 圆体, 二次元亲和力 (display + UI)
+   JetBrains Mono — 数字 / ticker / 表格 (tabular)
+
+   只自托管「拉丁子集」(数字 / 英文 / 符号)。
+   中文字符不在这些字体里, 浏览器自动回退到系统中文字体
+   (PingFang SC / 微软雅黑 / Noto Sans SC) —— 与原 Google Fonts 行为一致,
+   但彻底去除对 fonts.googleapis.com 的依赖 (该域名在中国大陆不可达)。
+   字体文件见 ./fonts/  (来自 @fontsource, 已提交进仓库)。
+   ============================================================ */
+
+/* ---------- Zen Maru Gothic (display / body) ---------- */
+@font-face {
+  font-family: 'Zen Maru Gothic';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/zen-maru-gothic-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Zen Maru Gothic';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./fonts/zen-maru-gothic-latin-500-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Zen Maru Gothic';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./fonts/zen-maru-gothic-latin-700-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Zen Maru Gothic';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('./fonts/zen-maru-gothic-latin-900-normal.woff2') format('woff2');
+}
+
+/* ---------- JetBrains Mono (数字 / ticker / 表格) ---------- */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/jetbrains-mono-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./fonts/jetbrains-mono-latin-500-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./fonts/jetbrains-mono-latin-700-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('./fonts/jetbrains-mono-latin-800-normal.woff2') format('woff2');
+}

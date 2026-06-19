@@ -1,0 +1,107 @@
+/* ============================================================
+   叶纸投资报告 · Effects — 阴影 / 模糊 / 过渡 / 动画
+   柔和粉紫光晕阴影 · 流畅缓动 · 二次元微动效
+   ============================================================ */
+
+:root {
+  /* ---- 阴影 (柔和, 带品牌色光晕) ---- */
+  --shadow-sm:   0 2px 12px rgba(180,120,170,.06);
+  --shadow-md:   0 6px 20px var(--pink-glow);
+  --shadow-lg:   0 8px 32px var(--pink-glow);
+  --shadow-purple: 0 6px 24px var(--purple-glow);
+  --shadow-bull: 0 6px 20px var(--bull-glow);
+
+  /* ---- 玻璃拟态 (sticky nav) ---- */
+  --glass-bg:   rgba(254,247,255,.85);
+  --glass-blur: blur(16px);  /* @kind other */
+
+  /* ---- 过渡 ---- */
+  --ease:        cubic-bezier(.22,.61,.36,1); /* @kind other */
+  --ease-spring: cubic-bezier(.34,1.56,.64,1); /* @kind other */
+  --t-fast:  .15s var(--ease);
+  --t-base:  .25s var(--ease);
+  --t-slow:  .4s  var(--ease);
+
+  /* ---- 焦点环 ---- */
+  --ring: 0 0 0 3px var(--pink-glow);
+}
+
+/* ---- 共享关键帧 (consumers 可直接引用) ---- */
+@keyframes ds-twinkle {
+  0%, 100% { opacity: .3; transform: scale(1); }
+  50%      { opacity: .8; transform: scale(1.3); }
+}
+@keyframes ds-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+@keyframes ds-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-6px) rotate(2deg); }
+}
+@keyframes ds-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes ds-ring-fill {
+  from { stroke-dashoffset: var(--ring-circ, 339); }
+}
+@keyframes ds-bar-grow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+@keyframes ds-pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 var(--pink-glow); }
+  50%      { box-shadow: 0 0 0 8px transparent; }
+}
+
+/* ---- 页游 / PPT 级动效 ---- */
+/* 吉祥物待机:呼吸式上下浮动 + 轻微挤压 */
+@keyframes ds-mascot-idle {
+  0%, 100% { transform: translateY(0)   scale(1, 1); }
+  50%      { transform: translateY(-9px) scale(1.015, .985); }
+}
+/* 点击/招呼:摇摆 */
+@keyframes ds-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  20%      { transform: rotate(-7deg); }
+  40%      { transform: rotate(6deg); }
+  60%      { transform: rotate(-4deg); }
+  80%      { transform: rotate(2deg); }
+}
+/* 眨眼遮罩 */
+@keyframes ds-blink {
+  0%, 92%, 100% { opacity: 0; }
+  95%, 97%      { opacity: 1; }
+}
+/* 弹出登场 (PPT 入场) */
+@keyframes ds-pop-in {
+  0%   { opacity: 0; transform: scale(.7) translateY(14px); }
+  70%  { opacity: 1; transform: scale(1.06) translateY(-2px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+/* 从左滑入 (PPT 序列揭示) */
+@keyframes ds-slide-in {
+  from { opacity: 0; transform: translateX(-22px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+/* 渐变流光 (标题 / 进度) */
+@keyframes ds-shimmer {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+/* 星芒环绕吉祥物 */
+@keyframes ds-orbit {
+  from { transform: rotate(0deg) translateX(var(--orbit-r, 56px)) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(var(--orbit-r, 56px)) rotate(-360deg); }
+}
+/* 速度感 emphasis 弹跳 */
+@keyframes ds-pop {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.18); }
+}
+/* 数字滚动高亮 */
+@keyframes ds-flash {
+  0%   { background: var(--neutral-bg); }
+  100% { background: transparent; }
+}

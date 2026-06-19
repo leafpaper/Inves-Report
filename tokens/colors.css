@@ -1,0 +1,76 @@
+/* ============================================================
+   叶纸投资报告 · Color tokens
+   两套基因融合:
+   · 二次元主页 — 樱粉 / 薰衣草紫 / 奶油底 (有活力 · 亲和)
+   · 投研仪表盘 — 看多绿 / 看空红 / 中性琥珀 (专业 · 高对比)
+   ============================================================ */
+
+:root {
+  /* ---- 品牌主色: 樱粉 → 薰衣草紫 ---- */
+  --pink:        #e8457a;   /* 主品牌色 · CTA · logo */
+  --pink-600:    #d12f66;   /* hover 加深 */
+  --pink-300:    #f4a0bf;   /* 浅 */
+  --pink-bg:     #fff0f5;   /* 粉色浅底 */
+  --pink-glow:   rgba(232,69,122,.15);
+
+  --purple:      #8b5cf6;   /* 次品牌色 · 强调 · section label */
+  --purple-600:  #7338e8;
+  --purple-300:  #c4b1fb;
+  --purple-bg:   #f3eeff;
+  --purple-glow: rgba(139,92,246,.14);
+
+  --blue:        #60a5fa;   /* 三段渐变收尾 · 信息 */
+  --blue-bg:     #eff6ff;
+
+  /* ---- 投资语义色 (verdict / 涨跌) ---- */
+  --bull:        #1fae73;   /* 看多 / 上涨 / 正收益 */
+  --bull-strong: #059669;   /* 文字加深可读 */
+  --bull-bg:     #ecfdf5;
+  --bull-glow:   rgba(31,174,115,.16);
+
+  --bear:        #ef4444;   /* 看空 / 下跌 / 负收益 */
+  --bear-strong: #dc2626;
+  --bear-bg:     #fef2f2;
+  --bear-glow:   rgba(239,68,68,.15);
+
+  --neutral:     #fbbf24;   /* 中性 / 观望 / 临界 */
+  --neutral-strong: #b45309;
+  --neutral-bg:  #fffbeb;
+
+  /* ---- 文字 (暖紫调中性, 非纯黑) ---- */
+  --text:        #3d2b3a;   /* 正文 */
+  --text-2:      #7a6278;   /* 次要 */
+  --text-3:      #a894a6;   /* 弱化 / 标签 */
+  --text-on-brand: #ffffff;
+
+  /* ---- 背景与表面 ---- */
+  --bg:          #fef7ff;   /* 页面底 (奶油樱粉) */
+  --bg-2:        #fff2f8;   /* 浅粉分区 */
+  --bg-3:        #ffe8f3;   /* 更深粉分区 */
+  --surface:     #ffffff;   /* 卡片 */
+  --surface-soft:#fbf5fb;   /* 卡片内嵌格 (metric well) */
+
+  /* ---- 描边 ---- */
+  --border:      rgba(180,120,170,.15);
+  --border-2:    rgba(180,120,170,.28);
+  --border-pink: rgba(232,69,122,.40);
+
+  /* ---- 数据可视化梯度 (热力图 5 档: 深红→白→深绿) ---- */
+  --hm--2: #fca5a5;  --hm--2-ink: #7f1d1d;
+  --hm--1: #fed7aa;  --hm--1-ink: #7c2d12;
+  --hm-0:  #f5eef4;  --hm-0-ink:  #7a6278;
+  --hm-1:  #bbf7d0;  --hm-1-ink:  #14532d;
+  --hm-2:  #4ade80;  --hm-2-ink:  #06351c;
+
+  /* ---- 渐变 ---- */
+  --grad-brand:   linear-gradient(135deg, var(--pink), var(--purple));
+  --grad-tri:     linear-gradient(90deg, var(--pink), var(--purple), var(--blue));
+  --grad-bull:    linear-gradient(135deg, #34d399, var(--bull-strong));
+  --grad-bear:    linear-gradient(135deg, #f87171, var(--bear-strong));
+
+  /* ---- 语义别名 ---- */
+  --text-body:    var(--text);
+  --text-muted:   var(--text-3);
+  --surface-card: var(--surface);
+  --accent:       var(--pink);
+}
