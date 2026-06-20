@@ -33,6 +33,10 @@
   const pct = (n) => `${n >= 0 ? '+' : '−'}${Math.abs(n).toFixed(2)}%`;
   const money = (cur, n) => `${n >= 0 ? '+' : '−'}${cur}${fmt(Math.abs(n))}`;
 
+  // 币种 -> 符号 (多市场持仓: A股¥ / 美股$ / 港股HK$ ...)
+  const CUR_SYM = { CNY: '¥', USD: '$', HKD: 'HK$', SGD: 'S$', JPY: '¥', GBP: '£', EUR: '€' };
+  const symOf = (ccy) => CUR_SYM[ccy] || (ccy ? ccy + ' ' : '¥');
+
   // 数字滚动 (尊重 prefers-reduced-motion)
   function useCountUp(target, duration = 1000) {
     const [val, setVal] = useState(target);
@@ -174,13 +178,14 @@
   function HoldingsTablePro(props) {
     const {
       positions = [], cash = 0, owner = '叶纸', currency = '¥', icon = '🐢',
+      fx = { CNY: 1 }, readOnly = false, updatedLabel = '',
       storageKey = 'leafpaper_holdings_v2',
       note = '手动维护 · 改动自动保存到本机浏览器 · 不构成投资建议',
     } = props;
 
     useStyle('hp-css', CSS);
     const seed = useMemo(() => ({ positions, cash, updatedAt: '' }), []); // eslint-disable-line
-    const [data, setData] = useState(() => loadLS(storageKey, seed));
+    const [data, setData] = useState(() => readOnly ? seed : loadLS(storageKey, seed));
     const [editing, setEditing] = useState(false);
     const [seedKey, setSeedKey] = useState(0); // 改变以重挂载输入 (reset/import 后)
     const [focusIdx, setFocusIdx] = useState(-1);
@@ -219,21 +224,28 @@
       e.target.value = '';
     };
 
+    // 汇率折算: 每只按本币计算, 再按 fx 折算成人民币(¥)汇总。汇率未知(null)的不计入¥总额。
+    const rateOf = (ccy) => { const r = fx[ccy || 'CNY']; return (r === null || r === undefined) ? null : Number(r); };
     const rows = data.positions.map((p) => {
+      const ccy = p.currency || 'CNY';
+      const rate = rateOf(ccy);
+      const k = rate == null ? 0 : rate;
       const mv = p.shares * p.price;
       const dayAmt = p.shares * (p.price - p.prevClose);
       const dayPct = p.prevClose ? (p.price - p.prevClose) / p.prevClose * 100 : 0;
       const plAmt = p.shares * (p.price - p.cost);
       const plPct = p.cost ? (p.price - p.cost) / p.cost * 100 : 0;
-      return { ...p, mv, dayAmt, dayPct, plAmt, plPct };
+      return { ...p, ccy, rate, mv, dayAmt, dayPct, plAmt, plPct,
+        mvCNY: mv * k, dayAmtCNY: dayAmt * k, costCNY: p.shares * p.cost * k };
     });
-    const mvTotal = rows.reduce((s, r) => s + r.mv, 0);
-    const total = mvTotal + (Number(data.cash) || 0);
-    const prevTotal = rows.reduce((s, r) => s + r.shares * r.prevClose, 0) + (Number(data.cash) || 0);
-    const dayAmt = total - prevTotal;
+    const mvTotal = rows.reduce((s, r) => s + r.mvCNY, 0);        // 持仓市值(¥)
+    const cashAmt = Number(data.cash) || 0;                       // 现金(已折算¥)
+    const total = mvTotal + cashAmt;                              // 总资产(¥)
+    const dayAmt = rows.reduce((s, r) => s + r.dayAmtCNY, 0);     // 今日涨跌(¥)
+    const prevTotal = (mvTotal - dayAmt) + cashAmt;
     const dayPct = prevTotal ? dayAmt / prevTotal * 100 : 0;
-    const costTotal = rows.reduce((s, r) => s + r.shares * r.cost, 0);
-    const plAmt = mvTotal - costTotal;
+    const costTotal = rows.reduce((s, r) => s + r.costCNY, 0);    // 总成本(¥)
+    const plAmt = mvTotal - costTotal;                            // 累计盈亏(¥)
     const plPct = costTotal ? plAmt / costTotal * 100 : 0;
     const posWeight = total ? mvTotal / total * 100 : 0;
 
@@ -279,13 +291,13 @@
             h('td', null, h('div', { className: 'hp__nm' }, r.name), h('div', { className: 'hp__tk' }, r.ticker)),
             h('td', null, h('div', { className: 'hp__num' }, fmt(r.shares)), h('div', { className: 'hp__sub2' }, '成本 ' + fmt(r.cost, 2))),
             h('td', null, h('div', { className: 'hp__num' }, fmt(r.price, 2)), h('div', { className: 'hp__sub2' }, '昨收 ' + fmt(r.prevClose, 2))),
-            h('td', { className: 'hp__num' }, currency + fmt(r.mv)),
+            h('td', { className: 'hp__num' }, symOf(r.ccy) + fmt(r.mv)),
             h('td', { className: 'hp__w' },
-              h('div', { className: 'hp__wpct' }, total ? (r.mv / total * 100).toFixed(1) + '%' : '—'),
-              h('div', { className: 'hp__wbar' }, h('i', { style: { width: (total ? Math.min(100, r.mv / total * 100) : 0) + '%' } }))),
+              h('div', { className: 'hp__wpct' }, total ? (r.mvCNY / total * 100).toFixed(1) + '%' : '—'),
+              h('div', { className: 'hp__wbar' }, h('i', { style: { width: (total ? Math.min(100, r.mvCNY / total * 100) : 0) + '%' } }))),
             h('td', null, h('span', { className: `hp__chip ${r.dayPct >= 0 ? 'pos' : 'neg'}` }, pct(r.dayPct))),
             h('td', { className: `hp__num ${r.plAmt >= 0 ? 'pos' : 'neg'}` },
-              h('div', null, money(currency, r.plAmt)),
+              h('div', null, money(symOf(r.ccy), r.plAmt)),
               h('div', { className: 'hp__sub2 ' + (r.plAmt >= 0 ? 'pos' : 'neg') }, pct(r.plPct)))));
 
     if (editing && rows.length > 0) {
@@ -298,7 +310,7 @@
       h('div', { className: 'hp__top' },
         h('div', { className: 'hp__topbar' },
           h('div', { className: 'hp__title' }, h('span', { className: 'ic' }, icon), owner + '的当前持仓'),
-          h('button', { className: `hp__btn ${editing ? 'primary' : ''}`, onClick: () => { setEditing((e) => !e); setConfirmDel(-1); } },
+          (!readOnly) && h('button', { className: `hp__btn ${editing ? 'primary' : ''}`, onClick: () => { setEditing((e) => !e); setConfirmDel(-1); } },
             editing ? '✓ 完成' : '✎ 编辑持仓')),
         h('div', { className: 'hp__grid' },
           h('div', { className: 'hp__cell big' },
@@ -338,7 +350,7 @@
       // 页脚
       h('div', { className: 'hp__foot' },
         h('span', null, note),
-        h('span', null, data.updatedAt ? '最后编辑 ' + data.updatedAt : '示例数据')));
+        h('span', null, updatedLabel || (data.updatedAt ? '最后编辑 ' + data.updatedAt : '示例数据'))));
   }
 
   window.HoldingsTablePro = HoldingsTablePro;

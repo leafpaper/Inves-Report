@@ -1,0 +1,56 @@
+name: Sync Longbridge Holdings
+
+# 触发方式:
+#   - workflow_dispatch: 仓库 Actions 页面手动点 "Run workflow"
+#   - schedule: 交易时段定时自动抓取 (cron 为 UTC)
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/30 1-7 * * 1-5'    # A股时段   (UTC, 约北京 09:00-15:30, 周一至周五)
+    - cron: '*/30 13-21 * * 1-5'  # 美股时段   (UTC, 约北京 21:00-05:00, 周一至周五)
+
+# 允许工作流把更新后的 data/holdings.json 推回仓库
+permissions:
+  contents: write
+
+# 避免多次运行同时推送
+concurrency:
+  group: sync-holdings
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install LongPort SDK
+        run: pip install --quiet longport
+
+      - name: Fetch holdings -> data/holdings.json
+        # 凭据通过 env 从 GitHub Secrets 注入; GitHub 会自动在日志里把它们替换为 ***
+        env:
+          LONGPORT_APP_KEY: ${{ secrets.LONGPORT_APP_KEY }}
+          LONGPORT_APP_SECRET: ${{ secrets.LONGPORT_APP_SECRET }}
+          LONGPORT_ACCESS_TOKEN: ${{ secrets.LONGPORT_ACCESS_TOKEN }}
+          HOLDINGS_OWNER: '叶纸'
+        run: python scripts/sync_holdings.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain data/holdings.json)" ]; then
+            git add data/holdings.json
+            git commit -m "chore: 自动更新持仓 (data/holdings.json)"
+            git push
+            echo "已更新持仓"
+          else
+            echo "持仓无变化, 跳过提交"
+          fi
