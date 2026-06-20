@@ -1,19 +1,15 @@
 name: Sync Longbridge Holdings
 
-# 触发方式:
-#   - workflow_dispatch: 仓库 Actions 页面手动点 "Run workflow"
-#   - schedule: 交易时段定时自动抓取 (cron 为 UTC)
+# 触发: 交易时段定时(cron 为 UTC) + 手动(Actions 页面 Run workflow)
 on:
   workflow_dispatch:
   schedule:
     - cron: '*/30 1-7 * * 1-5'    # A股时段   (UTC, 约北京 09:00-15:30, 周一至周五)
     - cron: '*/30 13-21 * * 1-5'  # 美股时段   (UTC, 约北京 21:00-05:00, 周一至周五)
 
-# 允许工作流把更新后的 data/holdings.json 推回仓库
 permissions:
   contents: write
 
-# 避免多次运行同时推送
 concurrency:
   group: sync-holdings
   cancel-in-progress: false
@@ -30,15 +26,11 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install LongPort SDK
-        run: pip install --quiet longport
-
-      - name: Fetch holdings -> data/holdings.json
-        # 凭据通过 env 从 GitHub Secrets 注入; GitHub 会自动在日志里把它们替换为 ***
+      - name: Sync holdings via Longbridge MCP
+        # MCP token 通过 env 从 GitHub Secrets 注入; GitHub 会自动在日志里替换为 ***
+        # 脚本仅用 Python 标准库, 无需 pip install
         env:
-          LONGPORT_APP_KEY: ${{ secrets.LONGPORT_APP_KEY }}
-          LONGPORT_APP_SECRET: ${{ secrets.LONGPORT_APP_SECRET }}
-          LONGPORT_ACCESS_TOKEN: ${{ secrets.LONGPORT_ACCESS_TOKEN }}
+          LONGBRIDGE_MCP_TOKEN: ${{ secrets.LONGBRIDGE_MCP_TOKEN }}
           HOLDINGS_OWNER: '叶纸'
         run: python scripts/sync_holdings.py
 
@@ -46,11 +38,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if [ -n "$(git status --porcelain data/holdings.json)" ]; then
-            git add data/holdings.json
-            git commit -m "chore: 自动更新持仓 (data/holdings.json)"
+          if [ -n "$(git status --porcelain data/holdings.json data/holdings_history.json)" ]; then
+            git add data/holdings.json data/holdings_history.json
+            git commit -m "chore: 自动更新持仓与盈亏路程"
             git push
-            echo "已更新持仓"
+            echo "已更新"
           else
-            echo "持仓无变化, 跳过提交"
+            echo "无变化, 跳过提交"
           fi
