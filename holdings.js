@@ -230,13 +230,14 @@
       const ccy = p.currency || 'CNY';
       const rate = rateOf(ccy);
       const k = rate == null ? 0 : rate;
-      const mv = p.shares * p.price;
-      const dayAmt = p.shares * (p.price - p.prevClose);
+      const m = p.multiplier || 1;          // 期权合约乘数(通常 100); 普通股 = 1
+      const mv = p.shares * p.price * m;
+      const dayAmt = p.shares * (p.price - p.prevClose) * m;
       const dayPct = p.prevClose ? (p.price - p.prevClose) / p.prevClose * 100 : 0;
-      const plAmt = p.shares * (p.price - p.cost);
+      const plAmt = p.shares * (p.price - p.cost) * m;
       const plPct = p.cost ? (p.price - p.cost) / p.cost * 100 : 0;
       return { ...p, ccy, rate, mv, dayAmt, dayPct, plAmt, plPct,
-        mvCNY: mv * k, dayAmtCNY: dayAmt * k, costCNY: p.shares * p.cost * k };
+        mvCNY: mv * k, dayAmtCNY: dayAmt * k, costCNY: p.shares * p.cost * m * k };
     });
     const mvTotal = rows.reduce((s, r) => s + r.mvCNY, 0);        // 持仓市值(¥)
     const cashAmt = Number(data.cash) || 0;                       // 现金(已折算¥)
