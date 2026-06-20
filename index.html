@@ -144,10 +144,52 @@ function mapReport(r){
 }
 function pickReports(json){ return (json && Array.isArray(json.reports)) ? json.reports.map(mapReport) : []; }
 
+const fmtN = (n)=> (Number(n)||0).toLocaleString('zh-CN',{maximumFractionDigits:0});
+
+// 盈亏路程: 总成本→现值的累计盈亏 + 随时间增长的迷你曲线
+function PnlJourney({ totals, history }){
+  const t = totals || {};
+  const pos = (t.pnlCNY||0) >= 0;
+  const col = pos ? 'var(--bull-strong)' : 'var(--bear-strong)';
+  const pts = (history||[]).filter(h=>h && typeof h.pnlPct==='number');
+  let chart = null;
+  if(pts.length){
+    const W=640,H=110,pad=16;
+    const vals = pts.map(p=>p.pnlPct).concat([0]);
+    const mn=Math.min.apply(null,vals), mx=Math.max.apply(null,vals);
+    const span=(mx-mn)||1;
+    const X = (i)=> pad + (pts.length<=1 ? (W-2*pad)/2 : i*(W-2*pad)/(pts.length-1));
+    const Y = (v)=> pad + (mx-v)/span*(H-2*pad);
+    const line = pts.map((p,i)=>`${X(i).toFixed(1)},${Y(p.pnlPct).toFixed(1)}`).join(' ');
+    chart = (
+      <svg viewBox={`0 0 ${W} ${H}`} width="100%" height="110" preserveAspectRatio="none" style={{display:'block',marginTop:4}}>
+        <line x1={pad} x2={W-pad} y1={Y(0)} y2={Y(0)} stroke="var(--border-2)" strokeDasharray="4 4" strokeWidth="1"/>
+        {pts.length>=2 && <polyline points={line} fill="none" stroke={col} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round"/>}
+        {pts.map((p,i)=>(<circle key={i} cx={X(i)} cy={Y(p.pnlPct)} r={i===pts.length-1?4:2.5} fill={col}/>))}
+      </svg>
+    );
+  }
+  return (
+    <div className="reveal" style={{background:'var(--surface)',border:'1px solid var(--border)',borderRadius:20,boxShadow:'var(--shadow-sm)',padding:'20px 24px',marginBottom:28}}>
+      <div style={{display:'flex',alignItems:'baseline',gap:14,flexWrap:'wrap',marginBottom:8}}>
+        <span style={{fontSize:13,fontWeight:700,color:'var(--text-2)'}}>📉 盈亏路程 · 从成本到现在</span>
+        <span style={{marginLeft:'auto',fontFamily:'var(--font-mono)',fontSize:12,color:'var(--text-3)'}}>总成本 ¥{fmtN(t.costCNY)} → 现值 ¥{fmtN(t.valueCNY)}</span>
+      </div>
+      <div style={{display:'flex',alignItems:'baseline',gap:12}}>
+        <span style={{fontFamily:'var(--font-mono)',fontSize:30,fontWeight:900,color:col}}>{pos?'+':'−'}¥{fmtN(Math.abs(t.pnlCNY))}</span>
+        <span style={{fontFamily:'var(--font-mono)',fontSize:18,fontWeight:700,color:col}}>{pos?'+':'−'}{Math.abs(Number(t.pnlPct)||0).toFixed(2)}%</span>
+      </div>
+      {chart}
+      <div style={{fontSize:11,color:'var(--text-3)',marginTop:6}}>{pts.length>=2 ? `${pts.length} 个记录点 · 每次同步自动追加` : '已开始记录盈亏路程，后续每次自动同步会连成曲线'}</div>
+    </div>
+  );
+}
+
 function App(){
   const [reports,setReports] = React.useState(()=> window.REPORTS_RAW ? pickReports(window.REPORTS_RAW) : []);
   const [loading,setLoading] = React.useState(true);
   const [holdings,setHoldings] = React.useState(null);   // 真实持仓(来自 data/holdings.json); null = 用内置可编辑示例
+  const [history,setHistory] = React.useState(null);     // 盈亏路程历史 (data/holdings_history.json)
   const [q,setQ] = React.useState('');
   const [market,setMarket] = React.useState('all');
   const [sort,setSort] = React.useState('score-desc');
@@ -158,6 +200,7 @@ function App(){
       .catch(()=>{ setLoading(false); });
     // 真实持仓: GitHub Action 从长桥同步生成 data/holdings.json; 取不到则保留内置可编辑示例
     fetch('data/holdings.json').then(r=>r.ok?r.json():null).then(j=>{ if(j && Array.isArray(j.positions)) setHoldings(j); }).catch(()=>{});
+    fetch('data/holdings_history.json').then(r=>r.ok?r.json():null).then(j=>{ if(Array.isArray(j)) setHistory(j); }).catch(()=>{});
   },[]);
 
   const counts = React.useMemo(()=>{ const c={}; reports.forEach(r=>c[r.market]=(c[r.market]||0)+1); return c; },[reports]);
@@ -227,6 +270,8 @@ function App(){
               note="手动维护持仓 · 点「✎ 编辑持仓」即可改 / 增 / 删, 改动自动保存到本机浏览器 · 不构成投资建议" />
           )}
         </div>
+
+        {holdings && <PnlJourney totals={holdings.totals} history={history} />}
 
         <div className="toolbar">
           <div className="grow"><SearchInput placeholder="搜索 ticker / 公司名 / 业务描述..." value={q} onChange={e=>setQ(e.target.value)} /></div>
