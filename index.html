@@ -173,7 +173,7 @@ function PnlJourney({ totals, history }){
     <div className="reveal" style={{background:'var(--surface)',border:'1px solid var(--border)',borderRadius:20,boxShadow:'var(--shadow-sm)',padding:'20px 24px',marginBottom:28}}>
       <div style={{display:'flex',alignItems:'baseline',gap:14,flexWrap:'wrap',marginBottom:8}}>
         <span style={{fontSize:13,fontWeight:700,color:'var(--text-2)'}}>📉 盈亏路程 · 从成本到现在</span>
-        <span style={{marginLeft:'auto',fontFamily:'var(--font-mono)',fontSize:12,color:'var(--text-3)'}}>总成本 ¥{fmtN(t.costCNY)} → 现值 ¥{fmtN(t.valueCNY)}</span>
+        <span style={{marginLeft:'auto',fontFamily:'var(--font-mono)',fontSize:12,color:'var(--text-3)'}}>总成本 ¥{fmtN(t.costCNY)} → 现值 ¥{fmtN(t.grossMvCNY!=null?t.grossMvCNY:t.valueCNY)}</span>
       </div>
       <div style={{display:'flex',alignItems:'baseline',gap:12}}>
         <span style={{fontFamily:'var(--font-mono)',fontSize:30,fontWeight:900,color:col}}>{pos?'+':'−'}¥{fmtN(Math.abs(t.pnlCNY))}</span>
@@ -264,7 +264,7 @@ function App(){
             <HoldingsTablePro key="hold-real" owner={holdings.owner||HOLDINGS.owner} cash={holdings.cashCNY||0}
               positions={holdings.positions} fx={holdings.fx||{CNY:1}} readOnly
               updatedLabel={holdings.last_updated ? ('更新于 '+String(holdings.last_updated).replace('T',' ').replace('Z',' UTC')+' · 来自长桥') : '来自长桥'}
-              note="实时持仓 · 来自长桥(Longbridge), 由 GitHub Action 自动同步 · 金额按当日汇率折算为人民币(¥) · 不构成投资建议" />
+              note="实时持仓 · 来自长桥 · 总资产=净资产(已扣融资), 仓位>100%即融资杠杆 · 金额按当日汇率折算¥ · 不构成投资建议" />
           ) : (
             <HoldingsTablePro key="hold-seed" owner={HOLDINGS.owner} cash={HOLDINGS.cash} positions={HOLDINGS.positions}
               note="手动维护持仓 · 点「✎ 编辑持仓」即可改 / 增 / 删, 改动自动保存到本机浏览器 · 不构成投资建议" />

@@ -4,8 +4,8 @@ name: Sync Longbridge Holdings
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/30 1-7 * * 1-5'    # A股时段   (UTC, 约北京 09:00-15:30, 周一至周五)
-    - cron: '*/30 13-21 * * 1-5'  # 美股时段   (UTC, 约北京 21:00-05:00, 周一至周五)
+    # 每天美股闭盘后更新 (21:30 UTC, 覆盖夏令时16:00EDT=20:00UTC / 冬令时16:00EST=21:00UTC), 周一至周五
+    - cron: '30 21 * * 1-5'
 
 permissions:
   contents: write
