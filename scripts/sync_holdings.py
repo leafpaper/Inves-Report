@@ -62,12 +62,14 @@ def fnum(x):
         return 0.0
 
 
-def fx_usd_cny():
+def fx_cny(ccy):
+    if ccy == "CNY":
+        return 1.0
     try:
-        with urllib.request.urlopen("https://api.frankfurter.app/latest?from=USD&to=CNY", timeout=15) as r:
+        with urllib.request.urlopen("https://api.frankfurter.app/latest?from=%s&to=CNY" % ccy, timeout=15) as r:
             return float(json.loads(r.read().decode("utf-8"))["rates"]["CNY"])
     except Exception:
-        return 7.18
+        return {"USD": 7.18, "HKD": 0.92}.get(ccy, 1.0)
 
 
 def main():
@@ -96,8 +98,7 @@ def main():
         for q in (tool(token, "quote", {"symbols": stk_syms}) or []):
             sq[q["symbol"]] = q
 
-    usdcny = fx_usd_cny()
-    fx = {"CNY": 1.0, "USD": round(usdcny, 4)}
+    usdcny = fx_cny("USD")
 
     positions = []
     valC = costC = dayC = 0.0
@@ -125,6 +126,19 @@ def main():
 
     pnlC = valC - costC
     pnlPct = round(pnlC / costC * 100, 2) if costC else 0.0
+
+    # 账户净资产(权威): 总资产 = 净资产(已扣融资), 避免被融资额度虚增
+    net_hkd = 0.0
+    try:
+        bal = tool(token, "account_balance", {}) or []
+        if bal:
+            net_hkd = fnum(bal[0].get("net_assets"))
+    except Exception as e:
+        sys.stderr.write("account_balance 获取失败: %s\n" % e)
+    hkdcny = fx_cny("HKD")
+    net_cny = net_hkd * hkdcny
+    cashCNY = round(net_cny - valC, 2) if net_hkd else 0   # 使 总资产 = 持仓市值 + 现金/融资 = 净资产
+
     now = datetime.datetime.utcnow()
     today = now.strftime("%Y-%m-%d")
     out = {
@@ -133,9 +147,10 @@ def main():
         "base_currency": "CNY",
         "owner": OWNER,
         "source": "Longbridge",
-        "fx": fx,
-        "cashCNY": 0,
-        "totals": {"valueCNY": round(valC, 2), "costCNY": round(costC, 2),
+        "fx": {"CNY": 1.0, "USD": round(usdcny, 4), "HKD": round(hkdcny, 4)},
+        "cashCNY": cashCNY,
+        "totals": {"netAssetsCNY": round(net_cny, 2), "grossMvCNY": round(valC, 2),
+                   "marginCNY": cashCNY, "costCNY": round(costC, 2),
                    "pnlCNY": round(pnlC, 2), "pnlPct": pnlPct, "dayCNY": round(dayC, 2)},
         "positions": positions,
     }
@@ -152,7 +167,7 @@ def main():
         except Exception:
             hist = []
     hist = [h for h in hist if h.get("date") != today]
-    hist.append({"date": today, "valueCNY": round(valC, 2), "pnlCNY": round(pnlC, 2), "pnlPct": pnlPct})
+    hist.append({"date": today, "netAssetsCNY": round(net_cny, 2), "pnlCNY": round(pnlC, 2), "pnlPct": pnlPct})
     hist.sort(key=lambda h: h.get("date", ""))
     with open(HIST, "w", encoding="utf-8") as f:
         json.dump(hist, f, ensure_ascii=False, indent=2)
