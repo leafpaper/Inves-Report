@@ -1,0 +1,2894 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>东山精密（002384.SZ）投资分析报告 — 2026-06-20</title>
+<style>
+/* ============================================================
+   Claude Code Company Analysis · Report Styles v4.6
+   单一 CSS 真相源 — 由 assets/html/base.html 加载并内联
+   禁止在 Phase 6 Part B 中自创颜色值或变量名
+   v4.6: Goldman 蓝调 + Morningstar 卡片化 + Bloomberg 风险等级
+   ============================================================ */
+
+:root {
+  /* 主色 — Goldman 深蓝 */
+  --c-primary: #1a56db;
+  --c-primary-light: #e8effc;
+  --c-primary-dark: #0f3d99;
+  --c-accent: #d97f3c;
+
+  /* Bloomberg 风格风险等级(高对比) */
+  --c-risk-red:    #dc2626;
+  --c-risk-red-bg: #fef2f2;
+  --c-risk-amber:  #e8a33a;
+  --c-risk-amber-bg: #fff7ed;
+  --c-risk-yellow: #fbbf24;
+  --c-risk-yellow-bg: #fffbeb;
+  --c-risk-green:  #059669;
+  --c-risk-green-bg: #ecfdf5;
+
+  /* 语义色 (保留 v4.3 alias) */
+  --c-green: var(--c-risk-green);
+  --c-green-bg: var(--c-risk-green-bg);
+  --c-yellow: #d97706;
+  --c-yellow-bg: #fffbeb;
+  --c-red: var(--c-risk-red);
+  --c-red-bg: var(--c-risk-red-bg);
+
+  /* 灰度系 */
+  --c-gray-50:  #f9fafb;
+  --c-gray-100: #f3f4f6;
+  --c-gray-200: #e5e7eb;
+  --c-gray-500: #6b7280;
+  --c-gray-700: #374151;
+  --c-gray-900: #111827;
+
+  /* Morningstar 卡片化灰阶 */
+  --c-card-border:  #e5e7eb;
+  --c-card-header:  #f9fafb;
+  --c-card-hover:   rgba(26,86,219,0.04);
+
+  /* 形状 */
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.06);
+  --shadow-md: 0 4px 6px rgba(0,0,0,.07), 0 2px 4px rgba(0,0,0,.06);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,.08), 0 4px 10px rgba(0,0,0,.05);
+
+  /* Variant Perception 紫 */
+  --c-variant: #7a4dab;
+  --c-variant-bg: #f3eeff;
+
+  /* v4.6 sidebar 布局 */
+  --sidebar-width: 260px;
+  --sidebar-gap: 24px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  background: var(--c-gray-50);
+  color: var(--c-gray-900);
+  margin: 0;
+  padding: 0;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+/* ---------- 3.1 Sticky 顶部导航栏 ---------- */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  height: 50px;
+  padding: 0 24px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.85);
+  border-bottom: 1px solid var(--c-gray-200);
+  font-size: 14px;
+}
+.top-nav .nav-brand {
+  font-weight: 700;
+  color: var(--c-primary);
+  text-decoration: none;
+  margin-right: auto;
+}
+.top-nav a {
+  color: var(--c-gray-700);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background .15s;
+}
+.top-nav a:hover { background: var(--c-primary-light); color: var(--c-primary); }
+
+/* ---------- Header Hero ---------- */
+header.hero {
+  background: linear-gradient(135deg, var(--c-primary), #2a6ba0);
+  color: white;
+  padding: 48px 32px;
+  border-radius: var(--radius);
+  margin-bottom: 32px;
+  box-shadow: var(--shadow-md);
+}
+header.hero h1 { font-size: 32px; margin: 0 0 8px; font-weight: 700; }
+header.hero .subtitle { opacity: 0.9; font-size: 15px; }
+header.hero .meta {
+  display: flex; flex-wrap: wrap; gap: 24px;
+  margin-top: 20px; font-size: 14px;
+}
+
+/* ---------- Section (每个 §一到§十五 一个) ---------- */
+.section {
+  background: white;
+  padding: 28px 32px;
+  margin: 20px 0;
+  border-radius: var(--radius);
+  border: 1px solid var(--c-gray-200);
+  box-shadow: var(--shadow);
+}
+.section h2 {
+  color: var(--c-primary);
+  border-bottom: 2px solid var(--c-primary-light);
+  padding-bottom: 8px;
+  margin-top: 0;
+  font-size: 22px;
+}
+.section h3 {
+  color: var(--c-primary);
+  font-size: 18px;
+  margin-top: 24px;
+  border-bottom: 1px dashed var(--c-gray-200);
+  padding-bottom: 4px;
+}
+.section h4 { color: var(--c-gray-900); font-size: 16px; margin-top: 18px; }
+
+/* ---------- 3.2 评分环形图 (SVG) ---------- */
+.score-ring {
+  display: inline-block;
+  position: relative;
+}
+.score-ring svg { display: block; }
+.score-ring .score-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.score-ring .score-text .num {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--c-primary);
+}
+.score-ring .score-text .label {
+  font-size: 11px;
+  color: var(--c-gray-500);
+}
+
+/* ---------- 3.3 维度评分条形图 ---------- */
+.dimension-bar {
+  display: grid;
+  grid-template-columns: 1fr 48px 3fr 56px;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0;
+  font-size: 14px;
+}
+.dimension-bar .dim-name { color: var(--c-gray-700); }
+.dimension-bar .dim-score { font-weight: 600; text-align: right; color: var(--c-primary); }
+.dimension-bar .dim-progress {
+  height: 10px;
+  background: var(--c-gray-100);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.dimension-bar .dim-progress .fill { height: 100%; border-radius: 5px; }
+.dimension-bar .dim-progress .fill.tier1 { background: linear-gradient(90deg, #3b82f6, #1d4ed8); }
+.dimension-bar .dim-progress .fill.tier2 { background: linear-gradient(90deg, #8b5cf6, #6d28d9); }
+.dimension-bar .dim-progress .fill.tier3 { background: linear-gradient(90deg, #f59e0b, #d97706); }
+.dimension-bar .dim-weight { text-align: right; color: var(--c-gray-500); font-size: 12px; }
+
+/* ---------- 3.4 三色情景卡片 ---------- */
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+.scenario {
+  padding: 16px;
+  border-radius: 8px;
+  border-left: 4px solid;
+}
+.scenario .label { font-size: 12px; color: var(--c-gray-500); text-transform: uppercase; letter-spacing: 1px; }
+.scenario .big-num { font-size: 28px; font-weight: 700; margin: 4px 0 8px; }
+.scenario .detail { font-size: 13px; color: var(--c-gray-700); }
+.scenario.bull { background: var(--c-green-bg); border-left-color: var(--c-green); }
+.scenario.bull .big-num { color: var(--c-green); }
+.scenario.base { background: var(--c-yellow-bg); border-left-color: var(--c-yellow); }
+.scenario.base .big-num { color: var(--c-yellow); }
+.scenario.bear { background: var(--c-red-bg); border-left-color: var(--c-red); }
+.scenario.bear .big-num { color: var(--c-red); }
+.scenario.tail { background: #2a2a2a; border-left-color: #000; color: #fff; }
+.scenario.tail .big-num { color: #fff; }
+.scenario.tail .detail { color: #ddd; }
+
+/* ---------- 3.5 期望回报高亮条 ---------- */
+.expected-return {
+  background: linear-gradient(135deg, #1e3a5f, var(--c-primary));
+  color: white;
+  padding: 20px 28px;
+  border-radius: var(--radius);
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-md);
+}
+.expected-return .label { font-size: 12px; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; }
+.expected-return .value { font-size: 36px; font-weight: 700; }
+
+/* ---------- 3.6 团队名片网格 ---------- */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+.team-card {
+  padding: 16px;
+  border: 1px solid var(--c-gray-200);
+  border-radius: 8px;
+  text-align: center;
+}
+.team-card .avatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--c-primary-light); color: var(--c-primary);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; margin: 0 auto 8px; font-size: 18px;
+}
+.team-card .name { font-weight: 600; }
+.team-card .role { color: var(--c-gray-500); font-size: 13px; margin-top: 4px; }
+
+/* ---------- 3.7 风险矩阵 ---------- */
+.risk-item {
+  display: grid;
+  grid-template-columns: 20px 1fr auto;
+  gap: 12px;
+  align-items: start;
+  padding: 12px;
+  border-left: 4px solid;
+  background: var(--c-gray-50);
+  border-radius: 6px;
+  margin: 8px 0;
+}
+.risk-item.high   { border-left-color: var(--c-red);    background: var(--c-red-bg); }
+.risk-item.medium { border-left-color: var(--c-yellow); background: var(--c-yellow-bg); }
+.risk-item.low    { border-left-color: var(--c-green);  background: var(--c-green-bg); }
+.risk-item .dot {
+  width: 12px; height: 12px; border-radius: 50%; margin-top: 4px;
+}
+.risk-item.high   .dot { background: var(--c-red); }
+.risk-item.medium .dot { background: var(--c-yellow); }
+.risk-item.low    .dot { background: var(--c-green); }
+
+/* ---------- 3.8 融资时间轴 ---------- */
+.timeline {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 24px 0;
+  overflow-x: auto;
+  padding: 8px 0;
+}
+.timeline .tl-node {
+  flex: 0 0 auto;
+  text-align: center;
+  padding: 0 14px;
+  position: relative;
+}
+.timeline .tl-node::before {
+  content: '';
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--c-gray-200); display: block; margin: 0 auto 8px;
+}
+.timeline .tl-node.current::before { background: var(--c-primary); box-shadow: 0 0 0 4px var(--c-primary-light); }
+.timeline .tl-node .year { font-size: 12px; color: var(--c-gray-500); }
+.timeline .tl-node .round { font-weight: 600; font-size: 13px; }
+.timeline .tl-node .amount { font-size: 11px; color: var(--c-gray-700); }
+
+/* ---------- 3.9 情绪量表 ---------- */
+.sentiment-bar {
+  position: relative;
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(to right, var(--c-red) 0%, var(--c-yellow) 50%, var(--c-green) 100%);
+  margin: 20px 0 32px;
+}
+.sentiment-bar .pointer {
+  position: absolute;
+  top: -8px;
+  width: 4px; height: 28px;
+  background: var(--c-gray-900);
+  border-radius: 2px;
+  transform: translateX(-50%);
+}
+.sentiment-bar .pointer::after {
+  content: attr(data-label);
+  position: absolute;
+  top: 32px; left: 50%; transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 11px;
+  background: var(--c-gray-900);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* ---------- v2 组件 · 估值区间可视化 ---------- */
+.valuation-range {
+  position: relative;
+  height: 28px;
+  background: var(--c-gray-100);
+  border-radius: 4px;
+  margin: 10px 0;
+}
+.valuation-range .range {
+  position: absolute;
+  top: 4px; bottom: 4px;
+  border-radius: 3px;
+  opacity: 0.6;
+}
+.valuation-range .range.dcf { background: var(--c-primary); }
+.valuation-range .range.comparable { background: var(--c-green); }
+.valuation-range .range.transaction { background: var(--c-yellow); }
+.valuation-range .label-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 8px;
+  align-items: center;
+  font-size: 12px;
+}
+
+/* ---------- v2 组件 · 星级评估 ---------- */
+.star-filled { color: var(--c-yellow); }
+.star-empty  { color: var(--c-gray-200); }
+
+/* ---------- v2 组件 · 信息缺口优先级 badge ---------- */
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.badge.critical { background: var(--c-red-bg);    color: var(--c-red); }
+.badge.important{ background: var(--c-yellow-bg); color: var(--c-yellow); }
+.badge.minor    { background: var(--c-green-bg);  color: var(--c-green); }
+
+/* ---------- 通用 Table ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+}
+th, td {
+  border: 1px solid var(--c-gray-200);
+  padding: 8px 12px;
+  text-align: left;
+}
+th {
+  background: var(--c-primary-light);
+  color: var(--c-primary);
+  font-weight: 600;
+}
+tr:nth-child(even) td { background: var(--c-gray-50); }
+
+/* ---------- 通用文本 ---------- */
+strong { color: var(--c-gray-900); font-weight: 600; }
+code {
+  background: var(--c-gray-100);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 12px;
+}
+blockquote {
+  border-left: 4px solid var(--c-primary);
+  padding-left: 16px;
+  color: var(--c-gray-700);
+  background: var(--c-primary-light);
+  padding: 10px 16px;
+  border-radius: 4px;
+  margin: 12px 0;
+}
+hr { border: none; border-top: 1px dashed var(--c-gray-200); margin: 24px 0; }
+ul, ol { padding-left: 22px; }
+li { margin: 4px 0; }
+a {
+  color: var(--c-primary);
+  text-decoration: none;
+  border-bottom: 1px dotted;
+}
+a:hover { color: var(--c-yellow); }
+
+footer {
+  text-align: center;
+  color: var(--c-gray-500);
+  padding: 32px 0 16px;
+  font-size: 12px;
+  border-top: 1px solid var(--c-gray-200);
+  margin-top: 48px;
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 768px) {
+  .container { padding: 20px 16px 60px; }
+  header.hero { padding: 24px 16px; }
+  header.hero h1 { font-size: 24px; }
+  .section { padding: 16px; }
+  .scenario-grid, .team-grid { grid-template-columns: 1fr; }
+  table { font-size: 12px; }
+  table th, table td { padding: 6px 8px; }
+}
+
+/* ============================================================
+   v4.6 新增: 6 个大厂风格组件
+   ============================================================ */
+
+/* ---------- v4.6-1. 前置评级卡 (Goldman 三件套) ---------- */
+.rating-trio {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: -16px 0 32px;
+}
+.rating-card {
+  background: white;
+  border: 1px solid var(--c-card-border);
+  border-top: 4px solid var(--c-primary);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  box-shadow: var(--shadow-md);
+  transition: transform .15s, box-shadow .15s;
+}
+.rating-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.rating-card--score  { border-top-color: var(--c-primary); }
+.rating-card--anchor { border-top-color: var(--c-accent); }
+.rating-card--return { border-top-color: var(--c-risk-green); }
+.rating-card--return.negative { border-top-color: var(--c-risk-red); }
+
+.rating-card .label {
+  font-size: 11px;
+  color: var(--c-gray-500);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.rating-card .value {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--c-gray-900);
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+.rating-card .value .out-of {
+  font-size: 16px;
+  color: var(--c-gray-500);
+  font-weight: 500;
+}
+.rating-card .value.negative { color: var(--c-risk-red); }
+.rating-card .value.positive { color: var(--c-risk-green); }
+.rating-card .sub {
+  font-size: 12px;
+  color: var(--c-gray-700);
+}
+
+/* ---------- v4.6-2. 彩条风险卡 (Bloomberg 等级色) ---------- */
+.risk-card-v2 {
+  display: grid;
+  grid-template-columns: 4px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 14px 16px 14px 0;
+  margin: 8px 0;
+  background: white;
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: background .15s;
+}
+.risk-card-v2:hover { background: var(--c-card-hover); }
+.risk-card-v2.risk-critical { border-left-width: 0; background: linear-gradient(to right, var(--c-risk-red-bg) 0%, white 6%); }
+.risk-card-v2.risk-high     { background: linear-gradient(to right, var(--c-risk-amber-bg) 0%, white 6%); }
+.risk-card-v2.risk-medium   { background: linear-gradient(to right, var(--c-risk-yellow-bg) 0%, white 6%); }
+.risk-card-v2.risk-low      { background: linear-gradient(to right, var(--c-risk-green-bg) 0%, white 6%); }
+.risk-card-v2 .left-bar { align-self: stretch; width: 4px; }
+.risk-card-v2.risk-critical .left-bar { background: var(--c-risk-red); }
+.risk-card-v2.risk-high     .left-bar { background: var(--c-risk-amber); }
+.risk-card-v2.risk-medium   .left-bar { background: var(--c-risk-yellow); }
+.risk-card-v2.risk-low      .left-bar { background: var(--c-risk-green); }
+.risk-card-v2 .title { font-weight: 600; color: var(--c-gray-900); margin-bottom: 3px; }
+.risk-card-v2 .body  { font-size: 13px; color: var(--c-gray-700); line-height: 1.5; }
+.risk-card-v2 .sev-badge {
+  font-size: 10px; font-weight: 700; padding: 3px 10px;
+  border-radius: 12px; white-space: nowrap; letter-spacing: .5px;
+}
+.risk-card-v2.risk-critical .sev-badge { background: var(--c-risk-red);    color: white; }
+.risk-card-v2.risk-high     .sev-badge { background: var(--c-risk-amber);  color: white; }
+.risk-card-v2.risk-medium   .sev-badge { background: var(--c-risk-yellow); color: var(--c-gray-900); }
+.risk-card-v2.risk-low      .sev-badge { background: var(--c-risk-green);  color: white; }
+
+/* ---------- v4.6.2. Preamble 区 (hero 之后、rating-trio 之前) ---------- */
+.preamble {
+  background: var(--c-gray-50);
+  border-left: 3px solid var(--c-accent);
+  border-radius: 6px;
+  padding: 14px 20px;
+  margin: -8px 0 20px;
+  font-size: 13px;
+  color: var(--c-gray-700);
+  line-height: 1.7;
+}
+.preamble:empty { display: none; }
+.preamble blockquote {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-size: 13px;
+}
+.preamble blockquote p { margin: 6px 0; }
+.preamble p { margin: 6px 0; }
+.preamble strong { color: var(--c-primary-dark); }
+.preamble hr { display: none; }  /* 吃掉 --- 分隔符,避免视觉噪音 */
+
+/* ---------- v4.6.1. 关键指标横排面板 (顶部, 替代 v4.6 的粘性侧边栏) ---------- */
+.metric-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin: 0 0 24px;
+  padding: 16px;
+  background: white;
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.metric-strip .metric-chip {
+  padding: 10px 14px;
+  text-align: center;
+  border-right: 1px dashed var(--c-gray-100);
+}
+.metric-strip .metric-chip:last-child { border-right: none; }
+.metric-strip .metric-chip .metric-label {
+  font-size: 10px;
+  color: var(--c-gray-500);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.metric-strip .metric-chip .metric-value {
+  font-size: 18px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--c-gray-900);
+}
+.metric-strip .metric-chip .metric-value.positive { color: var(--c-risk-green); }
+.metric-strip .metric-chip .metric-value.negative { color: var(--c-risk-red); }
+.metric-strip .metric-chip .metric-value.risk     { color: var(--c-risk-amber); }
+.metric-strip .metric-chip .metric-value.critical { color: var(--c-risk-red); font-weight: 900; }
+.metric-strip .metric-chip .metric-value.neutral  { color: var(--c-gray-900); }
+
+/* ---------- v4.6 兼容: .metric-sidebar/metric-row 保留(弃用但不破坏存量报告) ---------- */
+.metric-sidebar {
+  /* 降级为块式显示, 不再粘性 */
+  background: white;
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--radius);
+  padding: 20px 18px;
+  box-shadow: var(--shadow);
+  margin: 0 0 24px;
+}
+.metric-sidebar h4 {
+  font-size: 11px;
+  color: var(--c-gray-500);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  margin: 0 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--c-card-border);
+}
+.metric-sidebar .metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--c-gray-100);
+  font-size: 13px;
+}
+.metric-sidebar .metric-row:last-child { border-bottom: none; }
+.metric-sidebar .metric-row span { color: var(--c-gray-700); }
+.metric-sidebar .metric-row strong { font-weight: 700; color: var(--c-gray-900); font-variant-numeric: tabular-nums; }
+.metric-sidebar .metric-row strong.positive { color: var(--c-risk-green); }
+.metric-sidebar .metric-row strong.negative { color: var(--c-risk-red); }
+.metric-sidebar .metric-row strong.risk     { color: var(--c-risk-amber); font-weight: 800; }
+.metric-sidebar .metric-row strong.critical { color: var(--c-risk-red);   font-weight: 800; }
+
+/* ---------- v4.6-4. 对标卡 (Morningstar 3 列比较) ---------- */
+.comparison-card {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  gap: 8px;
+  background: white;
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin: 12px 0;
+}
+.comparison-card .cmp-col {
+  text-align: center;
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+.comparison-card .cmp-col.center {
+  background: var(--c-primary-light);
+  border: 2px solid var(--c-primary);
+}
+.comparison-card .cmp-label { font-size: 10px; color: var(--c-gray-500); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 6px; }
+.comparison-card .cmp-value { font-size: 20px; font-weight: 800; color: var(--c-gray-900); font-variant-numeric: tabular-nums; }
+.comparison-card .cmp-col.center .cmp-value { font-size: 24px; color: var(--c-primary); }
+.comparison-card .cmp-sub { font-size: 11px; color: var(--c-gray-500); margin-top: 4px; }
+.comparison-card .cmp-bar {
+  height: 6px; background: var(--c-gray-100); border-radius: 3px;
+  margin-top: 8px; position: relative; overflow: hidden;
+}
+.comparison-card .cmp-bar .fill {
+  position: absolute; left: 0; top: 0; bottom: 0;
+  background: linear-gradient(90deg, var(--c-primary), var(--c-accent));
+  border-radius: 3px;
+}
+
+/* ---------- v4.6-5. 深度链接 (章节间跳转) ---------- */
+.deep-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 1px 8px 1px 6px;
+  font-size: 11px;
+  background: var(--c-primary-light);
+  color: var(--c-primary);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  text-decoration: none !important;
+  vertical-align: middle;
+  font-weight: 600;
+  transition: background .15s, border-color .15s;
+}
+.deep-link::before { content: '→'; opacity: .6; }
+.deep-link:hover {
+  background: var(--c-primary);
+  color: white;
+  border-color: var(--c-primary);
+}
+/* Target 高亮(用户点击内链跳到目标章节时) */
+.section:target {
+  animation: target-pulse 1.8s ease-out;
+  scroll-margin-top: 70px;
+}
+@keyframes target-pulse {
+  0%   { box-shadow: 0 0 0 4px var(--c-accent); }
+  100% { box-shadow: var(--shadow); }
+}
+
+/* ---------- v4.6-6. 微型热力图 (纯 CSS 色块网格) ---------- */
+.heatmap-grid {
+  display: grid;
+  gap: 2px;
+  margin: 10px 0;
+  font-size: 10px;
+}
+.heatmap-grid .hm-cell {
+  aspect-ratio: 1 / 1;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  font-family: ui-monospace, monospace;
+  font-weight: 600;
+  color: var(--c-gray-900);
+}
+/* 5 档颜色映射 (深红 → 白 → 深绿) */
+.heatmap-grid .hm-cell.hm--2 { background: #fca5a5; color: #7f1d1d; }
+.heatmap-grid .hm-cell.hm--1 { background: #fed7aa; color: #7c2d12; }
+.heatmap-grid .hm-cell.hm-0  { background: #f3f4f6; }
+.heatmap-grid .hm-cell.hm-1  { background: #bbf7d0; color: #14532d; }
+.heatmap-grid .hm-cell.hm-2  { background: #4ade80; color: white; }
+.heatmap-grid .hm-cell:hover { transform: scale(1.1); }
+
+.heatmap-grid .hm-row-label {
+  font-size: 10px;
+  color: var(--c-gray-500);
+  text-align: right;
+  padding-right: 8px;
+  align-self: center;
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 768px) {
+  .container { padding: 20px 16px 60px; }
+  header.hero { padding: 24px 16px; }
+  header.hero h1 { font-size: 24px; }
+  .section { padding: 16px; }
+  .scenario-grid, .team-grid, .rating-trio { grid-template-columns: 1fr; }
+  .comparison-card { grid-template-columns: 1fr; }
+  .metric-strip { grid-template-columns: repeat(2, 1fr); }
+  .metric-strip .metric-chip { border-right: none; border-bottom: 1px dashed var(--c-gray-100); }
+  table { font-size: 12px; }
+  table th, table td { padding: 6px 8px; }
+}
+
+/* ---------- 打印 ---------- */
+@media print {
+  body { background: white; }
+  .top-nav { display: none; }
+  .section { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; }
+  header.hero { break-inside: avoid; }
+  .metric-strip { break-inside: avoid; }
+  .deep-link { color: var(--c-gray-900); background: transparent; border-color: var(--c-gray-500); }
+  .deep-link::before { content: ''; }
+  .deep-link::after { content: ' (见对应章节)'; font-size: 10px; color: var(--c-gray-500); }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     Sticky 顶部导航栏 — 8 章节锚点
+     ============================================================ -->
+<nav class="top-nav">
+  <a href="../../index.html" class="nav-brand">叶纸的投资报告</a>
+  <a href="#exec-summary">摘要</a>
+  <a href="#fundamentals">基本面</a>
+  <a href="#industry">行业对标</a>
+  <a href="#scoring">评分</a>
+  <a href="#valuation">估值回报</a>
+  <a href="#risk">风险红旗</a>
+  <a href="#sentiment">舆情</a>
+  <a href="#sources">来源缺口</a>
+</nav>
+
+<div class="container">
+
+<!-- ============================================================
+     Header Hero
+     ============================================================ -->
+<header class="hero">
+  <h1>东山精密（002384.SZ）投资分析报告</h1>
+  <div class="subtitle">Claude Opus 4.8 · company-analysis skill vv6.0 · 结构化数据 + 11 大师框架审计</div>
+  <div class="meta">
+    <span>📅 2026-06-20</span>
+    <span>💵 收盘 273.0 元</span>
+    <span>📊 PB 22.09 · 市值 5 亿</span>
+    <span>🎯 估值锚 41.9 元</span>
+    <span>⚠️ 最差情景 – 元</span>
+  </div>
+</header>
+
+<!-- ============================================================
+     Preamble 区 — 主报告第一个 ## 之前的 blockquote / 段落
+     ============================================================ -->
+<div class="preamble">
+<p><strong>报告日期</strong>: 2026-06-20<br />
+<strong>报告期</strong>: 财务 20211231~20260331（最新季 2026Q1）· 行情截至 20260618 收盘<br />
+<strong>最新收盘</strong>: 273.0 元（20260618）<br />
+<strong>总市值</strong>: 5,000.29 亿元 · PB 22.09x · PE_TTM 245.10x<br />
+<strong>市场 / 类型</strong>: A股（深交所主板）· 上市公司<br />
+<strong>分析师</strong>: Claude 投研（Claude Opus 4.8）· 投资金额假设 100 万元人民币</p>
+<hr />
+</div>
+
+<!-- ============================================================
+     前置评级三件套(Goldman 风格, hero 下方醒目位置)
+     ============================================================ -->
+<div class="rating-trio">
+
+  <div class="rating-card rating-card--score">
+    <div class="label">综合评分</div>
+    <div class="value">4.48 <span class="out-of">/ 10</span></div>
+    <div class="sub">中性-分歧（偏空）</div>
+  </div>
+  <div class="rating-card rating-card--anchor">
+    <div class="label">估值锚(DCF 概率加权)</div>
+    <div class="value">41.9 元</div>
+    <div class="sub">相对当前 -84.7%</div>
+  </div>
+  <div class="rating-card rating-card--return negative">
+    <div class="label">24 月期望收益</div>
+    <div class="value negative">-84.7%</div>
+    <div class="sub">年化 -60.8%</div>
+  </div>
+</div>
+
+<!-- ============================================================
+     关键指标横排面板
+     ============================================================ -->
+<div class="metric-strip">
+
+  <div class="metric-chip">
+    <div class="metric-label">PE (TTM)</div>
+    <div class="metric-value neutral">245.10</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">PB</div>
+    <div class="metric-value neutral">22.09x</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">市值(亿)</div>
+    <div class="metric-value neutral">5000.29 亿</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">ROE</div>
+    <div class="metric-value neutral">6.88%</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">毛利率</div>
+    <div class="metric-value neutral">14.09%</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">资产负债率</div>
+    <div class="metric-value negative">63.69%</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">股东户数</div>
+    <div class="metric-value neutral">306048</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">家族持股</div>
+    <div class="metric-value neutral">30.05%</div>
+  </div>
+</div>
+
+<!-- ============================================================
+     §一 执行摘要
+     ============================================================ -->
+<div class="section" id="exec-summary">
+<h2>§一 执行摘要</h2>
+<blockquote>
+<p>按 <code>assets/templates/exec-summary-schema.md</code> 的固定字段展开。这是全报告的决策仪表盘——读者只读本节即可掌握结论。</p>
+</blockquote>
+<p><strong>一句话结论</strong>: <strong>中性-分歧（偏空）</strong> —— 东山精密是全球 PCB/FPC 龙头并以收购索尔思切入 AI 光模块第二曲线，2026Q1 营收 +52.72%、归母净利 +143.47%、扣非 +166.99%，成长叙事真实 [data_snapshot §2.1]；但市场已用 PE_TTM <strong>245.10x</strong> / PB <strong>22.09x</strong> / PS <strong>11.20x</strong>（三项均处行业或历史 <strong>100% 分位</strong>）将该叙事极致 price-in [peer_analysis §3/§4 / audit #1/#7]，而支撑估值的光模块 2025 仅并表约 14.36 亿、<strong>不足集团营收 4%</strong> 且关键叙事未经 PDF 原文核实 [metrics.json:segments / 缺口#1]。概率加权 DCF 公允价仅约 <strong>41.9 元</strong>、4 个情景全部负收益——结论偏向"回避 / 不建议现价买入"。</p>
+<p><strong>估值锚</strong>: <strong>概率加权 DCF ≈ 767 亿元 / 41.9 元</strong>（4 情景；乐观 20% / 基准 45% / 悲观 28% / 最差 7%）[§五 5.1]。当前 273.0 元相对此锚 <strong>偏离 -84.7%</strong>（现价约为公允价 6.5 倍）；基准情景对应公允价 29.4 元、即便光模块全面兑现的乐观情景仅 127.5 元（仍较现价 -53.3%）。<strong>当前估值判定：严重高估。</strong></p>
+<p><strong>综合评分</strong>: <strong>4.48/10</strong> · <strong>数据置信度</strong>: 中（核心财务/股东数据为 Tushare 确定性口径；光模块独立分部、商誉减值测试结果存在缺口）（与 §四 评分表加总一致，落入 scoring-rubric "&lt; 5.0 — 建议放弃 / 风险回报比不佳" 档）</p>
+<p><strong>三大风险（Top 3）</strong>:<br />
+1. 🟠 <strong>估值透支</strong>：PE_TTM 245.10x（元器件 307 家分位 100%、peer 中位 85x 的约 2.9x）+ PB 22.09x（近 1 年 100% 分位）+ PS 11.20x（100% 分位），PB/ROE 错配达合理 PB 的 <strong>25.7x</strong> [audit #1/#2/#7 / §四维度8]<br />
+2. 🟠 <strong>商誉减值敞口</strong>：GMD+索尔思并表形成商誉 <strong>47.69 亿（+125%）</strong>，首次减值测试结果未披露，是 DCF 最差情景核心触发项 [缺口#2 / §六 6.3 节点5]<br />
+3. 🟡 <strong>财务质量 + 筹码踩踏</strong>：应收 95.55 亿 +41.5%（应收/利润 689%）、存货 +45.1% 远超营收 9.1%（差 36pp 跌价敞口）、2026Q1 FCF -24 亿、资负率 63.69%（peer 最高）；叠加户数半年增 2.7 倍至 306,048 + 两融 +35.9% 拥挤 [audit #4/#5/#6 / §六 6.1/6.3]</p>
+<p><strong>三大机会（Top 3）</strong>:<br />
+1. <strong>AI 光模块第二曲线</strong>：索尔思光模块毛利率 36.74%（远高于集团 14.09%），自筹约 81 亿在常州扩建光芯片+高速光模块产线，绑定 AI 算力 capex 高景气 [metrics.json:segments / WebSearch:caifuhao]<br />
+2. <strong>基本盘增速领先 + 龙头地位</strong>：2026Q1 营收 +52.72% / 归母净利 +143.47% / 扣非 +166.99%，营收增速 peer 内分位 100%；PCB 行业 CAGR 约 4.8%、AI PCB 与 FPC×AI手机/新能源车 CCS 高景气卡位 [data_snapshot §2.1 / PDF:annual_2024,P.12]<br />
+3. <strong>治理利益对齐 + 指引可信</strong>：实控人三父子合计约 33.26% 深度持股，近 3 期 forecast_vip 全部兑现（2026Q1 预增 11.10 亿落入区间）[PDF:annual_2025_summary,P.7 / data_snapshot §4]</p>
+<p><strong>核心非共识判断</strong>（1-3 条——本报告与市场共识的关键分歧）:<br />
+1. 245x PE 的承载体（光模块）当前占营收 &lt; 4% 且关键叙事未经原文核实——市场按"已兑现"定价，本报告按"待验证、概率加权打折"定价，差距即 -84.7% 偏离<br />
+2. 高增速含 GMD/索尔思并表口径 + 2025Q1 低基数水分，且连续两年 Q4 扣非亏损——单季高增速年化外推不可靠，归母净利 3 年 CAGR 实为 -16.3%<br />
+3. 技术面近 1 年 +758% 强势多头与 DCF 深度高估严重背离，判定为"情绪性反弹"而非趋势性重估（详见 §五 5.3）</p>
+<p><strong>投资方向综合判定</strong>: <strong>中性-分歧（偏空）</strong>（与 §四 定性综合判断对齐：护城河→中性/分歧、管理层→中性、催化剂→看多，无 ≥2 框架同向且无致命看空快筛触发，定性三框架不翻空；但综合评分 4.48/10 + 估值锚 -84.7% 偏离将最终方向拉向回避一侧。诚实表述：不建议现价买入，现有持仓建议减持）</p>
+<hr />
+</div>
+
+<!-- ============================================================
+     §二 公司基本面（含剥离后剩余资产清单若触发）
+     ============================================================ -->
+<div class="section" id="fundamentals">
+<h2>§二 公司基本面</h2>
+<h3>业务板块</h3>
+<p>苏州东山精密制造股份有限公司（002384.SZ，2010-04-09 深交所主板上市）是全球电子电路（PCB/FPC）与精密制造龙头，主营电子电路、精密组件、光电显示模组三大传统板块；2025 年完成<strong>索尔思光电（Source Photonics，光模块/光芯片）</strong> 与<strong>法国 GMD 集团（汽车零部件）</strong> 两项战略收购，新增"光通信 + 汽车"双引擎，正在审议 H 股发行上市议案 [PDF:annual_2025_summary,P.8]。Tushare 行业分类为"元器件" [Tushare:stock_basic]。</p>
+<p>下表为 <strong>2025 年报产品/地区分部</strong>（来自 <code>metrics.json:segments</code>，报告期 20251231；毛利率 = 分部毛利 / 分部营收，与 data_snapshot §3 集团口径 14.09% 一致）：</p>
+<table>
+<thead>
+<tr>
+<th>分部（2025）</th>
+<th style="text-align: right;">营收（亿）</th>
+<th style="text-align: right;">分部毛利（亿）</th>
+<th style="text-align: right;">毛利率</th>
+<th>角色</th>
+<th>来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>电子电路（PCB/FPC/Multek）</td>
+<td style="text-align: right;">256.20</td>
+<td style="text-align: right;">45.07</td>
+<td style="text-align: right;"><strong>17.59%</strong></td>
+<td>营收最大 + 毛利最高的现金牛</td>
+<td>[metrics.json:segments]</td>
+</tr>
+<tr>
+<td>触控面板及 LCM 模组</td>
+<td style="text-align: right;">59.86</td>
+<td style="text-align: right;">3.10</td>
+<td style="text-align: right;">5.18%</td>
+<td>薄毛利消费电子模组</td>
+<td>[metrics.json:segments]</td>
+</tr>
+<tr>
+<td>精密组件</td>
+<td style="text-align: right;">59.30</td>
+<td style="text-align: right;">5.47</td>
+<td style="text-align: right;">9.22%</td>
+<td>散热/结构件，绑定新能源车</td>
+<td>[metrics.json:segments]</td>
+</tr>
+<tr>
+<td>光模块（索尔思）</td>
+<td style="text-align: right;">14.36</td>
+<td style="text-align: right;">5.27</td>
+<td style="text-align: right;"><strong>36.74%</strong></td>
+<td>高毛利第二增长曲线（2025 并表仅部分期间）</td>
+<td>[metrics.json:segments]</td>
+</tr>
+<tr>
+<td>其他主营业务</td>
+<td style="text-align: right;">11.53</td>
+<td style="text-align: right;">-2.39</td>
+<td style="text-align: right;"><strong>-20.73%</strong></td>
+<td>亏损拖累项</td>
+<td>[metrics.json:segments]</td>
+</tr>
+<tr>
+<td><strong>地区：国外</strong></td>
+<td style="text-align: right;">326.65</td>
+<td style="text-align: right;">53.50</td>
+<td style="text-align: right;">16.38%</td>
+<td>营收/利润实际承载主体（出口占 81.4%）</td>
+<td>[metrics.json:segments]</td>
+</tr>
+<tr>
+<td><strong>地区：中国大陆</strong></td>
+<td style="text-align: right;">74.60</td>
+<td style="text-align: right;">3.03</td>
+<td style="text-align: right;">4.06%</td>
+<td>境内薄利</td>
+<td>[metrics.json:segments]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>结构性洞察</strong>：①电子电路（PCB）一个板块即贡献 2025 集团约 64% 营收（256.20/401.25）与约 78% 的分部毛利，是基本盘；②光模块 2025 仅并表约 14.36 亿但毛利率 36.74%，是估值溢价的核心叙事载体——但其分部体量目前不足集团营收的 4%，"第二增长曲线"尚处早期；③国外收入 326.65 亿占总营收 81.4%、毛利率 16.38% 远高于中国大陆 4.06%，<strong>收入与利润高度依赖海外/出口主体</strong>——核心子公司 HK Dongshan Precision Union 2024 营收即达 395.82 亿、净利 10.74 亿，超过集团扣非净利 [PDF:annual_2024,P.34]，意味境内主体及合并抵消项整体微利甚至亏损。</p>
+<blockquote>
+<p>⚠️ <strong>缺口</strong>：光模块/索尔思 2026 独立分项营收与毛利率拆分尚无（2025 年报披露到约 14.36 亿，2026 季报不含分部数据）[缺口#1，phase1-data.md §11]。"200G EML 光芯片大规模量产 / 供货 NVIDIA、Meta"为 WebSearch 转述券商口径，<strong>未经 PDF 原文核实</strong> [WebSearch:aigbk.com / sina.com.cn]。</p>
+</blockquote>
+<h3>最新经营动态（近 12 个月关键事件）</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">日期</th>
+<th>事件</th>
+<th style="text-align: center;">性质</th>
+<th>来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">2025-06-27</td>
+<td>2024 年向特定对象发行（定增）完成，"增强控制权稳定性"，总股本由 17.06 亿增至 18.32 亿股（+7.37%）</td>
+<td style="text-align: center;">中性偏多</td>
+<td>[PDF:annual_2025_summary,P.8] / [Tushare:balancesheet]</td>
+</tr>
+<tr>
+<td style="text-align: center;">2025 年内</td>
+<td>完成收购法国 GMD 集团（汽车零部件）+ 索尔思光电（光通信），形成商誉 47.69 亿（+125%）</td>
+<td style="text-align: center;">多/隐忧</td>
+<td>[PDF:annual_2025_summary,P.8] / [data_snapshot.md §2.2]</td>
+</tr>
+<tr>
+<td style="text-align: center;">2025 年内</td>
+<td>审议通过发行 H 股并在港交所主板上市议案，拓宽国际融资渠道</td>
+<td style="text-align: center;">中性</td>
+<td>[PDF:annual_2025_summary,P.8]</td>
+</tr>
+<tr>
+<td style="text-align: center;">2026-04-08</td>
+<td>2026Q1 业绩预告预增 10.0~11.5 亿，4-29 实际 11.10 亿落入区间</td>
+<td style="text-align: center;">多</td>
+<td>[data_snapshot.md §4]</td>
+</tr>
+<tr>
+<td style="text-align: center;">2026-04</td>
+<td>2025 全年营收首破 400 亿（401.25 亿，+9.12%）</td>
+<td style="text-align: center;">多</td>
+<td>[PDF:annual_2025_summary,P.6]</td>
+</tr>
+<tr>
+<td style="text-align: center;">2026-06-17</td>
+<td>国盛证券点评：索尔思自筹约 81 亿在常州扩建光芯片 + 高速光模块产线</td>
+<td style="text-align: center;">多（转述）</td>
+<td>[WebSearch:caifuhao.eastmoney.com]</td>
+</tr>
+<tr>
+<td style="text-align: center;">2026-06-15</td>
+<td>大宗交易折价 -7.5%（近 60 日 3 笔），机构低吸/抛压并存</td>
+<td style="text-align: center;">空</td>
+<td>[capital_flow.md §8]</td>
+</tr>
+<tr>
+<td style="text-align: center;">2026-05-29</td>
+<td>股东户数升至 306,048（较 2025 年末 81,673 增 2.7 倍），散户高位涌入</td>
+<td style="text-align: center;">空</td>
+<td>[data_snapshot.md §8]</td>
+</tr>
+</tbody>
+</table>
+<h3>财务趋势表（近 3-5 年 + 最新季度）</h3>
+<p>以下 inline <code>data_snapshot.md §3</code> 全部 18 期（含最新季度 20260331），数据来自 income / fina_indicator parquet [Tushare:income+fina_indicator]，最新季度经 PDF 季报交叉验证 [PDF:q1_2026,P.1]：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">期末</th>
+<th style="text-align: right;">营收(亿)</th>
+<th style="text-align: center;">营收YoY</th>
+<th style="text-align: right;">毛利率%</th>
+<th style="text-align: right;">净利率%</th>
+<th style="text-align: right;">归母净利(亿)</th>
+<th style="text-align: center;">净利YoY</th>
+<th style="text-align: right;">加权ROE%</th>
+<th style="text-align: right;">资负率%</th>
+<th style="text-align: right;">OCF(亿)</th>
+<th>来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>20260331</strong></td>
+<td style="text-align: right;"><strong>131.38</strong></td>
+<td style="text-align: center;"><strong>+52.72%</strong></td>
+<td style="text-align: right;">19.33</td>
+<td style="text-align: right;">8.56</td>
+<td style="text-align: right;"><strong>11.0989</strong></td>
+<td style="text-align: center;"><strong>+143.47%</strong></td>
+<td style="text-align: right;">5.03</td>
+<td style="text-align: right;">63.69</td>
+<td style="text-align: right;">11.2667</td>
+<td>[Tushare] / [PDF:q1_2026,P.1]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20251231</td>
+<td style="text-align: right;">401.25</td>
+<td style="text-align: center;">+9.12%</td>
+<td style="text-align: right;">14.09</td>
+<td style="text-align: right;">3.47</td>
+<td style="text-align: right;">13.8607</td>
+<td style="text-align: center;">+27.67%</td>
+<td style="text-align: right;">6.88</td>
+<td style="text-align: right;">63.98</td>
+<td style="text-align: right;">53.0714</td>
+<td>[Tushare] / [PDF:annual_2025]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20250930</td>
+<td style="text-align: right;">270.71</td>
+<td style="text-align: center;">+2.28%</td>
+<td style="text-align: right;">13.79</td>
+<td style="text-align: right;">4.52</td>
+<td style="text-align: right;">12.2328</td>
+<td style="text-align: center;">+14.61%</td>
+<td style="text-align: right;">6.10</td>
+<td style="text-align: right;">58.82</td>
+<td style="text-align: right;">29.4584</td>
+<td>[Tushare:income]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20250630</td>
+<td style="text-align: right;">169.55</td>
+<td style="text-align: center;">+1.96%</td>
+<td style="text-align: right;">13.59</td>
+<td style="text-align: right;">4.47</td>
+<td style="text-align: right;">7.5801</td>
+<td style="text-align: center;">+35.21%</td>
+<td style="text-align: right;">3.82</td>
+<td style="text-align: right;">56.29</td>
+<td style="text-align: right;">25.0012</td>
+<td>[Tushare:income]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20250331</td>
+<td style="text-align: right;">86.02</td>
+<td style="text-align: center;">+11.07%</td>
+<td style="text-align: right;">14.13</td>
+<td style="text-align: right;">5.31</td>
+<td style="text-align: right;">4.5586</td>
+<td style="text-align: center;">+57.55%</td>
+<td style="text-align: right;">2.39</td>
+<td style="text-align: right;">58.26</td>
+<td style="text-align: right;">13.6541</td>
+<td>[Tushare:income]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20241231</td>
+<td style="text-align: right;">367.70</td>
+<td style="text-align: center;">+9.27%</td>
+<td style="text-align: right;">14.02</td>
+<td style="text-align: right;">2.95</td>
+<td style="text-align: right;">10.8564</td>
+<td style="text-align: center;">-44.74%</td>
+<td style="text-align: right;">5.87</td>
+<td style="text-align: right;">58.96</td>
+<td style="text-align: right;">49.8602</td>
+<td>[Tushare] / [PDF:annual_2024,P.9]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20240930</td>
+<td style="text-align: right;">264.66</td>
+<td style="text-align: center;">+17.62%</td>
+<td style="text-align: right;">13.65</td>
+<td style="text-align: right;">4.03</td>
+<td style="text-align: right;">10.6735</td>
+<td style="text-align: center;">-19.91%</td>
+<td style="text-align: right;">5.78</td>
+<td style="text-align: right;">58.71</td>
+<td style="text-align: right;">28.5825</td>
+<td>[Tushare:income]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20240630</td>
+<td style="text-align: right;">166.29</td>
+<td style="text-align: center;">+21.67%</td>
+<td style="text-align: right;">13.07</td>
+<td style="text-align: right;">3.36</td>
+<td style="text-align: right;">5.6060</td>
+<td style="text-align: center;">-32.01%</td>
+<td style="text-align: right;">3.09</td>
+<td style="text-align: right;">60.07</td>
+<td style="text-align: right;">20.8897</td>
+<td>[Tushare:income]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20240331</td>
+<td style="text-align: right;">77.45</td>
+<td style="text-align: center;">+18.94%</td>
+<td style="text-align: right;">13.60</td>
+<td style="text-align: right;">3.73</td>
+<td style="text-align: right;">2.8935</td>
+<td style="text-align: center;">-38.65%</td>
+<td style="text-align: right;">1.58</td>
+<td style="text-align: right;">59.57</td>
+<td style="text-align: right;">15.5784</td>
+<td>[Tushare:income]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20231231</td>
+<td style="text-align: right;">336.51</td>
+<td style="text-align: center;">+6.56%</td>
+<td style="text-align: right;">15.18</td>
+<td style="text-align: right;">5.84</td>
+<td style="text-align: right;">19.6453</td>
+<td style="text-align: center;">-17.02%</td>
+<td style="text-align: right;">11.39</td>
+<td style="text-align: right;">59.00</td>
+<td style="text-align: right;">51.7242</td>
+<td>[Tushare:income]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20230930</td>
+<td style="text-align: right;">225.01</td>
+<td style="text-align: center;">-1.39%</td>
+<td style="text-align: right;">13.97</td>
+<td style="text-align: right;">5.92</td>
+<td style="text-align: right;">13.3269</td>
+<td style="text-align: center;">-15.69%</td>
+<td style="text-align: right;">7.92</td>
+<td style="text-align: right;">62.01</td>
+<td style="text-align: right;">37.0293</td>
+<td>[Tushare:income]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20230630</td>
+<td style="text-align: right;">136.67</td>
+<td style="text-align: center;">-6.04%</td>
+<td style="text-align: right;">13.43</td>
+<td style="text-align: right;">6.03</td>
+<td style="text-align: right;">8.2455</td>
+<td style="text-align: center;">+3.54%</td>
+<td style="text-align: right;">4.98</td>
+<td style="text-align: right;">60.78</td>
+<td style="text-align: right;">26.1390</td>
+<td>[Tushare:income]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20230331</td>
+<td style="text-align: right;">65.12</td>
+<td style="text-align: center;">-10.95%</td>
+<td style="text-align: right;">14.80</td>
+<td style="text-align: right;">7.24</td>
+<td style="text-align: right;">4.7165</td>
+<td style="text-align: center;">+29.49%</td>
+<td style="text-align: right;">2.85</td>
+<td style="text-align: right;">60.78</td>
+<td style="text-align: right;">17.9938</td>
+<td>[Tushare:income]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20221231</td>
+<td style="text-align: right;">315.80</td>
+<td style="text-align: center;">-0.67%</td>
+<td style="text-align: right;">17.60</td>
+<td style="text-align: right;">7.50</td>
+<td style="text-align: right;">23.6752</td>
+<td style="text-align: center;">+27.12%</td>
+<td style="text-align: right;">15.31</td>
+<td style="text-align: right;">59.52</td>
+<td style="text-align: right;">46.2988</td>
+<td>[Tushare:income]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20220930</td>
+<td style="text-align: right;">228.19</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">16.64</td>
+<td style="text-align: right;">6.92</td>
+<td style="text-align: right;">15.8069</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">10.51</td>
+<td style="text-align: right;">60.88</td>
+<td style="text-align: right;">20.3996</td>
+<td>[Tushare:income]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20220630</td>
+<td style="text-align: right;">145.46</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">14.45</td>
+<td style="text-align: right;">5.47</td>
+<td style="text-align: right;">7.9634</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">5.42</td>
+<td style="text-align: right;">60.36</td>
+<td style="text-align: right;">13.1812</td>
+<td>[Tushare:income]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20220331</td>
+<td style="text-align: right;">73.12</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">14.12</td>
+<td style="text-align: right;">4.96</td>
+<td style="text-align: right;">3.6425</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">2.47</td>
+<td style="text-align: right;">59.30</td>
+<td style="text-align: right;">6.8576</td>
+<td>[Tushare:income]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20211231</td>
+<td style="text-align: right;">317.93</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">18.6248</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">32.0954</td>
+<td>[Tushare:income]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>趋势解读（5 大要点，全部带数据锚）</strong>：</p>
+<ol>
+<li><strong>利润 V 型而非单调上升</strong>：归母净利从 2022 高点 23.68 亿 → 2023 年 19.65 亿（-17.0%）→ 2024 年 10.86 亿（<strong>-44.7%</strong>）→ 2025 年 13.86 亿（+27.7% 回升），<strong>归母净利 3 年 CAGR = -16.3%</strong>（2022→2025）[metrics.json:growth]，与营收 3 年 CAGR +8.3% 背离——增长主要在收入端，利润端仍未回到 2022 水平。</li>
+<li><strong>ROE 持续下台阶</strong>：加权 ROE 从 2022 年 15.31% → 2023 年 11.39% → 2024 年 5.87% → 2025 年 6.88%，几近腰斩 [metrics.json:profitability.roe_trend]；2026Q1 单季 ROE 仅 5.03%（年化约 20%，但需扣除并表与基数效应）。</li>
+<li><strong>2026Q1 高增速含三重水分</strong>：营收 +52.72% / 归母净利 +143.47% 同比基数为 2025Q1（净利仅 4.56 亿），且 GMD/索尔思自 2025 年起并表口径不可比；扣非 +166.99% &gt; 净利 +143.47% 说明主业确有改善，但 <strong>2026Q1 经营现金流 11.27 亿同比 -17.48%</strong>，利润与现金流方向背离 [PDF:q1_2026,P.1]。</li>
+<li><strong>连续两年 Q4 扣非亏损</strong>：2024Q4 扣非 -1.10 亿 / 2025Q4 扣非 -1.05 亿 [PDF:annual_2024,P.9] / [PDF:annual_2025_summary,P.6]，Q4 减值/计提集中，盈利季节性畸形，<strong>削弱用单季年化外推全年的可信度</strong>。</li>
+<li><strong>毛利率长期在 13-19% 区间</strong>，2026Q1 单季毛利率回升至 19.33%（季度口径）但全年口径 2025 仅 14.09%，仍低于 2022 年的 17.60%。</li>
+</ol>
+<blockquote>
+<p>⚠️ 数据说明：data_snapshot §2.4 fina_indicator 的"毛利率(%)"字段为异常值 25.39 亿%（脏数据），<strong>已弃用</strong>；本表毛利率以 §3 趋势表口径为准（2026Q1 季度毛利率 19.33%、2025 全年 14.09%）。</p>
+</blockquote>
+<h3>管理层前瞻信号（<code>forecast_vip</code> 解读）</h3>
+<p><code>forecast_vip</code> 显示 2026Q1（20260331）业绩预告"预增"，区间 10.0~11.5 亿，<strong>实际归母净利 11.10 亿落入区间</strong> [data_snapshot.md §4]。近 3 期已披露的预告全部兑现：2025Q1 预告 4.34~4.63 亿（实际 4.56 亿 ✅）、2022 全年 23.30~24.30 亿（实际 23.68 亿 ✅）、2022Q3 略增上沿 15.68 亿（实际 15.81 亿 ⬆️ 略超）。<strong>前瞻信号判定：预告口径与实际兑现一致性高，管理层指引可信度较好</strong>——本报告所有财务表均采用 income.parquet 的 actual 数据，未用预告区间替代。</p>
+<p>下 12 月可改变结论的事件：①2026 中报（预计 2026-08）是否披露光模块/索尔思独立分部数据——直接决定 245x PE 能否被成长性证明；②H 股上市进程；③商誉 47.69 亿首次减值测试结果（待 2025 年报全文附注）[缺口#2]。</p>
+<h3>管理层与团队（<code>stk_managers</code> / <code>stk_rewards</code>）</h3>
+<ul>
+<li><strong>实控人三父子一致行动</strong>："袁永刚、袁永峰系袁富根之子，袁永峰系袁永刚之兄长，上述父子三人系公司的实际控制人" [PDF:annual_2024,P.68]。截至 20260331（含限售口径），袁永刚持股 16.53%、袁永峰 13.51%，<strong>前 10 大全体股东合计 30.05% 即全部为家族成员</strong>（capital_flow.md §2 口径）；若计入袁富根 3.21%，三父子合计约 33.26% [PDF:annual_2025_summary,P.7]。2025 年定增完成后控制权进一步增强。</li>
+<li><strong>利益对齐</strong>：<code>stk_managers</code> 66 行、<code>stk_rewards</code> 525 行已采集 [Tushare]；2024 年度利润分配预案为 10 派 0.70 元（含税），对应股息率仅约 0.02% [PDF:annual_2024,P.3]——<strong>分红极薄、无防御性</strong>，但实控人巨额持股与小股东利益方向一致。</li>
+<li><strong>治理软信号</strong>：2024 年机构调研频繁（如 2024-08-20 "华创证券等 670 多家机构"、2024-07-17 "民生电子等 85 家机构"），主题集中 FPC/LED/新能源 [PDF:annual_2024,P.36]，信息披露与市场沟通活跃。</li>
+<li>⚠️ <strong>治理关注点</strong>：实控人家族质押活跃（见下文质押表），且户数月增 32.9%、散户高位涌入（详见主力控盘子节）。</li>
+</ul>
+<h3>主力控盘与筹码分析（<code>capital_flow.md</code> + <code>data_snapshot.md</code> §5/§6/§7）</h3>
+<p><strong>主力控盘 6 维度判定</strong>（inline <code>capital_flow.md §1</code>，v4.5 含限售主口径，<strong>不改写其判定</strong>）：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th style="text-align: center;">信号</th>
+<th>解读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主力控盘度（总股本口径）</td>
+<td style="text-align: center;">🟡 中度控盘</td>
+<td>前 10 大全体股东（含限售）合计 <strong>30.05%</strong></td>
+</tr>
+<tr>
+<td>实控人家族合计持股</td>
+<td style="text-align: center;">🟡 家族相对控盘</td>
+<td>袁永刚 + 袁永峰合计 <strong>30.05%</strong>（含袁富根约 33.26%）</td>
+</tr>
+<tr>
+<td>筹码集中度（流通动态）</td>
+<td style="text-align: center;">🔴 <strong>筹码分散（散户涌入，机构退出）</strong></td>
+<td>户数环比 +7.57%，户均持股环比 -7.04%</td>
+</tr>
+<tr>
+<td>陆股通（北向）</td>
+<td style="text-align: center;">数据不足</td>
+<td>hk_hold 仅 1 行，趋势不可推 [缺口#4]</td>
+</tr>
+<tr>
+<td>两融杠杆</td>
+<td style="text-align: center;">🔴 <strong>杠杆多头拥挤</strong></td>
+<td>融资余额 141.39 亿，相对近 60 日中位 +35.9%</td>
+</tr>
+<tr>
+<td>主力资金流</td>
+<td style="text-align: center;">⚪ 近 20 日拉锯</td>
+<td>净流入天数 9/20，累计净流出 -4,746 万</td>
+</tr>
+<tr>
+<td>龙虎榜机构</td>
+<td style="text-align: center;">🟢 近 30 日机构净买入</td>
+<td>上榜 3 次，机构席位净买入 87.29 亿（口径见原文）</td>
+</tr>
+<tr>
+<td>大宗交易（近 60 日）</td>
+<td style="text-align: center;">🔴 <strong>显著折价 -7.49%</strong></td>
+<td>3 笔，多为机构专用席位互倒/抛压</td>
+</tr>
+</tbody>
+</table>
+<p><strong>综合控盘警示（上送 §一 Top 3）</strong>：🔴 筹码分散（户数从 2025 年末 81,673 → 2026-05-29 <strong>306,048</strong>，半年增 2.7 倍，散户高位接盘）+ ⚠️ 两融杠杆拥挤（回调易连锁平仓）+ 🔴 大宗折价 -7.5%，三者叠加股价近 1 年 +758%、技术超买，构成<strong>高位接盘 + 杠杆踩踏</strong>的筹码结构风险。</p>
+<p><strong>十大股东表（inline <code>data_snapshot.md §5</code>，2 期对比，20251231 全 10 行 + 20260331）</strong> [Tushare:top10_holders]：</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>股东（20251231）</th>
+<th style="text-align: right;">持股数(万股)</th>
+<th style="text-align: right;">占总股本%</th>
+<th style="text-align: right;">期间变动(万股)</th>
+<th style="text-align: center;">类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>袁永刚（实控人）</td>
+<td style="text-align: right;">30,278.13</td>
+<td style="text-align: right;">16.53</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>2</td>
+<td>袁永峰（实控人）</td>
+<td style="text-align: right;">24,752.69</td>
+<td style="text-align: right;">13.51</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>3</td>
+<td>袁富根（实控人之父）</td>
+<td style="text-align: right;">5,879.61</td>
+<td style="text-align: right;">3.21</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>4</td>
+<td>香港中央结算有限公司（北向）</td>
+<td style="text-align: right;">4,139.66</td>
+<td style="text-align: right;">2.26</td>
+<td style="text-align: right;">-2,731.57</td>
+<td style="text-align: center;">一般企业</td>
+</tr>
+<tr>
+<td>5</td>
+<td>中国人寿-传统-005L-CT001沪</td>
+<td style="text-align: right;">2,297.47</td>
+<td style="text-align: right;">1.25</td>
+<td style="text-align: right;">+1,056.45</td>
+<td style="text-align: center;">保险投资组合</td>
+</tr>
+<tr>
+<td>6</td>
+<td>新华人寿-传统-018L-CT001深</td>
+<td style="text-align: right;">2,066.04</td>
+<td style="text-align: right;">1.13</td>
+<td style="text-align: right;">+87.98</td>
+<td style="text-align: center;">保险投资组合</td>
+</tr>
+<tr>
+<td>7</td>
+<td>华泰柏瑞沪深300 ETF</td>
+<td style="text-align: right;">2,045.14</td>
+<td style="text-align: right;">1.12</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">指数基金</td>
+</tr>
+<tr>
+<td>8</td>
+<td>睿远成长价值混合基金</td>
+<td style="text-align: right;">1,957.06</td>
+<td style="text-align: right;">1.07</td>
+<td style="text-align: right;">-177.11</td>
+<td style="text-align: center;">开放式基金</td>
+</tr>
+<tr>
+<td>9</td>
+<td>新华人寿-分红-018L-FH002深</td>
+<td style="text-align: right;">1,629.36</td>
+<td style="text-align: right;">0.89</td>
+<td style="text-align: right;">+312.08</td>
+<td style="text-align: center;">保险投资组合</td>
+</tr>
+<tr>
+<td>10</td>
+<td>易方达沪深300 ETF</td>
+<td style="text-align: right;">1,510.93</td>
+<td style="text-align: right;">0.82</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">指数基金</td>
+</tr>
+</tbody>
+</table>
+<p><em>20260331 最新期 top10_holders 仅披露到实控人 2 人（袁永刚 16.53% / 袁永峰 13.51%，均 +0.00 无变动）[data_snapshot.md §5]。对比 20251231 可见：北向（香港中央结算）在 20251231 减持 2,731.57 万股，而保险资金（中国人寿 +1,056 万、新华人寿系增持）整体增配——机构内部结构性换手，实控人家族持仓岿然不动。</em></p>
+<p><strong>十大流通股东表（inline <code>data_snapshot.md §6</code>，20260331 全 10 行）</strong> [Tushare:top10_floatholders]：</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>流通股东（20260331）</th>
+<th style="text-align: right;">持股数(万股)</th>
+<th style="text-align: right;">占流通比%</th>
+<th style="text-align: right;">期间变动(万股)</th>
+<th style="text-align: center;">类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>香港中央结算有限公司（北向）</td>
+<td style="text-align: right;">6,948.09</td>
+<td style="text-align: right;">5.01</td>
+<td style="text-align: right;">+2,808.42</td>
+<td style="text-align: center;">一般企业</td>
+</tr>
+<tr>
+<td>2</td>
+<td>袁富根</td>
+<td style="text-align: right;">5,879.61</td>
+<td style="text-align: right;">4.24</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>3</td>
+<td>袁永峰</td>
+<td style="text-align: right;">5,559.70</td>
+<td style="text-align: right;">4.01</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>4</td>
+<td>袁永刚</td>
+<td style="text-align: right;">5,055.65</td>
+<td style="text-align: right;">3.65</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>5</td>
+<td>中国人寿-传统-005L-CT001沪</td>
+<td style="text-align: right;">2,041.74</td>
+<td style="text-align: right;">1.47</td>
+<td style="text-align: right;">-255.73</td>
+<td style="text-align: center;">保险投资组合</td>
+</tr>
+<tr>
+<td>6</td>
+<td>新华人寿-分红-018L-FH002深</td>
+<td style="text-align: right;">1,796.26</td>
+<td style="text-align: right;">1.30</td>
+<td style="text-align: right;">+166.90</td>
+<td style="text-align: center;">保险投资组合</td>
+</tr>
+<tr>
+<td>7</td>
+<td>新华人寿-传统-018L-CT001深</td>
+<td style="text-align: right;">1,741.63</td>
+<td style="text-align: right;">1.26</td>
+<td style="text-align: right;">-324.41</td>
+<td style="text-align: center;">保险投资组合</td>
+</tr>
+<tr>
+<td>8</td>
+<td>睿远成长价值混合基金</td>
+<td style="text-align: right;">1,709.24</td>
+<td style="text-align: right;">1.23</td>
+<td style="text-align: right;">-247.82</td>
+<td style="text-align: center;">开放式基金</td>
+</tr>
+<tr>
+<td>9</td>
+<td>华泰柏瑞沪深300 ETF</td>
+<td style="text-align: right;">1,031.17</td>
+<td style="text-align: right;">0.74</td>
+<td style="text-align: right;">-1,013.97</td>
+<td style="text-align: center;">指数基金</td>
+</tr>
+<tr>
+<td>10</td>
+<td>摩根新兴动力混合基金</td>
+<td style="text-align: right;">975.02</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">自然人/基金</td>
+</tr>
+</tbody>
+</table>
+<p><em>流通口径关键信号：20260331 北向（香港中央结算）跃居流通第 1 并大幅增持 +2,808 万股（占流通 5.01%），但主动型公募/ETF（睿远 -248、华泰柏瑞沪深300 -1,014）与部分保险（新华-传统 -324）净减持——</em><em>被动/北向资金流入，主动机构减仓</em><em>，是高估值下典型的"指数被动持有 vs 主动撤离"分歧。前 10 大流通股东合计占流通股本约 23.62%、占总股本 17.87%（capital_flow.md §1）。</em></p>
+<p><strong>筹码集中度 2×2 矩阵</strong>（<code>capital_flow.md §3</code>）：当前期 20260529 户数 <strong>306,048</strong>，环比 +7.57%，户均持股 3,991 股、环比 -7.04% → <strong>判定：🔴 筹码分散（散户涌入，机构退出）</strong>。经典矩阵中"户数↑ + 户均↓"落在"筹码分散（机构退出）"象限，与流通股东表中主动机构减持互证。</p>
+<p><strong>质押明细（inline <code>data_snapshot.md §7</code>，active 状态，实控人近期新增）</strong> [Tushare:pledge_detail]：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">公告日</th>
+<th>股东</th>
+<th>质押方</th>
+<th style="text-align: center;">起始日</th>
+<th style="text-align: center;">期末日</th>
+<th style="text-align: right;">占持股%</th>
+<th style="text-align: right;">占总股本%</th>
+<th style="text-align: center;">状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">20260603</td>
+<td>袁永刚</td>
+<td>国泰海通证券</td>
+<td style="text-align: center;">20260601</td>
+<td style="text-align: center;">20280531</td>
+<td style="text-align: right;">0.62</td>
+<td style="text-align: right;">16.53</td>
+<td style="text-align: center;">active</td>
+</tr>
+<tr>
+<td style="text-align: center;">20260530</td>
+<td>袁永峰</td>
+<td>云南国际信托</td>
+<td style="text-align: center;">20260528</td>
+<td style="text-align: center;">20280527</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: right;">13.51</td>
+<td style="text-align: center;">active</td>
+</tr>
+<tr>
+<td style="text-align: center;">20260530</td>
+<td>袁永刚</td>
+<td>国泰海通证券</td>
+<td style="text-align: center;">20260528</td>
+<td style="text-align: center;">20280527</td>
+<td style="text-align: right;">0.62</td>
+<td style="text-align: right;">16.53</td>
+<td style="text-align: center;">active</td>
+</tr>
+<tr>
+<td style="text-align: center;">20251011</td>
+<td>袁永峰</td>
+<td>西藏信托</td>
+<td style="text-align: center;">20251009</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">0.81</td>
+<td style="text-align: right;">13.51</td>
+<td style="text-align: center;">active</td>
+</tr>
+<tr>
+<td style="text-align: center;">20250805</td>
+<td>袁永刚</td>
+<td>中信证券</td>
+<td style="text-align: center;">20250801</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">0.46</td>
+<td style="text-align: right;">16.53</td>
+<td style="text-align: center;">active</td>
+</tr>
+<tr>
+<td style="text-align: center;">20250701</td>
+<td>袁永刚</td>
+<td>华能贵诚信托</td>
+<td style="text-align: center;">20250627</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">3.30</td>
+<td style="text-align: right;">16.53</td>
+<td style="text-align: center;">active</td>
+</tr>
+<tr>
+<td style="text-align: center;">20250701</td>
+<td>袁永峰</td>
+<td>华能贵诚信托</td>
+<td style="text-align: center;">20250627</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">13.51</td>
+<td style="text-align: center;">active</td>
+</tr>
+<tr>
+<td style="text-align: center;">20250612</td>
+<td>袁永峰</td>
+<td>国泰海通证券</td>
+<td style="text-align: center;">20250610</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">13.01</td>
+<td style="text-align: center;">active</td>
+</tr>
+</tbody>
+</table>
+<p><em>质押结论：实控人袁永刚/袁永峰 2025-2026 年持续滚动质押（pledge_detail 共 548 条），单笔占其个人持股比例多在 0.1%-3.3%，分散在多家信托/券商。结合 PDF 摘要口径，2025 年袁永刚累计质押约 1.05 亿股、袁永峰约 0.57 亿股 [PDF:annual_2025_summary,P.7]，合计约 1.62 亿股，占两人合计持股（约 5.50 亿股）约 29.5%，</em><em>未触发 §六 致命快筛"单一大股东累计质押 &gt; 50%"阈值</em><em>，但质押市值随股价 +758% 大涨而高企，若深度回撤存在平仓链条压力，属治理🟡中度关注项。</em></p>
+<h3>★ 若核心资产被剥离的剩余资产清单（触发时必填）</h3>
+<p><strong>触发判定：未触发</strong>。检查四条触发条件：①核心子公司占合并净利 &gt; 30% 且存在剥离/控制权丧失可能——HK Dongshan Precision Union 虽承载全部营收，但无剥离/丧失控制权信号；②最新 forecast_vip 为"预增"且已兑现，无首亏/续亏；③PDF 未自述重大经营不确定；④audit_report.md 无涉核心资产减值的 🔴 致命红旗（最高仅 🟠 高级，为估值/PB 错配，非资产减值）。<strong>故本报告 §五 DCF 不设"核心资产零回收"的最差地板情景，最差情景将以盈利大幅回落 + 商誉减值的经营性下行刻画，而非清算价值。</strong></p>
+<hr />
+</div>
+
+<!-- ============================================================
+     §三 行业与竞争对标（行业格局 + 可比公司）
+     ============================================================ -->
+<div class="section" id="industry">
+<h2>§三 行业与竞争对标</h2>
+<h3>行业规模与趋势</h3>
+<p>东山精密横跨两大行业景气主线——<strong>全球 PCB</strong>（基本盘）与 <strong>AI 光通信/光模块</strong>（成长叙事）：</p>
+<p><strong>① 全球 PCB（外部数据源，年报引 Prismark）</strong>：2024 年全球 PCB 产值达 <strong>735.65 亿美元，同比 +5.82%</strong>，Prismark（2025-02）预计 2025/2029 年分别为 785.62 / 946.61 亿美元，<strong>2024-2029 CAGR 约 4.8%</strong>；年报原文称"PCB 是电子系统产品之母…AI 端侧产品爆发将成 PCB 行业重要推动因素" [PDF:annual_2024,P.12]。行业生命周期处于<strong>成熟稳健增长期</strong>（个位数 CAGR），增长驱动力来自 AI 服务器/端侧、高频低损耗低 Dk 基材（Rogers/Megtron6）渗透率提升 [WebSearch:ibpcb.com]。</p>
+<p><strong>② AI 光模块/光通信（高景气成长段）</strong>：2026 年中国光模块市场规模预计破 <strong>400 亿元人民币</strong>，全球近 <strong>190 亿美元</strong>；800G 出货上修至 3,350 万只，1.6T 进入商用元年（需求 300~860 万只），头部云厂商 2026 采购规模显著放量 [WebSearch:eet-china.com / chyxx.com]。此为东山 245x PE 的核心溢价来源，处于<strong>高增长导入期</strong>，但波动与砍单风险也最高。</p>
+<p><strong>③ 细分驱动（年报 MD&amp;A 原文）</strong>：FPC × AI 手机——IDC 预测 2027 年 AI 手机增至 8.27 亿台，2023-2027 CAGR <strong>100.7%</strong> [PDF:annual_2024,P.12]；FPC × 新能源车 CCS——中信证券预计 2025 全球动力电池 CCS 市场 281.2 亿元，2021-2025 CAGR <strong>62.33%</strong>，储能 CCS CAGR 122.73% [PDF:annual_2024,P.13-14]。</p>
+<p><strong>政策与宏观</strong>：AI 算力 capex 驱动光通信"黄金时代"，CPO（共封装光学）2026 后加速渗透 [WebSearch:eet-china/zhihu]；但国际贸易摩擦 + 关税不确定性是悬顶风险——公司 2025 年<strong>国外营收 326.65 亿、占总营收 81.4%</strong>，远超中国大陆 74.60 亿 [metrics.json:segments]，年报亦将"国际贸易环境变动 + 汇率波动"列为正式风险因素 [PDF:annual_2024,P.35-36]。</p>
+<h3>Porter 五力分析</h3>
+<table>
+<thead>
+<tr>
+<th>力</th>
+<th>评估</th>
+<th style="text-align: center;">强度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>现有竞争者间竞争</strong></td>
+<td>PCB 为充分竞争、产能弹性大的制造行业，A 股即有立讯/生益/胜宏/深南/三环等多家千亿市值玩家；东山靠规模 + 大客户 + 海外产能差异化，但毛利率（13.6%）低于多数同行（生益 21.3%、三环 40.1%），价格竞争激烈</td>
+<td style="text-align: center;"><strong>强</strong></td>
+</tr>
+<tr>
+<td><strong>供应商议价能力</strong></td>
+<td>上游覆铜板/铜箔/光芯片关键材料，AI 高频材料（Rogers/Megtron6）与光芯片供给偏紧，2026 年已现"上游关键原材料供给短缺涨价"舆情 [phase1-data §10]，供应商议价力上升</td>
+<td style="text-align: center;">中-强</td>
+</tr>
+<tr>
+<td><strong>客户议价能力</strong></td>
+<td>前五大客户占比高（年报明示"占比较高且未来仍可能增加"）[PDF:annual_2024,P.35]，应收/利润达约 689%，下游为苹果/英伟达/云厂商等强势大客户，砍单/压价敏感</td>
+<td style="text-align: center;"><strong>强</strong></td>
+</tr>
+<tr>
+<td><strong>潜在进入者威胁</strong></td>
+<td>高端 AI PCB / 光芯片（200G EML）有技术 + 资本 + 认证壁垒，导入周期长；但中低端 PCB 进入门槛低</td>
+<td style="text-align: center;">中</td>
+</tr>
+<tr>
+<td><strong>替代品威胁</strong></td>
+<td>PCB 是电子系统底层载体，短期无系统性替代；FR-4 → 高频基材是结构升级而非替代；CPO 对传统可插拔光模块构成长期路线替代风险</td>
+<td style="text-align: center;">低-中</td>
+</tr>
+</tbody>
+</table>
+<p><strong>五力综合</strong>：东山处于"<strong>强客户 + 强供应商 + 强同业竞争</strong>"的三面挤压格局，议价能力偏弱（毛利率行业偏低印证），核心护城河在于规模 + 海外产能 + 大客户绑定 + 光芯片技术导入，而非定价权。</p>
+<h3>A 股同行业对标（<code>peer_analysis.md</code>，自动采集）</h3>
+<p>完整 inline <code>peer_analysis.md §1</code> 对比表（同行业"元器件"+ 市值最接近 5 家，行情截至 20260618）：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">公司</th>
+<th style="text-align: center;">细分行业</th>
+<th style="text-align: right;">市值(亿)</th>
+<th style="text-align: right;">PE TTM</th>
+<th style="text-align: right;">PB</th>
+<th style="text-align: right;">PS TTM</th>
+<th style="text-align: right;">ROE%</th>
+<th style="text-align: right;">毛利率%</th>
+<th style="text-align: right;">净利率%</th>
+<th style="text-align: right;">资负率%</th>
+<th style="text-align: right;">营收YoY%</th>
+<th style="text-align: right;">股息率%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>东山精密 002384</strong> ⭐</td>
+<td style="text-align: center;">元器件</td>
+<td style="text-align: right;">5,000.29</td>
+<td style="text-align: right;"><strong>245.10</strong></td>
+<td style="text-align: right;"><strong>22.09</strong></td>
+<td style="text-align: right;">11.20</td>
+<td style="text-align: right;"><strong>1.58</strong></td>
+<td style="text-align: right;">13.60</td>
+<td style="text-align: right;"><strong>3.73</strong></td>
+<td style="text-align: right;"><strong>59.57</strong></td>
+<td style="text-align: right;"><strong>52.72</strong></td>
+<td style="text-align: right;">0.02</td>
+</tr>
+<tr>
+<td style="text-align: center;">立讯精密 002475</td>
+<td style="text-align: center;">元器件</td>
+<td style="text-align: right;">5,095.09</td>
+<td style="text-align: right;">29.60</td>
+<td style="text-align: right;">5.77</td>
+<td style="text-align: right;">1.44</td>
+<td style="text-align: right;">4.29</td>
+<td style="text-align: right;">10.74</td>
+<td style="text-align: right;">4.91</td>
+<td style="text-align: right;">57.12</td>
+<td style="text-align: right;">35.77</td>
+<td style="text-align: right;">0.28</td>
+</tr>
+<tr>
+<td style="text-align: center;">生益科技 600183</td>
+<td style="text-align: center;">元器件</td>
+<td style="text-align: right;">4,466.42</td>
+<td style="text-align: right;">113.69</td>
+<td style="text-align: right;">24.91</td>
+<td style="text-align: right;">14.43</td>
+<td style="text-align: right;">2.76</td>
+<td style="text-align: right;">21.30</td>
+<td style="text-align: right;">9.13</td>
+<td style="text-align: right;">35.56</td>
+<td style="text-align: right;">45.09</td>
+<td style="text-align: right;">0.54</td>
+</tr>
+<tr>
+<td style="text-align: center;">胜宏科技 300476</td>
+<td style="text-align: center;">元器件</td>
+<td style="text-align: right;">3,626.48</td>
+<td style="text-align: right;">77.49</td>
+<td style="text-align: right;">20.84</td>
+<td style="text-align: right;">17.69</td>
+<td style="text-align: right;">2.72</td>
+<td style="text-align: right;">19.49</td>
+<td style="text-align: right;">8.76</td>
+<td style="text-align: right;">54.32</td>
+<td style="text-align: right;">27.99</td>
+<td style="text-align: right;">0.08</td>
+</tr>
+<tr>
+<td style="text-align: center;">深南电路 002916</td>
+<td style="text-align: center;">元器件</td>
+<td style="text-align: right;">3,091.13</td>
+<td style="text-align: right;">85.05</td>
+<td style="text-align: right;">17.09</td>
+<td style="text-align: right;">12.14</td>
+<td style="text-align: right;">2.84</td>
+<td style="text-align: right;">25.19</td>
+<td style="text-align: right;">9.58</td>
+<td style="text-align: right;">41.88</td>
+<td style="text-align: right;">37.90</td>
+<td style="text-align: right;">0.25</td>
+</tr>
+<tr>
+<td style="text-align: center;">三环集团 300408</td>
+<td style="text-align: center;">元器件</td>
+<td style="text-align: right;">3,025.96</td>
+<td style="text-align: right;">105.19</td>
+<td style="text-align: right;">13.51</td>
+<td style="text-align: right;">30.70</td>
+<td style="text-align: right;">2.35</td>
+<td style="text-align: right;">40.14</td>
+<td style="text-align: right;">27.73</td>
+<td style="text-align: right;">16.33</td>
+<td style="text-align: right;">46.25</td>
+<td style="text-align: right;">0.24</td>
+</tr>
+</tbody>
+</table>
+<p><em>注：表内 ROE / 毛利率 / 净利率 / 营收 YoY 为 peer_collector 采集的可比口径（东山取季度口径 ROE 1.58%、毛利率 13.60%、营收 YoY 52.72%）；东山全年口径 ROE 为 6.88%（metrics.json），但 5 家 peer 同口径对比下东山盈利质量指标仍处末位。peer 营收 YoY 均为正（无 0 或负异常值），可比性良好。</em></p>
+<h3>目标公司在 peer 中的分位</h3>
+<p>inline <code>peer_analysis.md §2</code>（5 家 peer 内分位，1 = 最好/最高）：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th style="text-align: center;">目标值</th>
+<th style="text-align: center;">Peer 中位数</th>
+<th style="text-align: center;">分位（high=好）</th>
+<th>解读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ROE%</td>
+<td style="text-align: center;">1.58</td>
+<td style="text-align: center;">2.76</td>
+<td style="text-align: center;"><strong>0%</strong> 🔴 落后</td>
+<td>盈利能力 peer 内垫底</td>
+</tr>
+<tr>
+<td>毛利率%</td>
+<td style="text-align: center;">13.60</td>
+<td style="text-align: center;">21.30</td>
+<td style="text-align: center;"><strong>20%</strong> ⚠️ 低于中位</td>
+<td>议价能力偏弱</td>
+</tr>
+<tr>
+<td>净利率%</td>
+<td style="text-align: center;">3.73</td>
+<td style="text-align: center;">9.13</td>
+<td style="text-align: center;"><strong>0%</strong> 🔴 落后</td>
+<td>经营效率垫底</td>
+</tr>
+<tr>
+<td>资负率%</td>
+<td style="text-align: center;">59.57</td>
+<td style="text-align: center;">41.88</td>
+<td style="text-align: center;"><strong>0%</strong> 🔴 最高</td>
+<td>杠杆 peer 内最重</td>
+</tr>
+<tr>
+<td>PE TTM</td>
+<td style="text-align: center;">245.10</td>
+<td style="text-align: center;">85.05</td>
+<td style="text-align: center;"><strong>0%</strong> 🔴 最贵</td>
+<td>估值 peer 内最高</td>
+</tr>
+<tr>
+<td>PB</td>
+<td style="text-align: center;">22.09</td>
+<td style="text-align: center;">17.09</td>
+<td style="text-align: center;"><strong>20%</strong> ⚠️ 偏贵</td>
+<td>估值偏贵</td>
+</tr>
+<tr>
+<td>营收YoY%</td>
+<td style="text-align: center;">52.72</td>
+<td style="text-align: center;">37.90</td>
+<td style="text-align: center;"><strong>100%</strong> 🟢 领先</td>
+<td>增速 peer 内最快</td>
+</tr>
+</tbody>
+</table>
+<p><strong>行业全员分布（inline <code>peer_analysis.md §4</code>，元器件行业共 307 家）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th style="text-align: center;">行业最便宜</th>
+<th style="text-align: center;">25分位</th>
+<th style="text-align: center;">中位数</th>
+<th style="text-align: center;">75分位</th>
+<th style="text-align: center;">行业最贵</th>
+<th style="text-align: center;">东山目标值</th>
+<th style="text-align: center;">目标分位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PE_TTM</td>
+<td style="text-align: center;">19.3</td>
+<td style="text-align: center;">49.15</td>
+<td style="text-align: center;">73.87</td>
+<td style="text-align: center;">113.69</td>
+<td style="text-align: center;">197.54</td>
+<td style="text-align: center;"><strong>245.10</strong></td>
+<td style="text-align: center;"><strong>100.0%</strong> 🔴</td>
+</tr>
+<tr>
+<td>PB</td>
+<td style="text-align: center;">0.44</td>
+<td style="text-align: center;">3.42</td>
+<td style="text-align: center;">5.18</td>
+<td style="text-align: center;">9.74</td>
+<td style="text-align: center;">29.63</td>
+<td style="text-align: center;"><strong>22.09</strong></td>
+<td style="text-align: center;"><strong>95.3%</strong> 🔴</td>
+</tr>
+<tr>
+<td>PS_TTM</td>
+<td style="text-align: center;">0.23</td>
+<td style="text-align: center;">2.63</td>
+<td style="text-align: center;">5.12</td>
+<td style="text-align: center;">11.90</td>
+<td style="text-align: center;">79.55</td>
+<td style="text-align: center;"><strong>11.20</strong></td>
+<td style="text-align: center;"><strong>73.6%</strong> ⚠️</td>
+</tr>
+</tbody>
+</table>
+<p><em>东山 PE_TTM 245.1x 甚至高于全行业 307 家最贵者（197.54x），分位 100%；PB 22.09x 在行业最贵 5% 区间（分位 95.3%）。</em></p>
+<h3>硬判定对比洞察 + 海外同业补充</h3>
+<p><strong>硬判定洞察（inline <code>peer_analysis.md §3</code>）</strong>：<br />
+- ⚠️ <strong>PE 显著高于 peer 中位数</strong>（245.1x vs 85.0x × 1.5），估值溢价 &gt; 50%；在 307 家行业全员中位列最贵（分位 100%）。<br />
+- ✅ <strong>营收增速显著超 peer</strong>（+52.7% vs +37.9%），领先行业——但需注意东山高增速含 GMD/索尔思并表口径与 2025Q1 低基数，而立讯/生益/三环 35-46% 的增速为内生为主。<br />
+- 🔴 <strong>盈利质量三项落后</strong>：ROE 0%、净利率 0%、资负率 0%（最高杠杆）三项 peer 内垫底——东山是 5 家中<strong>估值最贵 + 盈利质量最差 + 杠杆最高</strong>的组合，唯一支撑是增速领先。这意味着 245x PE 完全押注光模块成长性兑现，对中报不及预期极度脆弱。</p>
+<p><strong>估值-基本面错配核心结论</strong>：同业中生益科技毛利率 21.3%、深南电路 25.2%、三环集团 40.1% 均远高于东山 13.6%，且三家 PE 均在 85-114x；东山以行业偏低的毛利率与垫底的 ROE，却享有 peer 内最高 245x PE，<strong>PE 溢价并非由当前盈利质量支撑，而是由"AI 光模块第二增长曲线"的预期支撑</strong>——预期一旦证伪，估值向 peer 中位（85x）回归的下行空间巨大。</p>
+<p><strong>海外同业补充</strong>（WebSearch 口径，未经原文核实，仅供参考）：据东财财富号风险分析，东山 2026 动态 PE 约 75.8x，显著高于"国内龙头均值约 48x、海外安费诺（Amphenol）约 32x" [WebSearch:caifuhao.eastmoney.com,2026-06-15]；光通信海外龙头如 Coherent、Lumentum 等当前估值多在 30-50x PE 区间（行业经验值，无本次 yfinance 实采，标注为方向性参考）。东山相对海外同业亦处估值高位。</p>
+</div>
+
+<!-- ============================================================
+     §四 评分与维度证据（10 维度评分 + 逐维度证据 + 定性综合）
+     ============================================================ -->
+<div class="section" id="scoring">
+<h2>§四 评分与维度证据</h2>
+<blockquote>
+<p>评分表与逐维度证据合并在本节——分数即证据的索引，不再"总览"与"详细"两处重复。评分标尺见 <code>references/scoring-rubric.md</code>（上市公司调整规则已应用）。每维度紧跟具体数字证据，禁止"良好/一般"空话。</p>
+</blockquote>
+<h3>10 维度加权评分</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th style="text-align: center;">权重</th>
+<th style="text-align: center;">分数(0-10)</th>
+<th style="text-align: center;">加权</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 市场规模与结构</td>
+<td style="text-align: center;">10%</td>
+<td style="text-align: center;">5.5</td>
+<td style="text-align: center;">0.55</td>
+</tr>
+<tr>
+<td>2. 商业模式</td>
+<td style="text-align: center;">10%</td>
+<td style="text-align: center;">5.0</td>
+<td style="text-align: center;">0.50</td>
+</tr>
+<tr>
+<td>3. 盈利能力</td>
+<td style="text-align: center;">15%</td>
+<td style="text-align: center;">3.5</td>
+<td style="text-align: center;">0.525</td>
+</tr>
+<tr>
+<td>4. 产品与技术</td>
+<td style="text-align: center;">10%</td>
+<td style="text-align: center;">6.5</td>
+<td style="text-align: center;">0.65</td>
+</tr>
+<tr>
+<td>5. 团队与管理层</td>
+<td style="text-align: center;">10%</td>
+<td style="text-align: center;">5.5</td>
+<td style="text-align: center;">0.55</td>
+</tr>
+<tr>
+<td>6. 市场进入与护城河</td>
+<td style="text-align: center;">10%</td>
+<td style="text-align: center;">5.0</td>
+<td style="text-align: center;">0.50</td>
+</tr>
+<tr>
+<td>7. 财务健康度</td>
+<td style="text-align: center;">15%</td>
+<td style="text-align: center;">3.5</td>
+<td style="text-align: center;">0.525</td>
+</tr>
+<tr>
+<td>8. 估值合理性</td>
+<td style="text-align: center;">10%</td>
+<td style="text-align: center;">1.5</td>
+<td style="text-align: center;">0.15</td>
+</tr>
+<tr>
+<td>9. 风险与治理</td>
+<td style="text-align: center;">5%</td>
+<td style="text-align: center;">4.5</td>
+<td style="text-align: center;">0.225</td>
+</tr>
+<tr>
+<td>10. 催化剂与时机</td>
+<td style="text-align: center;">5%</td>
+<td style="text-align: center;">6.0</td>
+<td style="text-align: center;">0.30</td>
+</tr>
+<tr>
+<td><strong>合计</strong></td>
+<td style="text-align: center;">100%</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;"><strong>4.48</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>表格严格 4 列（维度/权重/分数/加权分）。综合评分 </em><em>4.48/10</em><em>，对照 scoring-rubric 投资信号档位落入 "&lt; 5.0 — 建议放弃 / 风险回报比不佳"；该分数供 §一 执行摘要精确复核（允差 ≤ 0.05）。数据置信度：中（核心财务/股东数据为 Tushare 确定性口径；光模块独立分部、商誉减值测试结果存在缺口）。</em></p>
+<hr />
+<h3>逐维度证据（每维度：分数 + 数据锚 + 判断）</h3>
+<h4>维度 1 · 市场规模与结构（5.5/10）</h4>
+<p><strong>锚点对照</strong>：scoring-rubric 维度 2「TAM $1-10B，稳定增长 CAGR 8-15%」对应 5-6 分；「TAM $10-100B + CAGR 15-20% + 强顺风」对应 7-8 分。东山横跨两个差异极大的市场：</p>
+<ul>
+<li><strong>基本盘 PCB（成熟稳健）</strong>：2024 全球 PCB 产值 735.65 亿美元、同比 +5.82%，Prismark 预计 2024-2029 CAGR <strong>约 4.8%</strong> [PDF:annual_2024,P.12]。这是 TAM 巨大（&gt;$70B）但<strong>增速仅个位数</strong>的成熟市场——按锚点属"稳定增长"但缺乏结构性高顺风，对应 5-6 分。</li>
+<li><strong>成长叙事光通信（高景气导入期）</strong>：2026 中国光模块市场预计破 400 亿元人民币、全球近 190 亿美元，800G 出货上修至 3,350 万只、1.6T 进入商用元年 [WebSearch:eet-china.com / chyxx.com]，CAGR 显著高于 PCB，构成"强结构性顺风（AI 算力 capex）"。但光模块（索尔思）2025 仅并表约 14.36 亿，<strong>不足集团营收 4%</strong>（14.36/401.25）[metrics.json:segments]——市场机会真实但当前在公司体内占比极小。</li>
+</ul>
+<p><strong>判断</strong>：基本盘市场大而慢（5-6 分锚点），成长曲线市场快但在公司内尚未规模化。营收 81.4% 来自国外/出口（326.65 亿）[metrics.json:segments]，叠加国际贸易摩擦/关税悬顶风险 [PDF:annual_2024,P.35-36]，市场结构既有顺风（AI）也有逆风（关税）。综合定 <strong>5.5 分</strong>（中等略偏上，因 AI 光通信顺风真实但权重未兑现）。</p>
+<h4>维度 2 · 商业模式（5.0/10）</h4>
+<p><strong>锚点对照</strong>（硬件/制造行业调整：毛利率标杆 25-40%，重点看规模效应/BOM 成本）：scoring-rubric 维度 1「毛利率达到行业平均、商业模式基本验证但扩展性存疑」对应 5-6 分。</p>
+<ul>
+<li><strong>毛利率显著低于硬件标杆</strong>：集团 2025 全年毛利率 <strong>14.09%</strong>（口径：data_snapshot §3 趋势表），远低于制造行业 25-40% 标杆下限，亦低于 A 股同业生益 21.30% / 深南 25.19% / 三环 40.14% [peer_analysis.md §1]。议价能力偏弱（Porter 五力详见 §三，本维度不重复）。</li>
+<li><strong>商业模式已跑通但分部分化极大</strong>：电子电路（PCB）2025 营收 256.20 亿、毛利率 17.59%，贡献集团约 64% 营收 + 约 78% 分部毛利，是现金牛；触控/LCM 模组毛利率仅 5.18%、其他主营 -20.73% 为拖累项 [metrics.json:segments]。光模块毛利率 36.74% 是结构升级方向，但体量小。</li>
+<li><strong>收入质量</strong>：2026Q1 经营现金流 11.27 亿、同比 <strong>-17.48%</strong>，与归母净利 +143.47% 方向背离 [PDF:q1_2026,P.1]；应收账款 95.55 亿 +41.5%、存货 97.45 亿 +55.3% [data_snapshot §2.2]，营运资本占用扩大，收入"含金量"打折。</li>
+</ul>
+<p><strong>判断</strong>：商业模式成熟可验证（PCB 龙头地位稳固），但毛利率行业偏低、扩展性高度押注光模块兑现、现金流质量弱于账面利润。对应 5-6 分下沿，定 <strong>5.0 分</strong>。</p>
+<h4>维度 3 · 盈利能力（3.5/10）</h4>
+<p><strong>锚点对照</strong>（上市公司维度 4 增长版 + rubric 盈利质量）：净利率/ROE 是核心。</p>
+<ul>
+<li><strong>ROE 持续下台阶</strong>：加权 ROE 从 2022 年 15.31% → 2023 年 11.39% → 2024 年 5.87% → 2025 年 6.88%（全年口径），几近腰斩 [metrics.json:profitability.roe_trend]；peer 季度可比口径东山 ROE 仅 <strong>1.58%，5 家 peer 内分位 0%（垫底）</strong> [peer_analysis.md §2]。（口径说明：peer 表用季度 ROE 1.58%，财务趋势用全年 6.88%，本段两者均显式标注，与 part2 一致。）</li>
+<li><strong>净利率制造业偏低且垫底</strong>：2025 全年净利率 <strong>3.47%</strong>，peer 可比口径 3.73%，<strong>5 家 peer 内分位 0%（净利率垫底）</strong> [peer_analysis.md §2]，远低于深南 9.58% / 三环 27.73%。</li>
+<li><strong>利润 V 型而非单调上升</strong>：归母净利 2022 高点 23.68 亿 → 2024 年 10.86 亿（-44.7%）→ 2025 年 13.86 亿（+27.7% 回升），<strong>归母净利 3 年 CAGR = -16.3%</strong>（与营收 3 年 CAGR +8.3% 背离）[metrics.json:growth]——增长在收入端，利润端仍未回到 2022 水平。</li>
+<li><strong>季节性畸形</strong>：连续两年 Q4 扣非亏损（2024Q4 扣非 -1.10 亿 / 2025Q4 扣非 -1.05 亿）[PDF:annual_2024,P.9] / [PDF:annual_2025_summary,P.6]，削弱用单季高增速年化的可信度。</li>
+</ul>
+<p><strong>判断</strong>：盈利能力是本公司最弱的硬指标之一——ROE/净利率 peer 内双垫底、利润 3 年负增长、Q4 季节性亏损。2026Q1 净利 +143.47% 含 GMD/索尔思并表 + 低基数水分。对应 rubric「净利率低于行业平均、增长明显放缓」3-4 分区间，定 <strong>3.5 分</strong>。</p>
+<h4>维度 4 · 产品与技术（6.5/10）</h4>
+<p><strong>锚点对照</strong>：scoring-rubric 维度 6「技术有差异化优势、产品路线图清晰、研发团队质量高」对应 7-8 分；「技术无明显领先也无明显落后」对应 5-6 分。</p>
+<ul>
+<li><strong>技术导入有真实壁垒</strong>：高端 AI PCB（高频低损耗 Rogers/Megtron6 基材）+ 光芯片（200G EML）有技术 + 资本 + 客户认证壁垒，导入周期长 [PDF:annual_2024,P.12] / [§三 Porter]。索尔思自筹约 81 亿在常州扩建光芯片 + 高速光模块产线 [WebSearch:caifuhao.eastmoney.com,2026-06-17]，研发投入持续（2026Q1 研发费用 3.71 亿、+34.88% [data_snapshot §2.1]）。</li>
+<li><strong>细分赛道卡位优质</strong>：FPC × AI 手机（IDC 预测 2027 AI 手机 8.27 亿台、2023-2027 CAGR 100.7%）、FPC × 新能源车 CCS（2021-2025 CAGR 62.33%）[PDF:annual_2024,P.12-14]，绑定苹果/英伟达/云厂商等头部客户。</li>
+<li><strong>存疑</strong>：光模块"200G EML 量产 / 供货 NVIDIA、Meta"为券商转述口径，<strong>未经 PDF 原文核实</strong> [WebSearch，缺口#1]；技术领先程度无独立第三方验证（NPS/客户反馈缺失），无法定到 7-8 分上沿。</li>
+</ul>
+<p><strong>判断</strong>：技术与产品是公司相对最强的维度——AI 光通信 + 高端 PCB 双卡位，研发投入实打实，但领先优势缺独立验证、关键叙事未经原文确认。对应 5-6 与 7-8 锚点之间，定 <strong>6.5 分</strong>。</p>
+<h4>维度 5 · 团队与管理层（5.5/10）</h4>
+<p><strong>锚点对照</strong>（上市公司维度 5 追加项：内部人持股 &gt;10% 加分、治理评分、薪酬合理性）：</p>
+<ul>
+<li><strong>内部人持股高度集中（加分项）</strong>：实控人袁永刚 16.53% / 袁永峰 13.51%，三父子一致行动合计约 33.26% [PDF:annual_2025_summary,P.7] / [capital_flow.md §2]，远超 "&gt;10% 加分"门槛，利益与小股东方向一致。</li>
+<li><strong>指引可信度高（加分）</strong>：近 3 期 forecast_vip 全部兑现——2026Q1 预增 10.0~11.5 亿实际 11.10 亿落入区间 ✅、2025Q1 ✅、2022 全年 ✅ [data_snapshot §4]，管理层指引可信。</li>
+<li><strong>治理软信号正面</strong>：2024 年机构调研频繁（华创等 670 多家、民生等 85 家）[PDF:annual_2024,P.36]，信息披露活跃。</li>
+<li><strong>减分项</strong>：分红极薄（2024 年度 10 派 0.70 元，股息率仅约 0.02%）[PDF:annual_2024,P.3]，无防御性 [audit: Valuation, 🟡 中-股息率极低 0.024%]；实控人家族 2025-2026 持续滚动质押（合计约 1.62 亿股，占两人持股约 29.5%，未触发 &gt;50% 致命阈值，但股价 +758% 后质押市值高企，存平仓链条压力）[data_snapshot §7]。</li>
+</ul>
+<p><strong>判断</strong>：内部人深度持股 + 指引兑现是亮点，但薄分红、家族集权 + 持续质押构成治理折价。对应 rubric「创始人背景尚可、团队稳定、组织能力未受大规模考验」5-6 分，定 <strong>5.5 分</strong>。</p>
+<h4>维度 6 · 市场进入与护城河（5.0/10）</h4>
+<p><strong>护城河判定</strong>: <strong>部分是（侵蚀与卡位并存）</strong></p>
+<p><strong>锚点对照</strong>：scoring-rubric 维度 3「拥有 1 种护城河但尚在形成中、产品差异化一般、存在有实力竞争对手」对应 5-6 分。</p>
+<ul>
+<li><strong>护城河类型偏半动态（规模经济）而非自我强化</strong>：东山核心优势是规模 + 海外产能 + 大客户绑定，属"规模经济（半动态，随规模增强但有上限）"，而非网络效应/数据飞轮等动态自强化护城河。</li>
+<li><strong>定价权弱的反证</strong>：毛利率 13.60% 低于全部 A 股同业（生益 21.30% / 胜宏 19.49% / 深南 25.19% / 三环 40.14%）[peer_analysis.md §1]——若有强护城河，毛利率不应行业垫底。</li>
+<li><strong>Porter 五力三面挤压</strong>（详见 §三）：强客户（前五大集中度高、苹果/英伟达强势）+ 强供应商（光芯片/高频材料供给偏紧涨价）+ 强同业竞争，议价能力偏弱。</li>
+<li><strong>正向卡位</strong>：光芯片（200G EML）技术 + 客户认证壁垒为新建护城河，但尚在形成中、未兑现为毛利率优势。</li>
+</ul>
+<p><strong>判断</strong>：护城河是"部分是"——传统 PCB 规模护城河被低毛利证伪为偏弱，光芯片技术护城河在建但未成型。对应 5-6 分下沿，定 <strong>5.0 分</strong>。</p>
+<h4>维度 7 · 财务健康度（3.5/10）</h4>
+<p><strong>锚点对照</strong>（上市公司维度 7 量化表）+ <strong>必引 audit 红旗</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th style="text-align: right;">东山实际</th>
+<th>rubric 档位</th>
+<th style="text-align: center;">判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>流动比率</td>
+<td style="text-align: right;">1.09 [data_snapshot §2.4]</td>
+<td>0.8-1.2 = 警示(3-4)</td>
+<td style="text-align: center;">🟠</td>
+</tr>
+<tr>
+<td>资产负债率</td>
+<td style="text-align: right;">63.69%（2026Q1）/ 63.98%（2025）</td>
+<td>60-75% = 警示(3-4)</td>
+<td style="text-align: center;">🟠</td>
+</tr>
+<tr>
+<td>FCF 收益率</td>
+<td style="text-align: right;">0.18% [metrics.json]</td>
+<td>&lt;1% = 危险(1-2)</td>
+<td style="text-align: center;">🔴</td>
+</tr>
+<tr>
+<td>经营现金流/净利润(年)</td>
+<td style="text-align: right;">53.07/13.86≈3.8x（年）；季 11.27/11.10≈1.0x</td>
+<td>年口径优、季持平</td>
+<td style="text-align: center;">🟡</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>杠杆 peer 内最重</strong>：资产负债率 63.69%，<strong>5 家 peer 内分位 0%（最高）</strong> [peer_analysis.md §2]；短期借款 88.61 亿 +76.83%、长期借款 82.31 亿 +66.06% [data_snapshot §2.2]，有息负债 222.33 亿、净有息负债约 132.87 亿 [data_snapshot §2.4]。</li>
+<li><strong>自由现金流深度为负</strong>：2026Q1 自由现金流 <strong>-24.01 亿</strong>（同比 +315%），capex 21.60 亿 +96.95% [data_snapshot §2.3]——扩产烧钱远超经营造血。</li>
+<li><strong>存货/应收积压</strong>[audit: Buffett Quality, 🟡 中]：存货增速 45.1% vs 营收增速 9.1%（差 36pp，超 30pp 阈值），"未来可能计提跌价准备" [audit_report.md #4]；应收账款 95.55 亿 +41.5%。</li>
+<li><strong>商誉减值敞口</strong>：商誉 47.69 亿 +125.01%（GMD + 索尔思并表所致）[data_snapshot §2.2]，首次减值测试结果待 2025 年报全文附注 [缺口#2]，是 §五 DCF 最差情景的核心触发项。</li>
+<li><strong>Piotroski F=5/9（中等）</strong>[audit: Piotroski, 🟡 中]：资产负债率↑、流动比率↓、资产周转率↓ 三项失分 [audit_report.md #3]。</li>
+</ul>
+<p><strong>判断</strong>：高杠杆（peer 内最高）+ FCF 深度为负 + 存货积压 + 商誉减值敞口，财务健康度是与盈利能力并列最弱的维度。注：Altman Z=8.767（安全）+ Beneish M=-2.519（操纵概率低）为缓冲项 [audit_report.md #9/#10]，故不打到 1-2 致命区。对应 rubric「资产负债率 60-75% 警示 + FCF 收益率 &lt;1% 危险」3-4 分区间，定 <strong>3.5 分</strong>。</p>
+<h4>维度 8 · 估值合理性（1.5/10）</h4>
+<p><strong>锚点对照</strong>（上市公司维度 9 市场估值）+ <strong>必引 audit Valuation 红旗</strong>：scoring-rubric「PE &gt; 行业中位数 2x+ 或 EV/EBITDA 严重高估」对应 1-2 分（致命缺陷区）。</p>
+<ul>
+<li><strong>PE 行业内最贵（100% 分位）</strong>：PE_TTM <strong>245.10x</strong>，5 家 peer 中位数 85.05x（溢价 &gt; 50%，245.1/85.0≈2.9x）[peer_analysis.md §3]；元器件全行业 307 家中<strong>高于最贵者（197.54x），分位 100%</strong> [peer_analysis.md §4]——已超 rubric "PE &gt; 行业中位数 2x+" 的致命缺陷阈值。</li>
+<li><strong>PB 历史 + 行业双高位</strong>[audit: Valuation, 🟠 高]：PB <strong>22.09x</strong>，近 1 年范围 [2.45, 22.09]，处近 1 年 <strong>100% 分位</strong> [audit_report.md #1]；行业全员分位 95.3%。</li>
+<li><strong>PB vs ROE 严重错配</strong>[audit: Valuation, 🟠 高]：ROE 6.9% 按 Gordon 理论配 PB≈0.86x，当前 PB 22.09x = 合理 PB 的 <strong>25.7x</strong>，"市场透支预期" [audit_report.md #2]。</li>
+<li><strong>PS 历史分位过高</strong>[audit: Valuation, 🟡 中]：PS_TTM 11.20x 处近 1 年 100% 分位 [audit_report.md #7]。</li>
+<li><strong>股息率极低</strong>[audit: Valuation, 🟡 中]：0.02%，无估值保护 [audit_report.md #8]。</li>
+<li><strong>分析师目标价隐含深度下行</strong>：12 个月目标价约 92 元 vs 现价 273 元（隐含 <strong>-66%</strong>）[核心矛盾输入]。</li>
+</ul>
+<p><strong>判断</strong>：估值是全部维度中最差的一项——PE 行业 100% 分位 + PB 历史 100% 分位 + PB/ROE 错配 25.7x + 4 个 Valuation Anomaly 红旗叠加。245x PE 完全押注光模块成长性兑现，对中报不及预期极度脆弱。对应 rubric 1-2 分致命缺陷区，定 <strong>1.5 分</strong>。</p>
+<h4>维度 9 · 风险与治理（4.5/10）</h4>
+<p><strong>锚点对照</strong>（rubric 维度 8「风险程度的倒数」，分越高风险越低 + 上市公司追加项）：</p>
+<ul>
+<li><strong>客户集中度高</strong>：年报明示前五大客户"占比较高且未来仍可能增加" [PDF:annual_2024,P.35]，按 rubric「客户集中度偏高 35-50%」对应 5-6 分。</li>
+<li><strong>出口/汇率/关税风险</strong>：国外营收占比 81.4%，年报将"国际贸易环境变动 + 汇率波动"列为正式风险因素 [PDF:annual_2024,P.35-36]——宏观敏感度高。</li>
+<li><strong>筹码结构风险</strong>[audit: Shareholder Flow, 🟡 中 ×2]：股东户数从 2025 年末 81,673 → 2026-05-29 <strong>306,048</strong>（半年增 2.7 倍），"散户高位接盘风险" [audit_report.md #5/#6]；两融余额 141.39 亿、相对近 60 日中位 +35.9%（杠杆多头拥挤）[capital_flow.md §5]；大宗交易折价 -7.49% [capital_flow.md §8]——回调易连锁平仓。</li>
+<li><strong>治理瑕疵（可控）</strong>：实控人家族持续质押约 1.62 亿股（占两人持股 29.5%，未触及 &gt;50% 致命阈值）[data_snapshot §7]；分红极薄。无非标审计意见、无 CFO 非正常离任记录。</li>
+</ul>
+<p><strong>判断</strong>：客户集中 + 出口关税 + 高位散户/杠杆筹码 + 治理软瑕疵多重叠加，但均属"可管理"而非致命。对应 rubric「客户集中偏高 + 宏观敏感 + 潜在风险可管理」3-4 与 5-6 之间，定 <strong>4.5 分</strong>。</p>
+<h4>维度 10 · 催化剂与时机（6.0/10）</h4>
+<p><strong>催化剂判定</strong>: <strong>看多方向（短期上行窗口存在，但伴随证伪风险）</strong></p>
+<p><strong>锚点对照</strong>（上市公司维度 10 回报潜力 + qualitative 框架 3 催化剂）：</p>
+<ul>
+<li><strong>正向时间窗催化剂（≤3 个月密集）</strong>：①2026 中报（预计 2026-08）是否首次披露光模块/索尔思独立分部数据——直接决定 245x PE 能否被成长性证明 [缺口#1]；②H 股发行上市进程 [PDF:annual_2025_summary,P.8]；③索尔思常州 81 亿扩产产线投产节奏 [WebSearch:caifuhao.eastmoney.com]。</li>
+<li><strong>技术面共振（偏多）</strong>：均线多头排列（MA5/20/60/120 = 247.17/225.29/183.43/134.31）、MACD 近 10 日金叉、近 1 年 +758.49% [technical_analysis.md §1/§2]。</li>
+<li><strong>证伪催化剂（下行风险）</strong>：①若 2025 年报商誉减值测试计提显著 → 利润 + 估值双杀；②若中报光模块分部不及预期 → 245x PE 向 peer 中位 85x 回归；③散户高位涌入 + 两融拥挤 → 事件驱动踩踏风险。</li>
+</ul>
+<p><strong>判断</strong>：下 12 个月有 ≥2 个正向时间窗催化剂 + 技术面共振，构成短期上行窗口（看多方向）；但同等密集的证伪催化剂使其成为高波动事件驱动标的。对应 rubric「总回报预期 + 催化剂可见」中性偏多区间，定 <strong>6.0 分</strong>。</p>
+<hr />
+<h3>定性综合判断</h3>
+<blockquote>
+<p>综合护城河 / 管理层 / 催化剂三个维度的方向（≥ 2 同向 → 对应方向；否则"中性-分歧"），给出 §一 的"投资方向综合判定"。会计红旗见 §六，估值见 §五。本子节为逻辑三段式，<strong>不含打分数字</strong>。</p>
+</blockquote>
+<p><strong>框架 1 · 护城河判断</strong><br />
+- <strong>核心问题</strong>：竞争优势在加深、侵蚀还是部分是？<br />
+- <strong>判断</strong>：<strong>部分是（传统 PCB 规模护城河偏弱被侵蚀，光芯片技术护城河在建未成型）</strong><br />
+- <strong>证据链</strong>：①毛利率 13.60% 行业垫底（生益 21.30%/深南 25.19%/三环 40.14%），强护城河不应配最低毛利率 [peer_analysis.md §1]；②Porter 五力三面挤压（强客户+强供应商+强同业），议价权弱 [§三]；③光芯片 200G EML 有技术 + 认证壁垒为新建护城河，但 2025 光模块仅占营收 &lt;4%，未兑现为毛利率优势 [metrics.json:segments / 缺口#1]。<br />
+- <strong>逻辑蕴含</strong>：若"部分是（多业务多 S 曲线混合）成立 → 估值上需对低毛利基本盘与高估值光模块分部分别定价（利空用单一高 PE 笼统估值的合理性）；若光芯片护城河被验证加深 → 利好长期超额 ROE 与终值倍数。<br />
+- <strong>支撑方向</strong>：<strong>中性/分歧</strong><br />
+- <strong>未解决问题</strong>：光模块/索尔思 2026 独立分部毛利率未披露，无法验证第二曲线护城河强度 [缺口#1，传 §八]。</p>
+<p><strong>框架 2 · 管理层判断</strong><br />
+- <strong>核心问题</strong>：管理层"德/才"是否合格？<br />
+- <strong>判断</strong>：<strong>部分是（德基本过关、才中性，治理有可控瑕疵）</strong><br />
+- <strong>证据链</strong>：①德——近 3 期 forecast_vip 全兑现，承诺履约率高 [data_snapshot §4]；无非标审计/CFO 异常离任；②才——并购 GMD + 索尔思形成商誉 47.69 亿（+125%），资本配置价值尚待减值测试与分部数据验证，ROE 仍在 5-7% 低位 [data_snapshot §2.2 / metrics.json]；③瑕疵——实控人家族持续滚动质押约 1.62 亿股（占两人持股 29.5%，未触致命阈值）+ 分红极薄 0.02% [data_snapshot §7] / [audit_report.md #8]。<br />
+- <strong>逻辑蕴含</strong>：若"德过关 + 才中性"成立 → 利好维持行业均值定价，不构成额外溢价基础；若并购整合证伪（商誉大额减值）→ 利空资本配置可信度与估值。<br />
+- <strong>支撑方向</strong>：<strong>中性</strong><br />
+- <strong>未解决问题</strong>：商誉首次减值测试结果待 2025 年报全文附注 [缺口#2，传 §八]。</p>
+<p><strong>框架 3 · 催化剂判断</strong><br />
+- <strong>核心问题</strong>：下 12 个月是否有可能改变结论方向的可观察事件？<br />
+- <strong>判断</strong>：<strong>是（多个时间窗催化剂密集，但正反双向）</strong><br />
+- <strong>证据链</strong>：①2026 中报（约 2026-08）光模块独立分部披露——证明或证伪 245x PE 的关键节点 [缺口#1]；②H 股上市进程 + 索尔思 81 亿扩产投产 [PDF:annual_2025_summary,P.8 / WebSearch]；③证伪侧——2025 年报商誉减值测试 + 散户高位涌入（户数半年 2.7 倍）+ 两融拥挤的踩踏风险 [data_snapshot §8 / capital_flow.md §5]。<br />
+- <strong>逻辑蕴含</strong>：若近期正向催化剂兑现 → 利好短期上行窗口；若证伪催化剂触发 → 警告事件驱动式下行风险（估值向 peer 中位回归）。<br />
+- <strong>支撑方向</strong>：<strong>看多</strong>（短期上行窗口存在，但波动性放大）<br />
+- <strong>未解决问题</strong>：中报分部数据是决定方向的单点事件，时点集中放大尾部风险。</p>
+<p><strong>护城河 → 中性/分歧</strong> · <strong>管理层 → 中性</strong> · <strong>催化剂 → 看多</strong></p>
+<p><strong>综合方向</strong>: <strong>中性-分歧（偏空）</strong></p>
+<blockquote>
+<p>三框架方向分布：看多 1（催化剂）、中性/分歧 2（护城河、管理层）、看空 0——无任一框架达"看空方向"，亦无 ≥2 框架同向看多，按 v4.1 黑白分割规则落入 <strong>"中性-分歧"</strong>。</p>
+<p>致命看空条款检查（直接引用 §六 快筛）：§六 6.1 致命看空快筛 6 项中——资产负债率 63.69% &lt; 70%（未触发）、大股东累计质押 29.5% &lt; 50%（未触发）、无非标审计/CFO 异常、audit 🔴 致命红旗数 = 0（最高仅 🟠 高级 2 个，为 PB 分位 + PB/ROE 错配的估值类，非资产减值/造假）——<strong>§六快筛 PASS，未触发任一致命看空条款</strong>，故不强制翻空。</p>
+<p><strong>方向偏空的来源在定性框架之外</strong>：综合评分 4.48/10（&lt; 5.0 "建议放弃"档）+ §五 估值锚相对当前股价深度折让，使最终投资方向呈 <strong>"中性-分歧、偏空"</strong>——定性三框架本身不翻空，但量化评分与估值证据将方向拉向谨慎/回避一侧。关键分歧点：催化剂（看多短期上行）vs 估值/财务质量（看空中长期下行），验证方式为 2026 中报光模块独立分部数据是否兑现 245x PE 隐含的成长性。</p>
+</blockquote>
+<hr />
+</div>
+
+<!-- ============================================================
+     §五 估值与回报（DCF + 交叉验证 + 技术面 + 回报测算）
+     ============================================================ -->
+<div class="section" id="valuation">
+<h2>§五 估值与回报</h2>
+<blockquote>
+<p><strong>方法论</strong>：以"<strong>DCF 概率加权</strong>"为唯一估值锚；可比 PE / PB 仅作交叉验证（不纳入锚的计算）。投资回报情景（5.4）与 DCF（5.1）共用同一套概率分布。本节为上市公司，股权价值采用对股东自由现金流/净利按股权成本折现的口径（已隐含财务杠杆，不再二次扣减净负债）。</p>
+</blockquote>
+<h3>5.1 DCF 情景分析（4 情景）</h3>
+<p><strong>为何用 DCF 概率加权 + 4 情景</strong>：东山为 Pre-IPO/晚期成熟上市公司（valuation-frameworks 矩阵 → 完整 DCF + 可比倍数）。§二 SOTP 触发判定为<strong>未触发</strong>（无核心资产剥离/控制权丧失信号、forecast 为已兑现预增、无涉资产减值的 🔴 红旗），故<strong>最差情景不设"核心资产零回收"清算地板，改以"商誉减值 + 盈利大幅回落"的经营性下行刻画</strong>（符合 §二 末尾约定）。</p>
+<p><strong>关键假设表（每条可被 reviewer 核验，且与 §二 财务历史不内在矛盾）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>假设参数</th>
+<th style="text-align: center;">乐观</th>
+<th style="text-align: center;">基准</th>
+<th style="text-align: center;">悲观</th>
+<th style="text-align: center;">最差</th>
+<th>依据 / 与历史的关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>营收基准（2025 全年）</td>
+<td style="text-align: center;">401.25 亿</td>
+<td style="text-align: center;">401.25 亿</td>
+<td style="text-align: center;">401.25 亿</td>
+<td style="text-align: center;">401.25 亿</td>
+<td>[data_snapshot §3]</td>
+</tr>
+<tr>
+<td>营收增速（5 年，首年→末年渐降）</td>
+<td style="text-align: center;">40%→12%</td>
+<td style="text-align: center;">18%→6%</td>
+<td style="text-align: center;">5%→2%</td>
+<td style="text-align: center;">-5%→0%</td>
+<td>历史营收 3 年 CAGR +8.3% [metrics.json]；乐观=AI 光模块全面放量、基准≈近年实际 9% 上修、悲观≈回归 PCB 行业 CAGR 4.8% [PDF:annual_2024,P.12]、最差=关税/砍单致收缩</td>
+</tr>
+<tr>
+<td>长期净利率（成熟期）</td>
+<td style="text-align: center;">升至 8.0%</td>
+<td style="text-align: center;">升至 4.5%</td>
+<td style="text-align: center;">持平 3.4%</td>
+<td style="text-align: center;">跌至 2.0%</td>
+<td>历史净利率 2022-2025 区间 3.47%-7.50%、均值 4.94% [data_snapshot §3]；<strong>悲观/最差贴近历史 3.4-3.5%，未线性外推 2026Q1 单季 8.56% 高增</strong>；乐观假设光模块（36.74% 毛利）占比结构性提升才到 8%</td>
+</tr>
+<tr>
+<td>折现率 r（股权成本）</td>
+<td style="text-align: center;">13.0%</td>
+<td style="text-align: center;">13.5%</td>
+<td style="text-align: center;">14.0%</td>
+<td style="text-align: center;">15.0%</td>
+<td>Damodaran 构成：无风险 2.0% + ERP 5.5% + 中国风险 1.0% + 高杠杆/出口/客户集中风险溢价 4.0-6.5%（资产负债率 63.69% peer 最高 → r 偏上沿）[valuation-frameworks §2.1]</td>
+</tr>
+<tr>
+<td>终值退出 PE（终年净利）</td>
+<td style="text-align: center;">40x</td>
+<td style="text-align: center;">28x</td>
+<td style="text-align: center;">16x</td>
+<td style="text-align: center;">12x</td>
+<td>可比中位 PE_TTM 85x 仅反映当前 AI 狂热，<strong>终值用更接近制造业可持续区间</strong>；乐观给成长溢价 40x、基准 28x（半导体 20-35x 上沿）、悲观 16x（制造 15-25x 下沿）、最差 12x</td>
+</tr>
+<tr>
+<td>永续增长 g（Gordon 校验用）</td>
+<td style="text-align: center;">4.0%</td>
+<td style="text-align: center;">3.0%</td>
+<td style="text-align: center;">2.0%</td>
+<td style="text-align: center;">0.0%</td>
+<td><strong>g &lt; r 全部成立</strong>（4.0%&lt;13.0% / 3.0%&lt;13.5% / 2.0%&lt;14.0% / 0%&lt;15.0%）；g ≤ 中国长期名义 GDP 增速假设</td>
+</tr>
+</tbody>
+</table>
+<p><strong>永续 g &lt; 折现 r 强制校验</strong>：4 情景 g 分别为 4.0/3.0/2.0/0.0%，对应 r 为 13.0/13.5/14.0/15.0%——<strong>全部 g &lt; r ✅</strong>，无数学错误。终值主用退出 PE 法（更适合上市公司），Gordon 永续法作交叉校验：基准情景终年净利 25.8 亿 × (1+3%)/(13.5%-3%) ≈ 253 亿（折现前），与退出 PE 法 28x×25.8≈722 亿（折现前）方向一致、退出 PE 法更宽松，二者均收敛到"远低于当前市值"。</p>
+<h4>乐观情景（20% 权重）</h4>
+<p>AI 光模块第二曲线全面兑现：营收 5 年从 401 亿增至约 993 亿（首年 +40% 渐降至 +12%），高毛利光模块（36.74%）占比结构性提升带动<strong>集团净利率升至 8.0%</strong>，终年净利约 49.6 亿，按成长溢价退出 PE 40x 计。股权价值 <strong>≈ 2,336 亿</strong>，对应股价 <strong>≈ 127.5 元</strong>。<br />
+<strong>SOTP</strong>：未触发分部估值强制要求（护城河"部分是"但未达多业务剥离条件）；乐观情景已隐含光模块分部高毛利对集团净利率的拉升，不另列 SOTP 分部表。</p>
+<h4>基准情景（45% 权重）</h4>
+<p>营收延续近年约 +9% 上修至首年 +18% 后渐降至 +6%（高于 PCB 行业 4.8% CAGR，反映光模块增量但不及乐观），净利率温和修复至 4.5%（高于 2025 全年 3.47%、低于 2022 峰值 7.50%），终年净利约 25.8 亿，退出 PE 28x。股权价值 <strong>≈ 539 亿</strong>，对应股价 <strong>≈ 29.4 元</strong>。<br />
+<strong>SOTP</strong>：同上，未触发强制 SOTP。</p>
+<h4>悲观情景（28% 权重）</h4>
+<p>AI 光模块预期降温、关税压制出口，营收增速快速回落至 PCB 行业内生水平（首年 +5% 渐降至 +2%），<strong>净利率回归历史均值 3.4%</strong>（贴近 2024 全年 2.95% / 2025 全年 3.47%），终年净利约 16.2 亿，退出 PE 收缩至 16x（向制造业下沿回归）。股权价值 <strong>≈ 186 亿</strong>，对应股价 <strong>≈ 10.2 元</strong>。</p>
+<h4>最差情景（7% 权重，经营性下行地板）</h4>
+<p>商誉 47.69 亿首次减值测试大额计提 + 砍单/关税致营收 5 年负增长（-5% 渐收敛至 0%），<strong>净利率崩塌至 2.0%</strong>，叠加减值,终年净利约 7.1 亿，退出 PE 12x。股权价值 <strong>≈ 70 亿</strong>，对应股价 <strong>≈ 3.8 元</strong>。<br />
+<em>（说明：§二 SOTP 未触发，此最差情景为经营性下行而非清算价值；下行地板由商誉减值 + 盈利回落驱动，而非核心资产零回收。）</em></p>
+<h4>估值锚（概率加权 DCF）</h4>
+<table>
+<thead>
+<tr>
+<th>情景</th>
+<th style="text-align: right;">估值（亿）</th>
+<th style="text-align: right;">对应股价</th>
+<th style="text-align: center;">概率</th>
+<th style="text-align: right;">加权贡献（亿）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>乐观</td>
+<td style="text-align: right;">2,336</td>
+<td style="text-align: right;">127.5 元</td>
+<td style="text-align: center;">20%</td>
+<td style="text-align: right;">467.1</td>
+</tr>
+<tr>
+<td>基准</td>
+<td style="text-align: right;">539</td>
+<td style="text-align: right;">29.4 元</td>
+<td style="text-align: center;">45%</td>
+<td style="text-align: right;">242.5</td>
+</tr>
+<tr>
+<td>悲观</td>
+<td style="text-align: right;">186</td>
+<td style="text-align: right;">10.2 元</td>
+<td style="text-align: center;">28%</td>
+<td style="text-align: right;">52.1</td>
+</tr>
+<tr>
+<td>最差</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">3.8 元</td>
+<td style="text-align: center;">7%</td>
+<td style="text-align: right;">4.9</td>
+</tr>
+<tr>
+<td><strong>概率加权</strong></td>
+<td style="text-align: right;"><strong>≈ 767</strong></td>
+<td style="text-align: right;"><strong>≈ 41.9 元</strong></td>
+<td style="text-align: center;">100%</td>
+<td style="text-align: right;"><strong>766.6</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>概率分布合理性</strong>：20/45/28/7（基准为众数、乐观与悲观对称偏空、最差 7% 尾部）——非极端分布（如 10/80/8/2），符合 valuation-frameworks 常见区间。</p>
+<p><strong>估值锚结论</strong>：概率加权 DCF 股权价值 <strong>≈ 767 亿元，对应公允股价 ≈ 41.9 元</strong>；当前股价 273.0 元相对此锚<strong>偏离 -84.7%</strong>（即当前价是公允价的约 6.5 倍）。锚定股价隐含 2025 归母净利 PE 约 55x（仍高于制造业可持续区间，已是对成长性相当宽松的给予）。<strong>当前估值判定：严重高估。</strong></p>
+<h3>5.2 交叉验证（仅互证，不纳入锚）</h3>
+<ul>
+<li><strong>可比 PE</strong>：以基准情景终值口径反推，或以当前可比中位 PE_TTM 85.05x [peer_analysis.md §1] × 2025 归母净利 13.86 亿 ≈ <strong>1,179 亿</strong>（股价 ≈ 64.4 元）。注：85x 本身是 AI 狂热下的偏高倍数；若按制造业更可持续的 25-30x × 13.86 亿 ≈ 347-416 亿（股价 ≈ 18.9-22.7 元）。</li>
+<li><strong>有形 PB</strong>：每股净资产 12.36 元 [data_snapshot §2.4]，扣除商誉/无形（47.69+12.64 亿）后有形净资产约 168.6 亿、每股有形净资产 ≈ 9.2 元；按制造业 PB 中位 2-4x × 9.2 ≈ <strong>18.4-36.8 元</strong>（167-337 亿）。peer PB 中位 17.09x 受 AI 估值扭曲，不采用。</li>
+<li><strong>自洽判定</strong>：DCF 锚 41.9 元 vs 可比 PE（制造业 25-30x 口径）18.9-22.7 元、有形 PB 18.4-36.8 元——<strong>三者均收敛在 18-42 元区间，均远低于当前 273 元</strong>；DCF 锚处区间上沿（因乐观情景给了较高权重的光模块成长溢价）。若以 AI 狂热下的 85x PE 口径，可比给 64.4 元，与 DCF 锚 41.9 元差 &gt; 20% 🔴——<strong>分歧原因</strong>：85x PE 反映的是市场对光模块兑现的乐观预期（与本 DCF 乐观情景同源），本报告 DCF 锚已通过概率加权（乐观仅 20%）对该预期打折，故锚低于按全乐观倍数的可比值。<strong>结论：无论交叉验证用哪个口径，当前 273 元均无基本面支撑。</strong></li>
+</ul>
+<h3>5.3 估值异常 + 技术面位置</h3>
+<p><strong>估值异常（audit Valuation Anomaly 框架，4 个红旗）</strong>：<br />
+- 🟠 PB 历史分位 100%（22.09x，近 1 年范围 [2.45, 22.09]）[audit_report.md #1]<br />
+- 🟠 PB vs ROE 严重错配（当前 PB 22.09x = 合理 PB 0.86x 的 25.7x）[audit_report.md #2]<br />
+- 🟡 PS 历史分位 100%（11.20x）[audit_report.md #7]<br />
+- 🟡 股息率极低 0.02%（无估值保护）[audit_report.md #8]</p>
+<p><strong>技术面 6 维度表</strong>（inline <code>technical_analysis.md §1</code>，收盘 273.0 元 / 20260618）：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>信号</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>均线排列</td>
+<td>多头排列 🟢</td>
+<td>MA5/20/60/120 = 247.17/225.29/183.43/134.31</td>
+</tr>
+<tr>
+<td>中长期趋势</td>
+<td>中期强势 🟢</td>
+<td>收盘 vs MA60/MA120</td>
+</tr>
+<tr>
+<td>MACD</td>
+<td>近 10 日金叉 🟢</td>
+<td>DIFF=14.64 / DEA=11.239 / 零轴上方</td>
+</tr>
+<tr>
+<td>RSI(14)</td>
+<td>中性 ⚪</td>
+<td>66.75</td>
+</tr>
+<tr>
+<td>布林带位置</td>
+<td>上轨之上（短期超买）🔴</td>
+<td>上轨 261.89 / 中 225.29 / 下 188.69</td>
+</tr>
+<tr>
+<td>成交量</td>
+<td>正常（0.94x）</td>
+<td>当日/60 日均量</td>
+</tr>
+</tbody>
+</table>
+<p><strong>支撑阻力位</strong>（<code>technical_analysis.md §2</code>）：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th style="text-align: center;">数值</th>
+<th style="text-align: center;">当前价距离</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>近 20 日涨跌</td>
+<td style="text-align: center;">+31.9%</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>近 60 日涨跌</td>
+<td style="text-align: center;">+135.22%</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>近 1 年涨跌</td>
+<td style="text-align: center;">+758.49%</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>近 60 日最低（支撑）</td>
+<td style="text-align: center;">98.83 元</td>
+<td style="text-align: center;">上方 63.8%</td>
+</tr>
+<tr>
+<td>近 60 日最高（阻力）</td>
+<td style="text-align: center;">277.6 元</td>
+<td style="text-align: center;">下方 1.68%</td>
+</tr>
+<tr>
+<td>近 120 日最低</td>
+<td style="text-align: center;">67.18 元</td>
+<td style="text-align: center;">–</td>
+</tr>
+</tbody>
+</table>
+<p><strong>基本面 × 技术面配合判断</strong>：技术面偏多（均线多头 + MACD 金叉），但 DCF 锚（41.9 元）相对当前 273 元为深度高估（基本面悲观）——对应 technical_analysis §4 指南的 <strong>"DCF 悲观/高估 + 技术面偏多 → 可能是情绪性反弹，不要追"</strong>。当前价距近 60 日支撑 98.83 元达 63.8%，下行空间巨大；布林带上轨之上短期超买。<strong>操作含义：不建议现价买入；技术多头仅提供短线博弈窗口，与基本面严重背离，任何回调（跌破 MA60 183.43 元或布林中轨 225.29 元）应视为趋势转弱信号而非加仓点。</strong></p>
+<h3>5.4 投资回报测算（与 5.1 共用情景）</h3>
+<p><strong>初始仓位</strong>: <strong>100 万元人民币</strong> · <strong>当前买入</strong>: 273.0 元 × <strong>约 3,663 股</strong>（100 万 / 273 ≈ 3,663 股，A 股按手取整约 3,600 股；测算用 100 万市值口径）</p>
+<blockquote>
+<p>情景 / 概率与 5.1 DCF <strong>完全一致</strong>（20/45/28/7）；目标价 = 5.1 各情景对应股价；时间框架 <strong>24 个月</strong>（DCF 5 年预测的中期映射 + 中报/年报催化剂窗口）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>情景</th>
+<th style="text-align: center;">目标价</th>
+<th style="text-align: center;">收益率</th>
+<th style="text-align: center;">概率</th>
+<th style="text-align: center;">加权收益</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>乐观</td>
+<td style="text-align: center;">127.5 元</td>
+<td style="text-align: center;">-53.3%</td>
+<td style="text-align: center;">20%</td>
+<td style="text-align: center;">-10.66%</td>
+</tr>
+<tr>
+<td>基准</td>
+<td style="text-align: center;">29.4 元</td>
+<td style="text-align: center;">-89.2%</td>
+<td style="text-align: center;">45%</td>
+<td style="text-align: center;">-40.14%</td>
+</tr>
+<tr>
+<td>悲观</td>
+<td style="text-align: center;">10.2 元</td>
+<td style="text-align: center;">-96.3%</td>
+<td style="text-align: center;">28%</td>
+<td style="text-align: center;">-26.96%</td>
+</tr>
+<tr>
+<td>最差</td>
+<td style="text-align: center;">3.8 元</td>
+<td style="text-align: center;">-98.6%</td>
+<td style="text-align: center;">7%</td>
+<td style="text-align: center;">-6.90%</td>
+</tr>
+<tr>
+<td><strong>概率加权 24 月收益率</strong></td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">100%</td>
+<td style="text-align: center;"><strong>-84.7%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>年化</strong> ≈ <strong>-60.8%</strong>（24 月 -84.7% 折年）。即便最乐观情景（光模块全面兑现、20% 权重）收益率仍为 <strong>-53.3%</strong>——意味着当前 273 元在所有 4 个情景下均亏损，<strong>没有正收益的情景</strong>。100 万元初始仓位的概率加权预期终值约 <strong>15.3 万元</strong>。</p>
+<p><strong>建议仓位</strong>: <strong>0%（不建议建仓 / 现有持仓建议减持）</strong>。理由：①4 个情景全负收益、概率加权 -84.7%，安全边际为负；②估值维度 1.5/10、综合评分 4.48/10（"建议放弃"档）；③对 245x PE 的诚实判断是——其完全依赖光模块第二曲线的极致兑现（乐观情景 8% 净利率 + 40x 退出 PE 都仍亏 53%），而光模块 2025 占营收 &lt;4%、独立分部数据未披露 [缺口#1]，押注脆弱。若投资者坚持参与光模块叙事博弈，应：(a) 严格限制仓位 ≤ 总资产 2%（事件驱动投机额度，非价值配置）；(b) 以技术支撑位 MA60（约 183 元）或近 60 日低点（98.83 元）为止损纪律；(c) 把 2026 中报光模块分部披露作为唯一加/减仓决策依据。</p>
+</div>
+
+<!-- ============================================================
+     §六 风险与红旗审计（致命看空快筛 + 11 框架红旗）
+     ============================================================ -->
+<div class="section" id="risk">
+<h2>§六 风险与红旗审计</h2>
+<blockquote>
+<p>集中回答"什么会杀死这笔投资"：致命看空快筛 + 11 框架审计红旗 + 治理风险，一处看全。审计红旗来源 <code>audit_report.md</code>（Phase 1 <code>scripts.financial_audit</code> 预产出，11 大师框架，本节只消费不重跑）。</p>
+</blockquote>
+<h3>6.1 致命看空快筛（6 项量化阈值）</h3>
+<table>
+<thead>
+<tr>
+<th>条款</th>
+<th>阈值</th>
+<th>实际</th>
+<th style="text-align: center;">触发?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 单季 / 单年度净利 &lt; -50%</td>
+<td>-50%</td>
+<td>2026Q1 归母净利 +143.47%（11.10 亿）；2025 全年 +27.67%；最差年为 2024 全年 -44.74%（&gt;-50%）[data_snapshot §2.1/§3]</td>
+<td style="text-align: center;">❌ 未触发</td>
+</tr>
+<tr>
+<td>2. 资产负债率 &gt; 70%</td>
+<td>70%</td>
+<td><strong>63.69%</strong>（2026Q1）/ 63.98%（2025 全年）[data_snapshot §2.4/§3]</td>
+<td style="text-align: center;">❌ 未触发（但 peer 内最高，距阈值仅 6.3pp）</td>
+</tr>
+<tr>
+<td>3. 大股东累计质押 &gt; 50%</td>
+<td>50%</td>
+<td>实控人家族滚动质押合计约 <strong>1.62 亿股，占两人持股约 29.5%</strong>（袁永刚质押 1.05 亿股 / 袁永峰 0.57 亿股）[PDF:annual_2025_summary,P.7] / [data_snapshot §7]（part2 §七脚注已闭环累计占比口径）</td>
+<td style="text-align: center;">❌ 未触发</td>
+</tr>
+<tr>
+<td>4. 审计机构连续 2 年变更</td>
+<td>1 次</td>
+<td>无连续变更记录；无非标审计意见 [PDF:annual_2024 / annual_2025_summary]</td>
+<td style="text-align: center;">❌ 未触发</td>
+</tr>
+<tr>
+<td>5. CFO 非正常离任</td>
+<td>1 次</td>
+<td>无 CFO 非正常离任记录 [PDF:annual_2024]</td>
+<td style="text-align: center;">❌ 未触发</td>
+</tr>
+<tr>
+<td>6. <strong>Audit ≥ 2 个 🔴 致命红旗</strong></td>
+<td>2</td>
+<td><strong>🔴 致命红旗数 = 0</strong>（audit 12 信号最高仅 🟠 高级 2 个：PB 100% 分位 + PB/ROE 错配；且 Altman Z=8.767 安全、Beneish M=-2.519 操纵概率低）[audit_report.md §2/§3]</td>
+<td style="text-align: center;">❌ 未触发</td>
+</tr>
+</tbody>
+</table>
+<p><strong>快筛结果</strong>: <strong>6 项全部未触发，致命看空快筛 PASS</strong>。本标的不构成"会计造假 / 资不抵债 / 控制权链断裂 / 强制翻空"类硬看空。但须强调两点边际预警：① 资产负债率 63.69% 距 70% 阈值仅 6.3pp 且为 peer 内最高（分位 0%）[peer_analysis.md §2]，叠加短期借款 +76.83%、长期借款 +66.06% 的扩张节奏 [data_snapshot §2.2]，若 2026 内继续加杠杆有逼近阈值风险；② 快筛 PASS 仅说明"无致命硬伤"，<strong>本标的的看空逻辑不在 6.1 硬阈值，而在 6.3 的估值透支软逻辑链</strong>——这是与 §四定性三框架"不翻空、但量化评分 4.48 与估值证据将方向拉向偏空"完全一致的结论分工。</p>
+<h3>6.2 审计红旗汇总（11 框架，Read <code>audit_report.md</code>）</h3>
+<p>audit_report 共 <strong>12 个信号</strong>（2 🟠 高 / 6 🟡 中 / 2 🟢 低 / 2 ℹ️ 信息），无 🔴 致命：</p>
+<table>
+<thead>
+<tr>
+<th>严重度</th>
+<th style="text-align: center;">数量</th>
+<th>代表性红旗</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🔴 致命</td>
+<td style="text-align: center;">0</td>
+<td>（无）—— Altman Z=8.767（≥2.99 安全）+ Beneish M=-2.519（≤-1.78 操纵概率低）共同排除资不抵债 / 盈余操纵类致命项 [audit #9/#10]</td>
+</tr>
+<tr>
+<td>🟠 高</td>
+<td style="text-align: center;">2</td>
+<td>① <strong>Valuation — PB 历史分位</strong>：PB=22.09x，近 1 年范围 [2.45, 22.09]，处近 1 年 <strong>100% 分位</strong> [audit #1]；② <strong>Valuation — PB vs ROE 严重错配</strong>：ROE 6.9% 按 8% 资本成本理论配 PB≈0.86x，当前 22.09x = 合理 PB 的 <strong>25.7x</strong>，"市场透支预期" [audit #2]</td>
+</tr>
+<tr>
+<td>🟡 中</td>
+<td style="text-align: center;">6</td>
+<td>③ Piotroski F=5/9（资负率↑/流动比率↓/资产周转↓ 三项失分）[audit #3]；④ Buffett Quality — 存货增速 45.1% 远超营收 9.1%（差 36pp，"未来可能计提跌价准备"）[audit #4]；⑤ Shareholder Flow — 户数 +7.6%（284,513→306,048，散户涌入高位接盘）[audit #5]；⑥ Shareholder Flow — 一年内户数大幅上升（筹码分散，218,265→306,048）[audit #6]；⑦ Valuation — PS_TTM 11.20x 近 1 年 100% 分位 [audit #7]；⑧ Valuation — 股息率 0.024%（&lt;0.5%，无防御性）[audit #8]</td>
+</tr>
+<tr>
+<td>🟢 低</td>
+<td style="text-align: center;">2</td>
+<td>⑨ Beneish M=-2.519（盈余操纵概率低）[audit #9]；⑩ Altman Z=8.767（破产风险低）[audit #10]</td>
+</tr>
+<tr>
+<td>ℹ️ 信息</td>
+<td style="text-align: center;">2</td>
+<td>⑪ DuPont 最新 ROE=6.46%（净利率 3.45%×周转 0.67×杠杆 2.81）[audit #11]；⑫ DuPont 上期 ROE=5.77%（杠杆从 2.44→2.81，ROE 改善主要靠加杠杆而非经营效率）[audit #12]</td>
+</tr>
+</tbody>
+</table>
+<p>完整清单: <code>audit_report.md</code>。</p>
+<p><strong>红旗闭环追踪（每条 🟠 高级红旗须在主报告 ≥ 3 处出现）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>红旗</th>
+<th>闭环处 1（§一 Top 3）</th>
+<th>闭环处 2（§六）</th>
+<th>闭环处 3（§四 / §五）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🟠 #1 PB 100% 分位（22.09x）</td>
+<td>→ 提示 part1 §一 Top 3 风险「估值透支」引用</td>
+<td>本节 6.2 + 6.3 逻辑链节点①</td>
+<td>§四 维度 8（1.5/10）+ §五 5.3 估值异常</td>
+</tr>
+<tr>
+<td>🟠 #2 PB/ROE 错配 25.7x</td>
+<td>→ 提示 part1 §一 Top 3 风险「估值透支」引用</td>
+<td>本节 6.2 + 6.3 逻辑链节点①</td>
+<td>§四 维度 8（1.5/10）+ §五 5.3 估值异常</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>两个 🟠 高级红旗均已在 §四维度 8、§五 5.3 出现，本节 6.2/6.3 为第三处闭环，并上送 part1 §一 Top 3（估值透支条），满足"≥ 3 处闭环"。其余 🟡 中级红旗（存货积压 / 户数暴增 / 股息率 / Piotroski）在 §四维度 7/9 已引用，不强制 3 处闭环。</p>
+</blockquote>
+<h3>6.3 致命看空论证</h3>
+<blockquote>
+<p>把 6.1 触发项 + 6.2 高级红旗串成"空头核心逻辑链"。本标的 6.1 快筛 0 触发——<strong>看空不是"会死"，而是"现价买入大概率亏损"</strong>，逻辑链落在估值透支而非财务崩塌。</p>
+</blockquote>
+<p><strong>空头核心逻辑链（估值透支型，非财务暴雷型）</strong>：</p>
+<ol>
+<li>
+<p><strong>【估值锚】当前价无任何情景支撑 [§五]</strong>：概率加权 DCF 公允价 ≈ <strong>41.9 元</strong>，当前 273.0 元相对锚偏离 <strong>-84.7%</strong>（现价是公允价约 6.5 倍）；§五 5.4 投资回报测算显示 4 个情景（乐观 20%/基准 45%/悲观 28%/最差 7%）<strong>全部为负收益</strong>，即便光模块全面兑现的乐观情景仍亏 -53.3%——<strong>没有任何正收益情景</strong>。这是整条逻辑链的终点。</p>
+</li>
+<li>
+<p><strong>【红旗 🟠①+②】估值倍数三重 100% 分位 + PB/ROE 错配 [audit #1/#2/#7]</strong>：PE_TTM 245.10x（元器件 307 家分位 100%、peer 中位 85.05x 的约 2.9x）、PB 22.09x（近 1 年 100% 分位）、PS_TTM 11.20x（近 1 年 100% 分位）三项估值倍数同处历史 + 行业双高位；ROE 仅 6.9% 理论配 PB 0.86x，当前 22.09x = 合理 PB 的 <strong>25.7x</strong>。市场已将"光模块第二曲线极致兑现"完全 price-in。</p>
+</li>
+<li>
+<p><strong>【证伪脆弱性】成长叙事的承载体量极小且未经原文核实 [缺口#1]</strong>：光模块（索尔思）2025 仅并表约 14.36 亿、<strong>不足集团营收 4%</strong>；"200G EML 量产 / 供货 NVIDIA、Meta"为券商转述口径、<strong>未经 PDF 原文核实</strong>；2026 独立分部数据尚未披露。245x PE 押注的成长性，其当前体内占比与可验证性都极弱——一旦 2026 中报分部不及预期，估值向 peer 中位 85x 乃至制造业 25-30x 回归的下杀空间巨大。</p>
+</li>
+<li>
+<p><strong>【红旗 🟡④⑤⑥】筹码 + 收入质量恶化放大下杀弹性 [audit #4/#5/#6]</strong>：股东户数从 2025 年末 81,673 → 2026-05-29 <strong>306,048 户（半年增 2.7 倍）</strong>，散户高位接盘 + 筹码分散；两融余额 141.39 亿、相对近 60 日中位 +35.9%（杠杆多头拥挤）[capital_flow §5]；大宗交易折价 -7.49% [capital_flow §8]。同时存货增速 45.1% 远超营收 9.1%（差 36pp，跌价准备敞口）、应收账款 95.55 亿 +41.5%（应收/利润达 689%）、经营现金流 -17.48% 与净利 +143% 背离——收入"含金量"打折。任何回调都易触发杠杆连锁平仓踩踏。</p>
+</li>
+<li>
+<p><strong>【尾部风险，非快筛触发但需监控】商誉减值敞口 + 高杠杆 [缺口#2 / data_snapshot §2.2]</strong>：商誉 47.69 亿（+125.01%，GMD + 索尔思并表形成），首次减值测试结果待 2025 年报全文附注；资产负债率 63.69% peer 内最高、有息负债 222.33 亿、自由现金流 2026Q1 -24.01 亿（capex +96.95% 扩产烧钱）。这些虽未触发 6.1 致命阈值，但构成 §五 DCF 最差情景（7% 权重，对应股价 3.8 元）的核心下行触发项。</p>
+</li>
+</ol>
+<p><strong>结论</strong>：本标的不是"财务暴雷型"看空（快筛 6 项全 PASS、Altman/Beneish 安全），而是<strong>"估值透支型"看空</strong>——以 245x PE / 22x PB 完全押注一个占营收 &lt;4%、数据未披露、原文未核实的光模块叙事，4 情景全负收益、安全边际为负。空头逻辑的强度来自估值与基本面的 -84.7% 背离，而非资产负债表崩塌。这与 §四"中性-分歧（偏空）"的定位一致：定性三框架不翻空，量化评分 4.48/10 + 估值证据将方向拉向回避一侧。</p>
+<hr />
+</div>
+
+<!-- ============================================================
+     §七 舆情与市场情绪
+     ============================================================ -->
+<div class="section" id="sentiment">
+<h2>§七 舆情与市场情绪</h2>
+<blockquote>
+<p>舆情来源 phase1-data.md §8，合计 <strong>12 条（看好 6 + 看衰 6）</strong>，覆盖 ≥ 5 个独立平台（新浪 / 东方财富 / 同花顺 / 证券之星 / Investing / 雪球 / 证券时报）。双边均 ≥ 3 条，<strong>无单向偏差警告</strong>。</p>
+</blockquote>
+<h3>看多派声音（≥ 3 条）</h3>
+<table>
+<thead>
+<tr>
+<th>平台</th>
+<th>核心观点</th>
+<th>来源 URL</th>
+<th>日期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>新浪 / 中原电子研报</td>
+<td>"光模块与 AI PCB 双引擎驱动，有望进入高速成长期"，维持买入</td>
+<td>finance.sina.com.cn/wm/2026-04-28</td>
+<td>2026-04-28</td>
+</tr>
+<tr>
+<td>东方财富 / 东吴研报</td>
+<td>"需求带动业绩增长，AI 业务持续推进"，维持买入</td>
+<td>pdf.dfcfw.com（2026-11-09 点评）</td>
+<td>2025-11-09</td>
+</tr>
+<tr>
+<td>证券时报 stcn</td>
+<td>2025 营收首破 400 亿，光模块业务开启增长新周期</td>
+<td>stcn.com/article/detail/3777761</td>
+<td>2026-04</td>
+</tr>
+<tr>
+<td>新浪财经</td>
+<td>转型 AI 算力光模块成第二增长曲线</td>
+<td>finance.sina.com.cn/roll/2026-04-09</td>
+<td>2026-04-09</td>
+</tr>
+<tr>
+<td>国盛证券点评</td>
+<td>维持买入；索尔思自筹约 81 亿在常州扩建光芯片 + 高速光模块产线</td>
+<td>caifuhao.eastmoney.com（转述）</td>
+<td>2026-06-17</td>
+</tr>
+<tr>
+<td>股百科</td>
+<td>业绩暴增 152% 背后，光模块成新增长引擎</td>
+<td>aigbk.com</td>
+<td>2026-04</td>
+</tr>
+</tbody>
+</table>
+<p><strong>看多派共识</strong>：押注 AI 光模块（索尔思）第二曲线 + AI PCB 双引擎成长性，认为高增速可消化高估值（看多统计：<strong>6 条 / ≥ 4 平台</strong>）。</p>
+<h3>看空派声音（≥ 3 条）</h3>
+<table>
+<thead>
+<tr>
+<th>平台</th>
+<th>核心观点</th>
+<th>来源 URL</th>
+<th>日期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>同花顺 10jqka</td>
+<td>"光模块业务能否扛起 200 倍市盈率？"——估值与基本面背离质疑</td>
+<td>stock.10jqka.com/20260603</td>
+<td>2026-06-03</td>
+</tr>
+<tr>
+<td>东财财富号（风险分析）</td>
+<td>2026 动态 PE 75.8x 显著高于国内龙头均值 48x、海外安费诺 32x；股价已 price-in 全年乐观预期，若 Q2/中报小幅不及预期易杀估值，短期回撤 20-30%</td>
+<td>caifuhao.eastmoney.com/news/20260615</td>
+<td>2026-06-15</td>
+</tr>
+<tr>
+<td>证券之星（一季报简析）</td>
+<td>应收账款 +41.5% &gt; 营收增速；应收/利润达 <strong>689%</strong>；有息资负率 32.3%；货币资金/流动负债仅 59.24%，短期偿债承压</td>
+<td>stock.stockstar.com/RB2026042900023475</td>
+<td>2026-04-29</td>
+</tr>
+<tr>
+<td>Investing.com（分析师汇总）</td>
+<td>12 个月平均目标价 <strong>92.17 元（vs 现价 273）</strong>，低估计 30 元，隐含约 -36% 下行</td>
+<td>investing.com/equities/suzhou-dongshan-a</td>
+<td>2026-06</td>
+</tr>
+<tr>
+<td>雪球（散户预测帖）</td>
+<td>2026Q1 后大胆预测 2026-2030，存在过度乐观外推风险</td>
+<td>xueqiu.com/9455959526/384987366</td>
+<td>2026-04</td>
+</tr>
+<tr>
+<td>行业风险（多源）</td>
+<td>云厂商下调 AI capex / 光模块砍单 + 上游关键原材料供给短缺涨价</td>
+<td>caifuhao.eastmoney.com</td>
+<td>2026-06</td>
+</tr>
+</tbody>
+</table>
+<p><strong>看空派共识</strong>：质疑 200x PE 与基本面（应收/现金流/债务/商誉）背离 + 分析师目标价远低于现价（看衰统计：<strong>6 条 / ≥ 5 平台</strong>）。</p>
+<p><strong>核心多空分歧</strong>：① <strong>估值合理性</strong>——200x PE 是否被 AI 光模块成长性证明（看多）vs 应收/现金流/债务/商誉财务质量隐忧 + 光模块仅占营收 &lt;4% 未经原文核实（看空）；② <strong>目标价裂口</strong>——分析师 12 月平均目标价 92.17 元 vs 现价 273 元（隐含 -36% 至本报告 DCF 锚 -84.7%）；③ <strong>技术 vs 基本面</strong>——技术面近 1 年 +758.49%、近 60 日 +135.22% 强势超买 vs 基本面 DCF 锚 41.9 元深度高估，本报告判定为"情绪性反弹，不要追"（详见 §五 5.3）。</p>
+<h3>资金流向信号（Read <code>capital_flow.md</code> §4/§5/§6）</h3>
+<p>inline <code>capital_flow.md</code>，禁止凭记忆重写：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>信号</th>
+<th>数值 / 判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>陆股通（北向）§4</td>
+<td>数据不足</td>
+<td>最新持仓比例 N/A、20/60 日变化 N/A —— hk_hold 仅 1 行，趋势不可推（缺口#4）；旁证：香港中央结算 2026Q1 流通股东第 1（6,948.09 万股 / 3.79%，期间 +2,808.42 万股回补）[data_snapshot §6]</td>
+</tr>
+<tr>
+<td>两融杠杆 §5</td>
+<td>🔴 杠杆多头拥挤</td>
+<td>最新融资余额 <strong>1,413,875 万元（141.39 亿）</strong>，相对近 60 日中位数 <strong>+35.9%</strong> —— 若股价回调可能连锁平仓</td>
+</tr>
+<tr>
+<td>主力资金流 §6</td>
+<td>⚪ 近 20 日拉锯</td>
+<td>近 20 日主力净流入天数 <strong>9 / 20（45.0%）</strong>，净流入累计 <strong>-4,746 万元</strong>（口径：主力 = 超大单 + 大单）</td>
+</tr>
+<tr>
+<td>龙虎榜机构 §7</td>
+<td>🟢 机构净买入</td>
+<td>近 30 日上榜 3 次，机构席位净买入 872,893 万元（注：与户数暴增 / 大宗折价背离，机构信号混杂）</td>
+</tr>
+<tr>
+<td>大宗交易 §8</td>
+<td>🔴 显著折价</td>
+<td>近 60 日 3 笔，平均折溢价 <strong>-7.49%</strong>（抛售压力 / 机构低吸）</td>
+</tr>
+<tr>
+<td>筹码集中度 §3</td>
+<td>🔴 筹码分散</td>
+<td>户数 20260529 = <strong>306,048</strong>（环比 +7.57%），户均 3,991 股（环比 -7.04%）—— 散户涌入、机构退出</td>
+</tr>
+</tbody>
+</table>
+<p><strong>资金面综合</strong>：两融拥挤 🔴 + 大宗折价 🔴 + 筹码分散 🔴 三项偏空，龙虎榜机构净买入 🟢 为对冲信号，主力近 20 日拉锯 ⚪。整体偏向"高位散户 + 杠杆涌入、机构信号混杂"的脆弱筹码结构，与 §六 6.3 逻辑链节点 4（下杀弹性放大）互证。北向时序因数据不足无法定向（缺口#4，传 §八）。</p>
+<hr />
+</div>
+
+<!-- ============================================================
+     §八 数据来源与信息缺口
+     ============================================================ -->
+<div class="section" id="sources">
+<h2>§八 数据来源与信息缺口</h2>
+<p><strong>截止日期</strong>: 2026-06-20（行情数据截至 20260618 收盘 / 最新财报期 2026Q1，end_date=20260331）。<strong>关键待披露</strong>: 2026 中报（约 2026-08，决定光模块独立分部能否证明 245x PE）+ 2025 年报全文附注（商誉减值测试 / 应收账龄）。</p>
+<h3>数据来源（3 类分组）</h3>
+<h4>[Tushare API]</h4>
+<ul>
+<li><strong>结构化财务</strong>: income / balancesheet / cashflow / fina_indicator（22/21/29/24 行，20211231~20260331），多年趋势 18 期完整表见 <code>data_snapshot.md §3</code>。</li>
+<li><strong>行情与估值</strong>: daily（724 行，20230621~20260618）/ daily_basic（266 行）—— 收盘 273.0、PE_TTM 245.10、PB 22.09、PS_TTM 11.20、股息率 0.024%。</li>
+<li><strong>股东与治理</strong>: top10_holders / top10_floatholders（各 ≥111 行，4 期）/ stk_holdernumber（157 行，户数时序至 20260529）/ pledge_detail（548 条质押）/ forecast_vip（54 行）/ express_vip / dividend / repurchase / fina_mainbz（94 行分部）。</li>
+<li><strong>资金面</strong>: moneyflow / margin_detail / hk_hold / top_list / top_inst / block_trade（capital_flow.md 6 段口径）。</li>
+<li><strong>审计</strong>: audit_report.md（11 大师框架 12 信号，由 <code>scripts.financial_audit</code> 产出）。</li>
+</ul>
+<h4>[PDF 原文]</h4>
+<ul>
+<li><strong>2024 年度报告全文</strong>（3.6MB，<code>raw_data/pdfs/annual_2024_full.pdf</code>）：MD&amp;A（P.11-15）/ 风险因素（P.35-37）/ 主要子公司（P.34）/ 非经常性损益（P.9）/ 十大股东（P.67-68）。</li>
+<li><strong>2025 年度报告摘要</strong>（<code>annual_2025_summary.pdf</code>）：非经常性损益 + 分季度净利分布（P.6）/ 战略并购 + H 股（P.8）/ 十大股东 + 质押（P.7）。</li>
+<li><strong>2026 第一季度报告</strong>（<code>q1_2026.pdf</code>）：主要财务数据（P.1）/ 非经常性损益（P.2）/ 十大股东（P.4）。</li>
+<li>高价值事实锚点 12 行（带 [PDF:页码]）见 <code>phase2-documents.md §8</code>。</li>
+</ul>
+<h4>[WebSearch]</h4>
+<ul>
+<li>行业景气：2026 中国光模块市场破 400 亿 / 全球近 190 亿美元、800G 上修 3,350 万只、1.6T 商用元年 [eet-china.com / chyxx.com]；CPO 渗透 [zhihu]；高频低损耗基材 [ibpcb.com]。</li>
+<li>券商口径（<strong>部分未经 PDF 原文核实</strong>）：东山"唯一 200G EML 大规模量产 / 供货 NVIDIA、Meta" [aigbk.com / sina.com.cn]；索尔思常州 81 亿扩产 [caifuhao.eastmoney.com]。</li>
+<li>舆情 12 条（看好 6 + 看衰 6）+ 分析师目标价 92.17 元 [investing.com] —— 见 §七。</li>
+</ul>
+<p><strong>详细来源清单见 <code>phase1-data.md</code> §11</strong>（所有关键财务数字来自 [Tushare:<em>] / [PDF:</em>]，WebSearch 仅用于舆情 / 行业 / 券商口径，转述未核实处已显式标注）。</p>
+<h3>信息缺口与尽调优先级（≥ 3 条）</h3>
+<p>承接 <code>phase1-data.md §11</code>，5 条缺口不精简字段，新增"是否已被替代来源覆盖"判断：</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>缺口</th>
+<th style="text-align: center;">状态</th>
+<th style="text-align: center;">可得性</th>
+<th>影响的结论 / 是否已被替代来源覆盖</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>索尔思 / 光模块 2026 独立分部营收与毛利率</td>
+<td style="text-align: center;">⚠️ 部分</td>
+<td style="text-align: center;">中（等 2026 中报 / 年报分部披露）</td>
+<td>§四增长质量 / §五 DCF 光模块假设 / 245x PE 是否被成长性证明。<strong>替代覆盖</strong>：仅 2025 全年 fina_mainbz 有"光模块约 14.36 亿、毛利率 36.74%"，2026 季度无拆分；券商口径仅预测（未核实）。<strong>最关键单点事件，决定看空逻辑链节点 3 是否成立</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>商誉 47.69 亿（+125%）被收购方明细与减值测试假设</td>
+<td style="text-align: center;">❌ 未找到</td>
+<td style="text-align: center;">中（年报全文财务附注，本次仅取到摘要）</td>
+<td>§六风险（商誉减值敞口，6.3 节点 5）/ §五 DCF 最差情景触发项。<strong>替代覆盖</strong>：仅 balancesheet 总额 + WebSearch GMD+索尔思合计投资约 67.49 亿，无 CGU 划分 / 折现率，<strong>未被有效替代</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>2025 年报全文（非摘要）MD&amp;A + 完整财务附注</td>
+<td style="text-align: center;">⚠️ 部分</td>
+<td style="text-align: center;">高（cninfo 必有，需精确文档号 / SZSE 公告号）</td>
+<td>§四/§六/§七 全部 PDF 原文交叉验证。<strong>替代覆盖</strong>：已用 2025 摘要 + 2024 年报全文（MD&amp;A/risks/子公司）作替代源，2025 全文待补；<strong>最高优先级</strong>，解决可连带补齐 #1/#2/#5</td>
+</tr>
+<tr>
+<td>4</td>
+<td>北向资金（陆股通）个股持股时序</td>
+<td style="text-align: center;">⚠️ 部分</td>
+<td style="text-align: center;">中（hk_hold 接口对该标的返回稀疏，可换 moneyflow_hsgt 整体口径近似）</td>
+<td>§七资金流向信号（capital_flow §4 数据不足）。<strong>替代覆盖</strong>：hk_hold 仅 1 行趋势不可推；旁证用 top10_floatholders 香港中央结算持股变动（2026Q1 +2,808 万股）部分替代</td>
+</tr>
+<tr>
+<td>5</td>
+<td>应收账款账龄 + 前五大客户集中度具体占比</td>
+<td style="text-align: center;">❌ 未找到</td>
+<td style="text-align: center;">中（年报全文应收附注有账龄表，待 2025 全文补）</td>
+<td>§七应收风险量化（应收/利润 689%）/ §三客户集中度风险。<strong>替代覆盖</strong>：年报仅定性"前五大占比较高"无数字，证券之星给比率无账龄，<strong>未被有效替代</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>★ 5 条缺口：2 条 ❌ 未找到（#2 商誉减值假设 / #5 应收账龄）、3 条 ⚠️ 部分（#1/#3/#4）。最高优先级为 <strong>#3（2025 年报全文）</strong>，其解决可连带补齐 #1/#2/#5。缺口主要削弱光模块成长性验证与商誉减值量化的精度，但不改变 §六快筛 PASS 与 §五"严重高估"的结论方向（结论对这些缺口不敏感——即便光模块分部数据全部利好，§五乐观情景 20% 权重已对应该预期且仍亏 -53.3%）。</p>
+</blockquote>
+<hr />
+<p><em>本报告由 Claude Code company-analysis skill 生成。禁止用于实际投资决策，仅作研究参考。</em></p>
+</div>
+
+<!-- ============================================================
+     附录/补丁章节追加区(避免 MD→HTML 内容丢失)
+     主报告 §八 之后的所有 ## 章节 Phase 6 Part B 必须追加到这里, 不得丢弃
+     ============================================================ -->
+<!-- 无附录章节 -->
+
+<footer>
+  本报告由 Claude Code company-analysis skill vv6.0 生成 · 结构化数据 + 11 大师框架审计<br>
+  数据源：Tushare Pro / yfinance / 巨潮资讯 PDF / WebSearch · 不构成投资建议<br>
+  <a href="https://github.com/leafpaper/claude-company-analysis">skill 代码</a> · <a href="https://github.com/leafpaper/Inves-Report">报告归档</a>
+</footer>
+
+</div>
+</body>
+</html>
