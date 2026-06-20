@@ -187,7 +187,8 @@ def main():
             hist = []
     hist = [h for h in hist if h.get("date") != today]
     hist.append({"date": today, "acctPnLPct": perf.get("totalPnLPct"), "acctPnLCNY": perf.get("totalPnLCNY"),
-                 "openPnLPct": pnlPct, "netAssetsCNY": round(net_cny, 2)})
+                 "acctAssetCNY": perf.get("currentAssetCNY"), "openPnLPct": pnlPct, "netAssetsCNY": round(net_cny, 2)})
+    hist.sort(key=lambda h: h.get("date", ""))
     hist.sort(key=lambda h: h.get("date", ""))
     with open(HIST, "w", encoding="utf-8") as f:
         json.dump(hist, f, ensure_ascii=False, indent=2)

@@ -154,23 +154,27 @@ function PnlJourney({ performance, totals, history }){
   const acctCol = acctPos ? 'var(--bull-strong)' : 'var(--bear-strong)';
   const openPos = (Number(t.pnlCNY)||0) >= 0;
   const openCol = openPos ? 'var(--bull-strong)' : 'var(--bear-strong)';
-  const pts = (history||[]).filter(h=>h && typeof h.acctPnLPct==='number');
-  let chart = null;
+  const pts = (history||[]).filter(h=>h && typeof h.acctAssetCNY==='number');
+  let chart = null, cap = null;
   if(pts.length){
-    const W=640,H=110,pad=16;
-    const vals = pts.map(h=>h.acctPnLPct).concat([0]);
+    const W=640,H=120,pad=16;
+    const vals = pts.map(h=>h.acctAssetCNY);
     const mn=Math.min.apply(null,vals), mx=Math.max.apply(null,vals);
     const span=(mx-mn)||1;
+    const up = pts.length<2 || pts[pts.length-1].acctAssetCNY >= pts[0].acctAssetCNY;
+    const lc = up ? 'var(--bull-strong)' : 'var(--bear-strong)';
     const X = (i)=> pad + (pts.length<=1 ? (W-2*pad)/2 : i*(W-2*pad)/(pts.length-1));
     const Y = (v)=> pad + (mx-v)/span*(H-2*pad);
-    const line = pts.map((h,i)=>`${X(i).toFixed(1)},${Y(h.acctPnLPct).toFixed(1)}`).join(' ');
+    const line = pts.map((h,i)=>`${X(i).toFixed(1)},${Y(h.acctAssetCNY).toFixed(1)}`).join(' ');
+    const area = `${pad},${(H-pad)} ` + line + ` ${(W-pad).toFixed(1)},${(H-pad)}`;
     chart = (
-      <svg viewBox={`0 0 ${W} ${H}`} width="100%" height="110" preserveAspectRatio="none" style={{display:'block',marginTop:4}}>
-        <line x1={pad} x2={W-pad} y1={Y(0)} y2={Y(0)} stroke="var(--border-2)" strokeDasharray="4 4" strokeWidth="1"/>
-        {pts.length>=2 && <polyline points={line} fill="none" stroke={acctCol} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round"/>}
-        {pts.map((h,i)=>(<circle key={i} cx={X(i)} cy={Y(h.acctPnLPct)} r={i===pts.length-1?4:2.5} fill={acctCol}/>))}
+      <svg viewBox={`0 0 ${W} ${H}`} width="100%" height="120" preserveAspectRatio="none" style={{display:'block',marginTop:6}}>
+        {pts.length>=2 && <polygon points={area} fill={lc} opacity="0.08"/>}
+        {pts.length>=2 && <polyline points={line} fill="none" stroke={lc} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round"/>}
+        {pts.map((h,i)=>(<circle key={i} cx={X(i)} cy={Y(h.acctAssetCNY)} r={i===pts.length-1?4:2} fill={lc}/>))}
       </svg>
     );
+    cap = (<div style={{fontSize:11,color:'var(--text-3)',marginTop:4}}>净值走势 · {pts[0].date} ¥{fmtN(pts[0].acctAssetCNY)} → 今 ¥{fmtN(pts[pts.length-1].acctAssetCNY)} · {pts.length} 个记录点(每日自动追加)</div>);
   }
   return (
     <div className="reveal" style={{background:'var(--surface)',border:'1px solid var(--border)',borderRadius:20,boxShadow:'var(--shadow-sm)',padding:'20px 24px',marginBottom:28}}>
@@ -184,6 +188,7 @@ function PnlJourney({ performance, totals, history }){
         <span style={{fontFamily:'var(--font-mono)',fontSize:18,fontWeight:700,color:acctCol}}>{acctPos?'+':'−'}{Math.abs(Number(p.totalPnLPct)||0).toFixed(2)}%</span>
       </div>
       {chart}
+      {cap}
       <div style={{fontSize:12,color:'var(--text-3)',marginTop:8,borderTop:'1px dashed var(--border)',paddingTop:8}}>
         当前持仓浮动盈亏 <span style={{fontFamily:'var(--font-mono)',fontWeight:700,color:openCol}}>{openPos?'+':'−'}¥{fmtN(Math.abs(Number(t.pnlCNY)||0))} ({openPos?'+':'−'}{Math.abs(Number(t.pnlPct)||0).toFixed(2)}%)</span> · 总成本 ¥{fmtN(t.costCNY)} → 现值 ¥{fmtN(t.grossMvCNY!=null?t.grossMvCNY:t.valueCNY)}
       </div>
