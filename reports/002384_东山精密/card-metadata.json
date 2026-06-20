@@ -1,0 +1,43 @@
+{
+  "slug": "002384_东山精密",
+  "ticker": "002384.SZ",
+  "name": "东山精密",
+  "name_cn": "东山精密",
+  "sector": "PCB/FPC + AI光模块 + 汽车零部件",
+  "market": "a",
+  "report_date": "2026-06-20",
+  "version": "v1",
+  "composite_score": 4.48,
+  "verdict": "中性-分歧（偏空）",
+  "verdict_tone": "bearish",
+  "valuation_tag": "估值锚 41.9 元",
+  "one_liner": "中性-分歧（偏空） —— 东山精密是全球 PCB/FPC 龙头并以收购索尔思切入 AI 光模块第二曲线，2026Q1 营收 +52.72%、归母净利 +143.47%、扣非 +166.99%，成长叙事真实 [data_snapshot §2.1]；但市场已用 PE_TTM 245.10x / PB 22.09x / PS 11.20x（三项均处行业或历史 100% 分位）将该叙事极致 price-in [peer_analysis §3/§4 / audit #1/#7]，而支撑估值的光模块 2025 仅并表约 14.36 亿、不足集团营收 4% 且关键叙事未经 PDF 原文核实 [metri",
+  "metrics": [
+    {
+      "label": "综合评分",
+      "value": "4.48/10",
+      "tone": "neutral"
+    },
+    {
+      "label": "期望收益",
+      "value": "-84.7%",
+      "tone": "negative"
+    },
+    {
+      "label": "估值锚",
+      "value": "41.9元",
+      "tone": "neutral"
+    }
+  ],
+  "expected_return_short": "-84.7%",
+  "badges": [
+    {
+      "label": "中性-分歧（偏空） 4.48/10",
+      "variant": "amber"
+    },
+    {
+      "label": "估值锚 41.9 元",
+      "variant": "amber"
+    }
+  ]
+}
