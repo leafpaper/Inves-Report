@@ -141,14 +141,33 @@ def main():
 
     now = datetime.datetime.utcnow()
     today = now.strftime("%Y-%m-%d")
+
+    # 账户历史业绩(含已平仓): 自开户以来的累计盈亏
+    perf = {}
+    try:
+        pa = tool(token, "profit_analysis", {"start": "2025-01-13", "end": today}) or {}
+        if pa:
+            perf = {
+                "since": pa.get("start_date") or "2025-01-13",
+                "totalPnLCNY": round(fnum(pa.get("sum_profit")) * usdcny, 2),
+                "totalPnLPct": round(fnum(pa.get("sum_profit_rate")) * 100, 2),
+                "timeWeightedPct": round(fnum(pa.get("total_time_earning_yield")) * 100, 2),
+                "currentAssetCNY": round(fnum(pa.get("current_total_asset")) * usdcny, 2),
+                "investAmountCNY": round(fnum(pa.get("invest_amount")) * usdcny, 2),
+                "tradedCount": int(fnum(pa.get("trade_stock_num"))),
+            }
+    except Exception as e:
+        sys.stderr.write("profit_analysis 获取失败: %s\n" % e)
+
     out = {
-        "schema_version": "v2",
+        "schema_version": "v3",
         "last_updated": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "base_currency": "CNY",
         "owner": OWNER,
         "source": "Longbridge",
         "fx": {"CNY": 1.0, "USD": round(usdcny, 4), "HKD": round(hkdcny, 4)},
         "cashCNY": cashCNY,
+        "performance": perf,
         "totals": {"netAssetsCNY": round(net_cny, 2), "grossMvCNY": round(valC, 2),
                    "marginCNY": cashCNY, "costCNY": round(costC, 2),
                    "pnlCNY": round(pnlC, 2), "pnlPct": pnlPct, "dayCNY": round(dayC, 2)},
@@ -167,7 +186,8 @@ def main():
         except Exception:
             hist = []
     hist = [h for h in hist if h.get("date") != today]
-    hist.append({"date": today, "netAssetsCNY": round(net_cny, 2), "pnlCNY": round(pnlC, 2), "pnlPct": pnlPct})
+    hist.append({"date": today, "acctPnLPct": perf.get("totalPnLPct"), "acctPnLCNY": perf.get("totalPnLCNY"),
+                 "openPnLPct": pnlPct, "netAssetsCNY": round(net_cny, 2)})
     hist.sort(key=lambda h: h.get("date", ""))
     with open(HIST, "w", encoding="utf-8") as f:
         json.dump(hist, f, ensure_ascii=False, indent=2)

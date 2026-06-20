@@ -1,6 +1,7 @@
 [{
     "date":  "2026-06-20",
-    "netAssetsCNY":  1700275.8,
-    "pnlCNY":  -1087767.22,
-    "pnlPct":  -29.34
+    "acctPnLPct":  34.09,
+    "acctPnLCNY":  432385.65,
+    "openPnLPct":  -29.34,
+    "netAssetsCNY":  1700275.8
 }]
