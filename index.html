@@ -147,6 +147,7 @@ function pickReports(json){ return (json && Array.isArray(json.reports)) ? json.
 function App(){
   const [reports,setReports] = React.useState(()=> window.REPORTS_RAW ? pickReports(window.REPORTS_RAW) : []);
   const [loading,setLoading] = React.useState(true);
+  const [holdings,setHoldings] = React.useState(null);   // 真实持仓(来自 data/holdings.json); null = 用内置可编辑示例
   const [q,setQ] = React.useState('');
   const [market,setMarket] = React.useState('all');
   const [sort,setSort] = React.useState('score-desc');
@@ -155,6 +156,8 @@ function App(){
   React.useEffect(()=>{
     fetch('data/reports.json').then(r=>r.json()).then(j=>{ setReports(pickReports(j)); setLoading(false); })
       .catch(()=>{ setLoading(false); });
+    // 真实持仓: GitHub Action 从长桥同步生成 data/holdings.json; 取不到则保留内置可编辑示例
+    fetch('data/holdings.json').then(r=>r.ok?r.json():null).then(j=>{ if(j && Array.isArray(j.positions)) setHoldings(j); }).catch(()=>{});
   },[]);
 
   const counts = React.useMemo(()=>{ const c={}; reports.forEach(r=>c[r.market]=(c[r.market]||0)+1); return c; },[reports]);
@@ -214,8 +217,15 @@ function App(){
         </div>
 
         <div className="reveal" style={{animationDelay:'.4s',marginBottom:'28px'}}>
-          <HoldingsTablePro owner={HOLDINGS.owner} cash={HOLDINGS.cash} positions={HOLDINGS.positions}
-            note="手动维护持仓 · 点「✎ 编辑持仓」即可改 / 增 / 删, 改动自动保存到本机浏览器 · 不构成投资建议" />
+          {holdings ? (
+            <HoldingsTablePro key="hold-real" owner={holdings.owner||HOLDINGS.owner} cash={holdings.cashCNY||0}
+              positions={holdings.positions} fx={holdings.fx||{CNY:1}} readOnly
+              updatedLabel={holdings.last_updated ? ('更新于 '+String(holdings.last_updated).replace('T',' ').replace('Z',' UTC')+' · 来自长桥') : '来自长桥'}
+              note="实时持仓 · 来自长桥(Longbridge), 由 GitHub Action 自动同步 · 金额按当日汇率折算为人民币(¥) · 不构成投资建议" />
+          ) : (
+            <HoldingsTablePro key="hold-seed" owner={HOLDINGS.owner} cash={HOLDINGS.cash} positions={HOLDINGS.positions}
+              note="手动维护持仓 · 点「✎ 编辑持仓」即可改 / 增 / 删, 改动自动保存到本机浏览器 · 不构成投资建议" />
+          )}
         </div>
 
         <div className="toolbar">
