@@ -181,23 +181,28 @@ function PnlJourney({ performance, totals, history }){
   pts.forEach(function(h){ if(h.acctAssetCNY>peakRun) peakRun=h.acctAssetCNY; var dd=peakRun?(peakRun-h.acctAssetCNY)/peakRun:0; if(dd>maxDD){maxDD=dd;} if(h.acctAssetCNY>high){high=h.acctAssetCNY;highDate=h.date;} });
   const curV = pts.length?pts[pts.length-1].acctAssetCNY:0;
   const ddHigh = high?(high-curV)/high:0;
-  const invest = Number(p.investAmountCNY)||0;
+  const netDeposit = Number(p.netDepositCNY)||0;
+  const netAssets = Number(t.netAssetsCNY)||0;
+  const netGain = netAssets - netDeposit;
+  const netGainPct = netDeposit ? netGain/netDeposit*100 : 0;
+  const gainPos = netGain >= 0;
+  const gainCol = gainPos ? 'var(--bull-strong)' : 'var(--bear-strong)';
   return (
     <div className="reveal" style={{background:'var(--surface)',border:'1px solid var(--border)',borderRadius:20,boxShadow:'var(--shadow-sm)',padding:'20px 24px',marginBottom:28}}>
       <div style={{display:'flex',alignItems:'baseline',gap:14,flexWrap:'wrap',marginBottom:8}}>
         <span style={{fontSize:13,fontWeight:700,color:'var(--text-2)'}}>📈 盈亏路程 · 账户总览</span>
         {p.since && <span style={{marginLeft:'auto',fontFamily:'var(--font-mono)',fontSize:12,color:'var(--text-3)'}}>自 {p.since} · 时间加权 {(Number(p.timeWeightedPct)||0)>=0?'+':''}{p.timeWeightedPct}% · 累计交易 {p.tradedCount} 只</span>}
       </div>
-      <div style={{display:'flex',alignItems:'baseline',gap:12}}>
-        <span style={{fontSize:12,color:'var(--text-3)'}}>账户累计盈亏</span>
-        <span style={{fontFamily:'var(--font-mono)',fontSize:30,fontWeight:900,color:acctCol}}>{acctPos?'+':'−'}¥{fmtN(Math.abs(Number(p.totalPnLCNY)||0))}</span>
-        <span style={{fontFamily:'var(--font-mono)',fontSize:18,fontWeight:700,color:acctCol}}>{acctPos?'+':'−'}{Math.abs(Number(p.totalPnLPct)||0).toFixed(2)}%</span>
+      <div style={{display:'flex',alignItems:'baseline',gap:12,flexWrap:'wrap'}}>
+        <span style={{fontSize:12,color:'var(--text-3)'}}>当前净值</span>
+        <span style={{fontFamily:'var(--font-mono)',fontSize:30,fontWeight:900,color:'var(--text)'}}>¥{fmtN(netAssets)}</span>
+        <span style={{fontFamily:'var(--font-mono)',fontSize:18,fontWeight:700,color:gainCol}}>{gainPos?'+':'−'}¥{fmtN(Math.abs(netGain))} ({gainPos?'+':'−'}{Math.abs(netGainPct).toFixed(1)}%)</span>
       </div>
+      <div style={{fontSize:12,color:'var(--text-3)',marginTop:4,fontFamily:'var(--font-mono)'}}>投入本金(净入金) ¥{fmtN(netDeposit)} · 长桥口径累计收益 {(Number(p.totalPnLPct)||0)>=0?'+':''}{p.totalPnLPct}%</div>
       {chart}
       {cap}
       {pts.length>=2 && (
         <div style={{display:'flex',gap:'6px 20px',flexWrap:'wrap',fontFamily:'var(--font-mono)',fontSize:12,marginTop:8,color:'var(--text-2)'}}>
-          <span><span style={{color:'var(--text-3)'}}>投入本金 </span>¥{fmtN(invest)}</span>
           <span><span style={{color:'var(--text-3)'}}>历史最高 </span>¥{fmtN(high)} <span style={{color:'var(--text-3)',fontSize:10}}>{highDate}</span></span>
           <span><span style={{color:'var(--text-3)'}}>距高点回撤 </span><span style={{color:'var(--bear-strong)',fontWeight:700}}>−¥{fmtN(high-curV)} (−{(ddHigh*100).toFixed(1)}%)</span></span>
           <span><span style={{color:'var(--text-3)'}}>历史最大回撤 </span><span style={{color:'var(--bear-strong)',fontWeight:700}}>−{(maxDD*100).toFixed(1)}%</span></span>
