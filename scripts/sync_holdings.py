@@ -40,10 +40,10 @@ def mcp_call(token, method, params, _id=1):
     req.add_header("Authorization", "Bearer " + token)
     with urllib.request.urlopen(req, timeout=40) as r:
         raw = r.read().decode("utf-8")
-    # 兼容 SSE: 取 data: 行
-    for line in raw.splitlines():
-        if line.startswith("data:"):
-            return json.loads(line[5:].strip())
+    # 兼容 SSE: 拼接所有 data: 行 (大响应可能分块)
+    datas = [ln[5:].strip() for ln in raw.splitlines() if ln.startswith("data:")]
+    if datas:
+        return json.loads("".join(datas))
     return json.loads(raw)
 
 
@@ -70,6 +70,28 @@ def fx_cny(ccy):
             return float(json.loads(r.read().decode("utf-8"))["rates"]["CNY"])
     except Exception:
         return {"USD": 7.18, "HKD": 0.92}.get(ccy, 1.0)
+
+
+def net_deposit_cny(token, usdcny, hkdcny):
+    """真实净入金本金 = sum(Deposit Cash) - sum(Withdraw), 折算成 CNY。"""
+    try:
+        end = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+        cf = tool(token, "cash_flow", {"start_at": "2025-01-01T00:00:00Z", "end_at": end})
+    except Exception as e:
+        sys.stderr.write("cash_flow 获取失败: %s\n" % e)
+        return 0
+    if not isinstance(cf, list):
+        return 0
+    total = 0.0
+    for it in cf:
+        nm = it.get("transaction_flow_name") or ""
+        amt = abs(fnum(it.get("balance")))
+        rate = hkdcny if it.get("currency") == "HKD" else usdcny
+        if "Deposit Cash" in nm:
+            total += amt * rate
+        elif "Withdraw" in nm:
+            total -= amt * rate
+    return round(total, 2)
 
 
 def main():
@@ -99,6 +121,8 @@ def main():
             sq[q["symbol"]] = q
 
     usdcny = fx_cny("USD")
+    if not (6.9 <= usdcny <= 7.5):   # frankfurter 的 CNY 偶尔不可靠, 夹逼到合理区间
+        usdcny = 7.18
 
     positions = []
     valC = costC = dayC = 0.0
@@ -135,7 +159,7 @@ def main():
             net_hkd = fnum(bal[0].get("net_assets"))
     except Exception as e:
         sys.stderr.write("account_balance 获取失败: %s\n" % e)
-    hkdcny = fx_cny("HKD")
+    hkdcny = round(usdcny / 7.8, 4)   # 港币联系汇率(USD/HKD≈7.8), 比 frankfurter 的 HKD/CNY 准
     net_cny = net_hkd * hkdcny
     cashCNY = round(net_cny - valC, 2) if net_hkd else 0   # 使 总资产 = 持仓市值 + 现金/融资 = 净资产
 
@@ -158,6 +182,8 @@ def main():
             }
     except Exception as e:
         sys.stderr.write("profit_analysis 获取失败: %s\n" % e)
+
+    perf["netDepositCNY"] = net_deposit_cny(token, usdcny, hkdcny)
 
     out = {
         "schema_version": "v3",

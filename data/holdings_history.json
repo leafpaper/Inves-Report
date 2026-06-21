@@ -1,110 +1,107 @@
 [
-  {
-    "date": "2025-01-31",
-    "acctPnLPct": -3.37,
-    "acctAssetCNY": 962377.77
-  },
-  {
-    "date": "2025-02-28",
-    "acctPnLPct": -31.95,
-    "acctAssetCNY": 677814.27
-  },
-  {
-    "date": "2025-03-31",
-    "acctPnLPct": -44.85,
-    "acctAssetCNY": 549189.45
-  },
-  {
-    "date": "2025-04-30",
-    "acctPnLPct": -37.33,
-    "acctAssetCNY": 623981.55
-  },
-  {
-    "date": "2025-05-31",
-    "acctPnLPct": -1.17,
-    "acctAssetCNY": 646167.86
-  },
-  {
-    "date": "2025-06-30",
-    "acctPnLPct": -46.16,
-    "acctAssetCNY": 352018.97
-  },
-  {
-    "date": "2025-07-31",
-    "acctPnLPct": -38.69,
-    "acctAssetCNY": 497074.71
-  },
-  {
-    "date": "2025-08-31",
-    "acctPnLPct": -6.52,
-    "acctAssetCNY": 757899.9
-  },
-  {
-    "date": "2025-09-30",
-    "acctPnLPct": -0.67,
-    "acctAssetCNY": 1272678.76
-  },
-  {
-    "date": "2025-10-31",
-    "acctPnLPct": -11.59,
-    "acctAssetCNY": 1120805.93
-  },
-  {
-    "date": "2025-11-30",
-    "acctPnLPct": 39.12,
-    "acctAssetCNY": 1764016.22
-  },
-  {
-    "date": "2025-12-31",
-    "acctPnLPct": 34.3,
-    "acctAssetCNY": 1702834.61
-  },
-  {
-    "date": "2026-01-31",
-    "acctPnLPct": 21.28,
-    "acctAssetCNY": 1538311.38
-  },
-  {
-    "date": "2026-02-28",
-    "acctPnLPct": 5.12,
-    "acctAssetCNY": 1333288.1
-  },
-  {
-    "date": "2026-03-31",
-    "acctPnLPct": 7.51,
-    "acctAssetCNY": 1363650.1
-  },
-  {
-    "date": "2026-04-15",
-    "acctPnLPct": 35.43,
-    "acctAssetCNY": 1717715.7
-  },
-  {
-    "date": "2026-04-30",
-    "acctPnLPct": 58.49,
-    "acctAssetCNY": 2010156.16
-  },
-  {
-    "date": "2026-05-15",
-    "acctPnLPct": 80.53,
-    "acctAssetCNY": 2289788.29
-  },
-  {
-    "date": "2026-05-31",
-    "acctPnLPct": 183.68,
-    "acctAssetCNY": 3598620.47
-  },
-  {
-    "date": "2026-06-10",
-    "acctPnLPct": 95.57,
-    "acctAssetCNY": 2480921.17
-  },
-  {
-    "date": "2026-06-20",
-    "acctPnLPct": 34.09,
-    "acctPnLCNY": 458618.91,
-    "acctAssetCNY": 1804118.24,
-    "openPnLPct": -29.34,
-    "netAssetsCNY": 1811380.35
-  }
+    {
+        "date":  "2025-01-31",
+        "acctPnLPct":  -3.37,
+        "acctAssetCNY":  1020766.17
+    },
+    {
+        "date":  "2025-02-28",
+        "acctPnLPct":  -31.95,
+        "acctAssetCNY":  718937.92
+    },
+    {
+        "date":  "2025-03-31",
+        "acctPnLPct":  -44.85,
+        "acctAssetCNY":  582509.31
+    },
+    {
+        "date":  "2025-04-30",
+        "acctPnLPct":  -37.33,
+        "acctAssetCNY":  661839.12
+    },
+    {
+        "date":  "2025-05-31",
+        "acctPnLPct":  -1.17,
+        "acctAssetCNY":  685371.5
+    },
+    {
+        "date":  "2025-06-30",
+        "acctPnLPct":  -46.16,
+        "acctAssetCNY":  373376.3
+    },
+    {
+        "date":  "2025-07-31",
+        "acctPnLPct":  -38.69,
+        "acctAssetCNY":  527232.71
+    },
+    {
+        "date":  "2025-08-31",
+        "acctPnLPct":  -6.52,
+        "acctAssetCNY":  803882.42
+    },
+    {
+        "date":  "2025-09-30",
+        "acctPnLPct":  -0.67,
+        "acctAssetCNY":  1349893.42
+    },
+    {
+        "date":  "2025-10-31",
+        "acctPnLPct":  -11.59,
+        "acctAssetCNY":  1188806.31
+    },
+    {
+        "date":  "2025-11-30",
+        "acctPnLPct":  39.12,
+        "acctAssetCNY":  1871040.8
+    },
+    {
+        "date":  "2025-12-31",
+        "acctPnLPct":  34.3,
+        "acctAssetCNY":  1806147.24
+    },
+    {
+        "date":  "2026-01-31",
+        "acctPnLPct":  21.28,
+        "acctAssetCNY":  1631642.22
+    },
+    {
+        "date":  "2026-02-28",
+        "acctPnLPct":  5.12,
+        "acctAssetCNY":  1414179.98
+    },
+    {
+        "date":  "2026-03-31",
+        "acctPnLPct":  7.51,
+        "acctAssetCNY":  1446384.08
+    },
+    {
+        "date":  "2026-04-15",
+        "acctPnLPct":  35.43,
+        "acctAssetCNY":  1821931.17
+    },
+    {
+        "date":  "2026-04-30",
+        "acctPnLPct":  58.49,
+        "acctAssetCNY":  2132114.28
+    },
+    {
+        "date":  "2026-05-15",
+        "acctPnLPct":  80.53,
+        "acctAssetCNY":  2428711.97
+    },
+    {
+        "date":  "2026-05-31",
+        "acctPnLPct":  183.68,
+        "acctAssetCNY":  3816952.26
+    },
+    {
+        "date":  "2026-06-10",
+        "acctPnLPct":  95.57,
+        "acctAssetCNY":  2631441.06
+    },
+    {
+        "date":  "2026-06-20",
+        "acctPnLPct":  34.09,
+        "acctAssetCNY":  1804118.24
+    }
 ]
