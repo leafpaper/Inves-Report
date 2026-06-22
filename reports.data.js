@@ -1,47 +1,46 @@
-﻿// 本地预览兜底数据 (内容 = data/reports.json 快照)。线上以实时 fetch data/reports.json 为准。
-window.REPORTS_RAW = {
+﻿window.REPORTS_RAW = {
   "schema_version": "v1",
-  "last_updated": "2026-06-20",
+  "last_updated": "2026-06-22",
   "reports": [
     {
       "slug": "002384_东山精密",
       "ticker": "002384.SZ",
       "name": "东山精密",
       "name_cn": "东山精密",
-      "sector": "PCB/FPC + AI光模块 + 汽车零部件",
+      "sector": "PCB+光模块",
       "market": "a",
-      "report_date": "2026-06-20",
+      "report_date": "2026-06-22",
       "version": "v1",
-      "composite_score": 4.48,
-      "verdict": "中性-分歧（偏空）",
-      "verdict_tone": "bearish",
-      "valuation_tag": "估值锚 41.9 元",
-      "one_liner": "中性-分歧（偏空） —— 东山精密是全球 PCB/FPC 龙头并以收购索尔思切入 AI 光模块第二曲线，2026Q1 营收 +52.72%、归母净利 +143.47%、扣非 +166.99%，成长叙事真实 [data_snapshot §2.1]；但市场已用 PE_TTM 245.10x / PB 22.09x / PS 11.20x（三项均处行业或历史 100% 分位）将该叙事极致 price-in [peer_analysis §3/§4 / audit #1/#7]，而支撑估值的光模块 2025 仅并表约 14.36 亿、不足集团营收 4% 且关键叙事未经 PDF 原文核实 [metri",
+      "composite_score": 4.95,
+      "verdict": "等证据临界",
+      "verdict_tone": "neutral",
+      "valuation_tag": "估值锚 89.0 元",
+      "one_liner": "中性-分歧 —— 东山可能是一家好公司，但现价 273 元不是一笔好下注。光模块（索尔思 200G EML）第二曲线真实、卡位 AI 算力光互联的结构性景气，但它 FY2025 仅占集团营收 3.58%，独立证据尚未达到临界密度；而市场已用 PE TTM 242.9x（全行业最贵）把\"完美未来\"完整定价进股价，叙事溢价占现价市值约 80% 且是必须交付的义务、不是免费期权。结论是好公司、好下注、好价格三者必须分开判——现价买的是已经买完的完美未来，不是状态迁移尚未定价的机会。",
       "metrics": [
         {
           "label": "综合评分",
-          "value": "4.48/10",
+          "value": "4.95/10",
           "tone": "neutral"
         },
         {
           "label": "期望收益",
-          "value": "-84.7%",
+          "value": "-67%",
           "tone": "negative"
         },
         {
           "label": "估值锚",
-          "value": "41.9元",
+          "value": "89.0元",
           "tone": "neutral"
         }
       ],
-      "expected_return_short": "-84.7%",
+      "expected_return_short": "-67%",
       "badges": [
         {
-          "label": "中性-分歧（偏空） 4.48/10",
+          "label": "等证据临界 4.95/10",
           "variant": "amber"
         },
         {
-          "label": "估值锚 41.9 元",
+          "label": "估值锚 89.0 元",
           "variant": "amber"
         }
       ]
