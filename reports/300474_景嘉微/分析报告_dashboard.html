@@ -1,0 +1,3355 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>景嘉微（300474）投资分析报告 — 2026-06-22</title>
+<style>
+/* ============================================================
+   Claude Code Company Analysis · Report Styles v4.6
+   单一 CSS 真相源 — 由 assets/html/base.html 加载并内联
+   禁止在 Phase 6 Part B 中自创颜色值或变量名
+   v4.6: Goldman 蓝调 + Morningstar 卡片化 + Bloomberg 风险等级
+   ============================================================ */
+
+:root {
+  /* 主色 — Goldman 深蓝 */
+  --c-primary: #1a56db;
+  --c-primary-light: #e8effc;
+  --c-primary-dark: #0f3d99;
+  --c-accent: #d97f3c;
+
+  /* Bloomberg 风格风险等级(高对比) */
+  --c-risk-red:    #dc2626;
+  --c-risk-red-bg: #fef2f2;
+  --c-risk-amber:  #e8a33a;
+  --c-risk-amber-bg: #fff7ed;
+  --c-risk-yellow: #fbbf24;
+  --c-risk-yellow-bg: #fffbeb;
+  --c-risk-green:  #059669;
+  --c-risk-green-bg: #ecfdf5;
+
+  /* 语义色 (保留 v4.3 alias) */
+  --c-green: var(--c-risk-green);
+  --c-green-bg: var(--c-risk-green-bg);
+  --c-yellow: #d97706;
+  --c-yellow-bg: #fffbeb;
+  --c-red: var(--c-risk-red);
+  --c-red-bg: var(--c-risk-red-bg);
+
+  /* 灰度系 */
+  --c-gray-50:  #f9fafb;
+  --c-gray-100: #f3f4f6;
+  --c-gray-200: #e5e7eb;
+  --c-gray-500: #6b7280;
+  --c-gray-700: #374151;
+  --c-gray-900: #111827;
+
+  /* Morningstar 卡片化灰阶 */
+  --c-card-border:  #e5e7eb;
+  --c-card-header:  #f9fafb;
+  --c-card-hover:   rgba(26,86,219,0.04);
+
+  /* 形状 */
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.06);
+  --shadow-md: 0 4px 6px rgba(0,0,0,.07), 0 2px 4px rgba(0,0,0,.06);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,.08), 0 4px 10px rgba(0,0,0,.05);
+
+  /* Variant Perception 紫 */
+  --c-variant: #7a4dab;
+  --c-variant-bg: #f3eeff;
+
+  /* v4.6 sidebar 布局 */
+  --sidebar-width: 260px;
+  --sidebar-gap: 24px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  background: var(--c-gray-50);
+  color: var(--c-gray-900);
+  margin: 0;
+  padding: 0;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+/* ---------- 3.1 Sticky 顶部导航栏 ---------- */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  height: 50px;
+  padding: 0 24px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.85);
+  border-bottom: 1px solid var(--c-gray-200);
+  font-size: 14px;
+}
+.top-nav .nav-brand {
+  font-weight: 700;
+  color: var(--c-primary);
+  text-decoration: none;
+  margin-right: auto;
+}
+.top-nav a {
+  color: var(--c-gray-700);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background .15s;
+}
+.top-nav a:hover { background: var(--c-primary-light); color: var(--c-primary); }
+
+/* ---------- Header Hero ---------- */
+header.hero {
+  background: linear-gradient(135deg, var(--c-primary), #2a6ba0);
+  color: white;
+  padding: 48px 32px;
+  border-radius: var(--radius);
+  margin-bottom: 32px;
+  box-shadow: var(--shadow-md);
+}
+header.hero h1 { font-size: 32px; margin: 0 0 8px; font-weight: 700; }
+header.hero .subtitle { opacity: 0.9; font-size: 15px; }
+header.hero .meta {
+  display: flex; flex-wrap: wrap; gap: 24px;
+  margin-top: 20px; font-size: 14px;
+}
+
+/* ---------- Section (每个 §一到§十五 一个) ---------- */
+.section {
+  background: white;
+  padding: 28px 32px;
+  margin: 20px 0;
+  border-radius: var(--radius);
+  border: 1px solid var(--c-gray-200);
+  box-shadow: var(--shadow);
+}
+.section h2 {
+  color: var(--c-primary);
+  border-bottom: 2px solid var(--c-primary-light);
+  padding-bottom: 8px;
+  margin-top: 0;
+  font-size: 22px;
+}
+.section h3 {
+  color: var(--c-primary);
+  font-size: 18px;
+  margin-top: 24px;
+  border-bottom: 1px dashed var(--c-gray-200);
+  padding-bottom: 4px;
+}
+.section h4 { color: var(--c-gray-900); font-size: 16px; margin-top: 18px; }
+
+/* ---------- 3.2 评分环形图 (SVG) ---------- */
+.score-ring {
+  display: inline-block;
+  position: relative;
+}
+.score-ring svg { display: block; }
+.score-ring .score-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.score-ring .score-text .num {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--c-primary);
+}
+.score-ring .score-text .label {
+  font-size: 11px;
+  color: var(--c-gray-500);
+}
+
+/* ---------- 3.3 维度评分条形图 ---------- */
+.dimension-bar {
+  display: grid;
+  grid-template-columns: 1fr 48px 3fr 56px;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0;
+  font-size: 14px;
+}
+.dimension-bar .dim-name { color: var(--c-gray-700); }
+.dimension-bar .dim-score { font-weight: 600; text-align: right; color: var(--c-primary); }
+.dimension-bar .dim-progress {
+  height: 10px;
+  background: var(--c-gray-100);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.dimension-bar .dim-progress .fill { height: 100%; border-radius: 5px; }
+.dimension-bar .dim-progress .fill.tier1 { background: linear-gradient(90deg, #3b82f6, #1d4ed8); }
+.dimension-bar .dim-progress .fill.tier2 { background: linear-gradient(90deg, #8b5cf6, #6d28d9); }
+.dimension-bar .dim-progress .fill.tier3 { background: linear-gradient(90deg, #f59e0b, #d97706); }
+.dimension-bar .dim-weight { text-align: right; color: var(--c-gray-500); font-size: 12px; }
+
+/* ---------- 3.4 三色情景卡片 ---------- */
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+.scenario {
+  padding: 16px;
+  border-radius: 8px;
+  border-left: 4px solid;
+}
+.scenario .label { font-size: 12px; color: var(--c-gray-500); text-transform: uppercase; letter-spacing: 1px; }
+.scenario .big-num { font-size: 28px; font-weight: 700; margin: 4px 0 8px; }
+.scenario .detail { font-size: 13px; color: var(--c-gray-700); }
+.scenario.bull { background: var(--c-green-bg); border-left-color: var(--c-green); }
+.scenario.bull .big-num { color: var(--c-green); }
+.scenario.base { background: var(--c-yellow-bg); border-left-color: var(--c-yellow); }
+.scenario.base .big-num { color: var(--c-yellow); }
+.scenario.bear { background: var(--c-red-bg); border-left-color: var(--c-red); }
+.scenario.bear .big-num { color: var(--c-red); }
+.scenario.tail { background: #2a2a2a; border-left-color: #000; color: #fff; }
+.scenario.tail .big-num { color: #fff; }
+.scenario.tail .detail { color: #ddd; }
+
+/* ---------- 3.5 期望回报高亮条 ---------- */
+.expected-return {
+  background: linear-gradient(135deg, #1e3a5f, var(--c-primary));
+  color: white;
+  padding: 20px 28px;
+  border-radius: var(--radius);
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-md);
+}
+.expected-return .label { font-size: 12px; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; }
+.expected-return .value { font-size: 36px; font-weight: 700; }
+
+/* ---------- 3.6 团队名片网格 ---------- */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+.team-card {
+  padding: 16px;
+  border: 1px solid var(--c-gray-200);
+  border-radius: 8px;
+  text-align: center;
+}
+.team-card .avatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--c-primary-light); color: var(--c-primary);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; margin: 0 auto 8px; font-size: 18px;
+}
+.team-card .name { font-weight: 600; }
+.team-card .role { color: var(--c-gray-500); font-size: 13px; margin-top: 4px; }
+
+/* ---------- 3.7 风险矩阵 ---------- */
+.risk-item {
+  display: grid;
+  grid-template-columns: 20px 1fr auto;
+  gap: 12px;
+  align-items: start;
+  padding: 12px;
+  border-left: 4px solid;
+  background: var(--c-gray-50);
+  border-radius: 6px;
+  margin: 8px 0;
+}
+.risk-item.high   { border-left-color: var(--c-red);    background: var(--c-red-bg); }
+.risk-item.medium { border-left-color: var(--c-yellow); background: var(--c-yellow-bg); }
+.risk-item.low    { border-left-color: var(--c-green);  background: var(--c-green-bg); }
+.risk-item .dot {
+  width: 12px; height: 12px; border-radius: 50%; margin-top: 4px;
+}
+.risk-item.high   .dot { background: var(--c-red); }
+.risk-item.medium .dot { background: var(--c-yellow); }
+.risk-item.low    .dot { background: var(--c-green); }
+
+/* ---------- 3.8 融资时间轴 ---------- */
+.timeline {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 24px 0;
+  overflow-x: auto;
+  padding: 8px 0;
+}
+.timeline .tl-node {
+  flex: 0 0 auto;
+  text-align: center;
+  padding: 0 14px;
+  position: relative;
+}
+.timeline .tl-node::before {
+  content: '';
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--c-gray-200); display: block; margin: 0 auto 8px;
+}
+.timeline .tl-node.current::before { background: var(--c-primary); box-shadow: 0 0 0 4px var(--c-primary-light); }
+.timeline .tl-node .year { font-size: 12px; color: var(--c-gray-500); }
+.timeline .tl-node .round { font-weight: 600; font-size: 13px; }
+.timeline .tl-node .amount { font-size: 11px; color: var(--c-gray-700); }
+
+/* ---------- 3.9 情绪量表 ---------- */
+.sentiment-bar {
+  position: relative;
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(to right, var(--c-red) 0%, var(--c-yellow) 50%, var(--c-green) 100%);
+  margin: 20px 0 32px;
+}
+.sentiment-bar .pointer {
+  position: absolute;
+  top: -8px;
+  width: 4px; height: 28px;
+  background: var(--c-gray-900);
+  border-radius: 2px;
+  transform: translateX(-50%);
+}
+.sentiment-bar .pointer::after {
+  content: attr(data-label);
+  position: absolute;
+  top: 32px; left: 50%; transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 11px;
+  background: var(--c-gray-900);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* ---------- v2 组件 · 估值区间可视化 ---------- */
+.valuation-range {
+  position: relative;
+  height: 28px;
+  background: var(--c-gray-100);
+  border-radius: 4px;
+  margin: 10px 0;
+}
+.valuation-range .range {
+  position: absolute;
+  top: 4px; bottom: 4px;
+  border-radius: 3px;
+  opacity: 0.6;
+}
+.valuation-range .range.dcf { background: var(--c-primary); }
+.valuation-range .range.comparable { background: var(--c-green); }
+.valuation-range .range.transaction { background: var(--c-yellow); }
+.valuation-range .label-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 8px;
+  align-items: center;
+  font-size: 12px;
+}
+
+/* ---------- v2 组件 · 星级评估 ---------- */
+.star-filled { color: var(--c-yellow); }
+.star-empty  { color: var(--c-gray-200); }
+
+/* ---------- v2 组件 · 信息缺口优先级 badge ---------- */
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.badge.critical { background: var(--c-red-bg);    color: var(--c-red); }
+.badge.important{ background: var(--c-yellow-bg); color: var(--c-yellow); }
+.badge.minor    { background: var(--c-green-bg);  color: var(--c-green); }
+
+/* ---------- 通用 Table ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+}
+th, td {
+  border: 1px solid var(--c-gray-200);
+  padding: 8px 12px;
+  text-align: left;
+}
+th {
+  background: var(--c-primary-light);
+  color: var(--c-primary);
+  font-weight: 600;
+}
+tr:nth-child(even) td { background: var(--c-gray-50); }
+
+/* ---------- 通用文本 ---------- */
+strong { color: var(--c-gray-900); font-weight: 600; }
+code {
+  background: var(--c-gray-100);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 12px;
+}
+blockquote {
+  border-left: 4px solid var(--c-primary);
+  padding-left: 16px;
+  color: var(--c-gray-700);
+  background: var(--c-primary-light);
+  padding: 10px 16px;
+  border-radius: 4px;
+  margin: 12px 0;
+}
+hr { border: none; border-top: 1px dashed var(--c-gray-200); margin: 24px 0; }
+ul, ol { padding-left: 22px; }
+li { margin: 4px 0; }
+a {
+  color: var(--c-primary);
+  text-decoration: none;
+  border-bottom: 1px dotted;
+}
+a:hover { color: var(--c-yellow); }
+
+footer {
+  text-align: center;
+  color: var(--c-gray-500);
+  padding: 32px 0 16px;
+  font-size: 12px;
+  border-top: 1px solid var(--c-gray-200);
+  margin-top: 48px;
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 768px) {
+  .container { padding: 20px 16px 60px; }
+  header.hero { padding: 24px 16px; }
+  header.hero h1 { font-size: 24px; }
+  .section { padding: 16px; }
+  .scenario-grid, .team-grid { grid-template-columns: 1fr; }
+  table { font-size: 12px; }
+  table th, table td { padding: 6px 8px; }
+}
+
+/* ============================================================
+   v4.6 新增: 6 个大厂风格组件
+   ============================================================ */
+
+/* ---------- v4.6-1. 前置评级卡 (Goldman 三件套) ---------- */
+.rating-trio {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: -16px 0 32px;
+}
+.rating-card {
+  background: white;
+  border: 1px solid var(--c-card-border);
+  border-top: 4px solid var(--c-primary);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  box-shadow: var(--shadow-md);
+  transition: transform .15s, box-shadow .15s;
+}
+.rating-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.rating-card--score  { border-top-color: var(--c-primary); }
+.rating-card--anchor { border-top-color: var(--c-accent); }
+.rating-card--return { border-top-color: var(--c-risk-green); }
+.rating-card--return.negative { border-top-color: var(--c-risk-red); }
+
+.rating-card .label {
+  font-size: 11px;
+  color: var(--c-gray-500);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.rating-card .value {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--c-gray-900);
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+.rating-card .value .out-of {
+  font-size: 16px;
+  color: var(--c-gray-500);
+  font-weight: 500;
+}
+.rating-card .value.negative { color: var(--c-risk-red); }
+.rating-card .value.positive { color: var(--c-risk-green); }
+.rating-card .sub {
+  font-size: 12px;
+  color: var(--c-gray-700);
+}
+
+/* ---------- v4.6-2. 彩条风险卡 (Bloomberg 等级色) ---------- */
+.risk-card-v2 {
+  display: grid;
+  grid-template-columns: 4px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 14px 16px 14px 0;
+  margin: 8px 0;
+  background: white;
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: background .15s;
+}
+.risk-card-v2:hover { background: var(--c-card-hover); }
+.risk-card-v2.risk-critical { border-left-width: 0; background: linear-gradient(to right, var(--c-risk-red-bg) 0%, white 6%); }
+.risk-card-v2.risk-high     { background: linear-gradient(to right, var(--c-risk-amber-bg) 0%, white 6%); }
+.risk-card-v2.risk-medium   { background: linear-gradient(to right, var(--c-risk-yellow-bg) 0%, white 6%); }
+.risk-card-v2.risk-low      { background: linear-gradient(to right, var(--c-risk-green-bg) 0%, white 6%); }
+.risk-card-v2 .left-bar { align-self: stretch; width: 4px; }
+.risk-card-v2.risk-critical .left-bar { background: var(--c-risk-red); }
+.risk-card-v2.risk-high     .left-bar { background: var(--c-risk-amber); }
+.risk-card-v2.risk-medium   .left-bar { background: var(--c-risk-yellow); }
+.risk-card-v2.risk-low      .left-bar { background: var(--c-risk-green); }
+.risk-card-v2 .title { font-weight: 600; color: var(--c-gray-900); margin-bottom: 3px; }
+.risk-card-v2 .body  { font-size: 13px; color: var(--c-gray-700); line-height: 1.5; }
+.risk-card-v2 .sev-badge {
+  font-size: 10px; font-weight: 700; padding: 3px 10px;
+  border-radius: 12px; white-space: nowrap; letter-spacing: .5px;
+}
+.risk-card-v2.risk-critical .sev-badge { background: var(--c-risk-red);    color: white; }
+.risk-card-v2.risk-high     .sev-badge { background: var(--c-risk-amber);  color: white; }
+.risk-card-v2.risk-medium   .sev-badge { background: var(--c-risk-yellow); color: var(--c-gray-900); }
+.risk-card-v2.risk-low      .sev-badge { background: var(--c-risk-green);  color: white; }
+
+/* ---------- v4.6.2. Preamble 区 (hero 之后、rating-trio 之前) ---------- */
+.preamble {
+  background: var(--c-gray-50);
+  border-left: 3px solid var(--c-accent);
+  border-radius: 6px;
+  padding: 14px 20px;
+  margin: -8px 0 20px;
+  font-size: 13px;
+  color: var(--c-gray-700);
+  line-height: 1.7;
+}
+.preamble:empty { display: none; }
+.preamble blockquote {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-size: 13px;
+}
+.preamble blockquote p { margin: 6px 0; }
+.preamble p { margin: 6px 0; }
+.preamble strong { color: var(--c-primary-dark); }
+.preamble hr { display: none; }  /* 吃掉 --- 分隔符,避免视觉噪音 */
+
+/* ---------- v4.6.1. 关键指标横排面板 (顶部, 替代 v4.6 的粘性侧边栏) ---------- */
+.metric-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin: 0 0 24px;
+  padding: 16px;
+  background: white;
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.metric-strip .metric-chip {
+  padding: 10px 14px;
+  text-align: center;
+  border-right: 1px dashed var(--c-gray-100);
+}
+.metric-strip .metric-chip:last-child { border-right: none; }
+.metric-strip .metric-chip .metric-label {
+  font-size: 10px;
+  color: var(--c-gray-500);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.metric-strip .metric-chip .metric-value {
+  font-size: 18px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--c-gray-900);
+}
+.metric-strip .metric-chip .metric-value.positive { color: var(--c-risk-green); }
+.metric-strip .metric-chip .metric-value.negative { color: var(--c-risk-red); }
+.metric-strip .metric-chip .metric-value.risk     { color: var(--c-risk-amber); }
+.metric-strip .metric-chip .metric-value.critical { color: var(--c-risk-red); font-weight: 900; }
+.metric-strip .metric-chip .metric-value.neutral  { color: var(--c-gray-900); }
+
+/* ---------- v4.6 兼容: .metric-sidebar/metric-row 保留(弃用但不破坏存量报告) ---------- */
+.metric-sidebar {
+  /* 降级为块式显示, 不再粘性 */
+  background: white;
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--radius);
+  padding: 20px 18px;
+  box-shadow: var(--shadow);
+  margin: 0 0 24px;
+}
+.metric-sidebar h4 {
+  font-size: 11px;
+  color: var(--c-gray-500);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  margin: 0 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--c-card-border);
+}
+.metric-sidebar .metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--c-gray-100);
+  font-size: 13px;
+}
+.metric-sidebar .metric-row:last-child { border-bottom: none; }
+.metric-sidebar .metric-row span { color: var(--c-gray-700); }
+.metric-sidebar .metric-row strong { font-weight: 700; color: var(--c-gray-900); font-variant-numeric: tabular-nums; }
+.metric-sidebar .metric-row strong.positive { color: var(--c-risk-green); }
+.metric-sidebar .metric-row strong.negative { color: var(--c-risk-red); }
+.metric-sidebar .metric-row strong.risk     { color: var(--c-risk-amber); font-weight: 800; }
+.metric-sidebar .metric-row strong.critical { color: var(--c-risk-red);   font-weight: 800; }
+
+/* ---------- v4.6-4. 对标卡 (Morningstar 3 列比较) ---------- */
+.comparison-card {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  gap: 8px;
+  background: white;
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin: 12px 0;
+}
+.comparison-card .cmp-col {
+  text-align: center;
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+.comparison-card .cmp-col.center {
+  background: var(--c-primary-light);
+  border: 2px solid var(--c-primary);
+}
+.comparison-card .cmp-label { font-size: 10px; color: var(--c-gray-500); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 6px; }
+.comparison-card .cmp-value { font-size: 20px; font-weight: 800; color: var(--c-gray-900); font-variant-numeric: tabular-nums; }
+.comparison-card .cmp-col.center .cmp-value { font-size: 24px; color: var(--c-primary); }
+.comparison-card .cmp-sub { font-size: 11px; color: var(--c-gray-500); margin-top: 4px; }
+.comparison-card .cmp-bar {
+  height: 6px; background: var(--c-gray-100); border-radius: 3px;
+  margin-top: 8px; position: relative; overflow: hidden;
+}
+.comparison-card .cmp-bar .fill {
+  position: absolute; left: 0; top: 0; bottom: 0;
+  background: linear-gradient(90deg, var(--c-primary), var(--c-accent));
+  border-radius: 3px;
+}
+
+/* ---------- v4.6-5. 深度链接 (章节间跳转) ---------- */
+.deep-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 1px 8px 1px 6px;
+  font-size: 11px;
+  background: var(--c-primary-light);
+  color: var(--c-primary);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  text-decoration: none !important;
+  vertical-align: middle;
+  font-weight: 600;
+  transition: background .15s, border-color .15s;
+}
+.deep-link::before { content: '→'; opacity: .6; }
+.deep-link:hover {
+  background: var(--c-primary);
+  color: white;
+  border-color: var(--c-primary);
+}
+/* Target 高亮(用户点击内链跳到目标章节时) */
+.section:target {
+  animation: target-pulse 1.8s ease-out;
+  scroll-margin-top: 70px;
+}
+@keyframes target-pulse {
+  0%   { box-shadow: 0 0 0 4px var(--c-accent); }
+  100% { box-shadow: var(--shadow); }
+}
+
+/* ---------- v4.6-6. 微型热力图 (纯 CSS 色块网格) ---------- */
+.heatmap-grid {
+  display: grid;
+  gap: 2px;
+  margin: 10px 0;
+  font-size: 10px;
+}
+.heatmap-grid .hm-cell {
+  aspect-ratio: 1 / 1;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  font-family: ui-monospace, monospace;
+  font-weight: 600;
+  color: var(--c-gray-900);
+}
+/* 5 档颜色映射 (深红 → 白 → 深绿) */
+.heatmap-grid .hm-cell.hm--2 { background: #fca5a5; color: #7f1d1d; }
+.heatmap-grid .hm-cell.hm--1 { background: #fed7aa; color: #7c2d12; }
+.heatmap-grid .hm-cell.hm-0  { background: #f3f4f6; }
+.heatmap-grid .hm-cell.hm-1  { background: #bbf7d0; color: #14532d; }
+.heatmap-grid .hm-cell.hm-2  { background: #4ade80; color: white; }
+.heatmap-grid .hm-cell:hover { transform: scale(1.1); }
+
+.heatmap-grid .hm-row-label {
+  font-size: 10px;
+  color: var(--c-gray-500);
+  text-align: right;
+  padding-right: 8px;
+  align-self: center;
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 768px) {
+  .container { padding: 20px 16px 60px; }
+  header.hero { padding: 24px 16px; }
+  header.hero h1 { font-size: 24px; }
+  .section { padding: 16px; }
+  .scenario-grid, .team-grid, .rating-trio { grid-template-columns: 1fr; }
+  .comparison-card { grid-template-columns: 1fr; }
+  .metric-strip { grid-template-columns: repeat(2, 1fr); }
+  .metric-strip .metric-chip { border-right: none; border-bottom: 1px dashed var(--c-gray-100); }
+  table { font-size: 12px; }
+  table th, table td { padding: 6px 8px; }
+}
+
+/* ---------- 打印 ---------- */
+@media print {
+  body { background: white; }
+  .top-nav { display: none; }
+  .section { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; }
+  header.hero { break-inside: avoid; }
+  .metric-strip { break-inside: avoid; }
+  .deep-link { color: var(--c-gray-900); background: transparent; border-color: var(--c-gray-500); }
+  .deep-link::before { content: ''; }
+  .deep-link::after { content: ' (见对应章节)'; font-size: 10px; color: var(--c-gray-500); }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     Sticky 顶部导航栏 — 9 章节锚点
+     ============================================================ -->
+<nav class="top-nav">
+  <a href="../../index.html" class="nav-brand">叶纸的投资报告</a>
+  <a href="#exec-summary">摘要</a>
+  <a href="#fundamentals">基本面</a>
+  <a href="#industry">行业对标</a>
+  <a href="#scoring">评分</a>
+  <a href="#valuation">估值赔率</a>
+  <a href="#risk">风险红旗</a>
+  <a href="#decision-core">决策内核</a>
+  <a href="#sentiment">舆情</a>
+  <a href="#sources">来源缺口</a>
+</nav>
+
+<div class="container">
+
+<!-- ============================================================
+     Header Hero
+     ============================================================ -->
+<header class="hero">
+  <h1>景嘉微（300474）投资分析报告</h1>
+  <div class="subtitle">Claude Opus 4.8 · company-analysis skill vv6.0 · 结构化数据 + 11 大师框架审计</div>
+  <div class="meta">
+    <span>📅 2026-06-22</span>
+    <span>💵 收盘 55.11 元</span>
+    <span>📊 PB 4.22 · 市值 288.02 亿</span>
+    <span>🎯 估值锚 34.05 元</span>
+    <span>⚠️ 最差情景 – 元</span>
+  </div>
+</header>
+
+<!-- ============================================================
+     Preamble 区 — 主报告第一个 ## 之前的 blockquote / 段落
+     ============================================================ -->
+<div class="preamble">
+<p><strong>报告日期</strong>: 2026-06-22<br />
+<strong>报告期</strong>: 财务 20211231 ~ 20260331（18 期）· 行情 20260622<br />
+<strong>最新收盘</strong>: 55.11 元（2026-06-22）<br />
+<strong>总市值</strong>: 288.02 亿元 · PB 4.22 · PE TTM –（亏损）<br />
+<strong>分析师</strong>: Claude Opus 4.8 · Skill v7.0</p>
+<hr />
+</div>
+
+<!-- ============================================================
+     前置评级三件套(Goldman 风格, hero 下方醒目位置)
+     ============================================================ -->
+<div class="rating-trio">
+
+  <div class="rating-card rating-card--score">
+    <div class="label">综合评分</div>
+    <div class="value">5.63 <span class="out-of">/ 10</span></div>
+    <div class="sub">中性-分歧</div>
+  </div>
+  <div class="rating-card rating-card--anchor">
+    <div class="label">估值锚(DCF 概率加权)</div>
+    <div class="value">34.05 元</div>
+    <div class="sub">相对当前 -38%</div>
+  </div>
+  <div class="rating-card rating-card--return negative">
+    <div class="label">12-18 月期望收益</div>
+    <div class="value negative">-38%</div>
+    <div class="sub">年化 -29%</div>
+  </div>
+</div>
+
+<!-- ============================================================
+     关键指标横排面板
+     ============================================================ -->
+<div class="metric-strip">
+
+  <div class="metric-chip">
+    <div class="metric-label">PE (TTM)</div>
+    <div class="metric-value neutral">–</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">PB</div>
+    <div class="metric-value neutral">4.22x</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">市值(亿)</div>
+    <div class="metric-value neutral">288.02 亿</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">ROE</div>
+    <div class="metric-value negative">-2.36%</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">毛利率</div>
+    <div class="metric-value neutral">62.91%</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">资产负债率</div>
+    <div class="metric-value positive">11.74%</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">股东户数</div>
+    <div class="metric-value neutral">94967</div>
+  </div>
+  <div class="metric-chip">
+    <div class="metric-label">家族持股</div>
+    <div class="metric-value neutral">25.54%</div>
+  </div>
+</div>
+
+<!-- ============================================================
+     §一 执行摘要
+     ============================================================ -->
+<div class="section" id="exec-summary">
+<h2>§一 执行摘要</h2>
+<blockquote>
+<p>按 <code>assets/templates/exec-summary-schema.md</code> 的固定字段展开。这是全报告的决策仪表盘——读者只读本节即可掌握结论。</p>
+</blockquote>
+<p><strong>一句话结论</strong>: <strong>中性-分歧</strong> —— 景嘉微是 A 股稀缺的"军工图形显控龙头（军用显控市占 &gt;50%、毛利率 62.91% 行业第一档、净现金 27 亿、Altman Z=19.2）+ 国产 GPU/AI 第二曲线"混合体，财务极稳健、破产风险极低，但连续两年亏损、ROE −2.4%；致命问题在估值——市场已用 PS_TTM 行业 96.4 分位为一条尚未被独立证据确认的 GPU 通用化未来定价，叙事溢价占现价市值 84.7%，现价不是好下注、好价格也不成立，唯一合法买入触发是 2026 中报 GPU 分部收入确认放量。</p>
+<p><strong>估值锚</strong>: <strong>概率加权 ≈177.9 亿 / 34.05 元</strong>（4 情景：乐观 25% / 基准 45% / 悲观 25% / 最差 5%；以 P=F+N 分解 + 反向 DCF + 叙事 SOTP 判赔率，正向 DCF 仅作交叉验证）。当前 55.11 元相对此锚折让 −38%。基本面锚 F≈44 亿（每股 ≈8.4 元）、叙事溢价 N≈244 亿（占现价市值 84.7%）；下行有净清算地板 7.64 元 / 纯现金地板 4.14 元托底。</p>
+<p><strong>综合评分</strong>: <strong>5.63/10</strong> · <strong>数据置信度</strong>: 中（18 期财务 + 年报 PDF + audit 11 框架齐全；盲区为景宏 AI 分部独立业绩 + 38.33 亿定增募投实际投向未披露）（§四 评分表加总；★ 此为「基本面静态快照」——衡量"公司本身多好"，<strong>不是投资结论</strong>；投资方向看下方「决策结论」/§七）</p>
+<p><strong>三大风险（Top 3）</strong>:<br />
+1. 🟠 估值买完完美未来：PB 4.22 vs ROE −2.4% 错配 8.44x + PS_TTM 行业 96.4 分位极贵，叙事溢价 N 占现价市值 84.7%（空头核心论据）。<br />
+2. 🟠 续亏 + 烧研发：续亏预告（净利下限 −1.8 亿）、OCF/NI=0.31 利润质量偏弱、2026Q1 自由现金流 −3.78 亿，靠定增/账上现金输血。<br />
+3. 🟠 GPU 通用化证伪左尾：若 2026 中报 GPU 分部收入 &lt;2 亿，N 向 F 回吐 −80%+，叠加主力近 20 日净流出 −5,136 万 / 大宗折价 −6.1%。</p>
+<p><strong>三大机会（Top 3）</strong>:<br />
+1. 军工图形显控真护城河：军用显控市占率 &gt;50%、供应商地位不可替代、大基金 5.00% 战投背书，毛利率 62.91% 行业第一档证明议价权。<br />
+2. 营收 V 型反转 + 财务极稳健：FY2025 营收 7.20 亿（+54.41%）走出谷底，资产负债率 11.74%、净现金 27.4 亿、Z=19.2，破产风险极低。<br />
+3. 国产 GPU/AI 右尾期权可见：JM11 进入小批量交付、景宏填补 AI 训练/推理产品空白，2026 中报分部披露 + 太空算力/星网订单为明确催化剂。</p>
+<p><strong>核心非共识判断</strong>（1-3 条，本报告与市场共识的关键分歧）:<br />
+1. 市场把整个公司（含成熟军工）按 GPU 同业高 PS 重估是混账——强制分部 SOTP（11-17 元）/ 概率加权（34 元）均远 &lt; 现价 55.11 元。<br />
+2. 当前股价驱动是"注意力 + 政策回声"而非 GPU 业务真相——大基金是资质认证非黄仁勋式业务真相认证，GPU 后验未被独立证据提高。<br />
+3. 叙事溢价 N 是 embedded obligation（必须交付的义务）而非 free option——证伪点（2026 中报分部收入）兑现前，下行风险显著大于上行。</p>
+<p><strong>决策结论</strong>（来自 §七 投资决策内核——本报告的权威结论；与 §七 7.4 一致）:<br />
+- <strong>决策三元组</strong>: [状态后验: ↑变好但仅注意力·未确认 | 赔率: 买完完美未来（无上行 slack） | 路径: 高尾险]<br />
+- <strong>三分结论</strong>: 好公司? <strong>部分是</strong>（军工硬护城河市占 &gt;50%/毛利 62.91%，但 GPU 第二曲线未成型、ROE −2.4%）· 好下注（现价）? <strong>不是</strong>（概率加权 12-18 月期望 −38%）· 好价格? <strong>不是</strong>（N 占市值 84.7%、无 pricing slack）<br />
+- <strong>行动档位</strong>: <strong>等证据临界（观察）</strong>（六档之一）· <strong>该等什么</strong>: 2026 中报（约 2026-08）GPU/AI（JM11/景宏）分部营收与收入确认明细——把"通用化"从叙事回声变独立证据的唯一临界事件。具体纪律：现价 55.11 元 <strong>0 仓</strong>（不追高、不满仓），100 万作观察资金 / 期权仓预算；若中报 GPU 分部收入确认放量（证据斜率转正），启用期权仓 ≤15 万（≤15%）博右尾；若回落至净清算地板附近（7.64 元区）则风险收益反转，可重估。</p>
+<hr />
+</div>
+
+<!-- ============================================================
+     §二 公司基本面（含剥离后剩余资产清单若触发）
+     ============================================================ -->
+<div class="section" id="fundamentals">
+<h2>§二 公司基本面</h2>
+<h3>业务板块</h3>
+<p>景嘉微（300474.SZ）是 A 股稀缺的"军工图形显控 + 国产 GPU"双身份标的，采用 <strong>Fabless 模式</strong>（设计自主、流片/封测外包）[PDF:2024_annual, P.12]。主营三大业务，战略主线为 <strong>军工图形显控基本盘 + 国产 GPU 通用化（信创/AI）第二曲线</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>业务板块</th>
+<th>定位</th>
+<th>核心产品</th>
+<th>战略角色</th>
+<th>来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 图形显控</td>
+<td><strong>现有核心 / 传统优势业务</strong>，机载领域领先，向车载/船舶/通用延伸</td>
+<td>显控模块、加固计算机</td>
+<td>军工基本盘、现金流来源</td>
+<td>[PDF:2024_annual, P.11]</td>
+</tr>
+<tr>
+<td>② 小型专用化雷达</td>
+<td>未来大力发展方向，由模块级向系统级转</td>
+<td>主动防护雷达、测速雷达</td>
+<td>军工第二增长点</td>
+<td>[PDF:2024_annual, P.11]</td>
+</tr>
+<tr>
+<td>③ 芯片（GPU + AI 智算）</td>
+<td>第二曲线核心，由"专用"向"专用+通用"转型</td>
+<td>JM5400/JM7200/JM9 系列 GPU、JM11 新一代图形芯片、景宏系列 AI 智算模块/整机</td>
+<td>国产替代 / AI 算力，估值溢价来源</td>
+<td>[PDF:2024_annual, P.11-12]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>战略转型路径</strong>：管理层明确"全力推进由'专用'到'专用+通用'的发展战略，瞄准 GPU 在人工智能领域的应用方向……联合行业上下游共同推进国产 GPU 应用生态建设"[PDF:2024_annual, P.12]。2024 年成功研发<strong>景宏系列高性能智算模块与整机产品，填补了公司在 AI 训练、AI 推理和科学计算等应用领域的产品空白</strong> [PDF:2024_annual, P.11]。JM11 系列已完成流片/封装与初步测试、进入小批量交付，"可满足云桌面、云游戏、云渲染、云计算等云端应用场景……支持 Windows、Linux 及国产主流操作系统……支持硬件虚拟化、透传虚拟化技术"[PDF:2024_annual, P.12]。GPU 国外对标 Intel/NVIDIA/AMD，国内对标中船凌久等。2024 年定增募资 38.33 亿元投向 GPU 研发，2025 年新增控股子公司无锡诚恒微电子（纳入合并报表）。</p>
+<p><strong>业务拆分的关键反差</strong>：年报"主要控股参股公司分析"仅披露 1 家达 10% 净利影响门槛的主体——<strong>长沙景美集成电路设计有限公司 FY2024 净利 7,761 万元</strong>，而集团 FY2024 归母净利却为 <strong>−1.65 亿元</strong> [PDF:2024_annual, P.27]。这说明集团整体亏损来自<strong>母公司本部</strong>（高研发 + 军工业务收入确认落空 + Q4 集中计提），而非子公司爆雷；景美是少数实打实盈利的主体。</p>
+<table>
+<thead>
+<tr>
+<th>子公司</th>
+<th>类型</th>
+<th>业务</th>
+<th style="text-align: right;">营业收入</th>
+<th style="text-align: right;">净利润</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>长沙景美集成电路设计</td>
+<td>子公司</td>
+<td>IC 设计/制造/销售、AI 软件、系统集成</td>
+<td style="text-align: right;">2.32 亿</td>
+<td style="text-align: right;"><strong>0.78 亿</strong> 🟢</td>
+<td>集团唯一披露的盈利主体；与集团 −1.65 亿强烈反差 [PDF:2024_annual, P.27]</td>
+</tr>
+<tr>
+<td>无锡诚恒微电子</td>
+<td>子公司（2025 新并表）</td>
+<td>芯片</td>
+<td style="text-align: right;">未披露</td>
+<td style="text-align: right;">未披露</td>
+<td>⚠️ 溢价收购亏损标的，市场质疑溢价倍数高，研发投入大拖累利润</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ 数据缺口：年报未单列景宏系列（AI 智算）所属主体的独立业绩，无法判断新业务的真实亏损规模；§五 SOTP 须标注此盲区。</p>
+</blockquote>
+<h3>最新经营动态（近 12 个月关键事件）</h3>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>事件</th>
+<th>性质 / 解读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-01-15</td>
+<td>FY2025 业绩预告：预亏 1.20–1.80 亿元</td>
+<td>续亏；实际 −1.65 亿元落入区间 [Tushare:forecast_vip]</td>
+</tr>
+<tr>
+<td>2026-04-24</td>
+<td>FY2025 年报 + 2026Q1 报告披露</td>
+<td>营收 V 型反转 +54.41% 但续亏 [PDF:2025_annual_summary]</td>
+</tr>
+<tr>
+<td>2025 年内</td>
+<td>JM11 系列完成流片/封装，进入小批量交付</td>
+<td>FP32 最大 6 TFLOPS / FP16 12 TFLOPS，显存最大 64GB，应用政务云桌面/工业设计 [PDF:2024_annual, P.12]</td>
+</tr>
+<tr>
+<td>2025 年内</td>
+<td>收购无锡诚恒微电子并表</td>
+<td>⚠️ 市场质疑溢价倍数高、标的亏损，研发投入大拖累利润</td>
+</tr>
+<tr>
+<td>2024 年内</td>
+<td>38.33 亿元定增募资到位（投向 GPU 研发）</td>
+<td>⚠️ 市场传截至 2025 末实际投入研发比例低、多配置理财（需以年报"募集资金使用情况"核实，§九 缺口 #2）</td>
+</tr>
+<tr>
+<td>2025Q3 单季</td>
+<td>营收 +230.65%、归母净利转正 +1,508 万</td>
+<td>印证军工收入按验收节点确认、季度极不均衡 [PDF:2025_q3, P.1]</td>
+</tr>
+</tbody>
+</table>
+<h3>财务趋势表（近 3-5 年 + 最新季度）</h3>
+<blockquote>
+<p>★ 完整 inline <code>data_snapshot.md</code> §3 全部 18 期（含最新季报 20260331）。<strong>增长叙事必须用全年口径</strong>：FY2024 谷底 4.66 亿（首亏）→ FY2025 复苏 7.20 亿（<strong>+54.41% V 型反转</strong>），2026Q1 单季 −17.87% 系<strong>季节性淡季</strong>（军工收入按验收节点确认，不可外推全年）。<strong>已用 income.parquet actual 数据，未用业绩预告口径</strong>（FY2025 实际 −1.65 亿 vs 预告 −1.2~−1.8 亿，落入区间）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">期末</th>
+<th style="text-align: right;">营收(亿)</th>
+<th style="text-align: center;">营收 YoY</th>
+<th style="text-align: right;">毛利率%</th>
+<th style="text-align: right;">净利率%</th>
+<th style="text-align: right;">归母净利(亿)</th>
+<th style="text-align: center;">净利 YoY</th>
+<th style="text-align: right;">加权 ROE%</th>
+<th style="text-align: right;">资产负债率%</th>
+<th style="text-align: right;">OCF(亿)</th>
+<th style="text-align: center;">来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">20260331</td>
+<td style="text-align: right;">0.84</td>
+<td style="text-align: center;">−17.87%</td>
+<td style="text-align: right;">61.69</td>
+<td style="text-align: right;">−113.64</td>
+<td style="text-align: right;">−0.5609</td>
+<td style="text-align: center;">+2.26%</td>
+<td style="text-align: right;">−0.82</td>
+<td style="text-align: right;">11.74</td>
+<td style="text-align: right;">−1.2322</td>
+<td style="text-align: center;">[Tushare]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20251231</td>
+<td style="text-align: right;">7.20</td>
+<td style="text-align: center;"><strong>+54.41%</strong></td>
+<td style="text-align: right;">47.36</td>
+<td style="text-align: right;">−31.47</td>
+<td style="text-align: right;"><strong>−1.6462</strong></td>
+<td style="text-align: center;">−0.30%</td>
+<td style="text-align: right;">−2.36</td>
+<td style="text-align: right;">11.68</td>
+<td style="text-align: right;">−0.5098</td>
+<td style="text-align: center;">[Tushare]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20250930</td>
+<td style="text-align: right;">4.95</td>
+<td style="text-align: center;">+12.14%</td>
+<td style="text-align: right;">45.73</td>
+<td style="text-align: right;">−14.66</td>
+<td style="text-align: right;">−0.7253</td>
+<td style="text-align: center;">−403.81%</td>
+<td style="text-align: right;">−1.03</td>
+<td style="text-align: right;">10.32</td>
+<td style="text-align: right;">−1.4521</td>
+<td style="text-align: center;">[Tushare]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20250630</td>
+<td style="text-align: right;">1.93</td>
+<td style="text-align: center;">−44.78%</td>
+<td style="text-align: right;">45.03</td>
+<td style="text-align: right;">−45.34</td>
+<td style="text-align: right;">−0.8761</td>
+<td style="text-align: center;">−356.51%</td>
+<td style="text-align: right;">−1.25</td>
+<td style="text-align: right;">6.35</td>
+<td style="text-align: right;">−0.5694</td>
+<td style="text-align: center;">[Tushare]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20250331</td>
+<td style="text-align: right;">1.02</td>
+<td style="text-align: center;">−5.46%</td>
+<td style="text-align: right;">32.37</td>
+<td style="text-align: right;">−53.53</td>
+<td style="text-align: right;">−0.5485</td>
+<td style="text-align: center;">+375.50%</td>
+<td style="text-align: right;">−0.78</td>
+<td style="text-align: right;">6.36</td>
+<td style="text-align: right;">−0.4222</td>
+<td style="text-align: center;">[Tushare]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20241231</td>
+<td style="text-align: right;">4.66</td>
+<td style="text-align: center;">−34.62%</td>
+<td style="text-align: right;">43.70</td>
+<td style="text-align: right;">−35.41</td>
+<td style="text-align: right;"><strong>−1.6512</strong></td>
+<td style="text-align: center;">−376.67%</td>
+<td style="text-align: right;">−3.15</td>
+<td style="text-align: right;">6.54</td>
+<td style="text-align: right;">0.6217</td>
+<td style="text-align: center;">[Tushare]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20240930</td>
+<td style="text-align: right;">4.41</td>
+<td style="text-align: center;">−5.99%</td>
+<td style="text-align: right;">53.85</td>
+<td style="text-align: right;">5.41</td>
+<td style="text-align: right;">0.2387</td>
+<td style="text-align: center;">+53.28%</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">12.68</td>
+<td style="text-align: right;">0.1287</td>
+<td style="text-align: center;">[Tushare]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20240630</td>
+<td style="text-align: right;">3.50</td>
+<td style="text-align: center;">+1.40%</td>
+<td style="text-align: right;">52.96</td>
+<td style="text-align: right;">9.76</td>
+<td style="text-align: right;">0.3415</td>
+<td style="text-align: center;">−545.78%</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">13.48</td>
+<td style="text-align: right;">−0.1363</td>
+<td style="text-align: center;">[Tushare]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20240331</td>
+<td style="text-align: right;">1.08</td>
+<td style="text-align: center;">+66.27%</td>
+<td style="text-align: right;">62.91</td>
+<td style="text-align: right;">−10.64</td>
+<td style="text-align: right;">−0.1154</td>
+<td style="text-align: center;">−83.68%</td>
+<td style="text-align: right;">−0.34</td>
+<td style="text-align: right;">18.24</td>
+<td style="text-align: right;">−0.9026</td>
+<td style="text-align: center;">[Tushare]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20231231</td>
+<td style="text-align: right;">7.13</td>
+<td style="text-align: center;">−38.19%</td>
+<td style="text-align: right;">60.32</td>
+<td style="text-align: right;">8.37</td>
+<td style="text-align: right;">0.5968</td>
+<td style="text-align: center;">−79.35%</td>
+<td style="text-align: right;">1.78</td>
+<td style="text-align: right;">18.61</td>
+<td style="text-align: right;">2.6353</td>
+<td style="text-align: center;">[Tushare]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20230930</td>
+<td style="text-align: right;">4.69</td>
+<td style="text-align: center;">−35.66%</td>
+<td style="text-align: right;">60.84</td>
+<td style="text-align: right;">3.32</td>
+<td style="text-align: right;">0.1558</td>
+<td style="text-align: center;">−91.00%</td>
+<td style="text-align: right;">0.46</td>
+<td style="text-align: right;">18.83</td>
+<td style="text-align: right;">1.3375</td>
+<td style="text-align: center;">[Tushare]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20230630</td>
+<td style="text-align: right;">3.45</td>
+<td style="text-align: center;">−36.55%</td>
+<td style="text-align: right;">62.29</td>
+<td style="text-align: right;">−2.22</td>
+<td style="text-align: right;">−0.0766</td>
+<td style="text-align: center;">−106.14%</td>
+<td style="text-align: right;">−0.23</td>
+<td style="text-align: right;">16.95</td>
+<td style="text-align: right;">−0.2448</td>
+<td style="text-align: center;">[Tushare]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20230331</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: center;">−81.98%</td>
+<td style="text-align: right;">57.72</td>
+<td style="text-align: right;">−108.43</td>
+<td style="text-align: right;">−0.7068</td>
+<td style="text-align: center;">−191.44%</td>
+<td style="text-align: right;">−2.16</td>
+<td style="text-align: right;">16.09</td>
+<td style="text-align: right;">−0.8805</td>
+<td style="text-align: center;">[Tushare]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20221231</td>
+<td style="text-align: right;">11.54</td>
+<td style="text-align: center;">+5.56%</td>
+<td style="text-align: right;">65.01</td>
+<td style="text-align: right;">25.04</td>
+<td style="text-align: right;">2.8896</td>
+<td style="text-align: center;">−1.29%</td>
+<td style="text-align: right;">9.38</td>
+<td style="text-align: right;">16.57</td>
+<td style="text-align: right;">−2.9653</td>
+<td style="text-align: center;">[Tushare]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20220930</td>
+<td style="text-align: right;">7.29</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">64.82</td>
+<td style="text-align: right;">23.74</td>
+<td style="text-align: right;">1.7312</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">5.78</td>
+<td style="text-align: right;">16.44</td>
+<td style="text-align: right;">−2.4996</td>
+<td style="text-align: center;">[Tushare]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20220630</td>
+<td style="text-align: right;">5.44</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">62.61</td>
+<td style="text-align: right;">22.93</td>
+<td style="text-align: right;">1.2473</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">4.28</td>
+<td style="text-align: right;">17.89</td>
+<td style="text-align: right;">−2.8700</td>
+<td style="text-align: center;">[Tushare]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20220331</td>
+<td style="text-align: right;">3.62</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">56.17</td>
+<td style="text-align: right;">21.37</td>
+<td style="text-align: right;">0.7730</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">2.66</td>
+<td style="text-align: right;">14.79</td>
+<td style="text-align: right;">−0.8828</td>
+<td style="text-align: center;">[Tushare]</td>
+</tr>
+<tr>
+<td style="text-align: center;">20211231</td>
+<td style="text-align: right;">10.93</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">2.9274</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">2.3284</td>
+<td style="text-align: center;">[Tushare]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>财务趋势三大结论</strong>：</p>
+<ol>
+<li>
+<p><strong>营收 V 型反转，但增长极不连续</strong>。营收路径 FY2022 11.54 亿 → FY2023 7.13 亿（−38%）→ FY2024 4.66 亿（−34.6% 谷底）→ FY2025 7.20 亿（<strong>+54.41% 复苏</strong>）→ 2026Q1 0.84 亿（−17.87% 季节性淡季）。FY2024 四个季度营收 1.08 / 2.42 / 0.91 / 0.25 亿（Q4 反而最低），2025Q3 单季营收却暴增 <strong>+230.65%</strong> [PDF:2025_q3, P.1]——军工/专用市场收入按验收节点确认，<strong>任何单季同比都不可外推全年</strong>。</p>
+</li>
+<li>
+<p><strong>盈利从巅峰滑落到连续两年亏损，根因是研发而非收入塌方</strong>。归母净利 FY2022 +2.89 亿 → FY2023 +0.60 亿 → FY2024 <strong>−1.65 亿（首亏）</strong> → FY2025 <strong>−1.65 亿（续亏）</strong>。FY2024 全年 −1.65 亿中，Q4 单季就亏 <strong>−1.89 亿</strong>（扣非 −2.11 亿），印证 Q4 集中计提（减值/费用）+ 收入确认落空双杀 [PDF:2024_annual, P.8]。2026Q1 研发费用 <strong>1.42 亿（YoY +102.67%）</strong>，单季研发即为营收的 <strong>1.7 倍</strong>——这是"在亏损中投 JM9/景宏 AI 芯片"的主动选择 [Tushare:data_snapshot §2.1]。</p>
+</li>
+<li>
+<p><strong>毛利率仍处行业第一档，财务表极度稳健</strong>。TTM 口径毛利率 62.91%（2026Q1 单季 61.69%），但净利率 −113.64%（费用吞噬）；ROE 连续下行：FY2022 9.38% → FY2023 1.78% → FY2024 −3.15% → FY2025 −2.36%。资产负债率仅 11.74%，账上货币资金 31.02 亿（定增结余），净现金充裕——破产风险极低，亏损是"烧研发"而非"经营失血"。</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>利润质量警示</strong>：FY2024 归母净利 −1.65 亿中含 <strong>+3,933 万非经常性收益</strong>（其中政府补助 4,650 万）[PDF:2024_annual, P.9]，<strong>扣非亏损更深</strong>（扣非 −1.90 亿）；2025 前三季扣非亏损 −8,626 万 vs 归母 −7,253 万，亦倒挂 [PDF:2025_q3, P.2]。政府补助是利润稳定器，补助退坡将放大账面亏损。</p>
+</blockquote>
+<h3>管理层前瞻信号（<code>forecast_vip</code> 解读）</h3>
+<p>业绩预告兑现度极高——历史 5 次有 actual 的预告全部落入区间，无"暴雷/放卫星"前科：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">公告日</th>
+<th style="text-align: center;">报告期</th>
+<th style="text-align: center;">类型</th>
+<th style="text-align: right;">预告净利区间(万)</th>
+<th style="text-align: right;">实际归母净利</th>
+<th style="text-align: center;">兑现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">20260115</td>
+<td style="text-align: center;">FY2025</td>
+<td style="text-align: center;">续亏</td>
+<td style="text-align: right;">−18,000 ~ −12,000</td>
+<td style="text-align: right;"><strong>−16,462 万</strong></td>
+<td style="text-align: center;">✅ 落入区间</td>
+</tr>
+<tr>
+<td style="text-align: center;">20250117</td>
+<td style="text-align: center;">FY2024</td>
+<td style="text-align: center;">首亏</td>
+<td style="text-align: right;">−19,500 ~ −13,000</td>
+<td style="text-align: right;"><strong>−16,512 万</strong></td>
+<td style="text-align: center;">✅ 落入区间</td>
+</tr>
+<tr>
+<td style="text-align: center;">20240122</td>
+<td style="text-align: center;">FY2023</td>
+<td style="text-align: center;">预减</td>
+<td style="text-align: right;">5,300 ~ 6,100</td>
+<td style="text-align: right;"><strong>+5,968 万</strong></td>
+<td style="text-align: center;">✅ 落入区间</td>
+</tr>
+<tr>
+<td style="text-align: center;">20220407</td>
+<td style="text-align: center;">2022Q1</td>
+<td style="text-align: center;">预增</td>
+<td style="text-align: right;">7,200 ~ 8,200</td>
+<td style="text-align: right;"><strong>+7,730 万</strong></td>
+<td style="text-align: center;">✅ 落入区间</td>
+</tr>
+<tr>
+<td style="text-align: center;">20220110</td>
+<td style="text-align: center;">FY2021</td>
+<td style="text-align: center;">预增</td>
+<td style="text-align: right;">27,000 ~ 32,000</td>
+<td style="text-align: right;"><strong>+29,274 万</strong></td>
+<td style="text-align: center;">✅ 落入区间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>下 12 个月可改变结论的事件</strong>：①FY2025 年报全文（非摘要）待核"募集资金使用情况"与"分产品营收成本"明细，判断 38.33 亿定增是否被用于理财（§九 缺口 #2）；②2026 中报披露 JM11/景宏 AI 芯片实际订单与收入确认，验证"太空算力/星网订单 2026 放量"叙事；③下一份业绩预告（预计 2027 年 1 月发布 FY2026 预告）——若研发费用拐头、营收确认放量，可能首次出现"减亏/扭亏"信号。<strong>管理层为军工企业惯例，未给明确营收/利润数字指引</strong>，仅以行业景气 + 国产替代政策作定性指引 [PDF:2024_annual, P.11-12]。</p>
+<h3>管理层与团队</h3>
+<ul>
+<li><strong>实控人/董事长</strong>：喻丽丽，持股 <strong>25.54%</strong>（1.33 亿股），为第一大股东兼实控人；其家族（含配偶曾万辉 3.53%）合计相对控盘。</li>
+<li><strong>二股东国家队背书</strong>：<strong>国家集成电路产业投资基金（大基金）持股 5.00%</strong>（年报口径 5.32%）[PDF:2024_annual, P.78]——国家队战投提供产业资源与信用背书，是"国产 GPU 龙头"叙事的关键支点。</li>
+<li><strong>利益对齐</strong>：利润分配预案每 10 股派 0.60 元现金，<strong>股息率仅 0.11%</strong>（audit §6 标注偏低）[PDF:2024_annual, P.3]——连续亏损下分红能力有限，与小股东利益对齐主要靠股价而非分红。</li>
+<li>⚠️ <strong>治理关注点</strong>：曾万辉、乌鲁木齐景嘉合创存在质押（见下方质押明细），实控人喻丽丽历史亦有质押记录；38.33 亿定增募资用途待核实（§九 缺口 #2）。</li>
+</ul>
+<h3>主力控盘与筹码分析</h3>
+<p><strong>6 维度控盘综合判定</strong>（来源 <code>capital_flow.md</code>，v4.5 口径用 top10_holders 含限售作主口径）：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>信号</th>
+<th>解读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主力控盘度（总股本口径）</td>
+<td>🟢 分散</td>
+<td>前 10 大全体股东（含限售）合计 <strong>29.07%</strong></td>
+</tr>
+<tr>
+<td>★ 实控人家族合计持股</td>
+<td>🟡 家族相对控盘</td>
+<td>喻丽丽家族合计 <strong>25.54%</strong></td>
+</tr>
+<tr>
+<td>筹码集中度（流通股动态）</td>
+<td>⚪ 筹码平稳</td>
+<td>户数变化 +0.38%</td>
+</tr>
+<tr>
+<td>陆股通（北向）</td>
+<td>数据不足</td>
+<td>持仓 N/A%</td>
+</tr>
+<tr>
+<td>两融杠杆</td>
+<td>⚪ 平稳</td>
+<td>融资余额 13.28 亿元，相对近 60 日中位 −8.06%</td>
+</tr>
+<tr>
+<td>主力资金流</td>
+<td>🔴 净流出</td>
+<td>近 20 日净流入天数 6/20，累计 −5,136 万元</td>
+</tr>
+<tr>
+<td>龙虎榜机构</td>
+<td>⚪ 无</td>
+<td>近 30 日未上榜</td>
+</tr>
+<tr>
+<td>大宗交易</td>
+<td>🔴 折价抛售</td>
+<td>3 笔合计 2,399 万元，平均折溢价 <strong>−6.09%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>控盘警示（上送 §一 Top 3）</strong>：<br />
+- 🟡 <strong>家族相对控盘 25.54%</strong>——叠加董事会席位/一致行动可能实现控股，但未达 40% 风险线。<br />
+- 🔴 <strong>主力资金近 20 日持续净流出</strong>（净流入天数 6/20，累计 −5,136 万元）。<br />
+- 🔴 <strong>大宗交易显著折价 −6.1%</strong>（2026-04-24 单笔 1,499 万 @49.7 元），关注未来 1-2 周抛压。</p>
+<p><strong>十大股东表</strong>（inline <code>data_snapshot.md</code> §5，2 期对比，最新期 20260331 仅披露 2 名，故展示信息最全的 FY2025 年报期 ≥9 行）：</p>
+<p>报告期 <strong>20251231</strong>（年报全名单）vs <strong>20260331</strong>（季报，仅披露前 2 名）：</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>股东</th>
+<th style="text-align: right;">持股(万股)</th>
+<th style="text-align: right;">占总股本%</th>
+<th style="text-align: right;">占流通%</th>
+<th style="text-align: right;">期间变动(万股)</th>
+<th style="text-align: center;">类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>喻丽丽（实控人，20260331 仍 13,345.08/25.54%）</td>
+<td style="text-align: right;">13,345.08</td>
+<td style="text-align: right;">25.54</td>
+<td style="text-align: right;">8.21</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>2</td>
+<td>国家集成电路产业投资基金股份有限公司</td>
+<td style="text-align: right;">2,613.09</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">6.43</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">风险投资公司</td>
+</tr>
+<tr>
+<td>3</td>
+<td>曾万辉（20260331 仍 1,845.73/3.53%）</td>
+<td style="text-align: right;">1,845.73</td>
+<td style="text-align: right;">3.53</td>
+<td style="text-align: right;">1.14</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>4</td>
+<td>新余市景嘉合创项目投资合伙企业(有限合伙)</td>
+<td style="text-align: right;">1,500.00</td>
+<td style="text-align: right;">2.87</td>
+<td style="text-align: right;">3.69</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>5</td>
+<td>饶先宏</td>
+<td style="text-align: right;">1,168.42</td>
+<td style="text-align: right;">2.24</td>
+<td style="text-align: right;">2.87</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>6</td>
+<td>胡亚华</td>
+<td style="text-align: right;">1,042.22</td>
+<td style="text-align: right;">1.99</td>
+<td style="text-align: right;">2.56</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>7</td>
+<td>工银-易方达创业板 ETF</td>
+<td style="text-align: right;">654.49</td>
+<td style="text-align: right;">1.25</td>
+<td style="text-align: right;">1.61</td>
+<td style="text-align: right;">−20.70</td>
+<td style="text-align: center;">开放式基金</td>
+</tr>
+<tr>
+<td>8</td>
+<td>农银-中证 500 ETF</td>
+<td style="text-align: right;">534.12</td>
+<td style="text-align: right;">1.02</td>
+<td style="text-align: right;">1.31</td>
+<td style="text-align: right;">+78.06</td>
+<td style="text-align: center;">开放式基金</td>
+</tr>
+<tr>
+<td>9</td>
+<td>建银-华夏国证半导体芯片 ETF</td>
+<td style="text-align: right;">432.40</td>
+<td style="text-align: right;">0.83</td>
+<td style="text-align: right;">1.06</td>
+<td style="text-align: right;">+26.95</td>
+<td style="text-align: center;">开放式基金</td>
+</tr>
+<tr>
+<td>10</td>
+<td>中国国际金融股份有限公司</td>
+<td style="text-align: right;">375.70</td>
+<td style="text-align: right;">0.72</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">+4.61</td>
+<td style="text-align: center;">证券公司</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>解读：前 6 大为稳定持仓（实控人/大基金/合伙企业/核心自然人，期间变动均为 0），后 4 位均为被动指数 ETF（半导体芯片/创业板/中证 500）——指数权重持仓侧面印证景嘉微在"半导体国产替代"主题指数中的地位。<strong>实控人喻丽丽与曾万辉持股 20251231→20260331 零变动</strong>，无减持。</p>
+</blockquote>
+<p><strong>十大流通股东表</strong>（inline <code>data_snapshot.md</code> §6，报告期 20260331，10 行）：</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>流通股东</th>
+<th style="text-align: right;">持股(万股)</th>
+<th style="text-align: right;">占总股本%</th>
+<th style="text-align: right;">占流通%</th>
+<th style="text-align: right;">期间变动(万股)</th>
+<th style="text-align: center;">类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>喻丽丽</td>
+<td style="text-align: right;">3,336.27</td>
+<td style="text-align: right;">6.38</td>
+<td style="text-align: right;">8.21</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>2</td>
+<td>国家集成电路产业投资基金股份有限公司</td>
+<td style="text-align: right;">2,613.09</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">6.43</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">风险投资公司</td>
+</tr>
+<tr>
+<td>3</td>
+<td>新余市景嘉合创项目投资合伙企业(有限合伙)</td>
+<td style="text-align: right;">1,500.00</td>
+<td style="text-align: right;">2.87</td>
+<td style="text-align: right;">3.69</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>4</td>
+<td>饶先宏</td>
+<td style="text-align: right;">1,168.42</td>
+<td style="text-align: right;">2.24</td>
+<td style="text-align: right;">2.87</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>5</td>
+<td>胡亚华</td>
+<td style="text-align: right;">1,042.22</td>
+<td style="text-align: right;">1.99</td>
+<td style="text-align: right;">2.56</td>
+<td style="text-align: right;">−0.01</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>6</td>
+<td>曾万辉</td>
+<td style="text-align: right;">461.43</td>
+<td style="text-align: right;">0.88</td>
+<td style="text-align: right;">1.14</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>7</td>
+<td>建银-华夏国证半导体芯片 ETF</td>
+<td style="text-align: right;">418.44</td>
+<td style="text-align: right;">0.80</td>
+<td style="text-align: right;">1.03</td>
+<td style="text-align: right;">−13.96</td>
+<td style="text-align: center;">开放式基金</td>
+</tr>
+<tr>
+<td>8</td>
+<td>工银-易方达创业板 ETF</td>
+<td style="text-align: right;">333.16</td>
+<td style="text-align: right;">0.64</td>
+<td style="text-align: right;">0.82</td>
+<td style="text-align: right;">−321.34</td>
+<td style="text-align: center;">开放式基金</td>
+</tr>
+<tr>
+<td>9</td>
+<td>工银-易方达中证人工智能主题 ETF</td>
+<td style="text-align: right;">324.25</td>
+<td style="text-align: right;">0.62</td>
+<td style="text-align: right;">0.80</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">开放式基金</td>
+</tr>
+<tr>
+<td>10</td>
+<td>中国国际金融股份有限公司</td>
+<td style="text-align: right;">315.19</td>
+<td style="text-align: right;">0.60</td>
+<td style="text-align: right;">0.78</td>
+<td style="text-align: right;">−60.51</td>
+<td style="text-align: center;">证券公司</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>流通盘变动信号：实控人/大基金/合伙企业/核心自然人（前 6 名）零变动，筹码稳定；<strong>指数 ETF 在 20260331 季度普遍减仓</strong>（易方达创业板 ETF −321 万股、中金 −60.5 万股、半导体芯片 ETF −14 万股），与"主力资金净流出 / 大宗折价"信号一致——被动资金在 2026Q1 阶段性流出。新进"易方达中证人工智能主题 ETF"324 万股，反映 AI 主题资金对景嘉微的关注。</p>
+</blockquote>
+<p><strong>筹码集中度 2×2 矩阵</strong>（<code>capital_flow.md</code> §3）：</p>
+<ul>
+<li>当前期 20260520，股东户数 <strong>94,967 户</strong>，环比 <strong>+0.38%</strong>；户均持股 3,214 股，环比 −0.38%。</li>
+<li><strong>判定：⚪ 筹码平稳</strong>（户数↑ + 户均↓ 但幅度极小，非典型机构退出）。</li>
+<li>户数时序参照：20250930 高点 104,667 户 → 20251231 92,377 户 → 20260520 94,967 户，2025Q4 户数显著下降（户数↓ 通常对应筹码集中），2026 年以来温和回升。</li>
+</ul>
+<p><strong>质押/冻结明细</strong>（inline <code>data_snapshot.md</code> §7，active 状态，154 条记录）：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">公告日</th>
+<th>股东</th>
+<th>质押方</th>
+<th style="text-align: center;">期末日</th>
+<th style="text-align: right;">质押(万股)</th>
+<th style="text-align: right;">占持股%</th>
+<th style="text-align: right;">占总股本%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">20250408</td>
+<td>乌鲁木齐景嘉合创股权投资合伙企业</td>
+<td>国泰君安证券</td>
+<td style="text-align: center;">20250411</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: right;">1.70</td>
+<td style="text-align: right;">2.87</td>
+</tr>
+<tr>
+<td style="text-align: center;">20240415</td>
+<td>乌鲁木齐景嘉合创股权投资合伙企业</td>
+<td>国泰君安证券</td>
+<td style="text-align: center;">20250411</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: right;">2.01</td>
+<td style="text-align: right;">3.27</td>
+</tr>
+<tr>
+<td style="text-align: center;">20230724</td>
+<td>曾万辉</td>
+<td>国泰君安证券</td>
+<td style="text-align: center;">20240719</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">0.66</td>
+<td style="text-align: right;">4.04</td>
+</tr>
+<tr>
+<td style="text-align: center;">20230809</td>
+<td>曾万辉</td>
+<td>国泰君安证券</td>
+<td style="text-align: center;">20240719</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.28</td>
+<td style="text-align: right;">4.04</td>
+</tr>
+<tr>
+<td style="text-align: center;">20220722</td>
+<td>喻丽丽</td>
+<td>东方财富证券</td>
+<td style="text-align: center;">20221020</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">1.21</td>
+<td style="text-align: right;">30.83</td>
+</tr>
+<tr>
+<td style="text-align: center;">20210701</td>
+<td>喻丽丽</td>
+<td>东方财富证券</td>
+<td style="text-align: center;">20220421</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">32.62</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>质押判定：质押记录虽多（154 条），但<strong>单笔质押数极小</strong>（占持股比例多在 0.3%~2% 区间），主要为曾万辉、乌鲁木齐景嘉合创、喻丽丽历史质押，<strong>最新一笔 active 期末日为 20250411</strong>（pledge_detail 数据截至 20250411，更新期后无新增大额质押记录）。实控人喻丽丽质押占其个人持股比例约 1.2%，<strong>远未触及"大股东累计质押 &gt; 50%"的致命阈值</strong>（详见 §六 6.1 快筛 #3）。质押风险整体可控。</p>
+</blockquote>
+<h3>★ 若核心资产被剥离的剩余资产清单</h3>
+<p><strong>触发判定</strong>: ✅ <strong>触发</strong>（依据：①最新 forecast_vip 预告续亏 FY2025 −1.2~−1.8 亿；②audit 有涉核心资产的 🔴/🟠 红旗——PB vs ROE 严重错配 + 长期股权投资大幅波动；③公司连续两年亏损、新业务真实亏损规模存在盲区）。本清单作为 §五 DCF "最差情景"的下行地板。</p>
+<table>
+<thead>
+<tr>
+<th>资产项</th>
+<th style="text-align: right;">金额（亿）</th>
+<th>口径 / 来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>货币资金</td>
+<td style="text-align: right;">31.02</td>
+<td>20260331 资产负债表 [Tushare]</td>
+</tr>
+<tr>
+<td>应收账款（按 7 折保守）</td>
+<td style="text-align: right;">4.46</td>
+<td>6.36 亿 × 0.7（军工应收质量较高） [Tushare]</td>
+</tr>
+<tr>
+<td>存货（按 5 折保守）</td>
+<td style="text-align: right;">2.73</td>
+<td>5.47 亿 × 0.5 [Tushare]</td>
+</tr>
+<tr>
+<td>固定资产 + 无形资产（按 5 折，含 GPU IP 不确定性）</td>
+<td style="text-align: right;">5.25</td>
+<td>(5.33+5.17) 亿 × 0.5 [Tushare]</td>
+</tr>
+<tr>
+<td>长沙景美子公司净资产（盈利主体，按净资产计）</td>
+<td style="text-align: right;">8.43</td>
+<td>净资产 84,322 万 [PDF:2024_annual, P.27]</td>
+</tr>
+<tr>
+<td><strong>资产合计（保守清算口径）</strong></td>
+<td style="text-align: right;"><strong>≈51.89</strong></td>
+<td>–</td>
+</tr>
+<tr>
+<td>减：总负债</td>
+<td style="text-align: right;">−9.38</td>
+<td>20260331 总负债 9.38 亿 [Tushare]</td>
+</tr>
+<tr>
+<td>减：清算成本（按资产 5% 估）</td>
+<td style="text-align: right;">−2.59</td>
+<td>估算</td>
+</tr>
+<tr>
+<td><strong>"现金 + 核心资产"净清算价值</strong></td>
+<td style="text-align: right;"><strong>≈39.92</strong></td>
+<td>–</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>对应每股净清算价值 ≈ 39.92 亿 ÷ 5.226 亿股 = <strong>约 7.64 元/股</strong>；若仅取<strong>"纯现金 − 负债"地板</strong>：(31.02 − 9.38) = 21.64 亿 ÷ 5.226 亿股 = <strong>约 4.14 元/股</strong>。</li>
+<li>当前股价 55.11 元（20260622），即使按"现金 + 核心资产"保守清算口径（7.64 元），现价仍有 <strong>86% 是对 GPU/AI 第二曲线增长叙事的定价</strong>——账面净资产 70.53 亿（每股净资产 13.05 元）已含大量研发资本化与商誉不确定性。此地板将作为 §五 DCF 最差情景的下行参考。</li>
+</ul>
+<hr />
+</div>
+
+<!-- ============================================================
+     §三 行业与竞争对标（行业格局 + 可比公司）
+     ============================================================ -->
+<div class="section" id="industry">
+<h2>§三 行业与竞争对标</h2>
+<h3>行业规模与趋势</h3>
+<p>景嘉微处于 <strong>半导体 / 国产 GPU + 军工电子</strong> 交叉赛道，Tushare 行业分类为"元器件"（全行业 306 家上市公司）。行业规模与增长驱动（引用外部数据源）：</p>
+<ul>
+<li><strong>全球半导体市场</strong>：管理层引用世界半导体贸易统计组织（WSTS）预测，<strong>2025 年半导体市场规模将达 6,970 亿美元，增长率 11.2%</strong> [PDF:2024_annual, P.11]。</li>
+<li><strong>中国 IC 设计行业</strong>：<strong>2024 年中国集成电路设计行业销售额预计为 6,460.4 亿元，同比增长 11.9%</strong> [PDF:2024_annual, P.11]——景嘉微作为 Fabless 设计企业直接受益于该赛道高景气。</li>
+<li><strong>边端 AI 芯片市场</strong>：2026 年预计达 <strong>500 亿元</strong>（phase1-data.md §8）。景嘉微差异化路线是避开寒武纪/海光的数据中心训练正面竞争，主打"GPU + 边端 AI SoC"。</li>
+<li><strong>行业生命周期</strong>：国产 GPU/AI 算力处于<strong>成长早期—规模化落地关键期</strong>。2026 年国产 AI 算力从"替代进口"转向"性能优化"，信创/智算中心/边缘 AI 三场景突破（phase1-data.md §8）。</li>
+</ul>
+<p><strong>政策方向（引用具体文件）</strong>：</p>
+<ul>
+<li>工信部等《关于推动未来产业创新发展的实施意见》（2024.1）："加快突破 <strong>GPU 芯片</strong>、集群低时延互连网络、异构资源管理等技术，建设超大规模智算中心"[PDF:2024_annual, P.10]——GPU 芯片被明确列入未来产业。</li>
+<li>中共中央《关于进一步全面深化改革推进中国式现代化的决定》（2024.7）："抓紧打造自主可控的产业链供应链，健全强化集成电路……重点产业链发展体制机制"[PDF:2024_annual, P.10]。</li>
+<li>太空算力/星网等自主可控算力政策利好军工 + 信创双主线（phase1-data.md §8）。</li>
+</ul>
+<blockquote>
+<p>行业判断：赛道（国产 GPU + 军工电子）景气度高、政策东风强、TAM 广阔（IC 设计 6,460 亿、边端 AI 500 亿、半导体 6,970 亿美元），但<strong>竞争激烈、行业整体估值已计入高预期</strong>（见下方 Porter 五力 + peer 对标）。</p>
+</blockquote>
+<h3>Porter 五力分析</h3>
+<table>
+<thead>
+<tr>
+<th>力</th>
+<th style="text-align: center;">强度</th>
+<th>判定依据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>现有竞争者竞争</strong></td>
+<td style="text-align: center;">🔴 强</td>
+<td>GPU/AI 芯片赛道挤满强敌：国内华为昇腾、寒武纪（2026Q1 营收 28.85 亿 +159.56%）、海光（DCU 已在运营商/银行规模化部署）、摩尔线程（"花港"架构 2026 发布）、龙芯/芯原；国外 NVIDIA/AMD/Intel 绝对领先。景嘉微在通用 GPU/AI 训练正面战场处于弱势，靠差异化（军工显控 + 边端 AI SoC）避战。</td>
+</tr>
+<tr>
+<td><strong>供应商议价能力</strong></td>
+<td style="text-align: center;">🟠 中高</td>
+<td>Fabless 模式依赖晶圆代工（中芯等），先进制程产能紧张时可能影响交付；EDA/IP 工具受外部供应链约束（国产替代进行中）。</td>
+</tr>
+<tr>
+<td><strong>买方议价能力</strong></td>
+<td style="text-align: center;">🟡 中（分化）</td>
+<td>军工显控买方集中（部队/军工集团），但景嘉微军用显控市占率 &gt;50%、供应商地位不可替代，议价权强；信创/AI 民用市场买方分散且竞争充分，议价权弱、需补贴/让利抢生态。</td>
+</tr>
+<tr>
+<td><strong>潜在进入者威胁</strong></td>
+<td style="text-align: center;">🟢 低-中</td>
+<td>GPU 设计技术壁垒高、研发投入巨大（景嘉微单季研发 1.42 亿）、军工资质 + 国家队（大基金）背书构成准入壁垒；但资本与政策驱动下新玩家（摩尔线程、壁仞、燧原等初创）持续涌入。</td>
+</tr>
+<tr>
+<td><strong>替代品威胁</strong></td>
+<td style="text-align: center;">🟡 中</td>
+<td>军工显控领域被替代风险低（自主可控刚需）；通用 GPU 领域面临 NVIDIA CUDA 生态护城河 + 国产同业的直接替代，JM9/景宏生态成熟度待验证。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Porter 综合：<strong>军工显控基本盘（高市占、高壁垒、高议价权）是真护城河；国产 GPU 第二曲线则身处"红海中的红海"</strong>——竞争者强、生态壁垒在对手侧（CUDA）、买方分散，超额回报兑现高度依赖政策驱动与执行力。</p>
+</blockquote>
+<h3>A 股同行业对标</h3>
+<blockquote>
+<p>完整 inline <code>peer_analysis.md</code> §1 对比表（5 家市值最接近的"元器件"同行 + 目标公司）。⚠️ 注意：Tushare 行业分类"元器件"是宽口径，5 家市值相近 peer（飞荣达/电连技术/商络电子/瑞可达/麦捷科技）多为<strong>连接器/磁性器件/电子元件</strong>企业，与景嘉微"国产 GPU + 军工"业务<strong>可比性有限</strong>——故下方另列国产 GPU/AI 同业作为业务可比组。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">ts_code</th>
+<th style="text-align: center;">公司</th>
+<th style="text-align: center;">细分</th>
+<th style="text-align: center;">市值(亿)</th>
+<th style="text-align: center;">PE TTM</th>
+<th style="text-align: center;">PB</th>
+<th style="text-align: center;">PS TTM</th>
+<th style="text-align: center;">ROE%</th>
+<th style="text-align: center;">毛利率%</th>
+<th style="text-align: center;">净利率%</th>
+<th style="text-align: center;">资产负债率%</th>
+<th style="text-align: center;">营收 YoY%</th>
+<th style="text-align: center;">股息率%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>300474.SZ</strong> ⭐</td>
+<td style="text-align: center;"><strong>景嘉微</strong></td>
+<td style="text-align: center;">元器件</td>
+<td style="text-align: center;">288.02</td>
+<td style="text-align: center;">–(亏损)</td>
+<td style="text-align: center;"><strong>4.22</strong></td>
+<td style="text-align: center;"><strong>41.04</strong></td>
+<td style="text-align: center;">−0.34</td>
+<td style="text-align: center;"><strong>62.91</strong></td>
+<td style="text-align: center;">−10.64</td>
+<td style="text-align: center;"><strong>18.24</strong></td>
+<td style="text-align: center;">−17.87</td>
+<td style="text-align: center;">0.11</td>
+</tr>
+<tr>
+<td style="text-align: center;">300602.SZ</td>
+<td style="text-align: center;">飞荣达</td>
+<td style="text-align: center;">元器件</td>
+<td style="text-align: center;">285.58</td>
+<td style="text-align: center;">74.34</td>
+<td style="text-align: center;">6.88</td>
+<td style="text-align: center;">4.09</td>
+<td style="text-align: center;">0.63</td>
+<td style="text-align: center;">16.93</td>
+<td style="text-align: center;">1.74</td>
+<td style="text-align: center;">46.36</td>
+<td style="text-align: center;">39.15</td>
+<td style="text-align: center;">0.08</td>
+</tr>
+<tr>
+<td style="text-align: center;">300679.SZ</td>
+<td style="text-align: center;">电连技术</td>
+<td style="text-align: center;">元器件</td>
+<td style="text-align: center;">291.26</td>
+<td style="text-align: center;">124.75</td>
+<td style="text-align: center;">5.82</td>
+<td style="text-align: center;">5.39</td>
+<td style="text-align: center;">3.59</td>
+<td style="text-align: center;">35.31</td>
+<td style="text-align: center;">15.94</td>
+<td style="text-align: center;">25.24</td>
+<td style="text-align: center;">−0.39</td>
+<td style="text-align: center;">0.69</td>
+</tr>
+<tr>
+<td style="text-align: center;">300975.SZ</td>
+<td style="text-align: center;">商络电子</td>
+<td style="text-align: center;">元器件</td>
+<td style="text-align: center;">292.94</td>
+<td style="text-align: center;">56.03</td>
+<td style="text-align: center;">11.03</td>
+<td style="text-align: center;">2.79</td>
+<td style="text-align: center;">1.20</td>
+<td style="text-align: center;">13.35</td>
+<td style="text-align: center;">1.60</td>
+<td style="text-align: center;">51.67</td>
+<td style="text-align: center;">106.11</td>
+<td style="text-align: center;">0.03</td>
+</tr>
+<tr>
+<td style="text-align: center;">688800.SH</td>
+<td style="text-align: center;">瑞可达</td>
+<td style="text-align: center;">元器件</td>
+<td style="text-align: center;">281.57</td>
+<td style="text-align: center;">99.72</td>
+<td style="text-align: center;">11.74</td>
+<td style="text-align: center;">8.96</td>
+<td style="text-align: center;">2.12</td>
+<td style="text-align: center;">24.88</td>
+<td style="text-align: center;">9.43</td>
+<td style="text-align: center;">45.70</td>
+<td style="text-align: center;">−1.28</td>
+<td style="text-align: center;">0.20</td>
+</tr>
+<tr>
+<td style="text-align: center;">300319.SZ</td>
+<td style="text-align: center;">麦捷科技</td>
+<td style="text-align: center;">元器件</td>
+<td style="text-align: center;">280.74</td>
+<td style="text-align: center;">93.23</td>
+<td style="text-align: center;">5.69</td>
+<td style="text-align: center;">7.24</td>
+<td style="text-align: center;">1.47</td>
+<td style="text-align: center;">18.79</td>
+<td style="text-align: center;">9.41</td>
+<td style="text-align: center;">29.06</td>
+<td style="text-align: center;">0.00</td>
+<td style="text-align: center;">0.36</td>
+</tr>
+</tbody>
+</table>
+<p><strong>异常值附注</strong>：①景嘉微 PE TTM 为"–（亏损）"——TTM 净利为负无法计算 PE，是连续亏损的直接体现，不可与 peer 的正 PE 直接比较；②麦捷科技营收 YoY 0.00% 为分位计算的中位锚点；③景嘉微 <strong>PS TTM 41.04 远高于 5 家 peer（最高瑞可达 8.96）</strong>——市场给"国产 GPU 龙头"远超元器件同业的销售额溢价。</p>
+<p><strong>业务可比组（国产 GPU / AI 算力同业，LLM 手工补充，供可比性参照）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>公司</th>
+<th>身份</th>
+<th>与景嘉微对比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>海光信息</td>
+<td>DCU（GPGPU），数据中心训练/推理</td>
+<td>DCU 已在运营商/银行规模化部署，营收/盈利规模远大于景嘉微，估值同样高 PS</td>
+</tr>
+<tr>
+<td>寒武纪</td>
+<td>AI 芯片（云端训练/推理）</td>
+<td>2026Q1 营收 28.85 亿（+159.56%），思元 590 批量交付，已扭亏——景嘉微的"对标想象空间"参照系，但景嘉微规模/进度落后</td>
+</tr>
+<tr>
+<td>龙芯中科</td>
+<td>CPU + GPU IP</td>
+<td>自主指令集，军工/信创双线，与景嘉微信创场景部分重叠</td>
+</tr>
+<tr>
+<td>芯原股份</td>
+<td>半导体 IP / 一站式设计</td>
+<td>Fabless/IP 模式，毛利率结构相近</td>
+</tr>
+<tr>
+<td>摩尔线程 / 壁仞 / 燧原（非上市/新上市）</td>
+<td>通用 GPU 初创</td>
+<td>"花港"架构 2026 发布，直接争夺景嘉微通用 GPU 市场</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>业务可比组结论：在<strong>真正的国产 GPU/AI 同业</strong>中，景嘉微规模与商业化进度<strong>落后于海光、寒武纪</strong>（后者已扭亏放量），但拥有<strong>军工显控这一独家盈利基本盘 + 大基金背书</strong>——这是其差异化所在，也是高 PS 溢价的逻辑来源。</p>
+</blockquote>
+<h3>目标公司在 peer 中的分位</h3>
+<blockquote>
+<p>inline <code>peer_analysis.md</code> §2（vs 5 家市值相近 peer）+ §4（vs 行业全员 306 家）。</p>
+</blockquote>
+<p><strong>vs 5 家市值相近 peer</strong>（分位 high=好）：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th style="text-align: center;">目标值</th>
+<th style="text-align: center;">Peer 中位数</th>
+<th style="text-align: center;">分位</th>
+<th>解读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ROE(%)</td>
+<td style="text-align: center;">−0.34</td>
+<td style="text-align: center;">1.47</td>
+<td style="text-align: center;"><strong>0%</strong> 🔴 落后</td>
+<td>亏损致 ROE 垫底</td>
+</tr>
+<tr>
+<td>毛利率(%)</td>
+<td style="text-align: center;">62.91</td>
+<td style="text-align: center;">18.79</td>
+<td style="text-align: center;"><strong>100%</strong> 🟢 领先</td>
+<td>议价能力第一档（军工 + IC 设计高毛利）</td>
+</tr>
+<tr>
+<td>净利率(%)</td>
+<td style="text-align: center;">−10.64</td>
+<td style="text-align: center;">9.41</td>
+<td style="text-align: center;"><strong>0%</strong> 🔴 落后</td>
+<td>费用吞噬，净利率垫底</td>
+</tr>
+<tr>
+<td>资产负债率(%)</td>
+<td style="text-align: center;">18.24</td>
+<td style="text-align: center;">45.70</td>
+<td style="text-align: center;"><strong>100%</strong> 🟢 最稳健</td>
+<td>几乎零有息负债，财务最稳健</td>
+</tr>
+<tr>
+<td>PE TTM</td>
+<td style="text-align: center;">nan</td>
+<td style="text-align: center;">93.23</td>
+<td style="text-align: center;"><strong>0%</strong> 🔴</td>
+<td>亏损无法计算，最"贵"（实为缺失）</td>
+</tr>
+<tr>
+<td>PB</td>
+<td style="text-align: center;">4.22</td>
+<td style="text-align: center;">6.88</td>
+<td style="text-align: center;"><strong>100%</strong> 🟢 最便宜</td>
+<td>PB 低于全部 peer</td>
+</tr>
+<tr>
+<td>营收 YoY(%)</td>
+<td style="text-align: center;">−17.87</td>
+<td style="text-align: center;">0.00</td>
+<td style="text-align: center;"><strong>0%</strong> 🔴 落后</td>
+<td>单季淡季口径，垫底（注：全年口径 +54.41%）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>vs 行业全员 306 家</strong>（分位 0%=最便宜，100%=最贵）：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th style="text-align: center;">行业最便宜</th>
+<th style="text-align: center;">25 分位</th>
+<th style="text-align: center;">中位数</th>
+<th style="text-align: center;">75 分位</th>
+<th style="text-align: center;">行业最贵</th>
+<th style="text-align: center;">目标值</th>
+<th style="text-align: center;">目标分位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PB</td>
+<td style="text-align: center;">0.53</td>
+<td style="text-align: center;">3.44</td>
+<td style="text-align: center;">5.28</td>
+<td style="text-align: center;">9.71</td>
+<td style="text-align: center;">29.61</td>
+<td style="text-align: center;"><strong>4.22</strong></td>
+<td style="text-align: center;"><strong>35.7%</strong> 🟢 偏低</td>
+</tr>
+<tr>
+<td>PS_TTM</td>
+<td style="text-align: center;">0.23</td>
+<td style="text-align: center;">2.65</td>
+<td style="text-align: center;">5.09</td>
+<td style="text-align: center;">11.85</td>
+<td style="text-align: center;">84.36</td>
+<td style="text-align: center;"><strong>41.04</strong></td>
+<td style="text-align: center;"><strong>96.4%</strong> 🔴 极贵</td>
+</tr>
+</tbody>
+</table>
+<h3>硬判定对比洞察 + 海外同业补充</h3>
+<p><strong><code>peer_analysis.md</code> §3 硬判定</strong>：</p>
+<ul>
+<li>⚠️ <strong>营收增速落后 peer</strong>（−17.9% vs 0.0% 中位），可能基本面恶化——但须<strong>用全年口径修正</strong>：FY2025 全年营收 +54.41%（V 型反转），−17.87% 为 2026Q1 单季淡季口径，<strong>不构成"持续恶化"</strong>。这是 peer 自动判定与基本面真相的关键背离点。</li>
+<li>🟢 <strong>PB 行业 35.7 分位（偏低）</strong> vs 🔴 <strong>PS_TTM 行业 96.4 分位（极贵）</strong>——这是景嘉微最核心的<strong>估值矛盾</strong>：市场给"国产 GPU 龙头"高 PS 销售额溢价（远超元器件同业），但 PB 因高净资产（35 亿现金 + 大额研发资本化）反而偏低。<strong>PB vs ROE 严重错配</strong>（PB 4.22 但 ROE 为负，audit 🟠 高红旗）是空头核心论据，将在 §六 6.2 / §五 估值章闭环。</li>
+</ul>
+<p><strong>海外同业补充（业务对标参照，LLM 手工补）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>公司</th>
+<th>地位</th>
+<th>与景嘉微关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NVIDIA</td>
+<td>全球 GPU / AI 算力绝对龙头，CUDA 生态护城河</td>
+<td>景嘉微通用 GPU 的"终极替代目标"+ 生态壁垒来源；市值/技术代差巨大</td>
+</tr>
+<tr>
+<td>AMD</td>
+<td>GPU/CPU 第二极，ROCm 生态</td>
+<td>数据中心 GPU 竞争者</td>
+</tr>
+<tr>
+<td>Intel</td>
+<td>x86 + Arc GPU + 显控</td>
+<td>景嘉微图形显控/通用 GPU 的国外对标 [PDF:2024_annual, P.12]</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>海外对标结论：景嘉微的投资逻辑本质是"<strong>在 NVIDIA/AMD/Intel 主导的全球格局下，赌中国军工 + 信创/AI 算力自主可控的国产替代红利</strong>"。其 PS 溢价（行业 96.4 分位）正是市场对这一国产替代右尾期权的定价——溢价能否兑现，取决于 JM9/景宏 AI 芯片的商业化放量与军工订单确认节奏（详见 §四 4.11 状态评估 + §五 反向 DCF）。</p>
+</blockquote>
+</div>
+
+<!-- ============================================================
+     §四 评分与维度证据（10 维度评分 + 逐维度证据 + 定性综合）
+     ============================================================ -->
+<div class="section" id="scoring">
+<h2>§四 评分与维度证据</h2>
+<blockquote>
+<p>评分对照 <code>references/scoring-rubric.md</code> 10 维度锚点 + 上市公司调整规则。<strong>综合评分 = 基本面静态快照（公司"现在"多好，即 P=F+N 中的 F），不是投资结论</strong>——权威投资方向在 §七。每维度紧跟具体数字（Tushare/PDF/audit），不写"良好/一般"空话。</p>
+</blockquote>
+<h3>4.1 加权评分表</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th style="text-align: center;">权重</th>
+<th style="text-align: center;">分数</th>
+<th style="text-align: center;">加权分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 商业模式与单位经济</td>
+<td style="text-align: center;">1.5</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">7.50</td>
+</tr>
+<tr>
+<td>2. 市场机会 (TAM/SAM/SOM)</td>
+<td style="text-align: center;">1.5</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">12.00</td>
+</tr>
+<tr>
+<td>3. 竞争格局与护城河</td>
+<td style="text-align: center;">1.5</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">9.00</td>
+</tr>
+<tr>
+<td>4. 增长指标与牵引力</td>
+<td style="text-align: center;">1.5</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">7.50</td>
+</tr>
+<tr>
+<td>5. 团队与领导力</td>
+<td style="text-align: center;">1.0</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">6.00</td>
+</tr>
+<tr>
+<td>6. 产品与技术</td>
+<td style="text-align: center;">1.0</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">6.00</td>
+</tr>
+<tr>
+<td>7. 财务健康与资本效率</td>
+<td style="text-align: center;">1.0</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5.00</td>
+</tr>
+<tr>
+<td>8. 风险与挑战（倒数）</td>
+<td style="text-align: center;">1.0</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5.00</td>
+</tr>
+<tr>
+<td>9. 市场估值</td>
+<td style="text-align: center;">0.75</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">3.00</td>
+</tr>
+<tr>
+<td>10. 回报潜力</td>
+<td style="text-align: center;">0.75</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">3.75</td>
+</tr>
+<tr>
+<td><strong>合计</strong></td>
+<td style="text-align: center;"><strong>11.5</strong></td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;"><strong>64.75</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>综合评分 = 64.75 ÷ 11.5 = 5.63 / 10</strong>（数据置信度：中——18 期财务 + 年报 PDF + audit 11 框架齐全；盲区为景宏 AI 分部独立业绩 + 38.33 亿定增募投实际投向未披露）。对照 rubric 投资信号表，5.63 落入"5.0-6.4 谨慎"区间——<strong>但此为基本面快照，非投资结论，方向见 §七</strong>。</p>
+<hr />
+<h3>4.2 逐维度证据</h3>
+<p><strong>维度 1 — 商业模式与单位经济：5 分（中等）</strong><br />
+- Fabless 模式（设计自主、流片/封测外包）[PDF:2024_annual, P.12]，毛利率 TTM 62.91%、2026Q1 单季 61.69%，<strong>远超半导体 Fabless 标杆 25-30% 与同业中位 18.79%</strong>，定价权第一档（rubric 9-10 档"毛利率行业顶尖"）。<br />
+- 但<strong>净利率 −113.64%</strong>（2026Q1）、FY2025 −31.47%，连续两年归母亏损（FY2024 −1.65 亿 / FY2025 −1.65 亿）；OCF 持续为负（2026Q1 −1.23 亿）——单位经济被研发费用吞噬（2026Q1 研发 1.42 亿 = 营收 1.7 倍）[Tushare]。<br />
+- 收入非经常性强（军工按验收节点确认，季度极不均衡，2025Q3 单季营收 +230.65%），ARR 概念不适用，盈利路径不确定（rubric 5-6 档"商业模式基本验证但扩展性存疑、盈利时间表不确定"）。<br />
+- 判定：高毛利锚定"中上"，但持续亏损 + 盈利时点不明压回中等 → <strong>5 分</strong>。</p>
+<p><strong>维度 2 — 市场机会（TAM）：8 分（优秀）</strong><br />
+- TAM 多源交叉验证且高增长：全球半导体 2025 年 6,970 亿美元（+11.2%）、中国 IC 设计 2024 年 6,460.4 亿元（+11.9%）[PDF:2024_annual, P.11]、边端 AI 芯片 2026 年约 500 亿元（phase1）。<br />
+- 强结构性顺风：工信部《推动未来产业创新发展实施意见》明确"加快突破 GPU 芯片"[PDF:2024_annual, P.10]，叠加自主可控/信创/太空算力政策（rubric 7-8 档"TAM $10-100B、CAGR 15-20%、至少一个强顺风"）。<br />
+- SAM 渗透率低（国产 GPU 替代尚处早期）。判定 → <strong>8 分</strong>（未给 9-10 是因公司并非品类定义者，处于追赶位）。</p>
+<p><strong>维度 3 — 竞争格局与护城河：6 分（中等偏上）</strong><br />
+- <strong>军工图形显控 = 真护城河</strong>：军用显控市占率 &gt;50%、供应商地位不可替代、军工资质 + 大基金（持股 5.00%）背书构成硬准入壁垒（rubric 7-8 档要素：硬壁垒 + 转换成本高）[PDF:2024_annual, P.78]。<br />
+- <strong>但 GPU 第二曲线身处"红海中的红海"</strong>：正面对手华为昇腾、寒武纪（2026Q1 营收 28.85 亿 +159.56% 已扭亏）、海光（DCU 规模化部署）、摩尔线程，生态壁垒（CUDA）在对手侧，景嘉微规模/进度落后（rubric 3-4 档要素：面对资金充裕强敌、生态在对手侧）。<br />
+- 一软一硬两条曲线护城河强度悬殊 → 取"拥有 1 种成型护城河 + 1 种形成中"的中位偏上 → <strong>6 分</strong>。</p>
+<p><strong>维度 4 — 增长指标与牵引力（上市公司口径）：5 分（中等）</strong><br />
+- 全年口径营收 V 型反转：FY2024 4.66 亿（谷底）→ FY2025 <strong>7.20 亿（+54.41%）</strong>，对照上市口径 rubric"收入增速 &gt;30% = 9-10 档"本应高分；但 <strong>EPS 仍为负</strong>（FY2025 −1.65 亿），增速档与盈利档背离。<br />
+- 增长<strong>极不连续</strong>：路径 FY2022 11.54 亿 → FY2023 7.13 亿（−38%）→ FY2024 4.66 亿（−34.6%）→ FY2025 7.20 亿（+54.41%）→ 2026Q1 0.84 亿（−17.87% 季节性淡季），尚未回到 2022 峰值的 62%[Tushare §3]。<br />
+- 上市口径下"收入增速强但盈利大幅下滑"两条锚相互抵消 → <strong>5 分</strong>（不可只取 +54.41% 给高分而无视续亏）。</p>
+<p><strong>维度 5 — 团队与领导力（上市公司追加项）：6 分（中等偏上）</strong><br />
+- 内部人持股高：实控人喻丽丽 25.54%（1.33 亿股）+ 配偶曾万辉 3.53%，家族合计 25.54% 以上，利益与股价高度绑定（rubric 上市追加"内部人持股 &gt;10% 加分"）[Tushare top10]；20251231→20260331 零减持。<br />
+- 大基金 5.00% 战投 + 半导体/AI 主题指数 ETF 持仓（半导体芯片 ETF、AI 主题 ETF），治理可信度有外部背书。<br />
+- 减分项：业绩预告兑现度极高（历史 5 次有 actual 全部落入区间，无放卫星前科）属"德"过关；但<strong>未给明确营收/利润指引</strong>、股息率仅 0.11%（rubric audit 标注非防御性）、存在历史质押 + 38.33 亿定增募投实际投向待核（§九 缺口）→ "才"中等。综合 → <strong>6 分</strong>。</p>
+<p><strong>维度 6 — 产品与技术：6 分（中等偏上）</strong><br />
+- 技术储备清晰：JM11 系列完成流片/封装、进入小批量交付（FP32 6 TFLOPS / FP16 12 TFLOPS、显存最大 64GB、支持国产 OS + 硬件虚拟化）[PDF:2024_annual, P.12]；2024 年景宏系列智算模块/整机<strong>填补 AI 训练/推理/科学计算产品空白</strong>[PDF:2024_annual, P.11]。<br />
+- 研发强度极高且加速：2026Q1 研发 1.42 亿（YoY +102.67%、营收的 1.7 倍）[Tushare]——"产品迭代速度快、研发投入大"对应 rubric 7-8 档。<br />
+- 减分项：通用 GPU 生态成熟度未验证（CUDA 壁垒在对手侧）、商业化进度落后海光/寒武纪、无 NPS/客户验证披露（证据门控未满足）→ 取中位偏上 → <strong>6 分</strong>。</p>
+<p><strong>维度 7 — 财务健康与资本效率（上市公司版，★必引 audit 红旗）：5 分（中等）</strong><br />
+- 资产负债表稳健第一档：资产负债率 11.74%（同业中位 45.70%，行业 100% 分位最稳健）、流动比率 11.47、货币资金 31.02 亿、净负债 −27.39 亿（净现金）、Altman Z=19.21（远 &gt;2.99 安全线）——<strong>破产风险极低，亏损是"烧研发"非"经营失血"</strong>[audit #9]。<br />
+- 但 audit 多条红旗压分：<strong>🟠 Buffett Quality OCF/NI=0.31</strong>（&lt; 0.5 严重，利润质量偏弱）[audit #1]；FCF 收益率为负（2026Q1 自由现金流 −3.78 亿）；经营现金流/净利润 &lt; 0.5x（rubric 上市版 1-2 档区）；连续两年亏损 + 政府补助为利润稳定器（FY2024 含 +3,933 万非经常性 + 4,650 万补助）。<br />
+- 一边"零破产风险/超低杠杆"（8 分要素），一边"持续烧钱/OCF 红旗/盈利质量差"（3-4 分要素）相互对冲 → <strong>5 分</strong>。</p>
+<p><strong>维度 8 — 风险与挑战（分数 = 风险倒数，越高越安全；★必引 audit）：5 分（风险中等）</strong><br />
+- 偏空风险：<strong>🟠 PB vs ROE 严重错配 8.4x</strong>（PB 4.22 但 ROE −2.4%，理论合理 PB≈0.5x，audit 判"市场透支预期"）[audit #4]；<strong>🟠 PE_TTM 不可用</strong>（TTM 净利为负）[audit #3]；<strong>🟠 续亏预告</strong>[audit #2]；🟡 长期股权投资 +30.8% 大幅波动（权益法爆雷风险）[audit #7]；客户集中（军工买方集中）+ 政府补助退坡风险。<br />
+- 风险可控面：财务破产风险极低（Z=19.21）、Beneish M=−2.38（盈余操纵概率低）、实控人无减持、质押远低于 50% 致命线、无非标审计意见、无在审重大诉讼。<br />
+- 重大估值/盈利质量风险与"财务硬指标安全 + 无致命治理瑕疵"对冲 → 风险中等 → <strong>5 分</strong>。</p>
+<p><strong>维度 9 — 市场估值（上市公司版，★必引 audit）：4 分（偏高）</strong><br />
+- <strong>核心估值矛盾</strong>：<strong>PS_TTM 41.04 = 行业 306 家 96.4 分位（极贵，rubric"PE/PS &gt; 行业中位 2x → 1-2 档"）</strong> vs PB 4.22 = 行业 35.7 分位（偏低）[peer §4]。市场给"国产 GPU 龙头"远超元器件同业的销售额溢价（5 家 peer 最高 PS 仅瑞可达 8.96）。<br />
+- PB 偏低系高净资产假象（31 亿现金 + 大额研发资本化/无形 +122% 至 5.17 亿撑高净资产），与 ROE −2.4% <strong>错配 8.4x</strong>[audit #4]，是空头核心论据；PE 不可用[audit #3]，估值只能靠 PS/PB + 期权框架。<br />
+- 唯一加分项是 PB 行业分位偏低（rubric"PB &lt; 历史中位"），但<strong>不能掩盖 PS 极贵 + PB/ROE 错配</strong>这一主矛盾 → <strong>4 分</strong>（偏高，需增速强力支撑）。</p>
+<p><strong>维度 10 — 回报潜力（上市公司版）：5 分（中等）</strong><br />
+- 上行依赖 GPU/AI 右尾期权（JM9/景宏放量 + 军工订单确认），明确催化剂可见（2026 中报分部披露、太空算力/星网订单），rubric 上市版"催化剂可见"要素在；下行有清算地板（净清算 7.64 元 / 纯现金 4.14 元）作保护。<br />
+- 但分红+回购收益率仅 0.11%（无股息保护，rubric 1-2 档要素）；技术面偏空（MA 空头排列、跌破 MA120、近 1 年 −22.42%），目标价上行空间高度依赖期权兑现且现价已透支（详见 §五，概率加权每股 ≈34 元 &lt; 现价 55.11 元）。<br />
+- 上行期权 vs 下行透支对冲 + 无股息保护 → <strong>5 分</strong>。</p>
+<hr />
+<h3>4.3 定性综合判断（逻辑三段式，无打分数字）</h3>
+<blockquote>
+<p>估值分析见 §五。会计/治理红旗集中在 §六 审计（Buffett Quality + Sloan Accrual + Valuation Anomaly 三框架已自动扫描）。本节聚焦不能被定量指标替代的"深层判断"，verdict 作为 §七 7.1 状态后验的<strong>输入之一</strong>。</p>
+</blockquote>
+<h4>框架 1：护城河判断</h4>
+<p><strong>核心问题</strong>：景嘉微的可持续竞争优势在加深、侵蚀还是部分是？</p>
+<p><strong>判断</strong>：部分是（一硬一软，强度悬殊）</p>
+<p><strong>证据链</strong>：<br />
+1. 军工图形显控市占率 &gt;50%、军工资质 + 大基金背书 = 静态硬壁垒，过去由 62.91% 行业第一档毛利率证明其议价权[PDF:2024_annual, P.78 / Tushare]。<br />
+2. 国产 GPU 通用化身处红海：寒武纪 2026Q1 +159.56% 已扭亏、海光 DCU 规模化部署，生态壁垒（CUDA）在对手侧，景嘉微商业化进度落后（反例/侵蚀面）[peer 业务可比组]。<br />
+3. 存疑点：景宏 AI 分部独立业绩未披露，无法验证第二曲线护城河真实形成度（§九 盲区）。</p>
+<p><strong>逻辑蕴含</strong>：判断"部分是" → 强制 SOTP 分部估值（成熟军工显控按硬件倍数、GPU 按期权/AI 同业倍数），不可单一笼统倍数盖全公司。</p>
+<p><strong>对综合投资观点的支撑方向</strong>：中性（军工护城河利好基本盘稳定，GPU 护城河未成型利空溢价可持续性）。</p>
+<h4>框架 2：管理层判断</h4>
+<p><strong>核心问题</strong>：管理层"德"（诚信/对齐）与"才"（战略/资本配置）是否合格？</p>
+<p><strong>判断</strong>：部分是（德过关、才待验证）</p>
+<p><strong>证据链</strong>：<br />
+1. "德"过关：业绩预告历史 5 次有 actual 全部落入区间（无放卫星）、实控人 25.54% 高持股、20251231→20260331 零减持[data_snapshot §4 / top10]。<br />
+2. "才"存疑：38.33 亿定增募投实际投向未披露（市场传多配理财，§九 缺口 #2）、溢价收购无锡诚恒微（亏损标的）拖累利润、长期股权投资 +30.8% 波动[audit #7]。<br />
+3. 边界条件：质押记录虽多但单笔极小、远低于 50% 致命线，治理风险可控[data_snapshot §7]。</p>
+<p><strong>逻辑蕴含</strong>：德过关 + 才待验证 → 不触发致命看空，但要求估值带"募投透明度待核"的不确定性折价。</p>
+<p><strong>对综合投资观点的支撑方向</strong>：中性。</p>
+<h4>框架 3：催化剂判断</h4>
+<p><strong>核心问题</strong>：未来 12 个月是否有改变投资结论方向的可观察事件？</p>
+<p><strong>判断</strong>：是（双向催化剂密集）</p>
+<p><strong>证据链</strong>：<br />
+1. 正向：2026 中报披露 JM11/景宏 AI 实际订单与收入确认（验证"太空算力/星网 2026 放量"叙事）；FY2026 业绩预告（2027.1）若研发拐头则首现减亏信号。<br />
+2. 双向：军工收入按验收节点确认 → 任一单季可能大幅超预期或落空（2025Q3 单季 +230.65% 已演示弹性）[PDF:2025_q3]。<br />
+3. 证伪催化剂：若中报 GPU 实际收入确认仍不足、研发持续 +100% 而无营收对应 → "通用化"叙事证伪。</p>
+<p><strong>逻辑蕴含</strong>：催化剂密集期 → 波动放大，事件驱动上行与下行风险并存，Phase 7 监控在此期间密集触发。</p>
+<p><strong>对综合投资观点的支撑方向</strong>：中性（催化剂双向、兑现不确定）。</p>
+<h4>综合判断</h4>
+<p><strong>框架方向分布</strong>（共 3 个框架）：<br />
+- 看多方向：（0 个）<br />
+- 看空方向：（0 个）<br />
+- 中性/分歧：框架 1（护城河部分是）、框架 2（德过关才待验证）、框架 3（催化剂双向）（共 3 个）</p>
+<p><strong>致命看空条款检查</strong>（直接引用 §六 快筛）：无非标审计/无证实造假/商业模式可持续/无持续经营疑虑/无重大停业法律风险；audit 🔴 致命级红旗 = 0（4 个 🟠 高级，未达"≥2 个 🔴"门槛）→ <strong>未触发致命看空</strong>。</p>
+<p><strong>综合结论（供 §七 7.1 输入）：中性-分歧</strong><br />
+（依据 v4.1 黑白分割规则：3 框架均为中性，无 ≥2 同向，§六快筛未触发 → 中性-分歧。<strong>军工护城河 + GPU 期权的"好"与持续亏损 + 估值透支的"贵"形成内在张力，方向取决于状态后验与赔率，非基本面快照本身。</strong>）</p>
+<hr />
+<h3>4.11 状态评估区（机制原料，供 §七 7.1 合成）</h3>
+<blockquote>
+<p>权威定义见 <code>references/investment-decision-core.md</code>。每块出判定/数字，是 §七决策三元组的输入。</p>
+</blockquote>
+<h4>【λ 与证据临界密度】（泊松 + 贝叶斯）</h4>
+<p><strong>λ 定义（按资产类型）</strong>：景嘉微是"财报型军工基本盘 + AI receiver 第二曲线"混合体——<br />
+- 基本盘 λ 载体 = 军工图形显控/雷达订单按验收节点确认的连续超预期财报；<br />
+- 第二曲线 λ 载体 = JM9/景宏 AI 芯片的<strong>客户订单/收入确认/生态验证</strong>（receiver 型）。</p>
+<p><strong>核心状态跳变事件</strong>：① 军工收入确认节奏（2025Q3 单季营收 +230.65%、净利转正 +1,508 万 = 一次向上跳变）[PDF:2025_q3]；② GPU/AI 从"流片/小批量"到"规模放量收入确认"的跳变（尚未发生）。</p>
+<p><strong>λ↑ 信号（★分部级，注明是否被集团稀释）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>分部</th>
+<th style="text-align: center;">λ↑?</th>
+<th>是否被集团稀释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY2025 营收 +54.41%（V 反转）</td>
+<td>集团合并</td>
+<td style="text-align: center;">🟡 部分</td>
+<td>含基本盘复苏，未拆出 GPU 贡献</td>
+</tr>
+<tr>
+<td>2025Q3 单季营收 +230.65%、净利转正</td>
+<td>军工基本盘</td>
+<td style="text-align: center;">🟢 是</td>
+<td>单季弹性，被全年续亏 −1.65 亿稀释</td>
+</tr>
+<tr>
+<td>JM11 进入小批量交付</td>
+<td>GPU 分部</td>
+<td style="text-align: center;">🟡 微弱</td>
+<td>未见规模收入，被集团亏损完全稀释</td>
+</tr>
+<tr>
+<td>研发 +102.67%（主动投 GPU/AI）</td>
+<td>GPU 分部</td>
+<td style="text-align: center;">⚪ 投入非产出</td>
+<td>是成本跳变，非 λ↑（收入跳变）</td>
+</tr>
+</tbody>
+</table>
+<p>→ <strong>高 λ 仅出现在军工基本盘单季弹性，GPU 第二曲线的 λ 信号微弱且被集团 −1.65 亿亏损完全稀释</strong>。</p>
+<p><strong>独立证据 vs 叙事回声逐条</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th style="text-align: center;">独立证据✓ / 回声✗</th>
+<th>依据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>军工收入按节点确认（2025Q3 +230.65%）</td>
+<td style="text-align: center;">✓ 独立</td>
+<td>实际财报数据 [PDF:2025_q3]</td>
+</tr>
+<tr>
+<td>毛利率维持 62.91% 行业第一档</td>
+<td style="text-align: center;">✓ 独立</td>
+<td>利润率没崩 [Tushare]</td>
+</tr>
+<tr>
+<td>大基金 5.00% 持股 + 半导体/AI 主题 ETF 持仓</td>
+<td style="text-align: center;">✓ 独立（弱）</td>
+<td>持仓数据，但 ETF 是被动权重非主动验证</td>
+</tr>
+<tr>
+<td>"国产 GPU 龙头""太空算力放量"叙事</td>
+<td style="text-align: center;">✗ 回声</td>
+<td>口号 + 政策转述，无 GPU 收入确认</td>
+</tr>
+<tr>
+<td>景宏 AI 芯片商业化进度</td>
+<td style="text-align: center;">✗ 回声</td>
+<td>年报未披露 AI 分部独立营收（盲区）</td>
+</tr>
+<tr>
+<td>券商"国产替代右尾"目标价</td>
+<td style="text-align: center;">✗ 回声</td>
+<td>券商转述</td>
+</tr>
+</tbody>
+</table>
+<p>→ <strong>是否达临界：未达</strong>。独立证据集中在军工基本盘（已部分定价），GPU 第二曲线的证据仍是叙事回声为主。</p>
+<p><strong>临界点 = 哪个未来事件</strong>：2026 中报（约 2026-08）GPU/AI（JM11/景宏）<strong>分部营收与收入确认明细</strong>——这是把"通用化"从回声变独立证据的唯一临界事件。</p>
+<p><strong>贝叶斯三问</strong>：<br />
+1. 后验提高还是注意力提高？→ <strong>主要是注意力</strong>（AI 主题 ETF 新进、政策催化），GPU 业务后验未被独立证据提高。<br />
+2. 新证据独立还是回声？→ 军工独立、GPU 回声为主。<br />
+3. 价格是否过度反映后验？→ <strong>是</strong>（PS 行业 96.4 分位，详见 §五 5.2 反向 DCF）。</p>
+<h4>【身份切换·升级基本面 5 元组】（喊线）</h4>
+<ul>
+<li><strong>当前 P 几</strong>：<strong>P2.5</strong>——军工显控是 P3（细分赛道龙头，市占 &gt;50%），GPU 第二曲线是 P1→P2 候选（追赶位，非瓶颈节点）。</li>
+<li><strong>旧→新身份候选</strong>：旧 = "军工图形显控成熟公司"（PE/PB 看）；新 = "国产 GPU/AI 算力自主可控节点"（远期 PS/期权看）。</li>
+<li><strong>是否已被市场重命名</strong>：<strong>已被市场重命名为"国产 GPU 龙头"（估值上）</strong>——PS_TTM 41.04 远超元器件同业，市场已按 GPU 期权定价；<strong>但业务主体仍是旧身份</strong>（GPU 收入占比未披露但显著低于军工基本盘，集团仍续亏）→ <strong>估值已切换、基本面尚未切换</strong>（典型"价格提前于业务"）。</li>
+<li><strong>5 元组逐项</strong>：<br />
+  1. 生产函数位置：军工 = 不可替代节点；GPU = 追赶者，非瓶颈节点。<br />
+  2. 约束释放能力：38.33 亿定增已释放资金约束，但研发→收入的转化约束未释放。<br />
+  3. 权威认证：大基金战投是产业资质认证，<strong>非黄仁勋式"业务真相"认证</strong>（详见四层③）。<br />
+  4. 证据再验证节奏：军工按季验收（节奏快但波动大）；GPU 按中报/年报披露（节奏慢、盲区大）。<br />
+  5. 定价充分度：见 §五——叙事溢价 N 占现价市值 ≈85%，定价已极度充分。</li>
+</ul>
+<h4>【四层验证·权威认证】（喊线）</h4>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th style="text-align: center;">判定</th>
+<th>依据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 能一句话传播？</td>
+<td style="text-align: center;">✓</td>
+<td>"A 股稀缺军工 GPU + 国产替代 AI 算力龙头"——传播性极强，易成资金共识</td>
+</tr>
+<tr>
+<td>② 有真实产业约束接棒？</td>
+<td style="text-align: center;">🟡 部分</td>
+<td>军工有（订单/毛利/收入确认）；GPU 仅流片/小批量，无规模收入/FCF 接棒</td>
+</tr>
+<tr>
+<td>③ 有权威节点认证？</td>
+<td style="text-align: center;">✗（业务真相未认证）</td>
+<td>大基金 5.00% 是<strong>资质/产业资源认证</strong>，改变了注意力与定价，但<strong>未认证 GPU 业务真相</strong>（Authority Certification ≠ Business Truth）；其余为券商回声</td>
+</tr>
+<tr>
+<td>④ 价格是否已买完完美未来？</td>
+<td style="text-align: center;">✓（已买完）</td>
+<td>详见 §五 5.2，现价隐含营收 3 年 CAGR 39-49% / 盈利端 4.6-6.7x，已接近"买完完美未来"</td>
+</tr>
+</tbody>
+</table>
+<p>→ <strong>权威 vs 回声判定：当前驱动以"叙事压缩 + 注意力 + 政策回声"为主，缺业务真相级权威认证</strong>。</p>
+<h4>【右尾识别·幂律来源·左尾预警】（十倍股 + 幂律）</h4>
+<p><strong>右尾识别清单</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>要件</th>
+<th style="text-align: center;">✓/✗</th>
+<th>依据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>需求真实可延展</td>
+<td style="text-align: center;">🟡 部分</td>
+<td>军工需求真实；GPU/AI 需求真实但景嘉微能否承接待验证</td>
+</tr>
+<tr>
+<td>难替代提价权（征税权）</td>
+<td style="text-align: center;">✓（军工）/ ✗（GPU）</td>
+<td>军工显控有；通用 GPU 面对 CUDA + 国产同业价格战</td>
+</tr>
+<tr>
+<td>FCF 自我造血</td>
+<td style="text-align: center;">✗</td>
+<td>2026Q1 FCF −3.78 亿，靠定增输血</td>
+</tr>
+<tr>
+<td>利润率持续提升</td>
+<td style="text-align: center;">✗</td>
+<td>净利率 FY2022 +25% → FY2025 −31.47%，持续恶化</td>
+</tr>
+<tr>
+<td>估值起点偏低</td>
+<td style="text-align: center;">✗</td>
+<td>PS 行业 96.4 分位，估值起点极高（十倍前提缺失）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>幂律来源判定</strong>：需求函数巨变（AI 算力）真实存在，但景嘉微<strong>不是该幂律的"生成器节点"</strong>（瓶颈在先进制程/CUDA 生态/海光寒武纪，非景嘉微）；其右尾是"分到国产替代红利"的 beta，而非"自强化循环"的 alpha。<strong>不是幂律生成器节点</strong>。</p>
+<p><strong>左尾预警</strong>：持续烧研发（年烧 1.6 亿+ 亏损）+ GPU 通用化证伪 + 商誉/无形资产减值（无形 +122%）+ 政府补助退坡——左尾与右尾并存（详见 §六 6.4）。</p>
+<h4>【无记忆性检查】（泊松，anti_lazy_lint Rule 7）</h4>
+<ul>
+<li>现价距 60 日支撑仅 8%、近 1 年 −22.42%、PB 处近 1 年 5% 分位——<strong>禁止把"跌久了该反弹 / PB 压到历史低位该修复 / 国产替代讲多年该兑现"当买入理由</strong>。</li>
+<li>本标的任何买入逻辑必须落在 <strong>λ↑ 或证据斜率变正</strong>：唯一合法买入触发 = 2026 中报 GPU/AI 分部收入确认放量（证据斜率转正），而非"估值已经压很久"或"等久了该涨"。</li>
+<li>当前证据斜率：军工基本盘斜率正（V 反转），GPU 斜率未转正（仍是投入非产出）→ <strong>买入理由尚不成立</strong>。</li>
+</ul>
+<h4>→ 状态后验初判（供 §七 7.1）</h4>
+<p><strong>↑变好但仅注意力·未确认</strong>——军工基本盘 λ 确有向上跳变（FY2025 +54.41%、2025Q3 单季弹性，证据独立），但承载高估值的 GPU/AI 第二曲线 λ 信号微弱、被集团亏损稀释、证据仍以回声为主、未达临界（临界点 = 2026 中报分部披露）。状态在"变好"但<strong>核心叙事的变好仅被注意力（主题资金/政策）提高，未被独立业务证据确认</strong>。</p>
+<hr />
+</div>
+
+<!-- ============================================================
+     §五 估值、赔率与定价充分度（P=F+N + 反向DCF + 叙事SOTP + DCF + 回报路径）
+     ============================================================ -->
+<div class="section" id="valuation">
+<h2>§五 估值、赔率与定价充分度</h2>
+<blockquote>
+<p><strong>方法论（v7.0）</strong>：不以"DCF 概率加权单锚"为唯一说服力。TTM 净利为负 → <strong>PE 不适用（audit 🟠 红旗 #3）</strong>，主用 <strong>P=F+N 分解 + 反向 DCF 隐含预期 + 叙事分部 SOTP</strong> 判赔率/定价充分度，正向 DCF 仅作 F 的交叉验证。现价 55.11 元（20260622）、总股本 5.226 亿股、市值 288.02 亿。</p>
+</blockquote>
+<h3>5.1 价格分解 P = 基本面 F + 叙事溢价 N</h3>
+<p><strong>F（基本面锚）= 近端可见业务保守估值，区间 40-49 亿，取中值 44 亿（每股 ≈8.4 元）</strong>：<br />
+- 下界 = 净清算地板 <strong>39.92 亿 / 7.64 元</strong>（货币 31.02 + 应收 7 折 4.46 + 存货 5 折 2.73 + 固定/无形 5 折 5.25 + 景美子公司净资产 8.43 − 总负债 9.38 − 清算成本 2.59）[§二 SOTP]。<br />
+- 上界 = 持续经营口径 <strong>≈48.6 亿</strong>：军工成熟业务（显控+雷达，约 4.5 亿成熟营收 × 6x PS = 27 亿，军工 Fabless 高毛利但成熟）+ 净现金 21.64 亿。<br />
+- 取中值 <strong>F ≈ 44 亿</strong>。</p>
+<p><strong>N（叙事溢价）= 现价市值 − F = 288.02 − 44 = 244 亿，占现价市值 ≈84.7%</strong>。</p>
+<ul>
+<li><strong>N 在为什么定价</strong>：国产 GPU/AI 算力自主可控右尾期权（JM9/景宏放量 + 太空算力/星网订单 + 政策红利）。市场把 PS_TTM 推到 41.04（行业 96.4 分位）即为此期权定价。</li>
+<li><strong>N 是 free option 还是 embedded obligation？→ embedded obligation（必须交付的义务）</strong>。在 PS 96.4 分位的高估值下，GPU 放量不是"免费看涨期权"，而是市场已要求必须兑现的义务——若 2026 中报 GPU 收入确认落空，N 将大幅回吐（向 F 收敛 = 现价 −80%+）。</li>
+<li><strong>N'/N vs F'/F</strong>：驱动股价的是叙事增速（AI 主题资金/政策催化，N' 大）而非基本面增速（F' 受持续亏损压制接近零甚至为负）→ <strong>N'/N &gt; F'/F</strong>，落入"信念越强、股票越贵、回报越差"的数学死穴。</li>
+</ul>
+<h3>5.2 反向 DCF：市场隐含预期</h3>
+<p>从现价 288 亿市值倒推市场隐含假设：</p>
+<table>
+<thead>
+<tr>
+<th>路径</th>
+<th>隐含假设</th>
+<th>vs 历史/同业参照</th>
+<th style="text-align: center;">可信?</th>
+<th>证伪条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PS 维持 12x</td>
+<td>营收需 24.0 亿（现 7.2 亿，3 年 CAGR ≈49%）</td>
+<td>历史峰值仅 11.54 亿（2022），从未达 24 亿</td>
+<td style="text-align: center;">🔴 过度乐观</td>
+<td>中报 GPU 收入确认 &lt; 预期 / 营收 3 年未破 15 亿</td>
+</tr>
+<tr>
+<td>PS 维持 15x</td>
+<td>营收需 19.2 亿（3 年 CAGR ≈39%）</td>
+<td>需超 2022 峰值 66%</td>
+<td style="text-align: center;">🟠 激进</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>PS 维持 18x</td>
+<td>营收需 16.0 亿（3 年 CAGR ≈30%）</td>
+<td>需超 2022 峰值 39%</td>
+<td style="text-align: center;">🟡 需 GPU 放量支撑</td>
+<td>GPU 营收占比 3 年未过 30%</td>
+</tr>
+<tr>
+<td>盈利端</td>
+<td>净利率 20% + 退出 PE 30 → 需净利 9.6 亿 / 营收 48 亿（6.7x 现）</td>
+<td>历史峰值净利仅 2.89 亿（2022）</td>
+<td style="text-align: center;">🔴 极度乐观</td>
+<td>终端净利率 &lt; 15% 或营收 &lt; 30 亿</td>
+</tr>
+</tbody>
+</table>
+<p><strong>结论：现价隐含预期 = 买完完美未来（接近）</strong>。即便给国产 GPU 同业级别的高 PS（15-18x），也需营收 3 年 39-49% 复合增长且突破历史峰值——对一个仍在续亏、GPU 尚未规模放量的公司，这是市场已"提前透支"的乐观假设。证伪点集中在 2026 中报 GPU 分部收入确认。</p>
+<h3>5.3 ΔP 传播因子分解</h3>
+<p>本轮估值（PS 96.4 分位）的驱动力拆解：</p>
+<table>
+<thead>
+<tr>
+<th>因子</th>
+<th style="text-align: center;">强弱</th>
+<th>依据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authority（权威认证）</td>
+<td style="text-align: center;">🟡 中</td>
+<td>大基金 5.00% 资质认证（非业务真相认证）</td>
+</tr>
+<tr>
+<td>Narrative Compression（叙事压缩）</td>
+<td style="text-align: center;">🟢 强</td>
+<td>"军工 GPU + 国产替代 AI 龙头"一句话传播</td>
+</tr>
+<tr>
+<td>Attention Velocity（注意力速度）</td>
+<td style="text-align: center;">🟢 强</td>
+<td>AI 主题 ETF 新进（易方达 AI 主题 ETF 324 万股）</td>
+</tr>
+<tr>
+<td>Marginal Buyer Urgency</td>
+<td style="text-align: center;">🔴 弱</td>
+<td>主力资金近 20 日净流出 −5,136 万、户均持股下降</td>
+</tr>
+<tr>
+<td>Peer Resonance（同业共振）</td>
+<td style="text-align: center;">🟢 强</td>
+<td>寒武纪扭亏 +159.56%、海光放量带动板块情绪</td>
+</tr>
+<tr>
+<td>Gamma·Flow</td>
+<td style="text-align: center;">⚪ 中性</td>
+<td>无显著期权 gamma 数据</td>
+</tr>
+<tr>
+<td>Right-tail Optionality</td>
+<td style="text-align: center;">🟡 中</td>
+<td>GPU 右尾真实存在但非生成器节点</td>
+</tr>
+<tr>
+<td>−PFPC / Crowding / Valuation Exhaustion</td>
+<td style="text-align: center;">🔴 强负</td>
+<td>PS 96.4 分位估值耗尽 + 大宗折价 −6.1% + 技术面空头排列</td>
+</tr>
+</tbody>
+</table>
+<p>→ <strong>驱动判定：以"叙事压缩 + 注意力 + 同业共振"为主，叠加"估值耗尽 + 资金净流出"的强负向</strong>——更接近"主题资金拥挤 + 估值耗尽"而非"业务真相级权威认证驱动"。边际买家紧迫度弱（主力撤退）是危险信号。</p>
+<h3>5.4 叙事分部 SOTP（拆分不混账）</h3>
+<p>景嘉微 ≥2 条增长叙事且分部毛利/估值差异大（军工成熟 vs GPU 期权）→ 强制分部各自倍数 + 各自证伪：</p>
+<table>
+<thead>
+<tr>
+<th>分部</th>
+<th>估值方法/倍数</th>
+<th style="text-align: center;">估值（亿）</th>
+<th style="text-align: center;">每股（元）</th>
+<th>各自证伪指标</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>军工图形显控 + 雷达（成熟）</td>
+<td>4.5 亿成熟营收 × 6x PS（军工 Fabless 高毛利成熟）</td>
+<td style="text-align: center;">≈27</td>
+<td style="text-align: center;">≈5.2</td>
+<td>军工收入确认连续两中报不及预期 / 毛利率跌破 50%</td>
+</tr>
+<tr>
+<td>净现金（货币−负债）</td>
+<td>1.0x</td>
+<td style="text-align: center;">≈21.6</td>
+<td style="text-align: center;">≈4.1</td>
+<td>定增资金被大额理财/收购消耗</td>
+</tr>
+<tr>
+<td>GPU/AI 第二曲线（景宏+JM 系列）</td>
+<td>期权法（成功概率 × 成功价值）</td>
+<td style="text-align: center;">期权价值 ≈10-40</td>
+<td style="text-align: center;">≈2-7.6</td>
+<td>2026 中报 GPU 分部营收 &lt; 2 亿 / 研发持续 +100% 无营收对应</td>
+</tr>
+<tr>
+<td><strong>SOTP 合计（基准）</strong></td>
+<td>—</td>
+<td style="text-align: center;"><strong>≈59-89</strong></td>
+<td style="text-align: center;"><strong>≈11.3-17.0</strong></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>→ <strong>SOTP 合计 ≈59-89 亿（每股 11-17 元）vs 现价 288 亿（55.11 元）</strong>：即便给 GPU 分部最乐观的 40 亿期权价值，分部加总仍仅为现价的 31%。<strong>禁用单一笼统 PS 倍数盖全公司</strong>——现价隐含的是把整个公司（含成熟军工）都按 GPU 同业高 PS 重估，这是混账。</p>
+<h3>5.5 正向 DCF（作为 F 的交叉验证）</h3>
+<p><strong>假设来源</strong>：从 §二 财务历史外推（FY2025 营收 7.20 亿、毛利率 62.91%、历史峰值净利率 25%/2022），避免"假设营收 +30% 但历史下滑"的内在矛盾——历史显示营收波动剧烈（11.54→4.66→7.20 亿），故增速假设保守。折现 r=13%（无风险 2.5% + 股权风险溢价 6% + 中国风险 2.5% + 小盘溢价 2%），永续 g=3% &lt; r=13%（强制满足）。转型公司放松"终端利润率≈历史均值"：GPU 放量情景下终端净利率可高于当下负值，但<strong>显式举证</strong>——仅在 GPU 收入确认后才成立，故乐观情景才给。</p>
+<table>
+<thead>
+<tr>
+<th>情景</th>
+<th style="text-align: center;">概率</th>
+<th>假设（PS 锚为主，TTM 净利为负 PE 不适用）</th>
+<th style="text-align: center;">股权值（亿）</th>
+<th style="text-align: center;">目标价（元）</th>
+<th style="text-align: center;">vs 现价</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🟢 乐观</td>
+<td style="text-align: center;">25%</td>
+<td>GPU(JM9/景宏)规模交付+军工放量，营收→20 亿，退出 PS 18x</td>
+<td style="text-align: center;">≈360</td>
+<td style="text-align: center;">≈68.9</td>
+<td style="text-align: center;">+25%</td>
+</tr>
+<tr>
+<td>🟡 基准</td>
+<td style="text-align: center;">45%</td>
+<td>军工复苏为主+GPU 缓慢爬坡，营收→13 亿，退出 PS 12x</td>
+<td style="text-align: center;">≈156</td>
+<td style="text-align: center;">≈29.8</td>
+<td style="text-align: center;">−46%</td>
+</tr>
+<tr>
+<td>🔴 悲观</td>
+<td style="text-align: center;">25%</td>
+<td>GPU 通用化证伪，仅军工成熟，营收→9 亿，退出 PS 7x（回归元器件）</td>
+<td style="text-align: center;">≈63</td>
+<td style="text-align: center;">≈12.1</td>
+<td style="text-align: center;">−78%</td>
+</tr>
+<tr>
+<td>⬛ 最差</td>
+<td style="text-align: center;">5%</td>
+<td>持续烧钱+减值，回清算地板（§二 SOTP，含净现金，未静默忽略）</td>
+<td style="text-align: center;">≈40</td>
+<td style="text-align: center;">≈7.6</td>
+<td style="text-align: center;">−86%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>概率加权股权值 ≈177.9 亿，每股 ≈34.05 元，vs 现价 55.11 元 = −38%</strong>。</p>
+<ul>
+<li><strong>退出倍数 sanity</strong>：乐观 18x PS 对标寒武纪/海光高 PS 但已属上限；基准 12x、悲观 7x（回归元器件中位 5.09x 之上）——均在同业当前 + 历史可比区间。</li>
+<li><strong>forecast vs actual 兑现度</strong>（data_snapshot §4）：历史 5 次有 actual 的预告全部落入区间（FY2025 −1.65 亿落入 −1.2~−1.8 亿区间），管理层预告<strong>可信度高</strong>，故基准情景用 actual 续亏口径而非乐观外推。</li>
+<li><strong>交叉验证结论</strong>：正向 DCF 概率加权（每股 34 元）与 SOTP（11-17 元）均 &lt; 现价 55.11 元，方向一致——<strong>F 与现价差距巨大，N（叙事溢价）占主导</strong>，与 5.1 自洽。</li>
+</ul>
+<h3>5.6 回报与路径成本 + 技术面位置</h3>
+<h4>技术面位置（inline <code>technical_analysis.md</code>）</h4>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>信号</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>均线排列</td>
+<td>空头排列 🔴</td>
+<td>MA5/20/60/120 = 54.31/56.79/60.29/66.24</td>
+</tr>
+<tr>
+<td>中长期趋势</td>
+<td>长期弱势 🔴</td>
+<td>收盘 55.11 &lt; MA60/MA120</td>
+</tr>
+<tr>
+<td>MACD</td>
+<td>近 10 日金叉 🟢</td>
+<td>DIFF=−2.35 / DEA=−2.483（零轴下方）</td>
+</tr>
+<tr>
+<td>RSI(14)</td>
+<td>中性 ⚪</td>
+<td>45.57</td>
+</tr>
+<tr>
+<td>布林带</td>
+<td>中轨之下（偏弱）</td>
+<td>上 65.72 / 中 56.79 / 下 47.86</td>
+</tr>
+<tr>
+<td>成交量</td>
+<td>正常 1.1x</td>
+<td>当日/60 日均量</td>
+</tr>
+</tbody>
+</table>
+<p>近 60 日支撑 50.7 元（下方 8.0%，止损参考）；近 60 日阻力 70.35 元（上方 27.65%，突破为技术买点）；近 1 年 −22.42%。<strong>基本面×技术面配合判断</strong>：DCF/SOTP 均显示现价 &gt; 内在价值（基准悲观），叠加<strong>技术面偏空</strong>（空头排列 + 跌破 MA120）→ "下行风险放大"象限，应回避/等待，不宜在现价追入。</p>
+<h4>回报与路径成本表（情景/概率与 5.5 完全一致，初始仓位 = 100 万）</h4>
+<table>
+<thead>
+<tr>
+<th>情景</th>
+<th style="text-align: center;">概率</th>
+<th style="text-align: center;">目标价</th>
+<th style="text-align: center;">收益率</th>
+<th style="text-align: center;">中途最大回撤</th>
+<th style="text-align: center;">时间窗</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🟢 乐观</td>
+<td style="text-align: center;">25%</td>
+<td style="text-align: center;">68.9 元</td>
+<td style="text-align: center;">+25%</td>
+<td style="text-align: center;">至支撑 50.7 元（−8%），若中报落空先探 40 元（−27%）</td>
+<td style="text-align: center;">12-18 月</td>
+</tr>
+<tr>
+<td>🟡 基准</td>
+<td style="text-align: center;">45%</td>
+<td style="text-align: center;">29.8 元</td>
+<td style="text-align: center;">−46%</td>
+<td style="text-align: center;">探清算地板区 7.6-12 元途中</td>
+<td style="text-align: center;">12-18 月</td>
+</tr>
+<tr>
+<td>🔴 悲观</td>
+<td style="text-align: center;">25%</td>
+<td style="text-align: center;">12.1 元</td>
+<td style="text-align: center;">−78%</td>
+<td style="text-align: center;">−78% 即最大回撤</td>
+<td style="text-align: center;">12 月</td>
+</tr>
+<tr>
+<td>⬛ 最差</td>
+<td style="text-align: center;">5%</td>
+<td style="text-align: center;">7.6 元</td>
+<td style="text-align: center;">−86%</td>
+<td style="text-align: center;">−86% 即最大回撤</td>
+<td style="text-align: center;">12 月</td>
+</tr>
+</tbody>
+</table>
+<p><strong>概率加权 12-18 月收益率 ≈ −38%</strong>（年化 ≈ −27% ~ −31%）。<br />
+- <strong>时间成本</strong>：GPU 收入确认临界点在 2026 中报后，兑现前需持续承受续亏 + 研发烧钱（年烧 1.6 亿+），时间不免费。<br />
+- <strong>机会成本</strong>：100 万锁定在一个赔率为负、技术面偏空的标的，放弃了更明确赔率的机会。<br />
+- <strong>假阳性成本</strong>：把"国产替代叙事/政策催化"（回声）当 GPU 业务真相（证据）买入，若中报证伪，N 回吐至 F 的代价 = 现价 −80%+。</p>
+<p><strong>建议仓位（放本节末尾）</strong>：现价 55.11 元下，赔率为负 + 状态未确认 + 技术面偏空 → <strong>现价不建仓（0 仓）</strong>；100 万作为<strong>等证据临界的观察资金/期权仓预算</strong>：若 2026 中报 GPU/AI 分部收入确认放量（证据斜率转正），可启用<strong>期权仓（≤15 万，即 ≤15%）</strong>博右尾；若回落至净清算地板附近（7.64 元区，安全边际充分）则风险收益反转，可重估。具体档位由 §七 7.4 合成。</p>
+<h3>5.7 赔率/定价充分度小结</h3>
+<p><strong>赔率判定：买完完美未来（接近，无 pricing slack）</strong>——<br />
+- P=F+N 显示 N 占现价市值 ≈85%，且 N 是 embedded obligation（必须交付）而非 free option；<br />
+- 反向 DCF 显示现价隐含营收 3 年 CAGR 39-49%（突破历史峰值）/ 盈利端 4.6-6.7x，已透支；<br />
+- SOTP（11-17 元）与正向 DCF 概率加权（34 元）均 &lt; 现价 55.11 元，加权预期 −38%；<br />
+- 仅有的 slack 在极端下行的清算地板（7.64 元）提供"亏损保护"，但上行已被价格吸收。</p>
+<p>→ 供 §七 7.2：<strong>赔率 = 买完完美未来（无上行 slack，下行有清算地板托底）</strong>。GPU 右尾真实存在但已被价格大幅提前定价，现价非"贵但有 slack 的迁移未定价"，而是"贵且买完完美未来"。</p>
+</div>
+
+<!-- ============================================================
+     §六 风险与红旗审计（致命看空快筛 + 11 框架红旗）
+     ============================================================ -->
+<div class="section" id="risk">
+<h2>§六 风险与红旗审计</h2>
+<blockquote>
+<p>集中回答"什么会杀死这笔投资"：致命看空快筛 + 11 框架审计红旗 + 治理风险 + 左尾防护，一处看全。本章 🔴/🟠 红旗在 §一 Top 3 风险 / §四 维度 7-8 / 本章三处闭环。</p>
+</blockquote>
+<h3>6.1 致命看空快筛（6 项量化阈值）</h3>
+<table>
+<thead>
+<tr>
+<th>条款</th>
+<th>阈值</th>
+<th>实际</th>
+<th style="text-align: center;">触发?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 单季 / 单年度净利 &lt; -50%</td>
+<td>50%</td>
+<td><strong>单年口径未触发</strong>（FY2025 归母 −1.65 亿 / 净利 YoY −0.30%）；<strong>单季口径触发</strong>（2025Q3 净利 YoY −403.81%、2025Q1 +375.50%、2024Q4 单季亏 −1.89 亿，军工按验收节点确认导致单季波动极端）</td>
+<td style="text-align: center;">🟡 部分（单季触发，单年因 V 反转未触发）</td>
+</tr>
+<tr>
+<td>2. 资产负债率 &gt; 70%</td>
+<td>70%</td>
+<td><strong>11.74%</strong>（20260331；同业中位 45.70%，行业 100% 分位最稳健，净现金 −27.39 亿）</td>
+<td style="text-align: center;">❌ 否（距阈值极远）</td>
+</tr>
+<tr>
+<td>3. 大股东累计质押 &gt; 50%</td>
+<td>50%</td>
+<td>实控人喻丽丽个人质押占其持股 ≈1.2%；曾万辉 0.28~1.86%、乌鲁木齐景嘉合创 1.70~2.04%——<strong>单笔极小，累计远未触 50%</strong>（最新 active 期末日 20250411，更新期后无新增大额质押）</td>
+<td style="text-align: center;">❌ 否</td>
+</tr>
+<tr>
+<td>4. 审计机构连续 2 年变更</td>
+<td>1 次</td>
+<td><strong>无连续变更记录</strong>（无非标审计意见）</td>
+<td style="text-align: center;">❌ 否</td>
+</tr>
+<tr>
+<td>5. CFO 非正常离任</td>
+<td>1 次</td>
+<td><strong>无 CFO 非正常离任记录</strong></td>
+<td style="text-align: center;">❌ 否</td>
+</tr>
+<tr>
+<td>6. <strong>Audit ≥ 2 个 🔴 红旗</strong></td>
+<td>2</td>
+<td><strong>0 个 🔴</strong>（audit 11 框架扫描：🟠 高 4 / 🟡 中 3 / 🟢 低 3 / ℹ️ 3，无 🔴 致命级）</td>
+<td style="text-align: center;">❌ 否</td>
+</tr>
+</tbody>
+</table>
+<p><strong>快筛结果</strong>：<strong>6 项致命看空条款均未硬触发</strong>（条款 1 仅单季触发、单年因 FY2025 +54.41% V 反转未达 −50%）。财务破产风险极低（Altman Z=19.21、资产负债率 11.74%、净现金 27.39 亿），无非标审计 / 无证实造假 / 无持续经营疑虑 / 无控制权质押危机 → <strong>未触发"致命看空"门槛</strong>。<strong>但这只排除了"立刻归零"，不排除"长期阴跌 + 叙事证伪"的中段风险</strong>——后者由 6.2/6.3/6.4 承接。</p>
+<h3>6.2 审计红旗汇总（11 框架，Read <code>audit_report.md</code>）</h3>
+<table>
+<thead>
+<tr>
+<th>严重度</th>
+<th style="text-align: center;">数量</th>
+<th>代表性红旗</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🔴 致命</td>
+<td style="text-align: center;"><strong>0</strong></td>
+<td>无（未达"≥2 个 🔴"致命看空门槛）</td>
+</tr>
+<tr>
+<td>🟠 高</td>
+<td style="text-align: center;"><strong>4</strong></td>
+<td>① <strong>Buffett Quality — OCF/NI=0.31</strong>（&lt; 0.5 严重，利润质量偏弱：OCF=−0.51 亿 / NI=−1.65 亿）；② <strong>Forecast Anomaly — 续亏预告</strong>（20260115，净利下限 −1.8 亿）；③ <strong>Valuation — PE_TTM 不可用</strong>（TTM 净利为负）；④ <strong>Valuation — PB vs ROE 严重错配 8.44x</strong>（PB 4.22 vs 合理 PB≈0.50，市场透支预期）</td>
+</tr>
+<tr>
+<td>🟡 中</td>
+<td style="text-align: center;"><strong>3</strong></td>
+<td>⑤ <strong>Piotroski F=4/9</strong>（NI/ROA/OCF 三项为负、资产负债率上升、流动比率下降）；⑥ <strong>股息率 0.11%</strong>（&lt; 0.5% 非防御性，无估值保护）；⑦ <strong>长期股权投资 +30.8%</strong>（2.999 亿→3.923 亿，权益法爆雷风险）</td>
+</tr>
+<tr>
+<td>🟢 低</td>
+<td style="text-align: center;"><strong>3</strong></td>
+<td>⑧ Beneish M=−2.38（盈余操纵概率低）；⑨ Altman Z=19.21（财务健康安全）；⑩ PB 历史分位 5%（近 1 年 [3.90, 6.83] 偏低端）</td>
+</tr>
+</tbody>
+</table>
+<p>完整清单（含 ℹ️ 3 条 DuPont/股东户数信息项）：<code>audit_report.md</code>。</p>
+<p><strong>4 个 🟠 高级红旗的闭环位置</strong>：①利润质量 OCF/NI=0.31 → 闭环于 §四维度 7（财务健康）+ §五 5.5（盈利质量打折）+ 本章 6.3；②续亏预告 → 闭环于 §一 Top 3 + §四维度 8 + 本章 6.3；③PE 不可用 → 闭环于 §四维度 9（估值）+ §五方法论（弃 PE 用 P=F+N）+ 本章 6.3；④<strong>PB/ROE 错配 8.44x（空头核心论据）→ 闭环于 §一 Top 3 + §四维度 9 + §五 5.1（N 占 85%）+ 本章 6.3</strong>。每条 🟠 红旗 ≥3 处闭环。</p>
+<h3>6.3 致命看空论证</h3>
+<blockquote>
+<p>把 6.1 触发项（单季净利波动）+ 6.2 高级红旗串成"空头核心逻辑链"。说明：本标的<strong>不构成"立即归零"型致命看空</strong>（无 🔴、Z=19.21、净现金 27.39 亿），但存在一条<strong>"估值透支 + 叙事未兑现 → 长期价值毁灭"的结构性空头逻辑链</strong>。</p>
+</blockquote>
+<p><strong>空头核心逻辑链（结构性，非破产型）</strong>：</p>
+<ol>
+<li>
+<p><strong>起点 — 估值已透支（🟠③④）</strong>：PE_TTM 不可用（TTM 净利为负）→ 市场被迫用 PS 定价，而 PS_TTM 41.04 = 行业 306 家 96.4 分位（极贵，元器件同业最高仅瑞可达 8.96）；同时 <strong>PB 4.22 vs ROE −2.4% 理论合理 PB≈0.50，错配 8.44x</strong>——市场已按"国产 GPU 龙头"对全公司（含成熟军工）重估，但 ROE 为负证明这份溢价<strong>没有当期盈利支撑</strong>。</p>
+</li>
+<li>
+<p><strong>承接 — 盈利质量与持续性存疑（🟠①②，🟡⑤⑥）</strong>：续亏预告（FY2025 −1.65 亿，连续两年亏损）；OCF/NI=0.31（利润质量偏弱，经营现金流为负）；2026Q1 研发 1.42 亿 = 营收 1.7 倍，自由现金流 −3.78 亿——<strong>靠 38.33 亿定增输血续命</strong>；Piotroski F=4/9（中等偏弱）；股息率 0.11% 无防御垫。补充：FY2024 归母 −1.65 亿中含政府补助 4,650 万非经常性收益，<strong>补助退坡将放大账面亏损</strong>。</p>
+</li>
+<li>
+<p><strong>闭合 — N 是 embedded obligation，证伪即崩（接 §五 5.1）</strong>：P=F+N 分解显示 F≈44 亿（每股 ≈8.4 元）、N=244 亿（占现价市值 ≈84.7%），且 <strong>N 是"市场要求必须交付的义务"而非"免费看涨期权"</strong>。若 2026 中报 GPU/AI（JM11/景宏）分部收入确认落空，N 将向 F 收敛 = 现价 −80%+。叠加 🟡⑦长期股权投资 +30.8%（权益法爆雷潜在风险）、无形资产 +122%（减值风险），下行通道清晰。</p>
+</li>
+<li>
+<p><strong>资金面佐证（capital_flow）</strong>：主力资金近 20 日净流出 −5,136 万（净流入天数 6/20）、大宗交易折价 −6.1%（2026-04-24 单笔 1,499 万 @49.7 元）、指数 ETF 2026Q1 普遍减仓（易方达创业板 ETF −321 万股）——<strong>边际买家紧迫度弱、聪明钱撤退</strong>，与"估值耗尽"信号一致。</p>
+</li>
+</ol>
+<p>→ <strong>空头论证结论</strong>：景嘉微不是"会破产的烂公司"，而是<strong>"财务安全但估值买完完美未来的好公司"</strong>——空头逻辑不在破产，而在"现价已透支一个尚未被独立证据确认的 GPU 未来，证伪点（2026 中报）兑现前下行风险显著大于上行"。这条链直接喂入 §七 7.2（赔率）与 7.4（决策）。</p>
+<h3>6.4 左尾防护 · 高信仰股特征（供 §七 7.3 路径判定）</h3>
+<blockquote>
+<p>权威定义见 <code>references/investment-decision-core.md</code> §3：左尾毁灭风险（幂律）+ 高信仰股特征（信仰陷阱）→ 路径可承受性。</p>
+</blockquote>
+<p><strong>左尾毁灭清单</strong>（兑现前可能"归零/腰斩"的事件，含承受缓冲）：</p>
+<table>
+<thead>
+<tr>
+<th>左尾事件</th>
+<th>触发机制</th>
+<th style="text-align: center;">量级 / 缓冲</th>
+<th style="text-align: center;">概率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GPU 通用化叙事证伪</strong></td>
+<td>2026 中报 GPU/AI 分部收入确认 &lt; 2 亿 / 研发持续 +100% 无营收对应 → N（244 亿）向 F（44 亿）回吐</td>
+<td style="text-align: center;">现价 −80%+，但有清算地板 <strong>7.64 元/纯现金 4.14 元</strong>托底（非归零）</td>
+<td style="text-align: center;">🔴 中高（§五悲观+最差合计 30%）</td>
+</tr>
+<tr>
+<td><strong>商誉 / 无形资产减值</strong></td>
+<td>无形资产 +122%（2.33→5.17 亿，大额研发资本化）+ 商誉 0.10 亿 + 溢价收购无锡诚恒微（亏损标的）→ 减值计提一次性吞噬利润</td>
+<td style="text-align: center;">单次减值数千万~1 亿级，放大账面亏损</td>
+<td style="text-align: center;">🟡 中</td>
+</tr>
+<tr>
+<td><strong>政府补助退坡</strong></td>
+<td>FY2024 利润含补助 4,650 万，是"利润稳定器"；退坡放大账面亏损、削弱减亏叙事</td>
+<td style="text-align: center;">数千万级，叠加续亏</td>
+<td style="text-align: center;">🟡 中</td>
+</tr>
+<tr>
+<td><strong>key-person 依赖</strong></td>
+<td>实控人喻丽丽 25.54% 高持股 + 技术路线高度绑定核心团队（饶先宏等），军工资质与团队强相关</td>
+<td style="text-align: center;">治理 / 战略连续性风险（非短期）</td>
+<td style="text-align: center;">🟢 低</td>
+</tr>
+<tr>
+<td><strong>筹码踩踏 / 流动性</strong></td>
+<td>9.5 万散户户数 + 主力净流出 + 大宗折价 −6.1% + 技术面空头排列（跌破 MA120）→ 证伪时散户踩踏放大跌幅</td>
+<td style="text-align: center;">加速下行，无机构托底</td>
+<td style="text-align: center;">🟡 中</td>
+</tr>
+<tr>
+<td><strong>控制权丧失 / 退市</strong></td>
+<td>质押累计远 &lt; 50%、Z=19.21、净现金充裕、无非标审计 → <strong>此项基本排除</strong></td>
+<td style="text-align: center;">极低</td>
+<td style="text-align: center;">🟢 极低</td>
+</tr>
+</tbody>
+</table>
+<p><strong>高信仰股特征体检</strong>（命中越多，下跌时越是"组合波动放大器"）：</p>
+<table>
+<thead>
+<tr>
+<th>特征</th>
+<th style="text-align: center;">命中</th>
+<th>依据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>高估值</td>
+<td style="text-align: center;">✅ <strong>强命中</strong></td>
+<td>PS_TTM 41.04 = 行业 96.4 分位；N 占现价市值 84.7%；PB/ROE 错配 8.44x</td>
+</tr>
+<tr>
+<td>高波动</td>
+<td style="text-align: center;">✅ <strong>命中</strong></td>
+<td>营收单季 ±230%/−45% 剧烈波动、净利单季 YoY −403%~+375%、近 1 年 −22.42%、技术面空头排列</td>
+</tr>
+<tr>
+<td>高散户参与</td>
+<td style="text-align: center;">✅ <strong>命中</strong></td>
+<td>股东户数 94,967（散户为主，前 10 大仅占总股本 29.07%、流通盘机构持仓薄），AI 主题 ETF 新进（易方达 AI 主题 ETF 324 万股）</td>
+</tr>
+<tr>
+<td>高媒体 / 期权活跃</td>
+<td style="text-align: center;">🟡 部分</td>
+<td>"A 股稀缺军工 GPU + 国产替代 AI 龙头"一句话叙事传播性极强、AI 主题资金关注度高；但无显著场内期权 gamma 数据</td>
+</tr>
+<tr>
+<td>key-person 依赖</td>
+<td style="text-align: center;">🟡 部分</td>
+<td>实控人 25.54% 高持股 + 军工技术团队绑定，但治理无致命瑕疵、零减持</td>
+</tr>
+</tbody>
+</table>
+<p>→ <strong>5 项特征命中 3 强 + 2 部分</strong>——景嘉微是典型"高信仰股"：上涨时是"国产替代信仰复利机器"，<strong>下跌时是"组合波动放大器"</strong>（高散户 + 无机构托底 + 高叙事弹性 → 证伪时踩踏放大）。</p>
+<p><strong>路径可承受性初判</strong>（供 §七 7.3）：<strong>高尾险</strong>。理由：①兑现前需持续承受续亏 + 年烧研发 1.6 亿+（时间成本不免费）；②左尾"叙事证伪 −80%+"概率中高（30%）；③高信仰特征 3 强命中 → 下跌放大；④唯一缓冲是清算地板（7.64/4.14 元）提供"亏损保护但非上行保护"。<strong>路径不可在现价满仓承受，仅可在小仓位/证据临界后承受</strong>。</p>
+<hr />
+</div>
+
+<!-- ============================================================
+     §七 投资决策内核（状态×赔率×路径 → 决策三元组 + 三分结论 + 行动档位）
+     ============================================================ -->
+<div class="section" id="decision-core">
+<h2>§七 投资决策内核</h2>
+<blockquote>
+<p>用"<strong>投资价值 = 状态后验 × 赔率 × 路径可承受性</strong>"（乘法，任一为"差"即拉低整体）合成 §四 4.11（状态）、§五（赔率）、§六 6.4（路径），输出"好公司 / 好下注 / 好价格"三分结论与行动档位。本章是各篇理念的合成结论与全报告 punch line。框架定义见 <code>references/investment-decision-core.md</code>。</p>
+</blockquote>
+<h3>7.1 状态后验合成（引 §四 4.11）</h3>
+<p>景嘉微是"财报型军工基本盘 + AI receiver 第二曲线"混合体，λ（向上跳变强度）需分部看：</p>
+<ul>
+<li><strong>军工基本盘 λ↑ 且证据独立</strong>：FY2025 营收 +54.41% V 反转、2025Q3 单季营收 +230.65% 且净利转正 +1,508 万、毛利率维持 62.91% 行业第一档——<strong>这些是实际财报数据（独立证据✓），但已被部分定价、且被全年续亏 −1.65 亿稀释</strong>。</li>
+<li><strong>GPU/AI 第二曲线 λ 微弱且为回声</strong>：JM11 仅流片/小批量交付（未见规模收入）、研发 +102.67% 是"成本跳变非收入跳变"、景宏 AI 分部独立营收未披露（盲区）；"国产 GPU 龙头/太空算力放量"是政策口号 + 券商转述（回声✗）。<strong>承载 84.7% 高估值的恰是这条尚未被独立证据确认的曲线。</strong></li>
+<li><strong>贝叶斯三问</strong>：① 后验提高还是注意力提高？→ <strong>主要是注意力</strong>（AI 主题 ETF 新进、政策催化），GPU 业务后验未被独立证据提高；② 新证据独立还是回声？→ 军工独立、GPU 回声为主；③ 价格是否过度反映后验？→ <strong>是</strong>（PS 96.4 分位）。</li>
+<li><strong>无记忆性检查（Rule 7）</strong>：现价距 60 日支撑仅 8%、近 1 年 −22.42%、PB 近 1 年 5% 分位——<strong>禁止把"跌久了该反弹 / PB 压到历史低位该修复 / 国产替代讲多年该兑现"当买入理由</strong>。唯一合法买入触发 = λ↑ 或证据斜率转正，当前 GPU 斜率未转正（投入非产出）。</li>
+</ul>
+<p>→ <strong>状态后验</strong>：<strong>↑变好但仅注意力·未确认</strong>（军工基本盘确有向上跳变且证据独立，但核心高估值叙事的"变好"仅被注意力/政策提高，未被独立业务证据确认；临界点 = 2026 中报 GPU/AI 分部收入披露）。</p>
+<h3>7.2 赔率合成（引 §五）</h3>
+<ul>
+<li><strong>P=F+N（5.1）</strong>：F≈44 亿（每股 ≈8.4 元）、N=244 亿（占现价市值 ≈84.7%），且 <strong>N 是 embedded obligation（必须交付的义务）而非 free option</strong>；N'/N &gt; F'/F（叙事增速驱动 &gt; 基本面增速）→ 落入"信念越强、股票越贵、回报越差"的数学死穴。</li>
+<li><strong>反向 DCF（5.2）</strong>：现价隐含营收 3 年 CAGR 39-49%（需突破 2022 历史峰值 11.54 亿达 19-24 亿）/ 盈利端需净利 9.6 亿（历史峰值仅 2.89 亿，6.7x 现）——<strong>买完完美未来（接近）</strong>。</li>
+<li><strong>SOTP（5.4）+ 正向 DCF（5.5）交叉验证</strong>：分部加总 ≈59-89 亿（每股 11-17 元）、概率加权每股 ≈34.05 元，<strong>均 &lt; 现价 55.11 元</strong>；概率加权 12-18 月期望 <strong>−38%</strong>（乐观 +25%/基准 −46%/悲观 −78%/最差 −86%，概率 25/45/25/5）。</li>
+<li><strong>ΔP 分解（5.3）</strong>：以"叙事压缩 + 注意力 + 同业共振"驱动为主，叠加"估值耗尽 + 主力资金净流出"强负向——非"业务真相级权威认证"驱动。</li>
+</ul>
+<p>→ <strong>赔率</strong>：<strong>买完完美未来</strong>（无上行 slack——上行已被价格吸收；仅下行有清算地板 7.64 元/纯现金 4.14 元托底，提供"亏损保护非上行保护"）。</p>
+<h3>7.3 路径可承受性合成（引 §六 6.4 + §五 5.6）</h3>
+<ul>
+<li><strong>左尾（6.4）</strong>：GPU 通用化证伪 −80%+（概率中高 30%）、减值 / 补助退坡 / 散户踩踏并存；控制权丧失 / 退市基本排除（Z=19.21、净现金、零非标）。</li>
+<li><strong>高信仰特征（6.4）</strong>：5 项命中 3 强（高估值 / 高波动 / 高散户）+ 2 部分——下跌时"组合波动放大器"，无机构托底。</li>
+<li><strong>时间 / 机会 / 假阳性成本（5.6）</strong>：兑现临界点在 2026 中报后，兑现前持续承受续亏 + 年烧研发 1.6 亿+（时间不免费）；100 万锁定在赔率为负 + 技术面偏空标的（机会成本）；把"国产替代回声"当 GPU 业务真相买入若证伪，代价 = 现价 −80%+（假阳性成本）。</li>
+<li><strong>技术面（5.6）</strong>：空头排列（MA5/20/60/120 = 54.31/56.79/60.29/66.24）、跌破 MA60/MA120 → "下行风险放大"象限。</li>
+</ul>
+<p>→ <strong>路径</strong>：<strong>高尾险</strong>（左尾毁灭概率中高 + 高信仰特征放大下跌 + 时间成本持续；唯有清算地板提供有限亏损保护。现价满仓不可承受，仅小仓位 / 证据临界后可承受）。</p>
+<h3>7.4 决策合成</h3>
+<blockquote>
+<p>价值 = 状态后验 × 赔率 × 路径。三者乘积：↑未确认 × 买完完美未来 × 高尾险 = <strong>三个维度都偏"差"，乘积显著为负</strong>。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>决策三元组</strong>：<strong>[状态后验: ↑变好但仅注意力·未确认 | 赔率: 买完完美未来（无上行 slack） | 路径: 高尾险]</strong></p>
+</li>
+<li>
+<p><strong>三分结论</strong>（好公司 ≠ 好下注 ≠ 好价格，三个分开判）：</p>
+</li>
+<li><strong>好公司? — 部分是（一硬一软）</strong>。依据：军工图形显控市占率 &gt;50%、毛利率 62.91% 行业第一档、大基金 5.00% 背书、Z=19.21 财务极稳健 = 真护城河基本盘；但 GPU 第二曲线身处"红海中的红海"（寒武纪已扭亏 +159.56%、海光规模化部署、CUDA 生态在对手侧），且连续两年亏损、ROE −2.4%、自由现金流为负——是"好基本盘 + 未成型第二曲线"的混合体，非纯粹好公司。</li>
+<li><strong>好下注（现价）? — 不是</strong>。依据：状态×赔率×路径乘积显著为负——概率加权 12-18 月期望 −38%，状态未确认、赔率买完完美未来、路径高尾险，三维度同向偏负，现价 55.11 元下注是"用回声当证据买入透支的未来"。</li>
+<li>
+<p><strong>好价格? — 不是（无 pricing slack）</strong>。依据：N 占现价市值 84.7% 且是 embedded obligation；反向 DCF 显示需营收 3 年 39-49% 复合增长且破历史峰值；SOTP（11-17 元）/ 概率加权（34 元）均远 &lt; 现价 55.11 元。现价非"贵但有 slack 的未定价迁移"，而是"贵且买完完美未来"。</p>
+</li>
+<li>
+<p><strong>行动档位</strong>：<strong>等证据临界（观察）</strong>（六档之一）— <strong>映射依据</strong>：状态后验 ↑未确认 + 赔率买完完美未来 + 路径高尾险 → 按 <code>investment-decision-core.md</code> 映射表落"等证据临界（观察）或期权仓（小）"区间；又因右尾真实存在（国产 GPU/AI 需求真实）但景嘉微非"幂律生成器节点"（瓶颈在制程/CUDA/海光寒武纪），右尾是 beta 非 alpha，故<strong>现价不给期权仓、先观察</strong>。<strong>100 万的具体纪律（与 §五 5.6 一致）</strong>：现价 55.11 元 <strong>0 仓</strong>（不追高、不满仓）；100 万作"等证据临界的观察资金 / 期权仓预算"——<strong>若 2026 中报 GPU/AI 分部收入确认放量（证据斜率转正），启用期权仓 ≤15 万（≤15%）博右尾</strong>（叙事越远仓位越小）；若回落至净清算地板附近（7.64 元区，安全边际充分）则风险收益反转，可重估。<strong>这是"高质量等待"而非"资本钝化"——因为有明确等待事件 + 明确退出条件，不是"等久了该涨"的套牢自我安慰。</strong></p>
+</li>
+<li>
+<p><strong>该等什么</strong>（跳变事件 + 预计时点）：<strong>2026 中报（约 2026-08）GPU/AI（JM11/景宏）分部营收与收入确认明细</strong>——这是把"通用化"从叙事回声变独立证据的<strong>唯一临界事件</strong>。次级观察点：FY2025 年报全文核"38.33 亿定增募集资金使用情况"（是否被理财消耗）；FY2026 业绩预告（约 2027.1，若研发拐头则首现减亏信号）。</p>
+</li>
+<li>
+<p><strong>证伪 / 退出条件</strong>（每条核心叙事 1 个可证伪指标 → 接 Phase 7 监控）：</p>
+</li>
+<li>叙事①"GPU 通用化放量"→ <strong>证伪：2026 中报 GPU/AI 分部营收 &lt; 2 亿 或 研发持续 +100% 而无营收对应</strong> → N 向 F 回吐、叙事崩，退出 / 不启用期权仓。</li>
+<li>叙事②"军工基本盘复苏延续"→ <strong>证伪：军工收入确认连续两中报不及预期 或 毛利率跌破 50%</strong> → 基本盘 F 下移。</li>
+<li>叙事③"定增资金投向 GPU 研发"→ <strong>证伪：年报披露募集资金大额配置理财 / 收购消耗</strong> → 管理层"才"证伪、估值再折价。</li>
+<li>
+<p><strong>退出触发</strong>：上述任一证伪指标命中 / λ 下降 / 证据斜率转负 / 左尾事件（大额减值、补助退坡）发生 → 不入场或减仓。</p>
+</li>
+<li>
+<p><strong>信仰陷阱五弊端自检</strong>：</p>
+</li>
+<li>① 好公司=好股票？→ <strong>已隔离</strong>：好公司（部分是）≠ 好下注（不是）≠ 好价格（不是），三分独立判，未把"军工护城河好"等同于"现价该买"。</li>
+<li>② 远期可选项当当期现金流？→ <strong>已隔离</strong>：明确 N 是 embedded obligation 非 free option，GPU 期权价值仅在 SOTP 中给 10-40 亿且要求证伪指标，未把远期 GPU 收入当已实现。</li>
+<li>③ 坏消息当短期噪音、失去证伪？→ <strong>已保留证伪</strong>：续亏 / OCF 红旗 / 主力撤退 / 大宗折价均作为结构性信号纳入空头链，未当"短期噪音"忽略；设了 3 条可证伪指标。</li>
+<li>④ 时间当免费、忽略机会成本？→ <strong>已计入</strong>：明确时间成本（兑现前年烧 1.6 亿）+ 机会成本（100 万锁定负赔率标的）+ 假阳性成本。</li>
+<li>⑤ 仓位由信念强度而非赔率证据决定？→ <strong>已隔离</strong>：现价 0 仓，仓位由"证据斜率是否转正"决定（中报放量才启用 ≤15 万期权仓），而非"国产替代信仰"强度。</li>
+</ul>
+<h3>7.5 与 §一 对齐</h3>
+<blockquote>
+<p>§一「决策结论」的决策三元组 / 三分结论 / 行动档位必须与本节 7.4 一致，可直接照抄：<br />
+- <strong>决策三元组</strong>：[状态: ↑变好但仅注意力·未确认 | 赔率: 买完完美未来 | 路径: 高尾险]<br />
+- <strong>三分结论</strong>：好公司? 部分是（军工硬护城河 + GPU 第二曲线未成型）· 好下注? 不是（期望 −38%）· 好价格? 不是（N 占市值 84.7%、无 slack）<br />
+- <strong>行动档位</strong>：等证据临界（观察）— 现价 0 仓，2026 中报 GPU 分部收入放量后启用期权仓 ≤15 万<br />
+- <strong>该等什么</strong>：2026 中报（约 2026-08）GPU/AI 分部营收与收入确认明细</p>
+</blockquote>
+<hr />
+</div>
+
+<!-- ============================================================
+     §八 舆情与市场情绪
+     ============================================================ -->
+<div class="section" id="sentiment">
+<h2>§八 舆情与市场情绪</h2>
+<blockquote>
+<p>舆情聚合自 Phase 1 投资社区/新闻/研报口径（<code>phase1-data.md</code> §6/§7），资金面信号 inline 自 <code>capital_flow.md</code> §4/§5/§6。看多与看空均 ≥ 3 条，无单向偏差。</p>
+</blockquote>
+<h3>看多派声音（≥ 3 条）</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>看多论点</th>
+<th>证据 / 数据锚</th>
+<th>来源标签</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>军工 GPU 绝对龙头，地位不可替代</strong> — 军用显控市占率 &gt;50%，是国内军用图形显控领域的核心供应商，供应资质构成准入壁垒</td>
+<td>军用 GPU 市占率 &gt;50%；图形显控为传统优势业务、机载领域领先</td>
+<td>[WebSearch: 投资社区/研报] · [PDF:2024_annual, P.11]</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>国内唯一 GPU 规模化量产企业，双线进入推广期</strong> — JM11 系列已完成流片/封装与初步测试进入小批量交付（FP32 6 TFLOPS / FP16 12 TFLOPS，显存最大 64GB），景宏 AI 智算模块填补 AI 训练/推理空白</td>
+<td>JM11 进入小批量交付，应用政务云桌面/工业设计；景宏系列填补 AI 训练/推理/科学计算空白</td>
+<td>[PDF:2024_annual, P.11-12] · [WebSearch]</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>2025 营收 V 型反转 + 拐点信号初现</strong> — FY2025 营收 7.20 亿（YoY <strong>+54.41%</strong>，从 2024 谷底 4.66 亿强复苏）；2025Q3 单季营收 +230.65%、单季归母净利转正 +1,508 万</td>
+<td>FY2025 营收 +54.41%；2025Q3 单季营收 +230.65%、单季归母净利 +1,508 万（[PDF:2025_q3, P.1]）</td>
+<td>[PDF:2025_q3, P.1] · [Tushare:income]</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>零负债 + 35 亿在手现金，财务安全垫极厚</strong> — 资产负债率仅 11.68%，在手货币资金 35.44 亿、净现金 32.33 亿（定增募资后）；有研报对标寒武纪给乐观目标价 182–210 元，预计 2026 营收破 12 亿、2027 净利转正</td>
+<td>资产负债率 11.68%、货币资金 35.44 亿、净现金 32.33 亿、Altman Z=19.21（破产风险极低）；研报乐观目标价 182–210 元</td>
+<td>[Tushare:balancesheet] · [audit:Altman, 低] · [WebSearch: 研报]</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>★ 看多注脚:第 4 条"目标价 182–210 元""2026 营收破 12 亿/2027 净利转正"均为<strong>券商研报预测/股吧口径</strong>，非公司官方指引；属本报告 §九 缺口 #5 未被硬证据(合同/中标公告)佐证的叙事。</p>
+</blockquote>
+<h3>看空派声音（≥ 3 条）</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>看空论点</th>
+<th>证据 / 数据锚</th>
+<th>来源标签</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>连续两年大额亏损，盈利拐点未现</strong> — FY2024 归母净利 −1.65 亿（首亏）、FY2025 −1.65 亿（续亏），2026Q1 单季再亏 −0.561 亿；扣非亏损更深（FY2024 扣非 −1.90 亿，靠 4,650 万政府补助粉饰）</td>
+<td>连续两年 −1.65 亿；2026Q1 −0.561 亿；扣非深于归母；FY2024 政府补助 4,650 万占非经损益逾 100%（[PDF:2024_annual, P.9]）</td>
+<td>[Tushare:income] · [PDF:2024_annual, P.9] · [audit:Forward Guidance, 高]</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>定增募资使用治理质疑</strong> — 2024 年定增募资 38.33 亿承诺投 GPU 研发，舆情(股吧/财富号)称实际投入比例极低、疑大量配置理财，构成募资用途偏离质疑</td>
+<td>定增 38.33 亿；舆情称研发投入比例低、多买理财（非官方，待年报"募集资金使用情况"核实，见 §九 缺口 #2）</td>
+<td>[WebSearch: 股吧/财富号] · [audit:Governance, 中]</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>溢价收购亏损子公司 + 解禁抛压</strong> — 市场质疑高溢价收购亏损标的诚恒微（舆情称"溢价 36 倍")纳入合并报表、研发投入大拖累利润；叠加定增解禁/股东减持抛压；audit 已标长期股权投资 2024→2025 +30.8% 大幅波动</td>
+<td>诚恒微溢价收购质疑；长期股权投资 +30.8%（[audit:Governance/Related-Party, 中]）</td>
+<td>[WebSearch] · [audit:Governance, 中]</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>竞争加剧，被头部 AI 芯片厂商挤压</strong> — 寒武纪 2026Q1 营收 28.85 亿（+159.56%）、思元590 批量交付；海光 DCU 已在运营商/银行规模化部署；摩尔线程"花港"架构 2026 发布；中芯代工产能紧张或影响交付</td>
+<td>寒武纪 2026Q1 +159.56%；海光 DCU 规模化部署；Fabless 模式依赖中芯产能</td>
+<td>[WebSearch] · [PDF:2024_annual, P.12]</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>PS_TTM 行业 96.4 分位，估值已计入大量乐观预期</strong> — 现价 55.11 元，PS_TTM 41.04（行业 96.4 分位，极贵），PE_TTM 不可用（净利为负），PB vs ROE 严重错配（PB 4.22 但 ROE −2.36%）；盈利不及预期回撤风险大（呼应 §五 5.2 反向 DCF "买完完美未来"判定）</td>
+<td>PS_TTM 41.04（96.4 分位）；PB 4.22 vs ROE −2.36%；PE_TTM 不可用</td>
+<td>[Tushare:daily_basic] · [audit:Valuation Anomaly, 高] · [peer_analysis]</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>单向偏差检查</strong>: 看多 4 条 / 看空 5 条，均 ≥ 3 条，<strong>无单向偏差警告</strong>。整体舆情呈"叙事强、基本面弱"的两极结构——看多依赖第二曲线(GPU/AI)兑现预期，看空锚定已发生的亏损与治理事实。</p>
+</blockquote>
+<h3>市场叙事 vs 基本面背离判断</h3>
+<p>舆情多空两极的根因是<strong>市场叙事与已兑现基本面的显著背离</strong>:市场以"国产 GPU/AI 智算龙头"叙事给予 PS_TTM 96.4 分位的高溢价(行业最贵档),而当前基本面是连续两年 −1.65 亿亏损、ROE 连续 3 年下行(2022 9.38% → 2025 −2.36%)、经营现金流转负。这一背离呼应 §五的"买完完美未来"定价判定——现价已把"2026 营收破 12 亿、2027 净利转正"等<strong>尚未由硬证据(合同/中标公告)支撑的乐观预期</strong>计入。<strong>关键证据临界点 = 2026 中报(约 2026-08)GPU/景宏分部营收与毛利的独立披露</strong>;在此之前,叙事与基本面的背离无法被独立证据收敛,资金面亦未给出机构进场佐证(见下)。</p>
+<h3>资金流向信号（inline <code>capital_flow.md</code> §4/§5/§6）</h3>
+<blockquote>
+<p>以下三项资金面信号直接搬运自 <code>capital_flow.md</code>，禁止凭记忆改写其判定。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>最新值</th>
+<th>判定（capital_flow.md 原判定）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>陆股通(北向)</strong></td>
+<td>持仓比例 N/A%·20 日变化 N/A pp·60 日变化 N/A pp</td>
+<td><strong>数据不足</strong>(hk_hold/daily_basic 数据不足，北向资金成本无法推导)</td>
+</tr>
+<tr>
+<td><strong>两融杠杆(融资余额)</strong></td>
+<td>融资余额 <strong>132,783 万元</strong>，相对近 60 日中位数 <strong>−8.1%</strong></td>
+<td>⚪ <strong>两融余额平稳</strong></td>
+</tr>
+<tr>
+<td><strong>主力资金流(近 20 日)</strong></td>
+<td>近 20 日净流入天数 <strong>6/20(30.0%)</strong>，净流入累计 <strong>−5,136 万元</strong></td>
+<td>🔴 <strong>主力资金近 20 日持续净流出</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>补充资金面信号(capital_flow.md §3/§7/§8)</strong>:</p>
+<ul>
+<li><strong>筹码集中度</strong>: 当前期 20260520 户数 <strong>94,967</strong>，环比 <strong>+0.38%</strong>(户均持股 3,214 股，环比 −0.38%)→ ⚪ <strong>筹码平稳</strong>(户数与户均近期变化温和，未形成机构吸筹的明确信号)。</li>
+<li><strong>龙虎榜机构</strong>: 近 30 日 <strong>0 次上榜</strong>(top_list/top_inst 本期 0 行)→ ⚪ <strong>无龙虎榜机构席位上榜</strong>，资金面无法佐证机构进场。</li>
+<li><strong>大宗交易(近 60 日)</strong>: <strong>3 笔</strong>，累计成交额 2,399.27 万元，平均折溢价 <strong>−6.09%</strong>(其中 20260424 一笔 49.7 元成交 1,499 万)→ 🔴 <strong>大宗交易显著折价 −6.1%</strong>(抛售压力 / 机构低吸)。</li>
+</ul>
+<p><strong>资金面综合</strong>:北向数据不足、两融平稳、主力近 20 日净流出 −5,136 万、龙虎榜 0 上榜、大宗折价 −6.1%——资金面整体<strong>偏谨慎/净流出</strong>,与 PS 96.4 分位的高估值形成张力,叠加 <code>technical_analysis.md</code> 综合判定 🔴 技术面偏空(红旗 2 / 绿旗 1),情绪面与资金面均<strong>未对"叙事兑现"给出确认信号</strong>。</p>
+<hr />
+</div>
+
+<!-- ============================================================
+     §九 数据来源与信息缺口
+     ============================================================ -->
+<div class="section" id="sources">
+<h2>§九 数据来源与信息缺口</h2>
+<p><strong>截止日期</strong>: 行情 20260622 · 最新财报期 2026Q1(20260331)· 最新年报 FY2025(20251231)。<br />
+<strong>关键待披露</strong>: <strong>2026 中报(约 2026-08)</strong> — GPU/景宏(AI 智算)分部独立营收与毛利,是叙事与基本面背离能否收敛的核心证据临界点。</p>
+<h3>数据来源（3 类分组）</h3>
+<blockquote>
+<p>详细来源清单见 <code>phase1-data.md</code> §11（本章为来源章节，允许引用源文件名）。</p>
+</blockquote>
+<h4>[Tushare API]</h4>
+<p>结构化财务/行情/股东数据为本报告的最高权威源(<code>data_snapshot.md</code> Python 确定性产出)。核心 4 bundle 非空:<strong>income 24 / balancesheet 25 / cashflow 31 / fina_indicator 25 行</strong>。</p>
+<ul>
+<li><strong>财务三表 + 指标</strong>: income / balancesheet / cashflow / fina_indicator(FY2022–FY2025 年报 + 2026Q1) — 营收/毛利率/净利率/归母净利/ROE/资产负债率趋势。</li>
+<li><strong>估值/行情</strong>: daily_basic 266 / daily 724 行 — PS_TTM 41.04(96.4 分位)、PB 4.22、现价 55.11。</li>
+<li><strong>股东/筹码</strong>: top10_holders 117 / top10_floatholders 116 / stk_holdernumber 144 / pledge_detail 154 行 — 喻丽丽家族 25.54%、户数 20260520 = 94,967。</li>
+<li><strong>资金流(经 <code>capital_flow.md</code>)</strong>: moneyflow / margin_detail / block_trade 3 行 — 主力近 20 日净流出 −5,136 万、两融 132,783 万、大宗折价 −6.09%。</li>
+<li><strong>管理层/分红/预告</strong>: stk_managers 82 / stk_rewards 489 / forecast_vip 29 / express_vip 5 / dividend 33 / fina_mainbz 50 / repurchase 34 / disclosure_date 42 行。</li>
+<li>⚠️ <strong>0 行降级 bundle</strong>: <strong>share_float / anns / top_list / top_inst</strong>(Tushare 本期未返回)— 直接导致缺口 #3。</li>
+</ul>
+<h4>[PDF 原文]</h4>
+<p>经 Phase 2 精读(<code>phase2-documents.md</code>),3 份 cninfo 公告 PDF:</p>
+<ul>
+<li><strong>2024_annual_report.pdf</strong>(cninfo 1223239399)— ✅ 富文本 11.8k 字符:MD&amp;A / 子公司(长沙景美净利 7,761 万)/ 非经常性损益 / 十大股东抽取成功;income_statement_changes / risks / balance_sheet_changes 命名 section 未抽出(以季度指标原文交叉重建)。</li>
+<li><strong>2025_annual_report_summary.pdf</strong>(cninfo 1225166815)— ⚠️ <strong>摘要版</strong>,表格化布局,命名 section 全空,FY2025 财务以 Tushare 结构化补足 → 缺口 #1。</li>
+<li><strong>2025_q3_report.pdf</strong>(cninfo 1224749534)— ✅ 部分文本 2.5k 字符:主要会计数据 / 非经常性损益 / 十大股东(含单季 +230.65% 与累计数据)。</li>
+</ul>
+<h4>[WebSearch]</h4>
+<p>用于事件/舆情/政策/竞品动向的补充(非官方,优先级低于 Tushare/PDF):</p>
+<ul>
+<li><strong>舆情聚合</strong>: 投资社区看多/看衰各 ≥3 条(§八)、定增使用质疑、诚恒微溢价收购质疑(股吧/财富号口径)。</li>
+<li><strong>研报预测</strong>: 对标寒武纪目标价 182–210 元、2026 营收破 12 亿/2027 净利转正(券商预测,未被硬证据佐证)。</li>
+<li><strong>行业/政策/竞品</strong>: 2026 国产 AI 算力规模化落地、边端 AI 芯片市场 2026 达 500 亿、寒武纪 2026Q1 +159.56%、海光 DCU 部署、摩尔线程"花港"、太空算力/星网政策。</li>
+</ul>
+<h3>信息缺口与尽调优先级（≥ 3 条）</h3>
+<blockquote>
+<p>从 <code>phase1-data.md</code> §11 抄录(5 条),不精简字段;新增"可得性"列。状态阈值:✅ 已解决(官方精确数据)/ ⚠️ 部分(代理指标或方向性证据)/ ❌ 未找到(已尝试且可得性低)。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>缺口</th>
+<th style="text-align: center;">状态</th>
+<th style="text-align: center;">可得性</th>
+<th>影响的结论 / 对置信度的影响</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>FY2025 全文年报(非摘要)PDF 未取到</strong> — 已尝试 <code>site:cninfo.com.cn 300474 2025年度报告</code>、<code>景嘉微 2025年报全文 巨潮资讯</code> 等;仅取到 FY2025 摘要(表格化无法抽 section)+ FY2024 全文,FY2025 财务以 Tushare bundle + 摘要数字补足;income_statement_changes / risks 命名 section 未抽出</td>
+<td style="text-align: center;">⚠️ 部分</td>
+<td style="text-align: center;">中(cninfo 公司公告页按 end_date=20251231 直取全文 PDF 大概率可得)</td>
+<td>削弱 §二 利润归因与 §六 风险章节的原文支撑;"募集资金使用情况""分行业/分产品营收成本"明细缺失,降低 §五估值与 §六治理判断的置信度</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>定增募资 38.33 亿实际使用进度</strong> — 舆情称"投入研发比例极低、多买理财",来自股吧/财富号(非官方)</td>
+<td style="text-align: center;">⚠️ 部分</td>
+<td style="text-align: center;">中(需 FY2025 年报"募集资金使用情况专项报告"原文,随缺口 #1 解决)</td>
+<td>直接影响 §八 看空 #2 与 §六 治理红旗能否坐实;当前仅能作"治理质疑"而非"已证实偏离",置信度为方向性</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>诚恒微收购溢价倍数与商誉/减值</strong> — 舆情称"溢价 36 倍收购亏损公司",需核年报商誉科目、收购对价、业绩承诺与减值测试</td>
+<td style="text-align: center;">❌ 未找到</td>
+<td style="text-align: center;">低(年报商誉/业绩承诺明细未在已抽取文本中;raw_data 无专项)</td>
+<td>audit §7 已标长期股权投资 +30.8% 大幅波动;商誉减值风险无法量化,构成 §六 左尾(一次性计提)的不可定价盲区,拉低悲观/最差情景置信度</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>营收 YoY 口径冲突(−17.87% vs +54.41%)</strong> — Tushare 最新单期(2026Q1 −17.87%)与年报全年(FY2025 +54.41%)矛盾</td>
+<td style="text-align: center;">✅ 已解决</td>
+<td style="text-align: center;">高(Phase 2 §1.3 已确认为 2026Q1 单季 vs FY2025 全年两个不同期,非数据错误)</td>
+<td>已由 Phase 2 统一为"营收 V 型反转(2024 谷底 4.66 亿→2025 复苏 7.20 亿)+ 利润持续承压"口径,增长叙事以全年口径为锚,<strong>不影响结论</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>JM11/景宏量产与订单落地硬证据</strong> — 看好逻辑高度依赖"太空算力/星网订单 2026 放量、2027 净利转正",目前仅为研报预测,缺合同/中标公告;龙虎榜本期 0 行,资金面无法佐证机构进场</td>
+<td style="text-align: center;">❌ 未找到</td>
+<td style="text-align: center;">低(订单/中标为军工敏感信息,公开披露有限;待 2026 中报分部数据)</td>
+<td><strong>最关键缺口</strong> — 直接决定 §八 看多 #2/#4 与 §五 "买完完美未来" 判定;在 2026 中报(约 2026-08)GPU/景宏分部营收披露前,叙事无法被独立证据确认,是 §七 "等证据临界"行动档位的锚定缺口</td>
+</tr>
+</tbody>
+</table>
+<p><strong>补充缺口(Phase 1 §10 / data_snapshot 派生,供完整性)</strong>:</p>
+<ul>
+<li><strong>限售解禁日历(data_snapshot §9)为空</strong> — 看空 #3 "解禁抛压" 无法量化时点与规模,⚠️ 部分(随 #1 全文年报"限售股份变动"可补)。</li>
+<li><strong>研发资本化比例未在已抽取文本中明确</strong> — 影响 §六 风险 #4(资本化政策是否虚增利润)与利润质量判断,⚠️ 部分(需年报附注,随 #1 可补)。</li>
+</ul>
+<p><strong>缺口对总体置信度的影响</strong>:5 条主缺口中 1 条已解决、2 条部分、2 条未找到;两条"未找到"缺口(#3 商誉减值、#5 订单硬证据)恰好分别命中<strong>左尾下行</strong>(减值)与<strong>右尾上行</strong>(订单兑现)的核心不确定性,使本报告对景嘉微的<strong>方向判断置信度为中等</strong>——这正是 §七 给出"等证据临界(观察)"而非"核心仓/回避"的根本原因:关键证据将在 <strong>2026 中报(约 2026-08)</strong> 集中释放。</p>
+</div>
+
+<!-- ============================================================
+     附录/补丁章节追加区(避免 MD→HTML 内容丢失)
+     主报告 §九 之后的所有 ## 章节 Phase 6 Part B 必须追加到这里, 不得丢弃
+     ============================================================ -->
+<!-- 无附录章节 -->
+
+<footer>
+  本报告由 Claude Code company-analysis skill vv6.0 生成 · 结构化数据 + 11 大师框架审计<br>
+  数据源：Tushare Pro / yfinance / 巨潮资讯 PDF / WebSearch · 不构成投资建议<br>
+  <a href="https://github.com/leafpaper/claude-company-analysis">skill 代码</a> · <a href="https://github.com/leafpaper/Inves-Report">报告归档</a>
+</footer>
+
+</div>
+</body>
+</html>

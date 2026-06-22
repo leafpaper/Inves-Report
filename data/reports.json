@@ -46,6 +46,49 @@
       ]
     },
     {
+      "slug": "300474_景嘉微",
+      "ticker": "300474.SZ",
+      "name": "景嘉微",
+      "name_cn": "景嘉微",
+      "sector": "国产GPU+军工图形显控+AI智算",
+      "market": "a",
+      "report_date": "2026-06-22",
+      "version": "v1",
+      "composite_score": 5.63,
+      "verdict": "等证据临界",
+      "verdict_tone": "neutral",
+      "valuation_tag": "估值锚 34.05 元",
+      "one_liner": "中性-分歧 —— 景嘉微是 A 股稀缺的\"军工图形显控龙头（军用显控市占 >50%、毛利率 62.91% 行业第一档、净现金 27 亿、Altman Z=19.2）+ 国产 GPU/AI 第二曲线\"混合体，财务极稳健、破产风险极低，但连续两年亏损、ROE −2.4%；致命问题在估值——市场已用 PS_TTM 行业 96.4 分位为一条尚未被独立证据确认的 GPU 通用化未来定价，叙事溢价占现价市值 84.7%，现价不是好下注、好价格也不成立，唯一合法买入触发是 2026 中报 GPU 分部收入确认放量。",
+      "metrics": [
+        {
+          "label": "综合评分",
+          "value": "5.63/10",
+          "tone": "neutral"
+        },
+        {
+          "label": "期望收益",
+          "value": "-38%",
+          "tone": "negative"
+        },
+        {
+          "label": "估值锚",
+          "value": "34.05元",
+          "tone": "neutral"
+        }
+      ],
+      "expected_return_short": "-38%",
+      "badges": [
+        {
+          "label": "等证据临界 5.63/10",
+          "variant": "amber"
+        },
+        {
+          "label": "估值锚 34.05 元",
+          "variant": "amber"
+        }
+      ]
+    },
+    {
       "slug": "002030_达安基因",
       "ticker": "002030.SZ",
       "name": "达安基因",
