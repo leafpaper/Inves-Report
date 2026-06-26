@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>叶纸的投资报告 · AI 投研分析聚合</title>
+<title>YEZHI Company Analysis · AI 投研分析聚合</title>
 
 <!-- SEO / 分享 -->
-<meta name="description" content="叶纸的投资分析报告 —— 基于 11 大师框架的定量审计 + DCF 概率加权估值 + 多角色投资哲学分歧。覆盖美股 / A 股 / 港股 / 一级市场,报告由 company-analysis skill 自动生成。投资有风险,仅供参考。">
+<meta name="description" content="YEZHI Company Analysis —— 像谨慎的投资人那样把一家公司看一遍：11 大师框架自动审计 + 状态×赔率×路径决策内核 + 一张看得懂的投资决断卡(是不是好公司 / 现在该不该买分开回答)。覆盖美股 / A 股 / 港股 / 一级市场,全说人话。投资有风险,仅供参考。">
 <meta name="theme-color" content="#e8457a">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
-<meta property="og:title" content="叶纸的投资报告 · AI 投研分析聚合">
-<meta property="og:description" content="11 大师框架定量审计 + DCF 概率加权估值 + 多角色分歧。覆盖美股 / A 股 / 港股 / 一级市场。">
+<meta property="og:title" content="YEZHI Company Analysis · AI 投研分析聚合">
+<meta property="og:description" content="11 大师框架审计 + 状态×赔率×路径决策内核 + 投资决断卡(好公司≠现在能买)。覆盖美股 / A 股 / 港股 / 一级市场,全说人话。">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
 
@@ -89,6 +89,23 @@
   .footer{padding:24px 0 48px;font-size:12px;color:var(--text-3);border-top:2px dashed var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
   .footer a{color:var(--purple);text-decoration:none;font-weight:500;}
   .footer a:hover{text-decoration:underline;}
+
+  .philo{margin:6px 0 18px;background:var(--surface);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow-sm);overflow:hidden;}
+  .philo summary{cursor:pointer;list-style:none;padding:15px 20px;font-weight:700;font-size:14px;color:var(--purple);display:flex;align-items:center;gap:8px;user-select:none;}
+  .philo summary::-webkit-details-marker{display:none;}
+  .philo summary:hover{color:var(--pink);}
+  .philo summary .chev{margin-left:auto;transition:transform .2s;font-size:12px;color:var(--text-3);}
+  .philo[open] summary{border-bottom:1px dashed var(--border);}
+  .philo[open] summary .chev{transform:rotate(180deg);}
+  .philo-body{padding:6px 22px 20px;font-size:13.5px;color:var(--text-2);}
+  .philo-lead{font-size:14px;color:var(--text);margin:14px 0 10px;}
+  .philo-body ol{margin:10px 0;padding-left:20px;}
+  .philo-body li{margin:8px 0;line-height:1.7;}
+  .philo-note{margin:14px 0 8px;padding:12px 14px;background:var(--purple-bg);border-radius:12px;line-height:1.7;}
+  .philo-src{font-size:12px;color:var(--text-3);margin:12px 0 0;}
+  .philo-src a{color:var(--purple);text-decoration:none;font-weight:600;}
+  .philo-src a:hover{text-decoration:underline;}
+
   @media (max-width:640px){ .stats{grid-template-columns:repeat(2,1fr);} .hero{flex-direction:column;text-align:center;} }
 </style>
 </head>
@@ -259,7 +276,7 @@ function App(){
     <React.Fragment>
       <nav className="nav">
         <button className="nav-logo" onClick={()=>{setMarket('all');setQ('');window.scrollTo({top:0,behavior:'smooth'});}}>
-          <span className="turtle">🐢</span> 叶纸的投资报告
+          <span className="turtle">🐢</span> YEZHI Company Analysis
         </button>
         <div className="nav-links">
           {counts.us && <button className="nl" onClick={()=>setMarket('us')}>📈 美股</button>}
@@ -272,15 +289,29 @@ function App(){
       <div className="wrap">
         <div className="hero">
           <div className="hero-text reveal">
-            <span className="hero-badge">✦ AI 投资分析 v4.6 ✦</span>
-            <h1>叶纸的投资分析报告</h1>
-            <p>基于 11 大师框架的定量审计 + DCF 概率加权估值 + 多角色投资哲学分歧。覆盖美股 / A 股 / 港股 / 一级市场。报告由 company-analysis skill 自动生成。</p>
+            <span className="hero-badge">✦ AI 投研分析 v7.1 ✦</span>
+            <h1>YEZHI Company Analysis</h1>
+            <p>像谨慎的投资人那样，把一家公司从头看一遍：11 大师框架自动扫财务地雷 + 「状态×赔率×路径」决策内核，最后给一张看得懂的<b>投资决断卡</b>——<b>"是不是好公司"和"现在该不该买"分开回答</b>。覆盖美股 / A 股 / 港股 / 一级市场，全说人话。</p>
           </div>
           <div className="hero-mascot pop" style={{animationDelay:'.15s'}}>
             <Mascot src="assets/mascot-placeholder.jpg" name="叶纸" bubbleSide="left"
               quotes={['我是叶纸,慢即是稳 🐢','看 OCF,别只看利润表~','估值透支了哦,冷静一下','DCF 概率加权,稳一点!','戳我换台词!']} />
           </div>
         </div>
+
+        <details className="philo reveal" style={{animationDelay:'.22s'}}>
+          <summary>✦ 投资理念 · 我们怎么判断一家公司值不值得投<span className="chev">▾</span></summary>
+          <div className="philo-body">
+            <p className="philo-lead">先弄清「<b>是不是一家好公司</b>」，再决定「<b>现在这个价格该不该买</b>」——这是两件事，绝不混为一谈。判断一家公司，我们就问三道关，全用人话：</p>
+            <ol>
+              <li><b>它在变好吗？被证据坐实没？</b>（状态）—— 不听故事看实锤，财报 / 订单 / 客户是不是真的；分清「实锤」和「传闻」，传闻一律打折。</li>
+              <li><b>价格是不是把未来所有好事都提前买走了？</b>（赔率）—— 把股价拆成「已经赚到的 ＋ 对未来的想象」，想象越多越要它后面真兑现，看现在还有没有<b>安全垫</b>。</li>
+              <li><b>就算方向对，兑现前你扛得住中途大跌吗？</b>（路径）—— 先看<b>最坏会怎样</b>，再决定下不下注、下多重。</li>
+            </ol>
+            <p className="philo-note">这三关 <b>变好了吗 × 贵不贵 × 扛得住吗</b>，有任何一个「差」，现在就不是好下注。我们还坚持：<b>四个维度都要懂</b>（懂财报 / 懂叙事 / 懂估值 / 懂热点）、<b>11 个会计框架机器扫雷</b>（造假 / 破产 / 应计粉饰…）、结论落到一张 <b>5 行投资决断卡</b>：是不是好公司 · 故事真不真 · 贵不贵 · 该不该买 · 该怎么办。<b>好公司 ≠ 现在能买。</b></p>
+            <p className="philo-src">方法内核来自「贝叶斯之美」五篇（投资是泊松过程 / 喊线时代 / 三大数学模型 / 信仰投资陷阱 / 十年十倍股）。框架只是内部思考引擎，报告永远是大白话 ＋ 证据 ＋ 一句结论。<a href="https://github.com/leafpaper/claude-company-analysis" target="_blank" rel="noopener">了解分析方法 →</a></p>
+          </div>
+        </details>
 
         <div className="stats reveal" style={{animationDelay:'.28s'}}>
           <div className="stat"><div className="n pink">{total}</div><div className="l">分析报告</div></div>
@@ -334,7 +365,7 @@ function App(){
         ))}
 
         <div className="footer">
-          <span>AI 自动生成 · v4.6 动态联动 · 11 大师框架审计</span>
+          <span>AI 自动生成 · v7.1 · 11 大师框架审计 + 投资决断卡</span>
           <span><a href={GH} target="_blank" rel="noopener">GitHub</a> · <a href="https://github.com/leafpaper/claude-company-analysis" target="_blank" rel="noopener">分析 Skill</a></span>
         </div>
       </div>
