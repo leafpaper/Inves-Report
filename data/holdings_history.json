@@ -135,5 +135,13 @@
     "acctAssetCNY": 1637271.77,
     "openPnLPct": -31.6,
     "netAssetsCNY": 1644810.94
+  },
+  {
+    "date": "2026-06-26",
+    "acctPnLPct": 39.87,
+    "acctPnLCNY": 536389.65,
+    "acctAssetCNY": 1881888.99,
+    "openPnLPct": -26.94,
+    "netAssetsCNY": 1891722.01
   }
 ]
