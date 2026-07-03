@@ -1,6 +1,6 @@
 {
   "schema_version": "v3",
-  "last_updated": "2026-07-02T22:37:26Z",
+  "last_updated": "2026-07-03T22:34:31Z",
   "base_currency": "CNY",
   "owner": "叶纸",
   "source": "Longbridge",
@@ -9,21 +9,21 @@
     "USD": 7.18,
     "HKD": 0.9205
   },
-  "cashCNY": -850814.79,
+  "cashCNY": -839080.97,
   "performance": {
     "since": "2025-01-13",
-    "totalPnLCNY": 609163.84,
-    "totalPnLPct": 45.27,
-    "timeWeightedPct": 33.28,
-    "currentAssetCNY": 1954663.17,
+    "totalPnLCNY": 619964.35,
+    "totalPnLPct": 46.08,
+    "timeWeightedPct": 34.02,
+    "currentAssetCNY": 1965463.68,
     "investAmountCNY": 1345499.26,
     "tradedCount": 58,
     "netDepositCNY": 1041233.31
   },
   "totals": {
-    "netAssetsCNY": 1964417.19,
+    "netAssetsCNY": 1976151.0,
     "grossMvCNY": 2815231.98,
-    "marginCNY": -850814.79,
+    "marginCNY": -839080.97,
     "costCNY": 3538018.16,
     "pnlCNY": -722786.19,
     "pnlPct": -20.43,
