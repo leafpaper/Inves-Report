@@ -239,5 +239,13 @@
     "acctAssetCNY": null,
     "openPnLPct": 0.0,
     "netAssetsCNY": 0.0
+  },
+  {
+    "date": "2026-07-15",
+    "acctPnLPct": null,
+    "acctPnLCNY": null,
+    "acctAssetCNY": null,
+    "openPnLPct": 0.0,
+    "netAssetsCNY": 0.0
   }
 ]
