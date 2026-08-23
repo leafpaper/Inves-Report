@@ -59,36 +59,35 @@
 
   const CSS = `
   .hp{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);
-    box-shadow:var(--shadow-sm);overflow:hidden;font-family:var(--font-body);}
+    box-shadow:var(--shadow-sm);overflow:hidden;font-family:var(--font-body);margin-bottom:22px;}
 
   /* ---- 顶部汇总 ---- */
-  .hp__top{padding:20px 24px;background:linear-gradient(135deg,var(--bg-2),var(--surface));
-    border-bottom:2px dashed var(--border);}
+  .hp__top{padding:18px 24px;background:var(--surface);
+    border-bottom:1px solid var(--border);}
   .hp__topbar{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
-  .hp__title{font-size:var(--fs-sm);font-weight:var(--fw-bold);color:var(--text-2);
+  .hp__title{font-size:11px;font-weight:600;color:var(--text-3);letter-spacing:.06em;text-transform:uppercase;
     display:flex;align-items:center;gap:7px;margin-right:auto;}
-  .hp__title .ic{font-size:18px;}
-  .hp__grid{display:grid;grid-template-columns:repeat(5,auto);gap:14px 30px;align-items:end;}
+  .hp__title .ic{font-size:15px;}
+  .hp__grid{display:flex;flex-wrap:wrap;gap:14px 30px;align-items:flex-end;}
   .hp__cell .l{font-size:var(--fs-2xs);color:var(--text-3);text-transform:uppercase;
-    letter-spacing:var(--ls-label);font-weight:var(--fw-bold);margin-bottom:3px;}
-  .hp__cell .v{font-family:var(--font-mono);font-variant-numeric:tabular-nums;font-weight:var(--fw-black);
+    letter-spacing:var(--ls-label);font-weight:var(--fw-medium);margin-bottom:3px;}
+  .hp__cell .v{font-family:var(--font-mono);font-variant-numeric:tabular-nums;font-weight:var(--fw-bold);
     color:var(--text);line-height:1.05;}
-  .hp__cell.big .v{font-size:30px;}
-  .hp__cell.big .v .cur{font-size:16px;color:var(--text-3);margin-right:3px;}
-  .hp__cell .v.mid{font-size:20px;}
+  .hp__cell.big .v{font-size:26px;}
+  .hp__cell.big .v .cur{font-size:14px;color:var(--text-3);margin-right:3px;}
+  .hp__cell .v.mid{font-size:19px;}
   .hp__sub{font-size:11px;font-weight:var(--fw-bold);margin-top:2px;font-family:var(--font-mono);}
-  .pos{color:var(--bull-strong);} .neg{color:var(--bear-strong);}
+  .pos{color:var(--bull-ink);} .neg{color:var(--bear-ink);}
 
   /* ---- 工具条 ---- */
   .hp__btn{font-family:var(--font-body);font-weight:var(--fw-bold);font-size:12px;cursor:pointer;
-    border-radius:var(--r-pill);padding:7px 15px;border:1.5px solid var(--border-2);
+    border-radius:8px;padding:7px 14px;border:1px solid var(--border-2);
     background:var(--surface);color:var(--text-2);transition:all var(--t-fast);white-space:nowrap;}
-  .hp__btn:hover{border-color:var(--border-pink);color:var(--pink);background:var(--pink-bg);}
-  .hp__btn.primary{background:var(--grad-brand);color:#fff;border-color:transparent;box-shadow:var(--shadow-md);}
-  .hp__btn.primary:hover{transform:translateY(-1px);}
+  .hp__btn:hover{border-color:var(--border-pink);color:var(--pink);}
+  .hp__btn.primary{background:var(--grad-brand);color:var(--text-on-brand);border-color:transparent;box-shadow:var(--shadow-sm);}
   .hp__editbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;
-    padding:12px 24px;background:var(--purple-bg);border-bottom:1px solid var(--border);font-size:var(--fs-sm);}
-  .hp__cashlab{font-weight:var(--fw-bold);color:var(--purple-600);display:flex;align-items:center;gap:6px;}
+    padding:12px 24px;background:var(--bg-2);border-bottom:1px solid var(--border);font-size:var(--fs-sm);}
+  .hp__cashlab{font-weight:var(--fw-bold);color:var(--text-2);display:flex;align-items:center;gap:6px;}
   .hp__cashin{font-family:var(--font-mono);width:120px;text-align:right;font-weight:var(--fw-bold);
     border:1.5px solid var(--border);border-radius:8px;padding:6px 9px;background:var(--surface);color:var(--text);}
   .hp__cashin:focus{outline:none;border-color:var(--purple);box-shadow:0 0 0 2px var(--purple-glow);}
@@ -98,14 +97,14 @@
   .hp__scroll{overflow-x:auto;}
   .hp__table{width:100%;border-collapse:collapse;font-size:var(--fs-sm);min-width:680px;}
   .hp__table th{text-align:right;font-size:var(--fs-2xs);color:var(--text-3);
-    text-transform:uppercase;letter-spacing:.5px;font-weight:var(--fw-bold);
-    padding:11px 16px;border-bottom:1px solid var(--border);background:var(--surface-soft);white-space:nowrap;}
+    text-transform:uppercase;letter-spacing:.06em;font-weight:var(--fw-medium);
+    padding:10px 16px;border-bottom:2px solid var(--border-2);background:transparent;white-space:nowrap;}
   .hp__table th:first-child,.hp__table td:first-child{text-align:left;}
-  .hp__table td{padding:13px 16px;text-align:right;border-bottom:1px solid var(--border);
+  .hp__table td{padding:12px 16px;text-align:right;border-bottom:1px solid var(--border);
     font-variant-numeric:tabular-nums;vertical-align:middle;}
   .hp__table tr:last-child td{border-bottom:none;}
   .hp__table tbody tr.row{transition:background var(--t-fast);}
-  .hp__table tbody tr.row:hover{background:var(--pink-bg);}
+  .hp__table tbody tr.row:hover{background:var(--bg-2);}
   @media (prefers-reduced-motion:no-preference){
     .hp__table tbody tr.anim{animation:ds-slide-in .5s var(--ease) both;}
   }
@@ -119,10 +118,10 @@
 
   /* 占比条 */
   .hp__w{min-width:96px;}
-  .hp__wbar{height:7px;border-radius:999px;background:var(--surface-soft);overflow:hidden;margin-top:4px;}
+  .hp__wbar{height:5px;border-radius:999px;background:var(--bg-3);overflow:hidden;margin-top:4px;}
   .hp__wbar i{display:block;height:100%;border-radius:999px;background:var(--grad-brand);
     transition:width var(--t-base);}
-  .hp__wpct{font-family:var(--font-mono);font-size:var(--fs-2xs);font-weight:var(--fw-bold);color:var(--purple-600);}
+  .hp__wpct{font-family:var(--font-mono);font-size:var(--fs-2xs);font-weight:var(--fw-bold);color:var(--text-2);}
 
   /* 编辑输入 */
   .hp__in{font-family:var(--font-mono);font-size:13px;width:100%;min-width:74px;text-align:right;font-weight:var(--fw-bold);
@@ -133,15 +132,14 @@
   .hp__in.cash{width:120px;min-width:0;}
   .hp__del{border:none;background:var(--bear-bg);color:var(--bear-strong);width:30px;height:30px;
     border-radius:8px;cursor:pointer;font-size:14px;transition:all var(--t-fast);}
-  .hp__del:hover{background:var(--bear);color:#fff;}
-  .hp__del.confirm{background:var(--bear);color:#fff;width:auto;padding:0 10px;font-size:11px;font-weight:var(--fw-bold);}
+  .hp__del:hover{background:var(--bear);color:var(--text-on-brand);}
+  .hp__del.confirm{background:var(--bear);color:var(--text-on-brand);width:auto;padding:0 10px;font-size:11px;font-weight:var(--fw-bold);}
 
   .hp__empty{text-align:center;padding:40px 20px;color:var(--text-3);}
   .hp__empty .ic{font-size:34px;opacity:.5;margin-bottom:8px;}
   .hp__addrow td{text-align:center;padding:12px;}
   .hp__foot{padding:11px 24px;font-size:var(--fs-2xs);color:var(--text-3);
     background:var(--surface-soft);border-top:1px solid var(--border);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;}
-  @media (max-width:560px){ .hp__grid{grid-template-columns:repeat(2,auto);} }
   `;
 
   // 受控数字输入: 保留原始字符串以便流畅输入 (可清空 / 输入小数点), 即时回传解析值
@@ -256,15 +254,15 @@
     const plCls = plAmt >= 0 ? 'pos' : 'neg';
 
     const headCells = [
-      h('th', { key: 'a' }, '标的'),
-      h('th', { key: 'b' }, '持仓 / 成本'),
-      h('th', { key: 'c' }, '现价 / 昨收'),
-      h('th', { key: 'd' }, '市值'),
-      h('th', { key: 'e' }, '占比'),
-      h('th', { key: 'f' }, '今日'),
-      h('th', { key: 'g' }, '累计盈亏'),
+      h('th', { key: 'a', scope: 'col' }, '标的'),
+      h('th', { key: 'b', scope: 'col' }, '持仓 / 成本'),
+      h('th', { key: 'c', scope: 'col' }, '现价 / 昨收'),
+      h('th', { key: 'd', scope: 'col' }, '市值'),
+      h('th', { key: 'e', scope: 'col' }, '占比'),
+      h('th', { key: 'f', scope: 'col' }, '今日'),
+      h('th', { key: 'g', scope: 'col' }, '累计盈亏'),
     ];
-    if (editing) headCells.push(h('th', { key: 'x' }, ''));
+    if (editing) headCells.push(h('th', { key: 'x', scope: 'col' }, ''));
 
     const body = rows.length === 0
       ? [h('tr', { key: 'empty' }, h('td', { colSpan: editing ? 8 : 7 },
@@ -343,7 +341,7 @@
         h('button', { className: 'hp__btn hp__spacer', onClick: reset }, '↺ 重置为默认')),
 
       // 表格
-      h('div', { className: 'hp__scroll' },
+      h('div', { className: 'hp__scroll', tabIndex: 0, role: 'region', 'aria-label': '持仓明细表' },
         h('table', { className: 'hp__table' },
           h('thead', null, h('tr', null, headCells)),
           h('tbody', null, body))),

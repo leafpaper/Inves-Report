@@ -22,15 +22,16 @@ const CSS = `
 .ds-mascot{position:relative;display:inline-flex;flex-direction:column;align-items:center;
   font-family:var(--font-body);--orbit-r:62px;}
 .ds-mascot__stage{position:relative;display:grid;place-items:center;cursor:pointer;
-  filter:drop-shadow(0 10px 22px var(--pink-glow));}
+  filter:drop-shadow(0 4px 12px rgba(28,21,38,.10));}
 .ds-mascot__float{position:relative;display:block;}
 @media (prefers-reduced-motion:no-preference){
-  .ds-mascot__float{animation:ds-mascot-idle 3.4s var(--ease) infinite;}
+  .ds-mascot__float{animation:ds-mascot-idle 4.5s var(--ease) infinite;}
 }
 .ds-mascot.is-wiggle .ds-mascot__char{animation:ds-wiggle .6s var(--ease);}
 .ds-mascot__char{position:relative;border-radius:50%;overflow:hidden;
-  background:var(--grad-brand);border:4px solid #fff;
-  box-shadow:0 0 0 3px var(--border-pink),inset 0 0 0 1px rgba(255,255,255,.4);}
+  background:var(--grad-brand);border:3px solid var(--surface);
+  box-shadow:0 0 0 1px var(--border-2);transition:box-shadow var(--t-fast);}
+.ds-mascot__stage:hover .ds-mascot__char{box-shadow:0 0 0 1px var(--border-pink);}
 .ds-mascot__char img{width:100%;height:100%;object-fit:cover;display:block;}
 .ds-mascot__char.is-empty{display:grid;place-items:center;}
 .ds-mascot__char.is-empty span{font-size:46%;filter:none;}
@@ -42,9 +43,9 @@ const CSS = `
   .ds-mascot__shine{animation:ds-shimmer 4.5s linear infinite;}
 }
 /* 名牌 */
-.ds-mascot__tag{margin-top:14px;font-size:var(--fs-xs);font-weight:var(--fw-bold);
-  color:#fff;background:var(--grad-brand);padding:4px 14px;border-radius:var(--r-pill);
-  box-shadow:var(--shadow-md);letter-spacing:.5px;white-space:nowrap;}
+.ds-mascot__tag{margin-top:12px;font-size:var(--fs-xs);font-weight:var(--fw-bold);
+  color:var(--text-on-brand);background:var(--grad-brand);padding:3px 13px;border-radius:var(--r-pill);
+  box-shadow:var(--shadow-sm);letter-spacing:.5px;white-space:nowrap;}
 /* 环绕星芒 */
 .ds-mascot__orbit{position:absolute;top:50%;left:50%;width:0;height:0;pointer-events:none;}
 .ds-mascot__orbit i{position:absolute;font-style:normal;font-size:13px;
@@ -54,17 +55,19 @@ const CSS = `
   .ds-mascot__orbit i{animation:ds-orbit linear infinite;}
 }
 /* 气泡 */
-.ds-mascot__bubble{position:absolute;top:6px;max-width:188px;
-  background:#fff;border:2px solid var(--border-pink);border-radius:16px;
-  padding:9px 13px;font-size:var(--fs-sm);font-weight:var(--fw-medium);color:var(--text);
-  line-height:1.45;box-shadow:var(--shadow-md);z-index:3;}
+.ds-mascot__bubble{position:absolute;top:6px;width:max-content;max-width:min(188px,calc(100vw - 148px));
+  background:var(--surface);border:1px solid var(--border-pink);border-radius:12px;
+  padding:8px 12px;font-size:var(--fs-sm);font-weight:var(--fw-medium);color:var(--text);
+  line-height:1.45;box-shadow:var(--shadow-md);z-index:3;font-family:var(--font-display);}
 .ds-mascot__bubble.r{left:calc(100% - 6px);}
 .ds-mascot__bubble.l{right:calc(100% - 6px);text-align:right;}
-.ds-mascot__bubble::after{content:'';position:absolute;top:20px;width:12px;height:12px;
-  background:#fff;border-left:2px solid var(--border-pink);border-bottom:2px solid var(--border-pink);}
-.ds-mascot__bubble.r::after{left:-7px;transform:rotate(45deg);}
-.ds-mascot__bubble.l::after{right:-7px;transform:rotate(-135deg);}
-.ds-mascot__bubble.is-new{animation:ds-pop-in .5s var(--ease-spring);}
+.ds-mascot__bubble::after{content:'';position:absolute;top:20px;width:11px;height:11px;
+  background:var(--surface);border-left:1px solid var(--border-pink);border-bottom:1px solid var(--border-pink);}
+.ds-mascot__bubble.r::after{left:-6px;transform:rotate(45deg);}
+.ds-mascot__bubble.l::after{right:-6px;transform:rotate(-135deg);}
+@media (prefers-reduced-motion:no-preference){
+  .ds-mascot__bubble.is-new{animation:ds-pop-in .4s var(--ease);}
+}
 `;
 const DEFAULT_QUOTES = ['慢即是稳,龟速也能爆赚 🐢', '我是叶纸,看 OCF 别只看利润表~', '估值透支了哦,冷静一下', 'DCF 概率加权,稳一点!', '戳我换台词!'];
 
@@ -90,7 +93,9 @@ function Mascot({
   const [bump, setBump] = React.useState(0); // forces bubble re-pop
 
   React.useEffect(() => {
-    if (!showBubble || list.length < 2) return;
+    if (!showBubble || list.length < 2 || !bubbleInterval || bubbleInterval <= 0) return;
+    // 自动轮播尊重 prefers-reduced-motion (WCAG 2.2.2)
+    if (typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const t = setInterval(() => {
       setI(p => (p + 1) % list.length);
       setBump(b => b + 1);
@@ -125,6 +130,10 @@ function Mascot({
   }, /*#__PURE__*/React.createElement("div", {
     className: "ds-mascot__stage",
     onClick: poke,
+    onKeyDown: e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); poke(); } },
+    role: "button",
+    tabIndex: 0,
+    "aria-label": "\u5410\u69fd\u5c0f\u4e4c\u9f9f\uff0c\u70b9\u51fb\u6362\u53f0\u8bcd",
     title: "\u6233\u6211!"
   }, /*#__PURE__*/React.createElement("div", {
     className: "ds-mascot__float"
@@ -143,9 +152,7 @@ function Mascot({
     style: {
       fontSize: size * 0.5
     }
-  }, "\uD83D\uDC22"), /*#__PURE__*/React.createElement("span", {
-    className: "ds-mascot__shine"
-  })), sparkles && /*#__PURE__*/React.createElement("div", {
+  }, "\uD83D\uDC22")), sparkles && /*#__PURE__*/React.createElement("div", {
     className: "ds-mascot__orbit",
     "aria-hidden": true
   }, orbits.map((o, k) => /*#__PURE__*/React.createElement("i", {
@@ -1285,10 +1292,10 @@ const CSS = `
   font-size:14px;opacity:.5;pointer-events:none;
 }
 .ds-search input{
-  width:100%;font-family:var(--font-body);font-size:var(--fs-sm);
+  width:100%;height:36px;font-family:var(--font-body);font-size:var(--fs-sm);
   color:var(--text);background:var(--surface);
-  border:2px solid var(--border);border-radius:var(--r-lg);
-  padding:11px 16px 11px 40px;
+  border:1px solid var(--border-2);border-radius:8px;
+  padding:0 14px 0 38px;
   transition:border-color var(--t-fast),box-shadow var(--t-fast);
 }
 .ds-search input::placeholder{color:var(--text-3);}
@@ -1338,24 +1345,24 @@ function useStyle(id, css) {
 }
 const CSS = `
 .ds-tabs{
-  display:inline-flex;gap:6px;background:var(--surface);
-  padding:4px;border-radius:var(--r-lg);border:1px solid var(--border);
+  display:inline-flex;gap:2px;background:var(--surface);
+  padding:3px;border-radius:10px;border:1px solid var(--border-2);height:36px;align-items:center;
 }
 .ds-tab{
   display:inline-flex;align-items:center;gap:6px;
-  padding:7px 15px;font-size:var(--fs-sm);font-weight:var(--fw-bold);
+  padding:5px 12px;font-size:var(--fs-sm);font-weight:var(--fw-medium);
   font-family:var(--font-body);border:none;background:transparent;
-  color:var(--text-3);border-radius:var(--r-md);cursor:pointer;
+  color:var(--text-2);border-radius:7px;cursor:pointer;
   transition:color var(--t-fast),background var(--t-fast);
 }
-.ds-tab:hover{color:var(--pink);}
-.ds-tab[aria-selected="true"]{background:var(--pink-bg);color:var(--pink);}
+.ds-tab:hover{color:var(--text);}
+.ds-tab[aria-pressed="true"]{background:var(--pink-bg);color:var(--pink);font-weight:var(--fw-bold);}
 .ds-tab__count{
-  font-family:var(--font-mono);font-size:var(--fs-2xs);font-weight:var(--fw-bold);
-  background:rgba(232,69,122,.12);color:var(--pink);
-  padding:1px 7px;border-radius:var(--r-pill);
+  font-family:var(--font-mono);font-variant-numeric:tabular-nums;font-size:var(--fs-2xs);font-weight:var(--fw-bold);
+  background:var(--pink-bg);color:var(--pink);
+  padding:0 6px;border-radius:var(--r-pill);
 }
-.ds-tab[aria-selected="false"] .ds-tab__count{background:var(--surface-soft);color:var(--text-3);}
+.ds-tab[aria-pressed="false"] .ds-tab__count{background:var(--bg-3);color:var(--text-3);}
 `;
 
 /**
@@ -1377,11 +1384,11 @@ function Tabs({
   };
   return /*#__PURE__*/React.createElement("div", {
     className: ['ds-tabs', className].filter(Boolean).join(' '),
-    role: "tablist"
+    role: "group",
+    "aria-label": "市场筛选"
   }, items.map(it => /*#__PURE__*/React.createElement("button", {
     key: it.value,
-    role: "tab",
-    "aria-selected": active === it.value,
+    "aria-pressed": active === it.value,
     className: "ds-tab",
     onClick: () => pick(it.value)
   }, it.label, it.count != null && /*#__PURE__*/React.createElement("span", {
@@ -1391,319 +1398,6 @@ function Tabs({
 Object.assign(__ds_scope, { Tabs });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/Tabs.jsx", error: String((e && e.message) || e) }); }
 
-// ui_kits/report_index/reports.data.js
-try { (() => {
-// Sample report dataset (subset of the real data/reports.json), bundled for the UI kit demo.
-window.REPORTS = [{
-  slug: 'Starway',
-  ticker: '程星通信',
-  sector: '微波/卫星互联网',
-  name: '程星通信',
-  market: 'pe',
-  date: '2026-04-17',
-  version: 'v1',
-  score: 8.0,
-  tone: 'bullish',
-  one: '微波毫米波核心前端技术 + 卫星互联网新基建核心供应商。行业唯一全链路覆盖民企,独揽 5 项国家重大专项。',
-  badges: [{
-    label: '强烈看好 8.0/10',
-    variant: 'bull'
-  }, {
-    label: '国家战略级卡位',
-    variant: 'bull'
-  }],
-  metrics: [{
-    label: '融资阶段',
-    value: 'E+轮'
-  }, {
-    label: '期望回报',
-    value: '2.8x',
-    tone: 'pos'
-  }, {
-    label: '营收增速',
-    value: '+66%',
-    tone: 'pos'
-  }]
-}, {
-  slug: 'Adobe',
-  ticker: 'ADBE',
-  sector: '美股 NASDAQ',
-  name: 'Adobe',
-  market: 'us',
-  date: '2026-04-19',
-  version: 'v3',
-  score: 7.8,
-  tone: 'bullish',
-  one: '创意软件龙头,58% 市占率,8.5 亿 MAU。股价 12 月跌 43% 至十年最低 PE 10x,AI 颠覆恐惧 vs $10B FCF 基本面。',
-  badges: [{
-    label: '有条件看好 7.8/10',
-    variant: 'neutral'
-  }, {
-    label: '估值:显著低估',
-    variant: 'bull'
-  }],
-  metrics: [{
-    label: '前瞻 PE',
-    value: '10.3x',
-    tone: 'pos'
-  }, {
-    label: '期望收益',
-    value: '+19%',
-    tone: 'pos'
-  }, {
-    label: 'FCF 收益率',
-    value: '~9%',
-    tone: 'pos'
-  }]
-}, {
-  slug: 'Circle',
-  ticker: 'CRCL',
-  sector: '稳定币/加密金融',
-  name: 'Circle',
-  market: 'us',
-  date: '2026-04-19',
-  version: 'v1',
-  score: 7.3,
-  tone: 'bullish',
-  one: 'USDC 稳定币发行方,$790 亿数字美元流通。收入 +64% 但 96% 依赖利率。三角色严重分歧。',
-  badges: [{
-    label: '有条件看好 7.3/10',
-    variant: 'neutral'
-  }, {
-    label: '估值:偏高',
-    variant: 'neutral'
-  }],
-  metrics: [{
-    label: '收入增速',
-    value: '+64%',
-    tone: 'pos'
-  }, {
-    label: '期望收益',
-    value: '+10%'
-  }, {
-    label: 'DCF 估值',
-    value: '$88/股'
-  }]
-}, {
-  slug: 'NewRadio',
-  ticker: '纽瑞芯',
-  sector: 'UWB 芯片设计',
-  name: '纽瑞芯',
-  market: 'pe',
-  date: '2026-04-16',
-  version: 'v1',
-  score: 6.7,
-  tone: 'bullish',
-  one: '国产 UWB 超宽带芯片领导者,全正向自研 IP,覆盖手机 / 汽车 / 电视 / IoT 四大场景。华为、吉利、海信量产出货。',
-  badges: [{
-    label: '有条件看好 6.7/10',
-    variant: 'neutral'
-  }, {
-    label: '技术护城河:强',
-    variant: 'bull'
-  }],
-  metrics: [{
-    label: '融资阶段',
-    value: 'B→C轮'
-  }, {
-    label: '期望回报',
-    value: '2.1x',
-    tone: 'pos'
-  }, {
-    label: '营收增速',
-    value: '~200%',
-    tone: 'pos'
-  }]
-}, {
-  slug: 'Shengmei',
-  ticker: '688082.SH',
-  sector: '半导体设备',
-  name: '盛美上海',
-  market: 'a',
-  date: '2026-04-28',
-  version: 'v1',
-  score: 6.3,
-  tone: 'bearish',
-  one: '国内单晶圆清洗设备 #2 + 全球 #4 龙头,受益国产替代,但 OCF/NI 0.171 + 应收激增 +48.2%,估值严重透支。',
-  badges: [{
-    label: '中性偏空 6.3/10',
-    variant: 'neutral'
-  }, {
-    label: '估值锚 129.4 元',
-    variant: 'ghost'
-  }],
-  metrics: [{
-    label: '综合评分',
-    value: '6.3/10'
-  }, {
-    label: '期望收益',
-    value: '−22.0%',
-    tone: 'neg'
-  }, {
-    label: '估值锚',
-    value: '129.4'
-  }]
-}, {
-  slug: 'Huada',
-  ticker: '688114.SH',
-  sector: '基因测序仪 IDM',
-  name: '华大智造',
-  market: 'a',
-  date: '2026-04-25',
-  version: 'v1',
-  score: 5.4,
-  tone: 'neutral',
-  one: '全球基因测序仪国产龙头,2025 实亏 -2.22 亿(亏损 YoY 收窄 63%),时空组学 +161% 是真实增量,但反转预期已较饱满。',
-  badges: [{
-    label: '中性-分歧偏多 5.4/10',
-    variant: 'neutral'
-  }, {
-    label: '估值锚 42.0 元',
-    variant: 'ghost'
-  }],
-  metrics: [{
-    label: '综合评分',
-    value: '5.4/10'
-  }, {
-    label: '期望收益',
-    value: '+18.5%',
-    tone: 'pos'
-  }, {
-    label: '估值锚',
-    value: '42.0'
-  }]
-}, {
-  slug: 'Huakai',
-  ticker: '300592.SZ',
-  sector: '跨境出口电商',
-  name: '华凯易佰',
-  market: 'a',
-  date: '2026-04-27',
-  version: 'v1',
-  score: 5.0,
-  tone: 'neutral',
-  one: '国内跨境电商泛品龙头,2025 OCF +239% YoY 大幅 V 反转,SOTP 显示基本面低估 25-40%,但商誉 8.28 亿需整合验证。',
-  badges: [{
-    label: '中性偏多 5.0/10',
-    variant: 'neutral'
-  }, {
-    label: '估值锚 19.3 元',
-    variant: 'ghost'
-  }],
-  metrics: [{
-    label: '综合评分',
-    value: '5.0/10'
-  }, {
-    label: '期望收益',
-    value: '+38.5%',
-    tone: 'pos'
-  }, {
-    label: '估值锚',
-    value: '19.3'
-  }]
-}, {
-  slug: 'Daan',
-  ticker: '002030.SZ',
-  sector: '体外诊断 IVD',
-  name: '达安基因',
-  market: 'a',
-  date: '2026-05-11',
-  version: 'v1',
-  score: 3.89,
-  tone: 'bearish',
-  one: '2025 归母净利 -7.44 亿(续亏第二年),PB 已在近 1 年 99% 分位,基本面恶化与估值透支同时发生,公允价值 1.09 元 vs 当前 6.64 元。',
-  badges: [{
-    label: '看空方向 3.89/10',
-    variant: 'bear'
-  }, {
-    label: '估值锚 1.09 元',
-    variant: 'ghost'
-  }],
-  metrics: [{
-    label: '综合评分',
-    value: '3.89/10'
-  }, {
-    label: '期望收益',
-    value: '−83.6%',
-    tone: 'neg'
-  }, {
-    label: '估值锚',
-    value: '1.09'
-  }]
-}, {
-  slug: 'Tongtaiyi',
-  ticker: '同泰怡',
-  sector: '服务器制造 (AI+信创)',
-  name: '深圳同泰怡',
-  market: 'pe',
-  date: '2026-04-20',
-  version: 'v1',
-  score: 6.3,
-  tone: 'bullish',
-  one: '国内唯一华为鲲鹏/昇腾双钻石 + NVIDIA OEM 双生态服务器商。3 年营收 10x。21 项 DD 风险含 5 项 IPO 致命障碍。',
-  badges: [{
-    label: '有条件投资 6.3/10',
-    variant: 'neutral'
-  }, {
-    label: '双生态稀缺卡位',
-    variant: 'bull'
-  }],
-  metrics: [{
-    label: '融资阶段',
-    value: 'B 轮'
-  }, {
-    label: '合理估值',
-    value: '15-22 亿',
-    tone: 'pos'
-  }, {
-    label: '营收 CAGR',
-    value: '+117%',
-    tone: 'pos'
-  }]
-}];
-
-// 叶纸本人持仓 (示例数据 · 仅供展示)
-window.HOLDINGS = {
-  owner: '叶纸',
-  cash: 48000,
-  positions: [{
-    name: '华大智造',
-    ticker: '688114.SH',
-    shares: 3000,
-    cost: 38.5,
-    price: 42.10,
-    prevClose: 40.90
-  }, {
-    name: 'Adobe',
-    ticker: 'ADBE',
-    shares: 40,
-    cost: 402,
-    price: 466,
-    prevClose: 471
-  }, {
-    name: '华凯易佰',
-    ticker: '300592.SZ',
-    shares: 8000,
-    cost: 12.60,
-    price: 13.93,
-    prevClose: 13.55
-  }, {
-    name: 'Circle',
-    ticker: 'CRCL',
-    shares: 120,
-    cost: 74,
-    price: 81,
-    prevClose: 79.40
-  }, {
-    name: '盛美上海',
-    ticker: '688082.SH',
-    shares: 500,
-    cost: 148,
-    price: 166,
-    prevClose: 170
-  }]
-};
-})(); } catch (e) { __ds_ns.__errors.push({ path: "ui_kits/report_index/reports.data.js", error: String((e && e.message) || e) }); }
 
 __ds_ns.Mascot = __ds_scope.Mascot;
 

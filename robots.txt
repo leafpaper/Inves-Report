@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://leafpaper.github.io/Inves-Report/sitemap.xml
