@@ -94,20 +94,37 @@ def net_deposit_cny(token, usdcny, hkdcny):
     return round(total, 2)
 
 
+TOKEN_HELP = ("MCP token 无效或已过期(有效期约 2 周)。\n"
+              "修复: https://open.longbridge.com/connect 重新生成授权码换取 token,\n"
+              "然后到仓库 Settings → Secrets and variables → Actions 更新 LONGBRIDGE_MCP_TOKEN。\n")
+
+
 def main():
     token = os.environ.get("LONGBRIDGE_MCP_TOKEN", "").strip()
     if not token:
         sys.stderr.write("缺少环境变量 LONGBRIDGE_MCP_TOKEN (请在 GitHub Secrets 配置)\n")
         sys.exit(1)
 
-    mcp_call(token, "initialize", {"protocolVersion": "2025-06-18", "capabilities": {},
-                                   "clientInfo": {"name": "sync", "version": "1.0"}}, _id=1)
+    try:
+        mcp_call(token, "initialize", {"protocolVersion": "2025-06-18", "capabilities": {},
+                                       "clientInfo": {"name": "sync", "version": "1.0"}}, _id=1)
+        posResp = tool(token, "stock_positions", {})
+    except Exception as e:
+        sys.stderr.write("MCP 调用失败: %s\n%s" % (e, TOKEN_HELP))
+        sys.exit(1)
 
-    posResp = tool(token, "stock_positions", {}) or {"list": []}
+    # 护栏: token 过期时 MCP 常返回空/错误体而非 HTTP 错误 —— 绝不能把空组合当真写盘
+    # (2026-07~08 曾因此连续 34 天把空持仓+0净资产发布上线)。确已清仓的极端情况用 ALLOW_EMPTY=1 放行。
+    if posResp is None:
+        sys.stderr.write("stock_positions 无数据返回。\n" + TOKEN_HELP)
+        sys.exit(1)
     raw = []
     for grp in posResp.get("list", []):
         for s in grp.get("stock_info", []):
             raw.append(s)
+    if not raw and os.environ.get("ALLOW_EMPTY") != "1":
+        sys.stderr.write("持仓列表为空, 拒绝写入 (清仓属实则设 ALLOW_EMPTY=1 重跑)。\n" + TOKEN_HELP)
+        sys.exit(1)
 
     opt_syms = [s["symbol"] for s in raw if OPT_RE.search(s["symbol"])]
     stk_syms = [s["symbol"] for s in raw if not OPT_RE.search(s["symbol"])]
@@ -159,6 +176,9 @@ def main():
             net_hkd = fnum(bal[0].get("net_assets"))
     except Exception as e:
         sys.stderr.write("account_balance 获取失败: %s\n" % e)
+    if not net_hkd and os.environ.get("ALLOW_EMPTY") != "1":
+        sys.stderr.write("net_assets 为 0/缺失, 拒绝写入。\n" + TOKEN_HELP)
+        sys.exit(1)
     hkdcny = round(usdcny / 7.8, 4)   # 港币联系汇率(USD/HKD≈7.8), 比 frankfurter 的 HKD/CNY 准
     net_cny = net_hkd * hkdcny
     cashCNY = round(net_cny - valC, 2) if net_hkd else 0   # 使 总资产 = 持仓市值 + 现金/融资 = 净资产

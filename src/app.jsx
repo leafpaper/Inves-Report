@@ -316,7 +316,8 @@ function App(){
   React.useEffect(()=>{
     fetchJSON('data/reports.json').then(j=>{ setReports(pickReports(j)); setLive(true); setLoading(false); })
       .catch(()=>{ setLoading(false); });
-    fetchJSON('data/holdings.json').then(j=>{ if(j && Array.isArray(j.positions)) setHoldings(j); }).catch(()=>{});
+    // positions 为空视为数据异常 (曾因上游 token 过期连发空组合), 宁可显示离线占位
+    fetchJSON('data/holdings.json').then(j=>{ if(j && Array.isArray(j.positions) && j.positions.length > 0) setHoldings(j); }).catch(()=>{});
     fetchJSON('data/holdings_history.json').then(j=>{ if(Array.isArray(j)) setHistory(j); }).catch(()=>{});
   },[]);
 
@@ -356,7 +357,8 @@ function App(){
   const totalDocs=reports.reduce((s,r)=>s+1+((r.older&&r.older.length)||0),0);  // 含旧版的报告篇数
   const bullish=reports.filter(r=>r.tone==='bullish').length;
   const latest=reports.reduce((m,r)=>(r.date>m?r.date:m),'');
-  const twPct = holdings && holdings.performance ? Number(holdings.performance.timeWeightedPct) : null;
+  const twRaw = holdings && holdings.performance ? Number(holdings.performance.timeWeightedPct) : NaN;
+  const twPct = Number.isFinite(twRaw) ? twRaw : null;
   const pendingReview = reports.filter(r=>r.nextDisclosure && r.nextDisclosure < today).length;
 
   const tabItems=[{value:'all',label:'全部'}];

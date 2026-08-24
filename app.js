@@ -269,7 +269,7 @@ function App() {
       setLoading(false);
     });
     fetchJSON("data/holdings.json").then((j) => {
-      if (j && Array.isArray(j.positions)) setHoldings(j);
+      if (j && Array.isArray(j.positions) && j.positions.length > 0) setHoldings(j);
     }).catch(() => {
     });
     fetchJSON("data/holdings_history.json").then((j) => {
@@ -320,7 +320,8 @@ function App() {
   const totalDocs = reports.reduce((s, r) => s + 1 + (r.older && r.older.length || 0), 0);
   const bullish = reports.filter((r) => r.tone === "bullish").length;
   const latest = reports.reduce((m, r) => r.date > m ? r.date : m, "");
-  const twPct = holdings && holdings.performance ? Number(holdings.performance.timeWeightedPct) : null;
+  const twRaw = holdings && holdings.performance ? Number(holdings.performance.timeWeightedPct) : NaN;
+  const twPct = Number.isFinite(twRaw) ? twRaw : null;
   const pendingReview = reports.filter((r) => r.nextDisclosure && r.nextDisclosure < today).length;
   const tabItems = [{ value: "all", label: "\u5168\u90E8" }];
   MARKET_ORDER.forEach((m) => {
