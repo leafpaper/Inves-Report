@@ -44,6 +44,7 @@ function mapReport(r) {
     quality: r.quality_field || "",
     valuation: r.valuation_tag || "",
     nextDisclosure: r.next_disclosure_date || "",
+    reviewHint: r.review_hint || "",
     verdict: r.verdict || "",
     metrics: metrics.slice(0, 3),
     href: `reports/${encodeURIComponent(r.slug)}/\u5206\u6790\u62A5\u544A_dashboard.html`
@@ -83,7 +84,15 @@ function disclosureInfo(dateStr) {
     const days = Math.round((new Date(dateStr) - new Date(today)) / 864e5);
     return { state: days <= 7 ? "soon" : "future", label: `\u62AB\u9732 ${dateStr.slice(5)}` + (days <= 7 ? ` \xB7 ${days === 0 ? "\u4ECA\u5929" : days + " \u5929\u540E"}` : "") };
   }
-  return { state: "past", label: `\u62AB\u9732\u65E5 ${dateStr.slice(5)} \u5DF2\u8FC7 \xB7 \u5F85\u91CD\u8BC4` };
+  return { state: "past", label: `\u62AB\u9732\u65E5 ${dateStr.slice(5)} \u5DF2\u8FC7 \xB7 \u5F85\u590D\u67E5` };
+}
+function stalenessInfo(nextDisclosure, reportDate) {
+  const dd = disclosureInfo(nextDisclosure);
+  if (dd) return dd;
+  if (!reportDate) return null;
+  const days = Math.round((new Date(todayISO()) - new Date(reportDate)) / 864e5);
+  if (days > 90) return { state: "past", label: `\u57FA\u51C6\u65E5 ${days} \u5929\u524D \xB7 \u9648\u65E7,\u5EFA\u8BAE\u590D\u67E5` };
+  return null;
 }
 function fetchJSON(url, ms) {
   const ctrl = "AbortController" in window ? new AbortController() : null;
@@ -163,8 +172,8 @@ function ThemeToggle() {
 }
 function ReportCardV2({ r }) {
   const t = r.tone === "bullish" ? "bull" : r.tone === "bearish" ? "bear" : "neutral";
-  const dd = disclosureInfo(r.nextDisclosure);
-  return /* @__PURE__ */ React.createElement("article", { className: "rcard" }, /* @__PURE__ */ React.createElement("div", { className: "rcard-body" }, /* @__PURE__ */ React.createElement("div", { className: "rcard-head mono" }, /* @__PURE__ */ React.createElement("span", null, r.ticker, r.sector ? ` \xB7 ${r.sector}` : ""), /* @__PURE__ */ React.createElement("span", { className: "rcard-date" }, r.date)), /* @__PURE__ */ React.createElement("h3", { className: "rcard-name" }, /* @__PURE__ */ React.createElement("a", { className: "rcard-link", href: r.href }, r.name, r.verdict && /* @__PURE__ */ React.createElement("span", { className: "sr-only" }, ",", r.verdict)), r.version && r.version !== "v1" && /* @__PURE__ */ React.createElement("span", { className: "rcard-ver mono" }, r.version)), /* @__PURE__ */ React.createElement("div", { className: "rcard-verdict" }, r.gear ? /* @__PURE__ */ React.createElement("span", { className: `gear-chip ${t}` }, r.gear) : /* @__PURE__ */ React.createElement("span", { className: `gear-chip outline ${t}` }, TONE_TEXT[r.tone], r.score != null ? ` ${r.score.toFixed(1)}` : ""), r.quality && /* @__PURE__ */ React.createElement("span", { className: "ghost-chip" }, "\u8D28\u5730 \xB7 ", r.quality), r.valuation && /* @__PURE__ */ React.createElement("span", { className: "ghost-chip" }, r.valuation)), r.one && /* @__PURE__ */ React.createElement("p", { className: "rcard-one" }, r.one)), r.metrics.length > 0 && /* @__PURE__ */ React.createElement("div", { className: "rcard-metrics" }, r.metrics.map((m, i) => /* @__PURE__ */ React.createElement("div", { className: "rm", key: i }, /* @__PURE__ */ React.createElement("div", { className: "rm-l" }, m.label), /* @__PURE__ */ React.createElement("div", { className: `rm-v mono ${m.tone === "pos" ? "pos" : m.tone === "neg" ? "neg" : ""}` }, m.value)))), /* @__PURE__ */ React.createElement("div", { className: "rcard-foot" }, /* @__PURE__ */ React.createElement("span", { className: "rcard-foot-meta" }, dd && /* @__PURE__ */ React.createElement("span", { className: `disc mono ${dd.state}` }, dd.label), r.older && r.older.length > 0 && r.older.map((o, i) => /* @__PURE__ */ React.createElement("a", { key: i, className: "old-ver mono", href: o.href }, "\u65E7\u7248 ", o.version, " \xB7 ", o.date))), /* @__PURE__ */ React.createElement("span", { className: "rcard-cta", "aria-hidden": "true" }, "\u67E5\u770B\u62A5\u544A \u2192")));
+  const dd = stalenessInfo(r.nextDisclosure, r.date);
+  return /* @__PURE__ */ React.createElement("article", { className: "rcard" }, /* @__PURE__ */ React.createElement("div", { className: "rcard-body" }, /* @__PURE__ */ React.createElement("div", { className: "rcard-head mono" }, /* @__PURE__ */ React.createElement("span", null, r.ticker, r.sector ? ` \xB7 ${r.sector}` : ""), /* @__PURE__ */ React.createElement("span", { className: "rcard-date" }, r.date)), /* @__PURE__ */ React.createElement("h3", { className: "rcard-name" }, /* @__PURE__ */ React.createElement("a", { className: "rcard-link", href: r.href }, r.name, r.verdict && /* @__PURE__ */ React.createElement("span", { className: "sr-only" }, ",", r.verdict)), r.version && r.version !== "v1" && /* @__PURE__ */ React.createElement("span", { className: "rcard-ver mono" }, r.version)), /* @__PURE__ */ React.createElement("div", { className: "rcard-verdict" }, r.gear ? /* @__PURE__ */ React.createElement("span", { className: `gear-chip ${t}` }, r.gear) : /* @__PURE__ */ React.createElement("span", { className: `gear-chip outline ${t}` }, TONE_TEXT[r.tone], r.score != null ? ` ${r.score.toFixed(1)}` : ""), r.quality && /* @__PURE__ */ React.createElement("span", { className: "ghost-chip" }, "\u8D28\u5730 \xB7 ", r.quality), r.valuation && /* @__PURE__ */ React.createElement("span", { className: "ghost-chip" }, r.valuation)), r.one && /* @__PURE__ */ React.createElement("p", { className: "rcard-one" }, r.one)), r.metrics.length > 0 && /* @__PURE__ */ React.createElement("div", { className: "rcard-metrics" }, r.metrics.map((m, i) => /* @__PURE__ */ React.createElement("div", { className: "rm", key: i }, /* @__PURE__ */ React.createElement("div", { className: "rm-l" }, m.label), /* @__PURE__ */ React.createElement("div", { className: `rm-v mono ${m.tone === "pos" ? "pos" : m.tone === "neg" ? "neg" : ""}` }, m.value)))), /* @__PURE__ */ React.createElement("div", { className: "rcard-foot" }, /* @__PURE__ */ React.createElement("span", { className: "rcard-foot-meta" }, dd && /* @__PURE__ */ React.createElement("span", { className: `disc mono ${dd.state}` }, dd.label), r.reviewHint && /* @__PURE__ */ React.createElement("span", { className: "disc mono past" }, r.reviewHint), r.older && r.older.length > 0 && r.older.map((o, i) => /* @__PURE__ */ React.createElement("a", { key: i, className: "old-ver mono", href: o.href }, "\u65E7\u7248 ", o.version, " \xB7 ", o.date))), /* @__PURE__ */ React.createElement("span", { className: "rcard-cta", "aria-hidden": "true" }, "\u67E5\u770B\u62A5\u544A \u2192")));
 }
 function PnlJourney({ performance, totals, history: history2 }) {
   const p = performance || {};

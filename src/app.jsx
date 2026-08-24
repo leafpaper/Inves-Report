@@ -48,6 +48,7 @@ function mapReport(r){
     quality: r.quality_field || '',
     valuation: r.valuation_tag || '',
     nextDisclosure: r.next_disclosure_date || '',
+    reviewHint: r.review_hint || '',
     verdict: r.verdict || '',
     metrics: metrics.slice(0,3),
     href: `reports/${encodeURIComponent(r.slug)}/分析报告_dashboard.html`,
@@ -84,7 +85,17 @@ function disclosureInfo(dateStr){
     const days = Math.round((new Date(dateStr) - new Date(today)) / 86400000);
     return { state: days <= 7 ? 'soon' : 'future', label: `披露 ${dateStr.slice(5)}` + (days <= 7 ? ` · ${days === 0 ? '今天' : days + ' 天后'}` : '') };
   }
-  return { state: 'past', label: `披露日 ${dateStr.slice(5)} 已过 · 待重评` };
+  return { state: 'past', label: `披露日 ${dateStr.slice(5)} 已过 · 待复查` };
+}
+
+/* ---- 超龄陈旧警示 (v8 --review): 披露日信息优先; 没有披露日但基准日 >90 天(约一个披露季)→ 陈旧 ---- */
+function stalenessInfo(nextDisclosure, reportDate){
+  const dd = disclosureInfo(nextDisclosure);
+  if(dd) return dd;
+  if(!reportDate) return null;
+  const days = Math.round((new Date(todayISO()) - new Date(reportDate)) / 86400000);
+  if(days > 90) return { state: 'past', label: `基准日 ${days} 天前 · 陈旧,建议复查` };
+  return null;
 }
 
 /* ---- 带超时和 r.ok 检查的 fetch ---- */
@@ -157,7 +168,7 @@ function ThemeToggle(){
 /* ---- 报告卡 (v2: 决断行 + 开放式 metrics + 披露日脚注) ---- */
 function ReportCardV2({ r }){
   const t = r.tone === 'bullish' ? 'bull' : r.tone === 'bearish' ? 'bear' : 'neutral';
-  const dd = disclosureInfo(r.nextDisclosure);
+  const dd = stalenessInfo(r.nextDisclosure, r.date);
   return (
     <article className={'rcard'}>
       <div className="rcard-body">
@@ -191,6 +202,7 @@ function ReportCardV2({ r }){
       <div className="rcard-foot">
         <span className="rcard-foot-meta">
           {dd && <span className={`disc mono ${dd.state}`}>{dd.label}</span>}
+          {r.reviewHint && <span className="disc mono past">{r.reviewHint}</span>}
           {r.older && r.older.length > 0 && r.older.map((o,i)=>(
             <a key={i} className="old-ver mono" href={o.href}>旧版 {o.version} · {o.date}</a>
           ))}
