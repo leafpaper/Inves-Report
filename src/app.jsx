@@ -55,6 +55,32 @@ function mapReport(r){
   };
 }
 
+/* ---- compare.json 原始字段 → 对比卡 props (票10 --compare; 同样是纯展示层映射)
+   卡上不产生新结论: verdict 直接引「组内裁决」那一句, 每家的档位引各家自己的报告 ---- */
+function mapCompare(g){
+  const members = (g.members||[]).map(m=>({
+    company: m.company, ticker: m.ticker||'', market: m.market||'',
+    gear: m.action_gear||'', quality: m.quality_field||'',
+    date: m.report_date||'', stale: !!m.stale,
+    href: m.href || '',
+  }));
+  return {
+    slug: g.slug, name: g.name || g.slug, anchor: g.anchor || '',
+    chainNote: g.chain_note || '',
+    href: g.href || ('compare/' + encodeURIComponent(g.slug) + '/index.html'),
+    date: g.generated || '',
+    verdict: g.verdict || '', winner: g.winner || '',
+    markets: Array.isArray(g.markets) ? g.markets : [],
+    missing: g.missing_count || 0,
+    staleCount: g.stale_count || 0,
+    members: members,
+  };
+}
+function pickCompare(json){
+  if(!json || !Array.isArray(json.groups)) return [];
+  return json.groups.map(mapCompare).sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+}
+
 /* 同一标的的新旧报告合并: 只展示最新一份, 旧版收进卡片脚注链接。
    只剥离市场后缀 (ADBE.US→ADBE), 不能砍掉一切点号后缀 —— BRK.A/BRK.B 是不同证券 */
 function tickerKey(t){ return String(t||'').toUpperCase().replace(/\.(US|HK|SH|SZ|BJ|SG)$/,''); }
@@ -213,6 +239,48 @@ function ReportCardV2({ r }){
   );
 }
 
+/* ---- 产业链对比卡 (票10): 与报告卡同一套 class, 成员格子各自点回自己的报告 ---- */
+function CompareCard({ g }){
+  return (
+    <article className="rcard">
+      <div className="rcard-body">
+        <div className="rcard-head mono">
+          <span>产业链对比 · {g.members.length} 家{g.missing ? ` · 缺 ${g.missing} 家` : ''}</span>
+          <span className="rcard-date">{g.date}</span>
+        </div>
+        <h3 className="rcard-name">
+          <a className="rcard-link" href={g.href}>{g.name}</a>
+        </h3>
+        <div className="rcard-verdict">
+          {g.winner
+            ? <span className="gear-chip neutral">钱先放 · {g.winner}</span>
+            : <span className="gear-chip outline neutral">裁决待产出</span>}
+          {g.anchor && <span className="ghost-chip">锚 · {g.anchor}</span>}
+          {g.staleCount > 0 && <span className="ghost-chip">{g.staleCount} 家陈旧 · 建议先复查</span>}
+        </div>
+        {(g.verdict || g.chainNote) && <p className="rcard-one">{g.verdict || g.chainNote}</p>}
+      </div>
+      {g.members.length > 0 && (
+        <div className="rcard-metrics members">
+          {g.members.map((m,i)=>(
+            <a className="rm rml" key={i} href={m.href}
+               title={`${m.company} ${m.ticker} · 基准日 ${m.date}${m.stale ? ' · 陈旧' : ''}`}>
+              <div className="rm-l">{m.company}</div>
+              <div className="rm-v mono">{m.gear || '—'}{m.stale ? ' ·陈旧' : ''}</div>
+            </a>
+          ))}
+        </div>
+      )}
+      <div className="rcard-foot">
+        <span className="rcard-foot-meta">
+          {g.missing > 0 && <span className="disc mono past">{g.missing} 家缺完整报告 · 未进对比</span>}
+        </span>
+        <span className="rcard-cta" aria-hidden="true">查看对比页 →</span>
+      </div>
+    </article>
+  );
+}
+
 /* ---- 账户净值卡 (网格线 + 本金基准线 + 首末日期) ---- */
 function PnlJourney({ performance, totals, history }){
   const p = performance || {};
@@ -305,6 +373,7 @@ function PnlJourney({ performance, totals, history }){
 function App(){
   const init = readURLState();
   const [reports,setReports] = React.useState(()=> window.REPORTS_RAW ? pickReports(window.REPORTS_RAW) : []);
+  const [groups,setGroups] = React.useState(()=> window.COMPARE_RAW ? pickCompare(window.COMPARE_RAW) : []);
   const [loading,setLoading] = React.useState(true);
   const [live,setLive] = React.useState(false);          // data/reports.json 实时拉取是否成功
   const [holdings,setHoldings] = React.useState(null);   // 真实持仓 (data/holdings.json)
@@ -317,6 +386,8 @@ function App(){
     fetchJSON('data/reports.json').then(j=>{ setReports(pickReports(j)); setLive(true); setLoading(false); })
       .catch(()=>{ setLoading(false); });
     // positions 为空视为数据异常 (曾因上游 token 过期连发空组合), 宁可显示离线占位
+    // 对比组 (票10): 还没有任何组时文件可能不存在, 拉不到就当空, 整节不渲染
+    fetchJSON('data/compare.json').then(j=>{ setGroups(pickCompare(j)); }).catch(()=>{});
     fetchJSON('data/holdings.json').then(j=>{ if(j && Array.isArray(j.positions) && j.positions.length > 0) setHoldings(j); }).catch(()=>{});
     fetchJSON('data/holdings_history.json').then(j=>{ if(Array.isArray(j)) setHistory(j); }).catch(()=>{});
   },[]);
@@ -330,6 +401,17 @@ function App(){
     if(q.trim()){ const hay=[r.ticker,r.name,r.sector,r.one,r.gear].join(' ').toLowerCase(); if(!hay.includes(q.trim().toLowerCase())) return false; }
     return true;
   });
+  // 对比组跟着同一套搜索/市场筛选走(组覆盖多个市场时, 任一命中即显示)
+  const groupList = groups.filter(g=>{
+    if(market!=='all' && !(g.markets||[]).includes(market)) return false;
+    if(q.trim()){
+      const hay = [g.name,g.anchor,g.verdict,g.chainNote]
+        .concat(g.members.map(m=>m.company+' '+m.ticker)).join(' ').toLowerCase();
+      if(!hay.includes(q.trim().toLowerCase())) return false;
+    }
+    return true;
+  });
+
   const sc = r => (r.score == null ? -Infinity : r.score);
   const today = todayISO();
   list = [...list].sort((a,b)=>{
@@ -434,6 +516,20 @@ function App(){
             : (list.length===total?`共 ${total} 个标的`:`当前显示 ${list.length} / ${total} 个标的`)}
           {!loading && !live && window.REPORTS_RAW && <span className="stale mono"> · 离线快照 {window.REPORTS_RAW.last_updated || ''}</span>}
         </div>
+
+        {groupList.length > 0 && (
+          <section aria-label="产业链对比">
+            <h2 className="section-head">
+              <span className="zh">产业链对比</span>
+              <span className="en mono">PEER COMPARISONS</span>
+              <span className="ct mono">{groupList.length}</span>
+              <span className="rule" aria-hidden="true"></span>
+            </h2>
+            <div className="cards">
+              {groupList.map(g=>(<CompareCard key={g.slug} g={g}/>))}
+            </div>
+          </section>
+        )}
 
         {total===0 ? (
           <div className="empty"><div className="ic" aria-hidden="true">🐢</div><div>{loading?'正在读取报告数据…':'暂无报告数据 (请确认 data/reports.json 可访问)'}</div></div>

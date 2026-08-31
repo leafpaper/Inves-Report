@@ -50,6 +50,36 @@ function mapReport(r) {
     href: `reports/${encodeURIComponent(r.slug)}/\u5206\u6790\u62A5\u544A_dashboard.html`
   };
 }
+function mapCompare(g) {
+  const members = (g.members || []).map((m) => ({
+    company: m.company,
+    ticker: m.ticker || "",
+    market: m.market || "",
+    gear: m.action_gear || "",
+    quality: m.quality_field || "",
+    date: m.report_date || "",
+    stale: !!m.stale,
+    href: m.href || ""
+  }));
+  return {
+    slug: g.slug,
+    name: g.name || g.slug,
+    anchor: g.anchor || "",
+    chainNote: g.chain_note || "",
+    href: g.href || "compare/" + encodeURIComponent(g.slug) + "/index.html",
+    date: g.generated || "",
+    verdict: g.verdict || "",
+    winner: g.winner || "",
+    markets: Array.isArray(g.markets) ? g.markets : [],
+    missing: g.missing_count || 0,
+    staleCount: g.stale_count || 0,
+    members
+  };
+}
+function pickCompare(json) {
+  if (!json || !Array.isArray(json.groups)) return [];
+  return json.groups.map(mapCompare).sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+}
 function tickerKey(t) {
   return String(t || "").toUpperCase().replace(/\.(US|HK|SH|SZ|BJ|SG)$/, "");
 }
@@ -175,6 +205,19 @@ function ReportCardV2({ r }) {
   const dd = stalenessInfo(r.nextDisclosure, r.date);
   return /* @__PURE__ */ React.createElement("article", { className: "rcard" }, /* @__PURE__ */ React.createElement("div", { className: "rcard-body" }, /* @__PURE__ */ React.createElement("div", { className: "rcard-head mono" }, /* @__PURE__ */ React.createElement("span", null, r.ticker, r.sector ? ` \xB7 ${r.sector}` : ""), /* @__PURE__ */ React.createElement("span", { className: "rcard-date" }, r.date)), /* @__PURE__ */ React.createElement("h3", { className: "rcard-name" }, /* @__PURE__ */ React.createElement("a", { className: "rcard-link", href: r.href }, r.name, r.verdict && /* @__PURE__ */ React.createElement("span", { className: "sr-only" }, ",", r.verdict)), r.version && r.version !== "v1" && /* @__PURE__ */ React.createElement("span", { className: "rcard-ver mono" }, r.version)), /* @__PURE__ */ React.createElement("div", { className: "rcard-verdict" }, r.gear ? /* @__PURE__ */ React.createElement("span", { className: `gear-chip ${t}` }, r.gear) : /* @__PURE__ */ React.createElement("span", { className: `gear-chip outline ${t}` }, TONE_TEXT[r.tone], r.score != null ? ` ${r.score.toFixed(1)}` : ""), r.quality && /* @__PURE__ */ React.createElement("span", { className: "ghost-chip" }, "\u8D28\u5730 \xB7 ", r.quality), r.valuation && /* @__PURE__ */ React.createElement("span", { className: "ghost-chip" }, r.valuation)), r.one && /* @__PURE__ */ React.createElement("p", { className: "rcard-one" }, r.one)), r.metrics.length > 0 && /* @__PURE__ */ React.createElement("div", { className: "rcard-metrics" }, r.metrics.map((m, i) => /* @__PURE__ */ React.createElement("div", { className: "rm", key: i }, /* @__PURE__ */ React.createElement("div", { className: "rm-l" }, m.label), /* @__PURE__ */ React.createElement("div", { className: `rm-v mono ${m.tone === "pos" ? "pos" : m.tone === "neg" ? "neg" : ""}` }, m.value)))), /* @__PURE__ */ React.createElement("div", { className: "rcard-foot" }, /* @__PURE__ */ React.createElement("span", { className: "rcard-foot-meta" }, dd && /* @__PURE__ */ React.createElement("span", { className: `disc mono ${dd.state}` }, dd.label), r.reviewHint && /* @__PURE__ */ React.createElement("span", { className: "disc mono past" }, r.reviewHint), r.older && r.older.length > 0 && r.older.map((o, i) => /* @__PURE__ */ React.createElement("a", { key: i, className: "old-ver mono", href: o.href }, "\u65E7\u7248 ", o.version, " \xB7 ", o.date))), /* @__PURE__ */ React.createElement("span", { className: "rcard-cta", "aria-hidden": "true" }, "\u67E5\u770B\u62A5\u544A \u2192")));
 }
+function CompareCard({ g }) {
+  return /* @__PURE__ */ React.createElement("article", { className: "rcard" }, /* @__PURE__ */ React.createElement("div", { className: "rcard-body" }, /* @__PURE__ */ React.createElement("div", { className: "rcard-head mono" }, /* @__PURE__ */ React.createElement("span", null, "\u4EA7\u4E1A\u94FE\u5BF9\u6BD4 \xB7 ", g.members.length, " \u5BB6", g.missing ? ` \xB7 \u7F3A ${g.missing} \u5BB6` : ""), /* @__PURE__ */ React.createElement("span", { className: "rcard-date" }, g.date)), /* @__PURE__ */ React.createElement("h3", { className: "rcard-name" }, /* @__PURE__ */ React.createElement("a", { className: "rcard-link", href: g.href }, g.name)), /* @__PURE__ */ React.createElement("div", { className: "rcard-verdict" }, g.winner ? /* @__PURE__ */ React.createElement("span", { className: "gear-chip neutral" }, "\u94B1\u5148\u653E \xB7 ", g.winner) : /* @__PURE__ */ React.createElement("span", { className: "gear-chip outline neutral" }, "\u88C1\u51B3\u5F85\u4EA7\u51FA"), g.anchor && /* @__PURE__ */ React.createElement("span", { className: "ghost-chip" }, "\u951A \xB7 ", g.anchor), g.staleCount > 0 && /* @__PURE__ */ React.createElement("span", { className: "ghost-chip" }, g.staleCount, " \u5BB6\u9648\u65E7 \xB7 \u5EFA\u8BAE\u5148\u590D\u67E5")), (g.verdict || g.chainNote) && /* @__PURE__ */ React.createElement("p", { className: "rcard-one" }, g.verdict || g.chainNote)), g.members.length > 0 && /* @__PURE__ */ React.createElement("div", { className: "rcard-metrics members" }, g.members.map((m, i) => /* @__PURE__ */ React.createElement(
+    "a",
+    {
+      className: "rm rml",
+      key: i,
+      href: m.href,
+      title: `${m.company} ${m.ticker} \xB7 \u57FA\u51C6\u65E5 ${m.date}${m.stale ? " \xB7 \u9648\u65E7" : ""}`
+    },
+    /* @__PURE__ */ React.createElement("div", { className: "rm-l" }, m.company),
+    /* @__PURE__ */ React.createElement("div", { className: "rm-v mono" }, m.gear || "\u2014", m.stale ? " \xB7\u9648\u65E7" : "")
+  ))), /* @__PURE__ */ React.createElement("div", { className: "rcard-foot" }, /* @__PURE__ */ React.createElement("span", { className: "rcard-foot-meta" }, g.missing > 0 && /* @__PURE__ */ React.createElement("span", { className: "disc mono past" }, g.missing, " \u5BB6\u7F3A\u5B8C\u6574\u62A5\u544A \xB7 \u672A\u8FDB\u5BF9\u6BD4")), /* @__PURE__ */ React.createElement("span", { className: "rcard-cta", "aria-hidden": "true" }, "\u67E5\u770B\u5BF9\u6BD4\u9875 \u2192")));
+}
 function PnlJourney({ performance, totals, history: history2 }) {
   const p = performance || {};
   const t = totals || {};
@@ -253,6 +296,7 @@ function PnlJourney({ performance, totals, history: history2 }) {
 function App() {
   const init = readURLState();
   const [reports, setReports] = React.useState(() => window.REPORTS_RAW ? pickReports(window.REPORTS_RAW) : []);
+  const [groups, setGroups] = React.useState(() => window.COMPARE_RAW ? pickCompare(window.COMPARE_RAW) : []);
   const [loading, setLoading] = React.useState(true);
   const [live, setLive] = React.useState(false);
   const [holdings, setHoldings] = React.useState(null);
@@ -267,6 +311,10 @@ function App() {
       setLoading(false);
     }).catch(() => {
       setLoading(false);
+    });
+    fetchJSON("data/compare.json").then((j) => {
+      setGroups(pickCompare(j));
+    }).catch(() => {
     });
     fetchJSON("data/holdings.json").then((j) => {
       if (j && Array.isArray(j.positions) && j.positions.length > 0) setHoldings(j);
@@ -289,6 +337,14 @@ function App() {
     if (market !== "all" && r.market !== market) return false;
     if (q.trim()) {
       const hay = [r.ticker, r.name, r.sector, r.one, r.gear].join(" ").toLowerCase();
+      if (!hay.includes(q.trim().toLowerCase())) return false;
+    }
+    return true;
+  });
+  const groupList = groups.filter((g) => {
+    if (market !== "all" && !(g.markets || []).includes(market)) return false;
+    if (q.trim()) {
+      const hay = [g.name, g.anchor, g.verdict, g.chainNote].concat(g.members.map((m) => m.company + " " + m.ticker)).join(" ").toLowerCase();
       if (!hay.includes(q.trim().toLowerCase())) return false;
     }
     return true;
@@ -358,6 +414,6 @@ function App() {
       updatedLabel: holdings.last_updated ? "\u66F4\u65B0\u4E8E " + String(holdings.last_updated).replace("T", " ").replace("Z", " UTC") + " \xB7 \u6765\u81EA\u957F\u6865" : "\u6765\u81EA\u957F\u6865",
       note: "\u5B9E\u65F6\u6301\u4ED3 \xB7 \u6765\u81EA\u957F\u6865 \xB7 \u603B\u8D44\u4EA7=\u51C0\u8D44\u4EA7(\u5DF2\u6263\u878D\u8D44), \u4ED3\u4F4D>100%\u5373\u878D\u8D44\u6760\u6746 \xB7 \u91D1\u989D\u6309\u5F53\u65E5\u6C47\u7387\u6298\u7B97\xA5 \xB7 \u4E0D\u6784\u6210\u6295\u8D44\u5EFA\u8BAE"
     }
-  ) : /* @__PURE__ */ React.createElement("div", { className: "panel hold-offline" }, /* @__PURE__ */ React.createElement("div", { className: "panel-kicker" }, /* @__PURE__ */ React.createElement("span", null, "HOLDINGS \xB7 \u5B9E\u76D8\u6301\u4ED3")), /* @__PURE__ */ React.createElement("p", null, loading ? "\u6B63\u5728\u8BFB\u53D6\u6301\u4ED3\u6570\u636E\u2026" : "\u6301\u4ED3\u6570\u636E\u6765\u81EA\u957F\u6865\u3001\u6BCF\u65E5\u81EA\u52A8\u540C\u6B65;\u5F53\u524D\u5904\u4E8E\u79BB\u7EBF\u9884\u89C8\u6216\u6570\u636E\u52A0\u8F7D\u5931\u8D25,\u6682\u4E0D\u5C55\u793A\u3002"))), holdings && /* @__PURE__ */ React.createElement(PnlJourney, { performance: holdings.performance, totals: holdings.totals, history: history2 }), /* @__PURE__ */ React.createElement("div", { id: "reports", className: "toolbar" }, /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement(SearchInput, { placeholder: "\u641C\u7D22 ticker / \u516C\u53F8\u540D / \u4E1A\u52A1\u63CF\u8FF0\u2026", value: q, onChange: (e) => setQ(e.target.value), "aria-label": "\u641C\u7D22\u62A5\u544A" })), /* @__PURE__ */ React.createElement(Tabs, { value: market, onChange: setMarket, items: tabItems }), /* @__PURE__ */ React.createElement("select", { className: "sortsel", value: sort, onChange: (e) => setSort(e.target.value), "aria-label": "\u6392\u5E8F\u65B9\u5F0F" }, /* @__PURE__ */ React.createElement("option", { value: "score-desc" }, "\u8BC4\u5206 \u9AD8\u2192\u4F4E"), /* @__PURE__ */ React.createElement("option", { value: "score-asc" }, "\u8BC4\u5206 \u4F4E\u2192\u9AD8"), /* @__PURE__ */ React.createElement("option", { value: "date-desc" }, "\u6700\u65B0\u62AB\u9732"), /* @__PURE__ */ React.createElement("option", { value: "date-asc" }, "\u6700\u65E9\u62AB\u9732"), /* @__PURE__ */ React.createElement("option", { value: "disclosure" }, "\u62AB\u9732\u4E34\u8FD1"))), /* @__PURE__ */ React.createElement("div", { className: "results", role: "status" }, loading && total === 0 ? "\u52A0\u8F7D\u4E2D\u2026" : list.length === total ? `\u5171 ${total} \u4E2A\u6807\u7684` : `\u5F53\u524D\u663E\u793A ${list.length} / ${total} \u4E2A\u6807\u7684`, !loading && !live && window.REPORTS_RAW && /* @__PURE__ */ React.createElement("span", { className: "stale mono" }, " \xB7 \u79BB\u7EBF\u5FEB\u7167 ", window.REPORTS_RAW.last_updated || "")), total === 0 ? /* @__PURE__ */ React.createElement("div", { className: "empty" }, /* @__PURE__ */ React.createElement("div", { className: "ic", "aria-hidden": "true" }, "\u{1F422}"), /* @__PURE__ */ React.createElement("div", null, loading ? "\u6B63\u5728\u8BFB\u53D6\u62A5\u544A\u6570\u636E\u2026" : "\u6682\u65E0\u62A5\u544A\u6570\u636E (\u8BF7\u786E\u8BA4 data/reports.json \u53EF\u8BBF\u95EE)")) : list.length === 0 ? /* @__PURE__ */ React.createElement("div", { className: "empty" }, /* @__PURE__ */ React.createElement("div", { className: "ic", "aria-hidden": "true" }, "\u{1F50D}"), /* @__PURE__ */ React.createElement("div", null, "\u6CA1\u6709\u5339\u914D\u7684\u62A5\u544A")) : MARKET_ORDER.filter((m) => byMarket[m] && byMarket[m].length).map((m) => /* @__PURE__ */ React.createElement("section", { key: m, "aria-label": MARKETS[m].short }, /* @__PURE__ */ React.createElement("h2", { className: "section-head" }, /* @__PURE__ */ React.createElement("span", { className: "zh" }, MARKETS[m].short), /* @__PURE__ */ React.createElement("span", { className: "en mono" }, MARKETS[m].en), /* @__PURE__ */ React.createElement("span", { className: "ct mono" }, byMarket[m].length), /* @__PURE__ */ React.createElement("span", { className: "rule", "aria-hidden": "true" })), /* @__PURE__ */ React.createElement("div", { className: "cards" }, byMarket[m].map((r) => /* @__PURE__ */ React.createElement(ReportCardV2, { key: r.slug, r }))))), /* @__PURE__ */ React.createElement("footer", { className: "footer" }, /* @__PURE__ */ React.createElement("div", { className: "f-links" }, /* @__PURE__ */ React.createElement("a", { href: GH, target: "_blank", rel: "noopener" }, "GitHub"), /* @__PURE__ */ React.createElement("a", { href: "https://github.com/leafpaper/claude-company-analysis", target: "_blank", rel: "noopener" }, "\u5206\u6790 Skill")), /* @__PURE__ */ React.createElement("div", { className: "f-legal" }, "\u62A5\u544A\u7531 AI \u81EA\u52A8\u751F\u6210\uFF0C\u4E0D\u6784\u6210\u6295\u8D44\u5EFA\u8BAE \xB7 \u6570\u636E\u66F4\u65B0 ", /* @__PURE__ */ React.createElement("span", { className: "mono" }, latest || "\u2014")))));
+  ) : /* @__PURE__ */ React.createElement("div", { className: "panel hold-offline" }, /* @__PURE__ */ React.createElement("div", { className: "panel-kicker" }, /* @__PURE__ */ React.createElement("span", null, "HOLDINGS \xB7 \u5B9E\u76D8\u6301\u4ED3")), /* @__PURE__ */ React.createElement("p", null, loading ? "\u6B63\u5728\u8BFB\u53D6\u6301\u4ED3\u6570\u636E\u2026" : "\u6301\u4ED3\u6570\u636E\u6765\u81EA\u957F\u6865\u3001\u6BCF\u65E5\u81EA\u52A8\u540C\u6B65;\u5F53\u524D\u5904\u4E8E\u79BB\u7EBF\u9884\u89C8\u6216\u6570\u636E\u52A0\u8F7D\u5931\u8D25,\u6682\u4E0D\u5C55\u793A\u3002"))), holdings && /* @__PURE__ */ React.createElement(PnlJourney, { performance: holdings.performance, totals: holdings.totals, history: history2 }), /* @__PURE__ */ React.createElement("div", { id: "reports", className: "toolbar" }, /* @__PURE__ */ React.createElement("div", { className: "grow" }, /* @__PURE__ */ React.createElement(SearchInput, { placeholder: "\u641C\u7D22 ticker / \u516C\u53F8\u540D / \u4E1A\u52A1\u63CF\u8FF0\u2026", value: q, onChange: (e) => setQ(e.target.value), "aria-label": "\u641C\u7D22\u62A5\u544A" })), /* @__PURE__ */ React.createElement(Tabs, { value: market, onChange: setMarket, items: tabItems }), /* @__PURE__ */ React.createElement("select", { className: "sortsel", value: sort, onChange: (e) => setSort(e.target.value), "aria-label": "\u6392\u5E8F\u65B9\u5F0F" }, /* @__PURE__ */ React.createElement("option", { value: "score-desc" }, "\u8BC4\u5206 \u9AD8\u2192\u4F4E"), /* @__PURE__ */ React.createElement("option", { value: "score-asc" }, "\u8BC4\u5206 \u4F4E\u2192\u9AD8"), /* @__PURE__ */ React.createElement("option", { value: "date-desc" }, "\u6700\u65B0\u62AB\u9732"), /* @__PURE__ */ React.createElement("option", { value: "date-asc" }, "\u6700\u65E9\u62AB\u9732"), /* @__PURE__ */ React.createElement("option", { value: "disclosure" }, "\u62AB\u9732\u4E34\u8FD1"))), /* @__PURE__ */ React.createElement("div", { className: "results", role: "status" }, loading && total === 0 ? "\u52A0\u8F7D\u4E2D\u2026" : list.length === total ? `\u5171 ${total} \u4E2A\u6807\u7684` : `\u5F53\u524D\u663E\u793A ${list.length} / ${total} \u4E2A\u6807\u7684`, !loading && !live && window.REPORTS_RAW && /* @__PURE__ */ React.createElement("span", { className: "stale mono" }, " \xB7 \u79BB\u7EBF\u5FEB\u7167 ", window.REPORTS_RAW.last_updated || "")), groupList.length > 0 && /* @__PURE__ */ React.createElement("section", { "aria-label": "\u4EA7\u4E1A\u94FE\u5BF9\u6BD4" }, /* @__PURE__ */ React.createElement("h2", { className: "section-head" }, /* @__PURE__ */ React.createElement("span", { className: "zh" }, "\u4EA7\u4E1A\u94FE\u5BF9\u6BD4"), /* @__PURE__ */ React.createElement("span", { className: "en mono" }, "PEER COMPARISONS"), /* @__PURE__ */ React.createElement("span", { className: "ct mono" }, groupList.length), /* @__PURE__ */ React.createElement("span", { className: "rule", "aria-hidden": "true" })), /* @__PURE__ */ React.createElement("div", { className: "cards" }, groupList.map((g) => /* @__PURE__ */ React.createElement(CompareCard, { key: g.slug, g })))), total === 0 ? /* @__PURE__ */ React.createElement("div", { className: "empty" }, /* @__PURE__ */ React.createElement("div", { className: "ic", "aria-hidden": "true" }, "\u{1F422}"), /* @__PURE__ */ React.createElement("div", null, loading ? "\u6B63\u5728\u8BFB\u53D6\u62A5\u544A\u6570\u636E\u2026" : "\u6682\u65E0\u62A5\u544A\u6570\u636E (\u8BF7\u786E\u8BA4 data/reports.json \u53EF\u8BBF\u95EE)")) : list.length === 0 ? /* @__PURE__ */ React.createElement("div", { className: "empty" }, /* @__PURE__ */ React.createElement("div", { className: "ic", "aria-hidden": "true" }, "\u{1F50D}"), /* @__PURE__ */ React.createElement("div", null, "\u6CA1\u6709\u5339\u914D\u7684\u62A5\u544A")) : MARKET_ORDER.filter((m) => byMarket[m] && byMarket[m].length).map((m) => /* @__PURE__ */ React.createElement("section", { key: m, "aria-label": MARKETS[m].short }, /* @__PURE__ */ React.createElement("h2", { className: "section-head" }, /* @__PURE__ */ React.createElement("span", { className: "zh" }, MARKETS[m].short), /* @__PURE__ */ React.createElement("span", { className: "en mono" }, MARKETS[m].en), /* @__PURE__ */ React.createElement("span", { className: "ct mono" }, byMarket[m].length), /* @__PURE__ */ React.createElement("span", { className: "rule", "aria-hidden": "true" })), /* @__PURE__ */ React.createElement("div", { className: "cards" }, byMarket[m].map((r) => /* @__PURE__ */ React.createElement(ReportCardV2, { key: r.slug, r }))))), /* @__PURE__ */ React.createElement("footer", { className: "footer" }, /* @__PURE__ */ React.createElement("div", { className: "f-links" }, /* @__PURE__ */ React.createElement("a", { href: GH, target: "_blank", rel: "noopener" }, "GitHub"), /* @__PURE__ */ React.createElement("a", { href: "https://github.com/leafpaper/claude-company-analysis", target: "_blank", rel: "noopener" }, "\u5206\u6790 Skill")), /* @__PURE__ */ React.createElement("div", { className: "f-legal" }, "\u62A5\u544A\u7531 AI \u81EA\u52A8\u751F\u6210\uFF0C\u4E0D\u6784\u6210\u6295\u8D44\u5EFA\u8BAE \xB7 \u6570\u636E\u66F4\u65B0 ", /* @__PURE__ */ React.createElement("span", { className: "mono" }, latest || "\u2014")))));
 }
 ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(App, null));

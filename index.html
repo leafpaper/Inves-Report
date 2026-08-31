@@ -41,12 +41,13 @@
 <!-- 自托管运行时: 不依赖 unpkg / CDN, 国内可正常加载; 全部 defer 不阻塞解析 -->
 <script defer src="vendor/react.production.min.js"></script>
 <script defer src="vendor/react-dom.production.min.js"></script>
-<script defer src="_ds_bundle.js?v=3"></script>
-<script defer src="holdings.js?v=3"></script>
+<script defer src="_ds_bundle.js?v=4"></script>
+<script defer src="holdings.js?v=4"></script>
 <!-- 本地预览兜底数据; 线上以 fetch data/reports.json 为准 -->
-<script defer src="reports.data.js?v=3"></script>
+<script defer src="reports.data.js?v=4"></script>
+<script defer src="compare.data.js?v=4"></script>
 <!-- 应用逻辑: src/app.jsx 经 esbuild 预编译 (见 build.sh), 不再用浏览器端 Babel -->
-<script defer src="app.js?v=3"></script>
+<script defer src="app.js?v=4"></script>
 
 <style>
   *{box-sizing:border-box;}
@@ -171,6 +172,11 @@
   .rm-l{font-size:var(--fs-2xs);color:var(--text-3);text-transform:uppercase;letter-spacing:.04em;font-weight:600;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .rm-v{font-size:13px;font-weight:700;color:var(--text);}
   .rm-v.pos{color:var(--bull-ink);} .rm-v.neg{color:var(--bear-ink);}
+  /* 对比卡的成员格子: 家数 2-5 家不定, 且每格是回到那家报告的链接 (票10) */
+  .rcard-metrics.members{grid-template-columns:repeat(auto-fit,minmax(110px,1fr));}
+  .rm.rml{text-decoration:none;color:inherit;display:block;}
+  .rm.rml:hover .rm-l,.rm.rml:focus-visible .rm-l{color:var(--text);}
+  .rm.rml:hover .rm-v,.rm.rml:focus-visible .rm-v{text-decoration:underline;}
   .rcard-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;
     border-top:1px solid var(--border);padding:10px 20px;}
   .rcard-foot-meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
