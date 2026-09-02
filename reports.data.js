@@ -1,8 +1,59 @@
 ﻿// 本地预览兜底数据 (内容 = data/reports.json 快照)。线上以实时 fetch data/reports.json 为准。
 window.REPORTS_RAW = {
   "schema_version": "v1",
-  "last_updated": "2026-08-24",
+  "last_updated": "2026-09-01",
   "reports": [
+    {
+      "slug": "300308_中际旭创",
+      "ticker": "300308.SZ",
+      "name": "中际旭创",
+      "name_cn": "中际旭创",
+      "sector": "–",
+      "market": "a",
+      "report_date": "2026-09-01",
+      "version": "v8.0",
+      "composite_score": null,
+      "verdict": "回避——现价既不买、也不开小仓,现金等回落到 482.4~535.3 元锚区间",
+      "verdict_tone": "bearish",
+      "quality_field": "部分好",
+      "action_gear": "回避",
+      "next_disclosure_date": "",
+      "review_hint": "",
+      "valuation_tag": "估值锚 482.4-535.3 元",
+      "one_liner": "回避:现价 851.90 元既不买,也不开小仓。 业绩是真好——2026 年上半年光模块卖出 1,899 万只、比去年同期翻了一倍多,营收和毛利率同时创出新高。 问题是这份好已经被价格全买走了:把已经赚到的钱和最乐观那条路都算进去,一股值 482 到 535 元,现价是它的 1.6 到 1.8 倍;就算最好的剧本走通也只多赚 20%,走不通要跌一半,三种情形加权算下来还是亏三成七。 账上另有两处不踏实:上半年赚了 136 亿,只收回来 18 亿现金;七成生意压在五个连名字都不公开的客户身上。 所以现在该做的是空手等两个数——10 月的三季报看单季营收和毛利率有没有掉头、前三季度经营现金流能不能",
+      "metrics": [
+        {
+          "label": "行动档位",
+          "value": "回避",
+          "tone": "negative"
+        },
+        {
+          "label": "质地",
+          "value": "部分好",
+          "tone": "neutral"
+        },
+        {
+          "label": "贵不贵",
+          "value": "买完完美未来(无 slack)",
+          "tone": "neutral"
+        }
+      ],
+      "expected_return_short": "",
+      "badges": [
+        {
+          "label": "回避——现价既不买、也不开小仓,现金等回落到 482.4~535.3 元锚区间",
+          "variant": "red"
+        },
+        {
+          "label": "质地 部分好",
+          "variant": "amber"
+        },
+        {
+          "label": "赔率 买完完美未来(无 slack)",
+          "variant": "amber"
+        }
+      ]
+    },
     {
       "slug": "002384_东山精密",
       "ticker": "002384.SZ",
