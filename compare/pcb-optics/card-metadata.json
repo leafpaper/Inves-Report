@@ -1,0 +1,39 @@
+{
+  "kind": "compare",
+  "slug": "pcb-optics",
+  "name": "PCB↔光模块产业链",
+  "anchor": "东山精密",
+  "chain_note": "同一条 AI 算力光互联链:东山做 PCB 与并购来的 200G EML 光芯片(上游器件),中际旭创做光模块(下游);新易盛、天孚通信是光模块与光器件侧的可比对象",
+  "href": "compare/pcb-optics/index.html",
+  "generated": "2026-09-02",
+  "verdict": "钱两家都不放——两张决断卡在现价都不给买入;非要排先后,东山精密在前,赢的是一个 10 月的日期扳机,不是价格。",
+  "winner": "东山精密",
+  "markets": [
+    "a"
+  ],
+  "member_count": 2,
+  "missing_count": 2,
+  "stale_count": 0,
+  "members": [
+    {
+      "company": "东山精密",
+      "ticker": "002384.SZ",
+      "market": "a",
+      "action_gear": "等证据临界",
+      "quality_field": "部分好",
+      "report_date": "2026-08-24",
+      "stale": false,
+      "href": "reports/002384_东山精密/分析报告_dashboard.html"
+    },
+    {
+      "company": "中际旭创",
+      "ticker": "300308.SZ",
+      "market": "a",
+      "action_gear": "回避",
+      "quality_field": "部分好",
+      "report_date": "2026-09-01",
+      "stale": false,
+      "href": "reports/300308_中际旭创/分析报告_dashboard.html"
+    }
+  ]
+}
