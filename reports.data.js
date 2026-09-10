@@ -1,7 +1,7 @@
 ﻿// 本地预览兜底数据 (内容 = data/reports.json 快照)。线上以实时 fetch data/reports.json 为准。
 window.REPORTS_RAW = {
   "schema_version": "v1",
-  "last_updated": "2026-08-24",
+  "last_updated": "2026-09-01",
   "reports": [
     {
       "slug": "300308_中际旭创",
