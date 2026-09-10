@@ -1,0 +1,4959 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>华特气体（688268.SH）投资分析报告 — 2026-09-10</title>
+<style>
+/* ============================================================================
+   v8.0 报告样式 — 第二套 B「仪表盘 · 一眼决断」(定稿基线, 无杂交)
+   基线样张: .scratch/v8-refactor/prototypes/07-delivery-samples.html (variant B)
+   规范: spec §4 红标视觉三通道 / spec §10 交付形态与移动端
+
+   三条硬纪律(实现票 07 验收项):
+   1. 红标三通道 = emoji + 文字(级别词) + 底纹, 任一通道单独可读, 不裸靠颜色;
+   2. 明暗双主题各定一组 token, 正文/次要文字与底纹的对比度均 ≥ 4.5:1;
+   3. 移动端改结构不缩字号 —— 媒体查询里**不得出现任何 font-size**, 只重排网格。
+   ========================================================================= */
+
+/* ---------------------------------------------------------------- tokens */
+:root{
+  color-scheme: light;
+  --page:#f6f6f3; --surface:#ffffff; --surface2:#f0efea;
+  --ink:#141412; --ink2:#4b4a46; --muted:#66645e;
+  --hair:#e2e1d9; --shadow:rgba(17,17,15,.14);
+  --accent:#1f5fae; --wash-a:#e8f0fb;
+  /* 红标色档: 🔴/🟠 同红色系(级别靠 emoji 区分), 🟡 黄色系 */
+  --crit:#c0392b; --seri:#c25a12; --warn:#a06c00; --good:#1b7a3f;
+  --wash-r:#fbeae7; --wash-y:#fdf3dd; --wash-g:#e7f4ec;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --page:#111110; --surface:#1b1b1a; --surface2:#232321;
+    --ink:#f2f1ec; --ink2:#c6c5bb; --muted:#9a9890;
+    --hair:#2f2f2c; --shadow:rgba(0,0,0,.5);
+    --accent:#6fa8f0; --wash-a:#1c2a3d;
+    --crit:#e77070; --seri:#e08a52; --warn:#e0b23c; --good:#5fbb84;
+    --wash-r:#3a2321; --wash-y:#38301c; --wash-g:#1d2f25;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --page:#111110; --surface:#1b1b1a; --surface2:#232321;
+  --ink:#f2f1ec; --ink2:#c6c5bb; --muted:#9a9890;
+  --hair:#2f2f2c; --shadow:rgba(0,0,0,.5);
+  --accent:#6fa8f0; --wash-a:#1c2a3d;
+  --crit:#e77070; --seri:#e08a52; --warn:#e0b23c; --good:#5fbb84;
+  --wash-r:#3a2321; --wash-y:#38301c; --wash-g:#1d2f25;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--page); color:var(--ink);
+  font:15px/1.75 "Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif;
+  overflow-wrap:break-word;
+}
+a{color:var(--accent)}
+h1,h2,h3,h4{line-height:1.35; text-wrap:balance}
+/* overflow-x:clip 而非 hidden: 不造滚动容器(不破 sticky), 只把探出版心的浮层裁掉,
+   页面本体因此永远不会横向滚动 —— 390px 走查的第一条 */
+.wrap{max-width:1120px; margin:0 auto; padding:24px 24px 96px; overflow-x:clip}
+
+/* ---------------------------------------------------------------- 顶栏 */
+.topbar{
+  position:sticky; top:0; z-index:40; display:flex; flex-wrap:wrap; align-items:center;
+  gap:2px 14px; padding:8px 24px; background:var(--surface); border-bottom:1px solid var(--hair);
+}
+.topbar a{color:var(--ink2); text-decoration:none; padding:4px 2px}
+.topbar a:hover,.topbar a:focus-visible{color:var(--ink); text-decoration:underline}
+.topbar .brand{font-weight:700; color:var(--ink); margin-right:6px}
+.topbar .spacer{flex:1 1 auto}
+.themetoggle{
+  all:unset; cursor:pointer; padding:4px 12px; border:1px solid var(--hair); border-radius:999px;
+  color:var(--ink2); background:var(--surface2); white-space:nowrap;
+}
+.themetoggle:hover{color:var(--ink)}
+.themetoggle:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+/* ---------------------------------------------------------------- hero */
+.hero{display:flex; flex-wrap:wrap; align-items:baseline; gap:8px 16px; margin:4px 0 12px}
+.hero h1{font-size:26px; margin:0}
+.hero .code{color:var(--muted)}
+.hero .asof{margin-left:auto; color:var(--muted)}
+.facts{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 20px}
+.fact{background:var(--surface); border:1px solid var(--hair); border-radius:6px; padding:8px 14px; min-width:132px}
+.fact .l{font-size:12.5px; color:var(--muted); letter-spacing:.04em}
+.fact .v{font-size:19px; font-weight:650; font-variant-numeric:tabular-nums}
+.fact .v small{font-size:13px; font-weight:400; color:var(--ink2)}
+
+/* ---------------------------------------------------------------- 区段标题 / 语义标签 */
+.secl{display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:28px 0 10px; color:var(--muted); letter-spacing:.08em}
+.secl > .t{color:var(--ink); font-weight:700; letter-spacing:0}
+.secl::after{content:""; flex:1 1 60px; border-top:1px solid var(--hair)}
+.chip{
+  display:inline-block; font-family:Consolas,"Cascadia Mono",monospace; font-size:12.5px;
+  font-weight:600; letter-spacing:.04em; color:var(--ink2); background:var(--surface2);
+  border:1px solid var(--hair); border-radius:3px; padding:1px 6px; white-space:nowrap;
+}
+.chip.man{border-style:dashed}
+
+/* ---------------------------------------------------------------- 决断卡瓦片 */
+.cards5{display:grid; grid-template-columns:repeat(5,1fr); gap:10px}
+.dc{
+  display:block; background:var(--surface); border:1px solid var(--hair); border-radius:6px;
+  padding:12px 14px 12px 17px; position:relative; text-decoration:none; color:inherit;
+}
+.dc::before{content:""; position:absolute; left:0; top:0; bottom:0; width:4px; border-radius:6px 0 0 6px; background:var(--tone,var(--hair))}
+.dc:hover,.dc:focus-visible{border-color:var(--tone,var(--accent))}
+.dc .q{font-size:12.5px; color:var(--muted)}
+.dc .a{font-size:17px; font-weight:750; margin:4px 0 6px}
+.dc .w{font-size:13.5px; color:var(--ink2); line-height:1.65}
+.dc .s{margin-top:8px}
+.t-bad{--tone:var(--crit)} .t-watch{--tone:var(--warn)} .t-good{--tone:var(--good)} .t-node{--tone:var(--accent)}
+
+/* ---------------------------------------------------------------- 赚钱面板 stat tiles */
+.tiles{display:grid; grid-template-columns:repeat(3,1fr); gap:10px}
+.st{background:var(--surface); border:1px solid var(--hair); border-radius:6px; padding:12px 14px; position:relative}
+.st .l{font-size:13px; color:var(--muted); padding-right:96px}
+.st .v{font-size:22px; font-weight:650; margin:2px 0; font-variant-numeric:tabular-nums}
+.st .n{font-size:13px; color:var(--ink2); line-height:1.6}
+.st .n .why{color:var(--muted)}
+.st .fb{position:absolute; top:9px; right:12px; max-width:60%; text-align:right}
+.st.mk-red{box-shadow:inset 0 3px 0 var(--crit)}
+.st.mk-yellow{box-shadow:inset 0 3px 0 var(--warn)}
+.pv{
+  grid-column:1/-1; background:var(--surface); border:1px solid var(--hair); border-radius:6px;
+  padding:10px 16px; display:flex; flex-wrap:wrap; gap:4px 14px; align-items:baseline;
+}
+.pv .src{font-size:13px; color:var(--muted)}
+.reason{color:var(--ink2); margin:0 0 10px}
+
+/* ---------------------------------------------------------------- Top3 风险卡 */
+.risks{display:grid; grid-template-columns:repeat(3,1fr); gap:10px}
+.rk{background:var(--surface); border:1px solid var(--hair); border-radius:6px; padding:12px 14px 12px 17px; position:relative}
+.rk::before{content:""; position:absolute; left:0; top:0; bottom:0; width:4px; border-radius:6px 0 0 6px}
+.rk.mk-red::before{background:var(--crit)}
+.rk.mk-yellow::before{background:var(--warn)}
+.rk .t{font-weight:750}
+.rk .d{font-size:13.5px; color:var(--ink2); margin-top:4px}
+.rk .h{font-size:13px; color:var(--muted); margin-top:8px}
+
+/* ---------------------------------------------------------------- 导读 / 变化区块 */
+.intro,.change{background:var(--surface); border:1px solid var(--hair); border-radius:6px; padding:12px 18px}
+.intro p{margin:6px 0}
+.change{border-left:4px solid var(--accent)}
+.change .alpha{font-size:16px; font-weight:750; margin:4px 0 10px}
+.change ul{margin:8px 0; padding-left:20px}
+.change .advice{background:var(--wash-y); border-radius:4px; padding:8px 12px; margin-top:10px}
+
+/* ---------------------------------------------------------------- 判断链正文 */
+.chB{background:var(--surface); border:1px solid var(--hair); border-radius:6px; margin:12px 0; scroll-margin-top:64px}
+.chB > .hd{display:flex; flex-wrap:wrap; align-items:center; gap:6px 12px; padding:12px 16px; border-bottom:1px solid var(--hair); background:var(--surface2); border-radius:6px 6px 0 0}
+.chB > .hd .no{font-weight:800; font-size:16px}
+.chB > .hd .qq{color:var(--muted)}
+.chB > .bd{padding:4px 16px 14px}
+.pill{display:inline-block; border-radius:4px; padding:2px 10px; font-weight:700; background:var(--surface); border:1px solid var(--hair)}
+.pill.bad{background:var(--wash-r); box-shadow:inset 0 -2px 0 var(--crit)}
+.pill.watch{background:var(--wash-y); box-shadow:inset 0 -2px 0 var(--warn)}
+.pill.good{background:var(--wash-g); box-shadow:inset 0 -2px 0 var(--good)}
+.pill.node{background:var(--wash-a); box-shadow:inset 0 -2px 0 var(--accent)}
+
+/* ---------------------------------------------------------------- 附录 */
+.appxnav{display:grid; grid-template-columns:repeat(5,1fr); gap:10px}
+.ap{display:block; background:var(--surface); border:1px dashed var(--hair); border-radius:6px; padding:10px 12px; font-size:13px; color:var(--ink2); text-decoration:none}
+.ap:hover,.ap:focus-visible{border-style:solid; border-color:var(--accent)}
+.ap b{display:block; color:var(--ink)}
+.appx{background:var(--surface); border:1px solid var(--hair); border-radius:6px; margin:12px 0; padding:4px 16px 14px; scroll-margin-top:64px}
+.appx > h2{font-size:17px}
+
+/* ---------------------------------------------------------------- 表格 / 正文 */
+.tblwrap{overflow-x:auto; -webkit-overflow-scrolling:touch; max-width:100%; margin:10px 0}
+table{border-collapse:collapse; width:100%; font-variant-numeric:tabular-nums}
+th,td{text-align:left; vertical-align:top; padding:8px 10px; border-bottom:1px solid var(--hair)}
+th{font-size:13px; color:var(--muted); font-weight:600; letter-spacing:.04em; white-space:nowrap}
+tbody tr:hover{background:var(--surface2)}
+code,pre{font-family:Consolas,"Cascadia Mono",monospace}
+pre{overflow-x:auto; background:var(--surface2); padding:10px 12px; border-radius:4px}
+img{max-width:100%; height:auto}
+blockquote{margin:10px 0; padding:8px 14px; border-left:3px solid var(--hair); color:var(--ink2); background:var(--surface2); border-radius:0 4px 4px 0}
+hr{border:0; border-top:1px solid var(--hair); margin:18px 0}
+footer{margin-top:36px; padding-top:14px; border-top:1px solid var(--hair); color:var(--muted); font-size:13px}
+
+/* ---------------------------------------------------------------- 红标三通道 + 反查 */
+/* 通道①emoji(.fw-i) 通道②文字级别词(.fw-k) 通道③底纹+左封条(background/box-shadow) */
+.fw{
+  display:inline; position:relative; border-radius:3px; padding:1px 5px;
+  color:var(--ink); text-decoration:none; box-decoration-break:clone; -webkit-box-decoration-break:clone;
+}
+.fw:hover,.fw:focus-visible{outline:1px solid currentColor; outline-offset:1px}
+.fw-red{background:var(--wash-r); box-shadow:inset 3px 0 0 var(--crit)}
+.fw-yellow{background:var(--wash-y); box-shadow:inset 3px 0 0 var(--warn)}
+.fw-i{font-style:normal}
+.fw-k{font-size:13px; color:var(--ink2); white-space:nowrap}
+.fw-inline{border-bottom:2px solid var(--crit)}
+.fw-yellow.fw-inline{border-bottom-color:var(--warn)}
+/* 反查浮层: 桌面悬停/键盘聚焦弹出; 触屏(hover:none)不弹, 点击直达附录D 条目 */
+.fw-pop{
+  position:absolute; left:0; top:calc(100% + 6px); z-index:30; width:max-content; max-width:min(360px,80vw);
+  background:var(--surface); color:var(--ink); border:1px solid var(--hair); border-radius:6px;
+  padding:9px 12px; font-size:13.5px; line-height:1.6; text-align:left; white-space:normal;
+  box-shadow:0 8px 24px var(--shadow); opacity:0; visibility:hidden; transition:opacity .12s;
+}
+.fw:hover > .fw-pop,.fw:focus-visible > .fw-pop,.fw:focus-within > .fw-pop{opacity:1; visibility:visible}
+.fw-pop .ttl{font-weight:700; display:block}
+.fw-pop .meta{color:var(--muted); display:block; margin-top:4px}
+.fw-pop .go{color:var(--accent); display:block; margin-top:4px}
+.fw-pop + .fw-pop{margin-top:6px}
+/* 触屏没有悬停, 窄屏也放不下浮层 —— 两种情况都彻底不渲染(display:none 连布局都不占,
+   免得绝对定位的浮层把页面撑出横向滚动); 反查退回「点击直达附录D」+ title 兜底。 */
+@media (hover:none), (max-width:720px){ .fw-pop{display:none} }
+@media (prefers-reduced-motion: reduce){ *{transition:none !important} }
+
+/* 附录D 红旗行锚点: 跳转后高亮定位 */
+.appx td:target,.appx tr:target,[id^="flag-"]:target{scroll-margin-top:72px}
+tr:target{background:var(--wash-a)}
+
+/* ---------------------------------------------------------------- 移动端: 只重排结构, 不缩字号 */
+@media (max-width:980px){
+  .wrap{padding:20px 16px 80px}
+  .cards5{grid-template-columns:repeat(2,1fr)}
+  .risks,.appxnav{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:720px){
+  .topbar{position:static}
+  .tiles{grid-template-columns:1fr 1fr}
+  .risks{grid-template-columns:1fr}
+  .hero .asof{margin-left:0; width:100%}
+}
+@media (max-width:620px){
+  .cards5,.tiles,.appxnav{grid-template-columns:1fr}
+  .fact{flex:1 1 100%}
+  .st .l{padding-right:0}
+  .st .fb{position:static; text-align:left; max-width:100%; display:block; margin-bottom:4px}
+  .fw-pop{max-width:min(300px,90vw)}
+}
+@media print{
+  .topbar,.themetoggle{display:none}
+  .chB,.appx,.dc,.st,.rk{break-inside:avoid}
+}
+
+/* ---------- 渐进披露:章内 ### 段折进 <details> ---------- */
+/* 收起时读小标题 = 一条判断链;展开才看推导。信息不删, 只改默认占屏。 */
+.drill{border-top:1px solid var(--hair); margin:0}
+.drill>summary{
+  cursor:pointer; list-style:none; padding:11px 2px 11px 26px; position:relative;
+  font-weight:650; font-size:14.5px; color:var(--ink); line-height:1.55;
+}
+.drill>summary::-webkit-details-marker{display:none}
+.drill>summary::before{
+  content:"›"; position:absolute; left:6px; top:10px; font-size:16px; color:var(--muted);
+  transition:transform .15s ease; display:inline-block;
+}
+.drill[open]>summary::before{transform:rotate(90deg)}
+.drill>summary:hover{color:var(--accent)}
+.drill>summary:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:4px}
+.drill .dd{padding:0 2px 14px 26px}
+.drill:not([open])>summary{color:var(--ink2)}
+.foldbar{display:flex; gap:8px; justify-content:flex-start; margin:-2px 0 8px}
+.foldbar button{
+  font:inherit; font-size:14px; color:var(--muted); background:none;
+  border:1px solid var(--hair); border-radius:999px; padding:9px 14px; cursor:pointer;
+}
+.foldbar button:hover{color:var(--ink); border-color:var(--muted)}
+
+/* ---------- 出处锚链接:「见①质地」「明细见附录A」可点 ---------- */
+a.cite{color:inherit; text-decoration:none; border-bottom:1px dotted var(--muted)}
+a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
+
+/* ---------- 估值尺(meter):轨道=锚区间, 标记=现价 ---------- */
+.meter{margin:2px 0 16px; padding:12px 14px; background:var(--surface);
+       border:1px solid var(--hair); border-radius:10px}
+.meter figcaption{font-size:12.5px; color:var(--muted); margin-bottom:10px; letter-spacing:.02em}
+.meter .track{position:relative; height:10px; border-radius:999px;
+              background:var(--surface2); overflow:visible}
+.meter .band{position:absolute; top:0; height:10px; border-radius:999px; background:var(--accent)}
+.meter .mark{position:absolute; top:-4px; width:3px; height:18px; border-radius:2px;
+             background:var(--ink); box-shadow:0 0 0 2px var(--surface)}
+.meter .mark.over{background:var(--crit)}
+.meter .scale{display:flex; justify-content:space-between; margin-top:6px;
+              font-size:12.5px; color:var(--muted); font-variant-numeric:tabular-nums}
+.meter .lg{display:flex; flex-wrap:wrap; gap:6px 20px; margin-top:12px; font-size:12.5px; color:var(--ink2)}
+.meter .lg span{display:flex; align-items:baseline; gap:6px}
+.meter .lg small{color:var(--muted); font-size:12.5px}
+.meter .sw{width:10px; height:10px; border-radius:3px; flex:none; transform:translateY(1px)}
+.meter .sw.band{background:var(--accent)}
+.meter .sw.mark{background:var(--crit)}
+
+/* ---------- 附录长表:表头吸顶 ---------- */
+/* 附录长表表头吸顶已撤:.tblwrap 的 overflow-x:auto 会把 overflow-y 一并变成 auto,
+   sticky 因此失去参照 —— 留着只是骗自己(票 08 交付评审实测无效)。
+   真要吸顶得先给表格换一套不依赖 overflow-x 的横滚方案, 单开一票做。 */
+
+@media (max-width:620px){
+  .drill .dd{padding-left:12px}
+  .drill>summary{padding-left:22px}
+  .meter .lg{gap:4px 12px}
+}
+@media print{
+  .drill>summary::before{display:none}
+  .drill .dd{padding-left:2px}
+  .foldbar{display:none}
+}
+
+/* ============================================================================
+   票 11 三张图:P=F+N 占比尺 / 左尾深度阶梯 / 面板 sparkline
+   数据全部来自 YAML 契约(odds.derivation.p_f_n · path.left_tail[].depth_pct ·
+   quality.panel.indicators[].series), 零写手工作。
+
+   ★ 图色与红标状态色**分开取**。--crit/--seri/--warn/--good 是保留的状态档
+   (🔴🟠🟡🟢), 拿去当"系列 4"会让读者把一条数据系列读成一个风险等级。
+   所以另开 --viz-* 三支, 明暗各自取色(不是把浅色翻过来):
+
+     --viz-1 蓝    F 段 · sparkline        light #2a78d6 / dark #3987e5
+     --viz-2 品红  N 段                    light #e87ba4 / dark #d55181
+     --viz-neg 红  左尾阶梯(单色)          light #e34948 / dark #e66767
+
+   六项检查跑的是 dataviz 的 scripts/validate_palette.js, 不是肉眼:
+     · (viz-1, viz-2) 明暗两套均 ALL CHECKS PASS —— CVD ΔE 13.0 明 / 15.9 暗,
+       常色视觉 ΔE 27.5 明 / 26.5 暗, 都在门槛之上;
+     · 浅色下 viz-2 对白面的对比度 2.69:1 触发 relief 条款 —— 已由图例里的
+       **可见直标(金额 + 占比)** 解除, 不靠颜色单通道传身份;
+     · viz-neg 单色无配对, 明暗对比度均 ≥3:1。
+   换品红而不用调色板里相邻的橙, 是因为橙会和 🟠 状态色撞脸。
+   ========================================================================= */
+:root{
+  --viz-1:#2a78d6; --viz-2:#e87ba4; --viz-neg:#e34948;
+  --viz-track:#eceae3;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --viz-1:#3987e5; --viz-2:#d55181; --viz-neg:#e66767;
+    --viz-track:#2a2a27;
+  }
+}
+:root[data-theme="dark"]{
+  --viz-1:#3987e5; --viz-2:#d55181; --viz-neg:#e66767;
+  --viz-track:#2a2a27;
+}
+
+/* ---------- P=F+N 占比尺:一根条两段, 段间留 2px 表面色缝隙(不描边) ---------- */
+.pfn{margin:2px 0 16px; padding:12px 14px; background:var(--surface);
+     border:1px solid var(--hair); border-radius:10px}
+.pfn figcaption{font-size:12.5px; color:var(--muted); margin-bottom:10px; letter-spacing:.02em}
+.pfn .bar{display:flex; gap:2px; height:14px}
+.pfn .sg{flex-grow:0; flex-shrink:1; min-width:2px; border-radius:3px}
+.pfn .sg.f{background:var(--viz-1)}
+.pfn .sg.n{background:var(--viz-2)}
+.pfn .lg{display:flex; flex-wrap:wrap; gap:6px 20px; margin-top:12px;
+         font-size:12.5px; color:var(--ink2)}
+.pfn .lg span{display:flex; align-items:baseline; gap:6px; flex:1 1 240px}
+.pfn .lg small{color:var(--muted); font-size:12.5px}
+.pfn .sw{width:10px; height:10px; border-radius:3px; flex:none; transform:translateY(1px)}
+.pfn .sw.f{background:var(--viz-1)}
+.pfn .sw.n{background:var(--viz-2)}
+
+/* ---------- 左尾深度阶梯:一条一级台阶, 由浅到深往下走 ---------- */
+.ladder{margin:2px 0 16px; padding:12px 14px; background:var(--surface);
+        border:1px solid var(--hair); border-radius:10px}
+.ladder figcaption{font-size:12.5px; color:var(--muted); margin-bottom:10px; letter-spacing:.02em}
+.ladder .rungs{list-style:none; margin:0; padding:0; display:grid; gap:6px}
+.ladder .rungs li{
+  display:grid; grid-template-columns:minmax(0,15em) 1fr auto;
+  align-items:center; gap:10px;
+}
+.ladder .lb{color:var(--ink2); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+            font-size:13px}
+.ladder .tr{height:10px; border-radius:999px; background:var(--viz-track)}
+.ladder .tr i{display:block; height:10px; border-radius:999px; background:var(--viz-neg)}
+.ladder .dv{color:var(--ink); font-variant-numeric:tabular-nums; font-size:13px; font-weight:650}
+.ladder .foot{margin:10px 0 0; font-size:12.5px; color:var(--muted); line-height:1.6}
+
+/* ---------- 面板 sparkline:无轴无网格, 末点一颗直标点 ---------- */
+.spark{width:72px; height:20px; margin-left:10px; vertical-align:middle; overflow:visible}
+.spark .ln{fill:none; stroke:var(--viz-1); stroke-width:2;
+           stroke-linecap:round; stroke-linejoin:round; vector-effect:non-scaling-stroke}
+.spark .pt{fill:var(--viz-1); stroke:var(--surface); stroke-width:1.5;
+           vector-effect:non-scaling-stroke}
+.spark .z{stroke:var(--hair); stroke-width:1; vector-effect:non-scaling-stroke}
+
+@media (max-width:620px){
+  /* 手机上标签独占一行, 条与数值并排 —— 改结构不缩字号 */
+  .ladder .rungs li{grid-template-columns:1fr auto; row-gap:4px}
+  .ladder .lb{grid-column:1 / -1; white-space:normal}
+  /* 独占一行还不够: span 自己是 flex 容器, 不给 wrap 的话「色块 + 数值 + <small> 注文」
+     会被 flex-shrink 压成两条窄列(实测 390px 上「4,352.0 / 亿 · 43.4%」被拆成两行)。
+     内容变短不等于版式变安全 —— 拆瘦图例之后要重跑一次窄屏推算(票 10 交付评审)。 */
+  .pfn .lg span{flex:1 1 100%; flex-wrap:wrap}
+  .pfn .lg small{flex:1 1 100%}
+  .spark{display:block; margin:6px 0 0}
+}
+@media print{
+  .pfn,.ladder{break-inside:avoid}
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     顶栏 — 判断链五节点锚点 + 附录 + 明暗主题切换
+     (移动端改为静态不吸顶: 见 report-v8.css @media max-width:720px)
+     ============================================================ -->
+<nav class="topbar">
+  <a class="brand" href="../../index.html">叶纸的投资报告</a>
+  <a href="#front">一眼结论</a>
+  <a href="#ch-quality">①质地</a>
+  <a href="#ch-state">②状态</a>
+  <a href="#ch-odds">③赔率</a>
+  <a href="#ch-path">④路径</a>
+  <a href="#ch-decision">⑤怎么办</a>
+  <a href="#appendices">附录</a>
+  <span class="spacer"></span>
+  <button class="themetoggle" id="themetoggle" type="button" aria-label="切换明暗主题">🌓 主题</button>
+</nav>
+
+<div class="wrap">
+
+<!-- ============================================================
+     Hero — 公司 + 基准日 + 决策事实条(全部来自装配契约字段)
+     ============================================================ -->
+<header class="hero">
+  <h1>华特气体</h1>
+  <span class="code">688268.SH</span>
+  <span class="asof">基准日 2026-09-10 · company-analysis v8.0</span>
+</header>
+<div class="facts">
+  <div class="fact"><div class="l">行动档位</div><div class="v">回避</div></div>
+  <div class="fact"><div class="l">质地</div><div class="v">部分好</div></div>
+  <div class="fact"><div class="l">现价</div><div class="v">129.3 <small>元</small></div></div>
+  <div class="fact"><div class="l">锚区间</div><div class="v">35.3–49.6 <small>元</small></div></div>
+</div>
+
+<!-- ============================================================
+     首页 一眼结论 — 决断卡 → 赚钱面板 → Top3 → 导读 [→ 较上版变化]
+     全部机器装配自 assembly.json, 零人工抄写(导读除外)
+     ============================================================ -->
+<section id="front">
+<div class="secl"><span class="t">投资决断卡</span> <span class="chip">机器装配</span></div>
+<div class="cards5">
+  <a class="dc t-watch" href="#ch-quality">
+    <div class="q">① 是不是好公司</div>
+    <div class="a">部分好</div>
+    <div class="w">账真、底子稳、有真认证门槛,但门槛换不来定价权</div>
+    <div class="s"><span class="chip">①质地</span> <span class="chip" title="本节点红旗数(明细见附录D)">🟡×3 红旗</span></div>
+  </a>
+  <a class="dc t-bad" href="#ch-state">
+    <div class="q">② 在变好吗</div>
+    <div class="a">↑变好但仅注意力·未确认</div>
+    <div class="w">一半增长来自氦气单品涨价,赚钱能力没跟上</div>
+    <div class="s"><span class="chip">②状态</span> <span class="chip" title="本节点红旗数(明细见附录D)">🟠×1 🟡×1 红旗</span></div>
+  </a>
+  <a class="dc t-bad" href="#ch-odds">
+    <div class="q">③ 贵不贵</div>
+    <div class="a">买完完美未来(无 slack)</div>
+    <div class="w">锚区间 35.3-49.6 元 vs 现价 129.3 元</div>
+    <div class="s"><span class="chip">③赔率</span> <span class="chip" title="本节点红旗数(明细见附录D)">🟠×2 🟡×1 红旗</span></div>
+  </a>
+  <a class="dc t-bad" href="#ch-path">
+    <div class="q">④ 扛得住吗</div>
+    <div class="a">高尾险·不可承受</div>
+    <div class="w">连最乐观的估值情景(③赔率)也低于现价,资产地板每股 15.34 元只兜住现价的 11.9%,七项炒作拥挤特征中了六项(高信仰体检)</div>
+    <div class="s"><span class="chip">④路径</span> <span class="chip" title="本节点红旗数(明细见附录D)">🟠×1 🟡×3 红旗</span></div>
+  </a>
+  <a class="dc t-bad" href="#ch-decision">
+    <div class="q">⑤ 怎么办</div>
+    <div class="a">回避</div>
+    <div class="w">现价既不买、也不开小仓,等三季报验明增长不只靠氦价、价格回到 35.3~49.6 元再重估</div>
+    <div class="s"><span class="chip">⑤怎么办</span> <span class="chip">无红旗</span></div>
+  </a>
+</div>
+
+<div class="secl"><span class="t">赚不赚钱面板</span> <span class="chip man">写手选 3-5</span></div>
+<p class="reason">上游电子特气材料商,客户和供应商都分散、账上现金足;该看的是量增价减下单位盈利守不守得住、扩产之后回报跟不跟得上 → 用默认五件套,毛利率排第一</p>
+<div class="tiles">
+  <div class="st">
+    <div class="l">毛利率 + 净利率</div>
+    <div class="v">30.09% / 10.43%<svg class="spark" viewBox="0 0 72 20" preserveAspectRatio="none" role="img" aria-label="毛利率 + 净利率走势:2022H1 28.21% → 2023H1 29.22% → 2024H1 31.62% → 2025H1 33.47% → 2026H1 30.09%"><path class="ln" d="M3.0 17.0 L19.5 14.3 L36.0 7.9 L52.5 3.0 L69.0 12.0"/><circle class="pt" cx="69.0" cy="12.0" r="2.4"/></svg></div>
+    <div class="n">毛利率同比降 3.38 个百分点,收入向高毛利特气迁移仍降 · peer 电子特气同业连本公司 5 家:毛利第 4、净利第 3 <span class="why">（曲线为历年上半年毛利率;同业取中船、广钢、金宏与凯美特）</span></div>
+  </div>
+  <div class="st">
+    <div class="l">扣非占比</div>
+    <div class="v">96.9%<svg class="spark" viewBox="0 0 72 20" preserveAspectRatio="none" role="img" aria-label="扣非占比走势:2022H1 95.3% → 2023H1 91.9% → 2024H1 95.6% → 2025H1 96.8% → 2026H1 96.9%"><path class="ln" d="M3.0 7.5 L19.5 17.0 L36.0 6.6 L52.5 3.3 L69.0 3.0"/><circle class="pt" cx="69.0" cy="3.0" r="2.4"/></svg></div>
+    <div class="n">五个上半年都在 91% 以上,利润几乎全靠主业 <span class="why">（扣非归母÷归母净利;2025 全年因一笔无说明的营业外收支降到 90.0%）</span></div>
+  </div>
+  <div class="st">
+    <div class="l">现金含量(OCF÷净利)</div>
+    <div class="v">1.47x<svg class="spark" viewBox="0 0 72 20" preserveAspectRatio="none" role="img" aria-label="现金含量(OCF÷净利)走势:2022H1 0.004x → 2023H1 1.26x → 2024H1 1.59x → 2025H1 1.18x → 2026H1 1.47x"><path class="ln" d="M3.0 17.0 L19.5 5.9 L36.0 3.0 L52.5 6.6 L69.0 4.1"/><circle class="pt" cx="69.0" cy="4.1" r="2.4"/></svg></div>
+    <div class="n">2023H1 起四个上半年在 1.18-1.59x,利润有现金垫底 <span class="why">（分母为合并净利润;2022H1 经营现金流近乎为零）</span></div>
+  </div>
+  <div class="st">
+    <div class="l">自由现金流(FCF)</div>
+    <div class="v">0.67 亿<svg class="spark" viewBox="0 0 72 20" preserveAspectRatio="none" role="img" aria-label="自由现金流(FCF)走势:2022H1 -1.21亿 → 2023H1 -0.29亿 → 2024H1 0.27亿 → 2025H1 -0.31亿 → 2026H1 0.67亿"><line class="z" x1="0" y1="8.0" x2="72" y2="8.0"/><path class="ln" d="M3.0 17.0 L19.5 10.1 L36.0 6.0 L52.5 10.3 L69.0 3.0"/><circle class="pt" cx="69.0" cy="3.0" r="2.4"/></svg></div>
+    <div class="n">资本开支同比减 45% 后转正;此前四年全年 FCF 合计仅约 0.77 亿 <span class="why">（简式口径=经营现金流−购建长期资产;附录A 的 0.12 亿是数据商口径）</span></div>
+  </div>
+  <div class="st">
+    <div class="l">ROE + 同业分位</div>
+    <div class="v">4.34%(上半年,未年化)<svg class="spark" viewBox="0 0 72 20" preserveAspectRatio="none" role="img" aria-label="ROE + 同业分位走势:2022H1 8.3% → 2023H1 4.47% → 2024H1 5.13% → 2025H1 3.91% → 2026H1 4.34%"><path class="ln" d="M3.0 3.0 L19.5 15.2 L36.0 13.1 L52.5 17.0 L69.0 15.6"/><circle class="pt" cx="69.0" cy="15.6" r="2.4"/></svg></div>
+    <div class="n">年度 ROE 从 2022 年 14.1% 连降到 2025 年 6.8%,拖累来自净利率而非杠杆 · peer 电子特气同业连本公司 5 家中第 2 <span class="why">（加权 ROE;整条赛道上半年 ROE 都偏低,排第 2 不等于回报高）</span></div>
+  </div>
+  <div class="pv"><b>面板结论:⚠️ 生意模式赚钱吗 · ✓ 赚钱质量真吗</b><span class="src">← 结论来自①质地</span></div>
+</div>
+
+<div class="secl"><span class="t">Top 3 风险</span> <span class="chip">机器带出 · 附录D</span></div>
+<div class="risks">
+  <div class="rk mk-red">
+    <div class="t"><a class="fw fw-red" href="#flag-valuation-e82fbf" title="🟠 高级红旗 PB vs ROE 严重错配｜市净率 6.21 倍;按净资产回报率 6.8% 应配约 0.85 倍(回报率÷8%),现价是它的 7.3 倍｜来源 脚本｜归属 ③赔率 ／ ℹ️ 信息 PB 历史分位｜当前 PB=6.21，近 1 年范围 [3.60, 18.90]｜来源 脚本｜归属 ③赔率"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">PB vs ROE 严重错配</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 PB vs ROE 严重错配</span><span>市净率 6.21 倍;按净资产回报率 6.8% 应配约 0.85 倍(回报率÷8%),现价是它的 7.3 倍</span><span class="meta">级别 高级红旗 · 来源 脚本 · 归属 ③赔率</span><span class="go">→ 点击查看附录D 条目</span><span class="meta">—</span><span class="ttl">ℹ️ PB 历史分位</span><span>当前 PB=6.21，近 1 年范围 [3.60, 18.90]</span><span class="meta">级别 信息 · 来源 脚本 · 归属 ③赔率</span><span class="go">→ 点击查看附录D 条目</span></span></a></div>
+    <div class="d">市净率 6.21 倍;按净资产回报率 6.8% 应配约 0.85 倍(回报率÷8%),现价是它的 7.3 倍</div>
+    <div class="h">所属节点 → <a href="#ch-odds">③赔率</a> · 来源 脚本 · <a href="#flag-valuation-31faed">ℹ️ PB 历史分位(脚本)</a></div>
+  </div>
+  <div class="rk mk-red">
+    <div class="t"><a class="fw fw-red" href="#flag-helium-dual-policy-squeeze" title="🟠 高级红旗 氦气遭进口许可与出口禁令双向管制｜俄方氦气出口特别许可由公司按月申请,原文称审批结果仍具有不确定性;商务部与海关总署 2026 年第 29 号公告对氦气临时禁止出口,原文称直接影响了公司相关产品的出口;氦气约占 2026H1 营收 20%、贡献收入增量 50.8%｜来源 写手提名｜归属 ④路径"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">氦气遭进口许可与出口禁令双向管制</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 氦气遭进口许可与出口禁令双向管制</span><span>俄方氦气出口特别许可由公司按月申请,原文称审批结果仍具有不确定性;商务部与海关总署 2026 年第 29 号公告对氦气临时禁止出口,原文称直接影响了公司相关产品的出口;氦气约占 2026H1 营收 20%、贡献收入增量 50.8%</span><span class="meta">级别 高级红旗 · 来源 写手提名 · 归属 ④路径</span><span class="go">→ 点击查看附录D 条目</span></span></a></div>
+    <div class="d">俄方氦气出口特别许可由公司按月申请,原文称审批结果仍具有不确定性;商务部与海关总署 2026 年第 29 号公告对氦气临时禁止出口,原文称直接影响了公司相关产品的出口;氦气约占 2026H1 营收 20%、贡献收入增量 50.8%</div>
+    <div class="h">所属节点 → <a href="#ch-path">④路径</a> · 来源 写手提名</div>
+  </div>
+  <div class="rk mk-red">
+    <div class="t"><a class="fw fw-red" href="#flag-odds-insider-block-price-gap" title="🟠 高级红旗 现价是实控人持股平台最近一轮大宗减持价的 2.2-2.3 倍｜三家实控人持股平台过去 12 个月三轮大宗减持成交价 44.81 元、57-58.7 元、55.75-57.65 元(2026-04-15 公告),当时滚动市盈率约 29、41、40 倍;2026-09-10 收盘 129.30 元;2026H1 前十大无公募、无一名前十大股东增持｜来源 写手提名｜归属 ③赔率"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">现价是实控人持股平台最近一轮大宗减持价的 2.2-2.3 倍</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 现价是实控人持股平台最近一轮大宗减持价的 2.2-2.3 倍</span><span>三家实控人持股平台过去 12 个月三轮大宗减持成交价 44.81 元、57-58.7 元、55.75-57.65 元(2026-04-15 公告),当时滚动市盈率约 29、41、40 倍;2026-09-10 收盘 129.30 元;2026H1 前十大无公募、无一名前十大股东增持</span><span class="meta">级别 高级红旗 · 来源 写手提名 · 归属 ③赔率</span><span class="go">→ 点击查看附录D 条目</span></span></a></div>
+    <div class="d">三家实控人持股平台过去 12 个月三轮大宗减持成交价 44.81 元、57-58.7 元、55.75-57.65 元(2026-04-15 公告),当时滚动市盈率约 29、41、40 倍;2026-09-10 收盘 129.30 元;2026H1 前十大无公募、无一名前十大股东增持</div>
+    <div class="h">所属节点 → <a href="#ch-odds">③赔率</a> · 来源 写手提名</div>
+  </div>
+</div>
+
+<div class="secl"><span class="t">写手导读</span> <span class="chip man">人工 3-5 句</span></div>
+<div class="intro"><p>回避:现价 129.30 元既不买,也不开小仓博一把,钱先拿在手里等。</p>
+<p>华特气体卖的是晶圆厂要用的特种气体,账是真的、家底也稳,还是国内仅有的两家拿到光刻机巨头 ASML 认证的光刻气供应商之一;可今年上半年收入涨的近三成里,一半来自氦气这一个品种涨价,公司自己也说氦价已从高位明显回落,整体毛利率反而掉了 3.38 个百分点。</p>
+<p>价格却已经把最好的结局提前买走了:只认已经赚到的钱,一股值 35 元,把好中坏三种前景按概率加权也就 50 元,现价是它的 2.6 到 3.7 倍;就算新品放量、氦价一直高着的最好剧本全部兑现,一股也只值 107.8 元,还比现价低 17%。</p>
+<p>它 7 月初冲到 290 元后已经跌去一半多,持股人数一个季度翻了一倍多,再往下跌不需要任何坏消息。</p>
+<p>该等的是 10 月底前出的三季报:单季收入比去年同期多两成以上、毛利率守住 30%,才算增长不只靠氦价;价格回到 35 到 50 元一带,再谈买不买。</p></div>
+
+<!-- 全量 run: 无较上版变化区块 -->
+</section>
+
+<!-- ============================================================
+     判断链正文 — ①质地 ②状态 ③赔率 ④路径 ⑤怎么办
+     ============================================================ -->
+<div class="secl"><span class="t">判断链正文</span></div>
+<section class="chB" id="ch-quality">
+  <div class="hd"><span class="no">① 质地</span><span class="qq">是不是好公司</span><span class="pill watch">部分好</span></div>
+  <div class="bd"><p><strong>判定:部分好——账是真的、底子是稳的、认证门槛也是真的,但这道门槛只管「能不能进场」,不管「能卖多贵」。</strong></p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>子判定</th>
+<th style="text-align: center;">判定</th>
+<th>最硬证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>生意模式赚钱吗</td>
+<td style="text-align: center;">⚠️</td>
+<td>毛利率 30.09%、净利率 10.43%,电子特气同业里居中偏下;收入往高毛利特气迁移,毛利率仍同比降 3.38 个百分点,公司自认「成本转嫁能力有限」(利润率标尺 + 定价权)</td>
+</tr>
+<tr>
+<td>赚钱质量真吗</td>
+<td style="text-align: center;">✓</td>
+<td>上半年经营现金流是净利润的 1.47 倍,扣非占归母 96.9%,研发资本化 0.00%(现金含量 + 扣非占比)</td>
+</tr>
+<tr>
+<td>护城河存在吗</td>
+<td style="text-align: center;">⚠️</td>
+<td>国内仅两家过 ASML 认证的光刻气供应商之一,覆盖国内九成以上 8-12 寸晶圆厂;但国内份额不足 5%,研发强度三年降到 2.75%(认证转换成本 + 三时间切片)</td>
+</tr>
+<tr>
+<td>管理层可信吗</td>
+<td style="text-align: center;">⚠️</td>
+<td>零质押、前五大客户与供应商无关联方;但持股平台一年四轮减持,募投主体转固后仍亏、效益不披露(减持时序 + 资本配置)</td>
+</tr>
+<tr>
+<td>财务底子稳吗</td>
+<td style="text-align: center;">✓</td>
+<td>资产负债率 26.27%、流动比率 3.06、净现金约 2.96 亿;破产距离 Z 值 7.80 远在安全线上(偿债标尺 + Altman Z)</td>
+</tr>
+</tbody>
+</table></div>
+<details class="drill"><summary>认证门槛是真的,而且长在主业上,但它换不来定价权</summary><div class="dd">
+<p>门槛本身不用怀疑。半导体客户换一家气体供应商,要走审厂、送样、小批量到大批量验证,周期 1-3 年,认证失败的投入收不回来;华特是国内仅两家过了 ASML 认证的光刻气供应商之一。和「小分部撑大故事」相反,这道门槛落在主业上:特气占上半年主营收入 68.9%。</p>
+<p>可门槛只管准入、不管价格。上半年收入明显往高毛利的特气迁移(上年同期占 64.8%),整体毛利率本该抬升,实际同比降了 3.38 个百分点——是特气内部在降价,或原料涨价吃掉了价差,不是结构问题。</p>
+<p>公司在变动表里对「成本涨得比收入快」只写了「主要系本期营业收入增长所致」,真原因放在风险章节:六氟化钨等原料大幅涨价,而「公司成本转嫁能力有限」。</p>
+<p>客户和供应商都分散(前五大客户占 22.51%、前五大供应商占 25.93%),毛利承压不是被哪个大客户卡脖子。2025 年报自己的定性是行业「量增价减、价格中枢下移」,风险章节也写明国内同行在高端品上加速突破——认证挡得住新进入者,挡不住已过认证的同行一起压价。</p>
+<p>半导体应用领域上半年毛利率 37.84% 已在原件坐实,比 2025 全年 38.35% 略低;常被拿来对照的上年同期 44.95% 只见于数据商口径,原件里无从核对,本章不拿它当证据。</p>
+<p>往后看,侵蚀的迹象多于加深:研发强度三年从 3.51% 降到 2.75%,研发人员从 172 人减到 163 人,硕博只有 14 人。64 个在研项目里约一半是气瓶充装一类的工装小改,氟气和溴化氢这类对标先进制程的品种还卡在纯度和投料调试上。</p>
+<p>公司自陈国内份额不足 5%——替代空间大,也说明这道门槛还没把它推到能定价的位置。</p>
+</div></details><details class="drill"><summary>利润是真金白银,但这半年的增量有一半压在一只看不清账的单品上</summary><div class="dd">
+<p>赚钱质量这一关过得干净:经营现金流多年高于净利润,上半年非经常损益只占归母 3.1%,股份支付为零,研发一分钱没有资本化,操纵嫌疑模型也落在低嫌疑区。唯一一笔糊涂账是 2025 年 909.6 万的「其他营业外收支」,比上年暴增 35 倍且没有附注说明,但只占当年归母不到 7%,不改判定。</p>
+<p>要打折的是增长的成色。公司只给了两个数:氦气相关收入约占营收 20%,同比增长 133%。按这两个比例推算,上半年全部收入增量里约 50.8% 来自氦气,而公司没有分部报告,氦气的量、价、毛利一概不披露——增量里最大的一块,恰恰是唯一验不了盈利的一块。</p>
+<p>公司自己也在降温:半年报说氦气售价「距高位已经有明显下降」,异动公告请投资者「勿过度放大单一产品价格波动对公司业绩的影响」。这份增量能不能延续、价格回落后还剩多少利润,归<a class="cite" href="#ch-state">②状态</a>判断;本章只认定它是一块单品依赖、且看不清账的收入。</p>
+</div></details><details class="drill"><summary>账上不缺钱,缺的是扩产之后的回报</summary><div class="dd">
+<p>财务底子是稳的:转债 6 月全部转股或赎回后,资产负债率从 42.37% 降到 26.27%,流动比率 3.06,账上净现金约 2.96 亿,破产距离指标远在安全区,前十大股东无一质押。</p>
+<p>但钱花出去之后回报没跟上。2022-2025 年四年自由现金流合计只有约 0.77 亿,同期归母净利润近 7 亿,经营现金几乎全投进了扩产,2025 年末固定资产一年增 63%。年度 ROE 随之从 2022 年的 14.1% 降到 2025 年的 6.8%,拆开看是净利率和周转在掉、杠杆反而略升——不是借钱撑的,是新增资产还没赚到钱。</p>
+<p>管理层判 ⚠️ 不判 ✗。德这一面没有硬伤:零质押,前五大客户与供应商里没有关联方,研发不资本化,4 月股价异动时主动提示风险并两次给氦气降温,这些都是对小股东诚实的动作。</p>
+<p>短板在才和节奏:可转债募投主体江西华特转固后仍在亏损,募投项目到了预定日期只投了 53.35%、效益不披露;实控人控制的三家持股平台一年内四轮各减约 2%,全走大宗交易,理由都是「自身资金需求」;毛利率下滑在正文不作归因。</p>
+<p>江西华特的高负债、减持筹码与商誉减值会不会演变成爆点,后果见<a class="cite" href="#ch-path">④路径</a>;贵不贵见<a class="cite" href="#ch-odds">③赔率</a>。</p></div></details></div>
+</section>
+<section class="chB" id="ch-state">
+  <div class="hd"><span class="no">② 状态</span><span class="qq">在变好吗</span><span class="pill bad">↑变好但仅注意力·未确认</span></div>
+  <div class="bd"><p><strong>判定:↑变好但仅注意力·未确认——财报确实回升了,但一半是氦气这一个品种的涨价撑起来的,另一半靠走量、单价在掉;能证明"赚钱能力在变强"的证据还一条都没有,氦气那一半赚不赚钱公司也没披露,热度却已经跑在了最前面。</strong></p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>子判定</th>
+<th>判定</th>
+<th>最硬证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>变好的引擎是什么</td>
+<td>⚠️ 一半增长来自氦气单品涨价,不是业务线放量</td>
+<td>氦气收入占约 20%、同比 +133%,推算贡献全部收入增量的 50.8%;公司自称氦价"距高位已经有明显下降"(增长来源拆解,数字见<a class="cite" href="#ch-quality">①质地</a>)</td>
+</tr>
+<tr>
+<td>利润率接住了吗</td>
+<td>✗ 走量换价</td>
+<td>特气占主营 68.9%(上年同期 64.8%)而整体毛利率降 3.38 个百分点;公司自认"成本转嫁能力有限"(结构变好而毛利率降 ⇒ 品类内部降价,数字见<a class="cite" href="#ch-quality">①质地</a>)</td>
+</tr>
+<tr>
+<td>实锤还是回声</td>
+<td>⚠️ 财报数字是实锤,财报之外的看多说法没有一条是实锤</td>
+<td>券商盈利预测属转述;社区"内部报价/产能"被公司公告为伪造,网传提氦项目被公司否认(独立证据 vs 回声)</td>
+</tr>
+<tr>
+<td>氦气这一半赚钱吗</td>
+<td>⚠️ 不确定</td>
+<td>公司不披露氦气毛利,2025 年报分产品表也没有氦气这一行;二季度整体毛利率同比降约 3 个百分点只是方向信号,不是证明(证据缺口)</td>
+</tr>
+<tr>
+<td>能持续吗</td>
+<td>⚠️ 未确认,弹性只在一个季度</td>
+<td>一季度归母 −23.7%,二季度单季归母环比 +74.0%(完整放量期数)</td>
+</tr>
+<tr>
+<td>长期引擎在接棒吗</td>
+<td>✗ 没接棒</td>
+<td>研发强度 3.51% → 3.24% → 2.75% 三连降;氟气"纯度还有待提高"、溴化氢"准备投料调试"(证据方向,数字见<a class="cite" href="#ch-quality">①质地</a>)</td>
+</tr>
+<tr>
+<td>身份换了吗</td>
+<td>✗ 改名先行、里子未换</td>
+<td>被当"氦气涨价受益股",实为氦气进口买方:原料靠俄罗斯按月特批,出口被国内临时禁令卡住(身份标签切换)</td>
+</tr>
+<tr>
+<td>故事四关</td>
+<td>✗ 只过第一关</td>
+<td>第④关引用<a class="cite" href="#ch-odds">③赔率</a>原话「买完完美未来(无 slack)」(故事四关)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>该等什么</strong>(按决定性排序;下次复查逐条核销;三季报预约日尚未登记):</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>等什么</th>
+<th>时间窗</th>
+<th>达标线·证伪线</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>增长是不是只靠氦价</td>
+<td>2026 三季报,法定最晚 10 月 31 日(氦价回落、出口禁令后首个完整季度)</td>
+<td>Q3 单季营收同比 ≥+20%(2025Q3 单季约 3.67 亿)且单季毛利率 ≥30% 算兑现;同比 &lt;+10% 或毛利率 &lt;28% 算证伪</td>
+</tr>
+<tr>
+<td>以价换量止住没有</td>
+<td>2026 年报,约 2027 年 4 月(首个与 2025 全年同口径的分应用领域毛利率)</td>
+<td>半导体应用领域 ≥38.35% 且特种气体 ≥35.76% 算兑现;半导体应用领域 &lt;37% 算品类内部降价坐实</td>
+</tr>
+<tr>
+<td>高端新品接上没有</td>
+<td>同一份年报的在研项目表</td>
+<td>氟气、溴化氢、乙锗烷至少两项写到"已有产品供应客户"且研发强度 ≥3% 算兑现;三项仍停在调试或等设备、研发强度再低于 2.75% 算证伪</td>
+</tr>
+</tbody>
+</table></div>
+<details class="drill"><summary>这半年的回升一半是氦气涨价,另一半是走量换价——都不是赚钱能力在变强</summary><div class="dd">
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>增长来源(2026 上半年)</th>
+<th>占营收</th>
+<th>同比</th>
+<th>占全部收入增量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>氦气及相关产品</td>
+<td>约 20%</td>
+<td>+133%</td>
+<td>50.8%(推算)</td>
+</tr>
+<tr>
+<td>其余业务(光刻混合气、氟碳类走量为主)</td>
+<td>约 80%</td>
+<td>约 +16%(推算)</td>
+<td>49.2%(推算)</td>
+</tr>
+<tr>
+<td>合计</td>
+<td>8.72 亿</td>
+<td>+28.95%</td>
+<td>1.96 亿</td>
+</tr>
+</tbody>
+</table></div>
+<p>这不是"小分部撑起大故事"的形状:氦气并不小,是一个品种的价格行情撑起了一半增长,而且公司只在 2026 半年报给过这一期数字。这个引擎本身没法独立验证——公司不设分部报告,氦气的量价和毛利率都不披露,半年报连产销量表都没有;公司还两次主动泼冷水,说氦价"距高位已经有明显下降","勿过度放大单一产品价格波动对公司业绩的影响"。</p>
+<p>另一半的质量也不好。收入结构在往高毛利的特种气体迁移,整体毛利率却在降,毛利额只增约 16%,远慢于收入——结构变好而毛利率变差,说明是品类内部在降价;真因藏在风险章节:原料涨价,加上公司自认的"成本转嫁能力有限"。</p>
+<p>赛道在给量、不给价:2025 年报原话"需求总量扩张、价格中枢下移、量增价减";同一条赛道上中船特气、广钢气体上半年净利增速是收入增速的数倍,华特反过来是收入跑赢利润(<a class="cite" href="#appx-B">附录B</a>)。按成长标尺它落在"稳健"档,但这是 2022-2025 年收入年复合 −7.7% 之后的第一次回升(<a class="cite" href="#appx-A">附录A</a>),驱动的一半是价格。</p>
+</div></details><details class="drill"><summary>实锤只有财报本身;氦气那一半赚不赚钱,公司没给能判的数</summary><div class="dd">
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>说法</th>
+<th>级别</th>
+<th>依据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>收入 +28.95%、归母 +19.16%、经营现金流 +46.93%</td>
+<td>实锤</td>
+<td>半年报原表</td>
+</tr>
+<tr>
+<td>氦气收入占约 20%、同比 +133%</td>
+<td>实锤(只有比例和增速)</td>
+<td>半年报原话,无绝对额、无毛利</td>
+</tr>
+<tr>
+<td>氦气贡献一半增量;品类内部在降价</td>
+<td>实锤推算</td>
+<td>由原表数字算出,见上表与上段</td>
+</tr>
+<tr>
+<td>"氦气高毛利"</td>
+<td>不确定</td>
+<td>公司不披露氦气毛利,正反两边都没有一手证据</td>
+</tr>
+<tr>
+<td>"氦价永久上移"</td>
+<td>传闻,公司原话相反</td>
+<td>公司说售价"距高位已经有明显下降","未来价格存在回落的可能"</td>
+</tr>
+<tr>
+<td>半导体应用毛利率"44.95% → 37.84%"</td>
+<td>存疑</td>
+<td>上年基数只见于数据商口径,原件核不到;原件可比的是 2025 全年 38.35%(<a class="cite" href="#ch-quality">①质地</a>)</td>
+</tr>
+<tr>
+<td>溴化氢、三氯化硼、四氟化硫"已通过部分半导体厂商认证并供货"</td>
+<td>未确认</td>
+<td>公司口径,无客户名、无量;在认证项目数与通过率不披露</td>
+</tr>
+<tr>
+<td>券商盈利预测(如华鑫 2028 年归母 3.43 亿)</td>
+<td>回声</td>
+<td>券商转述,属预测不属事实</td>
+</tr>
+<tr>
+<td>社区"内部报价/产能"、网传青海提氦项目</td>
+<td>已被公司否认</td>
+<td>异动公告称伪造;业绩说明会否认有该项目</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>"氦气高毛利"判不确定,不是反证。</strong> 缺的是氦气自己的收入绝对额、成本和毛利率:公司明示没有分部报告,2025 年报分产品表八类里没有氦气这一行,半年报和三季报不做分产品拆分。能补上的只有 2026 年报「主营业务分行业、分产品情况」里的分产品表(营业收入、营业成本、毛利率三列),前提是公司把占营收约两成的氦气单列出来;若仍并在别的品类里,这一格继续空着。</p>
+<p>眼下沾边的只有一个方向信号:俄罗斯管制生效、公司上调氦气售价的二季度,整体单季毛利率约 30.0%,比上年同季低约 3 个百分点。若氦气毛利明显高于其余业务,占比升到约两成时整体毛利率本该被托高;但这个数里混着原料涨价和别的品类降价,反推不出氦气自己赚多少。</p>
+<p><strong>好转是真提高,还是只是热度提高了?</strong> 收入、利润、现金流都是真的,但真提高的主要是价格带来的收入,不是赚钱能力;热度的涨幅远大于证据——4 月科创板严重异动,7 个交易日累计偏离超 100%,股东户数一年多了约两倍(筹码与资金明细见<a class="cite" href="#appx-C">附录C</a>)。</p>
+<p><strong>新证据是独立的吗?</strong> 独立的只有财报与公告,其余是同一个"氦气稀缺"叙事的反复转述,其中两条已被公司辟谣;多空双方最有力的论据,恰恰都出自公司自己的同一批公告。</p>
+<p><strong>价格反映了多少?</strong> <a class="cite" href="#ch-odds">③赔率</a>原话「买完完美未来(无 slack)」,区间锚 35.3~49.6 元对现价 129.30 元(<a class="cite" href="#ch-odds">③赔率</a>)。</p>
+<p>无记忆性检查:"连降三年的收入该反弹了""从高点回落过半该反抽了"都是等待时间幻觉;反过来"一年涨了一倍多、动量强"也不是理由。能当理由的只有证据方向转正——眼下转正的是氦气价格,而公司自己说它已在回落。</p>
+</div></details><details class="drill"><summary>市场给它换了"氦气受益股"的标签,但它在氦气链上是被卡住的买方</summary><div class="dd">
+<p>4 月那轮异动里,市场把它当成氦气稀缺的受益者、按瓶颈节点定价;公司对同一件事的原话却是"短期内对公司氦气供货及时性存在阶段性影响"——俄罗斯是它氦气采购的主要来源地,需按月申请特别许可,国内又对氦气临时禁止出口。受益于稀缺的是握有资源的一方,它夹在进口与出口两道闸门中间。</p>
+<p>主体业务仍是旧身份:光刻气等细分品类的国产替代者,公司自陈国内份额不足 5%;新标签在业务上没有对应物(当前处在细分优势档,市场按瓶颈节点候选定价)。</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>检验</th>
+<th>过关?</th>
+<th>依据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一句话能传播吗</td>
+<td>✓</td>
+<td>"俄罗斯卡氦气,国产气体受益"一句讲完,4 月的严重异动就是证明</td>
+</tr>
+<tr>
+<td>有真订单、真利润接住吗</td>
+<td>✗</td>
+<td>收入接住了,利润率没接住:毛利率在降,毛利额增速只有收入增速的一半多</td>
+</tr>
+<tr>
+<td>有客户或产业官方背书吗</td>
+<td>✗</td>
+<td>ASML、GIGAPHOTON 光刻气认证是真的,但背书的是旧身份;新身份唯一的官方口径是公司自己泼的冷水</td>
+</tr>
+<tr>
+<td>价格还给兑现留了余地吗</td>
+<td>✗</td>
+<td><a class="cite" href="#ch-odds">③赔率</a>原话「买完完美未来(无 slack)」(<a class="cite" href="#ch-odds">③赔率</a>)</td>
+</tr>
+<tr>
+<td>在产业链上是卡别人还是被卡</td>
+<td>✗</td>
+<td>氦气链中间环节,原料端按月特批、出口端临时禁令,约束朝它收紧</td>
+</tr>
+<tr>
+<td>证据多久能再验证一次</td>
+<td>⚠️</td>
+<td>半年报不披露产销量与氦气毛利;三季报只有总量,年报才能拆品类</td>
+</tr>
+</tbody>
+</table></div></div></details></div>
+</section>
+<section class="chB" id="ch-odds">
+  <div class="hd"><span class="no">③ 赔率</span><span class="qq">贵不贵</span><span class="pill bad">买完完美未来(无 slack)</span></div>
+  <div class="bd"><figure class="meter" role="img" aria-label="估值尺:合理区间 35.3-49.6元,现价 129.3元,现价是区间高端的 2.61 倍">
+  <figcaption>贵不贵:一把尺</figcaption>
+  <div class="track">
+    <span class="band" style="left:24.38%;width:9.87%"></span>
+    <span class="mark over" style="left:89.29%"></span>
+  </div>
+  <div class="scale"><span>0</span><span>145 元</span></div>
+  <div class="lg"><span><i class="sw band"></i>合理区间 35.3–49.6 元<small>低端只认已赚到的钱 · 高端按三种前景概率加权</small></span><span><i class="sw mark"></i>现价 129.3 元<small>现价是区间高端的 2.61 倍</small></span></div>
+</figure><figure class="pfn" role="img" aria-label="股价拆两半:市值 165.09 亿 里, 已赚到的 F 45.12 亿 · 27.3%,为想象多付的 N 119.97 亿 · 72.7%" title="F 的口径:F = 只认已赚到的钱那一端:2025 全年扣非 ×32.8x + 上半年扣非增量 ×15x + 净现金">
+  <figcaption>股价拆两半:已赚到的 · 为想象多付的</figcaption>
+  <div class="bar">
+    <span class="sg f" style="flex-basis:calc(27.33% - 1px)"></span>
+    <span class="sg n" style="flex-basis:calc(72.67% - 1px)"></span>
+  </div>
+  <div class="lg"><span><i class="sw f"></i>已赚到的 F 45.12 亿 · 27.3%</span><span><i class="sw n"></i>为想象多付的 N 119.97 亿 · 72.7%<small>市场已收费的义务,不是白送的彩票</small></span></div>
+</figure><p><strong>判定:买完完美未来(无 slack)——合理价两端 35.3~49.6 元(低端只认已赚到的钱,高端按三种前景加权,即分部加总法与概率加权折现法),现价 129.30 元是高端的 2.61 倍、低端的 3.66 倍;最好的那条前景全部兑现,每股也只值 107.8 元,仍比现价低 16.6%。</strong></p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>子判定</th>
+<th>判定</th>
+<th>最硬证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>现价里多少是事实、多少是故事</td>
+<td>约 73% 是故事,而且是必须交付的任务</td>
+<td>F 45.12 亿只认已兑现利润与净现金,N 119.97 亿;股价自 2025 年末 +125%,滚动扣非只 +11.9%(<a class="cite" href="#appx-A">附录A</a>)</td>
+</tr>
+<tr>
+<td>现价要求公司未来做到什么</td>
+<td>收入五年翻 4.6 倍,或五年后市场仍给约百倍</td>
+<td>倒推 2031 年归母 7.46 亿 = 近四个季度的 4.96 倍,收入复合 35.8%;近 3 年收入复合 −7.7%(<a class="cite" href="#appx-A">附录A</a>)</td>
+</tr>
+<tr>
+<td>只认已兑现利润还值多少</td>
+<td>无分部利润可拆,按持续性拆两段,每股 35.3 元</td>
+<td>半年报「报告分部 √不适用」;基本盘按扣非给 32.8x(行情前滚动市盈率的 25 分位,见注 2),低于基准前景的退出 35x</td>
+</tr>
+<tr>
+<td>同业倍数能不能当安全垫</td>
+<td>不能——同业里居中略偏低,贵的是整条赛道</td>
+<td>滚动市盈率 109.9 倍,6 家里第 3 低:高于广钢气体 89.0 倍与宽口径参照昊华科技 36.6 倍,低于金宏、中船、凯美特(<a class="cite" href="#appx-B">附录B</a>);公司自曝滚动市盈率 127.65 倍,高于行业 100.00 倍</td>
+</tr>
+<tr>
+<td>估值红旗说什么</td>
+<td>PB 对 ROE 严重错配,下跌无股息托底</td>
+<td>PB 6.21x 对 ROE 6.8%(<a class="cite" href="#ch-quality">①质地</a>)只配约 0.85x,错配 7.3 倍;股息率 0.43%</td>
+</tr>
+</tbody>
+</table></div>
+<details class="drill"><summary>股价里近四分之三是为还没赚到的钱付的,而且这份未来是必须交付的任务</summary><div class="dd">
+<p>把 129.30 元拆两半:F 45.12 亿是已经赚到手的部分,也就是下文"只认已赚到的钱每股 35.3 元"一节那张表的股权合计,只认 2025 全年扣非,加上 2026 年上半年多赚的那一截和账上净现金(<a class="cite" href="#appx-A">附录A</a>);N 119.97 亿占市值 165.09 亿的 72.7%,是市场为"氦气紧缺 + 国产替代"预先付的钱。</p>
+<p>判它是任务而不是白送的彩票,依据很直接:只走基准前景(收入五年复合 10%、净利率 10%),每股值 46.6 元,只有现价的三成多;要不亏钱,得比乐观前景走得还远。远期故事做不到不是"少赚一点",是直接杀估值。</p>
+<p>方向也不对:股价自 2025 年末涨了 125%,同期滚动扣非只增 11.9%(<a class="cite" href="#appx-A">附录A</a>);上半年收入增长近三成,全公司扣非同比只多 0.145 亿。叙事涨得比基本面快约 10 倍——信得越多、买得越贵,回报越差。</p>
+</div></details><details class="drill"><summary>现价在赌收入五年翻 4.6 倍,或者五年后市场仍肯给约百倍</summary><div class="dd">
+<p>现价 165.09 亿扣掉净现金,按 10.0% 折现五年,等于 2031 年要值 261.1 亿;期间自由现金流按 0 计。四条路任选一条倒推:</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>现价隐含假设</th>
+<th>隐含值</th>
+<th>历史与同业参照</th>
+<th>可信?</th>
+<th>证伪条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>收入 5 年复合(净利率 10%、退出 35x)</td>
+<td>35.8%,2031 年收入 74.6 亿 = 近四个季度的 4.6 倍</td>
+<td>近 3 年复合 −7.7%,最好的 2022 年 +33.8%(<a class="cite" href="#appx-A">附录A</a>)</td>
+<td>不可信</td>
+<td>2026 全年收入增速低于 30%(H1 为 +28.95%)</td>
+</tr>
+<tr>
+<td>乐观组合(净利率 12%、退出 45x)下的收入复合</td>
+<td>24.5%,收入 48.4 亿 = 近四个季度的 3.0 倍</td>
+<td>剔除氦气后 2026H1 收入约 +16%,按氦气占比与增速推算(<a class="cite" href="#ch-state">②状态</a>)</td>
+<td>过度乐观</td>
+<td>氦气收入占比回落,且特气收入增速低于 20%</td>
+</tr>
+<tr>
+<td>2031 年退出市盈率(收入复合 10%、净利率 10%)</td>
+<td>100.4 倍</td>
+<td>自身行情前滚动市盈率中位 36.5 倍(注 1);同业当前 89.0 倍到 270.5 倍(<a class="cite" href="#appx-B">附录B</a>)</td>
+<td>过度乐观</td>
+<td>电子特气同业滚动市盈率中位跌破 60 倍</td>
+</tr>
+<tr>
+<td>成熟净利率(收入复合 10%、退出 35x)</td>
+<td>28.7%</td>
+<td>2022 年以来单期最高 13.62%(2024Q1)(<a class="cite" href="#appx-A">附录A</a>)</td>
+<td>不可信</td>
+<td>下一期净利率仍低于 13.62%</td>
+</tr>
+</tbody>
+</table></div>
+<p>四条任选其一都要改写这家公司的历史——现价不是在赌它"变好",是在赌它变成另一家公司:收入规模、利润率或者市场给的倍数,至少一样要走到过去十几个季度从没到过的地方。结论:买完完美未来。</p>
+<p>卖方那条路也只值这么多:华鑫证券预测 2028 年归母 3.43 亿(媒体转述,<a class="cite" href="#appx-C">附录C</a>),按 35x 退出折回来加净现金,每股 77.8 元;要撑住现价,2028 年末得给约 59 倍。这只校准"这条路值多少钱",不用来定概率。</p>
+</div></details><details class="drill"><summary>只认已赚到的钱每股 35.3 元,三种前景加权 49.6 元</summary><div class="dd">
+<p><strong>低端 = 只认已赚到的钱那一端(叙事分部 SOTP)</strong>:公司没有分部报告,半年报按商品类型、地区、应用领域的三维拆分只给到毛利,期间费用、财务费用和所得税都不分摊,硬拆只能靠摊费用凑数。所以只按利润持续性拆两段:氦气行情前已经赚稳的全年扣非,和 2026 年上半年全公司多出来的那一截。</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>分部</th>
+<th style="text-align: right;">扣非利润(持续性两段)</th>
+<th style="text-align: center;">倍数</th>
+<th style="text-align: right;">估值</th>
+<th>倍数理由与证伪指标</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基本盘(2025 全年扣非,氦气行情前)</td>
+<td style="text-align: right;">1.219 亿</td>
+<td style="text-align: center;">32.8x</td>
+<td style="text-align: right;">39.98 亿</td>
+<td>行情前滚动市盈率 25 分位,低于基准前景退出 35x(扣非与归母口径换算见注 2);证伪——剔除氦气后收入同比转负(2026H1 推算约 +16%,<a class="cite" href="#ch-state">②状态</a>)</td>
+</tr>
+<tr>
+<td>2026 上半年扣非同比增量(按价格窗口计)</td>
+<td style="text-align: right;">0.145 亿</td>
+<td style="text-align: center;">15x</td>
+<td style="text-align: right;">2.18 亿</td>
+<td>估值处理——全公司增量,不判它来自氦气(②判不确定);当作会随价格回落的窗口利润,只给 15x,不到基本盘一半(注 2);证伪——氦价回落后单季扣非同比仍增 20% 以上,则这截增量不是窗口利润</td>
+</tr>
+<tr>
+<td><strong>企业价值 42.16 亿 + 净现金 2.96 亿 = 股权 45.12 亿 ÷ 1.2768 亿股</strong></td>
+<td style="text-align: right;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: right;"><strong>= 35.3 元/股</strong></td>
+<td>净负债为负 = 净现金 2.96 亿(<a class="cite" href="#appx-A">附录A</a>);剔除净现金后折合近四个季度扣非 30.9 倍</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>注 1(怎么算):滚动市盈率(PE_TTM)= 收盘价 × 总股本 ÷ 近四个季度归母净利。收盘价取日线表 daily(2023-09-11 起;估值表 daily_basic 只从 2025-08-06 起,不够用);总股本取 total_share,归母取 n_income_attr_p,都按公告日取已公告(含当日)的最新一期;近四个季度 = 上年全年 + 本期累计 − 上年同期累计。</p>
+<p>注 1 结果:窗口 2023-09-11 至 2026-03-31,共 615 个交易日——最小 24.6x · 25 分位 32.8x · 中位 36.5x · 75 分位 45.0x · 最大 70.7x(扣非口径中位 38.8x · 75 分位 47.7x)。窗口若截到 3 月 20 日(去掉起涨的 7 天),25 分位不变。内部人三轮大宗卖价按同一算法约合 29、41 和 40 倍。</p>
+<p>注 2(倍数怎么定):已兑现利润不能比任何增长前景给得更贵——基准前景要先五年收入复合 10% 才给 35x,基本盘就取它下面一档,即注 1 的 25 分位;这个分位按归母算,乘在扣非上折合归母约 29.5x(扣非约为归母的 90%),落在历史最小值与 25 分位之间。电子特气同业 89.0x 到 270.5x(<a class="cite" href="#appx-B">附录B</a>)是整条赛道叙事的价格,拿来给已兑现利润定价等于把 N 算进 F。</p>
+<p>增量那一截给 15x 只是估值上的处理:把全公司上半年多出来的 0.145 亿当作会随价格回落的窗口利润,不是在判断氦气赚了多少——氦气毛利公司不披露,②判不确定。</p>
+</blockquote>
+<p><strong>高端 = 三种前景加权(三情景概率加权 DCF)</strong>:</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>折现率分项</th>
+<th style="text-align: right;">值</th>
+<th>依据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无风险利率</td>
+<td style="text-align: right;">1.8%</td>
+<td>中国 10 年期国债收益率区间</td>
+</tr>
+<tr>
+<td>股权风险溢价</td>
+<td style="text-align: right;">5.5%</td>
+<td>成熟市场溢价 + 中国国家风险溢价</td>
+</tr>
+<tr>
+<td>规模与流动性溢价</td>
+<td style="text-align: right;">1.5%</td>
+<td>市值 165.09 亿的科创板小盘(<a class="cite" href="#appx-B">附录B</a>)</td>
+</tr>
+<tr>
+<td>半导体材料周期溢价</td>
+<td style="text-align: right;">1.2%</td>
+<td>按周期股波动约为大盘 1.2 倍折算;2023 年收入 −16.8% 有先例(<a class="cite" href="#appx-A">附录A</a>)</td>
+</tr>
+<tr>
+<td><strong>合计折现率</strong></td>
+<td style="text-align: right;"><strong>10.0%</strong></td>
+<td>终值用退出倍数法(不用永续增长),退出市盈率对齐自身行情前滚动市盈率分布(注 1)</td>
+</tr>
+</tbody>
+</table></div>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>情景</th>
+<th style="text-align: center;">概率</th>
+<th style="text-align: center;">收入 5 年 CAGR</th>
+<th style="text-align: center;">成熟净利率</th>
+<th style="text-align: center;">退出 PE</th>
+<th style="text-align: right;">折现值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>乐观前景(高端放量 + 氦价高位延续)</td>
+<td style="text-align: center;">20%</td>
+<td style="text-align: center;">20%</td>
+<td style="text-align: center;">12%</td>
+<td style="text-align: center;">45x</td>
+<td style="text-align: right;">137.7 亿</td>
+</tr>
+<tr>
+<td>基准前景(行业增速 + 氦价回落)</td>
+<td style="text-align: center;">50%</td>
+<td style="text-align: center;">10%</td>
+<td style="text-align: center;">10%</td>
+<td style="text-align: center;">35x</td>
+<td style="text-align: right;">59.5 亿</td>
+</tr>
+<tr>
+<td>最差那条前景(价格内卷延续 + 氦价回落)</td>
+<td style="text-align: center;">30%</td>
+<td style="text-align: center;">-2%</td>
+<td style="text-align: center;">7.5%</td>
+<td style="text-align: center;">25x</td>
+<td style="text-align: right;">20.0 亿</td>
+</tr>
+<tr>
+<td><strong>概率加权 63.3 亿 ÷ 1.2768 亿股(各前景每股:乐观 107.8 元、基准 46.6 元、最差 15.7 元;算式见注 3)</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: right;"><strong>= 49.6 元/股</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>注 3(DCF 口径):基数 = 近四个季度收入 16.15 亿(<a class="cite" href="#appx-A">附录A</a>);折现值 = 2031 年收入 × 成熟净利率 × 退出市盈率 ÷ 1.10⁵ + 净现金 2.96 亿,期间自由现金流按 0 计(2022-2025 四年合计仅约 0.77 亿,<a class="cite" href="#ch-quality">①质地</a>)。退出倍数 45x、35x、25x 对齐注 1 的 75 分位、中位(略向下取整)与最小值。</p>
+</blockquote>
+</div></details><details class="drill"><summary>最差那条前景有先例、乐观前景只有公司口径;判贵不怕改权重,只押在"赛道百倍撑不过五年"上</summary><div class="dd">
+<ul>
+<li><strong>最差那条前景 0.3</strong>——三个驱动里两个已经发生过:价格内卷让 2022-2025 年收入复合 −7.7%(<a class="cite" href="#appx-A">附录A</a>),年报原话"量增价减";氦价已回落,出口端还挨了临时禁令(<a class="cite" href="#ch-state">②状态</a>)。第三个是新产能不赚钱,把全年净利率压到 7.5%——全年还没到过(最低是 2025 年的 9.05%,<a class="cite" href="#appx-A">附录A</a>),单季见过:2025 年四季度扣非只剩约 610 万(全年减前三季)。有先例,权重不低于乐观。</li>
+<li><strong>基准前景 0.5</strong>——唯一不需要新东西的路:收入复合 10% ≈ 公司引用的 2026 年全球电子气体 +8% 再加一点份额(自陈国内份额不足 5%);净利率 10% 夹在 2025 年 9.05% 与 2026H1 10.43% 之间(<a class="cite" href="#appx-A">附录A</a>),不拿 2024 年的高点外推。</li>
+<li><strong>乐观前景 0.2</strong>——放量的依据只有公司口径,②判未确认:新品"已通过部分半导体厂商认证并供货"无客户名、无量;能从原表推算的只有剔除氦气后收入约 +16%(<a class="cite" href="#ch-state">②状态</a>)。收入复合 20% 还要氦价高位延续,而公司自己说价格存在回落可能,募投项目效益也不披露。</li>
+</ul>
+<p>权重缺的是订单簿与公司指引(两样都不披露),所以更该看结论对权重有多敏感:乐观提到 0.4、基准降到 0.4、最差降到 0.2,高端也只有 64.9 元;乐观权重给满,也只有 107.8 元。判"贵"不依赖我给的权重。</p>
+<p><strong>但它依赖倍数假设</strong>:乐观前景的退出 45x 取自身行情前滚动市盈率的 75 分位;换成当前电子特气同业最低的 89.0 倍(<a class="cite" href="#appx-B">附录B</a>),乐观每股约 211 元,就高于现价了。整个判断落在"赛道今天约百倍的倍数撑不过五年"这一条上——上面反推那张表的第三行已把它摊开,并给了证伪线。</p>
+</div></details><details class="drill"><summary>两端同向说贵:差出来的是"要不要为增长付钱",两端都够不着现价</summary><div class="dd">
+<p>两端差出来的就是要不要为增长付钱:只认已赚到的钱那一端只按行情前的历史倍数给已赚到的利润(那个倍数里已含当年的增长预期),不算未来五年的增长;三种前景加权算上了基准前景五年的增长,再给乐观前景两成权重。两把尺子量的东西不同,方向一致——现价高于两端。</p>
+<p>赔率形状向下偏:向上没有空间,连最好的那条前景也够不着现价;向下有多深,兑现前要吃多少苦,逐个前景的跌幅见<a class="cite" href="#ch-path">④路径</a>。</p>
+<p>这轮定价是一条叙事推起来的注意力行情,不是机构资金:4 月俄罗斯氦气管制消息触发 7 日累计偏离超 100% 的严重异动,前十大里没有一家公募,近 20 日主力资金净流出 3,257 万元,细节见<a class="cite" href="#appx-C">附录C</a>。</p>
+</div></details><details class="drill"><summary>相对同业不算最贵,但同业倍数本身不是安全垫</summary><div class="dd">
+<p>按电子特气真实同业看,滚动市盈率 109.9 倍低于中船特气、凯美特气和金宏气体,只高于广钢气体,加上宽口径参照昊华科技 36.6 倍也只是 6 家里第 3 低,处在中位附近略偏低(<a class="cite" href="#appx-B">附录B</a>)。</p>
+<p>化工原料分类下的两组对照(市值最近的 5 家与全池 262 家)与本公司零业务重合,全池 93.5% 的分位不作倍数依据。公司 4 月自己在异动公告里提示过:滚动市盈率 127.65 倍,明显高于中证电子化学品行业的 100.00 倍。</p>
+<p><strong>问题在于整条赛道都贵</strong>:上面反推那张表已经算过,要让现价在五年后成立,市场得把今天约百倍的赛道估值原样再给五年。拿同业倍数找安全垫,等于用一块同样悬空的地板去垫另一块。</p>
+</div></details><details class="drill"><summary>估值红旗:PB 对 ROE 严重错配,内部人卖价不到现价一半,下跌途中没有股息托底</summary><div class="dd">
+<p><strong>PB 对 ROE 严重错配</strong>是本节点最重的一条:PB 6.21x 对应 ROE 6.8%(<a class="cite" href="#ch-quality">①质地</a>),按 8% 要求回报只配约 0.85x,错配 7.3 倍;而 ROE 是从 2022 年的 14.1% 一路降下来的(<a class="cite" href="#ch-quality">①质地</a>)。市场付的是回报率翻几倍之后的价格。</p>
+<p><strong>内部人的价格锚在 45-59 元</strong>:实控人三家持股平台过去 12 个月三轮大宗减持成交价 44.81 元、57-58.7 元、55.75-57.65 元,现价是最近一轮的 2.2-2.3 倍,半年内前十大股东无一增持(<a class="cite" href="#appx-C">附录C</a>)。离公司最近且信息最全的人,在滚动市盈率 29-41 倍的位置就愿意卖。</p>
+<p><strong>PB 近 1 年分位 59% 不能当"不贵"的证据</strong>:近 1 年区间 [3.60, 18.90] 整个就是这轮行情,拿它作参照等于用泡沫期自比。<strong>股息率 0.43%</strong>,低于防御型口径要求的 2%,下跌途中没有股息托底。</p></div></details></div>
+</section>
+<section class="chB" id="ch-path">
+  <div class="hd"><span class="no">④ 路径</span><span class="qq">扛得住吗</span><span class="pill bad">高尾险·不可承受</span></div>
+  <div class="bd"><figure class="ladder" role="img" aria-label="左尾深度阶梯:拥挤退潮·回吐到 90.86 元 −29.7%、氦价回落 −72.7%、最差那条前景兑现 −87.9%、主业失去溢价后按资产清算 −88.1%">
+  <figcaption>左尾有多深:兑现之前最坏要扛多少</figcaption>
+  <ol class="rungs">
+    <li title="拥挤退潮·回吐到 90.86 元 → 4 月严重异动那一波涨幅全部吐回 —— 2026-04-20 严重异常波动启动前一日收盘 90.86 元 vs 现价 129.30 元(③赔率)"><span class="lb">拥挤退潮·回吐到 90.86 元</span><span class="tr"><i style="width:33.7%"></i></span><b class="dv">−29.7%</b></li>
+    <li title="氦价回落 → 氦气窗口按一次性计价 → 市场为未来多付的 119.97 亿全部回吐 —— 跌到只认已赚到的钱那一端 35.3 元 vs 现价 129.30 元(③赔率);若只跌到三种前景加权的 49.6 元为 −61.6%"><span class="lb">氦价回落</span><span class="tr"><i style="width:82.5%"></i></span><b class="dv">−72.7%</b></li>
+    <li title="最差那条前景兑现 → 价格内卷延续叠加氦价回落 → 每股 15.7 元 —— 最差那条前景每股 15.7 元(概率 0.3)vs 现价 129.30 元(③赔率)"><span class="lb">最差那条前景兑现</span><span class="tr"><i style="width:99.8%"></i></span><b class="dv">−87.9%</b></li>
+    <li title="主业失去溢价后按资产清算 → 剩余资产净值约 19.59 亿 → 每股 15.34 元 —— 剩余资产净值 19.59 亿 ÷ 1.2768 亿股 = 15.34 元 vs 现价 129.30 元(③赔率)"><span class="lb">主业失去溢价后按资产清算</span><span class="tr"><i style="width:100.0%"></i></span><b class="dv">−88.1%</b></li>
+  </ol>
+  <p class="foot">另有 5 条左尾量不到价格(只判得出量级),逐条见本章正文的左尾清单。</p>
+</figure><p><strong>判定:高尾险·不可承受——③的三条情景没有一条高于现价 129.30 元(<a class="cite" href="#ch-odds">③赔率</a>),连乐观情景也要跌 16.6%。账上有净现金且零质押,地板真实存在,但在每股 15.34 元,只兜住现价的 11.9%。跌起来还叠着一层拥挤与杠杆的放大器,7 月已经实际运转过一次。</strong></p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>子判定</th>
+<th>判定</th>
+<th>最硬证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>左尾有多深</td>
+<td>四档从 −29.7% 排到 −88.1%,最浅一档不需要任何坏消息</td>
+<td>氦价回落、氦气窗口按一次性计价,即跌回只认已赚到的钱那一端 35.3 元 = −72.7%;最差那条前景 15.7 元 = −87.9%(<a class="cite" href="#ch-odds">③赔率</a>)</td>
+</tr>
+<tr>
+<td>最坏时账上还剩什么</td>
+<td>剩余资产净值约 19.59 亿 = 每股 15.34 元</td>
+<td>归母净资产 26.60 亿(<a class="cite" href="#appx-A">附录A</a>)减商誉与三项折让、加科创板壳价值再减清算成本;与最差那条前景只差 0.36 元</td>
+</tr>
+<tr>
+<td>下跌会不会被放大</td>
+<td>七项炒作拥挤特征中了六项(高信仰体检),是放大器</td>
+<td>户数一个季度 +133%、融资余额 9.59 亿占市值 5.8%(<a class="cite" href="#appx-C">附录C</a>);盘中高点 290.0 元 51 个交易日回撤 55.4%</td>
+</tr>
+<tr>
+<td>兑现前要吃多少苦</td>
+<td>三种前景加权要跌 61.6%,最好的那条路两年才回到现价</td>
+<td>三种前景加权的 49.6 元(<a class="cite" href="#ch-odds">③赔率</a>);最好那条前景 107.8 元走完两年约 130.4 元,年化 +0.4%</td>
+</tr>
+</tbody>
+</table></div>
+<details class="drill"><summary>左尾是四级台阶,从 −29.7% 到 −88.1%,最深两级几乎重合在资产地板上</summary><div class="dd">
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>触发情形</th>
+<th style="text-align: right;">到哪个价</th>
+<th style="text-align: right;">跌多少</th>
+<th>怎么算出来的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>拥挤退潮·回吐到 90.86 元:4 月严重异常波动那一波涨幅全部吐回,不需要任何基本面坏消息</td>
+<td style="text-align: right;">90.86 元</td>
+<td style="text-align: right;">−29.7%</td>
+<td>2026-04-20 异动启动前一日收盘价,vs 现价 129.30 元(<a class="cite" href="#ch-odds">③赔率</a>)</td>
+</tr>
+<tr>
+<td>氦价回落 → 氦气窗口按一次性计价 → 市场为未来多付的 119.97 亿全部回吐</td>
+<td style="text-align: right;">35.3 元</td>
+<td style="text-align: right;">−72.7%</td>
+<td>只认已赚到的钱那一端(SOTP 位)= 已兑现扣非加净现金 2.96 亿;若只跌到三种前景加权的 49.6 元(DCF 位)为 −61.6%(<a class="cite" href="#ch-odds">③赔率</a>)</td>
+</tr>
+<tr>
+<td>最差那条前景兑现:价格内卷延续叠加氦价回落,收入复合 −2%、净利率 7.5%、退出 25x</td>
+<td style="text-align: right;">15.7 元</td>
+<td style="text-align: right;">−87.9%</td>
+<td>③最差那条前景的每股值,概率 0.3(<a class="cite" href="#ch-odds">③赔率</a>)</td>
+</tr>
+<tr>
+<td><strong>主业失去溢价后按资产清算 —— 地板</strong></td>
+<td style="text-align: right;"><strong>15.34 元</strong></td>
+<td style="text-align: right;"><strong>−88.1%</strong></td>
+<td>19.59 亿 ÷ 股本 1.2768 亿股 = 15.34 元(<a class="cite" href="#ch-odds">③赔率</a>),明细见下表</td>
+</tr>
+</tbody>
+</table></div>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>科目</th>
+<th style="text-align: right;">扣多少</th>
+<th>按什么折</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>起点:归母净资产</td>
+<td style="text-align: right;">26.60 亿</td>
+<td>每股净资产 20.8339 元 × 1.2768 亿股(<a class="cite" href="#appx-A">附录A</a>);货币资金 7.98 亿与有息负债 5.03 亿已含在内,不另加减</td>
+</tr>
+<tr>
+<td>商誉(<a class="cite" href="#appx-A">附录A</a>)</td>
+<td style="text-align: right;">−1.60 亿</td>
+<td>全额冲掉</td>
+</tr>
+<tr>
+<td>存货 2.15 亿(<a class="cite" href="#appx-A">附录A</a>)</td>
+<td style="text-align: right;">−0.65 亿</td>
+<td>按 30% 减值</td>
+</tr>
+<tr>
+<td>应收账款 4.24 亿(<a class="cite" href="#appx-A">附录A</a>)</td>
+<td style="text-align: right;">−0.85 亿</td>
+<td>按 20% 坏账</td>
+</tr>
+<tr>
+<td>固定资产与在建工程 12.29 亿(<a class="cite" href="#appx-A">附录A</a>)</td>
+<td style="text-align: right;">−4.91 亿</td>
+<td>按 40% 折让</td>
+</tr>
+<tr>
+<td>科创板壳价值</td>
+<td style="text-align: right;">+3.00 亿</td>
+<td>经验值,取在主板 5-10 亿区间之下</td>
+</tr>
+<tr>
+<td>清算、危化品装置处置与员工安置</td>
+<td style="text-align: right;">−2.00 亿</td>
+<td>按约 1,200 人安置估算</td>
+</tr>
+<tr>
+<td>合计:剩余资产净值</td>
+<td style="text-align: right;">19.59 亿</td>
+<td>÷ 1.2768 亿股 = 每股 15.34 元(<a class="cite" href="#ch-odds">③赔率</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>注:触发这张清单的,是公司原文自述俄方许可「若办理受阻,公司氦气原料供应、排产节奏与采购成本均将承压」;三项折让比例、壳价值与清算成本都是本节点的悲观假设——设备打六折,是因为募投主体江西华特转固后仍亏损、公司自述行业扎堆扩产;壳价值压在主板区间之下,是因为科创板重组上市须符合科创属性。</p>
+<p>最差那条前景的 15.7 元(<a class="cite" href="#ch-odds">③赔率</a>)与清算地板的 15.34 元几乎重合:最差前景不是想象出来的深渊,而是这门生意不再有溢价、只剩资产的那一刻,它的驱动在 2022-2025 年已经走过一次(收入年复合 −7.7%,<a class="cite" href="#appx-A">附录A</a>)。资产端本身很干净(<a class="cite" href="#ch-quality">①质地</a>),不会先因为还不上钱出事;左尾深,只是因为现价里几乎没有资产托底。另有 5 条左尾量不到价格,不摆上台阶:</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>左尾</th>
+<th>打的是什么</th>
+<th>为什么不上台阶</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>俄方氦气出口特别许可中断,原料断供</td>
+<td>氦气收入约 1.745 亿,占 2026H1 营收 20%、收入增量的 50.8%(<a class="cite" href="#ch-quality">①质地</a>);剔除氦气后 H1 收入增速从 +28.95% 回到约 +16%</td>
+<td>氦气量价与毛利公司不披露,断供打掉多少利润无从折价</td>
+</tr>
+<tr>
+<td>第 29 号公告氦气出口临时禁令延续</td>
+<td>敞口上限是境外收入约 1.87 亿、占主营约 22%;H1 境外收入同比仍 +41.7%,禁令还没落到报表</td>
+<td>境外收入里的氦气份额未披露。与上一条合起来,就是本节点提名的「<a class="fw fw-red fw-inline" href="#flag-helium-dual-policy-squeeze" title="🟠 高级红旗 氦气遭进口许可与出口禁令双向管制｜俄方氦气出口特别许可由公司按月申请,原文称审批结果仍具有不确定性;商务部与海关总署 2026 年第 29 号公告对氦气临时禁止出口,原文称直接影响了公司相关产品的出口;氦气约占 2026H1 营收 20%、贡献收入增量 50.8%｜来源 写手提名｜归属 ④路径"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">氦气遭进口许可与出口禁令双向管制</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 氦气遭进口许可与出口禁令双向管制</span><span>俄方氦气出口特别许可由公司按月申请,原文称审批结果仍具有不确定性;商务部与海关总署 2026 年第 29 号公告对氦气临时禁止出口,原文称直接影响了公司相关产品的出口;氦气约占 2026H1 营收 20%、贡献收入增量 50.8%</span><span class="meta">级别 高级红旗 · 来源 写手提名 · 归属 ④路径</span><span class="go">→ 点击查看附录D 条目</span></span></a>」——市场当涨价受益股买,公司披露为原料断供风险</td>
+</tr>
+<tr>
+<td>原料涨价而成本转嫁能力有限,毛利率再降一轮</td>
+<td>每降 1 个百分点约吞掉 TTM 归母 1.503 亿的 8.9%(<a class="cite" href="#ch-odds">③赔率</a>);重演一次 2026H1 的 −3.38 个百分点即约 30%;2025Q4 单季毛利率曾跌到 22.77%</td>
+<td>打的是利润基数,价格落点已含在最差那条前景那一级</td>
+</tr>
+<tr>
+<td>实控人持股平台继续减持</td>
+<td>三家多福平台剩余 1,081.38 万股 = 总股本 8.47%,按每轮 ≤2% 的节奏还够约 4 轮;过去 12 个月四轮全走大宗(<a class="cite" href="#ch-quality">①质地</a>)</td>
+<td>是持续的供给压力而非价格落点;零质押,没有强平型抛压。大宗交易接口对本标的返回 0 行是接口失效、不是没有大宗,大宗折价读不出来;无限售解禁日历,发行前股份已于 2022-12-27 流通</td>
+</tr>
+<tr>
+<td>并购商誉 1.6043 亿全额减值</td>
+<td>相当于 TTM 归母 1.503 亿的 107%,一年利润清零;占归母净资产 6.0%(<a class="cite" href="#appx-A">附录A</a>)</td>
+<td>非现金、一次性,已计入上面的地板测算</td>
+</tr>
+</tbody>
+</table></div>
+</div></details><details class="drill"><summary>七项炒作拥挤特征中了六项(高信仰体检):只有关键人物没命中,下跌时其余六项互相喂养</summary><div class="dd">
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>炒作拥挤特征</th>
+<th style="text-align: center;">命中</th>
+<th>依据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>高估值</td>
+<td style="text-align: center;">✓</td>
+<td>滚动市盈率 109.9 倍、市净率对回报率错配 7.3 倍,③判「买完完美未来(无 slack)」(<a class="cite" href="#ch-odds">③赔率</a>)</td>
+</tr>
+<tr>
+<td>高波动</td>
+<td style="text-align: center;">✓</td>
+<td>近 120 日区间 79.16~290.0 元(3.66 倍),6 月单月 +86.93%;4 月 20-28 日 7 个交易日累计偏离 &gt;100% 触发科创板严重异常波动(<a class="cite" href="#appx-C">附录C</a>)</td>
+</tr>
+<tr>
+<td>高叙事弹性</td>
+<td style="text-align: center;">✓</td>
+<td>单一氦气价格叙事撑起行情,氦气量价与毛利不披露,公司两次主动给行情降温(<a class="cite" href="#ch-quality">①质地</a>)——叙事没有官方刻度可校准</td>
+</tr>
+<tr>
+<td>高散户占比</td>
+<td style="text-align: center;">✓</td>
+<td>户数一个季度 +133%,7 月末仍是 3 月末的 2 倍;前十大只有社保与 UBS 两家机构、合计 1.51%,无一家公募(<a class="cite" href="#appx-C">附录C</a>)</td>
+</tr>
+<tr>
+<td>高媒体热度</td>
+<td style="text-align: center;">✓</td>
+<td>公司连发异常波动公告与风险提示,并点名社区里的产品价格、产能、内部报价信息均为伪造;近 30 日已未上龙虎榜,热度在降(<a class="cite" href="#appx-C">附录C</a>)</td>
+</tr>
+<tr>
+<td>期权与杠杆活跃</td>
+<td style="text-align: center;">✓</td>
+<td>融资余额 9.59 亿 = 市值 165.09 亿的 5.8%;较近 60 日中位 −12.1% 在退,但存量仍是下跌时的强平燃料;科创板个股无场内期权,转债已强制赎回(<a class="cite" href="#appx-C">附录C</a>)</td>
+</tr>
+<tr>
+<td>关键人物依赖</td>
+<td style="text-align: center;">✗</td>
+<td>质押冻结全为 0(<a class="cite" href="#ch-quality">①质地</a>),没有平仓型左尾;实控人平台带来的是持续减持的供给,不是人本身的风险</td>
+</tr>
+</tbody>
+</table></div>
+<p>中了六项的含义很直白:上涨时这六项互相喂养,下跌时同样互相喂养。放大器已经实际运转过一次:7 月一个月股价从 277.95 元跌到 126.85 元(−54.4%),而同月 21 日的半年度业绩预告还是归母略增(<a class="cite" href="#appx-A">附录A</a>)——价格的跌幅远大于业绩的变化。</p>
+</div></details><details class="drill"><summary>按③的三种前景加权要跌 61.6%,连最好的那条路走完两年也只回到现价</summary><div class="dd">
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>情景</th>
+<th style="text-align: center;">概率</th>
+<th style="text-align: right;">每股现值</th>
+<th style="text-align: right;">相对现价</th>
+<th style="text-align: right;">到期目标价</th>
+<th style="text-align: right;">年化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>③乐观</td>
+<td style="text-align: center;">0.2</td>
+<td style="text-align: right;">107.8 元</td>
+<td style="text-align: right;">−16.6%</td>
+<td style="text-align: right;">24 个月约 130.4 元</td>
+<td style="text-align: right;">+0.4%</td>
+</tr>
+<tr>
+<td>③基准</td>
+<td style="text-align: center;">0.5</td>
+<td style="text-align: right;">46.6 元</td>
+<td style="text-align: right;">−64.0%</td>
+<td style="text-align: right;">18 个月约 53.8 元</td>
+<td style="text-align: right;">−44.3%</td>
+</tr>
+<tr>
+<td>③悲观</td>
+<td style="text-align: center;">0.3</td>
+<td style="text-align: right;">15.7 元</td>
+<td style="text-align: right;">−87.9%</td>
+<td style="text-align: right;">12 个月约 17.3 元</td>
+<td style="text-align: right;">−86.6%</td>
+</tr>
+<tr>
+<td>③三种前景加权</td>
+<td style="text-align: center;">1.0</td>
+<td style="text-align: right;">49.6 元</td>
+<td style="text-align: right;">−61.6%</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+</tr>
+</tbody>
+</table></div>
+<p>注:到期目标价 = ③的每股现值按③折现率 10% 滚到该前景的兑现时点(乐观 24 个月、基准 18 个月、悲观 12 个月);年化按到期目标价对现价 129.30 元(<a class="cite" href="#ch-odds">③赔率</a>)计。</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>成本项</th>
+<th>有多疼</th>
+<th>依据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中途最大回撤</td>
+<td>已实测 −55.4%:盘中高点 290.0 元到现价只用了 51 个交易日;再走到左尾第一级「拥挤退潮·回吐到 90.86 元」还有 −29.7%</td>
+<td>日线高低点;现价(<a class="cite" href="#ch-odds">③赔率</a>)</td>
+</tr>
+<tr>
+<td>时间与机会成本</td>
+<td>最好的那条路两年年化 +0.4%,股息率 0.43% 补不上等待;能核对氦气份额的数字要等 2026 年报(2027-04 前),三季报不含收入分解</td>
+<td>③三种前景与折现率(<a class="cite" href="#ch-odds">③赔率</a>)</td>
+</tr>
+<tr>
+<td>假阳性成本</td>
+<td>媒体转述的券商 2026 年归母预测 2.42 亿是 TTM 1.503 亿的 1.6 倍,社区流传的「氦价永久性上移」与公司原话「距高位已经有明显下降」方向相反;追进去遇到的是业绩(氦价回落)、估值(PE 109.9x 回到行情前 36.5-45.0x)、筹码(户数翻倍后退潮)三重杀</td>
+<td>预测与社区观点均无公司背书(<a class="cite" href="#appx-C">附录C</a>);倍数区间(<a class="cite" href="#ch-odds">③赔率</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>最强的看空链</strong>:氦气行情是地缘租金而非护城河,公司自认售价已回落、成本转嫁能力有限(<a class="cite" href="#ch-quality">①质地</a>),租金退潮后只剩量增价减的基本盘,股价回到③给的合理价两端 35.3~49.6 元(<a class="cite" href="#ch-odds">③赔率</a>)。<strong>它自己的证伪条件</strong>:2026 年报氦气占比跌破 15% 的同时特气毛利率守住 35%、江西华特扭亏,三件同时成立即租金论被推翻。</p>
+</div></details><details class="drill"><summary>证伪清单九条:一条都还没命中,最早的两条要到 10 月底的三季报才能核销</summary><div class="dd">
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>证伪条件</th>
+<th>最早何时能核销</th>
+<th>当前状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>氦气窗口:三季度单季扣非利润低于去年同期的 4,037 万,氦气行情带来的增量利润已退潮</td>
+<td>2026 三季报,10 月 31 日前</td>
+<td>尚不可判</td>
+</tr>
+<tr>
+<td>成本转嫁:三季度单季毛利率跌破 28%(二季度 30.00%),原料涨价继续吃掉价差</td>
+<td>2026 三季报,10 月 31 日前</td>
+<td>尚不可判</td>
+</tr>
+<tr>
+<td>氦气进口:公司披露俄方氦气出口许可未获批,或氦气供货中断</td>
+<td>随时(临时公告),看到 2026 年底</td>
+<td>未命中:半年报仍是按月申请、结果不确定</td>
+</tr>
+<tr>
+<td>出口禁令:全年境外收入低于 2025 年的 3.07 亿,即下半年境外收入同比跌超三成</td>
+<td>2026 年报,2027 年 4 月底前</td>
+<td>尚不可判</td>
+</tr>
+<tr>
+<td>氦气份额:全年氦气收入占营收跌破 15%(上半年约 20%),份额回落到行情前</td>
+<td>2026 年报,2027 年 4 月底前</td>
+<td>尚不可判</td>
+</tr>
+<tr>
+<td>特气溢价:全年特种气体毛利率跌破 33%(2025 年 35.76%,<a class="cite" href="#ch-state">②状态</a>以此为兑现线),高端认证换不来溢价</td>
+<td>2026 年报,2027 年 4 月底前</td>
+<td>尚不可判</td>
+</tr>
+<tr>
+<td>新产能回报:募投主体江西华特全年仍亏损</td>
+<td>2026 年报,2027 年 4 月底前</td>
+<td>尚不可判</td>
+</tr>
+<tr>
+<td>内部人供给:实控人的三家多福平台再发减持计划,或一致行动人合计持股跌破 40%(6 月底推算 42.85%)</td>
+<td>随时(减持公告),看到 2026 年底</td>
+<td>尚不可判:8 月 12 日之后的公告不在证据集内</td>
+</tr>
+<tr>
+<td>拥挤出清线 120.16 元:收盘跌破近 60 日低点 120.16 元且 20 个交易日内不收复</td>
+<td>随时(日线),看到 2026 年底</td>
+<td>未命中:现价 129.30 元(<a class="cite" href="#ch-odds">③赔率</a>)</td>
+</tr>
+</tbody>
+</table></div></div></details></div>
+</section>
+<section class="chB" id="ch-decision">
+  <div class="hd"><span class="no">⑤ 怎么办</span><span class="qq">行动档位与证伪</span><span class="pill bad">回避</span></div>
+  <div class="bd"><p><strong>判定:回避——现价既不买、也不开小仓,等三季报验明增长不只靠氦价、价格回到 35.3~49.6 元再重估。</strong></p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>项</th>
+<th>结论</th>
+<th>依据(引用)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>状态:在变好吗</td>
+<td>↑变好但仅注意力·未确认</td>
+<td><a class="cite" href="#ch-state">②状态</a>的判定原话:一半增长来自氦气单品涨价,赚钱能力没跟上(②)</td>
+</tr>
+<tr>
+<td>赔率:贵不贵</td>
+<td>买完完美未来(无 slack)</td>
+<td><a class="cite" href="#ch-odds">③赔率</a>的判定原话;③的合理价区间 35.3~49.6 元 vs 现价 129.30 元(③)</td>
+</tr>
+<tr>
+<td>路径:扛得住吗</td>
+<td>高尾险·不可承受</td>
+<td><a class="cite" href="#ch-path">④路径</a>的判定原话:连最乐观的估值情景也低于现价,资产地板每股 15.34 元只兜住现价的 11.9%;三种情形按概率加权即③的 49.6 元,对应 −61.6%(④)</td>
+</tr>
+<tr>
+<td>好公司?</td>
+<td>部分是</td>
+<td><a class="cite" href="#ch-quality">①质地</a>的判定原话:部分好——账真、底子稳、有真认证门槛,但门槛换不来定价权(①)</td>
+</tr>
+<tr>
+<td>好下注(现价)?</td>
+<td>否</td>
+<td>状态、价格、路径三样:两样在最差一档(价格、路径)、一样偏弱(变好只停在热度、未被确认)(②③④)</td>
+</tr>
+<tr>
+<td>好价格?</td>
+<td>否</td>
+<td>现价是③合理价区间的 2.61~3.66 倍,连乐观情景每股 107.8 元都比现价低 16.6%(③)</td>
+</tr>
+<tr>
+<td>有没有一票否决的致命问题</td>
+<td>没有</td>
+<td>合并后 18 条红旗(🟠4 / 🟡8 / 🟢3 / ℹ️3)里 🔴 0 条,六类致命情形一个没出现(<a class="cite" href="#appx-D">附录D</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>为什么是「回避」,不是「先观察」或「小仓博一把」。</strong> 在变好但没坐实、价格极贵、中途扛不住——这种组合下,先观察或小仓博一把只在一种情况下站得住:它有成为少数大赢家的底子,值得花小钱赌一把。下表逐条对了大赢家的五条特征,它一条不占(0✓ / 5✗),所以是回避。③的两种算法也都说贵:只认已赚到的钱那一端 35.3 元、三种前景加权 49.6 元,都远低于现价(③)。</p>
+<p><strong>它是不是「少数大赢家」那一类?</strong>(大赢家的五条特征逐条对照,0✓ / 5✗)</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>特征</th>
+<th style="text-align: center;">占不占</th>
+<th>一句依据(出处)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>需求真实、还能往外扩</td>
+<td style="text-align: center;">✗</td>
+<td>需求是真的,覆盖国内九成以上 8-12 寸晶圆厂(①);但眼下增量一半来自氦气涨价,能往外扩的高端新品卡在纯度和调试,近 3 年收入复合 −7.7%(②③)</td>
+</tr>
+<tr>
+<td>有别人替不掉的提价权</td>
+<td style="text-align: center;">✗</td>
+<td>有认证门槛却自认「成本转嫁能力有限」,收入向高毛利特气迁移、毛利率仍同比降 3.38 个百分点(①②)</td>
+</tr>
+<tr>
+<td>自己造血、扩产不靠外面的钱</td>
+<td style="text-align: center;">✗</td>
+<td>利润是真现金(经营现金流为净利润的 1.47 倍),但扩产靠发可转债,此前四年全年自由现金流合计仅约 0.77 亿(①)</td>
+</tr>
+<tr>
+<td>利润率还在往上走</td>
+<td style="text-align: center;">✗</td>
+<td>上半年毛利率 31.62% → 33.47% → 30.09% 掉头;年度 ROE 从 2022 年 14.1% 连降到 2025 年 6.8%(①)</td>
+</tr>
+<tr>
+<td>买入价格起点低</td>
+<td style="text-align: center;">✗</td>
+<td>现价里约 73% 是为未来多付的,而且是必须交付的任务;乐观情景全兑现每股 107.8 元仍比现价低 16.6%(③)</td>
+</tr>
+</tbody>
+</table></div>
+<p>它唯一像「卡位」的地方,是国内仅两家通过 ASML 认证的光刻气供应商之一,可国内份额不足 5%(①);市场给它贴的「氦气涨价受益股」标签,②判它其实是氦气的进口买方。更要紧的是,好剧本就算来了也赔不到现价:最乐观那条路按③的折现率滚到 24 个月,也只回到约 130.4 元,两年年化 +0.4%(④)。所以这不是怕跌就把好机会一刀切掉,而是<strong>好剧本能赚的钱已经被现价提前吃掉,连 2-3% 的小仓也不开</strong>。</p>
+<p><strong>该等什么</strong>(前三行引用②的临界点,价格条件由本章加)</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>等什么</th>
+<th>什么时候</th>
+<th>达标线 / 证伪线</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>增长是不是只靠氦价</td>
+<td>2026 三季报(10 月 31 日前)</td>
+<td>单季营收同比 ≥+20%(2025Q3 约 3.67 亿)且单季毛利率 ≥30% 算不只靠氦价;同比 &lt;+10% 或毛利率 &lt;28% 算随氦价退潮(②)</td>
+</tr>
+<tr>
+<td>以价换量止住没有</td>
+<td>2026 年报(约 2027 年 4 月)</td>
+<td>半导体应用领域全年毛利率 ≥38.35% 且特种气体 ≥35.76% 算止住;半导体 &lt;37% 算品类内部降价坐实(②)</td>
+</tr>
+<tr>
+<td>高端新品接上没有</td>
+<td>同一份年报的在研项目表</td>
+<td>氟气、溴化氢、乙锗烷至少两项写到「已有产品供应客户」且研发强度 ≥3%;三项仍卡在调试或等设备、研发强度再低于 2.75% 算未兑现(②)</td>
+</tr>
+<tr>
+<td>价格回到哪里</td>
+<td>随时</td>
+<td>回到③的合理价区间 35.3~49.6 元再重估(③);跌到每股 107.8 元只是让最好的剧本打平,不算买点(③)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>什么情况下判断会错、若已持仓何时该走。</strong> 九条硬线全部取自④的证伪清单,名称与顺序同④:</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>硬线</th>
+<th>门槛</th>
+<th style="text-align: center;">现在命中了吗</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>氦气窗口</td>
+<td>三季报单季扣非归母 &lt;4,037 万,即同比转负——氦气行情的增量利润退潮(④)</td>
+<td style="text-align: center;">尚不可判</td>
+</tr>
+<tr>
+<td>成本转嫁</td>
+<td>三季报单季毛利率 &lt;28%(④)</td>
+<td style="text-align: center;">尚不可判</td>
+</tr>
+<tr>
+<td>氦气进口</td>
+<td>年底前披露俄方许可未获批,或供货中断(④)</td>
+<td style="text-align: center;">未命中</td>
+</tr>
+<tr>
+<td>出口禁令</td>
+<td>2026 全年境外收入 &lt;3.07 亿,即同比转负(④)</td>
+<td style="text-align: center;">尚不可判</td>
+</tr>
+<tr>
+<td>氦气份额</td>
+<td>2026 全年氦气及相关产品收入占营收 &lt;15%(④)</td>
+<td style="text-align: center;">尚不可判</td>
+</tr>
+<tr>
+<td>特气溢价</td>
+<td>2026 全年特种气体毛利率 &lt;33%(④)</td>
+<td style="text-align: center;">尚不可判</td>
+</tr>
+<tr>
+<td>新产能回报</td>
+<td>江西华特 2026 全年净利仍为负(④)</td>
+<td style="text-align: center;">尚不可判</td>
+</tr>
+<tr>
+<td>内部人供给</td>
+<td>年底前多福平台披露新一轮减持计划,或一致行动人合计持股 &lt;40%(④)</td>
+<td style="text-align: center;">尚不可判</td>
+</tr>
+<tr>
+<td>拥挤出清线 120.16 元</td>
+<td>收盘跌破 120.16 元且 20 个交易日内不收复(④)</td>
+<td style="text-align: center;">未命中(再跌 7.1% 触线)</td>
+</tr>
+</tbody>
+</table></div>
+<p>反过来,要让「回避」改判,得两件事同时发生:三季报单季营收同比 ≥+20% 且毛利率 ≥30%(②),<strong>并且</strong>价格回到③的合理价区间——到那时是重估,不是自动转成买入。只有前者,改判的只是「在变好吗」这一问,贵的问题还在;只有后者,按合理价买到的也可能是一门增长只靠氦价的生意。</p>
+<p><strong>五个常见误区,逐条自查</strong></p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>误区</th>
+<th style="text-align: center;">自查</th>
+<th>一句依据(出处)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>把「好公司」当「好股票」</td>
+<td style="text-align: center;">✓ 未犯</td>
+<td>①判部分好,仍判回避(①)</td>
+</tr>
+<tr>
+<td>把远期故事当当期现金流</td>
+<td style="text-align: center;">✓ 未犯</td>
+<td>高端新品只在③乐观情景里拿 0.2 权重,不进结论(③)</td>
+</tr>
+<tr>
+<td>把坏消息当短期噪音</td>
+<td style="text-align: center;">✓ 未犯</td>
+<td>毛利率下滑、氦价回落、进出口双向管制都进了退出线(④)</td>
+</tr>
+<tr>
+<td>把时间当免费</td>
+<td style="text-align: center;">✓ 未犯</td>
+<td>0 仓位、现金留作选择权,第一个刻度是 10 月底的三季报(②)</td>
+</tr>
+<tr>
+<td>仓位由信念强度定</td>
+<td style="text-align: center;">✓ 未犯</td>
+<td>由赔率定:最好的剧本折现后仍比现价低 16.6%、按概率加权 −61.6%(③④)</td>
+</tr>
+</tbody>
+</table></div></div>
+</section>
+
+<!-- ============================================================
+     附录 A-E — 证据底稿(全表下沉, 宽表在横滚容器内)
+     ============================================================ -->
+<div class="secl" id="appendices"><span class="t">附录 · 证据底稿</span></div>
+<div class="appxnav">
+  <a class="ap" href="#appx-A"><b>附录A</b>财务与经营明细</a>
+  <a class="ap" href="#appx-B"><b>附录B</b>行业与对标明细</a>
+  <a class="ap" href="#appx-C"><b>附录C</b>舆情与资金底稿</a>
+  <a class="ap" href="#appx-D"><b>附录D</b>红旗总清单</a>
+  <a class="ap" href="#appx-E"><b>附录E</b>数据来源与信息缺口</a>
+</div>
+<section class="appx" id="appx-A">
+  <h2>附录A 财务与经营明细</h2>
+  <h3>数据快照: 华特气体 (688268.SH)</h3>
+<p><strong>生成日期</strong>: 2026-09-10<br />
+<strong>数据源</strong>: <code>C:\Users\tinyb\.claude\output\华特气体\raw_data</code> (Tushare parquet)</p>
+<blockquote>
+<p>本文是报告<strong><a class="cite" href="#appx-A">附录A</a> 财务与经营明细</strong>的底稿, 全部由脚本从 Tushare parquet 直接拼装, 无 LLM 参与。正文只写结论并引用这里的数字, 明细一律留在附录 —— 同一个数字只有一个家。</p>
+</blockquote>
+<hr />
+<h4>§1 数据完整度</h4>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>表</th>
+<th style="text-align: right;">行数</th>
+<th style="text-align: center;">end_date 区间</th>
+<th style="text-align: center;"><strong>最新期</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>income</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: center;">20211231 ~ 20260630</td>
+<td style="text-align: center;"><strong>20260630</strong></td>
+</tr>
+<tr>
+<td>balancesheet</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: center;">20211231 ~ 20260630</td>
+<td style="text-align: center;"><strong>20260630</strong></td>
+</tr>
+<tr>
+<td>cashflow</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: center;">20211231 ~ 20260630</td>
+<td style="text-align: center;"><strong>20260630</strong></td>
+</tr>
+<tr>
+<td>fina_indicator</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: center;">20220331 ~ 20260630</td>
+<td style="text-align: center;"><strong>20260630</strong></td>
+</tr>
+<tr>
+<td>daily</td>
+<td style="text-align: right;">727</td>
+<td style="text-align: center;">20230911 ~ 20260910</td>
+<td style="text-align: center;"><strong>20260910</strong></td>
+</tr>
+<tr>
+<td>daily_basic</td>
+<td style="text-align: right;">268</td>
+<td style="text-align: center;">20250806 ~ 20260910</td>
+<td style="text-align: center;"><strong>20260910</strong></td>
+</tr>
+<tr>
+<td>top10_holders</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: center;">20220331 ~ 20260630</td>
+<td style="text-align: center;"><strong>20260630</strong></td>
+</tr>
+<tr>
+<td>top10_floatholders</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: center;">20220331 ~ 20260630</td>
+<td style="text-align: center;"><strong>20260630</strong></td>
+</tr>
+<tr>
+<td>pledge_detail</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>forecast_vip</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: center;">20191231 ~ 20260630</td>
+<td style="text-align: center;"><strong>20260630</strong></td>
+</tr>
+<tr>
+<td>express_vip</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: center;">20191231 ~ 20251231</td>
+<td style="text-align: center;"><strong>20251231</strong></td>
+</tr>
+<tr>
+<td>stk_holdernumber</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: center;">20211231 ~ 20260731</td>
+<td style="text-align: center;"><strong>20260731</strong></td>
+</tr>
+<tr>
+<td>fina_mainbz</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: center;">20231231 ~ 20260630</td>
+<td style="text-align: center;"><strong>20260630</strong></td>
+</tr>
+<tr>
+<td>dividend</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: center;">20191231 ~ 20260630</td>
+<td style="text-align: center;"><strong>20260630</strong></td>
+</tr>
+<tr>
+<td>repurchase</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: center;">20220526 ~ 20260616</td>
+<td style="text-align: center;"><strong>20260616</strong></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h4>§2 最新期完整快照</h4>
+<h5>2.1 利润表关键科目 (来自 income.parquet 最新行 end_date=20260630)</h5>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>科目</th>
+<th style="text-align: right;">最新期数值</th>
+<th style="text-align: right;">上年同期</th>
+<th style="text-align: center;">YoY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>营业收入</td>
+<td style="text-align: right;">8.7239 亿</td>
+<td style="text-align: right;">6.7653 亿</td>
+<td style="text-align: center;">+28.95%</td>
+</tr>
+<tr>
+<td>营业成本</td>
+<td style="text-align: right;">6.0991 亿</td>
+<td style="text-align: right;">4.5012 亿</td>
+<td style="text-align: center;">+35.50%</td>
+</tr>
+<tr>
+<td>销售费用</td>
+<td style="text-align: right;">0.5499 亿</td>
+<td style="text-align: right;">0.5165 亿</td>
+<td style="text-align: center;">+6.46%</td>
+</tr>
+<tr>
+<td>管理费用</td>
+<td style="text-align: right;">0.4460 亿</td>
+<td style="text-align: right;">0.4544 亿</td>
+<td style="text-align: center;">-1.85%</td>
+</tr>
+<tr>
+<td>研发费用</td>
+<td style="text-align: right;">0.2403 亿</td>
+<td style="text-align: right;">0.2200 亿</td>
+<td style="text-align: center;">+9.25%</td>
+</tr>
+<tr>
+<td>财务费用</td>
+<td style="text-align: right;">2,424.34 万</td>
+<td style="text-align: right;">1,258.53 万</td>
+<td style="text-align: center;">+92.63%</td>
+</tr>
+<tr>
+<td>税金及附加</td>
+<td style="text-align: right;">522.56 万</td>
+<td style="text-align: right;">460.52 万</td>
+<td style="text-align: center;">+13.47%</td>
+</tr>
+<tr>
+<td>资产减值损失</td>
+<td style="text-align: right;">-20.80 万</td>
+<td style="text-align: right;">-19.22 万</td>
+<td style="text-align: center;">+8.19%</td>
+</tr>
+<tr>
+<td>信用减值损失</td>
+<td style="text-align: right;">-599.13 万</td>
+<td style="text-align: right;">-136.11 万</td>
+<td style="text-align: center;">+340.18%</td>
+</tr>
+<tr>
+<td>公允价值变动</td>
+<td style="text-align: right;">7.31 万</td>
+<td style="text-align: right;">-72.08 万</td>
+<td style="text-align: center;">-110.15%</td>
+</tr>
+<tr>
+<td>投资收益</td>
+<td style="text-align: right;">250.07 万</td>
+<td style="text-align: right;">197.14 万</td>
+<td style="text-align: center;">+26.85%</td>
+</tr>
+<tr>
+<td>营业利润</td>
+<td style="text-align: right;">1.0910 亿</td>
+<td style="text-align: right;">0.9453 亿</td>
+<td style="text-align: center;">+15.41%</td>
+</tr>
+<tr>
+<td>营业外收入</td>
+<td style="text-align: right;">126.82 万</td>
+<td style="text-align: right;">307.12 万</td>
+<td style="text-align: center;">-58.71%</td>
+</tr>
+<tr>
+<td>营业外支出</td>
+<td style="text-align: right;">34.99 万</td>
+<td style="text-align: right;">289.93 万</td>
+<td style="text-align: center;">-87.93%</td>
+</tr>
+<tr>
+<td>利润总额</td>
+<td style="text-align: right;">1.1002 亿</td>
+<td style="text-align: right;">0.9470 亿</td>
+<td style="text-align: center;">+16.17%</td>
+</tr>
+<tr>
+<td>所得税</td>
+<td style="text-align: right;">1,904.94 万</td>
+<td style="text-align: right;">1,779.28 万</td>
+<td style="text-align: center;">+7.06%</td>
+</tr>
+<tr>
+<td>净利润</td>
+<td style="text-align: right;">0.9097 亿</td>
+<td style="text-align: right;">0.7691 亿</td>
+<td style="text-align: center;">+18.28%</td>
+</tr>
+<tr>
+<td>归母净利润</td>
+<td style="text-align: right;">0.9283 亿</td>
+<td style="text-align: right;">0.7791 亿</td>
+<td style="text-align: center;">+19.16%</td>
+</tr>
+<tr>
+<td>基本 EPS(元)</td>
+<td style="text-align: right;">0.78</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: center;">+20.00%</td>
+</tr>
+</tbody>
+</table></div>
+<h5>2.2 资产负债表关键科目 (来自 balancesheet.parquet 最新行 end_date=20260630)</h5>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>科目</th>
+<th style="text-align: right;">最新期数值</th>
+<th style="text-align: right;">上年同期</th>
+<th style="text-align: center;">YoY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>总资产</td>
+<td style="text-align: right;">36.7592 亿</td>
+<td style="text-align: right;">34.7582 亿</td>
+<td style="text-align: center;">+5.76%</td>
+</tr>
+<tr>
+<td>总负债</td>
+<td style="text-align: right;">9.6577 亿</td>
+<td style="text-align: right;">13.8736 亿</td>
+<td style="text-align: center;">-30.39%</td>
+</tr>
+<tr>
+<td>所有者权益合计</td>
+<td style="text-align: right;">27.1015 亿</td>
+<td style="text-align: right;">20.8846 亿</td>
+<td style="text-align: center;">+29.77%</td>
+</tr>
+<tr>
+<td>货币资金</td>
+<td style="text-align: right;">7.9841 亿</td>
+<td style="text-align: right;">7.7137 亿</td>
+<td style="text-align: center;">+3.51%</td>
+</tr>
+<tr>
+<td>应收账款</td>
+<td style="text-align: right;">4.2397 亿</td>
+<td style="text-align: right;">3.6121 亿</td>
+<td style="text-align: center;">+17.38%</td>
+</tr>
+<tr>
+<td>存货</td>
+<td style="text-align: right;">2.1527 亿</td>
+<td style="text-align: right;">2.0614 亿</td>
+<td style="text-align: center;">+4.43%</td>
+</tr>
+<tr>
+<td>固定资产</td>
+<td style="text-align: right;">10.3960 亿</td>
+<td style="text-align: right;">7.3892 亿</td>
+<td style="text-align: center;">+40.69%</td>
+</tr>
+<tr>
+<td>在建工程</td>
+<td style="text-align: right;">1.8903 亿</td>
+<td style="text-align: right;">3.5442 亿</td>
+<td style="text-align: center;">-46.66%</td>
+</tr>
+<tr>
+<td>无形资产</td>
+<td style="text-align: right;">1.4040 亿</td>
+<td style="text-align: right;">1.2537 亿</td>
+<td style="text-align: center;">+11.99%</td>
+</tr>
+<tr>
+<td>商誉</td>
+<td style="text-align: right;">1.6043 亿</td>
+<td style="text-align: right;">1.2873 亿</td>
+<td style="text-align: center;">+24.63%</td>
+</tr>
+<tr>
+<td>短期借款</td>
+<td style="text-align: right;">0.8505 亿</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>应付票据</td>
+<td style="text-align: right;">0.8871 亿</td>
+<td style="text-align: right;">0.4782 亿</td>
+<td style="text-align: center;">+85.49%</td>
+</tr>
+<tr>
+<td>应付账款</td>
+<td style="text-align: right;">0.7843 亿</td>
+<td style="text-align: right;">0.9974 亿</td>
+<td style="text-align: center;">-21.37%</td>
+</tr>
+<tr>
+<td>长期借款</td>
+<td style="text-align: right;">2.3857 亿</td>
+<td style="text-align: right;">2.2799 亿</td>
+<td style="text-align: center;">+4.64%</td>
+</tr>
+<tr>
+<td>总股本(万股)</td>
+<td style="text-align: right;">12,768.20 万股</td>
+<td style="text-align: right;">12,030.48 万股</td>
+<td style="text-align: center;">+6.13%</td>
+</tr>
+</tbody>
+</table></div>
+<h5>2.3 现金流量表 (来自 cashflow.parquet 最新行 end_date=20260630)</h5>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>科目</th>
+<th style="text-align: right;">最新期数值</th>
+<th style="text-align: right;">上年同期</th>
+<th style="text-align: center;">YoY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>净利润(对账)</td>
+<td style="text-align: right;">0.9097 亿</td>
+<td style="text-align: right;">0.7691 亿</td>
+<td style="text-align: center;">+18.28%</td>
+</tr>
+<tr>
+<td>销售商品收到现金</td>
+<td style="text-align: right;">7.9334 亿</td>
+<td style="text-align: right;">6.2220 亿</td>
+<td style="text-align: center;">+27.51%</td>
+</tr>
+<tr>
+<td>购买商品支付现金</td>
+<td style="text-align: right;">5.0744 亿</td>
+<td style="text-align: right;">3.9388 亿</td>
+<td style="text-align: center;">+28.83%</td>
+</tr>
+<tr>
+<td>支付税费</td>
+<td style="text-align: right;">0.3941 亿</td>
+<td style="text-align: right;">0.4895 亿</td>
+<td style="text-align: center;">-19.50%</td>
+</tr>
+<tr>
+<td>经营活动现金流净额</td>
+<td style="text-align: right;">1.3345 亿</td>
+<td style="text-align: right;">0.9083 亿</td>
+<td style="text-align: center;">+46.93%</td>
+</tr>
+<tr>
+<td>购建固定资产支付现金</td>
+<td style="text-align: right;">0.6635 亿</td>
+<td style="text-align: right;">1.2140 亿</td>
+<td style="text-align: center;">-45.34%</td>
+</tr>
+<tr>
+<td>投资支付现金</td>
+<td style="text-align: right;">2.8614 亿</td>
+<td style="text-align: right;">4.4481 亿</td>
+<td style="text-align: center;">-35.67%</td>
+</tr>
+<tr>
+<td>投资活动现金流净额</td>
+<td style="text-align: right;">0.1766 亿</td>
+<td style="text-align: right;">-0.7620 亿</td>
+<td style="text-align: center;">-123.18%</td>
+</tr>
+<tr>
+<td>借款收到现金</td>
+<td style="text-align: right;">0.3826 亿</td>
+<td style="text-align: right;">1.0000 亿</td>
+<td style="text-align: center;">-61.74%</td>
+</tr>
+<tr>
+<td>偿还债务支付现金</td>
+<td style="text-align: right;">0.1464 亿</td>
+<td style="text-align: right;">0.3480 亿</td>
+<td style="text-align: center;">-57.91%</td>
+</tr>
+<tr>
+<td>分配股利偿付利息现金</td>
+<td style="text-align: right;">0.1208 亿</td>
+<td style="text-align: right;">0.0740 亿</td>
+<td style="text-align: center;">+63.18%</td>
+</tr>
+<tr>
+<td>筹资活动现金流净额</td>
+<td style="text-align: right;">0.0081 亿</td>
+<td style="text-align: right;">0.4928 亿</td>
+<td style="text-align: center;">-98.36%</td>
+</tr>
+<tr>
+<td>自由现金流</td>
+<td style="text-align: right;">0.1169 亿</td>
+<td style="text-align: right;">-0.2930 亿</td>
+<td style="text-align: center;">-139.89%</td>
+</tr>
+<tr>
+<td>固定资产折旧</td>
+<td style="text-align: right;">0.6000 亿</td>
+<td style="text-align: right;">0.4777 亿</td>
+<td style="text-align: center;">+25.62%</td>
+</tr>
+<tr>
+<td>无形资产摊销</td>
+<td style="text-align: right;">317.41 万</td>
+<td style="text-align: right;">242.90 万</td>
+<td style="text-align: center;">+30.68%</td>
+</tr>
+</tbody>
+</table></div>
+<h5>2.4 财务指标 (来自 fina_indicator.parquet 最新行 end_date=20260630)</h5>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>指标</th>
+<th style="text-align: right;">数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EPS(元/股)</td>
+<td style="text-align: right;">0.7800</td>
+</tr>
+<tr>
+<td>营收 / 股(元)</td>
+<td style="text-align: right;">6.8325</td>
+</tr>
+<tr>
+<td>经营现金流 / 股(元)</td>
+<td style="text-align: right;">1.0452</td>
+</tr>
+<tr>
+<td>毛利率(%)</td>
+<td style="text-align: right;">30.0875</td>
+</tr>
+<tr>
+<td>毛利额(元)</td>
+<td style="text-align: right;">262480263.0300</td>
+</tr>
+<tr>
+<td>净利率(%)</td>
+<td style="text-align: right;">10.4275</td>
+</tr>
+<tr>
+<td>加权 ROE(%)</td>
+<td style="text-align: right;">3.9731</td>
+</tr>
+<tr>
+<td>加权 ROE(扣非, %)</td>
+<td style="text-align: right;">3.8495</td>
+</tr>
+<tr>
+<td>ROA(%)</td>
+<td style="text-align: right;">3.3845</td>
+</tr>
+<tr>
+<td>投入资本回报率(%)</td>
+<td style="text-align: right;">3.2112</td>
+</tr>
+<tr>
+<td>资产负债率(%)</td>
+<td style="text-align: right;">26.2729</td>
+</tr>
+<tr>
+<td>流动比率</td>
+<td style="text-align: right;">3.0575</td>
+</tr>
+<tr>
+<td>速动比率</td>
+<td style="text-align: right;">2.6942</td>
+</tr>
+<tr>
+<td>总资产周转率</td>
+<td style="text-align: right;">0.2404</td>
+</tr>
+<tr>
+<td>应收账款周转率</td>
+<td style="text-align: right;">2.2066</td>
+</tr>
+<tr>
+<td>有息负债(元)</td>
+<td style="text-align: right;">502500517.0700</td>
+</tr>
+<tr>
+<td>净负债(元)</td>
+<td style="text-align: right;">-295912856.5400</td>
+</tr>
+<tr>
+<td>产权比率</td>
+<td style="text-align: right;">0.3564</td>
+</tr>
+<tr>
+<td>稀释 EPS(元/股)</td>
+<td style="text-align: right;">0.7800</td>
+</tr>
+<tr>
+<td>每股净资产</td>
+<td style="text-align: right;">20.8339</td>
+</tr>
+<tr>
+<td>本季度 ROE(%)</td>
+<td style="text-align: right;">2.5085</td>
+</tr>
+<tr>
+<td>本季度净利率(%)</td>
+<td style="text-align: right;">11.9182</td>
+</tr>
+<tr>
+<td>本季度毛利率(%)</td>
+<td style="text-align: right;">30.0024</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h4>§3 多年趋势完整表</h4>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th style="text-align: center;">期末</th>
+<th style="text-align: right;">营收(亿)</th>
+<th style="text-align: center;">营收 YoY</th>
+<th style="text-align: right;">毛利率%</th>
+<th style="text-align: right;">净利率%</th>
+<th style="text-align: right;">归母净利(亿)</th>
+<th style="text-align: center;">净利 YoY</th>
+<th style="text-align: right;">加权 ROE%</th>
+<th style="text-align: right;">资产负债率%</th>
+<th style="text-align: right;">OCF(亿)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">20260630</td>
+<td style="text-align: right;">8.72</td>
+<td style="text-align: center;">+28.95%</td>
+<td style="text-align: right;">30.09</td>
+<td style="text-align: right;">10.43</td>
+<td style="text-align: right;">0.9283</td>
+<td style="text-align: center;">+19.16%</td>
+<td style="text-align: right;">3.97</td>
+<td style="text-align: right;">26.27</td>
+<td style="text-align: right;">1.3345</td>
+</tr>
+<tr>
+<td style="text-align: center;">20260331</td>
+<td style="text-align: right;">3.84</td>
+<td style="text-align: center;">+13.70%</td>
+<td style="text-align: right;">30.20</td>
+<td style="text-align: right;">8.53</td>
+<td style="text-align: right;">0.3388</td>
+<td style="text-align: center;">-23.70%</td>
+<td style="text-align: right;">1.67</td>
+<td style="text-align: right;">41.72</td>
+<td style="text-align: right;">0.5292</td>
+</tr>
+<tr>
+<td style="text-align: center;">20251231</td>
+<td style="text-align: right;">14.19</td>
+<td style="text-align: center;">+1.70%</td>
+<td style="text-align: right;">30.87</td>
+<td style="text-align: right;">9.05</td>
+<td style="text-align: right;">1.3535</td>
+<td style="text-align: center;">-26.75%</td>
+<td style="text-align: right;">6.83</td>
+<td style="text-align: right;">42.37</td>
+<td style="text-align: right;">2.6103</td>
+</tr>
+<tr>
+<td style="text-align: center;">20250930</td>
+<td style="text-align: right;">10.44</td>
+<td style="text-align: center;">-1.36%</td>
+<td style="text-align: right;">33.78</td>
+<td style="text-align: right;">11.15</td>
+<td style="text-align: right;">1.1898</td>
+<td style="text-align: center;">-10.32%</td>
+<td style="text-align: right;">6.02</td>
+<td style="text-align: right;">41.84</td>
+<td style="text-align: right;">1.8500</td>
+</tr>
+<tr>
+<td style="text-align: center;">20250630</td>
+<td style="text-align: right;">6.77</td>
+<td style="text-align: center;">-5.77%</td>
+<td style="text-align: right;">33.47</td>
+<td style="text-align: right;">11.37</td>
+<td style="text-align: right;">0.7791</td>
+<td style="text-align: center;">-18.97%</td>
+<td style="text-align: right;">3.91</td>
+<td style="text-align: right;">39.91</td>
+<td style="text-align: right;">0.9083</td>
+</tr>
+<tr>
+<td style="text-align: center;">20250331</td>
+<td style="text-align: right;">3.38</td>
+<td style="text-align: center;">+1.57%</td>
+<td style="text-align: right;">33.70</td>
+<td style="text-align: right;">13.00</td>
+<td style="text-align: right;">0.4440</td>
+<td style="text-align: center;">-1.55%</td>
+<td style="text-align: right;">2.25</td>
+<td style="text-align: right;">40.38</td>
+<td style="text-align: right;">0.6206</td>
+</tr>
+<tr>
+<td style="text-align: center;">20241231</td>
+<td style="text-align: right;">13.95</td>
+<td style="text-align: center;">-7.02%</td>
+<td style="text-align: right;">31.90</td>
+<td style="text-align: right;">13.17</td>
+<td style="text-align: right;">1.8478</td>
+<td style="text-align: center;">+7.99%</td>
+<td style="text-align: right;">9.79</td>
+<td style="text-align: right;">39.24</td>
+<td style="text-align: right;">2.9377</td>
+</tr>
+<tr>
+<td style="text-align: center;">20240930</td>
+<td style="text-align: right;">10.58</td>
+<td style="text-align: center;">-6.26%</td>
+<td style="text-align: right;">31.88</td>
+<td style="text-align: right;">12.53</td>
+<td style="text-align: right;">1.3267</td>
+<td style="text-align: center;">+9.09%</td>
+<td style="text-align: right;">7.12</td>
+<td style="text-align: right;">39.53</td>
+<td style="text-align: right;">2.1503</td>
+</tr>
+<tr>
+<td style="text-align: center;">20240630</td>
+<td style="text-align: right;">7.18</td>
+<td style="text-align: center;">-3.04%</td>
+<td style="text-align: right;">31.62</td>
+<td style="text-align: right;">13.44</td>
+<td style="text-align: right;">0.9615</td>
+<td style="text-align: center;">+28.85%</td>
+<td style="text-align: right;">5.13</td>
+<td style="text-align: right;">38.62</td>
+<td style="text-align: right;">1.5366</td>
+</tr>
+<tr>
+<td style="text-align: center;">20240331</td>
+<td style="text-align: right;">3.33</td>
+<td style="text-align: center;">-7.30%</td>
+<td style="text-align: right;">33.04</td>
+<td style="text-align: right;">13.62</td>
+<td style="text-align: right;">0.4510</td>
+<td style="text-align: center;">+12.68%</td>
+<td style="text-align: right;">2.44</td>
+<td style="text-align: right;">39.79</td>
+<td style="text-align: right;">0.7958</td>
+</tr>
+<tr>
+<td style="text-align: center;">20231231</td>
+<td style="text-align: right;">15.00</td>
+<td style="text-align: center;">-16.80%</td>
+<td style="text-align: right;">30.59</td>
+<td style="text-align: right;">11.47</td>
+<td style="text-align: right;">1.7112</td>
+<td style="text-align: center;">-17.03%</td>
+<td style="text-align: right;">10.17</td>
+<td style="text-align: right;">40.86</td>
+<td style="text-align: right;">1.7004</td>
+</tr>
+<tr>
+<td style="text-align: center;">20230930</td>
+<td style="text-align: right;">11.29</td>
+<td style="text-align: center;">-19.51%</td>
+<td style="text-align: right;">30.21</td>
+<td style="text-align: right;">10.83</td>
+<td style="text-align: right;">1.2162</td>
+<td style="text-align: center;">-34.63%</td>
+<td style="text-align: right;">7.28</td>
+<td style="text-align: right;">41.61</td>
+<td style="text-align: right;">1.0213</td>
+</tr>
+<tr>
+<td style="text-align: center;">20230630</td>
+<td style="text-align: right;">7.41</td>
+<td style="text-align: center;">-16.21%</td>
+<td style="text-align: right;">29.22</td>
+<td style="text-align: right;">10.17</td>
+<td style="text-align: right;">0.7462</td>
+<td style="text-align: center;">-36.85%</td>
+<td style="text-align: right;">4.47</td>
+<td style="text-align: right;">42.37</td>
+<td style="text-align: right;">0.9510</td>
+</tr>
+<tr>
+<td style="text-align: center;">20230331</td>
+<td style="text-align: right;">3.59</td>
+<td style="text-align: center;">-6.42%</td>
+<td style="text-align: right;">30.25</td>
+<td style="text-align: right;">11.26</td>
+<td style="text-align: right;">0.4002</td>
+<td style="text-align: center;">+2.16%</td>
+<td style="text-align: right;">2.43</td>
+<td style="text-align: right;">42.42</td>
+<td style="text-align: right;">0.6835</td>
+</tr>
+<tr>
+<td style="text-align: center;">20221231</td>
+<td style="text-align: right;">18.03</td>
+<td style="text-align: center;">+33.84%</td>
+<td style="text-align: right;">26.88</td>
+<td style="text-align: right;">11.46</td>
+<td style="text-align: right;">2.0624</td>
+<td style="text-align: center;">+59.48%</td>
+<td style="text-align: right;">14.11</td>
+<td style="text-align: right;">33.79</td>
+<td style="text-align: right;">3.2232</td>
+</tr>
+<tr>
+<td style="text-align: center;">20220930</td>
+<td style="text-align: right;">14.03</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">27.79</td>
+<td style="text-align: right;">13.26</td>
+<td style="text-align: right;">1.8605</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">12.76</td>
+<td style="text-align: right;">29.43</td>
+<td style="text-align: right;">1.6165</td>
+</tr>
+<tr>
+<td style="text-align: center;">20220630</td>
+<td style="text-align: right;">8.84</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">28.21</td>
+<td style="text-align: right;">13.37</td>
+<td style="text-align: right;">1.1817</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">8.30</td>
+<td style="text-align: right;">29.00</td>
+<td style="text-align: right;">0.0050</td>
+</tr>
+<tr>
+<td style="text-align: center;">20220331</td>
+<td style="text-align: right;">3.83</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">25.72</td>
+<td style="text-align: right;">10.17</td>
+<td style="text-align: right;">0.3917</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">2.79</td>
+<td style="text-align: right;">23.94</td>
+<td style="text-align: right;">-0.2331</td>
+</tr>
+<tr>
+<td style="text-align: center;">20211231</td>
+<td style="text-align: right;">13.47</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">1.2932</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">0.1516</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>共 19 期, 最新期 20260630。</em></p>
+<hr />
+<h4>§4 业绩预告 vs 实际兑现对比 (★ 若 actual 已存在, 主报告必须用 actual, 禁止用预告口径)</h4>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th style="text-align: center;">公告日</th>
+<th style="text-align: center;">报告期</th>
+<th style="text-align: center;">类型</th>
+<th style="text-align: right;">预告净利区间(万)</th>
+<th style="text-align: right;"><strong>实际归母净利(★ income)</strong></th>
+<th style="text-align: center;">兑现状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">20260721</td>
+<td style="text-align: center;">20260630</td>
+<td style="text-align: center;">略增</td>
+<td style="text-align: right;">9,299 ~ 9,299</td>
+<td style="text-align: right;"><strong>9,283.27 万</strong></td>
+<td style="text-align: center;">⬇️ 低于预告下沿 (-0.2%)</td>
+</tr>
+<tr>
+<td style="text-align: center;">20230131</td>
+<td style="text-align: center;">20221231</td>
+<td style="text-align: center;">预增</td>
+<td style="text-align: right;">18,493 ~ 21,079</td>
+<td style="text-align: right;"><strong>20,624.12 万</strong></td>
+<td style="text-align: center;">✅ 落入区间</td>
+</tr>
+<tr>
+<td style="text-align: center;">20221012</td>
+<td style="text-align: center;">20220930</td>
+<td style="text-align: center;">预增</td>
+<td style="text-align: right;">17,308 ~ 19,368</td>
+<td style="text-align: right;"><strong>18,605.13 万</strong></td>
+<td style="text-align: center;">✅ 落入区间</td>
+</tr>
+<tr>
+<td style="text-align: center;">20210702</td>
+<td style="text-align: center;">20210630</td>
+<td style="text-align: center;">预增</td>
+<td style="text-align: right;">5,782 ~ 6,639</td>
+<td style="text-align: right;">未发布 / 待披露</td>
+<td style="text-align: center;">未发布</td>
+</tr>
+<tr>
+<td style="text-align: center;">20210130</td>
+<td style="text-align: center;">20201231</td>
+<td style="text-align: center;">预增</td>
+<td style="text-align: right;">10,526 ~ 11,252</td>
+<td style="text-align: right;">未发布 / 待披露</td>
+<td style="text-align: center;">未发布</td>
+</tr>
+<tr>
+<td style="text-align: center;">20191209</td>
+<td style="text-align: center;">20191231</td>
+<td style="text-align: center;">略增</td>
+<td style="text-align: right;">7,800 ~ 8,400</td>
+<td style="text-align: right;">未发布 / 待披露</td>
+<td style="text-align: center;">未发布</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>某期实际数已披露(实际栏非 "待披露")时以实际数为准; 预告只作兑现度对照 —— 判断链里预告属未确认证据, 不能当已实现业绩用。</em></p>
+<hr />
+<h4>§5 完整十大股东表 (最近 4 期)</h4>
+<h5>报告期: 20260630</h5>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>股东</th>
+<th style="text-align: right;">持股数(万股)</th>
+<th style="text-align: right;">持股比例(%)</th>
+<th style="text-align: right;">占流通比例(%)</th>
+<th style="text-align: right;">期间变动(万股)</th>
+<th style="text-align: center;">股东类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>广东华特投资有限公司</td>
+<td style="text-align: right;">2,664.07</td>
+<td style="text-align: right;">20.86</td>
+<td style="text-align: right;">20.86</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>2</td>
+<td>石平湘</td>
+<td style="text-align: right;">1,185.53</td>
+<td style="text-align: right;">9.29</td>
+<td style="text-align: right;">9.29</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>3</td>
+<td>厦门华弘多福投资合伙企业(有限合伙)</td>
+<td style="text-align: right;">618.78</td>
+<td style="text-align: right;">4.85</td>
+<td style="text-align: right;">4.85</td>
+<td style="text-align: right;">-115.99</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>4</td>
+<td>张穗华</td>
+<td style="text-align: right;">603.94</td>
+<td style="text-align: right;">4.73</td>
+<td style="text-align: right;">4.73</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>5</td>
+<td>石思慧</td>
+<td style="text-align: right;">540.00</td>
+<td style="text-align: right;">4.23</td>
+<td style="text-align: right;">4.23</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>6</td>
+<td>厦门华和多福投资合伙企业(有限合伙)</td>
+<td style="text-align: right;">298.29</td>
+<td style="text-align: right;">2.34</td>
+<td style="text-align: right;">2.34</td>
+<td style="text-align: right;">-68.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>7</td>
+<td>厦门华进多福投资合伙企业(有限合伙)</td>
+<td style="text-align: right;">164.31</td>
+<td style="text-align: right;">1.29</td>
+<td style="text-align: right;">1.29</td>
+<td style="text-align: right;">-56.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>8</td>
+<td>全国社保基金五零三组合</td>
+<td style="text-align: right;">100.00</td>
+<td style="text-align: right;">0.78</td>
+<td style="text-align: right;">0.78</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">社保基金、社保机构</td>
+</tr>
+<tr>
+<td>9</td>
+<td>UBSAG</td>
+<td style="text-align: right;">92.87</td>
+<td style="text-align: right;">0.73</td>
+<td style="text-align: right;">0.73</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">金融机构—银行</td>
+</tr>
+<tr>
+<td>10</td>
+<td>张穗萍</td>
+<td style="text-align: right;">75.80</td>
+<td style="text-align: right;">0.59</td>
+<td style="text-align: right;">0.59</td>
+<td style="text-align: right;">-119.18</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+</tbody>
+</table></div>
+<h5>报告期: 20260331</h5>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>股东</th>
+<th style="text-align: right;">持股数(万股)</th>
+<th style="text-align: right;">持股比例(%)</th>
+<th style="text-align: right;">占流通比例(%)</th>
+<th style="text-align: right;">期间变动(万股)</th>
+<th style="text-align: center;">股东类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>广东华特投资有限公司</td>
+<td style="text-align: right;">2,664.07</td>
+<td style="text-align: right;">22.20</td>
+<td style="text-align: right;">22.22</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>2</td>
+<td>石平湘</td>
+<td style="text-align: right;">1,185.53</td>
+<td style="text-align: right;">9.88</td>
+<td style="text-align: right;">9.89</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>3</td>
+<td>厦门华弘多福投资合伙企业(有限合伙)</td>
+<td style="text-align: right;">734.77</td>
+<td style="text-align: right;">6.12</td>
+<td style="text-align: right;">6.13</td>
+<td style="text-align: right;">-115.99</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>4</td>
+<td>张穗华</td>
+<td style="text-align: right;">603.94</td>
+<td style="text-align: right;">5.03</td>
+<td style="text-align: right;">5.04</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>5</td>
+<td>石思慧</td>
+<td style="text-align: right;">540.00</td>
+<td style="text-align: right;">4.50</td>
+<td style="text-align: right;">4.50</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>6</td>
+<td>厦门华和多福投资合伙企业(有限合伙)</td>
+<td style="text-align: right;">366.29</td>
+<td style="text-align: right;">3.05</td>
+<td style="text-align: right;">3.05</td>
+<td style="text-align: right;">-68.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>7</td>
+<td>厦门华进多福投资合伙企业(有限合伙)</td>
+<td style="text-align: right;">220.31</td>
+<td style="text-align: right;">1.84</td>
+<td style="text-align: right;">1.84</td>
+<td style="text-align: right;">-56.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>8</td>
+<td>张穗萍</td>
+<td style="text-align: right;">194.97</td>
+<td style="text-align: right;">1.62</td>
+<td style="text-align: right;">1.63</td>
+<td style="text-align: right;">-0.18</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>9</td>
+<td>陈星玮</td>
+<td style="text-align: right;">103.74</td>
+<td style="text-align: right;">0.86</td>
+<td style="text-align: right;">0.87</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>10</td>
+<td>MORGANSTANLEY&amp;CO.INTERNATIONALPLC.</td>
+<td style="text-align: right;">97.31</td>
+<td style="text-align: right;">0.81</td>
+<td style="text-align: right;">0.81</td>
+<td style="text-align: right;">+23.48</td>
+<td style="text-align: center;">一般企业</td>
+</tr>
+</tbody>
+</table></div>
+<h5>报告期: 20251231</h5>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>股东</th>
+<th style="text-align: right;">持股数(万股)</th>
+<th style="text-align: right;">持股比例(%)</th>
+<th style="text-align: right;">占流通比例(%)</th>
+<th style="text-align: right;">期间变动(万股)</th>
+<th style="text-align: center;">股东类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>广东华特投资有限公司</td>
+<td style="text-align: right;">2,664.07</td>
+<td style="text-align: right;">22.14</td>
+<td style="text-align: right;">22.16</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>2</td>
+<td>石平湘</td>
+<td style="text-align: right;">1,185.53</td>
+<td style="text-align: right;">9.85</td>
+<td style="text-align: right;">9.86</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>3</td>
+<td>厦门华弘多福投资合伙企业(有限合伙)</td>
+<td style="text-align: right;">850.76</td>
+<td style="text-align: right;">7.07</td>
+<td style="text-align: right;">7.08</td>
+<td style="text-align: right;">-130.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>4</td>
+<td>张穗华</td>
+<td style="text-align: right;">603.94</td>
+<td style="text-align: right;">5.02</td>
+<td style="text-align: right;">5.02</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>5</td>
+<td>石思慧</td>
+<td style="text-align: right;">540.00</td>
+<td style="text-align: right;">4.49</td>
+<td style="text-align: right;">4.49</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>6</td>
+<td>厦门华和多福投资合伙企业(有限合伙)</td>
+<td style="text-align: right;">434.29</td>
+<td style="text-align: right;">3.61</td>
+<td style="text-align: right;">3.61</td>
+<td style="text-align: right;">-68.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>7</td>
+<td>厦门华进多福投资合伙企业(有限合伙)</td>
+<td style="text-align: right;">276.31</td>
+<td style="text-align: right;">2.30</td>
+<td style="text-align: right;">2.30</td>
+<td style="text-align: right;">-42.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>8</td>
+<td>张穗萍</td>
+<td style="text-align: right;">195.15</td>
+<td style="text-align: right;">1.62</td>
+<td style="text-align: right;">1.62</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>9</td>
+<td>MORGANSTANLEY&amp;CO.INTERNATIONALPLC.</td>
+<td style="text-align: right;">73.83</td>
+<td style="text-align: right;">0.61</td>
+<td style="text-align: right;">0.61</td>
+<td style="text-align: right;">-21.57</td>
+<td style="text-align: center;">一般企业</td>
+</tr>
+<tr>
+<td>10</td>
+<td>傅铸红</td>
+<td style="text-align: right;">68.45</td>
+<td style="text-align: right;">0.57</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+</tbody>
+</table></div>
+<h5>报告期: 20250930</h5>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>股东</th>
+<th style="text-align: right;">持股数(万股)</th>
+<th style="text-align: right;">持股比例(%)</th>
+<th style="text-align: right;">占流通比例(%)</th>
+<th style="text-align: right;">期间变动(万股)</th>
+<th style="text-align: center;">股东类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>广东华特投资管理有限公司</td>
+<td style="text-align: right;">2,664.07</td>
+<td style="text-align: right;">22.14</td>
+<td style="text-align: right;">22.16</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>2</td>
+<td>石平湘</td>
+<td style="text-align: right;">1,185.53</td>
+<td style="text-align: right;">9.85</td>
+<td style="text-align: right;">9.86</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>3</td>
+<td>厦门华弘多福投资合伙企业(有限合伙)</td>
+<td style="text-align: right;">980.76</td>
+<td style="text-align: right;">8.15</td>
+<td style="text-align: right;">8.16</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>4</td>
+<td>张穗华</td>
+<td style="text-align: right;">603.94</td>
+<td style="text-align: right;">5.02</td>
+<td style="text-align: right;">5.02</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>5</td>
+<td>石思慧</td>
+<td style="text-align: right;">540.00</td>
+<td style="text-align: right;">4.49</td>
+<td style="text-align: right;">4.49</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>6</td>
+<td>厦门华和多福投资合伙企业(有限合伙)</td>
+<td style="text-align: right;">502.29</td>
+<td style="text-align: right;">4.18</td>
+<td style="text-align: right;">4.18</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>7</td>
+<td>厦门华进多福投资合伙企业(有限合伙)</td>
+<td style="text-align: right;">318.31</td>
+<td style="text-align: right;">2.65</td>
+<td style="text-align: right;">2.65</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>8</td>
+<td>张穗萍</td>
+<td style="text-align: right;">195.15</td>
+<td style="text-align: right;">1.62</td>
+<td style="text-align: right;">1.62</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>9</td>
+<td>MORGANSTANLEY&amp;CO.INTERNATIONALPLC.</td>
+<td style="text-align: right;">95.40</td>
+<td style="text-align: right;">0.79</td>
+<td style="text-align: right;">0.79</td>
+<td style="text-align: right;">-1.44</td>
+<td style="text-align: center;">一般企业</td>
+</tr>
+<tr>
+<td>10</td>
+<td>邱勇强</td>
+<td style="text-align: right;">75.12</td>
+<td style="text-align: right;">0.62</td>
+<td style="text-align: right;">0.62</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>共 4 期 × ≤10 行/期, 可按期对比持股变动。</em></p>
+<hr />
+<h4>§6 完整十大流通股东表 (最近 4 期)</h4>
+<h5>报告期: 20260630</h5>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>股东</th>
+<th style="text-align: right;">持股数(万股)</th>
+<th style="text-align: right;">持股比例(%)</th>
+<th style="text-align: right;">占流通比例(%)</th>
+<th style="text-align: right;">期间变动(万股)</th>
+<th style="text-align: center;">股东类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>广东华特投资有限公司</td>
+<td style="text-align: right;">2,664.07</td>
+<td style="text-align: right;">20.86</td>
+<td style="text-align: right;">20.86</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>2</td>
+<td>石平湘</td>
+<td style="text-align: right;">1,185.53</td>
+<td style="text-align: right;">9.29</td>
+<td style="text-align: right;">9.29</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>3</td>
+<td>厦门华弘多福投资合伙企业(有限合伙)</td>
+<td style="text-align: right;">618.78</td>
+<td style="text-align: right;">4.85</td>
+<td style="text-align: right;">4.85</td>
+<td style="text-align: right;">-115.99</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>4</td>
+<td>张穗华</td>
+<td style="text-align: right;">603.94</td>
+<td style="text-align: right;">4.73</td>
+<td style="text-align: right;">4.73</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>5</td>
+<td>石思慧</td>
+<td style="text-align: right;">540.00</td>
+<td style="text-align: right;">4.23</td>
+<td style="text-align: right;">4.23</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>6</td>
+<td>厦门华和多福投资合伙企业(有限合伙)</td>
+<td style="text-align: right;">298.29</td>
+<td style="text-align: right;">2.34</td>
+<td style="text-align: right;">2.34</td>
+<td style="text-align: right;">-68.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>7</td>
+<td>厦门华进多福投资合伙企业(有限合伙)</td>
+<td style="text-align: right;">164.31</td>
+<td style="text-align: right;">1.29</td>
+<td style="text-align: right;">1.29</td>
+<td style="text-align: right;">-56.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>8</td>
+<td>全国社保基金五零三组合</td>
+<td style="text-align: right;">100.00</td>
+<td style="text-align: right;">0.78</td>
+<td style="text-align: right;">0.78</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">社保基金、社保机构</td>
+</tr>
+<tr>
+<td>9</td>
+<td>UBSAG</td>
+<td style="text-align: right;">92.87</td>
+<td style="text-align: right;">0.73</td>
+<td style="text-align: right;">0.73</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">金融机构—银行</td>
+</tr>
+<tr>
+<td>10</td>
+<td>张穗萍</td>
+<td style="text-align: right;">75.80</td>
+<td style="text-align: right;">0.59</td>
+<td style="text-align: right;">0.59</td>
+<td style="text-align: right;">-119.18</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+</tbody>
+</table></div>
+<h5>报告期: 20260331</h5>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>股东</th>
+<th style="text-align: right;">持股数(万股)</th>
+<th style="text-align: right;">持股比例(%)</th>
+<th style="text-align: right;">占流通比例(%)</th>
+<th style="text-align: right;">期间变动(万股)</th>
+<th style="text-align: center;">股东类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>广东华特投资有限公司</td>
+<td style="text-align: right;">2,664.07</td>
+<td style="text-align: right;">22.20</td>
+<td style="text-align: right;">22.22</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>2</td>
+<td>石平湘</td>
+<td style="text-align: right;">1,185.53</td>
+<td style="text-align: right;">9.88</td>
+<td style="text-align: right;">9.89</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>3</td>
+<td>厦门华弘多福投资合伙企业(有限合伙)</td>
+<td style="text-align: right;">734.77</td>
+<td style="text-align: right;">6.12</td>
+<td style="text-align: right;">6.13</td>
+<td style="text-align: right;">-115.99</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>4</td>
+<td>张穗华</td>
+<td style="text-align: right;">603.94</td>
+<td style="text-align: right;">5.03</td>
+<td style="text-align: right;">5.04</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>5</td>
+<td>石思慧</td>
+<td style="text-align: right;">540.00</td>
+<td style="text-align: right;">4.50</td>
+<td style="text-align: right;">4.50</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>6</td>
+<td>厦门华和多福投资合伙企业(有限合伙)</td>
+<td style="text-align: right;">366.29</td>
+<td style="text-align: right;">3.05</td>
+<td style="text-align: right;">3.05</td>
+<td style="text-align: right;">-68.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>7</td>
+<td>厦门华进多福投资合伙企业(有限合伙)</td>
+<td style="text-align: right;">220.31</td>
+<td style="text-align: right;">1.84</td>
+<td style="text-align: right;">1.84</td>
+<td style="text-align: right;">-56.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>8</td>
+<td>张穗萍</td>
+<td style="text-align: right;">194.97</td>
+<td style="text-align: right;">1.62</td>
+<td style="text-align: right;">1.63</td>
+<td style="text-align: right;">-0.18</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>9</td>
+<td>陈星玮</td>
+<td style="text-align: right;">103.74</td>
+<td style="text-align: right;">0.86</td>
+<td style="text-align: right;">0.87</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>10</td>
+<td>MORGANSTANLEY&amp;CO.INTERNATIONALPLC.</td>
+<td style="text-align: right;">97.31</td>
+<td style="text-align: right;">0.81</td>
+<td style="text-align: right;">0.81</td>
+<td style="text-align: right;">+23.48</td>
+<td style="text-align: center;">一般企业</td>
+</tr>
+</tbody>
+</table></div>
+<h5>报告期: 20251231</h5>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>股东</th>
+<th style="text-align: right;">持股数(万股)</th>
+<th style="text-align: right;">持股比例(%)</th>
+<th style="text-align: right;">占流通比例(%)</th>
+<th style="text-align: right;">期间变动(万股)</th>
+<th style="text-align: center;">股东类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>广东华特投资有限公司</td>
+<td style="text-align: right;">2,664.07</td>
+<td style="text-align: right;">22.14</td>
+<td style="text-align: right;">22.16</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>2</td>
+<td>石平湘</td>
+<td style="text-align: right;">1,185.53</td>
+<td style="text-align: right;">9.85</td>
+<td style="text-align: right;">9.86</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>3</td>
+<td>厦门华弘多福投资合伙企业(有限合伙)</td>
+<td style="text-align: right;">850.76</td>
+<td style="text-align: right;">7.07</td>
+<td style="text-align: right;">7.08</td>
+<td style="text-align: right;">-130.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>4</td>
+<td>张穗华</td>
+<td style="text-align: right;">603.94</td>
+<td style="text-align: right;">5.02</td>
+<td style="text-align: right;">5.02</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>5</td>
+<td>石思慧</td>
+<td style="text-align: right;">540.00</td>
+<td style="text-align: right;">4.49</td>
+<td style="text-align: right;">4.49</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>6</td>
+<td>厦门华和多福投资合伙企业(有限合伙)</td>
+<td style="text-align: right;">434.29</td>
+<td style="text-align: right;">3.61</td>
+<td style="text-align: right;">3.61</td>
+<td style="text-align: right;">-68.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>7</td>
+<td>厦门华进多福投资合伙企业(有限合伙)</td>
+<td style="text-align: right;">276.31</td>
+<td style="text-align: right;">2.30</td>
+<td style="text-align: right;">2.30</td>
+<td style="text-align: right;">-42.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>8</td>
+<td>张穗萍</td>
+<td style="text-align: right;">195.15</td>
+<td style="text-align: right;">1.62</td>
+<td style="text-align: right;">1.62</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>9</td>
+<td>MORGANSTANLEY&amp;CO.INTERNATIONALPLC.</td>
+<td style="text-align: right;">73.83</td>
+<td style="text-align: right;">0.61</td>
+<td style="text-align: right;">0.61</td>
+<td style="text-align: right;">-21.57</td>
+<td style="text-align: center;">一般企业</td>
+</tr>
+<tr>
+<td>10</td>
+<td>傅铸红</td>
+<td style="text-align: right;">60.35</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+</tbody>
+</table></div>
+<h5>报告期: 20250930</h5>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>股东</th>
+<th style="text-align: right;">持股数(万股)</th>
+<th style="text-align: right;">持股比例(%)</th>
+<th style="text-align: right;">占流通比例(%)</th>
+<th style="text-align: right;">期间变动(万股)</th>
+<th style="text-align: center;">股东类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>广东华特投资管理有限公司</td>
+<td style="text-align: right;">2,664.07</td>
+<td style="text-align: right;">22.14</td>
+<td style="text-align: right;">22.16</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>2</td>
+<td>石平湘</td>
+<td style="text-align: right;">1,185.53</td>
+<td style="text-align: right;">9.85</td>
+<td style="text-align: right;">9.86</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>3</td>
+<td>厦门华弘多福投资合伙企业(有限合伙)</td>
+<td style="text-align: right;">980.76</td>
+<td style="text-align: right;">8.15</td>
+<td style="text-align: right;">8.16</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>4</td>
+<td>张穗华</td>
+<td style="text-align: right;">603.94</td>
+<td style="text-align: right;">5.02</td>
+<td style="text-align: right;">5.02</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>5</td>
+<td>石思慧</td>
+<td style="text-align: right;">540.00</td>
+<td style="text-align: right;">4.49</td>
+<td style="text-align: right;">4.49</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>6</td>
+<td>厦门华和多福投资合伙企业(有限合伙)</td>
+<td style="text-align: right;">502.29</td>
+<td style="text-align: right;">4.18</td>
+<td style="text-align: right;">4.18</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>7</td>
+<td>厦门华进多福投资合伙企业(有限合伙)</td>
+<td style="text-align: right;">318.31</td>
+<td style="text-align: right;">2.65</td>
+<td style="text-align: right;">2.65</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>8</td>
+<td>张穗萍</td>
+<td style="text-align: right;">195.15</td>
+<td style="text-align: right;">1.62</td>
+<td style="text-align: right;">1.62</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+<tr>
+<td>9</td>
+<td>MORGANSTANLEY&amp;CO.INTERNATIONALPLC.</td>
+<td style="text-align: right;">95.40</td>
+<td style="text-align: right;">0.79</td>
+<td style="text-align: right;">0.79</td>
+<td style="text-align: right;">-1.44</td>
+<td style="text-align: center;">一般企业</td>
+</tr>
+<tr>
+<td>10</td>
+<td>邱勇强</td>
+<td style="text-align: right;">75.12</td>
+<td style="text-align: right;">0.62</td>
+<td style="text-align: right;">0.62</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>共 4 期 × ≤10 行/期, 可按期对比持股变动。</em></p>
+<hr />
+<h4>§7 质押 / 冻结明细 (active 状态)</h4>
+<p>(无质押数据)</p>
+<hr />
+<h4>§8 股东户数变化时序</h4>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th style="text-align: center;">报告期</th>
+<th style="text-align: right;">户数</th>
+<th style="text-align: center;">环比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">20260731</td>
+<td style="text-align: right;">30,047</td>
+<td style="text-align: center;">-12.73%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20260630</td>
+<td style="text-align: right;">34,429</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td style="text-align: center;">20260618</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td style="text-align: center;">20260529</td>
+<td style="text-align: right;">23,683</td>
+<td style="text-align: center;">+11.04%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20260430</td>
+<td style="text-align: right;">21,329</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td style="text-align: center;">20260415</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td style="text-align: center;">20260410</td>
+<td style="text-align: right;">15,042</td>
+<td style="text-align: center;">+0.00%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20260410</td>
+<td style="text-align: right;">15,042</td>
+<td style="text-align: center;">+1.92%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20260331</td>
+<td style="text-align: right;">14,758</td>
+<td style="text-align: center;">-1.13%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20260320</td>
+<td style="text-align: right;">14,927</td>
+<td style="text-align: center;">-4.03%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20260228</td>
+<td style="text-align: right;">15,554</td>
+<td style="text-align: center;">+2.09%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20260210</td>
+<td style="text-align: right;">15,236</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td style="text-align: center;">20260206</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td style="text-align: center;">20260131</td>
+<td style="text-align: right;">15,188</td>
+<td style="text-align: center;">-4.03%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20260120</td>
+<td style="text-align: right;">15,826</td>
+<td style="text-align: center;">-0.26%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20260110</td>
+<td style="text-align: right;">15,868</td>
+<td style="text-align: center;">+9.09%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20251231</td>
+<td style="text-align: right;">14,546</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td style="text-align: center;">20251226</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td style="text-align: center;">20251219</td>
+<td style="text-align: right;">14,140</td>
+<td style="text-align: center;">+12.98%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20251128</td>
+<td style="text-align: right;">12,515</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td style="text-align: center;">20251125</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td style="text-align: center;">20251031</td>
+<td style="text-align: right;">13,399</td>
+<td style="text-align: center;">+22.04%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20250930</td>
+<td style="text-align: right;">10,979</td>
+<td style="text-align: center;">+13.09%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20250630</td>
+<td style="text-align: right;">9,708</td>
+<td style="text-align: center;">-15.07%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20250331</td>
+<td style="text-align: right;">11,430</td>
+<td style="text-align: center;">+21.13%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20241231</td>
+<td style="text-align: right;">9,436</td>
+<td style="text-align: center;">+11.19%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20240930</td>
+<td style="text-align: right;">8,486</td>
+<td style="text-align: center;">+6.33%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20240630</td>
+<td style="text-align: right;">7,981</td>
+<td style="text-align: center;">-8.90%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20240331</td>
+<td style="text-align: right;">8,761</td>
+<td style="text-align: center;">+34.00%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20231231</td>
+<td style="text-align: right;">6,538</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td style="text-align: center;">20231229</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td style="text-align: center;">20231220</td>
+<td style="text-align: right;">7,782</td>
+<td style="text-align: center;">-11.73%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20230930</td>
+<td style="text-align: right;">8,816</td>
+<td style="text-align: center;">+13.98%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20230731</td>
+<td style="text-align: right;">7,735</td>
+<td style="text-align: center;">+1.68%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20230630</td>
+<td style="text-align: right;">7,607</td>
+<td style="text-align: center;">-11.04%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20230331</td>
+<td style="text-align: right;">8,551</td>
+<td style="text-align: center;">+11.73%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20221231</td>
+<td style="text-align: right;">7,653</td>
+<td style="text-align: center;">+36.39%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20220930</td>
+<td style="text-align: right;">5,611</td>
+<td style="text-align: center;">-24.19%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20220630</td>
+<td style="text-align: right;">7,401</td>
+<td style="text-align: center;">-1.08%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20220331</td>
+<td style="text-align: right;">7,482</td>
+<td style="text-align: center;">+17.94%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20220228</td>
+<td style="text-align: right;">6,344</td>
+<td style="text-align: center;">-6.90%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20211231</td>
+<td style="text-align: right;">6,814</td>
+<td style="text-align: center;">–</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>★ 户数变化是主力吸筹/出货的核心信号: 户数↓ + 户均↑ = 机构吸筹; 户数↑ + 户均↓ = 机构退出 (capital_flow.md §3 已自动判定)。</em></p>
+<hr />
+<h4>§9 限售股解禁日历 (未来 12 个月) ★ v5.1.2 新增</h4>
+<p>(无解禁数据,可能是该公司近 12 月无解禁,或 Tushare 接口未返回)</p>
+<hr />
+<p><em>由 <code>scripts/data_snapshot.py</code> 自动生成 (确定性 Python 拼装, LLM 不参与)。挂载为报告<a class="cite" href="#appx-A">附录A</a>; 判断链五节点引用其中数字时带出处, 明细不复制进正文。</em></p>
+</section>
+<section class="appx" id="appx-B">
+  <h2>附录B 行业与对标明细</h2>
+  <blockquote>
+<p>⚠️ <strong>口径提示</strong>:本表的同业是采集脚本按行业分类<strong>自动选</strong>的 —— 对细分行业的公司,可能选到与本公司<strong>零业务重合</strong>的对照物,那样算出的估值分位<strong>不作数</strong>;本附录若另有人工补采的「真实同业」小节,<strong>以<a href="#appx-B-manual">那一节</a>为准</strong>。另:本表<strong>本公司</strong>那一行的盈利能力列取自脚本抓到的「最新披露期」,期别<strong>可能早于本报告基准日</strong>,本公司的盈利能力以<strong><a class="cite" href="#appx-A">附录A</a> 的趋势表</strong>与正文为准。</p>
+</blockquote>
+<h3>可比公司对标: 华特气体 (688268.SH)</h3>
+<p><strong>行业分类</strong> (Tushare industry): <strong>化工原料</strong><br />
+<strong>Peer 选取规则</strong>: 同行业 + 市值最接近的 5 家 + 目标公司<br />
+<strong>财务截至</strong>: 最新披露期 · <strong>行情截至</strong>: 20260910</p>
+<h4>§1 对比表</h4>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th style="text-align: center;">ts_code</th>
+<th style="text-align: center;">公司</th>
+<th style="text-align: center;">细分行业</th>
+<th style="text-align: center;">市值(亿)</th>
+<th style="text-align: center;">PE TTM</th>
+<th style="text-align: center;">PB</th>
+<th style="text-align: center;">PS TTM</th>
+<th style="text-align: center;">财务期别</th>
+<th style="text-align: center;">ROE(%)</th>
+<th style="text-align: center;">毛利率(%)</th>
+<th style="text-align: center;">净利率(%)</th>
+<th style="text-align: center;">资产负债率(%)</th>
+<th style="text-align: center;">营收 YoY(%)</th>
+<th style="text-align: center;">股息率(%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>688268.SH</strong> ⭐</td>
+<td style="text-align: center;"><strong>华特气体</strong></td>
+<td style="text-align: center;">化工原料</td>
+<td style="text-align: center;">165.09</td>
+<td style="text-align: center;">109.86</td>
+<td style="text-align: center;">6.21</td>
+<td style="text-align: center;">10.22</td>
+<td style="text-align: center;">20260630</td>
+<td style="text-align: center;">3.97</td>
+<td style="text-align: center;">30.09</td>
+<td style="text-align: center;">10.43</td>
+<td style="text-align: center;">26.27</td>
+<td style="text-align: center;">0.00</td>
+<td style="text-align: center;">0.43</td>
+</tr>
+<tr>
+<td style="text-align: center;">002145.SZ</td>
+<td style="text-align: center;">钛能化学</td>
+<td style="text-align: center;">化工原料</td>
+<td style="text-align: center;">162.54</td>
+<td style="text-align: center;">31.42</td>
+<td style="text-align: center;">1.23</td>
+<td style="text-align: center;">1.90</td>
+<td style="text-align: center;">20260630</td>
+<td style="text-align: center;">3.33</td>
+<td style="text-align: center;">17.91</td>
+<td style="text-align: center;">9.25</td>
+<td style="text-align: center;">37.81</td>
+<td style="text-align: center;">20.89</td>
+<td style="text-align: center;">0.36</td>
+</tr>
+<tr>
+<td style="text-align: center;">600596.SH</td>
+<td style="text-align: center;">新安股份</td>
+<td style="text-align: center;">化工原料</td>
+<td style="text-align: center;">162.22</td>
+<td style="text-align: center;">48.86</td>
+<td style="text-align: center;">1.29</td>
+<td style="text-align: center;">1.07</td>
+<td style="text-align: center;">20260630</td>
+<td style="text-align: center;">2.03</td>
+<td style="text-align: center;">14.37</td>
+<td style="text-align: center;">3.15</td>
+<td style="text-align: center;">38.80</td>
+<td style="text-align: center;">0.00</td>
+<td style="text-align: center;">0.83</td>
+</tr>
+<tr>
+<td style="text-align: center;">605020.SH</td>
+<td style="text-align: center;">永和股份</td>
+<td style="text-align: center;">化工原料</td>
+<td style="text-align: center;">161.93</td>
+<td style="text-align: center;">20.16</td>
+<td style="text-align: center;">2.68</td>
+<td style="text-align: center;">2.75</td>
+<td style="text-align: center;">20260630</td>
+<td style="text-align: center;">8.70</td>
+<td style="text-align: center;">30.43</td>
+<td style="text-align: center;">16.42</td>
+<td style="text-align: center;">32.90</td>
+<td style="text-align: center;">28.16</td>
+<td style="text-align: center;">0.72</td>
+</tr>
+<tr>
+<td style="text-align: center;">688690.SH</td>
+<td style="text-align: center;">纳微科技</td>
+<td style="text-align: center;">化工原料</td>
+<td style="text-align: center;">168.47</td>
+<td style="text-align: center;">80.41</td>
+<td style="text-align: center;">8.10</td>
+<td style="text-align: center;">15.62</td>
+<td style="text-align: center;">20260630</td>
+<td style="text-align: center;">6.86</td>
+<td style="text-align: center;">71.45</td>
+<td style="text-align: center;">24.83</td>
+<td style="text-align: center;">12.12</td>
+<td style="text-align: center;">0.00</td>
+<td style="text-align: center;">0.15</td>
+</tr>
+<tr>
+<td style="text-align: center;">688708.SH</td>
+<td style="text-align: center;">佳驰科技</td>
+<td style="text-align: center;">化工原料</td>
+<td style="text-align: center;">169.08</td>
+<td style="text-align: center;">42.91</td>
+<td style="text-align: center;">4.99</td>
+<td style="text-align: center;">15.52</td>
+<td style="text-align: center;">20260630</td>
+<td style="text-align: center;">1.94</td>
+<td style="text-align: center;">66.96</td>
+<td style="text-align: center;">25.83</td>
+<td style="text-align: center;">12.44</td>
+<td style="text-align: center;">0.00</td>
+<td style="text-align: center;">0.95</td>
+</tr>
+</tbody>
+</table></div>
+<h4>§2 目标公司在 peer 中的分位</h4>
+<p>下表显示 华特气体 相对 peer group 的分位 (1=最好/最高, 0=最差/最低):</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>指标</th>
+<th style="text-align: center;">目标值</th>
+<th style="text-align: center;">Peer 中位数</th>
+<th style="text-align: center;">分位 (high=好)</th>
+<th>解读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ROE(%)</td>
+<td style="text-align: center;">3.97</td>
+<td style="text-align: center;">3.33</td>
+<td style="text-align: center;"><strong>60%</strong> ✅ 高于中位</td>
+<td>ROE 越高盈利能力越强</td>
+</tr>
+<tr>
+<td>毛利率(%)</td>
+<td style="text-align: center;">30.09</td>
+<td style="text-align: center;">30.43</td>
+<td style="text-align: center;"><strong>40%</strong> 🟡 中位</td>
+<td>毛利率越高议价能力越强</td>
+</tr>
+<tr>
+<td>净利率(%)</td>
+<td style="text-align: center;">10.43</td>
+<td style="text-align: center;">16.42</td>
+<td style="text-align: center;"><strong>40%</strong> 🟡 中位</td>
+<td>净利率越高经营效率越高</td>
+</tr>
+<tr>
+<td>资产负债率(%)</td>
+<td style="text-align: center;">26.27</td>
+<td style="text-align: center;">32.90</td>
+<td style="text-align: center;"><strong>60%</strong> ✅ 便宜</td>
+<td>负债率低则财务稳健</td>
+</tr>
+<tr>
+<td>PE TTM</td>
+<td style="text-align: center;">109.86</td>
+<td style="text-align: center;">42.91</td>
+<td style="text-align: center;"><strong>0%</strong> 🔴 最贵</td>
+<td>PE 低估值便宜 (但要看是否真便宜还是破落)</td>
+</tr>
+<tr>
+<td>PB</td>
+<td style="text-align: center;">6.21</td>
+<td style="text-align: center;">2.68</td>
+<td style="text-align: center;"><strong>20%</strong> ⚠️ 偏贵</td>
+<td>PB 低估值便宜</td>
+</tr>
+<tr>
+<td>营收 YoY(%)</td>
+<td style="text-align: center;">0.00</td>
+<td style="text-align: center;">0.00</td>
+<td style="text-align: center;"><strong>0%</strong> 🔴 落后</td>
+<td>营收高增长支撑估值</td>
+</tr>
+</tbody>
+</table></div>
+<h4>§3 对比洞察</h4>
+<p>⚠️ <strong>PE 显著高于 peer 中位数</strong> (109.9x vs 42.9x × 1.5),估值溢价 &gt; 50%</p>
+<h4>§4 行业全员估值分布 (v5.1.2,行业 化工原料 共 262 家)</h4>
+<p>对比维度从 5 家 peer 扩展到<strong>全行业上市公司</strong>:</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>指标</th>
+<th style="text-align: center;">行业最便宜</th>
+<th style="text-align: center;">25 分位</th>
+<th style="text-align: center;">中位数</th>
+<th style="text-align: center;">75 分位</th>
+<th style="text-align: center;">行业最贵</th>
+<th style="text-align: center;">目标值</th>
+<th style="text-align: center;">目标分位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PE_TTM</td>
+<td style="text-align: center;">10.75</td>
+<td style="text-align: center;">26.91</td>
+<td style="text-align: center;">37.7</td>
+<td style="text-align: center;">58.95</td>
+<td style="text-align: center;">192.53</td>
+<td style="text-align: center;"><strong>109.86</strong></td>
+<td style="text-align: center;"><strong>93.5%</strong></td>
+</tr>
+<tr>
+<td>PB</td>
+<td style="text-align: center;">0.58</td>
+<td style="text-align: center;">1.61</td>
+<td style="text-align: center;">2.53</td>
+<td style="text-align: center;">3.79</td>
+<td style="text-align: center;">16.05</td>
+<td style="text-align: center;"><strong>6.21</strong></td>
+<td style="text-align: center;"><strong>88.4%</strong></td>
+</tr>
+<tr>
+<td>PS_TTM</td>
+<td style="text-align: center;">0.27</td>
+<td style="text-align: center;">1.43</td>
+<td style="text-align: center;">2.81</td>
+<td style="text-align: center;">5.3</td>
+<td style="text-align: center;">31.09</td>
+<td style="text-align: center;"><strong>10.22</strong></td>
+<td style="text-align: center;"><strong>91.2%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>信号判定</strong>(行业全员分位):<br />
+- 🔴 PE_TTM 在行业最贵 20%(分位 94%)<br />
+- 🔴 PB 在行业最贵 20%(分位 88%)<br />
+- 🔴 PS_TTM 在行业最贵 20%(分位 91%)</p>
+<blockquote>
+<p>说明: 分位 0% = 行业最便宜(最低 PE/PB),100% = 最贵。5 家 peer 是市值最近的同类对比,而行业全员包括所有同行业上市公司,能识别 ‘市值偏离 peer 但仍在行业中位’ 的情况。</p>
+</blockquote>
+<hr />
+<p><em>由 <code>scripts/peer_collector.py</code> 自动生成(含行业全员分布),挂载为报告<a class="cite" href="#appx-B">附录B</a> 行业与对标明细</em><br />
+<em>海外同业(如全球龙头)不在 Tushare 池内,需要时在本文件末尾另起「§3.5 …补充」—— <a class="cite" href="#appx-B">附录B</a> 只挂载本文件,补充对标写在这里就会一起出现</em></p>
+<h4><a id="appx-B-manual"></a>§3.5 电子特气同业补充对标（人工补采，Tushare 直取 20260910 行情 + 20260630 财务）</h4>
+<p><strong>为什么需要这一节</strong>：Tushare 的 <code>industry</code> 字段把华特气体归入「化工原料」，§1 的 5 家 peer 是按该分类<br />
++ 市值最接近挑出来的（钛能化学、新安股份、永和股份、纳微科技、佳驰科技），<strong>没有一家做电子特种气体</strong>，<br />
+业务可比性弱；§4 的「行业全员 262 家」同样是化工原料全池。下表按<strong>业务口径</strong>补齐真实同业。</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th style="text-align: center;">代码</th>
+<th style="text-align: center;">公司</th>
+<th style="text-align: right;">市值(亿)</th>
+<th style="text-align: right;">PE TTM</th>
+<th style="text-align: right;">PB</th>
+<th style="text-align: right;">PS TTM</th>
+<th style="text-align: right;">股息率(%)</th>
+<th style="text-align: right;">毛利率(%)</th>
+<th style="text-align: right;">净利率(%)</th>
+<th style="text-align: right;">加权ROE(%)</th>
+<th style="text-align: right;">资产负债率(%)</th>
+<th style="text-align: right;">营收 YoY(%)</th>
+<th style="text-align: right;">净利 YoY(%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>688268.SH</strong> ⭐</td>
+<td style="text-align: center;"><strong>华特气体</strong></td>
+<td style="text-align: right;">165.1</td>
+<td style="text-align: right;">109.9</td>
+<td style="text-align: right;">6.21</td>
+<td style="text-align: right;">10.22</td>
+<td style="text-align: right;">0.39</td>
+<td style="text-align: right;">30.09</td>
+<td style="text-align: right;">10.43</td>
+<td style="text-align: right;">4.34</td>
+<td style="text-align: right;">26.27</td>
+<td style="text-align: right;">+28.95</td>
+<td style="text-align: right;">+19.16</td>
+</tr>
+<tr>
+<td style="text-align: center;">688146.SH</td>
+<td style="text-align: center;">中船特气</td>
+<td style="text-align: right;">1,190.1</td>
+<td style="text-align: right;">230.8</td>
+<td style="text-align: right;">19.81</td>
+<td style="text-align: right;">38.09</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: right;">31.79</td>
+<td style="text-align: right;">18.27</td>
+<td style="text-align: right;">5.86</td>
+<td style="text-align: right;">21.42</td>
+<td style="text-align: right;">+83.13</td>
+<td style="text-align: right;">+95.63</td>
+</tr>
+<tr>
+<td style="text-align: center;">688548.SH</td>
+<td style="text-align: center;">广钢气体</td>
+<td style="text-align: right;">377.3</td>
+<td style="text-align: right;">89.0</td>
+<td style="text-align: right;">6.11</td>
+<td style="text-align: right;">14.28</td>
+<td style="text-align: right;">0.34</td>
+<td style="text-align: right;">35.38</td>
+<td style="text-align: right;">19.33</td>
+<td style="text-align: right;">4.17</td>
+<td style="text-align: right;">33.61</td>
+<td style="text-align: right;">+19.62</td>
+<td style="text-align: right;">+117.72</td>
+</tr>
+<tr>
+<td style="text-align: center;">688106.SH</td>
+<td style="text-align: center;">金宏气体</td>
+<td style="text-align: right;">141.3</td>
+<td style="text-align: right;">120.1</td>
+<td style="text-align: right;">3.55</td>
+<td style="text-align: right;">4.81</td>
+<td style="text-align: right;">0.94</td>
+<td style="text-align: right;">26.98</td>
+<td style="text-align: right;">4.75</td>
+<td style="text-align: right;">1.87</td>
+<td style="text-align: right;">48.75</td>
+<td style="text-align: right;">+12.12</td>
+<td style="text-align: right;">-17.41</td>
+</tr>
+<tr>
+<td style="text-align: center;">002549.SZ</td>
+<td style="text-align: center;">凯美特气</td>
+<td style="text-align: right;">93.7</td>
+<td style="text-align: right;">270.5</td>
+<td style="text-align: right;">4.56</td>
+<td style="text-align: right;">14.82</td>
+<td style="text-align: right;">0.37</td>
+<td style="text-align: right;">31.06</td>
+<td style="text-align: right;">6.83</td>
+<td style="text-align: right;">1.06</td>
+<td style="text-align: right;">27.96</td>
+<td style="text-align: right;">+1.67</td>
+<td style="text-align: right;">-60.75</td>
+</tr>
+<tr>
+<td style="text-align: center;">600378.SH</td>
+<td style="text-align: center;">昊华科技</td>
+<td style="text-align: right;">622.0</td>
+<td style="text-align: right;">36.6</td>
+<td style="text-align: right;">3.33</td>
+<td style="text-align: right;">3.34</td>
+<td style="text-align: right;">0.81</td>
+<td style="text-align: right;">24.53</td>
+<td style="text-align: right;">10.85</td>
+<td style="text-align: right;">4.84</td>
+<td style="text-align: right;">42.13</td>
+<td style="text-align: right;">+24.87</td>
+<td style="text-align: right;">+39.78</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>口径：行情 <code>daily_basic</code> 20260910；财务 <code>fina_indicator</code> 20260630（半年报，未年化）。昊华科技为综合性<br />
+氟材料/特气平台，业务重合度低于前四家，列为宽口径参照。</em></p>
+<p><strong>与 §1/§4 的差异</strong>（同一家公司，换一组对照物就换一个结论）：<br />
+- 在化工原料全池里，华特气体 PE 分位 93.5%、PB 88.4%、PS 91.2%，三项都被判「行业最贵 20%」；<br />
+- 在电子特气同业里，它的 PE 109.9x 低于中船特气 230.8x、凯美特气 270.5x、金宏气体 120.1x，高于<br />
+  广钢气体 89.0x 与昊华科技 36.6x —— 处于同业<strong>中位附近</strong>(6 家里第 3 低,略低于中位约 115x)，而非最贵。<br />
+  ⚠️ [2026-09-11 质量环更正] 原稿写「中位偏上」,按本表数字重排实为 6 家里第 3 低 —— 写手曾原样抄进③。<br />
+- 也就是说：贵的是整条电子特气赛道，不是华特气体相对同行特别贵。<strong>两组分位不可混用</strong>，引用时必须<br />
+  说明用的是哪一组对照物。<br />
+- 规模上华特气体是这组里第二小（165 亿），中船特气市值是它的 7.2 倍；盈利质量上它的净利率<br />
+  10.43%、ROE 4.34% 居中，毛利率 30.09% 低于广钢（35.38%）与中船（31.79%）。<br />
+- 增速上华特气体 H1 营收 +28.95% 在同业中居第二（次于中船特气 +83.13%），但净利增速 +19.16% 明显<br />
+  慢于营收，而中船、广钢的净利增速都数倍于营收增速——增量的盈利质量是差异所在。</p>
+<p><em>本节由采集环节人工补采，数据同源 Tushare；§1/§2/§4 仍为脚本自动生成，两者并存不互相覆盖。</em></p>
+</section>
+<section class="appx" id="appx-C">
+  <h2>附录C 舆情与资金底稿</h2>
+  <h3>主力控盘与资金流向分析: 华特气体 (688268.SH)</h3>
+<p><strong>生成日期</strong>: 2026-09-10<br />
+<strong>数据窗口</strong>: 近 60 日 (两融/陆股通/主力资金) / 近 30 日 (龙虎榜)<br />
+<strong>v4.5 口径说明</strong>: 控盘指标用 <strong>top10_holders(含限售)</strong> 作为主口径, 旧版 top10_float(仅流通) 的 22.61% 等数字降为补充(对限售比例高的公司会严重低估真实控盘)。</p>
+<h4>§1 控盘综合判定 (Top 一眼可见)</h4>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>信号</th>
+<th>解读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主力控盘度 (总股本口径)</td>
+<td>🟡 中度控盘</td>
+<td>前 10 大全体股东(含限售)合计 <strong>49.68%</strong></td>
+</tr>
+<tr>
+<td>★ 实控人家族合计持股</td>
+<td>🟢 家族非控盘</td>
+<td>石平湘家族合计 <strong>13.51%</strong> (成员: 石平湘 / 石思慧)</td>
+</tr>
+<tr>
+<td>筹码集中度 (流通股动态)</td>
+<td>🟢 筹码集中 (主力吸筹)</td>
+<td>户数变化 -12.73%</td>
+</tr>
+<tr>
+<td>陆股通(北向)</td>
+<td>数据不足</td>
+<td>持仓 N/A% / 20 日变化 N/App</td>
+</tr>
+<tr>
+<td>两融杠杆</td>
+<td>⚪ 两融余额平稳</td>
+<td>融资余额 95899.09 万元, 相对近 60 日中位 -12.13%</td>
+</tr>
+<tr>
+<td>主力资金流</td>
+<td>⚪ 主力资金近 20 日拉锯</td>
+<td>近 20 日净流入天数 7 / 20</td>
+</tr>
+<tr>
+<td>龙虎榜机构</td>
+<td>⚪ 近 30 日无龙虎榜机构席位上榜</td>
+<td>近 30 日上榜 0 次</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>口径补充</strong>: 前 10 大<strong>流通</strong>股东合计 占<strong>总股本</strong> 49.68% / 占<strong>流通股本</strong> 49.68%。当 top10_all 与 top10_float 差距大, 意味着实控人大量限售股尚未解锁(典型上市 3 年内公司)。</p>
+<h4>§2 前十大全体股东 (含限售, 年报/季报披露)</h4>
+<p><strong>披露期</strong>: 20260630<br />
+<strong>前 10 大合计占总股本</strong>: <strong>49.68%</strong> (🟡 中度控盘)<br />
+<strong>实控人家族合计持股</strong>: <strong>13.51%</strong> (🟢 家族非控盘)</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>股东</th>
+<th style="text-align: center;">持股数(万股)</th>
+<th style="text-align: center;">占总股本(%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>广东华特投资有限公司</td>
+<td style="text-align: center;">2,664</td>
+<td style="text-align: center;">20.86</td>
+</tr>
+<tr>
+<td>石平湘</td>
+<td style="text-align: center;">1,186</td>
+<td style="text-align: center;">9.29</td>
+</tr>
+<tr>
+<td>厦门华弘多福投资合伙企业(有限合伙)</td>
+<td style="text-align: center;">619</td>
+<td style="text-align: center;">4.85</td>
+</tr>
+<tr>
+<td>张穗华</td>
+<td style="text-align: center;">604</td>
+<td style="text-align: center;">4.73</td>
+</tr>
+<tr>
+<td>石思慧</td>
+<td style="text-align: center;">540</td>
+<td style="text-align: center;">4.23</td>
+</tr>
+<tr>
+<td>厦门华和多福投资合伙企业(有限合伙)</td>
+<td style="text-align: center;">298</td>
+<td style="text-align: center;">2.34</td>
+</tr>
+<tr>
+<td>厦门华进多福投资合伙企业(有限合伙)</td>
+<td style="text-align: center;">164</td>
+<td style="text-align: center;">1.29</td>
+</tr>
+<tr>
+<td>全国社保基金五零三组合</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">0.78</td>
+</tr>
+<tr>
+<td>UBSAG</td>
+<td style="text-align: center;">93</td>
+<td style="text-align: center;">0.73</td>
+</tr>
+<tr>
+<td>张穗萍</td>
+<td style="text-align: center;">76</td>
+<td style="text-align: center;">0.59</td>
+</tr>
+</tbody>
+</table></div>
+<h4>§3 筹码集中度 2×2 矩阵</h4>
+<p><strong>当前期</strong>: 20260731 · 户数 <strong>30,047</strong><br />
+<strong>环比</strong>: -12.73%<br />
+<strong>户均持股</strong>: 2,202 股 · 环比 +14.58%</p>
+<p><strong>判定</strong>: 🟢 筹码集中 (主力吸筹)</p>
+<blockquote>
+<p>经典 2×2 矩阵: 户数↓ + 户均↑ = 筹码集中(机构吸筹);  户数↑ + 户均↓ = 筹码分散(机构退出)</p>
+</blockquote>
+<h4>§4 陆股通(北向)持仓趋势</h4>
+<p><strong>最新持仓比例</strong>: N/A% (N/A)<br />
+<strong>20 日变化</strong>: N/A pp · <strong>60 日变化</strong>: N/A pp<br />
+<strong>判定</strong>: 数据不足</p>
+<h4>§5 两融杠杆 (融资余额)</h4>
+<p><strong>最新融资余额</strong>: 95,899 万元<br />
+<strong>相对近 60 日中位数</strong>: -12.1%<br />
+<strong>判定</strong>: ⚪ 两融余额平稳</p>
+<h4>§6 主力资金流向 (近 20 日)</h4>
+<p><strong>近 20 日主力净流入天数</strong>: 7 / 20 (35.0%)<br />
+<strong>净流入累计</strong>: -3,257 万元<br />
+<strong>判定</strong>: ⚪ 主力资金近 20 日拉锯</p>
+<blockquote>
+<p>口径: 主力 = 超大单 + 大单 (<code>buy_elg_amount + buy_lg_amount</code>)  ·  散户 = 中小单  ·  净流入 &gt; 0 表示主力净买入</p>
+</blockquote>
+<h4>§7 龙虎榜与机构席位 (近 30 日)</h4>
+<p><em>近 30 日未上榜龙虎榜</em></p>
+<h4>§8 大宗交易 (近 60 日 — 比龙虎榜信号更干净)</h4>
+<p><em>近 60 日无大宗交易记录</em></p>
+<h4>§9 北向资金加权建仓成本 (v5.1.2 新增)</h4>
+<p><em>北向资金成本无法推导 (hk_hold 或 daily_basic 数据不足)</em></p>
+<h4>§10 综合控盘警示</h4>
+<ul>
+<li>🟢 <strong>筹码集中</strong> — 户数减少 + 户均持股上升, 机构可能在吸筹</li>
+</ul>
+<hr />
+<p><em>由 <code>scripts/capital_flow.py</code> 自动生成 (v5.1.2: 10 段)</em><br />
+<em>数据源: Tushare (moneyflow / hk_hold / margin_detail / top_list / top_inst / block_trade / top10_floatholders / stk_holdernumber + daily_basic)</em><br />
+<em>挂载为报告<a class="cite" href="#appx-C">附录C</a> 舆情与资金底稿。判断链里<a class="cite" href="#ch-path">④路径</a>用它判拥挤度与波动放大、<a class="cite" href="#ch-state">②状态</a>用它判注意力先行——资金面属传闻一侧证据,不作基本面改善的实锤</em></p>
+<h3>舆情底稿</h3>
+<p><strong>标的</strong>：华特气体（688268.SH，上交所科创板）<br />
+<strong>采集日期</strong>：2026-09-10 ｜ <strong>覆盖窗口</strong>：2026-03 至 2026-09（重点为 4 月股价异动至 8 月半年报披露）<br />
+<strong>采集方式</strong>：公开网络检索（财经媒体、券商观点转载、投资社区帖文、公司公开交流记录），<br />
+逐条标注平台、日期与出处链接。本底稿只汇集市场声音，不代表本报告的判断。</p>
+<hr />
+<h4>一、这段时间市场在吵什么</h4>
+<p>一句话背景：这只股票在 2026 年 4 月因"俄罗斯氦气出口管制"消息出现连续涨停，<br />
+4 月 20 日至 4 月 28 日七个交易日累计涨幅偏离值超过 100%，触发交易所"严重异常波动"；<br />
+6 月单月再涨 86.93%，高点 290.00 元；到 9 月 10 日回落至 129.30 元。<br />
+争论的核心不是"氦气涨没涨价"，而是<strong>这轮涨价能给公司留下多少利润、能留多久</strong>。</p>
+<hr />
+<h4>二、看好派</h4>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>平台</th>
+<th style="text-align: center;">日期</th>
+<th>核心观点</th>
+<th>出处</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>华鑫证券（券商观点，凤凰网转载）</td>
+<td style="text-align: center;">2026 年</td>
+<td>给予"买入"评级；预测 2026-2028 年归母净利润分别为 2.42 / 2.88 / 3.43 亿元，即在 2025 年 1.35 亿的基础上接近翻倍</td>
+<td><a href="https://i.ifeng.com/c/8vxojePWemS">i.ifeng.com/c/8vxojePWemS</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>财联社</td>
+<td style="text-align: center;">2026-08-26</td>
+<td>《电子特气龙头半年报"悲喜不相通"》：同为电子特气龙头，华特气体营收净利双升，金宏气体增收不增利——认为公司在行业分化中站在了较好的一侧</td>
+<td><a href="https://www.cls.cn/detail/2464450">cls.cn/detail/2464450</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>证券时报网</td>
+<td style="text-align: center;">2026-08</td>
+<td>上半年营收增长约 29%，氦气及相关产品收入占比升至 20%，视作供应保障能力兑现为业绩的证据</td>
+<td><a href="https://www.stcn.com/article/detail/4120999">stcn.com/article/detail/4120999</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>东方财富财富号（个人投资者长文）</td>
+<td style="text-align: center;">2026-07-07</td>
+<td>标题即观点：《华特气体被市场极度低估，价值飞跃时刻已经来临！》</td>
+<td><a href="https://caifuhao.eastmoney.com/news/20260707085728746144660">caifuhao.eastmoney.com/news/20260707085728746144660</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>东方财富财富号（个人投资者长文）</td>
+<td style="text-align: center;">2026-03-24</td>
+<td>《2024-2025 完整财报对比：利润下滑真相，不是经营变差！》——把 2025 年利润下滑归因于可转债利息与汇兑等非经营因素，主张经营基本盘未坏</td>
+<td><a href="https://caifuhao.eastmoney.com/news/20260324000323422666590">caifuhao.eastmoney.com/news/20260324000323422666590</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>新浪财经（行业观察）</td>
+<td style="text-align: center;">2026-05-25</td>
+<td>《氦气价格永久性上移，短期回调不改长期牛市》——认为俄罗斯出口配额收紧使全球氦气供需缺口在 2026-2027 年难以修复，价格中枢系统性抬升</td>
+<td><a href="https://finance.sina.com.cn/wm/2026-05-25/doc-inhzascp5211085.shtml">finance.sina.com.cn/wm/2026-05-25/doc-inhzascp5211085.shtml</a></td>
+</tr>
+<tr>
+<td>7</td>
+<td>东方财富财富号（产业跟踪贴，系列）</td>
+<td style="text-align: center;">2026-07-21</td>
+<td>5N/6N 高纯氦现货价格与供需梳理：认为下半年 6N 电子级氦仍偏强、长协价坚挺，现货只是小幅回调</td>
+<td><a href="https://caifuhao.eastmoney.com/news/20260721034549889759500">caifuhao.eastmoney.com/news/20260721034549889759500</a></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h4>三、看衰派</h4>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>平台</th>
+<th style="text-align: center;">日期</th>
+<th>核心观点</th>
+<th>出处</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>新浪财经</td>
+<td style="text-align: center;">2026-04-16</td>
+<td>《特种电子气体龙头 2025 年净利润下降 26.75%！三大员工持股平台 3 年半 9 次发布减持计划，已套现超 10 亿元》——把持续减持与利润下滑并列，质疑内部人对长期前景的态度</td>
+<td><a href="https://finance.sina.com.cn/roll/2026-04-16/doc-inhuskuk4026237.shtml">finance.sina.com.cn/roll/2026-04-16/doc-inhuskuk4026237.shtml</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>新浪财经</td>
+<td style="text-align: center;">2026-04-12</td>
+<td>《华特气体再现净利明显下滑，资金抢筹为哪般？》——直指基本面与资金行为背离</td>
+<td><a href="https://finance.sina.com.cn/jjxw/2026-04-12/doc-inhufzfy0359257.shtml">finance.sina.com.cn/jjxw/2026-04-12/doc-inhufzfy0359257.shtml</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>东方财富财富号（个人投资者长文）</td>
+<td style="text-align: center;">2026-04-22</td>
+<td>《华特气体利润承压，新品能否撑起 70 倍估值？》——在股价异动当口质疑估值与盈利的错配</td>
+<td><a href="https://caifuhao.eastmoney.com/news/20260422101650015356730">caifuhao.eastmoney.com/news/20260422101650015356730</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>财联社</td>
+<td style="text-align: center;">2026-06/07</td>
+<td>报道公司发布股票交易风险提示：6 月 1 日至 6 月 30 日累计涨幅 86.93%，公司自陈"存在市场情绪过热及非理性炒作风险"，并披露滚动市盈率 273.60 倍、行业平均 124.99 倍</td>
+<td><a href="https://www.cls.cn/detail/2413267">cls.cn/detail/2413267</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>投资社区讨论（东方财富股吧 / 相关报道引述）</td>
+<td style="text-align: center;">2026-05-26 前后</td>
+<td>以估值横向比较提出质疑：彼时市盈率（TTM）约 155.60 倍，而同业金宏气体约 40 倍、中船特气约 60 倍</td>
+<td><a href="https://guba.eastmoney.com/news,300255,1714875579.html">guba.eastmoney.com/news,300255,1714875579.html</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>每日经济新闻</td>
+<td style="text-align: center;">2026-05-26</td>
+<td>业绩说明会报道：投资者追问网传"青海提氦项目"与密集减持，公司回应<strong>没有青海提氦项目</strong>、减持系员工持股平台合伙人有序退出——传闻被否本身构成对炒作逻辑的证伪</td>
+<td><a href="https://www.nbd.com.cn/articles/2026-05-26/4409111.html">nbd.com.cn/articles/2026-05-26/4409111.html</a></td>
+</tr>
+<tr>
+<td>7</td>
+<td>新浪财经</td>
+<td style="text-align: center;">2026-03-23</td>
+<td>报道公司回应：《个别气体产品涨价预计对公司 2026 年业绩影响有限》——公司在涨价行情早期就主动降低预期</td>
+<td><a href="https://finance.sina.com.cn/stock/relnews/cn/2026-03-23/doc-inhrysxs2332520.shtml">finance.sina.com.cn/stock/relnews/cn/2026-03-23/doc-inhrysxs2332520.shtml</a></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h4>四、公司自己说的话（既非看好也非看衰，但份量最重）</h4>
+<p>这只股票的特殊之处在于：<strong>多空双方最有力的论据，都来自公司自己的公告</strong>。</p>
+<ol>
+<li><strong>主动泼冷水（价格）</strong>：2026 年半年度报告 P.23——"目前，氦气相关产品销售价格距高位已经有明显下降"，<br />
+   并提示"未来价格存在回落的可能"。同一份报告 P.24 又披露氦气及相关产品收入占比约 20%、同比增长 133%。<br />
+   即：贡献了本期近一半营收增量的那块业务，公司自己说价格已经在往回走。</li>
+<li><strong>主动泼冷水（估值）</strong>：2026-04-29 公告披露截至 4 月 27 日滚动市盈率 127.65 倍，<br />
+   而中证"电子化学品"行业为 100.00 倍，明示"明显高于行业市盈率水平"。6 月的风险提示公告里这一比值继续拉大。</li>
+<li><strong>点名网络虚假信息</strong>：2026-04-22 异常波动公告称，股票社区出现个别用户发布的所谓"产品价格、产能、<br />
+   供应、内部报价、项目情况"信息<strong>均为伪造</strong>，公司已向社区运营方投诉并采取维权措施。<br />
+   这意味着这段时间社区里流传的部分"内部消息"不可作为依据。</li>
+<li><strong>两次自查均无未披露事项</strong>：2026-04-22 与 2026-04-29 两份异常波动公告都确认，除已披露信息外<br />
+   不存在应披露而未披露的重大事项，控股股东、实控人及董监高在异动期间未买卖公司股票。</li>
+<li><strong>股权激励考核未达标</strong>：2025 年年度报告 P.88 载明，2023 年限制性股票激励计划<strong>报告期内公司层面<br />
+   考核指标"未达到"</strong>，冲回股份支付费用 267.43 万元，并作废部分第二类限制性股票。<br />
+   这是公司自己签字确认的一条业绩兑现记录。</li>
+</ol>
+<hr />
+<h4>五、两派共识与真正的分歧点</h4>
+<p><strong>双方都同意的</strong>：<br />
+- 氦气价格 2026 年上半年确实大涨，公司也确实吃到了（收入占比 12% → 约 20%，同比 +133%）；<br />
+- 俄罗斯出口管制是真实事件，且短期难解（有产业报道称配额降至 2025 年同期的 40%，期限至 2027 年底）；<br />
+- 电子特气赛道的国产替代方向没有争议。</p>
+<p><strong>真正的分歧只有两条</strong>：<br />
+1. <strong>这轮氦气涨价能给公司留下多少利润？</strong> 半年报显示营收 +28.95%，但整体毛利率同比下滑 3.38 个百分点，<br />
+   半导体应用领域毛利率从 44.95% 降至 37.84%。看好派认为量增与新品放量会接棒，看衰派认为<br />
+   贸易属性的氦气收入摊薄了盈利质量，且价格已在回落。<br />
+2. <strong>员工持股平台的持续减持说明了什么？</strong> 三年半 9 次减持计划、累计套现逾 10 亿元，<br />
+   公司解释为"合伙人有序退出"。看好派视为与经营无关的历史包袱释放，看衰派视为内部人用脚投票。</p>
+<hr />
+<h4>六、可信度分层（引用本底稿时请注意）</h4>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>层级</th>
+<th>内容</th>
+<th style="text-align: center;">可信度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一手披露</td>
+<td>定期报告、异常波动公告、减持计划公告、业绩预告</td>
+<td style="text-align: center;">高</td>
+</tr>
+<tr>
+<td>二手转述</td>
+<td>财联社 / 证券时报 / 新浪财经 / 每日经济新闻等对公告与说明会的报道</td>
+<td style="text-align: center;">中高</td>
+</tr>
+<tr>
+<td>券商观点</td>
+<td>华鑫证券盈利预测（2026-2028 归母 2.42/2.88/3.43 亿）</td>
+<td style="text-align: center;">中（属预测，非事实）</td>
+</tr>
+<tr>
+<td>社区长文</td>
+<td>东方财富财富号、股吧帖文</td>
+<td style="text-align: center;">低（无署名机构背书，且公司已公开声明社区存在伪造信息）</td>
+</tr>
+<tr>
+<td>产业价格贴</td>
+<td>5N/6N 氦气现货价格与供需梳理系列</td>
+<td style="text-align: center;">低至中（口径与数据源不透明，需用行业协会或公司披露复核）</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>特别提示</strong>：本次检索未能取得任何一家券商的完整深度研报原文（只取到评级与盈利预测的媒体转述），<br />
+也未能取得可核验的第三方氦气价格时间序列。涉及"氦气价格走势"的表述，凡未标注公司披露出处的，<br />
+都应视为待复核信息。</p>
+<hr />
+<p><em>本底稿由采集环节生成，挂载至<a class="cite" href="#appx-C">附录C</a> 与资金面数据同章；正文引用时只写结论并回指本附录。</em></p>
+</section>
+<section class="appx" id="appx-D">
+  <h2>附录D 红旗总清单</h2>
+  <p>机器产物:脚本 audit 红旗 ⊕ 节点写手提名两源合并,是首页 Top3 与全报告红标的唯一数据源。</p>
+<p><strong>合计 18 条</strong> — 级别:🟠 4 · 🟡 8 · 🟢 3 · ℹ️ 3;来源:脚本 11 · 写手提名 7</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>级别</th>
+<th>标题</th>
+<th>证据</th>
+<th>来源</th>
+<th>归属节点</th>
+<th>关联指标</th>
+<th>id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🟠</td>
+<td>PB vs ROE 严重错配</td>
+<td>市净率 6.21 倍;按净资产回报率 6.8% 应配约 0.85 倍(回报率÷8%),现价是它的 7.3 倍</td>
+<td>脚本</td>
+<td><a class="cite" href="#ch-odds">③赔率</a></td>
+<td>pb</td>
+<td><a id="flag-valuation-e82fbf"></a><code>valuation-e82fbf</code></td>
+</tr>
+<tr>
+<td>🟠</td>
+<td>增长一半来自单一品种涨价,公司自称价格已回落</td>
+<td>氦气收入占约 20%、同比 +133%,推算贡献全部收入增量 50.8%;公司称氦价"距高位已经有明显下降",并提示"勿过度放大单一产品价格波动对公司业绩的影响"</td>
+<td>写手提名</td>
+<td><a class="cite" href="#ch-state">②状态</a></td>
+<td>—</td>
+<td><a id="flag-state-helium-growth-concentration"></a><code>state-helium-growth-concentration</code></td>
+</tr>
+<tr>
+<td>🟠</td>
+<td>现价是实控人持股平台最近一轮大宗减持价的 2.2-2.3 倍</td>
+<td>三家实控人持股平台过去 12 个月三轮大宗减持成交价 44.81 元、57-58.7 元、55.75-57.65 元(2026-04-15 公告),当时滚动市盈率约 29、41、40 倍;2026-09-10 收盘 129.30 元;2026H1 前十大无公募、无一名前十大股东增持</td>
+<td>写手提名</td>
+<td><a class="cite" href="#ch-odds">③赔率</a></td>
+<td>latest_close、top10_change</td>
+<td><a id="flag-odds-insider-block-price-gap"></a><code>odds-insider-block-price-gap</code></td>
+</tr>
+<tr>
+<td>🟠</td>
+<td>氦气遭进口许可与出口禁令双向管制</td>
+<td>俄方氦气出口特别许可由公司按月申请,原文称审批结果仍具有不确定性;商务部与海关总署 2026 年第 29 号公告对氦气临时禁止出口,原文称直接影响了公司相关产品的出口;氦气约占 2026H1 营收 20%、贡献收入增量 50.8%</td>
+<td>写手提名</td>
+<td><a class="cite" href="#ch-path">④路径</a></td>
+<td>revenue_yoy</td>
+<td><a id="flag-helium-dual-policy-squeeze"></a><code>helium-dual-policy-squeeze</code></td>
+</tr>
+<tr>
+<td>🟡</td>
+<td>F=4/9</td>
+<td>NI &gt; 0=✓(NI=135353137.58) | ROA &gt; 0=✓(ROA≈0.038) | OCF &gt; 0=✓(OCF=261032970.91) | OCF &gt; NI=✓(OCF=261032970.91, NI=135353137.58) | ROA↑=✗(0.056→0.038) | 资产负债率↓=✗(0.392→0.424) | 流动比率↑=✗(3.387→3.087) | 毛利率↑=✗(0.319→0.309) | 资产周转率↑=✗(0.423→0.396)</td>
+<td>脚本</td>
+<td><a class="cite" href="#ch-quality">①质地</a></td>
+<td>f_score</td>
+<td><a id="flag-piotroski-f-score-0a9914"></a><code>piotroski-f-score-0a9914</code></td>
+</tr>
+<tr>
+<td>🟡</td>
+<td>前十大股东减持</td>
+<td>最近一期（20260630）净减持 359 万股</td>
+<td>脚本</td>
+<td><a class="cite" href="#ch-path">④路径</a></td>
+<td>top10_change</td>
+<td><a id="flag-governance-055748"></a><code>governance-055748</code></td>
+</tr>
+<tr>
+<td>🟡</td>
+<td>长期户数上升（筹码分散）</td>
+<td>20260529: 23683 → 20260731: 30047</td>
+<td>脚本</td>
+<td><a class="cite" href="#ch-path">④路径</a></td>
+<td>holder_count</td>
+<td><a id="flag-shareholder-flow-69ab57"></a><code>shareholder-flow-69ab57</code></td>
+</tr>
+<tr>
+<td>🟡</td>
+<td>股息率极低</td>
+<td>当前股息率 0.43%</td>
+<td>脚本</td>
+<td><a class="cite" href="#ch-odds">③赔率</a></td>
+<td>dividend_yield</td>
+<td><a id="flag-valuation-7ebcbf"></a><code>valuation-7ebcbf</code></td>
+</tr>
+<tr>
+<td>🟡</td>
+<td>有认证门槛却没有定价权,毛利在段内被压</td>
+<td>收入向高毛利特气迁移(68.9% vs 64.8%)毛利率仍同比降 3.38 个百分点;公司风险章节自认「成本转嫁能力有限」,半年报变动表对此零归因</td>
+<td>写手提名</td>
+<td><a class="cite" href="#ch-quality">①质地</a></td>
+<td>gross_margin</td>
+<td><a id="flag-pricing-power-passthrough-limited"></a><code>pricing-power-passthrough-limited</code></td>
+</tr>
+<tr>
+<td>🟡</td>
+<td>半年收入增量一半来自不披露毛利的氦气</td>
+<td>氦气约占营收 20%、同比 +133%,推算贡献全部收入增量的 50.8%;公司无分部报告,氦气量价与毛利均不披露</td>
+<td>写手提名</td>
+<td><a class="cite" href="#ch-quality">①质地</a></td>
+<td>—</td>
+<td><a id="flag-growth-single-product-undisclosed"></a><code>growth-single-product-undisclosed</code></td>
+</tr>
+<tr>
+<td>🟡</td>
+<td>以价换量,收入结构升级而毛利率下降</td>
+<td>特种气体占主营 68.9%(上年同期 64.8%),整体毛利率同比降 3.38 个百分点,毛利额只增约 16% 而收入增 28.95%;公司自认"成本转嫁能力有限"</td>
+<td>写手提名</td>
+<td><a class="cite" href="#ch-state">②状态</a></td>
+<td>—</td>
+<td><a id="flag-state-price-for-volume"></a><code>state-price-for-volume</code></td>
+</tr>
+<tr>
+<td>🟡</td>
+<td>户数一个季度翻倍、融资余额占市值 5.8%,高点已回撤 55.4%</td>
+<td>股东户数 2026-03-31 的 14,758 → 06-30 的 34,429(+133%),7 月末 30,047;融资余额 9.59 亿 = 市值 165.09 亿的 5.8%,较近 60 日中位 −12.1%;2026-07-01 盘中高点 290.0 元至 2026-09-10 收盘 129.30 元回撤 55.4%</td>
+<td>写手提名</td>
+<td><a class="cite" href="#ch-path">④路径</a></td>
+<td>holder_count、margin_balance</td>
+<td><a id="flag-crowding-leverage-unwind"></a><code>crowding-leverage-unwind</code></td>
+</tr>
+<tr>
+<td>🟢</td>
+<td>M=-2.726</td>
+<td>DSRI=1.03|GMI=1.03|AQI=0.75|SGI=1.02|TATA=-0.037|LVGI=1.08</td>
+<td>脚本</td>
+<td><a class="cite" href="#ch-quality">①质地</a></td>
+<td>m_score</td>
+<td><a id="flag-beneish-m-score-77f98f"></a><code>beneish-m-score-77f98f</code></td>
+</tr>
+<tr>
+<td>🟢</td>
+<td>Z=7.796</td>
+<td>营运资本/TA=0.323|RE/TA=0.248|EBIT/TA=0.042|MV/TL=10.876|S/TA=0.396</td>
+<td>脚本</td>
+<td><a class="cite" href="#ch-quality">①质地</a></td>
+<td>z_score</td>
+<td><a id="flag-altman-z-score-2e474b"></a><code>altman-z-score-2e474b</code></td>
+</tr>
+<tr>
+<td>🟢</td>
+<td>股东户数变化</td>
+<td>20260630: 34429 → 20260731: 30047（-12.7%）</td>
+<td>脚本</td>
+<td><a class="cite" href="#ch-path">④路径</a></td>
+<td>holder_count</td>
+<td><a id="flag-shareholder-flow-047ab1"></a><code>shareholder-flow-047ab1</code></td>
+</tr>
+<tr>
+<td>ℹ️</td>
+<td>最新ROE 分解</td>
+<td>净利率=9.540% × 资产周转=0.396 × 权益乘数=1.78</td>
+<td>脚本</td>
+<td><a class="cite" href="#ch-quality">①质地</a></td>
+<td>roe</td>
+<td><a id="flag-dupont-96a180"></a><code>dupont-96a180</code></td>
+</tr>
+<tr>
+<td>ℹ️</td>
+<td>上期ROE 分解</td>
+<td>净利率=13.246% × 资产周转=0.423 × 权益乘数=1.69</td>
+<td>脚本</td>
+<td><a class="cite" href="#ch-quality">①质地</a></td>
+<td>roe</td>
+<td><a id="flag-dupont-ea2893"></a><code>dupont-ea2893</code></td>
+</tr>
+<tr>
+<td>ℹ️</td>
+<td>PB 历史分位</td>
+<td>当前 PB=6.21，近 1 年范围 [3.60, 18.90]</td>
+<td>脚本</td>
+<td><a class="cite" href="#ch-odds">③赔率</a></td>
+<td>pb</td>
+<td><a id="flag-valuation-31faed"></a><code>valuation-31faed</code></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="appx" id="appx-E">
+  <h2>附录E 数据来源与信息缺口</h2>
+  <h3>数据来源与信息缺口</h3>
+<p><strong>标的</strong>：华特气体（688268.SH，上交所科创板）<br />
+<strong>采集日期</strong>：2026-09-10<br />
+<strong>最新财务期</strong>：2026 年半年度报告（截止日 2026-06-30，披露日 2026-08-26）<br />
+<strong>最新行情</strong>：2026-09-10 收盘 129.30 元</p>
+<hr />
+<h4>一、本次用到的数据来源与口径</h4>
+<h5>1.1 结构化财务数据（Tushare Pro）</h5>
+<p>拉取时间 2026-09-10 22:51（本地），一次性全量刷新，未使用缓存旧值。</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>数据表</th>
+<th style="text-align: right;">行数</th>
+<th style="text-align: center;">覆盖区间</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>stock_basic</code></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: center;">—</td>
+<td>公司名称、行业分类、上市日期、交易所</td>
+</tr>
+<tr>
+<td><code>income</code></td>
+<td style="text-align: right;">25</td>
+<td style="text-align: center;">2021-12-31 ~ 2026-06-30</td>
+<td>利润表全部期次</td>
+</tr>
+<tr>
+<td><code>balancesheet</code></td>
+<td style="text-align: right;">24</td>
+<td style="text-align: center;">2021-12-31 ~ 2026-06-30</td>
+<td>资产负债表全部期次</td>
+</tr>
+<tr>
+<td><code>cashflow</code></td>
+<td style="text-align: right;">28</td>
+<td style="text-align: center;">2021-12-31 ~ 2026-06-30</td>
+<td>现金流量表全部期次</td>
+</tr>
+<tr>
+<td><code>fina_indicator</code></td>
+<td style="text-align: right;">25</td>
+<td style="text-align: center;">2022-03-31 ~ 2026-06-30</td>
+<td>毛利率/净利率/ROE/周转率/负债率等</td>
+</tr>
+<tr>
+<td><code>fina_mainbz</code></td>
+<td style="text-align: right;">150</td>
+<td style="text-align: center;">2023-12-31 ~ 2026-06-30</td>
+<td>分产品 / 分行业 / 分地区收入与毛利</td>
+</tr>
+<tr>
+<td><code>daily</code></td>
+<td style="text-align: right;">727</td>
+<td style="text-align: center;">2023-09-11 ~ 2026-09-10</td>
+<td>日线行情（约 3 年）</td>
+</tr>
+<tr>
+<td><code>daily_basic</code></td>
+<td style="text-align: right;">268</td>
+<td style="text-align: center;">2025-08-06 ~ 2026-09-10</td>
+<td>PE / PB / PS / 股息率 / 市值</td>
+</tr>
+<tr>
+<td><code>top10_holders</code></td>
+<td style="text-align: right;">200</td>
+<td style="text-align: center;">2022-03-31 ~ 2026-06-30</td>
+<td>前十大股东（含限售）</td>
+</tr>
+<tr>
+<td><code>top10_floatholders</code></td>
+<td style="text-align: right;">200</td>
+<td style="text-align: center;">2022-03-31 ~ 2026-06-30</td>
+<td>前十大流通股东</td>
+</tr>
+<tr>
+<td><code>stk_holdernumber</code></td>
+<td style="text-align: right;">42</td>
+<td style="text-align: center;">2021-12-31 ~ 2026-07-31</td>
+<td>股东户数时序</td>
+</tr>
+<tr>
+<td><code>forecast_vip</code></td>
+<td style="text-align: right;">6</td>
+<td style="text-align: center;">2019-12-31 ~ 2026-06-30</td>
+<td>业绩预告</td>
+</tr>
+<tr>
+<td><code>express_vip</code></td>
+<td style="text-align: right;">7</td>
+<td style="text-align: center;">2019-12-31 ~ 2025-12-31</td>
+<td>业绩快报</td>
+</tr>
+<tr>
+<td><code>dividend</code></td>
+<td style="text-align: right;">37</td>
+<td style="text-align: center;">2019-12-31 ~ 2026-06-30</td>
+<td>分红送股</td>
+</tr>
+<tr>
+<td><code>repurchase</code></td>
+<td style="text-align: right;">18</td>
+<td style="text-align: center;">2022-05-26 ~ 2026-06-16</td>
+<td>回购</td>
+</tr>
+<tr>
+<td><code>stk_managers</code> / <code>stk_rewards</code></td>
+<td style="text-align: right;">69 / 189</td>
+<td style="text-align: center;">—</td>
+<td>高管名录与薪酬</td>
+</tr>
+<tr>
+<td><code>disclosure_date</code></td>
+<td style="text-align: right;">27</td>
+<td style="text-align: center;">~2026-06-30</td>
+<td>预约披露日历</td>
+</tr>
+<tr>
+<td><code>moneyflow</code> / <code>margin_detail</code></td>
+<td style="text-align: right;">64 / 63</td>
+<td style="text-align: center;">近 60 个交易日</td>
+<td>主力资金流、两融余额</td>
+</tr>
+<tr>
+<td><code>pledge_detail</code></td>
+<td style="text-align: right;"><strong>0</strong></td>
+<td style="text-align: center;">—</td>
+<td>无股权质押记录</td>
+</tr>
+<tr>
+<td><code>share_float</code></td>
+<td style="text-align: right;"><strong>0</strong></td>
+<td style="text-align: center;">—</td>
+<td>未返回限售解禁日历（见缺口 #6）</td>
+</tr>
+<tr>
+<td><code>block_trade</code></td>
+<td style="text-align: right;"><strong>0</strong></td>
+<td style="text-align: center;">—</td>
+<td>未返回大宗交易记录（见缺口 #3）</td>
+</tr>
+<tr>
+<td><code>hk_hold</code></td>
+<td style="text-align: right;"><strong>1</strong></td>
+<td style="text-align: center;">—</td>
+<td>陆股通持股仅 1 行，不足以做趋势（见缺口 #5）</td>
+</tr>
+<tr>
+<td><code>top_list</code> / <code>top_inst</code></td>
+<td style="text-align: right;">0 / 0</td>
+<td style="text-align: center;">近 30 日</td>
+<td>近 30 日未上龙虎榜</td>
+</tr>
+<tr>
+<td><code>anns</code></td>
+<td style="text-align: right;"><strong>0</strong></td>
+<td style="text-align: center;">—</td>
+<td>未返回公告索引（改用交易所与巨潮直连获取，见 1.2）</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>口径说明</strong>：<br />
+- 财务期次均为<strong>累计口径</strong>（半年报 = 1-6 月累计），"加权 ROE 4.34%" 是半年数、未年化。<br />
+- 业绩预告与业绩快报<strong>不得替代已披露的正式报表</strong>。本标的 2026 半年度预告归母 9,299.09 万，<br />
+  实际 9,283.27 万，低于预告下沿 0.2%，涉及净利的表述一律以半年报实际数为准。<br />
+- 业绩快报 <code>express_vip</code> 中 2025 年 <code>n_income</code> 为 1.438 亿，含少数股东权益；<br />
+  与利润表归母 1.3535 亿不是同一口径，本报告统一使用归母。</p>
+<h5>1.2 公司披露原文（PDF，均下载留存）</h5>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>文件</th>
+<th>内容</th>
+<th style="text-align: center;">页数</th>
+<th>出处</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>annual_2025.pdf</code></td>
+<td>2025 年年度报告（披露日 2026-04-10）</td>
+<td style="text-align: center;">287</td>
+<td><a href="https://static.cninfo.com.cn/finalpage/2026-04-10/1225090204.PDF">static.cninfo.com.cn/finalpage/2026-04-10/1225090204.PDF</a></td>
+</tr>
+<tr>
+<td><code>h1_2026.pdf</code></td>
+<td>2026 年半年度报告（披露日 2026-08-26）</td>
+<td style="text-align: center;">227</td>
+<td>新浪财经公告库转载的上交所原文 PDF</td>
+</tr>
+<tr>
+<td><code>ann_2026-029_abnormal_0422.pdf</code></td>
+<td>股票交易异常波动公告（2026-04-22）</td>
+<td style="text-align: center;">3</td>
+<td>上交所公告（雪球镜像）</td>
+</tr>
+<tr>
+<td><code>ann_2026-031_0429.pdf</code></td>
+<td>可转债交易异常波动及股票交易严重异常波动公告（2026-04-29）</td>
+<td style="text-align: center;">4</td>
+<td>同上</td>
+</tr>
+<tr>
+<td><code>ann_2026-028_0415.pdf</code></td>
+<td>股东减持股份计划公告（2026-04-15）</td>
+<td style="text-align: center;">7</td>
+<td>同上</td>
+</tr>
+<tr>
+<td><code>ann_2026-065_h1_forecast_0721.pdf</code></td>
+<td>2026 年半年度业绩预告（2026-07-21）</td>
+<td style="text-align: center;">2</td>
+<td>同上</td>
+</tr>
+</tbody>
+</table></div>
+<p>本报告中所有带页码的引文（如"2025 年报 P.55"）均可在上述文件中原文核对。</p>
+<h5>1.3 网络检索（仅用于舆情、行业规模与公司公开交流口径）</h5>
+<p>检索时间：2026-09-10。共 8 轮检索，覆盖：公司公告与新闻、投资社区多空观点、券商评级转述、<br />
+电子特气行业规模与竞争格局、氦气价格与供需。<strong>检索结果未用于替代任何财务数据。</strong><br />
+逐条出处见<a class="cite" href="#appx-C">附录C</a> 舆情底稿。</p>
+<h5>1.4 同业对标的两套口径（引用时必须写明用哪一套）</h5>
+<ul>
+<li><strong>口径 A（脚本自动）</strong>：按 Tushare <code>industry</code> 字段"化工原料"选取市值最接近的 5 家 + 全行业 262 家分布。<br />
+  该分类过粗，选出的 5 家没有一家做电子特种气体。</li>
+<li><strong>口径 B（人工补采）</strong>：按业务可比性选取中船特气、广钢气体、金宏气体、凯美特气、昊华科技，<br />
+  行情取 2026-09-10、财务取 2026-06-30。</li>
+<li>两套口径给出的估值分位结论方向不同（口径 A 判"行业最贵 20%"，口径 B 判"同业中位附近、6 家里第 3 低"[2026-09-11 质量环更正,原稿误作"中位偏上"]），<br />
+<strong>不可混用</strong>。详见<a class="cite" href="#appx-B">附录B</a>。</li>
+</ul>
+<hr />
+<h4>二、本次采集在科创板口径上的观察</h4>
+<p>这是本系列首次采集科创板标的，与此前的深市主板 / 创业板标的相比，出现了以下口径差异，<br />
+一并记录以便后续复核：</p>
+<ol>
+<li><strong>多了一张"研发投入情况表"</strong>。科创板年报与半年报强制披露费用化 / 资本化研发投入的拆分与<br />
+   资本化比重。本公司研发投入 100% 费用化、资本化比重 0.00%，因此利润表的研发费用即研发投入全额<br />
+   （2025 年 4,591.93 万，占营收 3.24%），两个来源可以完全对账，不存在"用资本化调节利润"的空间。<br />
+   深市主板年报通常只在附注中体现，没有这张标准表。</li>
+<li><strong>多了"在研项目情况"明细表</strong>。逐项列示项目名称、预计总投资、本期投入、累计投入、进展、<br />
+   拟达到目标、技术水平与应用前景。本次据此取得 8 个在研项目的投入与进度（如六氟丁二烯累计投入<br />
+   2,163.29 万、处量产建设中；氟气纯化"纯度还有待提高"）。</li>
+<li><strong>公告体例引用的是科创板专属规则</strong>。异常波动公告援引《上海证券交易所科创板股票上市规则》<br />
+   与《科创板股票异常交易实时监控细则》，触发线与主板不同（本次为 2 日累计偏离 &gt;30%、<br />
+   7 日累计偏离 &gt;100% 两档）。</li>
+<li><strong>年报正文的小标题与深市模板不同</strong>，导致按深市模板设计的自动分段只识别出 5 类段落<br />
+   （非经常性损益、管理层讨论、子公司、风险、前十大股东），而"主要会计数据""财务报表相关科目<br />
+   变动分析表"两类未被识别，需按页定位补读。这属于采集工具的模板覆盖问题，不影响数据本身。</li>
+<li><strong>半年报不披露产销量表</strong>。分产品产销量（吨 / 台）只在年报出现，半年报没有对应章节，<br />
+   因此本次的实物量数据只到 2025 年度。</li>
+<li><strong>气体行业的产量口径是"吨"与"台"</strong>，而非制造业常见的"万只 / 万件"；普通工业气体<br />
+   （32.7 万吨）与电子特气（合计约 1.5 万吨）在吨数上相差 20 倍以上，但收入只差 3.4 倍——<br />
+   实物量不可跨品类加总比较。</li>
+</ol>
+<hr />
+<h4>三、信息缺口清单</h4>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th style="text-align: center;">#</th>
+<th>缺口项</th>
+<th>如果拿到，能验证/推翻什么</th>
+<th>已尝试的查询（具体）</th>
+<th style="text-align: center;">当前状态</th>
+<th style="text-align: center;">可得性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td><strong>氦气业务的独立分部数据</strong>（收入、毛利率、量价拆分）</td>
+<td>本期营收增长约一半来自氦气，能否持续、留下多少利润，是<a class="cite" href="#ch-quality">①质地</a>与<a class="cite" href="#ch-odds">③赔率</a>的关键。没有毛利率就无法判断"增收是否增利"</td>
+<td>Tushare <code>fina_mainbz</code> 2026-06-30 全部 38 行（分产品 / 分行业 / 分地区三口径）——无"氦气"独立项；2026 半年报全文 227 页检索"氦"字，命中 P.8 / 16 / 23 / 24 / 42 / 43 / 44，全部为定性表述，唯一定量口径是 P.24"占营业总收入约为 20%，营收同比增长 133%"；2025 年报分产品表（P.53-54）中氦气未单列，并入"其他"或"碳氧化合物"</td>
+<td style="text-align: center;">❌ 未找到</td>
+<td style="text-align: center;">低（公司按产品大类披露，历来不单列单一气体品种）</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td><strong>2026 上半年分产品产销量（吨）</strong></td>
+<td>用于区分"营收增长来自涨价还是放量"。当前只能从收入与毛利率反推</td>
+<td>2026 半年报全文检索"产销量""主营业务分行业"——0 命中，科创板半年报无此章节；Tushare <code>fina_mainbz</code> 只有金额、无实物量</td>
+<td style="text-align: center;">⚠️ 部分（2025 年度产销量已取得，2026 上半年缺）</td>
+<td style="text-align: center;">中（需等 2026 年年度报告披露）</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td><strong>大宗交易明细</strong></td>
+<td>减持公告明确三家员工持股平台"通过大宗交易方式减持"，成交价与折价率是判断内部人态度的直接证据</td>
+<td>Tushare <code>block_trade</code> 近 60 日窗口——返回 0 行；资金面底稿因此标注"近 60 日无大宗交易记录"。但减持计划公告（2026-04-15）载明减持期间为 2026-05-13 至 08-12、方式为大宗交易，两者矛盾</td>
+<td style="text-align: center;">❌ 未找到（接口返回与公告口径不符）</td>
+<td style="text-align: center;">中（上交所大宗交易每日公开，需用交易所数据复核）</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td><strong>前五大客户与供应商的真实名称</strong></td>
+<td>客户结构决定订单稳定性；本次只知集中度不知对象，无法判断绑定的是哪一档晶圆厂</td>
+<td>2025 年报 P.59-60——客户与供应商全部以"客户 1-5""供应商 1-5"匿名列示，仅给金额与占比（前五客户 22.51%、前五供应商 25.93%，关联方均为 0）；风险章节提及"台积电、中芯国际等核心客户"，但未与前五名对应</td>
+<td style="text-align: center;">❌ 未找到</td>
+<td style="text-align: center;">低（公司以商业秘密为由匿名，原则上不可得）</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td><strong>陆股通（北向）持股趋势与加权成本</strong></td>
+<td>外资仓位变化是判断筹码结构的一条独立线索</td>
+<td>Tushare <code>hk_hold</code> 近 60 日——仅返回 1 行，不足以计算 20 日 / 60 日变化，资金面底稿的对应两节已标"数据不足"</td>
+<td style="text-align: center;">⚠️ 部分</td>
+<td style="text-align: center;">中（可用交易所每日持股明细复核）</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td><strong>未来 12 个月限售解禁日历</strong></td>
+<td>解禁节奏叠加已有的季度性减持，直接影响供给压力判断</td>
+<td>Tushare <code>share_float</code>——返回 0 行；财务明细底稿的解禁日历一节因此为空。公司 2019-12 上市、IPO 前股份已于 2022-12-27 上市流通，理论上大额限售已释放完毕，但 2026 年可转债转股新增的 776.79 万股是否带限售未获确认</td>
+<td style="text-align: center;">⚠️ 部分（可推测但未证实）</td>
+<td style="text-align: center;">中（需用交易所限售股份上市流通公告复核）</td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td><strong>券商深度研报原文</strong></td>
+<td>需要看到盈利预测的假设（氦气价格、销量、新品爬坡节奏），而不只是结论数字</td>
+<td>检索到华鑫证券"买入"评级与 2026-2028 年归母 2.42 / 2.88 / 3.43 亿元的预测，但只有媒体转述；中金公司研报仅见第三方平台标题索引，无正文；未取得任何完整 PDF</td>
+<td style="text-align: center;">⚠️ 部分（有结论无假设）</td>
+<td style="text-align: center;">中（需通过券商研究平台获取原文）</td>
+</tr>
+<tr>
+<td style="text-align: center;">8</td>
+<td><strong>2026 年第三季度报告的预约披露日</strong></td>
+<td>决定下一次复核的时点</td>
+<td>Tushare <code>disclosure_date</code> 27 行，最新一条为 2026-06-30 期（实际披露 2026-08-26），<strong>无任何未来日期</strong>；公司层面的下次披露日登记因此留空</td>
+<td style="text-align: center;">❌ 未找到</td>
+<td style="text-align: center;">高（交易所通常在季末前公布预约表，届时可补）</td>
+</tr>
+<tr>
+<td style="text-align: center;">9</td>
+<td><strong>15 亿元邦普循环供气合同的推进时间表</strong></td>
+<td>这是公司在手最大单笔销售合同，总额 15 亿、已履行 0，若启动会显著改变收入体量</td>
+<td>2025 年报 P.55-56 重大销售合同表——载明合同总金额 15 亿元、合计已履行 0、本报告期履行 0、待履行 15 亿元，履行状态标"否"，说明为"商业供气的开始时间具体以项目实际建设完成为准，受项目客户方需求波动等因素影响"；原始合同公告为 2021-12-15 披露（公告编号 2021-051），本次未取得后续进展公告</td>
+<td style="text-align: center;">❌ 未找到（无时间表）</td>
+<td style="text-align: center;">低（取决于客户方项目进度，公司无法单方面给出）</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>缺口分布</strong>：3 条 ⚠️ 部分 / 6 条 ❌ 未找到 / 0 条已完全解决。</p>
+<p><strong>对结论的整体影响</strong>：缺口 #1（氦气分部盈利）与缺口 #2（上半年产销量）合在一起，意味着<br />
+<strong>本期最重要的一段增长——氦气驱动的收入增长——无法拆成"量"与"价"两项独立验证</strong>，<br />
+只能依赖公司给出的两个定性口径（占比约 20%、同比 +133%）与整体毛利率的反向印证。<br />
+凡涉及"这轮增长能不能持续"的判断，都建立在这一不完整的基础上，应据此下调置信度。</p>
+<hr />
+<p><em>本底稿由采集环节生成，挂载至<a class="cite" href="#appx-E">附录E</a>。文中所有 Tushare 行数与时间戳均为 2026-09-10 当次采集的实际结果，<br />
+非历史缓存；PDF 页码可在留存文件中原文核对。</em></p>
+</section>
+
+<footer>
+  本报告由 Claude Code company-analysis skill v8.0 生成 · 判断链五节点 + 红旗两源制装配<br>
+  数据源：Tushare Pro / yfinance / 巨潮资讯 PDF / WebSearch · 不构成投资建议<br>
+  <a href="https://github.com/leafpaper/claude-company-analysis">skill 代码</a> · <a href="https://github.com/leafpaper/Inves-Report">报告归档</a>
+</footer>
+
+</div>
+
+<script>
+/* 渐进披露: 每章一个「展开全部 / 收起」控件; 打印与站内搜索前自动全展开。 */
+(function(){
+  var secs = document.querySelectorAll('section.chB');
+  Array.prototype.forEach.call(secs, function(sec){
+    var ds = sec.querySelectorAll('details.drill');
+    if (!ds.length) return;                       /* ⑤怎么办没有折叠段, 不加控件 */
+    var bar = document.createElement('div');
+    bar.className = 'foldbar';
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    function sync(){
+      var anyClosed = Array.prototype.some.call(ds, function(d){ return !d.open; });
+      btn.textContent = anyClosed ? '展开全部 ' + ds.length + ' 段' : '收起全部';
+      btn.setAttribute('aria-expanded', anyClosed ? 'false' : 'true');
+    }
+    btn.addEventListener('click', function(){
+      var anyClosed = Array.prototype.some.call(ds, function(d){ return !d.open; });
+      Array.prototype.forEach.call(ds, function(d){ d.open = anyClosed; });
+      sync();
+    });
+    Array.prototype.forEach.call(ds, function(d){ d.addEventListener('toggle', sync); });
+    sync();
+    var bd = sec.querySelector('.bd');
+    var first = bd && bd.querySelector('details.drill');
+    if (first) bd.insertBefore(bar, first);
+    bar.appendChild(btn);
+  });
+  /* 打印: 全部展开, 否则纸上会缺内容 */
+  function openAll(){
+    Array.prototype.forEach.call(document.querySelectorAll('details.drill'), function(d){ d.open = true; });
+  }
+  window.addEventListener('beforeprint', openAll);
+  /* 直接命中折叠段内的锚点时自动展开 */
+  function revealHash(){
+    if (!location.hash) return;
+    var t = document.querySelector(location.hash);
+    while (t) { if (t.tagName === 'DETAILS') t.open = true; t = t.parentElement; }
+  }
+  window.addEventListener('hashchange', revealHash);
+  revealHash();
+})();
+
+/* 明暗主题: 默认跟随系统(不写 data-theme), 手动切换后记住选择。 */
+(function(){
+  var KEY = 'ca-theme', root = document.documentElement, btn = document.getElementById('themetoggle');
+  try { var saved = localStorage.getItem(KEY); if (saved) root.setAttribute('data-theme', saved); } catch (e) {}
+  function current(){
+    var explicit = root.getAttribute('data-theme');
+    if (explicit) return explicit;
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  btn && btn.addEventListener('click', function(){
+    var next = current() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem(KEY, next); } catch (e) {}
+    btn.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
+  });
+})();
+</script>
+</body>
+</html>

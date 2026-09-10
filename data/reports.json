@@ -1,7 +1,58 @@
 {
   "schema_version": "v1",
-  "last_updated": "2026-09-01",
+  "last_updated": "2026-09-10",
   "reports": [
+    {
+      "slug": "688268_华特气体",
+      "ticker": "688268.SH",
+      "name": "华特气体",
+      "name_cn": "华特气体",
+      "sector": "–",
+      "market": "a",
+      "report_date": "2026-09-10",
+      "version": "v8.0",
+      "composite_score": null,
+      "verdict": "回避——现价既不买、也不开小仓,等三季报验明增长不只靠氦价、价格回到 35.3~49.6 元再重估",
+      "verdict_tone": "bearish",
+      "quality_field": "部分好",
+      "action_gear": "回避",
+      "next_disclosure_date": "",
+      "review_hint": "",
+      "valuation_tag": "估值锚 35.3-49.6 元",
+      "one_liner": "回避:现价 129.30 元既不买,也不开小仓博一把,钱先拿在手里等。 华特气体卖的是晶圆厂要用的特种气体,账是真的、家底也稳,还是国内仅有的两家拿到光刻机巨头 ASML 认证的光刻气供应商之一;可今年上半年收入涨的近三成里,一半来自氦气这一个品种涨价,公司自己也说氦价已从高位明显回落,整体毛利率反而掉了 3.38 个百分点。 价格却已经把最好的结局提前买走了:只认已经赚到的钱,一股值 35 元,把好中坏三种前景按概率加权也就 50 元,现价是它的 2.6 到 3.7 倍;就算新品放量、氦价一直高着的最好剧本全部兑现,一股也只值 107.8 元,还比现价低 17%。 它 7 月初冲到 290 ",
+      "metrics": [
+        {
+          "label": "行动档位",
+          "value": "回避",
+          "tone": "negative"
+        },
+        {
+          "label": "质地",
+          "value": "部分好",
+          "tone": "neutral"
+        },
+        {
+          "label": "贵不贵",
+          "value": "买完完美未来(无 slack)",
+          "tone": "neutral"
+        }
+      ],
+      "expected_return_short": "",
+      "badges": [
+        {
+          "label": "回避——现价既不买、也不开小仓,等三季报验明增长不只靠氦价、价格回到 35.3~49.6 元再重估",
+          "variant": "red"
+        },
+        {
+          "label": "质地 部分好",
+          "variant": "amber"
+        },
+        {
+          "label": "赔率 买完完美未来(无 slack)",
+          "variant": "amber"
+        }
+      ]
+    },
     {
       "slug": "300308_中际旭创",
       "ticker": "300308.SZ",
