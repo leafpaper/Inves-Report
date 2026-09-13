@@ -267,7 +267,7 @@ tr:target{background:var(--wash-a)}
 a.cite{color:inherit; text-decoration:none; border-bottom:1px dotted var(--muted)}
 a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 
-/* ---------- 估值尺(meter):轨道=锚区间, 标记=现价 ---------- */
+/* ---------- 估值尺(meter):轨道=合理价区间, 标记=现价 ---------- */
 .meter{margin:2px 0 16px; padding:12px 14px; background:var(--surface);
        border:1px solid var(--hair); border-radius:10px}
 .meter figcaption{font-size:12.5px; color:var(--muted); margin-bottom:10px; letter-spacing:.02em}
@@ -428,7 +428,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
   <div class="fact"><div class="l">行动档位</div><div class="v">回避</div></div>
   <div class="fact"><div class="l">质地</div><div class="v">部分好</div></div>
   <div class="fact"><div class="l">现价</div><div class="v">129.3 <small>元</small></div></div>
-  <div class="fact"><div class="l">锚区间</div><div class="v">35.3–49.6 <small>元</small></div></div>
+  <div class="fact"><div class="l">合理价区间</div><div class="v">35.3–49.6 <small>元</small></div></div>
 </div>
 
 <!-- ============================================================
@@ -436,7 +436,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
      全部机器装配自 assembly.json, 零人工抄写(导读除外)
      ============================================================ -->
 <section id="front">
-<div class="secl"><span class="t">投资决断卡</span> <span class="chip">机器装配</span></div>
+<div class="secl"><span class="t">投资决断卡</span> </div>
 <div class="cards5">
   <a class="dc t-watch" href="#ch-quality">
     <div class="q">① 是不是好公司</div>
@@ -452,8 +452,8 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
   </a>
   <a class="dc t-bad" href="#ch-odds">
     <div class="q">③ 贵不贵</div>
-    <div class="a">买完完美未来(无 slack)</div>
-    <div class="w">锚区间 35.3-49.6 元 vs 现价 129.3 元</div>
+    <div class="a">买完完美未来</div>
+    <div class="w">合理价区间 35.3-49.6 元 vs 现价 129.3 元</div>
     <div class="s"><span class="chip">③赔率</span> <span class="chip" title="本节点红旗数(明细见附录D)">🟠×2 🟡×1 红旗</span></div>
   </a>
   <a class="dc t-bad" href="#ch-path">
@@ -470,7 +470,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
   </a>
 </div>
 
-<div class="secl"><span class="t">赚不赚钱面板</span> <span class="chip man">写手选 3-5</span></div>
+<div class="secl"><span class="t">赚不赚钱面板</span></div>
 <p class="reason">上游电子特气材料商,客户和供应商都分散、账上现金足;该看的是量增价减下单位盈利守不守得住、扩产之后回报跟不跟得上 → 用默认五件套,毛利率排第一</p>
 <div class="tiles">
   <div class="st">
@@ -504,23 +504,23 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <div class="secl"><span class="t">Top 3 风险</span> <span class="chip">机器带出 · 附录D</span></div>
 <div class="risks">
   <div class="rk mk-red">
-    <div class="t"><a class="fw fw-red" href="#flag-valuation-e82fbf" title="🟠 高级红旗 PB vs ROE 严重错配｜市净率 6.21 倍;按净资产回报率 6.8% 应配约 0.85 倍(回报率÷8%),现价是它的 7.3 倍｜来源 脚本｜归属 ③赔率 ／ ℹ️ 信息 PB 历史分位｜当前 PB=6.21，近 1 年范围 [3.60, 18.90]｜来源 脚本｜归属 ③赔率"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">PB vs ROE 严重错配</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 PB vs ROE 严重错配</span><span>市净率 6.21 倍;按净资产回报率 6.8% 应配约 0.85 倍(回报率÷8%),现价是它的 7.3 倍</span><span class="meta">级别 高级红旗 · 来源 脚本 · 归属 ③赔率</span><span class="go">→ 点击查看附录D 条目</span><span class="meta">—</span><span class="ttl">ℹ️ PB 历史分位</span><span>当前 PB=6.21，近 1 年范围 [3.60, 18.90]</span><span class="meta">级别 信息 · 来源 脚本 · 归属 ③赔率</span><span class="go">→ 点击查看附录D 条目</span></span></a></div>
+    <div class="t"><a class="fw fw-red" href="#flag-valuation-e82fbf" title="🟠 高级红旗 PB vs ROE 严重错配｜市净率 6.21 倍;按净资产回报率 6.8% 应配约 0.85 倍(回报率÷8%),现价是它的 7.3 倍｜来源 自动审计｜归属 ③赔率 ／ ℹ️ 信息 PB 历史分位｜当前 PB=6.21，近 1 年范围 [3.60, 18.90]｜来源 自动审计｜归属 ③赔率"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">PB vs ROE 严重错配</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 PB vs ROE 严重错配</span><span>市净率 6.21 倍;按净资产回报率 6.8% 应配约 0.85 倍(回报率÷8%),现价是它的 7.3 倍</span><span class="meta">级别 高级红旗 · 来源 自动审计 · 归属 ③赔率</span><span class="go">→ 点击查看附录D 条目</span><span class="meta">—</span><span class="ttl">ℹ️ PB 历史分位</span><span>当前 PB=6.21，近 1 年范围 [3.60, 18.90]</span><span class="meta">级别 信息 · 来源 自动审计 · 归属 ③赔率</span><span class="go">→ 点击查看附录D 条目</span></span></a></div>
     <div class="d">市净率 6.21 倍;按净资产回报率 6.8% 应配约 0.85 倍(回报率÷8%),现价是它的 7.3 倍</div>
-    <div class="h">所属节点 → <a href="#ch-odds">③赔率</a> · 来源 脚本 · <a href="#flag-valuation-31faed">ℹ️ PB 历史分位(脚本)</a></div>
+    <div class="h"><a href="#ch-odds">③赔率</a> · <a href="#flag-valuation-31faed">ℹ️ PB 历史分位</a></div>
   </div>
   <div class="rk mk-red">
-    <div class="t"><a class="fw fw-red" href="#flag-helium-dual-policy-squeeze" title="🟠 高级红旗 氦气遭进口许可与出口禁令双向管制｜俄方氦气出口特别许可由公司按月申请,原文称审批结果仍具有不确定性;商务部与海关总署 2026 年第 29 号公告对氦气临时禁止出口,原文称直接影响了公司相关产品的出口;氦气约占 2026H1 营收 20%、贡献收入增量 50.8%｜来源 写手提名｜归属 ④路径"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">氦气遭进口许可与出口禁令双向管制</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 氦气遭进口许可与出口禁令双向管制</span><span>俄方氦气出口特别许可由公司按月申请,原文称审批结果仍具有不确定性;商务部与海关总署 2026 年第 29 号公告对氦气临时禁止出口,原文称直接影响了公司相关产品的出口;氦气约占 2026H1 营收 20%、贡献收入增量 50.8%</span><span class="meta">级别 高级红旗 · 来源 写手提名 · 归属 ④路径</span><span class="go">→ 点击查看附录D 条目</span></span></a></div>
+    <div class="t"><a class="fw fw-red" href="#flag-helium-dual-policy-squeeze" title="🟠 高级红旗 氦气遭进口许可与出口禁令双向管制｜俄方氦气出口特别许可由公司按月申请,原文称审批结果仍具有不确定性;商务部与海关总署 2026 年第 29 号公告对氦气临时禁止出口,原文称直接影响了公司相关产品的出口;氦气约占 2026H1 营收 20%、贡献收入增量 50.8%｜来源 人工复核｜归属 ④路径"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">氦气遭进口许可与出口禁令双向管制</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 氦气遭进口许可与出口禁令双向管制</span><span>俄方氦气出口特别许可由公司按月申请,原文称审批结果仍具有不确定性;商务部与海关总署 2026 年第 29 号公告对氦气临时禁止出口,原文称直接影响了公司相关产品的出口;氦气约占 2026H1 营收 20%、贡献收入增量 50.8%</span><span class="meta">级别 高级红旗 · 来源 人工复核 · 归属 ④路径</span><span class="go">→ 点击查看附录D 条目</span></span></a></div>
     <div class="d">俄方氦气出口特别许可由公司按月申请,原文称审批结果仍具有不确定性;商务部与海关总署 2026 年第 29 号公告对氦气临时禁止出口,原文称直接影响了公司相关产品的出口;氦气约占 2026H1 营收 20%、贡献收入增量 50.8%</div>
-    <div class="h">所属节点 → <a href="#ch-path">④路径</a> · 来源 写手提名</div>
+    <div class="h"><a href="#ch-path">④路径</a></div>
   </div>
   <div class="rk mk-red">
-    <div class="t"><a class="fw fw-red" href="#flag-odds-insider-block-price-gap" title="🟠 高级红旗 现价是实控人持股平台最近一轮大宗减持价的 2.2-2.3 倍｜三家实控人持股平台过去 12 个月三轮大宗减持成交价 44.81 元、57-58.7 元、55.75-57.65 元(2026-04-15 公告),当时滚动市盈率约 29、41、40 倍;2026-09-10 收盘 129.30 元;2026H1 前十大无公募、无一名前十大股东增持｜来源 写手提名｜归属 ③赔率"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">现价是实控人持股平台最近一轮大宗减持价的 2.2-2.3 倍</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 现价是实控人持股平台最近一轮大宗减持价的 2.2-2.3 倍</span><span>三家实控人持股平台过去 12 个月三轮大宗减持成交价 44.81 元、57-58.7 元、55.75-57.65 元(2026-04-15 公告),当时滚动市盈率约 29、41、40 倍;2026-09-10 收盘 129.30 元;2026H1 前十大无公募、无一名前十大股东增持</span><span class="meta">级别 高级红旗 · 来源 写手提名 · 归属 ③赔率</span><span class="go">→ 点击查看附录D 条目</span></span></a></div>
+    <div class="t"><a class="fw fw-red" href="#flag-odds-insider-block-price-gap" title="🟠 高级红旗 现价是实控人持股平台最近一轮大宗减持价的 2.2-2.3 倍｜三家实控人持股平台过去 12 个月三轮大宗减持成交价 44.81 元、57-58.7 元、55.75-57.65 元(2026-04-15 公告),当时滚动市盈率约 29、41、40 倍;2026-09-10 收盘 129.30 元;2026H1 前十大无公募、无一名前十大股东增持｜来源 人工复核｜归属 ③赔率"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">现价是实控人持股平台最近一轮大宗减持价的 2.2-2.3 倍</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 现价是实控人持股平台最近一轮大宗减持价的 2.2-2.3 倍</span><span>三家实控人持股平台过去 12 个月三轮大宗减持成交价 44.81 元、57-58.7 元、55.75-57.65 元(2026-04-15 公告),当时滚动市盈率约 29、41、40 倍;2026-09-10 收盘 129.30 元;2026H1 前十大无公募、无一名前十大股东增持</span><span class="meta">级别 高级红旗 · 来源 人工复核 · 归属 ③赔率</span><span class="go">→ 点击查看附录D 条目</span></span></a></div>
     <div class="d">三家实控人持股平台过去 12 个月三轮大宗减持成交价 44.81 元、57-58.7 元、55.75-57.65 元(2026-04-15 公告),当时滚动市盈率约 29、41、40 倍;2026-09-10 收盘 129.30 元;2026H1 前十大无公募、无一名前十大股东增持</div>
-    <div class="h">所属节点 → <a href="#ch-odds">③赔率</a> · 来源 写手提名</div>
+    <div class="h"><a href="#ch-odds">③赔率</a></div>
   </div>
 </div>
 
-<div class="secl"><span class="t">写手导读</span> <span class="chip man">人工 3-5 句</span></div>
+<div class="secl"><span class="t">导读</span></div>
 <div class="intro"><p>回避:现价 129.30 元既不买,也不开小仓博一把,钱先拿在手里等。</p>
 <p>华特气体卖的是晶圆厂要用的特种气体,账是真的、家底也稳,还是国内仅有的两家拿到光刻机巨头 ASML 认证的光刻气供应商之一;可今年上半年收入涨的近三成里,一半来自氦气这一个品种涨价,公司自己也说氦价已从高位明显回落,整体毛利率反而掉了 3.38 个百分点。</p>
 <p>价格却已经把最好的结局提前买走了:只认已经赚到的钱,一股值 35 元,把好中坏三种前景按概率加权也就 50 元,现价是它的 2.6 到 3.7 倍;就算新品放量、氦价一直高着的最好剧本全部兑现,一股也只值 107.8 元,还比现价低 17%。</p>
@@ -642,7 +642,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <tr>
 <td>故事四关</td>
 <td>✗ 只过第一关</td>
-<td>第④关引用<a class="cite" href="#ch-odds">③赔率</a>原话「买完完美未来(无 slack)」(故事四关)</td>
+<td>第④关引用<a class="cite" href="#ch-odds">③赔率</a>原话「买完完美未来」(故事四关)</td>
 </tr>
 </tbody>
 </table></div>
@@ -768,7 +768,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <p>眼下沾边的只有一个方向信号:俄罗斯管制生效、公司上调氦气售价的二季度,整体单季毛利率约 30.0%,比上年同季低约 3 个百分点。若氦气毛利明显高于其余业务,占比升到约两成时整体毛利率本该被托高;但这个数里混着原料涨价和别的品类降价,反推不出氦气自己赚多少。</p>
 <p><strong>好转是真提高,还是只是热度提高了?</strong> 收入、利润、现金流都是真的,但真提高的主要是价格带来的收入,不是赚钱能力;热度的涨幅远大于证据——4 月科创板严重异动,7 个交易日累计偏离超 100%,股东户数一年多了约两倍(筹码与资金明细见<a class="cite" href="#appx-C">附录C</a>)。</p>
 <p><strong>新证据是独立的吗?</strong> 独立的只有财报与公告,其余是同一个"氦气稀缺"叙事的反复转述,其中两条已被公司辟谣;多空双方最有力的论据,恰恰都出自公司自己的同一批公告。</p>
-<p><strong>价格反映了多少?</strong> <a class="cite" href="#ch-odds">③赔率</a>原话「买完完美未来(无 slack)」,区间锚 35.3~49.6 元对现价 129.30 元(<a class="cite" href="#ch-odds">③赔率</a>)。</p>
+<p><strong>价格反映了多少?</strong> <a class="cite" href="#ch-odds">③赔率</a>原话「买完完美未来」,合理价区间 35.3~49.6 元对现价 129.30 元(<a class="cite" href="#ch-odds">③赔率</a>)。</p>
 <p>无记忆性检查:"连降三年的收入该反弹了""从高点回落过半该反抽了"都是等待时间幻觉;反过来"一年涨了一倍多、动量强"也不是理由。能当理由的只有证据方向转正——眼下转正的是氦气价格,而公司自己说它已在回落。</p>
 </div></details><details class="drill"><summary>市场给它换了"氦气受益股"的标签,但它在氦气链上是被卡住的买方</summary><div class="dd">
 <p>4 月那轮异动里,市场把它当成氦气稀缺的受益者、按瓶颈节点定价;公司对同一件事的原话却是"短期内对公司氦气供货及时性存在阶段性影响"——俄罗斯是它氦气采购的主要来源地,需按月申请特别许可,国内又对氦气临时禁止出口。受益于稀缺的是握有资源的一方,它夹在进口与出口两道闸门中间。</p>
@@ -800,7 +800,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <tr>
 <td>价格还给兑现留了余地吗</td>
 <td>✗</td>
-<td><a class="cite" href="#ch-odds">③赔率</a>原话「买完完美未来(无 slack)」(<a class="cite" href="#ch-odds">③赔率</a>)</td>
+<td><a class="cite" href="#ch-odds">③赔率</a>原话「买完完美未来」(<a class="cite" href="#ch-odds">③赔率</a>)</td>
 </tr>
 <tr>
 <td>在产业链上是卡别人还是被卡</td>
@@ -816,15 +816,15 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 </table></div></div></details></div>
 </section>
 <section class="chB" id="ch-odds">
-  <div class="hd"><span class="no">③ 赔率</span><span class="qq">贵不贵</span><span class="pill bad">买完完美未来(无 slack)</span></div>
-  <div class="bd"><figure class="meter" role="img" aria-label="估值尺:合理区间 35.3-49.6元,现价 129.3元,现价是区间高端的 2.61 倍">
+  <div class="hd"><span class="no">③ 赔率</span><span class="qq">贵不贵</span><span class="pill bad">买完完美未来</span></div>
+  <div class="bd"><figure class="meter" role="img" aria-label="估值尺:合理价区间 35.3-49.6元,现价 129.3元,现价是区间高端的 2.61 倍">
   <figcaption>贵不贵:一把尺</figcaption>
   <div class="track">
     <span class="band" style="left:24.38%;width:9.87%"></span>
     <span class="mark over" style="left:89.29%"></span>
   </div>
   <div class="scale"><span>0</span><span>145 元</span></div>
-  <div class="lg"><span><i class="sw band"></i>合理区间 35.3–49.6 元<small>低端只认已赚到的钱 · 高端按三种前景概率加权</small></span><span><i class="sw mark"></i>现价 129.3 元<small>现价是区间高端的 2.61 倍</small></span></div>
+  <div class="lg"><span><i class="sw band"></i>合理价区间 35.3–49.6 元<small>低端只认已赚到的钱 · 高端按三种前景概率加权</small></span><span><i class="sw mark"></i>现价 129.3 元<small>现价是区间高端的 2.61 倍</small></span></div>
 </figure><figure class="pfn" role="img" aria-label="股价拆两半:市值 165.09 亿 里, 已赚到的 F 45.12 亿 · 27.3%,为想象多付的 N 119.97 亿 · 72.7%" title="F 的口径:F = 只认已赚到的钱那一端:2025 全年扣非 ×32.8x + 上半年扣非增量 ×15x + 净现金">
   <figcaption>股价拆两半:已赚到的 · 为想象多付的</figcaption>
   <div class="bar">
@@ -832,7 +832,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
     <span class="sg n" style="flex-basis:calc(72.67% - 1px)"></span>
   </div>
   <div class="lg"><span><i class="sw f"></i>已赚到的 F 45.12 亿 · 27.3%</span><span><i class="sw n"></i>为想象多付的 N 119.97 亿 · 72.7%<small>市场已收费的义务,不是白送的彩票</small></span></div>
-</figure><p><strong>判定:买完完美未来(无 slack)——合理价两端 35.3~49.6 元(低端只认已赚到的钱,高端按三种前景加权,即分部加总法与概率加权折现法),现价 129.30 元是高端的 2.61 倍、低端的 3.66 倍;最好的那条前景全部兑现,每股也只值 107.8 元,仍比现价低 16.6%。</strong></p>
+</figure><p><strong>判定:买完完美未来——合理价区间 35.3~49.6 元(低端只认已赚到的钱,高端按三种前景加权,即分部加总法与概率加权折现法),现价 129.30 元是高端的 2.61 倍、低端的 3.66 倍;最好的那条前景全部兑现,每股也只值 107.8 元,仍比现价低 16.6%。</strong></p>
 <div class="tblwrap"><table>
 <thead>
 <tr>
@@ -1217,7 +1217,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <tr>
 <td>第 29 号公告氦气出口临时禁令延续</td>
 <td>敞口上限是境外收入约 1.87 亿、占主营约 22%;H1 境外收入同比仍 +41.7%,禁令还没落到报表</td>
-<td>境外收入里的氦气份额未披露。与上一条合起来,就是本节点提名的「<a class="fw fw-red fw-inline" href="#flag-helium-dual-policy-squeeze" title="🟠 高级红旗 氦气遭进口许可与出口禁令双向管制｜俄方氦气出口特别许可由公司按月申请,原文称审批结果仍具有不确定性;商务部与海关总署 2026 年第 29 号公告对氦气临时禁止出口,原文称直接影响了公司相关产品的出口;氦气约占 2026H1 营收 20%、贡献收入增量 50.8%｜来源 写手提名｜归属 ④路径"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">氦气遭进口许可与出口禁令双向管制</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 氦气遭进口许可与出口禁令双向管制</span><span>俄方氦气出口特别许可由公司按月申请,原文称审批结果仍具有不确定性;商务部与海关总署 2026 年第 29 号公告对氦气临时禁止出口,原文称直接影响了公司相关产品的出口;氦气约占 2026H1 营收 20%、贡献收入增量 50.8%</span><span class="meta">级别 高级红旗 · 来源 写手提名 · 归属 ④路径</span><span class="go">→ 点击查看附录D 条目</span></span></a>」——市场当涨价受益股买,公司披露为原料断供风险</td>
+<td>境外收入里的氦气份额未披露。与上一条合起来,就是本节点提名的「<a class="fw fw-red fw-inline" href="#flag-helium-dual-policy-squeeze" title="🟠 高级红旗 氦气遭进口许可与出口禁令双向管制｜俄方氦气出口特别许可由公司按月申请,原文称审批结果仍具有不确定性;商务部与海关总署 2026 年第 29 号公告对氦气临时禁止出口,原文称直接影响了公司相关产品的出口;氦气约占 2026H1 营收 20%、贡献收入增量 50.8%｜来源 人工复核｜归属 ④路径"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">氦气遭进口许可与出口禁令双向管制</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 氦气遭进口许可与出口禁令双向管制</span><span>俄方氦气出口特别许可由公司按月申请,原文称审批结果仍具有不确定性;商务部与海关总署 2026 年第 29 号公告对氦气临时禁止出口,原文称直接影响了公司相关产品的出口;氦气约占 2026H1 营收 20%、贡献收入增量 50.8%</span><span class="meta">级别 高级红旗 · 来源 人工复核 · 归属 ④路径</span><span class="go">→ 点击查看附录D 条目</span></span></a>」——市场当涨价受益股买,公司披露为原料断供风险</td>
 </tr>
 <tr>
 <td>原料涨价而成本转嫁能力有限,毛利率再降一轮</td>
@@ -1249,7 +1249,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <tr>
 <td>高估值</td>
 <td style="text-align: center;">✓</td>
-<td>滚动市盈率 109.9 倍、市净率对回报率错配 7.3 倍,③判「买完完美未来(无 slack)」(<a class="cite" href="#ch-odds">③赔率</a>)</td>
+<td>滚动市盈率 109.9 倍、市净率对回报率错配 7.3 倍,③判「买完完美未来」(<a class="cite" href="#ch-odds">③赔率</a>)</td>
 </tr>
 <tr>
 <td>高波动</td>
@@ -1358,7 +1358,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 </tr>
 </tbody>
 </table></div>
-<p><strong>最强的看空链</strong>:氦气行情是地缘租金而非护城河,公司自认售价已回落、成本转嫁能力有限(<a class="cite" href="#ch-quality">①质地</a>),租金退潮后只剩量增价减的基本盘,股价回到③给的合理价两端 35.3~49.6 元(<a class="cite" href="#ch-odds">③赔率</a>)。<strong>它自己的证伪条件</strong>:2026 年报氦气占比跌破 15% 的同时特气毛利率守住 35%、江西华特扭亏,三件同时成立即租金论被推翻。</p>
+<p><strong>最强的看空链</strong>:氦气行情是地缘租金而非护城河,公司自认售价已回落、成本转嫁能力有限(<a class="cite" href="#ch-quality">①质地</a>),租金退潮后只剩量增价减的基本盘,股价回到③给的合理价区间 35.3~49.6 元(<a class="cite" href="#ch-odds">③赔率</a>)。<strong>它自己的证伪条件</strong>:2026 年报氦气占比跌破 15% 的同时特气毛利率守住 35%、江西华特扭亏,三件同时成立即租金论被推翻。</p>
 </div></details><details class="drill"><summary>证伪清单九条:一条都还没命中,最早的两条要到 10 月底的三季报才能核销</summary><div class="dd">
 <div class="tblwrap"><table>
 <thead>
@@ -1436,7 +1436,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 </tr>
 <tr>
 <td>赔率:贵不贵</td>
-<td>买完完美未来(无 slack)</td>
+<td>买完完美未来</td>
 <td><a class="cite" href="#ch-odds">③赔率</a>的判定原话;③的合理价区间 35.3~49.6 元 vs 现价 129.30 元(③)</td>
 </tr>
 <tr>
@@ -4349,8 +4349,8 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 </section>
 <section class="appx" id="appx-D">
   <h2>附录D 红旗总清单</h2>
-  <p>机器产物:脚本 audit 红旗 ⊕ 节点写手提名两源合并,是首页 Top3 与全报告红标的唯一数据源。</p>
-<p><strong>合计 18 条</strong> — 级别:🟠 4 · 🟡 8 · 🟢 3 · ℹ️ 3;来源:脚本 11 · 写手提名 7</p>
+  <p>本清单合并两个来源:自动审计跑出来的信号,与分析各章时人工补提的疑点。首页 Top3 与全文红标都从这里来。</p>
+<p><strong>合计 18 条</strong> — 级别:🟠 4 · 🟡 8 · 🟢 3 · ℹ️ 3;来源:自动审计 11 · 人工复核 7</p>
 <div class="tblwrap"><table>
 <thead>
 <tr>
@@ -4368,7 +4368,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟠</td>
 <td>PB vs ROE 严重错配</td>
 <td>市净率 6.21 倍;按净资产回报率 6.8% 应配约 0.85 倍(回报率÷8%),现价是它的 7.3 倍</td>
-<td>脚本</td>
+<td>自动审计</td>
 <td><a class="cite" href="#ch-odds">③赔率</a></td>
 <td>pb</td>
 <td><a id="flag-valuation-e82fbf"></a><code>valuation-e82fbf</code></td>
@@ -4377,7 +4377,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟠</td>
 <td>增长一半来自单一品种涨价,公司自称价格已回落</td>
 <td>氦气收入占约 20%、同比 +133%,推算贡献全部收入增量 50.8%;公司称氦价"距高位已经有明显下降",并提示"勿过度放大单一产品价格波动对公司业绩的影响"</td>
-<td>写手提名</td>
+<td>人工复核</td>
 <td><a class="cite" href="#ch-state">②状态</a></td>
 <td>—</td>
 <td><a id="flag-state-helium-growth-concentration"></a><code>state-helium-growth-concentration</code></td>
@@ -4386,7 +4386,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟠</td>
 <td>现价是实控人持股平台最近一轮大宗减持价的 2.2-2.3 倍</td>
 <td>三家实控人持股平台过去 12 个月三轮大宗减持成交价 44.81 元、57-58.7 元、55.75-57.65 元(2026-04-15 公告),当时滚动市盈率约 29、41、40 倍;2026-09-10 收盘 129.30 元;2026H1 前十大无公募、无一名前十大股东增持</td>
-<td>写手提名</td>
+<td>人工复核</td>
 <td><a class="cite" href="#ch-odds">③赔率</a></td>
 <td>latest_close、top10_change</td>
 <td><a id="flag-odds-insider-block-price-gap"></a><code>odds-insider-block-price-gap</code></td>
@@ -4395,7 +4395,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟠</td>
 <td>氦气遭进口许可与出口禁令双向管制</td>
 <td>俄方氦气出口特别许可由公司按月申请,原文称审批结果仍具有不确定性;商务部与海关总署 2026 年第 29 号公告对氦气临时禁止出口,原文称直接影响了公司相关产品的出口;氦气约占 2026H1 营收 20%、贡献收入增量 50.8%</td>
-<td>写手提名</td>
+<td>人工复核</td>
 <td><a class="cite" href="#ch-path">④路径</a></td>
 <td>revenue_yoy</td>
 <td><a id="flag-helium-dual-policy-squeeze"></a><code>helium-dual-policy-squeeze</code></td>
@@ -4404,7 +4404,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟡</td>
 <td>F=4/9</td>
 <td>NI &gt; 0=✓(NI=135353137.58) | ROA &gt; 0=✓(ROA≈0.038) | OCF &gt; 0=✓(OCF=261032970.91) | OCF &gt; NI=✓(OCF=261032970.91, NI=135353137.58) | ROA↑=✗(0.056→0.038) | 资产负债率↓=✗(0.392→0.424) | 流动比率↑=✗(3.387→3.087) | 毛利率↑=✗(0.319→0.309) | 资产周转率↑=✗(0.423→0.396)</td>
-<td>脚本</td>
+<td>自动审计</td>
 <td><a class="cite" href="#ch-quality">①质地</a></td>
 <td>f_score</td>
 <td><a id="flag-piotroski-f-score-0a9914"></a><code>piotroski-f-score-0a9914</code></td>
@@ -4413,7 +4413,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟡</td>
 <td>前十大股东减持</td>
 <td>最近一期（20260630）净减持 359 万股</td>
-<td>脚本</td>
+<td>自动审计</td>
 <td><a class="cite" href="#ch-path">④路径</a></td>
 <td>top10_change</td>
 <td><a id="flag-governance-055748"></a><code>governance-055748</code></td>
@@ -4422,7 +4422,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟡</td>
 <td>长期户数上升（筹码分散）</td>
 <td>20260529: 23683 → 20260731: 30047</td>
-<td>脚本</td>
+<td>自动审计</td>
 <td><a class="cite" href="#ch-path">④路径</a></td>
 <td>holder_count</td>
 <td><a id="flag-shareholder-flow-69ab57"></a><code>shareholder-flow-69ab57</code></td>
@@ -4431,7 +4431,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟡</td>
 <td>股息率极低</td>
 <td>当前股息率 0.43%</td>
-<td>脚本</td>
+<td>自动审计</td>
 <td><a class="cite" href="#ch-odds">③赔率</a></td>
 <td>dividend_yield</td>
 <td><a id="flag-valuation-7ebcbf"></a><code>valuation-7ebcbf</code></td>
@@ -4440,7 +4440,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟡</td>
 <td>有认证门槛却没有定价权,毛利在段内被压</td>
 <td>收入向高毛利特气迁移(68.9% vs 64.8%)毛利率仍同比降 3.38 个百分点;公司风险章节自认「成本转嫁能力有限」,半年报变动表对此零归因</td>
-<td>写手提名</td>
+<td>人工复核</td>
 <td><a class="cite" href="#ch-quality">①质地</a></td>
 <td>gross_margin</td>
 <td><a id="flag-pricing-power-passthrough-limited"></a><code>pricing-power-passthrough-limited</code></td>
@@ -4449,7 +4449,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟡</td>
 <td>半年收入增量一半来自不披露毛利的氦气</td>
 <td>氦气约占营收 20%、同比 +133%,推算贡献全部收入增量的 50.8%;公司无分部报告,氦气量价与毛利均不披露</td>
-<td>写手提名</td>
+<td>人工复核</td>
 <td><a class="cite" href="#ch-quality">①质地</a></td>
 <td>—</td>
 <td><a id="flag-growth-single-product-undisclosed"></a><code>growth-single-product-undisclosed</code></td>
@@ -4458,7 +4458,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟡</td>
 <td>以价换量,收入结构升级而毛利率下降</td>
 <td>特种气体占主营 68.9%(上年同期 64.8%),整体毛利率同比降 3.38 个百分点,毛利额只增约 16% 而收入增 28.95%;公司自认"成本转嫁能力有限"</td>
-<td>写手提名</td>
+<td>人工复核</td>
 <td><a class="cite" href="#ch-state">②状态</a></td>
 <td>—</td>
 <td><a id="flag-state-price-for-volume"></a><code>state-price-for-volume</code></td>
@@ -4467,7 +4467,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟡</td>
 <td>户数一个季度翻倍、融资余额占市值 5.8%,高点已回撤 55.4%</td>
 <td>股东户数 2026-03-31 的 14,758 → 06-30 的 34,429(+133%),7 月末 30,047;融资余额 9.59 亿 = 市值 165.09 亿的 5.8%,较近 60 日中位 −12.1%;2026-07-01 盘中高点 290.0 元至 2026-09-10 收盘 129.30 元回撤 55.4%</td>
-<td>写手提名</td>
+<td>人工复核</td>
 <td><a class="cite" href="#ch-path">④路径</a></td>
 <td>holder_count、margin_balance</td>
 <td><a id="flag-crowding-leverage-unwind"></a><code>crowding-leverage-unwind</code></td>
@@ -4476,7 +4476,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟢</td>
 <td>M=-2.726</td>
 <td>DSRI=1.03|GMI=1.03|AQI=0.75|SGI=1.02|TATA=-0.037|LVGI=1.08</td>
-<td>脚本</td>
+<td>自动审计</td>
 <td><a class="cite" href="#ch-quality">①质地</a></td>
 <td>m_score</td>
 <td><a id="flag-beneish-m-score-77f98f"></a><code>beneish-m-score-77f98f</code></td>
@@ -4485,7 +4485,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟢</td>
 <td>Z=7.796</td>
 <td>营运资本/TA=0.323|RE/TA=0.248|EBIT/TA=0.042|MV/TL=10.876|S/TA=0.396</td>
-<td>脚本</td>
+<td>自动审计</td>
 <td><a class="cite" href="#ch-quality">①质地</a></td>
 <td>z_score</td>
 <td><a id="flag-altman-z-score-2e474b"></a><code>altman-z-score-2e474b</code></td>
@@ -4494,7 +4494,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟢</td>
 <td>股东户数变化</td>
 <td>20260630: 34429 → 20260731: 30047（-12.7%）</td>
-<td>脚本</td>
+<td>自动审计</td>
 <td><a class="cite" href="#ch-path">④路径</a></td>
 <td>holder_count</td>
 <td><a id="flag-shareholder-flow-047ab1"></a><code>shareholder-flow-047ab1</code></td>
@@ -4503,7 +4503,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>ℹ️</td>
 <td>最新ROE 分解</td>
 <td>净利率=9.540% × 资产周转=0.396 × 权益乘数=1.78</td>
-<td>脚本</td>
+<td>自动审计</td>
 <td><a class="cite" href="#ch-quality">①质地</a></td>
 <td>roe</td>
 <td><a id="flag-dupont-96a180"></a><code>dupont-96a180</code></td>
@@ -4512,7 +4512,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>ℹ️</td>
 <td>上期ROE 分解</td>
 <td>净利率=13.246% × 资产周转=0.423 × 权益乘数=1.69</td>
-<td>脚本</td>
+<td>自动审计</td>
 <td><a class="cite" href="#ch-quality">①质地</a></td>
 <td>roe</td>
 <td><a id="flag-dupont-ea2893"></a><code>dupont-ea2893</code></td>
@@ -4521,7 +4521,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>ℹ️</td>
 <td>PB 历史分位</td>
 <td>当前 PB=6.21，近 1 年范围 [3.60, 18.90]</td>
-<td>脚本</td>
+<td>自动审计</td>
 <td><a class="cite" href="#ch-odds">③赔率</a></td>
 <td>pb</td>
 <td><a id="flag-valuation-31faed"></a><code>valuation-31faed</code></td>

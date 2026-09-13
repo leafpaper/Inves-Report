@@ -8,7 +8,7 @@
   "report_date": "2026-09-01",
   "version": "v8.0",
   "composite_score": null,
-  "verdict": "回避——现价既不买、也不开小仓,现金等回落到 482.4~535.3 元锚区间",
+  "verdict": "回避——现价既不买、也不开小仓,现金等回落到 482.4~535.3 元合理价区间",
   "verdict_tone": "bearish",
   "quality_field": "部分好",
   "action_gear": "回避",
@@ -29,14 +29,14 @@
     },
     {
       "label": "贵不贵",
-      "value": "买完完美未来(无 slack)",
+      "value": "买完完美未来",
       "tone": "neutral"
     }
   ],
   "expected_return_short": "",
   "badges": [
     {
-      "label": "回避——现价既不买、也不开小仓,现金等回落到 482.4~535.3 元锚区间",
+      "label": "回避——现价既不买、也不开小仓,现金等回落到 482.4~535.3 元合理价区间",
       "variant": "red"
     },
     {
@@ -44,7 +44,7 @@
       "variant": "amber"
     },
     {
-      "label": "赔率 买完完美未来(无 slack)",
+      "label": "赔率 买完完美未来",
       "variant": "amber"
     }
   ]

@@ -267,7 +267,7 @@ tr:target{background:var(--wash-a)}
 a.cite{color:inherit; text-decoration:none; border-bottom:1px dotted var(--muted)}
 a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 
-/* ---------- 估值尺(meter):轨道=锚区间, 标记=现价 ---------- */
+/* ---------- 估值尺(meter):轨道=合理价区间, 标记=现价 ---------- */
 .meter{margin:2px 0 16px; padding:12px 14px; background:var(--surface);
        border:1px solid var(--hair); border-radius:10px}
 .meter figcaption{font-size:12.5px; color:var(--muted); margin-bottom:10px; letter-spacing:.02em}
@@ -428,7 +428,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
   <div class="fact"><div class="l">行动档位</div><div class="v">等证据临界</div></div>
   <div class="fact"><div class="l">质地</div><div class="v">部分好</div></div>
   <div class="fact"><div class="l">现价</div><div class="v">201.08 <small>元</small></div></div>
-  <div class="fact"><div class="l">锚区间</div><div class="v">73–92 <small>元</small></div></div>
+  <div class="fact"><div class="l">合理价区间</div><div class="v">73–92 <small>元</small></div></div>
   <div class="fact"><div class="l">预约披露</div><div class="v">2026-08-22(已披露)</div></div>
 </div>
 
@@ -437,7 +437,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
      全部机器装配自 assembly.json, 零人工抄写(导读除外)
      ============================================================ -->
 <section id="front">
-<div class="secl"><span class="t">投资决断卡</span> <span class="chip">机器装配</span></div>
+<div class="secl"><span class="t">投资决断卡</span> </div>
 <div class="cards5">
   <a class="dc t-bad" href="#ch-quality">
     <div class="q">① 是不是好公司</div>
@@ -454,7 +454,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
   <a class="dc t-bad" href="#ch-odds">
     <div class="q">③ 贵不贵</div>
     <div class="a">买完完美未来</div>
-    <div class="w">锚区间 73-92 元 vs 现价 201.08 元</div>
+    <div class="w">合理价区间 73-92 元 vs 现价 201.08 元</div>
     <div class="s"><span class="chip">③赔率</span> <span class="chip" title="本节点红旗数(明细见附录D)">🟠×1 🟡×4 红旗</span></div>
   </a>
   <a class="dc t-bad" href="#ch-path">
@@ -471,7 +471,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
   </a>
 </div>
 
-<div class="secl"><span class="t">赚不赚钱面板</span> <span class="chip man">写手选 3-5</span></div>
+<div class="secl"><span class="t">赚不赚钱面板</span></div>
 <p class="reason">重资产制造 + 并购扩张期,半年内分部结构质变(光模块 3.6%→19.2%),矛盾焦点是「新结构下利润是不是真的、扩张有没有自我造血」→ 默认五件套:利润率看生意厚度与结构切换,扣非占比与现金含量看利润成色,FCF 看造血能力,ROE 加同业分位看同行位置</p>
 <div class="tiles">
   <div class="st">
@@ -484,7 +484,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
     <div class="v">H1 2026 83.9%(扣非 24.80 亿 / 归母 29.57 亿)<svg class="spark" viewBox="0 0 72 20" preserveAspectRatio="none" role="img" aria-label="扣非占比走势:2022H1 85.13% → 2023H1 70.05% → 2024H1 92.05% → 2025H1 86.65% → 2026H1 83.86%"><path class="ln" d="M3.0 7.4 L19.5 17.0 L36.0 3.0 L52.5 6.4 L69.0 8.2"/><circle class="pt" cx="69.0" cy="8.2" r="2.4"/></svg></div>
     <div class="n">Q1 95.4% → Q2 约 76.9%(推算)逐季回落;非经常 4.77 亿主体是联讯仪器股票浮盈 4.62 亿,未处置、可逆 <span class="why">（FY2025 该比值 69.7%、主体是 4.71 亿并购利得——非经常大项每期换脸）</span></div>
   </div>
-  <div class="st mk-yellow"><div class="fb"><a class="fw fw-yellow" href="#flag-buffett-quality-6a72c0" title="🟡 中级红旗 存货增速远高于营收｜存货增速 45.1% vs 营收增速 9.1%｜来源 脚本｜归属 ①质地"><span class="fw-i" aria-hidden="true">🟡</span><span class="fw-t">存货增速远高于营收</span> <span class="fw-k">中级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟡 存货增速远高于营收</span><span>存货增速 45.1% vs 营收增速 9.1%</span><span class="meta">级别 中级红旗 · 来源 脚本 · 归属 ①质地</span><span class="go">→ 点击查看附录D 条目</span></span></a></div>
+  <div class="st mk-yellow"><div class="fb"><a class="fw fw-yellow" href="#flag-buffett-quality-6a72c0" title="🟡 中级红旗 存货增速远高于营收｜存货增速 45.1% vs 营收增速 9.1%｜来源 自动审计｜归属 ①质地"><span class="fw-i" aria-hidden="true">🟡</span><span class="fw-t">存货增速远高于营收</span> <span class="fw-k">中级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟡 存货增速远高于营收</span><span>存货增速 45.1% vs 营收增速 9.1%</span><span class="meta">级别 中级红旗 · 来源 自动审计 · 归属 ①质地</span><span class="go">→ 点击查看附录D 条目</span></span></a></div>
     <div class="l">现金含量(OCF÷净利)</div>
     <div class="v">H1 2026 约 0.80x(23.84 亿 / 29.85 亿)<svg class="spark" viewBox="0 0 72 20" preserveAspectRatio="none" role="img" aria-label="现金含量(OCF÷净利)走势:2022H1 1.66x → 2023H1 3.17x → 2024H1 3.74x → 2025H1 3.3x → 2026H1 0.8x"><path class="ln" d="M3.0 12.9 L19.5 5.7 L36.0 3.0 L52.5 5.1 L69.0 17.0"/><circle class="pt" cx="69.0" cy="17.0" r="2.4"/></svg></div>
     <div class="n">营收 +63.95% 而经营现金流 -4.65%,方向背离且官方变动原因栏留空;存货 +78.17%、应收 +76.57% 均快于营收 <span class="why">（该红旗为 FY2025 审计口径(存货 45.1% vs 营收 9.1%);H1 存货跌价计提 1.98 亿为上年同期 2.3 倍）</span></div>
@@ -505,28 +505,28 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <div class="secl"><span class="t">Top 3 风险</span> <span class="chip">机器带出 · 附录D</span></div>
 <div class="risks">
   <div class="rk mk-red">
-    <div class="t"><a class="fw fw-red" href="#flag-valuation-e82fbf" title="🟠 高级红旗 PB vs ROE 严重错配｜市净率 16.27 倍;按净资产回报率 6.9% 应配约 0.86 倍(回报率÷8%),现价是它的 18.9 倍｜来源 脚本｜归属 ③赔率 ／ 🟡 中级红旗 PB 历史分位｜当前 PB=16.27，近 1 年范围 [4.57, 22.31]｜来源 脚本｜归属 ③赔率 ／ 🟡 中级红旗 A+H 布局将给 A 股估值一次外部裁决｜管理层 2026 工作计划明确&quot;稳步推进 A+H 全球化资本布局&quot;;A 股现价对应 PB 16.27x、含 H1 的 TTM 扣非 PE 132x,H 股若按国际可比定价形成显著折价,将直接压低 A 股估值中枢｜来源 写手提名｜归属 ③赔率"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">PB vs ROE 严重错配</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 PB vs ROE 严重错配</span><span>市净率 16.27 倍;按净资产回报率 6.9% 应配约 0.86 倍(回报率÷8%),现价是它的 18.9 倍</span><span class="meta">级别 高级红旗 · 来源 脚本 · 归属 ③赔率</span><span class="go">→ 点击查看附录D 条目</span><span class="meta">—</span><span class="ttl">🟡 PB 历史分位</span><span>当前 PB=16.27，近 1 年范围 [4.57, 22.31]</span><span class="meta">级别 中级红旗 · 来源 脚本 · 归属 ③赔率</span><span class="go">→ 点击查看附录D 条目</span><span class="meta">—</span><span class="ttl">🟡 A+H 布局将给 A 股估值一次外部裁决</span><span>管理层 2026 工作计划明确&quot;稳步推进 A+H 全球化资本布局&quot;;A 股现价对应 PB 16.27x、含 H1 的 TTM 扣非 PE 132x,H 股若按国际可比定价形成显著折价,将直接压低 A 股估值中枢</span><span class="meta">级别 中级红旗 · 来源 写手提名 · 归属 ③赔率</span><span class="go">→ 点击查看附录D 条目</span></span></a></div>
+    <div class="t"><a class="fw fw-red" href="#flag-valuation-e82fbf" title="🟠 高级红旗 PB vs ROE 严重错配｜市净率 16.27 倍;按净资产回报率 6.9% 应配约 0.86 倍(回报率÷8%),现价是它的 18.9 倍｜来源 自动审计｜归属 ③赔率 ／ 🟡 中级红旗 PB 历史分位｜当前 PB=16.27，近 1 年范围 [4.57, 22.31]｜来源 自动审计｜归属 ③赔率 ／ 🟡 中级红旗 A+H 布局将给 A 股估值一次外部裁决｜管理层 2026 工作计划明确&quot;稳步推进 A+H 全球化资本布局&quot;;A 股现价对应 PB 16.27x、含 H1 的 TTM 扣非 PE 132x,H 股若按国际可比定价形成显著折价,将直接压低 A 股估值中枢｜来源 人工复核｜归属 ③赔率"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">PB vs ROE 严重错配</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 PB vs ROE 严重错配</span><span>市净率 16.27 倍;按净资产回报率 6.9% 应配约 0.86 倍(回报率÷8%),现价是它的 18.9 倍</span><span class="meta">级别 高级红旗 · 来源 自动审计 · 归属 ③赔率</span><span class="go">→ 点击查看附录D 条目</span><span class="meta">—</span><span class="ttl">🟡 PB 历史分位</span><span>当前 PB=16.27，近 1 年范围 [4.57, 22.31]</span><span class="meta">级别 中级红旗 · 来源 自动审计 · 归属 ③赔率</span><span class="go">→ 点击查看附录D 条目</span><span class="meta">—</span><span class="ttl">🟡 A+H 布局将给 A 股估值一次外部裁决</span><span>管理层 2026 工作计划明确&quot;稳步推进 A+H 全球化资本布局&quot;;A 股现价对应 PB 16.27x、含 H1 的 TTM 扣非 PE 132x,H 股若按国际可比定价形成显著折价,将直接压低 A 股估值中枢</span><span class="meta">级别 中级红旗 · 来源 人工复核 · 归属 ③赔率</span><span class="go">→ 点击查看附录D 条目</span></span></a></div>
     <div class="d">市净率 16.27 倍;按净资产回报率 6.9% 应配约 0.86 倍(回报率÷8%),现价是它的 18.9 倍</div>
-    <div class="h">所属节点 → <a href="#ch-odds">③赔率</a> · 来源 脚本 · <a href="#flag-valuation-31faed">🟡 PB 历史分位(脚本)</a> · <a href="#flag-odds-ah-listing-discount">🟡 A+H 布局将给 A 股估值一次外部裁决(写手提名)</a></div>
+    <div class="h"><a href="#ch-odds">③赔率</a> · <a href="#flag-valuation-31faed">🟡 PB 历史分位</a> · <a href="#flag-odds-ah-listing-discount">🟡 A+H 布局将给 A 股估值一次外部裁决</a></div>
   </div>
   <div class="rk mk-red">
-    <div class="t"><a class="fw fw-red" href="#flag-goodwill-vam-undisclosed" title="🟠 高级红旗 索尔思 27.12 亿商誉的业绩承诺条款连续三份定期报告未披露｜商誉 46.83 亿(占归母净资产 19.2%),其中索尔思光电 27.12 亿;2025 年报与 2026 半年报均未列示索尔思/GMD 单体报表,业绩承诺或补偿条款未见披露,H1 零减值计提｜来源 写手提名｜归属 ④路径"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">索尔思 27.12 亿商誉的业绩承诺条款连续三份定期报告未披露</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 索尔思 27.12 亿商誉的业绩承诺条款连续三份定期报告未披露</span><span>商誉 46.83 亿(占归母净资产 19.2%),其中索尔思光电 27.12 亿;2025 年报与 2026 半年报均未列示索尔思/GMD 单体报表,业绩承诺或补偿条款未见披露,H1 零减值计提</span><span class="meta">级别 高级红旗 · 来源 写手提名 · 归属 ④路径</span><span class="go">→ 点击查看附录D 条目</span></span></a></div>
+    <div class="t"><a class="fw fw-red" href="#flag-goodwill-vam-undisclosed" title="🟠 高级红旗 索尔思 27.12 亿商誉的业绩承诺条款连续三份定期报告未披露｜商誉 46.83 亿(占归母净资产 19.2%),其中索尔思光电 27.12 亿;2025 年报与 2026 半年报均未列示索尔思/GMD 单体报表,业绩承诺或补偿条款未见披露,H1 零减值计提｜来源 人工复核｜归属 ④路径"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">索尔思 27.12 亿商誉的业绩承诺条款连续三份定期报告未披露</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 索尔思 27.12 亿商誉的业绩承诺条款连续三份定期报告未披露</span><span>商誉 46.83 亿(占归母净资产 19.2%),其中索尔思光电 27.12 亿;2025 年报与 2026 半年报均未列示索尔思/GMD 单体报表,业绩承诺或补偿条款未见披露,H1 零减值计提</span><span class="meta">级别 高级红旗 · 来源 人工复核 · 归属 ④路径</span><span class="go">→ 点击查看附录D 条目</span></span></a></div>
     <div class="d">商誉 46.83 亿(占归母净资产 19.2%),其中索尔思光电 27.12 亿;2025 年报与 2026 半年报均未列示索尔思/GMD 单体报表,业绩承诺或补偿条款未见披露,H1 零减值计提</div>
-    <div class="h">所属节点 → <a href="#ch-path">④路径</a> · 来源 写手提名</div>
+    <div class="h"><a href="#ch-path">④路径</a></div>
   </div>
   <div class="rk mk-red">
-    <div class="t"><a class="fw fw-red" href="#flag-liquidity-buffer-thin" title="🟠 高级红旗 短期偿债覆盖跌破 1,债务扩表加速｜货币资金 87.93 亿覆盖短期借款 96.30 亿仅 0.91x(2026Q1 为 1.01x),有息负债 241.45 亿单季 +19.1 亿、速动比率 0.737;H1 自由现金流 -32.71 亿｜来源 写手提名｜归属 ④路径"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">短期偿债覆盖跌破 1,债务扩表加速</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 短期偿债覆盖跌破 1,债务扩表加速</span><span>货币资金 87.93 亿覆盖短期借款 96.30 亿仅 0.91x(2026Q1 为 1.01x),有息负债 241.45 亿单季 +19.1 亿、速动比率 0.737;H1 自由现金流 -32.71 亿</span><span class="meta">级别 高级红旗 · 来源 写手提名 · 归属 ④路径</span><span class="go">→ 点击查看附录D 条目</span></span></a></div>
+    <div class="t"><a class="fw fw-red" href="#flag-liquidity-buffer-thin" title="🟠 高级红旗 短期偿债覆盖跌破 1,债务扩表加速｜货币资金 87.93 亿覆盖短期借款 96.30 亿仅 0.91x(2026Q1 为 1.01x),有息负债 241.45 亿单季 +19.1 亿、速动比率 0.737;H1 自由现金流 -32.71 亿｜来源 人工复核｜归属 ④路径"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">短期偿债覆盖跌破 1,债务扩表加速</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 短期偿债覆盖跌破 1,债务扩表加速</span><span>货币资金 87.93 亿覆盖短期借款 96.30 亿仅 0.91x(2026Q1 为 1.01x),有息负债 241.45 亿单季 +19.1 亿、速动比率 0.737;H1 自由现金流 -32.71 亿</span><span class="meta">级别 高级红旗 · 来源 人工复核 · 归属 ④路径</span><span class="go">→ 点击查看附录D 条目</span></span></a></div>
     <div class="d">货币资金 87.93 亿覆盖短期借款 96.30 亿仅 0.91x(2026Q1 为 1.01x),有息负债 241.45 亿单季 +19.1 亿、速动比率 0.737;H1 自由现金流 -32.71 亿</div>
-    <div class="h">所属节点 → <a href="#ch-path">④路径</a> · 来源 写手提名</div>
+    <div class="h"><a href="#ch-path">④路径</a></div>
   </div>
 </div>
 
-<div class="secl"><span class="t">写手导读</span> <span class="chip man">人工 3-5 句</span></div>
+<div class="secl"><span class="t">导读</span></div>
 <div class="intro"><p>现在该做的只有一件事:0 仓位持币,不追也不补,等 10 月下旬的三季报。</p>
 <p>为什么不买?公司确实在变好——光模块半年卖了 53.5 亿(去年全年才 14 亿出头),主业利润翻了近三倍,半年报把这些都坐实了;但好消息在 7 月中旬发预告时就被市场买走了,现价 201 元是两种算法算出的合理区间(73~92 元)的 2 倍以上,等于把完美未来提前付了全款。而且利润涨了近三倍,经营现金流反而比去年同期还少,扩张还在靠借钱——万一想象落空,往下没有资产接得住(有形家底每股只值 7.46 元)。</p>
 <p>接下来盯两件事:三季报看利润能不能连住、现金能不能跟上;在那之前,除非股价回到 92 元以内,否则不动。</p></div>
 
-<div class="secl"><span class="t">较上版变化</span> <span class="chip">机器装配</span></div>
+<div class="secl"><span class="t">较上版变化</span></div>
 <div class="change"><div class="alpha">阿尔法变了:②状态判定翻转;①质地子判定变化(判定语未变);档位 回避→等证据临界;新增红旗 9 条;解除红旗 10 条;红旗级别变化 1 条;绿灯/信息更新 2 条</div><div class="tblwrap"><table><thead><tr><th>项</th><th>上版</th><th>本版</th></tr></thead><tbody><tr><td>行动档位</td><td>回避</td><td>等证据临界</td></tr><tr><td>三元组·②状态</td><td>↑变好但仅注意力·未确认——利润引擎确实换了人,但实锤只到一季度,整个上半年靠一份未审计预告撑着</td><td>↑变好+证据确认——放量、毛利率与利润引擎换位被半年报一手数据坐实;但确认止于利润表,现金转化、客户官方认证与跨季持续性三条仍未接棒</td></tr><tr><td>三元组·③赔率</td><td>买完完美未来</td><td>买完完美未来</td></tr><tr><td>三元组·④路径</td><td>高尾险·不可承受(高信仰体检 6/7)</td><td>高尾险·不可承受(上版 9 条证伪 0 触发,但地板只兜现价 3.7%,拥挤与债务同步加深)</td></tr><tr><td>最新期归母净利</td><td>11.10 亿</td><td>29.57 亿</td></tr><tr><td>最新期营收</td><td>131.38 亿</td><td>277.98 亿</td></tr></tbody></table></div><ul><li><b>判定变化</b>:②状态 判定翻转;①质地 子判定变化(判定语未变)</li><li><b>证伪清单</b>:无触发/解除</li><li><details><summary><b>红旗与绿灯变化</b>(红旗 20 · 绿灯/信息 2,点开逐条)</summary><ul><li><b>红旗级别变化</b>:PB 历史分位:🟠→🟡</li><li><b>红旗新增</b>:🟠 非经常大项每期换脸——今年靠股票浮盈、去年靠并购利得</li><li><b>红旗新增</b>:🟠 营收 +64% 而经营现金流 -4.65%,官方拒绝归因</li><li><b>红旗新增</b>:🟡 并表贡献与内生增长官方未拆分</li><li><b>红旗新增</b>:🟠 撑起叙事的分部连续两期无法外部验证</li><li><b>红旗新增</b>:🟡 H1 同比增速仍被并表基数污染,内生增速不可得</li><li><b>红旗新增</b>:🟡 估值分母含 4.62 亿联讯仪器浮盈,回吐即双向恶化</li><li><b>红旗新增</b>:🟠 索尔思 27.12 亿商誉的业绩承诺条款连续三份定期报告未披露</li><li><b>红旗新增</b>:🟡 H 股融资未落地前,扩产资金唯一现实渠道是继续加杠杆</li><li><b>红旗新增</b>:🟡 筹码散户化再深一档,且解禁日历数据缺失无法评估抛压</li><li><b>红旗解除</b>:🟠 利润增长几乎全部来自一次性并购利得</li><li><b>红旗解除</b>:🟠 收入创新高的 2025Q4 扣非单季转亏</li><li><b>红旗解除</b>:🟡 管理费用 +27.16% 官方未给归因</li><li><b>红旗解除</b>:🟡 资产处置连续两年大额亏损</li><li><b>红旗解除</b>:🟠 口径断层使同比增速不能当改善实锤</li><li><b>红旗解除</b>:🟠 撑起叙事的分部无法被外部验证</li><li><b>红旗解除</b>:🟡 H1 预告归母与扣非差额约 5 亿口径未明,估值分母质量待核</li><li><b>红旗解除</b>:🟠 47.69 亿商誉的并购业绩承诺条款未见披露</li><li><b>红旗解除</b>:🟡 H 股再融资路径受阻,扩产资金缺口无备用渠道</li><li><b>红旗解除</b>:🟡 筹码急速散户化,且解禁日历数据缺失无法评估抛压</li><li><b>绿灯更新</b>:🟢 Z=6.716</li><li><b>绿灯更新</b>:🟢 Z=7.080</li></ul></details></li></ul><div class="advice">⚠️ <b>建议全量重跑</b>:质地子判定变化(判定语未变:生意模式赚钱吗 ✗→⚠️、赚钱质量真吗 ✗→⚠️),建议全量重跑重锚</div></div>
 </section>
 
@@ -549,7 +549,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <tr>
 <td>生意模式赚钱吗</td>
 <td style="text-align: center;">⚠️</td>
-<td>H1 毛利率 20.15%、扣非净利率约 8.9%,较 FY2025 的 14.09%/2.41% 跳档,驱动是光模块占比 3.58%→19.25%(毛利率 39.33%)的结构切换;但约 78.5% 收入仍在辛苦钱侧,FY2025 <a class="fw fw-red fw-inline" href="#flag-customer-concentration-46pct" title="🟠 高级红旗 第一大客户单家占销售 46.46%｜FY2025 前五大客户 258.14 亿占 64.33%、第一名单家 186.43 亿占 46.46%,管理层自述占比未来仍有进一步增加的可能;半年报未更新集中度数据,议价权不对称(供应端前五仅 21.87%)｜来源 写手提名｜归属 ①质地"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">第一大客户单家占销售 46.46%</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 第一大客户单家占销售 46.46%</span><span>FY2025 前五大客户 258.14 亿占 64.33%、第一名单家 186.43 亿占 46.46%,管理层自述占比未来仍有进一步增加的可能;半年报未更新集中度数据,议价权不对称(供应端前五仅 21.87%)</span><span class="meta">级别 高级红旗 · 来源 写手提名 · 归属 ①质地</span><span class="go">→ 点击查看附录D 条目</span></span></a>。</td>
+<td>H1 毛利率 20.15%、扣非净利率约 8.9%,较 FY2025 的 14.09%/2.41% 跳档,驱动是光模块占比 3.58%→19.25%(毛利率 39.33%)的结构切换;但约 78.5% 收入仍在辛苦钱侧,FY2025 <a class="fw fw-red fw-inline" href="#flag-customer-concentration-46pct" title="🟠 高级红旗 第一大客户单家占销售 46.46%｜FY2025 前五大客户 258.14 亿占 64.33%、第一名单家 186.43 亿占 46.46%,管理层自述占比未来仍有进一步增加的可能;半年报未更新集中度数据,议价权不对称(供应端前五仅 21.87%)｜来源 人工复核｜归属 ①质地"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">第一大客户单家占销售 46.46%</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 第一大客户单家占销售 46.46%</span><span>FY2025 前五大客户 258.14 亿占 64.33%、第一名单家 186.43 亿占 46.46%,管理层自述占比未来仍有进一步增加的可能;半年报未更新集中度数据,议价权不对称(供应端前五仅 21.87%)</span><span class="meta">级别 高级红旗 · 来源 人工复核 · 归属 ①质地</span><span class="go">→ 点击查看附录D 条目</span></span></a>。</td>
 </tr>
 <tr>
 <td>赚钱质量真吗</td>
@@ -682,7 +682,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 </tr>
 <tr>
 <td>机械尺子</td>
-<td>Altman Z=6.716 判安全(最大分项是市值/总负债);Piotroski <a class="fw fw-yellow fw-inline" href="#flag-piotroski-f-score-c262c9" title="🟡 中级红旗 F=5/9｜NI &gt; 0=✓(NI=1386066705.56) | ROA &gt; 0=✓(ROA≈0.023) | OCF &gt; 0=✓(OCF=5307141746.99) | OCF &gt; NI=✓(OCF=5307141746.99, NI=1386066705.56) | ROA↑=✗(0.024→0.023) | 资产负债率↓=✗(0.590→0.640) | 流动比率↑=✗(1.183→1.006) | 毛利率↑=✓(0.140→0.141) | 资产周转率↑=✗(0.799→0.666)｜来源 脚本｜归属 ①质地"><span class="fw-i" aria-hidden="true">🟡</span><span class="fw-t">F=5/9</span> <span class="fw-k">中级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟡 F=5/9</span><span>NI &gt; 0=✓(NI=1386066705.56) | ROA &gt; 0=✓(ROA≈0.023) | OCF &gt; 0=✓(OCF=5307141746.99) | OCF &gt; NI=✓(OCF=5307141746.99, NI=1386066705.56) | ROA↑=✗(0.024→0.023) | 资产负债率↓=✗(0.590→0.640) | 流动比率↑=✗(1.183→1.006) | 毛利率↑=✓(0.140→0.141) | 资产周转率↑=✗(0.799→0.666)</span><span class="meta">级别 中级红旗 · 来源 脚本 · 归属 ①质地</span><span class="go">→ 点击查看附录D 条目</span></span></a>,失分全在负债升、流动降、周转降、ROA 降</td>
+<td>Altman Z=6.716 判安全(最大分项是市值/总负债);Piotroski <a class="fw fw-yellow fw-inline" href="#flag-piotroski-f-score-c262c9" title="🟡 中级红旗 F=5/9｜NI &gt; 0=✓(NI=1386066705.56) | ROA &gt; 0=✓(ROA≈0.023) | OCF &gt; 0=✓(OCF=5307141746.99) | OCF &gt; NI=✓(OCF=5307141746.99, NI=1386066705.56) | ROA↑=✗(0.024→0.023) | 资产负债率↓=✗(0.590→0.640) | 流动比率↑=✗(1.183→1.006) | 毛利率↑=✓(0.140→0.141) | 资产周转率↑=✗(0.799→0.666)｜来源 自动审计｜归属 ①质地"><span class="fw-i" aria-hidden="true">🟡</span><span class="fw-t">F=5/9</span> <span class="fw-k">中级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟡 F=5/9</span><span>NI &gt; 0=✓(NI=1386066705.56) | ROA &gt; 0=✓(ROA≈0.023) | OCF &gt; 0=✓(OCF=5307141746.99) | OCF &gt; NI=✓(OCF=5307141746.99, NI=1386066705.56) | ROA↑=✗(0.024→0.023) | 资产负债率↓=✗(0.590→0.640) | 流动比率↑=✗(1.183→1.006) | 毛利率↑=✓(0.140→0.141) | 资产周转率↑=✗(0.799→0.666)</span><span class="meta">级别 中级红旗 · 来源 自动审计 · 归属 ①质地</span><span class="go">→ 点击查看附录D 条目</span></span></a>,失分全在负债升、流动降、周转降、ROA 降</td>
 <td>「安全」的垫子主要是市值给的,经营端四项都在失分</td>
 </tr>
 </tbody>
@@ -817,12 +817,12 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <tr>
 <td>有权威节点背书吗</td>
 <td style="text-align: center;">✗</td>
-<td>零客户官方口径——即 🟠 红旗「<a class="fw fw-red fw-inline" href="#flag-state-no-customer-validation" title="🟠 高级红旗 身份自述升级而客户官方认证仍为零｜半年报 MD&amp;A 自述升级为&quot;全球前三大 PCB / 第二大 FPC / 前十大光模块供应商&quot;&quot;100G EML 累计使用超千万颗、200G EML 已量产&quot;,全部为公司自认证;法定披露中仍无任何核心客户官方口径的认证或长约;同业中际旭创/新易盛已有英伟达/谷歌、GB200 官方验证对照;原预计 2026Q2 末的谷歌 200G EML 验证结果至今无公开口径｜来源 写手提名｜归属 ②状态"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">身份自述升级而客户官方认证仍为零</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 身份自述升级而客户官方认证仍为零</span><span>半年报 MD&amp;A 自述升级为&quot;全球前三大 PCB / 第二大 FPC / 前十大光模块供应商&quot;&quot;100G EML 累计使用超千万颗、200G EML 已量产&quot;,全部为公司自认证;法定披露中仍无任何核心客户官方口径的认证或长约;同业中际旭创/新易盛已有英伟达/谷歌、GB200 官方验证对照;原预计 2026Q2 末的谷歌 200G EML 验证结果至今无公开口径</span><span class="meta">级别 高级红旗 · 来源 写手提名 · 归属 ②状态</span><span class="go">→ 点击查看附录D 条目</span></span></a>」(详见<a class="cite" href="#appx-D">附录D</a>);技术与排名表述全部为公司自述;同业已有英伟达/谷歌官方认证对照 (舆情明细见<a class="cite" href="#appx-C">附录C</a>)</td>
+<td>零客户官方口径——即 🟠 红旗「<a class="fw fw-red fw-inline" href="#flag-state-no-customer-validation" title="🟠 高级红旗 身份自述升级而客户官方认证仍为零｜半年报 MD&amp;A 自述升级为&quot;全球前三大 PCB / 第二大 FPC / 前十大光模块供应商&quot;&quot;100G EML 累计使用超千万颗、200G EML 已量产&quot;,全部为公司自认证;法定披露中仍无任何核心客户官方口径的认证或长约;同业中际旭创/新易盛已有英伟达/谷歌、GB200 官方验证对照;原预计 2026Q2 末的谷歌 200G EML 验证结果至今无公开口径｜来源 人工复核｜归属 ②状态"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">身份自述升级而客户官方认证仍为零</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 身份自述升级而客户官方认证仍为零</span><span>半年报 MD&amp;A 自述升级为&quot;全球前三大 PCB / 第二大 FPC / 前十大光模块供应商&quot;&quot;100G EML 累计使用超千万颗、200G EML 已量产&quot;,全部为公司自认证;法定披露中仍无任何核心客户官方口径的认证或长约;同业中际旭创/新易盛已有英伟达/谷歌、GB200 官方验证对照;原预计 2026Q2 末的谷歌 200G EML 验证结果至今无公开口径</span><span class="meta">级别 高级红旗 · 来源 人工复核 · 归属 ②状态</span><span class="go">→ 点击查看附录D 条目</span></span></a>」(详见<a class="cite" href="#appx-D">附录D</a>);技术与排名表述全部为公司自述;同业已有英伟达/谷歌官方认证对照 (舆情明细见<a class="cite" href="#appx-C">附录C</a>)</td>
 </tr>
 <tr>
 <td>价格已把好结果买走了吗</td>
 <td style="text-align: center;">✗</td>
-<td><a class="cite" href="#ch-odds">③赔率</a>判定原话「买完完美未来」,区间锚 SOTP 73 元 / DCF 92 元两端同向,现价 201.08 元</td>
+<td><a class="cite" href="#ch-odds">③赔率</a>判定原话「买完完美未来」,合理价区间 SOTP 73 元 / DCF 92 元两端同向,现价 201.08 元</td>
 </tr>
 </tbody>
 </table></div>
@@ -837,14 +837,14 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 </section>
 <section class="chB" id="ch-odds">
   <div class="hd"><span class="no">③ 赔率</span><span class="qq">贵不贵</span><span class="pill bad">买完完美未来</span></div>
-  <div class="bd"><figure class="meter" role="img" aria-label="估值尺:合理区间 73-92元,现价 201.08元,现价是区间高端的 2.19 倍">
+  <div class="bd"><figure class="meter" role="img" aria-label="估值尺:合理价区间 73-92元,现价 201.08元,现价是区间高端的 2.19 倍">
   <figcaption>贵不贵:一把尺</figcaption>
   <div class="track">
     <span class="band" style="left:32.41%;width:8.44%"></span>
     <span class="mark over" style="left:89.29%"></span>
   </div>
   <div class="scale"><span>0</span><span>225 元</span></div>
-  <div class="lg"><span><i class="sw band"></i>合理区间 73–92 元<small>低端只认已赚到的钱 · 高端按三种前景概率加权</small></span><span><i class="sw mark"></i>现价 201.08 元<small>现价是区间高端的 2.19 倍</small></span></div>
+  <div class="lg"><span><i class="sw band"></i>合理价区间 73–92 元<small>低端只认已赚到的钱 · 高端按三种前景概率加权</small></span><span><i class="sw mark"></i>现价 201.08 元<small>现价是区间高端的 2.19 倍</small></span></div>
 </figure><figure class="pfn" role="img" aria-label="股价拆两半:市值 3,683 亿 里, 已赚到的 F 1,335 亿 · 36.2%,为想象多付的 N 2,348 亿 · 63.8%" title="F 的口径:F = 下表四分部 SOTP 的股权价值,只认 2026H1 实披、已并表、已兑现的年化扣非;不含光模块后续放量、AI PCB 新基地爬坡与索尔思 27.12 亿商誉对应的任何未来增量">
   <figcaption>股价拆两半:已赚到的 · 为想象多付的</figcaption>
   <div class="bar">
@@ -852,7 +852,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
     <span class="sg n" style="flex-basis:calc(63.80% - 1px)"></span>
   </div>
   <div class="lg"><span><i class="sw f"></i>已赚到的 F 1,335 亿 · 36.2%</span><span><i class="sw n"></i>为想象多付的 N 2,348 亿 · 63.8%<small>市场已收费的义务,不是白送的彩票</small></span></div>
-</figure><p><strong>判定:买完完美未来(仍无安全垫)——现价 201.08 元是锚区间 [73, 92] 元高端的 2.19 倍、低端的 2.76 倍;半年报把基本面翻了一倍、价格也退了 6%,但"贵的倍数"与上版(2.18 / 2.76)原地踏步。</strong></p>
+</figure><p><strong>判定:买完完美未来(仍无安全垫)——现价 201.08 元是合理价区间 [73, 92] 元高端的 2.19 倍、低端的 2.76 倍;半年报把基本面翻了一倍、价格也退了 6%,但"贵的倍数"与上版(2.18 / 2.76)原地踏步。</strong></p>
 <div class="tblwrap"><table>
 <thead>
 <tr>
@@ -884,7 +884,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 </tr>
 </tbody>
 </table></div>
-<details class="drill"><summary>锚区间 [73, 92] 元与上版几乎重合:半年报兑现的利润,上版的锚早已预付</summary><div class="dd">
+<details class="drill"><summary>合理价区间 [73, 92] 元与上版几乎重合:半年报兑现的利润,上版的锚早已预付</summary><div class="dd">
 <p><strong>口径先说清</strong>:两端锚全部改用 2026 半年报实披数(08-22 披露,预告如约兑现,实锤分级见<a class="cite" href="#ch-state">②状态</a>)。起点 = H1 扣非归母 24.80 亿 × 2 = 年化 49.6 亿——归母 29.57 亿中 4.77 亿是非经常(主体联讯仪器浮盈 4.62 亿,不进锚);净负债 = 有息负债 241.4 亿 − 货币资金 87.9 亿(2026-06-30),已在下表扣除。现价 201.08 元为 08-21 收盘,尚未含半年报披露后的交易日,但业绩总量 7-14 预告已给出区间,半年报的增量信息主要是"5 亿差额 = 股票浮盈"这个构成。</p>
 <p><strong>低端 = 叙事分部 SOTP(只认已兑现)</strong>:年化扣非按 H1 各分部毛利额份额(明细见<a class="cite" href="#appx-A">附录A</a>)分摊全部费用后,各给各的倍数:</p>
 <div class="tblwrap"><table>
@@ -1075,12 +1075,12 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>第二把尺子同向说贵;错配收窄正是"已赚到的翻倍"的另一面,但"买将来跳档"的性质没变</td>
 </tr>
 <tr>
-<td><a class="fw fw-yellow fw-inline" href="#flag-valuation-31faed" title="🟡 中级红旗 PB 历史分位｜当前 PB=16.27，近 1 年范围 [4.57, 22.31]｜来源 脚本｜归属 ③赔率"><span class="fw-i" aria-hidden="true">🟡</span><span class="fw-t">PB 历史分位</span> <span class="fw-k">中级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟡 PB 历史分位</span><span>当前 PB=16.27，近 1 年范围 [4.57, 22.31]</span><span class="meta">级别 中级红旗 · 来源 脚本 · 归属 ③赔率</span><span class="go">→ 点击查看附录D 条目</span></span></a>(valuation-31faed)</td>
+<td><a class="fw fw-yellow fw-inline" href="#flag-valuation-31faed" title="🟡 中级红旗 PB 历史分位｜当前 PB=16.27，近 1 年范围 [4.57, 22.31]｜来源 自动审计｜归属 ③赔率"><span class="fw-i" aria-hidden="true">🟡</span><span class="fw-t">PB 历史分位</span> <span class="fw-k">中级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟡 PB 历史分位</span><span>当前 PB=16.27，近 1 年范围 [4.57, 22.31]</span><span class="meta">级别 中级红旗 · 来源 自动审计 · 归属 ③赔率</span><span class="go">→ 点击查看附录D 条目</span></span></a>(valuation-31faed)</td>
 <td>16.27 处近 1 年 [4.57, 22.31] 的 78% 分位、行业 92.8% 分位;分母含水——非流动资产处置 2025 / 2024 连亏 3.84 / 2.69 亿</td>
 <td>存量重资产变现价值低于账面,低端锚因此只走分部盈利加总、不走净资产法</td>
 </tr>
 <tr>
-<td><a class="fw fw-yellow fw-inline" href="#flag-valuation-7ebcbf" title="🟡 中级红旗 股息率极低｜当前股息率 0.03%｜来源 脚本｜归属 ③赔率"><span class="fw-i" aria-hidden="true">🟡</span><span class="fw-t">股息率极低</span> <span class="fw-k">中级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟡 股息率极低</span><span>当前股息率 0.03%</span><span class="meta">级别 中级红旗 · 来源 脚本 · 归属 ③赔率</span><span class="go">→ 点击查看附录D 条目</span></span></a>(valuation-7ebcbf)</td>
+<td><a class="fw fw-yellow fw-inline" href="#flag-valuation-7ebcbf" title="🟡 中级红旗 股息率极低｜当前股息率 0.03%｜来源 自动审计｜归属 ③赔率"><span class="fw-i" aria-hidden="true">🟡</span><span class="fw-t">股息率极低</span> <span class="fw-k">中级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟡 股息率极低</span><span>当前股息率 0.03%</span><span class="meta">级别 中级红旗 · 来源 自动审计 · 归属 ③赔率</span><span class="go">→ 点击查看附录D 条目</span></span></a>(valuation-7ebcbf)</td>
 <td>0.03%,中期不分红不转增,H1 FCF −32.71 亿</td>
 <td>无安全垫的价格上等待期零现金补偿,持有成本 100% 由价格波动承担(<a class="cite" href="#ch-quality">①质地</a>)</td>
 </tr>
@@ -1095,8 +1095,8 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
   <ol class="rungs">
     <li title="索尔思 27.12 亿商誉减值 → 全额减值净资产 -19%(同 PB 口径),索尔思单项 -11% —— 按情景标题的索尔思单项 27.12 亿 / 归母净资产 243.67 亿 = -11.1%,同 PB 口径映射到股价;若商誉 46.83 亿全额减值则为 -19.2%"><span class="lb">索尔思 27.12 亿商誉减值</span><span class="tr"><i style="width:11.5%"></i></span><b class="dv">−11.1%</b></li>
     <li title="散户踩踏:38.9 万户接盘、机构退出,跌破 161.8 元(-19.5%)后缺承接 —— 分母为现价 201.08 元,目标位取技术支撑 161.8 元(60 日低点)=(161.8-201.08)/201.08=-19.5%;跌破后是承接真空的放大器,更深落点由上面几条给出,不重复计价"><span class="lb">散户踩踏:38.9 万户接盘、机构退出,跌破</span><span class="tr"><i style="width:20.2%"></i></span><b class="dv">−19.5%</b></li>
-    <li title="第一大客户(占 46.46%)砍单 30% → 收入 -14%,重资产折旧+利息刚性击穿缓冲,向③锚同源收敛 -54%~-64% —— 分母为现价 201.08 元;与第 1 条同源于③锚,不另立幅度。此处取③锚高端 DCF 92 元(-54.2%)——砍单先打盈利基数而非直接证伪光模块叙事,故按较浅一端落盘;若同时触发叙事证伪则并入第 1 条的 -63.7%"><span class="lb">第一大客户(占 46.46%)砍单 30%</span><span class="tr"><i style="width:56.3%"></i></span><b class="dv">−54.2%</b></li>
-    <li title="光模块 H2 环比转降或毛利率跌破 33% → 想象溢价向本轮③锚回吐:92 元 -54%、73 元 -64%,极端回吐到已兑现的 F≈1,335 亿 = -64% —— 分母为现价 201.08 元;叙事被直接证伪时价格回到已兑现部分,取③锚低端 SOTP 73 元(73-201.08)/201.08=-63.7%,与市值口径回吐到 F≈1,335 亿/3,683 亿的 -63.8% 两法同解;若只收敛到③锚高端 DCF 92 元则为 -54.2%"><span class="lb">光模块 H2 环比转降或毛利率跌破 33%</span><span class="tr"><i style="width:66.1%"></i></span><b class="dv">−63.7%</b></li>
+    <li title="第一大客户(占 46.46%)砍单 30% → 收入 -14%,重资产折旧+利息刚性击穿缓冲,向③锚同源收敛 -54%~-64% —— 分母为现价 201.08 元;与第 1 条同源于③锚,不另立幅度。此处取③合理价高端 DCF 92 元(-54.2%)——砍单先打盈利基数而非直接证伪光模块叙事,故按较浅一端落盘;若同时触发叙事证伪则并入第 1 条的 -63.7%"><span class="lb">第一大客户(占 46.46%)砍单 30%</span><span class="tr"><i style="width:56.3%"></i></span><b class="dv">−54.2%</b></li>
+    <li title="光模块 H2 环比转降或毛利率跌破 33% → 想象溢价向本轮③锚回吐:92 元 -54%、73 元 -64%,极端回吐到已兑现的 F≈1,335 亿 = -64% —— 分母为现价 201.08 元;叙事被直接证伪时价格回到已兑现部分,取③合理价低端 SOTP 73 元(73-201.08)/201.08=-63.7%,与市值口径回吐到 F≈1,335 亿/3,683 亿的 -63.8% 两法同解;若只收敛到③合理价高端 DCF 92 元则为 -54.2%"><span class="lb">光模块 H2 环比转降或毛利率跌破 33%</span><span class="tr"><i style="width:66.1%"></i></span><b class="dv">−63.7%</b></li>
     <li title="任一条兑现后资产端接不住:有形净值 136.7 亿 = 每股 7.46 元,只覆盖现价 3.7% —— 分母为现价 201.08 元,目标价为清算口径有形净值每股 7.46 元 = -96.3%。这是「地板在哪」的刻度而非中枢路径——正文已明确可信的下行来自估值回归(第 1、3 条)而非清算"><span class="lb">任一条兑现后资产端接不住:有形净值 136.7 亿</span><span class="tr"><i style="width:100.0%"></i></span><b class="dv">−96.3%</b></li>
   </ol>
   <p class="foot">另有 3 条左尾量不到价格(只判得出量级),逐条见本章正文的左尾清单。</p>
@@ -1123,7 +1123,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <tr>
 <td>偿债与再融资撑得住吗</td>
 <td>更紧,未破</td>
-<td>货币资金/短期借款 0.91(Q1 为 1.01),有息负债 241.45 亿单季 +19.1 亿;H1 自由现金流 −32.71 亿(<a class="cite" href="#ch-quality">①质地</a>);已提名橙级红旗「<a class="fw fw-red fw-inline" href="#flag-liquidity-buffer-thin" title="🟠 高级红旗 短期偿债覆盖跌破 1,债务扩表加速｜货币资金 87.93 亿覆盖短期借款 96.30 亿仅 0.91x(2026Q1 为 1.01x),有息负债 241.45 亿单季 +19.1 亿、速动比率 0.737;H1 自由现金流 -32.71 亿｜来源 写手提名｜归属 ④路径"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">短期偿债覆盖跌破 1,债务扩表加速</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 短期偿债覆盖跌破 1,债务扩表加速</span><span>货币资金 87.93 亿覆盖短期借款 96.30 亿仅 0.91x(2026Q1 为 1.01x),有息负债 241.45 亿单季 +19.1 亿、速动比率 0.737;H1 自由现金流 -32.71 亿</span><span class="meta">级别 高级红旗 · 来源 写手提名 · 归属 ④路径</span><span class="go">→ 点击查看附录D 条目</span></span></a>」,详见<a class="cite" href="#appx-D">附录D</a></td>
+<td>货币资金/短期借款 0.91(Q1 为 1.01),有息负债 241.45 亿单季 +19.1 亿;H1 自由现金流 −32.71 亿(<a class="cite" href="#ch-quality">①质地</a>);已提名橙级红旗「<a class="fw fw-red fw-inline" href="#flag-liquidity-buffer-thin" title="🟠 高级红旗 短期偿债覆盖跌破 1,债务扩表加速｜货币资金 87.93 亿覆盖短期借款 96.30 亿仅 0.91x(2026Q1 为 1.01x),有息负债 241.45 亿单季 +19.1 亿、速动比率 0.737;H1 自由现金流 -32.71 亿｜来源 人工复核｜归属 ④路径"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">短期偿债覆盖跌破 1,债务扩表加速</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 短期偿债覆盖跌破 1,债务扩表加速</span><span>货币资金 87.93 亿覆盖短期借款 96.30 亿仅 0.91x(2026Q1 为 1.01x),有息负债 241.45 亿单季 +19.1 亿、速动比率 0.737;H1 自由现金流 -32.71 亿</span><span class="meta">级别 高级红旗 · 来源 人工复核 · 归属 ④路径</span><span class="go">→ 点击查看附录D 条目</span></span></a>」,详见<a class="cite" href="#appx-D">附录D</a></td>
 </tr>
 <tr>
 <td>回报路径值不值得走</td>
@@ -1251,7 +1251,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 </tr>
 </tbody>
 </table></div>
-<p><strong>资产地板(2026H1 口径,一行算清,明细下沉<a class="cite" href="#appx-A">附录A</a>):</strong> 归母净资产 243.67 亿 − 商誉 46.83 亿 − 存货/应收计提 16.72 亿 − 固定及在建 217.02 亿按 8 折的折让 43.40 亿 = <strong>有形净值 136.72 亿 = 每股 7.46 元(现价的 3.7%)</strong>;A 股主板壳价值 5-10 亿不改变量级。较上版(124 亿/6.8 元)地板抬高约 12 亿,但相对现价覆盖率原地踏步——可信的下行仍全部来自估值回归,不来自清算。<strong>左尾深度阶梯(分母均为现价 201.08 元):</strong> 清算地板 7.46 元 <strong>−96.3%</strong>(刻度,非中枢路径)&gt; 叙事回吐至③锚低端 73 元 <strong>−63.7%</strong> &gt; 砍单收敛至③锚高端 92 元 <strong>−54.2%</strong> &gt; 跌破 161.8 元 <strong>−19.5%</strong> &gt; 索尔思商誉减值同 PB 口径 <strong>−11.1%</strong>;另 3 条(联讯浮盈回吐、存货/应收计提、财务费用年化)只量得到利润口径量级、量不到价格,不入阶梯。</p>
+<p><strong>资产地板(2026H1 口径,一行算清,明细下沉<a class="cite" href="#appx-A">附录A</a>):</strong> 归母净资产 243.67 亿 − 商誉 46.83 亿 − 存货/应收计提 16.72 亿 − 固定及在建 217.02 亿按 8 折的折让 43.40 亿 = <strong>有形净值 136.72 亿 = 每股 7.46 元(现价的 3.7%)</strong>;A 股主板壳价值 5-10 亿不改变量级。较上版(124 亿/6.8 元)地板抬高约 12 亿,但相对现价覆盖率原地踏步——可信的下行仍全部来自估值回归,不来自清算。<strong>左尾深度阶梯(分母均为现价 201.08 元):</strong> 清算地板 7.46 元 <strong>−96.3%</strong>(刻度,非中枢路径)&gt; 叙事回吐至③合理价低端 73 元 <strong>−63.7%</strong> &gt; 砍单收敛至③合理价高端 92 元 <strong>−54.2%</strong> &gt; 跌破 161.8 元 <strong>−19.5%</strong> &gt; 索尔思商誉减值同 PB 口径 <strong>−11.1%</strong>;另 3 条(联讯浮盈回吐、存货/应收计提、财务费用年化)只量得到利润口径量级、量不到价格,不入阶梯。</p>
 </div></details><details class="drill"><summary>高信仰体检 6/7:唯一没命中的杠杆项恰恰说明专业资金在退</summary><div class="dd">
 <div class="tblwrap"><table>
 <thead>
@@ -1360,13 +1360,13 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <tr>
 <td>估值锚同向</td>
 <td>是——两把估值尺([73, 92] 元)同向低于现价,不触发保守降档</td>
-<td><a class="cite" href="#ch-odds">③赔率</a>的估值锚区间</td>
+<td><a class="cite" href="#ch-odds">③赔率</a>的估值合理价区间</td>
 </tr>
 </tbody>
 </table></div>
 <p><strong>为什么是这一档。</strong> 上版等的半年报已到,②把它核销为「变好坐实」——这是三元组里唯一升级的乘子;赔率与路径两个乘子仍停在最差档(想象占市值 63.8%、有形地板只兜现价 3.7%)。这组组合在六档对照表里没有一行完全对得上,按「又贵又扛不住,先过右尾清单再定档」的规则靠档:右尾清单五问过了两问(需求与利润率被一手财报坐实)、一问存疑(提价权)、两问不过(自我造血、估值起点)——右尾故事本身没死,死的是「现在买它的价钱」,所以不走一刀回避,也不够格开仓,落在「等证据临界」:比上版回避上调一档,但对钱包的含义不变,仍是 0 仓位。</p>
 <p><strong>右尾怎么处理。</strong> 「不为左尾放弃右尾」的前提是右尾还没被收费;这里恰好相反——②原话「公司真变好了,但市场在预告日就付完了账」,现在开期权小仓等于为同一个右尾付第二次钱。表达方式改为零成本等待 + 双触发再议:证据触发(三季报双检验、客户官方认证)或价格触发(回到 92 元锚内)任一到位,重开档位讨论;等待事件与到期日都已列明,不是无限期套牢式观望。</p>
-<p><strong>什么情况下我错了。</strong> 若 Q3 单季扣非续创新高、经营现金流转正追上利润、客户官方认证落地,而股价始终不回锚区间——「等证据临界」就错失了从确认到主升的一段,这是本档位明知付出的机会成本(拿等待换确定性)。反之三季报双证伪命中(单季扣非 &lt;11.4 亿或前三季现金流同比为负),②降级、档位自动落回回避。</p>
+<p><strong>什么情况下我错了。</strong> 若 Q3 单季扣非续创新高、经营现金流转正追上利润、客户官方认证落地,而股价始终不回合理价区间——「等证据临界」就错失了从确认到主升的一段,这是本档位明知付出的机会成本(拿等待换确定性)。反之三季报双证伪命中(单季扣非 &lt;11.4 亿或前三季现金流同比为负),②降级、档位自动落回回避。</p>
 <p><strong>信仰陷阱五问自检</strong>——五问全过,总判一句:这不是信仰仓,是有事件、有到期日的等待仓。</p>
 <ul>
 <li>把好公司当好股票?——没有:①说它「部分好」,我们仍判「不是好下注」,两件事分开记账。</li>
@@ -5506,8 +5506,8 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 </section>
 <section class="appx" id="appx-D">
   <h2>附录D 红旗总清单</h2>
-  <p>机器产物:脚本 audit 红旗 ⊕ 节点写手提名两源合并,是首页 Top3 与全报告红标的唯一数据源。</p>
-<p><strong>合计 25 条</strong> — 级别:🟠 9 · 🟡 12 · 🟢 2 · ℹ️ 2;来源:脚本 10 · 写手提名 15</p>
+  <p>本清单合并两个来源:自动审计跑出来的信号,与分析各章时人工补提的疑点。首页 Top3 与全文红标都从这里来。</p>
+<p><strong>合计 25 条</strong> — 级别:🟠 9 · 🟡 12 · 🟢 2 · ℹ️ 2;来源:自动审计 10 · 人工复核 15</p>
 <div class="tblwrap"><table>
 <thead>
 <tr>
@@ -5525,7 +5525,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟠</td>
 <td>PB vs ROE 严重错配</td>
 <td>市净率 16.27 倍;按净资产回报率 6.9% 应配约 0.86 倍(回报率÷8%),现价是它的 18.9 倍</td>
-<td>脚本</td>
+<td>自动审计</td>
 <td><a class="cite" href="#ch-odds">③赔率</a></td>
 <td>pb</td>
 <td><a id="flag-valuation-e82fbf"></a><code>valuation-e82fbf</code></td>
@@ -5534,7 +5534,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟠</td>
 <td>非经常大项每期换脸——今年靠股票浮盈、去年靠并购利得</td>
 <td>H1 2026 归母−扣非差 4.77 亿的主体是联讯仪器(688808)公允价值浮盈 4.62 亿(初始成本仅 2,000 万、未处置、无现金流入、随股价可逆);FY2025 同位置是 4.71 亿非同一控制下企业合并投资利得</td>
-<td>写手提名</td>
+<td>人工复核</td>
 <td><a class="cite" href="#ch-quality">①质地</a></td>
 <td>扣非占比</td>
 <td><a id="flag-nonrecurring-item-rotation"></a><code>nonrecurring-item-rotation</code></td>
@@ -5543,7 +5543,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟠</td>
 <td>营收 +64% 而经营现金流 -4.65%,官方拒绝归因</td>
 <td>H1 归母 +290.09% 而经营现金流 23.84 亿同比 -4.65%,半年报变动原因栏留空;同期存货 +78.17%、应收 +76.57% 均快于营收 +63.95%,存货跌价计提 1.98 亿为上年同期 2.3 倍</td>
-<td>写手提名</td>
+<td>人工复核</td>
 <td><a class="cite" href="#ch-quality">①质地</a></td>
 <td>现金含量(OCF÷净利)</td>
 <td><a id="flag-ocf-divergence-unexplained"></a><code>ocf-divergence-unexplained</code></td>
@@ -5552,7 +5552,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟠</td>
 <td>第一大客户单家占销售 46.46%</td>
 <td>FY2025 前五大客户 258.14 亿占 64.33%、第一名单家 186.43 亿占 46.46%,管理层自述占比未来仍有进一步增加的可能;半年报未更新集中度数据,议价权不对称(供应端前五仅 21.87%)</td>
-<td>写手提名</td>
+<td>人工复核</td>
 <td><a class="cite" href="#ch-quality">①质地</a></td>
 <td>毛利率 + 净利率</td>
 <td><a id="flag-customer-concentration-46pct"></a><code>customer-concentration-46pct</code></td>
@@ -5561,7 +5561,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟠</td>
 <td>撑起叙事的分部连续两期无法外部验证</td>
 <td>2026 半年报"主要控股参股公司分析"仍只列香港东山与 Multek,索尔思/GMD 单体连续两期(2025 年报、2026 半年报)未列示;光模块 53.51 亿中并表基数与内生导入拆分未披露,官方仅定性"除索尔思和GMD合并因素外";分部只能以"53.51 亿收入 + 39.33% 毛利率"代理</td>
-<td>写手提名</td>
+<td>人工复核</td>
 <td><a class="cite" href="#ch-state">②状态</a></td>
 <td>—</td>
 <td><a id="flag-state-segment-opacity-2026h1"></a><code>state-segment-opacity-2026h1</code></td>
@@ -5570,7 +5570,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟠</td>
 <td>身份自述升级而客户官方认证仍为零</td>
 <td>半年报 MD&amp;A 自述升级为"全球前三大 PCB / 第二大 FPC / 前十大光模块供应商""100G EML 累计使用超千万颗、200G EML 已量产",全部为公司自认证;法定披露中仍无任何核心客户官方口径的认证或长约;同业中际旭创/新易盛已有英伟达/谷歌、GB200 官方验证对照;原预计 2026Q2 末的谷歌 200G EML 验证结果至今无公开口径</td>
-<td>写手提名</td>
+<td>人工复核</td>
 <td><a class="cite" href="#ch-state">②状态</a></td>
 <td>—</td>
 <td><a id="flag-state-no-customer-validation"></a><code>state-no-customer-validation</code></td>
@@ -5579,7 +5579,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟠</td>
 <td>索尔思 27.12 亿商誉的业绩承诺条款连续三份定期报告未披露</td>
 <td>商誉 46.83 亿(占归母净资产 19.2%),其中索尔思光电 27.12 亿;2025 年报与 2026 半年报均未列示索尔思/GMD 单体报表,业绩承诺或补偿条款未见披露,H1 零减值计提</td>
-<td>写手提名</td>
+<td>人工复核</td>
 <td><a class="cite" href="#ch-path">④路径</a></td>
 <td>goodwill</td>
 <td><a id="flag-goodwill-vam-undisclosed"></a><code>goodwill-vam-undisclosed</code></td>
@@ -5588,7 +5588,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟠</td>
 <td>短期偿债覆盖跌破 1,债务扩表加速</td>
 <td>货币资金 87.93 亿覆盖短期借款 96.30 亿仅 0.91x(2026Q1 为 1.01x),有息负债 241.45 亿单季 +19.1 亿、速动比率 0.737;H1 自由现金流 -32.71 亿</td>
-<td>写手提名</td>
+<td>人工复核</td>
 <td><a class="cite" href="#ch-path">④路径</a></td>
 <td>quick_ratio、short_term_debt</td>
 <td><a id="flag-liquidity-buffer-thin"></a><code>liquidity-buffer-thin</code></td>
@@ -5597,7 +5597,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟠</td>
 <td>第一大客户占收入 46.46% 且半年报未更新集中度</td>
 <td>2025 年报第一大客户单家 186.43 亿占 46.46%、前五大 64.33%,管理层称占比或再升;2026H1 外销 231.29 亿占 83.2%(+75.64%),客户/贸易双敞口同步放大而无量化披露</td>
-<td>写手提名</td>
+<td>人工复核</td>
 <td><a class="cite" href="#ch-path">④路径</a></td>
 <td>customer_concentration、revenue</td>
 <td><a id="flag-customer-single-46pct"></a><code>customer-single-46pct</code></td>
@@ -5606,7 +5606,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟡</td>
 <td>F=5/9</td>
 <td>NI &gt; 0=✓(NI=1386066705.56) | ROA &gt; 0=✓(ROA≈0.023) | OCF &gt; 0=✓(OCF=5307141746.99) | OCF &gt; NI=✓(OCF=5307141746.99, NI=1386066705.56) | ROA↑=✗(0.024→0.023) | 资产负债率↓=✗(0.590→0.640) | 流动比率↑=✗(1.183→1.006) | 毛利率↑=✓(0.140→0.141) | 资产周转率↑=✗(0.799→0.666)</td>
-<td>脚本</td>
+<td>自动审计</td>
 <td><a class="cite" href="#ch-quality">①质地</a></td>
 <td>f_score</td>
 <td><a id="flag-piotroski-f-score-c262c9"></a><code>piotroski-f-score-c262c9</code></td>
@@ -5615,7 +5615,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟡</td>
 <td>存货增速远高于营收</td>
 <td>存货增速 45.1% vs 营收增速 9.1%</td>
-<td>脚本</td>
+<td>自动审计</td>
 <td><a class="cite" href="#ch-quality">①质地</a></td>
 <td>inventory</td>
 <td><a id="flag-buffett-quality-6a72c0"></a><code>buffett-quality-6a72c0</code></td>
@@ -5624,7 +5624,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟡</td>
 <td>前十大股东减持</td>
 <td>最近一期（20260630）净减持 1981 万股</td>
-<td>脚本</td>
+<td>自动审计</td>
 <td><a class="cite" href="#ch-path">④路径</a></td>
 <td>top10_change</td>
 <td><a id="flag-governance-055748"></a><code>governance-055748</code></td>
@@ -5633,7 +5633,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟡</td>
 <td>PB 历史分位</td>
 <td>当前 PB=16.27，近 1 年范围 [4.57, 22.31]</td>
-<td>脚本</td>
+<td>自动审计</td>
 <td><a class="cite" href="#ch-odds">③赔率</a></td>
 <td>pb</td>
 <td><a id="flag-valuation-31faed"></a><code>valuation-31faed</code></td>
@@ -5642,7 +5642,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟡</td>
 <td>股息率极低</td>
 <td>当前股息率 0.03%</td>
-<td>脚本</td>
+<td>自动审计</td>
 <td><a class="cite" href="#ch-odds">③赔率</a></td>
 <td>dividend_yield</td>
 <td><a id="flag-valuation-7ebcbf"></a><code>valuation-7ebcbf</code></td>
@@ -5651,7 +5651,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟡</td>
 <td>并表贡献与内生增长官方未拆分</td>
 <td>光模块 H1 53.51 亿含索尔思并表基数(上年同期无此科目),官方仅定性称「除索尔思和GMD合并因素外……新客户、新产品持续导入」,未给拆分数——扣非 +277.52% 的内生成色无法单独验证</td>
-<td>写手提名</td>
+<td>人工复核</td>
 <td><a class="cite" href="#ch-quality">①质地</a></td>
 <td>—</td>
 <td><a id="flag-organic-vs-consolidation-unsplit"></a><code>organic-vs-consolidation-unsplit</code></td>
@@ -5660,7 +5660,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟡</td>
 <td>H1 同比增速仍被并表基数污染,内生增速不可得</td>
 <td>上年同期无光模块分部、精密组件 +178.63% 系 GMD 并表,营收 +63.95% 与归母 +290.09% 的分母不可比;公司首次做切割表述("除索尔思和GMD合并因素外,光模块业务新客户、新产品持续导入")但未给任何拆分数</td>
-<td>写手提名</td>
+<td>人工复核</td>
 <td><a class="cite" href="#ch-state">②状态</a></td>
 <td>—</td>
 <td><a id="flag-state-basis-break-2026h1"></a><code>state-basis-break-2026h1</code></td>
@@ -5669,7 +5669,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟡</td>
 <td>A+H 布局将给 A 股估值一次外部裁决</td>
 <td>管理层 2026 工作计划明确"稳步推进 A+H 全球化资本布局";A 股现价对应 PB 16.27x、含 H1 的 TTM 扣非 PE 132x,H 股若按国际可比定价形成显著折价,将直接压低 A 股估值中枢</td>
-<td>写手提名</td>
+<td>人工复核</td>
 <td><a class="cite" href="#ch-odds">③赔率</a></td>
 <td>pb</td>
 <td><a id="flag-odds-ah-listing-discount"></a><code>odds-ah-listing-discount</code></td>
@@ -5678,7 +5678,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟡</td>
 <td>估值分母含 4.62 亿联讯仪器浮盈,回吐即双向恶化</td>
 <td>H1 非经常 4.77 亿的主体为联讯仪器(688808)公允价值浮盈 4.62 亿(初始成本 2,000 万、期末账面 4.82 亿,交易性金融资产未处置);含浮盈 TTM 归母 PE 102.7x、剔除后 118.5x,若该股价回吐则"利润下滑 + 表观 PE 抬升"同时发生</td>
-<td>写手提名</td>
+<td>人工复核</td>
 <td><a class="cite" href="#ch-odds">③赔率</a></td>
 <td>pe_ttm</td>
 <td><a id="flag-odds-fv-gain-reversal"></a><code>odds-fv-gain-reversal</code></td>
@@ -5687,7 +5687,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟡</td>
 <td>汇兑方向反转叠加并购贷款利息,财务费用年化约 11 亿</td>
 <td>H1 财务费用 5.46 亿(+1,747.19%),其中汇兑损失 3.03 亿(上年同期为收益 0.65 亿,方向反转)+ 利息支出 2.57 亿;美元净敞口与套保名义本金仍未披露</td>
-<td>写手提名</td>
+<td>人工复核</td>
 <td><a class="cite" href="#ch-path">④路径</a></td>
 <td>fin_expense</td>
 <td><a id="flag-fx-acquisition-debt-exposure"></a><code>fx-acquisition-debt-exposure</code></td>
@@ -5696,7 +5696,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟡</td>
 <td>H 股融资未落地前,扩产资金唯一现实渠道是继续加杠杆</td>
 <td>常州 12 亿美元光芯片/光模块项目在推、H1 capex 付现 52.53 亿;港股招股书 2026-05-19 递表、约 2026-11 到期,未发行落地前 H1 已靠借款收现 109.32 亿支撑,长期借款半年翻倍至 94.41 亿</td>
-<td>写手提名</td>
+<td>人工复核</td>
 <td><a class="cite" href="#ch-path">④路径</a></td>
 <td>capex、short_term_debt</td>
 <td><a id="flag-hk-financing-single-path"></a><code>hk-financing-single-path</code></td>
@@ -5705,7 +5705,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟡</td>
 <td>筹码散户化再深一档,且解禁日历数据缺失无法评估抛压</td>
 <td>股东户数 2025 年末 81,673 → 20260630 的 389,315(半年 +377%),户均持股 -21.4%;保险与老牌公募退出前十、私募与主题基金新进;未来 12 个月解禁日历数据源返回 0 行</td>
-<td>写手提名</td>
+<td>人工复核</td>
 <td><a class="cite" href="#ch-path">④路径</a></td>
 <td>holder_number</td>
 <td><a id="flag-retail-crowding-389k"></a><code>retail-crowding-389k</code></td>
@@ -5714,7 +5714,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟢</td>
 <td>M=-2.519</td>
 <td>DSRI=1.17|GMI=1.00|AQI=1.18|SGI=1.09|TATA=-0.065|LVGI=1.09</td>
-<td>脚本</td>
+<td>自动审计</td>
 <td><a class="cite" href="#ch-quality">①质地</a></td>
 <td>m_score</td>
 <td><a id="flag-beneish-m-score-1a149a"></a><code>beneish-m-score-1a149a</code></td>
@@ -5723,7 +5723,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>🟢</td>
 <td>Z=6.716</td>
 <td>营运资本/TA=0.003|RE/TA=0.175|EBIT/TA=0.021|MV/TL=9.554|S/TA=0.666</td>
-<td>脚本</td>
+<td>自动审计</td>
 <td><a class="cite" href="#ch-quality">①质地</a></td>
 <td>z_score</td>
 <td><a id="flag-altman-z-score-c39f8d"></a><code>altman-z-score-c39f8d</code></td>
@@ -5732,7 +5732,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>ℹ️</td>
 <td>最新ROE 分解</td>
 <td>净利率=3.454% × 资产周转=0.666 × 权益乘数=2.81</td>
-<td>脚本</td>
+<td>自动审计</td>
 <td><a class="cite" href="#ch-quality">①质地</a></td>
 <td>roe</td>
 <td><a id="flag-dupont-96a180"></a><code>dupont-96a180</code></td>
@@ -5741,7 +5741,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td>ℹ️</td>
 <td>上期ROE 分解</td>
 <td>净利率=2.952% × 资产周转=0.799 × 权益乘数=2.44</td>
-<td>脚本</td>
+<td>自动审计</td>
 <td><a class="cite" href="#ch-quality">①质地</a></td>
 <td>roe</td>
 <td><a id="flag-dupont-ea2893"></a><code>dupont-ea2893</code></td>

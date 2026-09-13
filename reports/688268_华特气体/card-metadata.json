@@ -29,7 +29,7 @@
     },
     {
       "label": "贵不贵",
-      "value": "买完完美未来(无 slack)",
+      "value": "买完完美未来",
       "tone": "neutral"
     }
   ],
@@ -44,7 +44,7 @@
       "variant": "amber"
     },
     {
-      "label": "赔率 买完完美未来(无 slack)",
+      "label": "赔率 买完完美未来",
       "variant": "amber"
     }
   ]
