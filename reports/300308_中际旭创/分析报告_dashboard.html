@@ -1455,7 +1455,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <section class="appx" id="appx-A">
   <h2>附录A 财务与经营明细</h2>
   <h3>数据快照: 中际旭创 (300308.SZ)</h3>
-<p><strong>生成日期</strong>: 2026-09-01<br />
+<p><strong>生成日期</strong>: 2026-09-15<br />
 <strong>数据源</strong>: <code>C:\Users\tinyb\.claude\output\中际旭创\raw_data</code> (Tushare parquet)</p>
 <blockquote>
 <p>本文是报告<strong><a class="cite" href="#appx-A">附录A</a> 财务与经营明细</strong>的底稿, 全部由脚本从 Tushare parquet 直接拼装, 无 LLM 参与。正文只写结论并引用这里的数字, 明细一律留在附录 —— 同一个数字只有一个家。</p>
@@ -1693,6 +1693,9 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 </tr>
 </tbody>
 </table></div>
+<blockquote>
+<p>口径提示:「自由现金流(数据商口径)」是 Tushare <code>cashflow.free_cashflow</code> 字段;<code>metrics.json</code> 里的 <code>free_cashflow_latest</code> 是<strong>经营现金流 − 购建固定资产支付的现金</strong>自算的。两者常差一截(华特 2026H1:0.12 亿 vs 0.67 亿),引用时写明用的是哪一个。</p>
+</blockquote>
 <h5>2.2 资产负债表关键科目 (来自 balancesheet.parquet 最新行 end_date=20260630)</h5>
 <div class="tblwrap"><table>
 <thead>
@@ -1880,7 +1883,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td style="text-align: center;">-328.93%</td>
 </tr>
 <tr>
-<td>自由现金流</td>
+<td>自由现金流(数据商口径)</td>
 <td style="text-align: right;">-7.6434 亿</td>
 <td style="text-align: right;">18.6997 亿</td>
 <td style="text-align: center;">-140.87%</td>
@@ -1933,11 +1936,15 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td style="text-align: right;">35.2661</td>
 </tr>
 <tr>
-<td>加权 ROE(%)</td>
+<td>ROE(%, 非加权 — 与<a class="cite" href="#appx-B">附录B</a> 同业表同口径)</td>
 <td style="text-align: right;">39.2137</td>
 </tr>
 <tr>
-<td>加权 ROE(扣非, %)</td>
+<td>加权平均 ROE(%, 年报正文口径)</td>
+<td style="text-align: right;">37.6200</td>
+</tr>
+<tr>
+<td>ROE(扣非, %, 非加权)</td>
 <td style="text-align: right;">37.6064</td>
 </tr>
 <tr>
@@ -2014,7 +2021,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <th style="text-align: right;">净利率%</th>
 <th style="text-align: right;">归母净利(亿)</th>
 <th style="text-align: center;">净利 YoY</th>
-<th style="text-align: right;">加权 ROE%</th>
+<th style="text-align: right;">ROE%(非加权)</th>
 <th style="text-align: right;">资产负债率%</th>
 <th style="text-align: right;">OCF(亿)</th>
 </tr>
@@ -2250,7 +2257,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 </tr>
 </tbody>
 </table></div>
-<p><em>共 19 期, 最新期 20260630。</em></p>
+<p><em>共 19 期, 最新期 20260630;ROE 列取自 <code>fina_indicator.roe</code>(非加权, 与<a class="cite" href="#appx-B">附录B</a> 自动同业表同口径);年报惯用的加权平均 ROE 见 §2.4。</em></p>
 <hr />
 <h4>§4 业绩预告 vs 实际兑现对比 (★ 若 actual 已存在, 主报告必须用 actual, 禁止用预告口径)</h4>
 <div class="tblwrap"><table>

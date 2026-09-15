@@ -496,7 +496,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
   </div>
   <div class="st">
     <div class="l">ROE + 同业分位</div>
-    <div class="v">H1 2026 加权 ROE 12.90%(半年,扣非口径 10.82%)<svg class="spark" viewBox="0 0 72 20" preserveAspectRatio="none" role="img" aria-label="ROE + 同业分位走势:2022H1 5.42% → 2023H1 4.98% → 2024H1 3.09% → 2025H1 3.82% → 2026H1 12.9%"><path class="ln" d="M3.0 13.7 L19.5 14.3 L36.0 17.0 L52.5 16.0 L69.0 3.0"/><circle class="pt" cx="69.0" cy="3.0" r="2.4"/></svg></div>
+    <div class="v">H1 2026 ROE 12.90%(半年, 非加权;加权平均 12.88%, 扣非 10.82%)<svg class="spark" viewBox="0 0 72 20" preserveAspectRatio="none" role="img" aria-label="ROE + 同业分位走势:2022H1 5.42% → 2023H1 4.98% → 2024H1 3.09% → 2025H1 3.82% → 2026H1 12.9%"><path class="ln" d="M3.0 13.7 L19.5 14.3 L36.0 17.0 L52.5 16.0 L69.0 3.0"/><circle class="pt" cx="69.0" cy="3.0" r="2.4"/></svg></div>
     <div class="n">2022 全年 15.31% → 2024 5.87% → 2025 6.88% → 2026 半年即 12.90%;回升主因净利率跳升,同期资产负债率 64.51% 为序列最高 · peer 0% 分位(附录B 口径,目标行取旧报告期数、滞后于 H1,仅作方向参考) <span class="why">（杜邦机算仍基于 FY2025(ROE 6.46%=净利率 3.45%×周转 0.67×杠杆 2.81),未覆盖 H1 跳升）</span></div>
   </div>
   <div class="pv"><b>面板结论:⚠️ 生意模式赚钱吗 · ⚠️ 赚钱质量真吗</b><span class="src">← 结论来自①质地</span></div>
@@ -1391,7 +1391,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <section class="appx" id="appx-A">
   <h2>附录A 财务与经营明细</h2>
   <h3>数据快照: 东山精密 (002384.SZ)</h3>
-<p><strong>生成日期</strong>: 2026-08-24<br />
+<p><strong>生成日期</strong>: 2026-09-15<br />
 <strong>数据源</strong>: <code>C:\Users\tinyb\.claude\output\东山精密\raw_data</code> (Tushare parquet)</p>
 <blockquote>
 <p>本文是报告<strong><a class="cite" href="#appx-A">附录A</a> 财务与经营明细</strong>的底稿, 全部由脚本从 Tushare parquet 直接拼装, 无 LLM 参与。正文只写结论并引用这里的数字, 明细一律留在附录 —— 同一个数字只有一个家。</p>
@@ -1629,6 +1629,9 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 </tr>
 </tbody>
 </table></div>
+<blockquote>
+<p>口径提示:「自由现金流(数据商口径)」是 Tushare <code>cashflow.free_cashflow</code> 字段;<code>metrics.json</code> 里的 <code>free_cashflow_latest</code> 是<strong>经营现金流 − 购建固定资产支付的现金</strong>自算的。两者常差一截(华特 2026H1:0.12 亿 vs 0.67 亿),引用时写明用的是哪一个。</p>
+</blockquote>
 <h5>2.2 资产负债表关键科目 (来自 balancesheet.parquet 最新行 end_date=20260630)</h5>
 <div class="tblwrap"><table>
 <thead>
@@ -1816,7 +1819,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td style="text-align: center;">+171.74%</td>
 </tr>
 <tr>
-<td>自由现金流</td>
+<td>自由现金流(数据商口径)</td>
 <td style="text-align: right;">-32.7064 亿</td>
 <td style="text-align: right;">3.3368 亿</td>
 <td style="text-align: center;">-1080.16%</td>
@@ -1869,11 +1872,15 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <td style="text-align: right;">10.7370</td>
 </tr>
 <tr>
-<td>加权 ROE(%)</td>
+<td>ROE(%, 非加权 — 与<a class="cite" href="#appx-B">附录B</a> 同业表同口径)</td>
 <td style="text-align: right;">12.9044</td>
 </tr>
 <tr>
-<td>加权 ROE(扣非, %)</td>
+<td>加权平均 ROE(%, 年报正文口径)</td>
+<td style="text-align: right;">12.8800</td>
+</tr>
+<tr>
+<td>ROE(扣非, %, 非加权)</td>
 <td style="text-align: right;">10.8213</td>
 </tr>
 <tr>
@@ -1950,7 +1957,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 <th style="text-align: right;">净利率%</th>
 <th style="text-align: right;">归母净利(亿)</th>
 <th style="text-align: center;">净利 YoY</th>
-<th style="text-align: right;">加权 ROE%</th>
+<th style="text-align: right;">ROE%(非加权)</th>
 <th style="text-align: right;">资产负债率%</th>
 <th style="text-align: right;">OCF(亿)</th>
 </tr>
@@ -2186,7 +2193,7 @@ a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
 </tr>
 </tbody>
 </table></div>
-<p><em>共 19 期, 最新期 20260630。</em></p>
+<p><em>共 19 期, 最新期 20260630;ROE 列取自 <code>fina_indicator.roe</code>(非加权, 与<a class="cite" href="#appx-B">附录B</a> 自动同业表同口径);年报惯用的加权平均 ROE 见 §2.4。</em></p>
 <hr />
 <h4>§4 业绩预告 vs 实际兑现对比 (★ 若 actual 已存在, 主报告必须用 actual, 禁止用预告口径)</h4>
 <div class="tblwrap"><table>
