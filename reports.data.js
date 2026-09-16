@@ -1,8 +1,59 @@
 ﻿// 本地预览兜底数据 (内容 = data/reports.json 快照)。线上以实时 fetch data/reports.json 为准。
 window.REPORTS_RAW = {
   "schema_version": "v1",
-  "last_updated": "2026-09-10",
+  "last_updated": "2026-09-16",
   "reports": [
+    {
+      "slug": "688111_金山办公",
+      "ticker": "688111.SH",
+      "name": "金山办公",
+      "name_cn": "金山办公",
+      "sector": "–",
+      "market": "a",
+      "report_date": "2026-09-16",
+      "version": "v8.0",
+      "composite_score": null,
+      "verdict": "先观察等证据临界——现价 0 仓位,等三季报的两条硬数据 + 价格回到合理价区间以内",
+      "verdict_tone": "neutral",
+      "quality_field": "部分好",
+      "action_gear": "等证据临界",
+      "next_disclosure_date": "",
+      "review_hint": "",
+      "valuation_tag": "估值锚 133.3-193.8 元",
+      "one_liner": "现在的答案是不买、空仓等:225.52 元的价格已经高于合理价区间 133.3~193.8 元的两端,这个位置没有下注余地,等待本身就是选择权。 等的是两件必须同时发生的事——10 月下旬三季报把两条硬数据坐实(多年期预收同比仍 ≥+20%、Q3 单季经调整归母同比仍 ≥+20%),以及股价回到 193.8 元以内;只到一件不算。 之所以是\"等\"而不是\"买\",因为上半年那份利润暴涨的成绩单里有 17.56 亿是两只关联方基金的账面浮盈,按主营净利只涨了两成八,而这笔浮盈二季度已经开始反向;AI 那条新故事至今没有一分钱可查收入,股价却已经替它付了钱。 如果三季报的多年期预收增速掉到零、或者年报",
+      "metrics": [
+        {
+          "label": "行动档位",
+          "value": "等证据临界",
+          "tone": "neutral"
+        },
+        {
+          "label": "质地",
+          "value": "部分好",
+          "tone": "neutral"
+        },
+        {
+          "label": "贵不贵",
+          "value": "已被价格计入",
+          "tone": "neutral"
+        }
+      ],
+      "expected_return_short": "",
+      "badges": [
+        {
+          "label": "先观察等证据临界——现价 0 仓位,等三季报的两条硬数据 + 价格回到合理价区间以内",
+          "variant": "amber"
+        },
+        {
+          "label": "质地 部分好",
+          "variant": "amber"
+        },
+        {
+          "label": "赔率 已被价格计入",
+          "variant": "amber"
+        }
+      ]
+    },
     {
       "slug": "688268_华特气体",
       "ticker": "688268.SH",

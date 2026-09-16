@@ -1,0 +1,4364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>金山办公（688111.SH）投资分析报告 — 2026-09-16</title>
+<style>
+/* ============================================================================
+   v8.0 报告样式 — 第二套 B「仪表盘 · 一眼决断」(定稿基线, 无杂交)
+   基线样张: .scratch/v8-refactor/prototypes/07-delivery-samples.html (variant B)
+   规范: spec §4 红标视觉三通道 / spec §10 交付形态与移动端
+
+   三条硬纪律(实现票 07 验收项):
+   1. 红标三通道 = emoji + 文字(级别词) + 底纹, 任一通道单独可读, 不裸靠颜色;
+   2. 明暗双主题各定一组 token, 正文/次要文字与底纹的对比度均 ≥ 4.5:1;
+   3. 移动端改结构不缩字号 —— 媒体查询里**不得出现任何 font-size**, 只重排网格。
+   ========================================================================= */
+
+/* ---------------------------------------------------------------- tokens */
+:root{
+  color-scheme: light;
+  --page:#f6f6f3; --surface:#ffffff; --surface2:#f0efea;
+  --ink:#141412; --ink2:#4b4a46; --muted:#66645e;
+  --hair:#e2e1d9; --shadow:rgba(17,17,15,.14);
+  --accent:#1f5fae; --wash-a:#e8f0fb;
+  /* 红标色档: 🔴/🟠 同红色系(级别靠 emoji 区分), 🟡 黄色系 */
+  --crit:#c0392b; --seri:#c25a12; --warn:#a06c00; --good:#1b7a3f;
+  --wash-r:#fbeae7; --wash-y:#fdf3dd; --wash-g:#e7f4ec;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --page:#111110; --surface:#1b1b1a; --surface2:#232321;
+    --ink:#f2f1ec; --ink2:#c6c5bb; --muted:#9a9890;
+    --hair:#2f2f2c; --shadow:rgba(0,0,0,.5);
+    --accent:#6fa8f0; --wash-a:#1c2a3d;
+    --crit:#e77070; --seri:#e08a52; --warn:#e0b23c; --good:#5fbb84;
+    --wash-r:#3a2321; --wash-y:#38301c; --wash-g:#1d2f25;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --page:#111110; --surface:#1b1b1a; --surface2:#232321;
+  --ink:#f2f1ec; --ink2:#c6c5bb; --muted:#9a9890;
+  --hair:#2f2f2c; --shadow:rgba(0,0,0,.5);
+  --accent:#6fa8f0; --wash-a:#1c2a3d;
+  --crit:#e77070; --seri:#e08a52; --warn:#e0b23c; --good:#5fbb84;
+  --wash-r:#3a2321; --wash-y:#38301c; --wash-g:#1d2f25;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--page); color:var(--ink);
+  font:15px/1.75 "Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif;
+  overflow-wrap:break-word;
+}
+a{color:var(--accent)}
+h1,h2,h3,h4{line-height:1.35; text-wrap:balance}
+/* overflow-x:clip 而非 hidden: 不造滚动容器(不破 sticky), 只把探出版心的浮层裁掉,
+   页面本体因此永远不会横向滚动 —— 390px 走查的第一条 */
+.wrap{max-width:1120px; margin:0 auto; padding:24px 24px 96px; overflow-x:clip}
+
+/* ---------------------------------------------------------------- 顶栏 */
+.topbar{
+  position:sticky; top:0; z-index:40; display:flex; flex-wrap:wrap; align-items:center;
+  gap:2px 14px; padding:8px 24px; background:var(--surface); border-bottom:1px solid var(--hair);
+}
+.topbar a{color:var(--ink2); text-decoration:none; padding:4px 2px}
+.topbar a:hover,.topbar a:focus-visible{color:var(--ink); text-decoration:underline}
+.topbar .brand{font-weight:700; color:var(--ink); margin-right:6px}
+.topbar .spacer{flex:1 1 auto}
+.themetoggle{
+  all:unset; cursor:pointer; padding:4px 12px; border:1px solid var(--hair); border-radius:999px;
+  color:var(--ink2); background:var(--surface2); white-space:nowrap;
+}
+.themetoggle:hover{color:var(--ink)}
+.themetoggle:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+/* ---------------------------------------------------------------- hero */
+.hero{display:flex; flex-wrap:wrap; align-items:baseline; gap:8px 16px; margin:4px 0 12px}
+.hero h1{font-size:26px; margin:0}
+.hero .code{color:var(--muted)}
+.hero .asof{margin-left:auto; color:var(--muted)}
+.facts{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 20px}
+.fact{background:var(--surface); border:1px solid var(--hair); border-radius:6px; padding:8px 14px; min-width:132px}
+.fact .l{font-size:12.5px; color:var(--muted); letter-spacing:.04em}
+.fact .v{font-size:19px; font-weight:650; font-variant-numeric:tabular-nums}
+.fact .v small{font-size:13px; font-weight:400; color:var(--ink2)}
+
+/* ---------------------------------------------------------------- 区段标题 / 语义标签 */
+.secl{display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:28px 0 10px; color:var(--muted); letter-spacing:.08em}
+.secl > .t{color:var(--ink); font-weight:700; letter-spacing:0}
+.secl::after{content:""; flex:1 1 60px; border-top:1px solid var(--hair)}
+.chip{
+  display:inline-block; font-family:Consolas,"Cascadia Mono",monospace; font-size:12.5px;
+  font-weight:600; letter-spacing:.04em; color:var(--ink2); background:var(--surface2);
+  border:1px solid var(--hair); border-radius:3px; padding:1px 6px; white-space:nowrap;
+}
+.chip.man{border-style:dashed}
+
+/* ---------------------------------------------------------------- 决断卡瓦片 */
+.cards5{display:grid; grid-template-columns:repeat(5,1fr); gap:10px}
+.dc{
+  display:block; background:var(--surface); border:1px solid var(--hair); border-radius:6px;
+  padding:12px 14px 12px 17px; position:relative; text-decoration:none; color:inherit;
+}
+.dc::before{content:""; position:absolute; left:0; top:0; bottom:0; width:4px; border-radius:6px 0 0 6px; background:var(--tone,var(--hair))}
+.dc:hover,.dc:focus-visible{border-color:var(--tone,var(--accent))}
+.dc .q{font-size:12.5px; color:var(--muted)}
+.dc .a{font-size:17px; font-weight:750; margin:4px 0 6px}
+.dc .w{font-size:13.5px; color:var(--ink2); line-height:1.65}
+.dc .s{margin-top:8px}
+.t-bad{--tone:var(--crit)} .t-watch{--tone:var(--warn)} .t-good{--tone:var(--good)} .t-node{--tone:var(--accent)}
+
+/* ---------------------------------------------------------------- 赚钱面板 stat tiles */
+.tiles{display:grid; grid-template-columns:repeat(3,1fr); gap:10px}
+.st{background:var(--surface); border:1px solid var(--hair); border-radius:6px; padding:12px 14px; position:relative}
+.st .l{font-size:13px; color:var(--muted); padding-right:96px}
+.st .v{font-size:22px; font-weight:650; margin:2px 0; font-variant-numeric:tabular-nums}
+.st .n{font-size:13px; color:var(--ink2); line-height:1.6}
+.st .n .why{color:var(--muted)}
+.st .fb{position:absolute; top:9px; right:12px; max-width:60%; text-align:right}
+.st.mk-red{box-shadow:inset 0 3px 0 var(--crit)}
+.st.mk-yellow{box-shadow:inset 0 3px 0 var(--warn)}
+.pv{
+  grid-column:1/-1; background:var(--surface); border:1px solid var(--hair); border-radius:6px;
+  padding:10px 16px; display:flex; flex-wrap:wrap; gap:4px 14px; align-items:baseline;
+}
+.pv .src{font-size:13px; color:var(--muted)}
+.reason{color:var(--ink2); margin:0 0 10px}
+
+/* ---------------------------------------------------------------- Top3 风险卡 */
+.risks{display:grid; grid-template-columns:repeat(3,1fr); gap:10px}
+.rk{background:var(--surface); border:1px solid var(--hair); border-radius:6px; padding:12px 14px 12px 17px; position:relative}
+.rk::before{content:""; position:absolute; left:0; top:0; bottom:0; width:4px; border-radius:6px 0 0 6px}
+.rk.mk-red::before{background:var(--crit)}
+.rk.mk-yellow::before{background:var(--warn)}
+.rk .t{font-weight:750}
+.rk .d{font-size:13.5px; color:var(--ink2); margin-top:4px}
+.rk .h{font-size:13px; color:var(--muted); margin-top:8px}
+
+/* ---------------------------------------------------------------- 导读 / 变化区块 */
+.intro,.change{background:var(--surface); border:1px solid var(--hair); border-radius:6px; padding:12px 18px}
+.intro p{margin:6px 0}
+.change{border-left:4px solid var(--accent)}
+.change .alpha{font-size:16px; font-weight:750; margin:4px 0 10px}
+.change ul{margin:8px 0; padding-left:20px}
+.change .advice{background:var(--wash-y); border-radius:4px; padding:8px 12px; margin-top:10px}
+
+/* ---------------------------------------------------------------- 判断链正文 */
+.chB{background:var(--surface); border:1px solid var(--hair); border-radius:6px; margin:12px 0; scroll-margin-top:64px}
+.chB > .hd{display:flex; flex-wrap:wrap; align-items:center; gap:6px 12px; padding:12px 16px; border-bottom:1px solid var(--hair); background:var(--surface2); border-radius:6px 6px 0 0}
+.chB > .hd .no{font-weight:800; font-size:16px}
+.chB > .hd .qq{color:var(--muted)}
+.chB > .bd{padding:4px 16px 14px}
+.pill{display:inline-block; border-radius:4px; padding:2px 10px; font-weight:700; background:var(--surface); border:1px solid var(--hair)}
+.pill.bad{background:var(--wash-r); box-shadow:inset 0 -2px 0 var(--crit)}
+.pill.watch{background:var(--wash-y); box-shadow:inset 0 -2px 0 var(--warn)}
+.pill.good{background:var(--wash-g); box-shadow:inset 0 -2px 0 var(--good)}
+.pill.node{background:var(--wash-a); box-shadow:inset 0 -2px 0 var(--accent)}
+
+/* ---------------------------------------------------------------- 附录 */
+.appxnav{display:grid; grid-template-columns:repeat(5,1fr); gap:10px}
+.ap{display:block; background:var(--surface); border:1px dashed var(--hair); border-radius:6px; padding:10px 12px; font-size:13px; color:var(--ink2); text-decoration:none}
+.ap:hover,.ap:focus-visible{border-style:solid; border-color:var(--accent)}
+.ap b{display:block; color:var(--ink)}
+.appx{background:var(--surface); border:1px solid var(--hair); border-radius:6px; margin:12px 0; padding:4px 16px 14px; scroll-margin-top:64px}
+.appx > h2{font-size:17px}
+
+/* ---------------------------------------------------------------- 表格 / 正文 */
+.tblwrap{overflow-x:auto; -webkit-overflow-scrolling:touch; max-width:100%; margin:10px 0}
+table{border-collapse:collapse; width:100%; font-variant-numeric:tabular-nums}
+th,td{text-align:left; vertical-align:top; padding:8px 10px; border-bottom:1px solid var(--hair)}
+th{font-size:13px; color:var(--muted); font-weight:600; letter-spacing:.04em; white-space:nowrap}
+tbody tr:hover{background:var(--surface2)}
+code,pre{font-family:Consolas,"Cascadia Mono",monospace}
+pre{overflow-x:auto; background:var(--surface2); padding:10px 12px; border-radius:4px}
+img{max-width:100%; height:auto}
+blockquote{margin:10px 0; padding:8px 14px; border-left:3px solid var(--hair); color:var(--ink2); background:var(--surface2); border-radius:0 4px 4px 0}
+hr{border:0; border-top:1px solid var(--hair); margin:18px 0}
+footer{margin-top:36px; padding-top:14px; border-top:1px solid var(--hair); color:var(--muted); font-size:13px}
+
+/* ---------------------------------------------------------------- 红标三通道 + 反查 */
+/* 通道①emoji(.fw-i) 通道②文字级别词(.fw-k) 通道③底纹+左封条(background/box-shadow) */
+.fw{
+  display:inline; position:relative; border-radius:3px; padding:1px 5px;
+  color:var(--ink); text-decoration:none; box-decoration-break:clone; -webkit-box-decoration-break:clone;
+}
+.fw:hover,.fw:focus-visible{outline:1px solid currentColor; outline-offset:1px}
+.fw-red{background:var(--wash-r); box-shadow:inset 3px 0 0 var(--crit)}
+.fw-yellow{background:var(--wash-y); box-shadow:inset 3px 0 0 var(--warn)}
+.fw-i{font-style:normal}
+.fw-k{font-size:13px; color:var(--ink2); white-space:nowrap}
+.fw-inline{border-bottom:2px solid var(--crit)}
+.fw-yellow.fw-inline{border-bottom-color:var(--warn)}
+/* 反查浮层: 桌面悬停/键盘聚焦弹出; 触屏(hover:none)不弹, 点击直达附录D 条目 */
+.fw-pop{
+  position:absolute; left:0; top:calc(100% + 6px); z-index:30; width:max-content; max-width:min(360px,80vw);
+  background:var(--surface); color:var(--ink); border:1px solid var(--hair); border-radius:6px;
+  padding:9px 12px; font-size:13.5px; line-height:1.6; text-align:left; white-space:normal;
+  box-shadow:0 8px 24px var(--shadow); opacity:0; visibility:hidden; transition:opacity .12s;
+}
+.fw:hover > .fw-pop,.fw:focus-visible > .fw-pop,.fw:focus-within > .fw-pop{opacity:1; visibility:visible}
+.fw-pop .ttl{font-weight:700; display:block}
+.fw-pop .meta{color:var(--muted); display:block; margin-top:4px}
+.fw-pop .go{color:var(--accent); display:block; margin-top:4px}
+.fw-pop + .fw-pop{margin-top:6px}
+/* 触屏没有悬停, 窄屏也放不下浮层 —— 两种情况都彻底不渲染(display:none 连布局都不占,
+   免得绝对定位的浮层把页面撑出横向滚动); 反查退回「点击直达附录D」+ title 兜底。 */
+@media (hover:none), (max-width:720px){ .fw-pop{display:none} }
+@media (prefers-reduced-motion: reduce){ *{transition:none !important} }
+
+/* 附录D 红旗行锚点: 跳转后高亮定位 */
+.appx td:target,.appx tr:target,[id^="flag-"]:target{scroll-margin-top:72px}
+tr:target{background:var(--wash-a)}
+
+/* ---------------------------------------------------------------- 移动端: 只重排结构, 不缩字号 */
+@media (max-width:980px){
+  .wrap{padding:20px 16px 80px}
+  .cards5{grid-template-columns:repeat(2,1fr)}
+  .risks,.appxnav{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:720px){
+  .topbar{position:static}
+  .tiles{grid-template-columns:1fr 1fr}
+  .risks{grid-template-columns:1fr}
+  .hero .asof{margin-left:0; width:100%}
+}
+@media (max-width:620px){
+  .cards5,.tiles,.appxnav{grid-template-columns:1fr}
+  .fact{flex:1 1 100%}
+  .st .l{padding-right:0}
+  .st .fb{position:static; text-align:left; max-width:100%; display:block; margin-bottom:4px}
+  .fw-pop{max-width:min(300px,90vw)}
+}
+@media print{
+  .topbar,.themetoggle{display:none}
+  .chB,.appx,.dc,.st,.rk{break-inside:avoid}
+}
+
+/* ---------- 渐进披露:章内 ### 段折进 <details> ---------- */
+/* 收起时读小标题 = 一条判断链;展开才看推导。信息不删, 只改默认占屏。 */
+.drill{border-top:1px solid var(--hair); margin:0}
+.drill>summary{
+  cursor:pointer; list-style:none; padding:11px 2px 11px 26px; position:relative;
+  font-weight:650; font-size:14.5px; color:var(--ink); line-height:1.55;
+}
+.drill>summary::-webkit-details-marker{display:none}
+.drill>summary::before{
+  content:"›"; position:absolute; left:6px; top:10px; font-size:16px; color:var(--muted);
+  transition:transform .15s ease; display:inline-block;
+}
+.drill[open]>summary::before{transform:rotate(90deg)}
+.drill>summary:hover{color:var(--accent)}
+.drill>summary:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:4px}
+.drill .dd{padding:0 2px 14px 26px}
+.drill:not([open])>summary{color:var(--ink2)}
+.foldbar{display:flex; gap:8px; justify-content:flex-start; margin:-2px 0 8px}
+.foldbar button{
+  font:inherit; font-size:14px; color:var(--muted); background:none;
+  border:1px solid var(--hair); border-radius:999px; padding:9px 14px; cursor:pointer;
+}
+.foldbar button:hover{color:var(--ink); border-color:var(--muted)}
+
+/* ---------- 出处锚链接:「见①质地」「明细见附录A」可点 ---------- */
+a.cite{color:inherit; text-decoration:none; border-bottom:1px dotted var(--muted)}
+a.cite:hover{color:var(--accent); border-bottom-color:var(--accent)}
+
+/* ---------- 估值尺(meter):轨道=合理价区间, 标记=现价 ---------- */
+.meter{margin:2px 0 16px; padding:12px 14px; background:var(--surface);
+       border:1px solid var(--hair); border-radius:10px}
+.meter figcaption{font-size:12.5px; color:var(--muted); margin-bottom:10px; letter-spacing:.02em}
+.meter .track{position:relative; height:10px; border-radius:999px;
+              background:var(--surface2); overflow:visible}
+.meter .band{position:absolute; top:0; height:10px; border-radius:999px; background:var(--accent)}
+.meter .mark{position:absolute; top:-4px; width:3px; height:18px; border-radius:2px;
+             background:var(--ink); box-shadow:0 0 0 2px var(--surface)}
+.meter .mark.over{background:var(--crit)}
+.meter .scale{display:flex; justify-content:space-between; margin-top:6px;
+              font-size:12.5px; color:var(--muted); font-variant-numeric:tabular-nums}
+.meter .lg{display:flex; flex-wrap:wrap; gap:6px 20px; margin-top:12px; font-size:12.5px; color:var(--ink2)}
+.meter .lg span{display:flex; align-items:baseline; gap:6px}
+.meter .lg small{color:var(--muted); font-size:12.5px}
+.meter .sw{width:10px; height:10px; border-radius:3px; flex:none; transform:translateY(1px)}
+.meter .sw.band{background:var(--accent)}
+.meter .sw.mark{background:var(--crit)}
+
+/* ---------- 附录长表:表头吸顶 ---------- */
+/* 附录长表表头吸顶已撤:.tblwrap 的 overflow-x:auto 会把 overflow-y 一并变成 auto,
+   sticky 因此失去参照 —— 留着只是骗自己(票 08 交付评审实测无效)。
+   真要吸顶得先给表格换一套不依赖 overflow-x 的横滚方案, 单开一票做。 */
+
+@media (max-width:620px){
+  .drill .dd{padding-left:12px}
+  .drill>summary{padding-left:22px}
+  .meter .lg{gap:4px 12px}
+}
+@media print{
+  .drill>summary::before{display:none}
+  .drill .dd{padding-left:2px}
+  .foldbar{display:none}
+}
+
+/* ============================================================================
+   票 11 三张图:P=F+N 占比尺 / 左尾深度阶梯 / 面板 sparkline
+   数据全部来自 YAML 契约(odds.derivation.p_f_n · path.left_tail[].depth_pct ·
+   quality.panel.indicators[].series), 零写手工作。
+
+   ★ 图色与红标状态色**分开取**。--crit/--seri/--warn/--good 是保留的状态档
+   (🔴🟠🟡🟢), 拿去当"系列 4"会让读者把一条数据系列读成一个风险等级。
+   所以另开 --viz-* 三支, 明暗各自取色(不是把浅色翻过来):
+
+     --viz-1 蓝    F 段 · sparkline        light #2a78d6 / dark #3987e5
+     --viz-2 品红  N 段                    light #e87ba4 / dark #d55181
+     --viz-neg 红  左尾阶梯(单色)          light #e34948 / dark #e66767
+
+   六项检查跑的是 dataviz 的 scripts/validate_palette.js, 不是肉眼:
+     · (viz-1, viz-2) 明暗两套均 ALL CHECKS PASS —— CVD ΔE 13.0 明 / 15.9 暗,
+       常色视觉 ΔE 27.5 明 / 26.5 暗, 都在门槛之上;
+     · 浅色下 viz-2 对白面的对比度 2.69:1 触发 relief 条款 —— 已由图例里的
+       **可见直标(金额 + 占比)** 解除, 不靠颜色单通道传身份;
+     · viz-neg 单色无配对, 明暗对比度均 ≥3:1。
+   换品红而不用调色板里相邻的橙, 是因为橙会和 🟠 状态色撞脸。
+   ========================================================================= */
+:root{
+  --viz-1:#2a78d6; --viz-2:#e87ba4; --viz-neg:#e34948;
+  --viz-track:#eceae3;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --viz-1:#3987e5; --viz-2:#d55181; --viz-neg:#e66767;
+    --viz-track:#2a2a27;
+  }
+}
+:root[data-theme="dark"]{
+  --viz-1:#3987e5; --viz-2:#d55181; --viz-neg:#e66767;
+  --viz-track:#2a2a27;
+}
+
+/* ---------- P=F+N 占比尺:一根条两段, 段间留 2px 表面色缝隙(不描边) ---------- */
+.pfn{margin:2px 0 16px; padding:12px 14px; background:var(--surface);
+     border:1px solid var(--hair); border-radius:10px}
+.pfn figcaption{font-size:12.5px; color:var(--muted); margin-bottom:10px; letter-spacing:.02em}
+.pfn .bar{display:flex; gap:2px; height:14px}
+.pfn .sg{flex-grow:0; flex-shrink:1; min-width:2px; border-radius:3px}
+.pfn .sg.f{background:var(--viz-1)}
+.pfn .sg.n{background:var(--viz-2)}
+.pfn .lg{display:flex; flex-wrap:wrap; gap:6px 20px; margin-top:12px;
+         font-size:12.5px; color:var(--ink2)}
+.pfn .lg span{display:flex; align-items:baseline; gap:6px; flex:1 1 240px}
+.pfn .lg small{color:var(--muted); font-size:12.5px}
+.pfn .sw{width:10px; height:10px; border-radius:3px; flex:none; transform:translateY(1px)}
+.pfn .sw.f{background:var(--viz-1)}
+.pfn .sw.n{background:var(--viz-2)}
+
+/* ---------- 左尾深度阶梯:一条一级台阶, 由浅到深往下走 ---------- */
+.ladder{margin:2px 0 16px; padding:12px 14px; background:var(--surface);
+        border:1px solid var(--hair); border-radius:10px}
+.ladder figcaption{font-size:12.5px; color:var(--muted); margin-bottom:10px; letter-spacing:.02em}
+.ladder .rungs{list-style:none; margin:0; padding:0; display:grid; gap:6px}
+.ladder .rungs li{
+  display:grid; grid-template-columns:minmax(0,15em) 1fr auto;
+  align-items:center; gap:10px;
+}
+.ladder .lb{color:var(--ink2); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+            font-size:13px}
+.ladder .tr{height:10px; border-radius:999px; background:var(--viz-track)}
+.ladder .tr i{display:block; height:10px; border-radius:999px; background:var(--viz-neg)}
+.ladder .dv{color:var(--ink); font-variant-numeric:tabular-nums; font-size:13px; font-weight:650}
+.ladder .foot{margin:10px 0 0; font-size:12.5px; color:var(--muted); line-height:1.6}
+
+/* ---------- 面板 sparkline:无轴无网格, 末点一颗直标点 ---------- */
+.spark{width:72px; height:20px; margin-left:10px; vertical-align:middle; overflow:visible}
+.spark .ln{fill:none; stroke:var(--viz-1); stroke-width:2;
+           stroke-linecap:round; stroke-linejoin:round; vector-effect:non-scaling-stroke}
+.spark .pt{fill:var(--viz-1); stroke:var(--surface); stroke-width:1.5;
+           vector-effect:non-scaling-stroke}
+.spark .z{stroke:var(--hair); stroke-width:1; vector-effect:non-scaling-stroke}
+
+@media (max-width:620px){
+  /* 手机上标签独占一行, 条与数值并排 —— 改结构不缩字号 */
+  .ladder .rungs li{grid-template-columns:1fr auto; row-gap:4px}
+  .ladder .lb{grid-column:1 / -1; white-space:normal}
+  /* 独占一行还不够: span 自己是 flex 容器, 不给 wrap 的话「色块 + 数值 + <small> 注文」
+     会被 flex-shrink 压成两条窄列(实测 390px 上「4,352.0 / 亿 · 43.4%」被拆成两行)。
+     内容变短不等于版式变安全 —— 拆瘦图例之后要重跑一次窄屏推算(票 10 交付评审)。 */
+  .pfn .lg span{flex:1 1 100%; flex-wrap:wrap}
+  .pfn .lg small{flex:1 1 100%}
+  .spark{display:block; margin:6px 0 0}
+}
+@media print{
+  .pfn,.ladder{break-inside:avoid}
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     顶栏 — 判断链五节点锚点 + 附录 + 明暗主题切换
+     (移动端改为静态不吸顶: 见 report-v8.css @media max-width:720px)
+     ============================================================ -->
+<nav class="topbar">
+  <a class="brand" href="../../index.html">叶纸的投资报告</a>
+  <a href="#front">一眼结论</a>
+  <a href="#ch-quality">①质地</a>
+  <a href="#ch-state">②状态</a>
+  <a href="#ch-odds">③赔率</a>
+  <a href="#ch-path">④路径</a>
+  <a href="#ch-decision">⑤怎么办</a>
+  <a href="#appendices">附录</a>
+  <span class="spacer"></span>
+  <button class="themetoggle" id="themetoggle" type="button" aria-label="切换明暗主题">🌓 主题</button>
+</nav>
+
+<div class="wrap">
+
+<!-- ============================================================
+     Hero — 公司 + 基准日 + 决策事实条(全部来自装配契约字段)
+     ============================================================ -->
+<header class="hero">
+  <h1>金山办公</h1>
+  <span class="code">688111.SH</span>
+  <span class="asof">基准日 2026-09-16 · company-analysis v8.0</span>
+</header>
+<div class="facts">
+  <div class="fact"><div class="l">行动档位</div><div class="v">等证据临界</div></div>
+  <div class="fact"><div class="l">质地</div><div class="v">部分好</div></div>
+  <div class="fact"><div class="l">现价</div><div class="v">225.52 <small>元</small></div></div>
+  <div class="fact"><div class="l">合理价区间</div><div class="v">133.3–193.8 <small>元</small></div></div>
+</div>
+
+<!-- ============================================================
+     首页 一眼结论 — 决断卡 → 赚钱面板 → Top3 → 导读 [→ 较上版变化]
+     全部机器装配自 assembly.json, 零人工抄写(导读除外)
+     ============================================================ -->
+<section id="front">
+<div class="secl"><span class="t">投资决断卡</span> </div>
+<div class="cards5">
+  <a class="dc t-bad" href="#ch-quality">
+    <div class="q">① 是不是好公司</div>
+    <div class="a">部分好</div>
+    <div class="w">真护城河真主营,但本期报表利润被 17.56 亿关联方基金账面重估冲花、扣非口径同时失效</div>
+    <div class="s"><span class="chip">①质地</span> <span class="chip" title="本节点红旗数(明细见附录D)">🟠×4 🟡×1 红旗</span></div>
+  </a>
+  <a class="dc t-watch" href="#ch-state">
+    <div class="q">② 在变好吗</div>
+    <div class="a">↑变好但仅注意力·未确认</div>
+    <div class="w">主营三条线一起提速是实锤,但利润改善被基金浮盈冲花、AI 新身份至今没有一分钱可核收入</div>
+    <div class="s"><span class="chip">②状态</span> <span class="chip" title="本节点红旗数(明细见附录D)">🟡×3 红旗</span></div>
+  </a>
+  <a class="dc t-bad" href="#ch-odds">
+    <div class="q">③ 贵不贵</div>
+    <div class="a">已被价格计入</div>
+    <div class="w">合理价区间 133.3-193.8 元 vs 现价 225.52 元</div>
+    <div class="s"><span class="chip">③赔率</span> <span class="chip" title="本节点红旗数(明细见附录D)">🟠×2 🟡×2 红旗</span></div>
+  </a>
+  <a class="dc t-bad" href="#ch-path">
+    <div class="q">④ 扛得住吗</div>
+    <div class="a">高尾险·不可承受</div>
+    <div class="w">公司本身不会死,但持有人一路上没有护栏;高信仰 5/7</div>
+    <div class="s"><span class="chip">④路径</span> <span class="chip" title="本节点红旗数(明细见附录D)">🟠×2 🟡×2 红旗</span></div>
+  </a>
+  <a class="dc t-watch" href="#ch-decision">
+    <div class="q">⑤ 怎么办</div>
+    <div class="a">先观察等证据临界</div>
+    <div class="w">现价 0 仓位,等三季报的两条硬数据 + 价格回到合理价区间以内</div>
+    <div class="s"><span class="chip">⑤怎么办</span> <span class="chip">无红旗</span></div>
+  </a>
+</div>
+
+<div class="secl"><span class="t">赚不赚钱面板</span></div>
+<p class="reason">订阅制软件公司本期的矛盾焦点不在&quot;赚多少&quot;而在&quot;哪个口径的利润是主营挣的&quot;——17.56 亿关联方基金账面重估把净利率、ROE、扣非占比同时顶花,所以面板用毛利率(不受投资收益影响的干净刻度)+ 净利率(展示被顶花的那根尖刺)+ 扣非占比(标出这条经验法则在本期的失效点)+ 现金含量(浮盈不带来现金)+ ROE 与同业分位(改用未冲花口径复核)五格互相校验;FCF 因半年度两种口径差异过大(数据商 -15.74 亿 vs 自算 5.98 亿)且取不到可比历史序列,本次不入面板。</p>
+<div class="tiles">
+  <div class="st">
+    <div class="l">毛利率</div>
+    <div class="v">84.90%(2026H1)<svg class="spark" viewBox="0 0 72 20" preserveAspectRatio="none" role="img" aria-label="毛利率走势:2023H1 86.07% → 2024H1 84.92% → 2025H1 85.03% → 2026H1 84.9%"><path class="ln" d="M3.0 3.0 L25.0 16.8 L47.0 15.4 L69.0 17.0"/><circle class="pt" cx="69.0" cy="17.0" r="2.4"/></svg></div>
+    <div class="n">四个半年度稳定在 84.9~86.1%,规模扩大未被摊薄;分产品 WPS 软件 94.8% / WPS 365 90.9% / 个人 79.6% · peer 20% 分位(低于同业中位 88.82%) <span class="why">（同业中位被中望 95.99%、福昕 91.58% 拉高,而这两家净利率为负——毛利率分位低不等于赚钱能力弱）</span></div>
+  </div>
+  <div class="st mk-red"><div class="fb"><a class="fw fw-red" href="#flag-buffett-quality-c95859" title="🟠 高级红旗 投资收益占营业利润过高｜20260630: 投资收益类 19.08亿 / 营业利润 27.45亿, 上年同期 17%｜来源 自动审计｜归属 ①质地"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">投资收益占营业利润过高</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 投资收益占营业利润过高</span><span>20260630: 投资收益类 19.08亿 / 营业利润 27.45亿, 上年同期 17%</span><span class="meta">级别 高级红旗 · 来源 自动审计 · 归属 ①质地</span><span class="go">→ 点击查看附录D 条目</span></span></a></div>
+    <div class="l">净利率(报表口径)</div>
+    <div class="v">75.99%<svg class="spark" viewBox="0 0 72 20" preserveAspectRatio="none" role="img" aria-label="净利率(报表口径)走势:2023H1 27.42% → 2024H1 29.92% → 2025H1 27.57% → 2026H1 75.99%"><path class="ln" d="M3.0 17.0 L25.0 16.3 L47.0 17.0 L69.0 3.0"/><circle class="pt" cx="69.0" cy="3.0" r="2.4"/></svg></div>
+    <div class="n">从 27~30% 一跃到 75.99%,跳升全部来自 17.56 亿账面重估;剔除后主营口径 32.8%,上年同期 31.9% · peer 100% 分位(同业唯一为正);按主营口径 32.8% 仍为 100% 分位 <span class="why">（这个 75.99% 不是主营赚出来的,直接拿去和同行比会看反——营业利润里近七成来自基金账面重估。可比的是剔除后的两档:经调整归母(公司口径)对应 32.8%、严口径对应 28.2%,质地判定一律采用后两档）</span></div>
+  </div>
+  <div class="st">
+    <div class="l">扣非归母占归母比</div>
+    <div class="v">98.1%<svg class="spark" viewBox="0 0 72 20" preserveAspectRatio="none" role="img" aria-label="扣非归母占归母比走势:2023 95.8% → 2024 94.6% → 2025 98.1%"><path class="ln" d="M3.0 12.2 L36.0 17.0 L69.0 3.0"/><circle class="pt" cx="69.0" cy="3.0" r="2.4"/></svg></div>
+    <div class="n">三年 94~98%,历史上非经常损益只占归母 1.8%~5.4%、扣非口径有效;2026H1 非经常性损益仅 3,022 万,17.56 亿权益法收益按准则属经常性、完全未被剔除 <span class="why">（数值为 FY2025;2026H1 为 98.8% 但该口径本期失效,故面板取最后一个有效年度。这一格是本次最易误读的数字——数值越漂亮越说明不了问题,只有经调整归母口径真正剔除了基金收益）</span></div>
+  </div>
+  <div class="st">
+    <div class="l">现金含量(OCF÷归母净利)</div>
+    <div class="v">0.26x(2026H1)<svg class="spark" viewBox="0 0 72 20" preserveAspectRatio="none" role="img" aria-label="现金含量(OCF÷归母净利)走势:2023H1 0.99x → 2024H1 0.87x → 2025H1 0.99x → 2026H1 0.26x"><path class="ln" d="M3.0 3.0 L25.0 5.3 L47.0 3.0 L69.0 17.0"/><circle class="pt" cx="69.0" cy="17.0" r="2.4"/></svg></div>
+    <div class="n">三个上半年稳在 0.87~0.99x,本期断崖至 0.26x;对经调整归母亦仅 0.59x,FY2025 全年为 1.36x <span class="why">（浮盈不产生现金却产生真实税负,递延所得税负债半年 +218% 至 2.74 亿;公司自述剔除该预缴税影响后经营现金流同比才为正）</span></div>
+  </div>
+  <div class="st">
+    <div class="l">ROE + 同业分位</div>
+    <div class="v">15.17%<svg class="spark" viewBox="0 0 72 20" preserveAspectRatio="none" role="img" aria-label="ROE + 同业分位走势:2022 13.59% → 2023 14.11% → 2024 15.44% → 2025 15.17%"><path class="ln" d="M3.0 17.0 L25.0 13.1 L47.0 3.0 L69.0 5.0"/><circle class="pt" cx="69.0" cy="5.0" r="2.4"/></svg></div>
+    <div class="n">四年 13.59→14.11→15.44→15.17 缓升;杜邦拆解显示来自净利率而非杠杆,权益乘数仅 1.41 · peer 100% 分位(同业五家中四家 ROE 为负或近零,结论不依赖被冲花的数字) <span class="why">（数值为 FY2025,即未被浮盈冲花的最后一个审计年度。2026H1 报表 ROE 18.03%、加权 17.76%、扣非加权 17.54% 均含浮盈,不可用于质地判断;按经调整归母(公司口径)年化约 15~16%,与 FY2025 同档）</span></div>
+  </div>
+  <div class="pv"><b>面板结论:✓ 生意模式赚钱吗 · ⚠️ 赚钱质量真吗</b><span class="src">← 结论来自①质地</span></div>
+</div>
+
+<div class="secl"><span class="t">Top 3 风险</span> <span class="chip">机器带出 · 附录D</span></div>
+<div class="risks">
+  <div class="rk mk-red">
+    <div class="t"><a class="fw fw-red" href="#flag-path-retail-influx-crowding" title="🟠 高级红旗 散户单季涌入 34.2% 叠加大宗折价 14.17%,承接结构脆弱｜股东户数 2026Q1→Q2 由 45,543 增至 61,128(+34.22%)、户均持股 −25.50%;近 60 日 2 笔大宗交易平均折价 −14.17% 且买卖双方同为东方财富系营业部;前十大股东合计持股 61.3%,真正能承接抛压的流通盘更薄｜来源 人工复核｜归属 ④路径 ／ 🟡 中级红旗 股东户数变化｜20260331: 45543 → 20260630: 61128（+34.2%）｜来源 自动审计｜归属 ④路径 ／ 🟡 中级红旗 长期户数上升（筹码分散）｜20251231: 38664 → 20260630: 61128｜来源 自动审计｜归属 ④路径"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">散户单季涌入 34.2% 叠加大宗折价 14.17%,承接结构脆弱</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 散户单季涌入 34.2% 叠加大宗折价 14.17%,承接结构脆弱</span><span>股东户数 2026Q1→Q2 由 45,543 增至 61,128(+34.22%)、户均持股 −25.50%;近 60 日 2 笔大宗交易平均折价 −14.17% 且买卖双方同为东方财富系营业部;前十大股东合计持股 61.3%,真正能承接抛压的流通盘更薄</span><span class="meta">级别 高级红旗 · 来源 人工复核 · 归属 ④路径</span><span class="go">→ 点击查看附录D 条目</span><span class="meta">—</span><span class="ttl">🟡 股东户数变化</span><span>20260331: 45543 → 20260630: 61128（+34.2%）</span><span class="meta">级别 中级红旗 · 来源 自动审计 · 归属 ④路径</span><span class="go">→ 点击查看附录D 条目</span><span class="meta">—</span><span class="ttl">🟡 长期户数上升（筹码分散）</span><span>20251231: 38664 → 20260630: 61128</span><span class="meta">级别 中级红旗 · 来源 自动审计 · 归属 ④路径</span><span class="go">→ 点击查看附录D 条目</span></span></a></div>
+    <div class="d">股东户数 2026Q1→Q2 由 45,543 增至 61,128(+34.22%)、户均持股 −25.50%;近 60 日 2 笔大宗交易平均折价 −14.17% 且买卖双方同为东方财富系营业部;前十大股东合计持股 61.3%,真正能承接抛压的流通盘更薄</div>
+    <div class="h"><a href="#ch-path">④路径</a> · <a href="#flag-shareholder-flow-047ab1">🟡 股东户数变化</a> · <a href="#flag-shareholder-flow-69ab57">🟡 长期户数上升（筹码分散）</a></div>
+  </div>
+  <div class="rk mk-red">
+    <div class="t"><a class="fw fw-red" href="#flag-valuation-e82fbf" title="🟠 高级红旗 PB vs ROE 严重错配｜市净率 6.94 倍;按净资产回报率 15.2% 应配约 1.90 倍(回报率÷8%),现价是它的 3.7 倍｜来源 自动审计｜归属 ③赔率 ／ 🟡 中级红旗 净资产含 21.78 亿不可验证的基金账面重估｜两只关联方基金账面 33.78 亿 vs 累计实投 12.00 亿、报告期新增投资 0 元,底层标的名称与估值方法均未披露;PB 分母因此被顶高,剔除后 PB 由 6.94x 升至约 7.98x｜来源 人工复核｜归属 ③赔率 ／ 🟢 低风险 PB 历史分位｜当前 PB=6.94，近 1 年范围 [6.13, 14.51]｜来源 自动审计｜归属 ③赔率"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">PB vs ROE 严重错配</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 PB vs ROE 严重错配</span><span>市净率 6.94 倍;按净资产回报率 15.2% 应配约 1.90 倍(回报率÷8%),现价是它的 3.7 倍</span><span class="meta">级别 高级红旗 · 来源 自动审计 · 归属 ③赔率</span><span class="go">→ 点击查看附录D 条目</span><span class="meta">—</span><span class="ttl">🟡 净资产含 21.78 亿不可验证的基金账面重估</span><span>两只关联方基金账面 33.78 亿 vs 累计实投 12.00 亿、报告期新增投资 0 元,底层标的名称与估值方法均未披露;PB 分母因此被顶高,剔除后 PB 由 6.94x 升至约 7.98x</span><span class="meta">级别 中级红旗 · 来源 人工复核 · 归属 ③赔率</span><span class="go">→ 点击查看附录D 条目</span><span class="meta">—</span><span class="ttl">🟢 PB 历史分位</span><span>当前 PB=6.94，近 1 年范围 [6.13, 14.51]</span><span class="meta">级别 低风险 · 来源 自动审计 · 归属 ③赔率</span><span class="go">→ 点击查看附录D 条目</span></span></a></div>
+    <div class="d">市净率 6.94 倍;按净资产回报率 15.2% 应配约 1.90 倍(回报率÷8%),现价是它的 3.7 倍</div>
+    <div class="h"><a href="#ch-odds">③赔率</a> · <a href="#flag-odds-nav-unverifiable-markup">🟡 净资产含 21.78 亿不可验证的基金账面重估</a> · <a href="#flag-valuation-31faed">🟢 PB 历史分位</a></div>
+  </div>
+  <div class="rk mk-red">
+    <div class="t"><a class="fw fw-red" href="#flag-path-fund-reversal-partially-realized" title="🟠 高级红旗 撑起本期利润的基金已开始反向,而正式风险章节至今未列示｜2026Q2 单季权益法投资收益 −1.058 亿、单季归母同比 −6.38%,2025 年报资产减值 −2,056.80 万即长期股权投资计提减值、半年报长投减值准备余额 6,277.60 万(炎黄盈动 1,810.26 万等)—— 双向波动是已发生事实;但 2025 年报「(五)财务风险 √不适用」,年报与半年报「风险因素」章节从未提及基金估值波动,唯一提示藏在 2026Q1「其他提醒事项」｜来源 人工复核｜归属 ④路径"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">撑起本期利润的基金已开始反向,而正式风险章节至今未列示</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 撑起本期利润的基金已开始反向,而正式风险章节至今未列示</span><span>2026Q2 单季权益法投资收益 −1.058 亿、单季归母同比 −6.38%,2025 年报资产减值 −2,056.80 万即长期股权投资计提减值、半年报长投减值准备余额 6,277.60 万(炎黄盈动 1,810.26 万等)—— 双向波动是已发生事实;但 2025 年报「(五)财务风险 √不适用」,年报与半年报「风险因素」章节从未提及基金估值波动,唯一提示藏在 2026Q1「其他提醒事项」</span><span class="meta">级别 高级红旗 · 来源 人工复核 · 归属 ④路径</span><span class="go">→ 点击查看附录D 条目</span></span></a></div>
+    <div class="d">2026Q2 单季权益法投资收益 −1.058 亿、单季归母同比 −6.38%,2025 年报资产减值 −2,056.80 万即长期股权投资计提减值、半年报长投减值准备余额 6,277.60 万(炎黄盈动 1,810.26 万等)—— 双向波动是已发生事实;但 2025 年报「(五)财务风险 √不适用」,年报与半年报「风险因素」章节从未提及基金估值波动,唯一提示藏在 2026Q1「其他提醒事项」</div>
+    <div class="h"><a href="#ch-path">④路径</a></div>
+  </div>
+</div>
+
+<div class="secl"><span class="t">导读</span></div>
+<div class="intro"><p>现在的答案是不买、空仓等:225.52 元的价格已经高于合理价区间 133.3~193.8 元的两端,这个位置没有下注余地,等待本身就是选择权。</p>
+<p>等的是两件必须同时发生的事——10 月下旬三季报把两条硬数据坐实(多年期预收同比仍 ≥+20%、Q3 单季经调整归母同比仍 ≥+20%),以及股价回到 193.8 元以内;只到一件不算。</p>
+<p>之所以是&quot;等&quot;而不是&quot;买&quot;,因为上半年那份利润暴涨的成绩单里有 17.56 亿是两只关联方基金的账面浮盈,按主营净利只涨了两成八,而这笔浮盈二季度已经开始反向;AI 那条新故事至今没有一分钱可查收入,股价却已经替它付了钱。</p>
+<p>如果三季报的多年期预收增速掉到零、或者年报里公司干脆不再披露「经调整」口径,那就不是等不等的问题,是判断被证伪,直接划掉。</p></div>
+
+<!-- 全量 run: 无较上版变化区块 -->
+</section>
+
+<!-- ============================================================
+     判断链正文 — ①质地 ②状态 ③赔率 ④路径 ⑤怎么办
+     ============================================================ -->
+<div class="secl"><span class="t">判断链正文</span></div>
+<section class="chB" id="ch-quality">
+  <div class="hd"><span class="no">① 质地</span><span class="qq">是不是好公司</span><span class="pill bad">部分好</span></div>
+  <div class="bd"><p><strong>判定:部分好——真护城河真主营,但本期报表利润被 17.56 亿关联方基金账面重估冲花、扣非口径同时失效。</strong> 生意本身很赚钱、壁垒真实、底子极稳;硬伤全在"利润该看哪个数"上——报表上的 25.18 亿归母里有 17.56 亿不是主营挣的,而这一次连"看扣非就安全"也不管用。</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>子判定</th>
+<th style="text-align: center;">判定</th>
+<th>最硬证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>生意模式赚钱吗</td>
+<td style="text-align: center;">✓</td>
+<td>毛利率 84.90%(2026H1)、四个半年度稳在 84.9~86.1%;主营口径净利率 32.8%,同业五家里唯一为正</td>
+</tr>
+<tr>
+<td>赚钱质量真吗</td>
+<td style="text-align: center;">⚠️</td>
+<td>营业利润 27.45 亿中 69.5% 非主营挣得;现金含量 0.26x(对经调整口径 0.59x),上年同期 0.99x</td>
+</tr>
+<tr>
+<td>护城河存在吗</td>
+<td style="text-align: center;">✓</td>
+<td>合同负债 40.02 亿 = 0.68 年营收已预收在手、付费个人用户 4,825 万;研发占营收 34.76% 且资本化率 0%</td>
+</tr>
+<tr>
+<td>管理层可信吗</td>
+<td style="text-align: center;">⚠️</td>
+<td>三次业绩预告全部落入区间、主动自注主营口径利润;但"财务风险 √不适用"、前五供应商占采购 57.89% 且首位为关联方</td>
+</tr>
+<tr>
+<td>财务底子稳吗</td>
+<td style="text-align: center;">✓</td>
+<td>负债率 27.79%、流动比率 3.23、净现金 13.23 亿;Z=13.52 / F=7/9 / M=-2.569</td>
+</tr>
+</tbody>
+</table></div>
+<details class="drill"><summary>报表上的 25.18 亿里有 17.56 亿不是主营挣的,而这次连扣非也挡不住</summary><div class="dd">
+<p>2026H1 投资收益 19.14 亿,其中 17.56 亿是"权益法核算的长期股权投资收益"。<strong>全链一律以这个 17.56 亿(利润表口径)为锚</strong>,它的构成是:</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>来源</th>
+<th>金额</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>北京顺金顺赢(合营,出资 99.9986%)</td>
+<td>15.38 亿</td>
+<td>报告期内新增投资 0.00 元,纯存量份额账面重估</td>
+</tr>
+<tr>
+<td>深圳顺赢(联营,58.8235%)</td>
+<td>2.23 亿</td>
+<td>同上;两只基金专项披露表合计 17.61 亿</td>
+</tr>
+<tr>
+<td>其他联营企业(炎黄盈动、亦心科技、大麦地)</td>
+<td>−0.05 亿</td>
+<td>与利润表的轧差,原件未单列、此为轧差所得;三家同期均已计提减值</td>
+</tr>
+</tbody>
+</table></div>
+<p>同期公允价值变动收益 −547 万(FY2025 全年 −1,214 万,即<a class="cite" href="#appx-D">附录D</a> 那条「<a class="fw fw-red fw-inline" href="#flag-related-party-exposure-c5ca8c" title="🟠 高级红旗 公允价值变动大额负值｜最新期公允价值变动 -0.121亿｜来源 自动审计｜归属 ①质地"><span class="fw-i" aria-hidden="true">🟠</span><span class="fw-t">公允价值变动大额负值</span> <span class="fw-k">高级红旗</span><span class="fw-pop" role="note"><span class="ttl">🟠 公允价值变动大额负值</span><span>最新期公允价值变动 -0.121亿</span><span class="meta">级别 高级红旗 · 来源 自动审计 · 归属 ①质地</span><span class="go">→ 点击查看附录D 条目</span></span></a>」的 −0.121 亿)、资产处置收益 12 万,都是小额负值,量级上改变不了任何判定,却从反面坐实了这笔钱只能来自存量份额重估——既不是公允价值变动损益,也不是处置损益。</p>
+<p>要害在于:<strong>权益法投资收益按会计准则属于经常性损益</strong>,不进非经常性损益表。2026H1 非经常性损益合计仅 3,022 万,扣非归母 24.87 亿(+241.99%)把这 17.56 亿原封不动留在了里面。这家公司历史上的扣非口径本来是有效的(2023-2025 年非经常损益只占归母 1.8%~5.4%),唯独本期失效。同样被顶花的还有基本 EPS 5.44 元、加权 ROE 17.76%、扣非加权 ROE 17.54%,以及同业对标表里那句"净利率 100% 分位、PE 最便宜"。</p>
+<p>本期四个利润口径的对照如下(整张表都是 2026H1 口径,全报告沿用这套命名):</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>口径</th>
+<th>2026H1</th>
+<th>含什么</th>
+<th>谁在用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>归母净利润</td>
+<td>25.18 亿</td>
+<td>含全部 17.56 亿基金浮盈</td>
+<td>报表首页、EPS 5.44 元、加权 ROE 17.76%</td>
+</tr>
+<tr>
+<td>扣非归母</td>
+<td>24.87 亿</td>
+<td>只剔了 3,022 万非经常损益,权益法属经常性故浮盈仍在内</td>
+<td>本期失效,任何节点都不该用</td>
+</tr>
+<tr>
+<td>经调整归母(公司口径)</td>
+<td>10.87 亿</td>
+<td>剔基金投资收益及对应所得税,并加回股份支付 1.54 亿</td>
+<td>公司自注、<a class="cite" href="#ch-quality">①质地</a>的主营净利率 32.8% 与年化 ROE 15~16%</td>
+</tr>
+<tr>
+<td>经调整归母(严口径)</td>
+<td>9.33 亿</td>
+<td>同上但<strong>不</strong>加回股份支付(视其为真实成本)</td>
+<td>对应主营净利率 28.2%;<a class="cite" href="#ch-odds">③赔率</a>用的是同一档的 <strong>TTM 版本</strong>(主营净利 18.5 亿),不是本表这个半年数</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>因此本节点的利润率、ROE 与同行分位,一律只用上表下面两个干净口径。</strong>毛利率不受投资收益影响;经调整归母是公司自己定义的主营盈利口径,与公司披露的勾稽对得上,同比 +28.29%。宽档用来回答"生意本身赚不赚钱",严档留给③去定价,两档差的正好是那笔股份支付——不是同一个数写了两遍。ROE 的同业分位改用未被冲花的 FY2025 口径 15.17% 复核后仍是 100% 分位:同业五家中四家 ROE 为负或近零,这个结论不依赖被冲花的数字。</p>
+<p>浮盈还留下一处真实伤口:它不产生现金,却产生现金税负。递延所得税负债半年从 0.86 亿升至 2.74 亿(+218%),公司在管理层讨论中自认"剔除本期投资收益浮盈的预缴所得税影响后,经营活动产生的现金流量净额变动同比为正"。半年经营现金流 6.43 亿对归母 25.18 亿只有 0.26x,对经调整 10.87 亿也只有 0.59x,分别落在标尺的危险带与警示带。</p>
+</div></details><details class="drill"><summary>主营是真的:毛利 85%、经调整利润 +28.29%、负债里七成是预收的订阅款</summary><div class="dd">
+<p>把浮盈拿掉,这门生意依然好看。毛利率 84.90% 位于软件业 70-85% 标杆的上沿,且五年没有被规模摊薄;分产品看 WPS 软件 94.8%、WPS 365 90.9%、WPS 个人 79.6%,组织级业务的高毛利来自信创场景下的授权与席位订阅,是可解释的定价权来源,不是财务技巧。研发投入 11.52 亿占营收 34.76%,资本化比重连续三期为 0——利润没有靠"把研发转成资产"虚增,这与 85% 的毛利率互为佐证。</p>
+<p>护城河的形态是转换成本 + 生态锁定:国内累计年度付费个人用户 4,825 万、全球 MAU 设备数 6.76 亿,WPS 365 按席位年度订阅。最硬的一条是递延收入池——合同负债流动 27.64 亿 + 藏在"其他非流动负债"里的 12.38 亿 = 40.02 亿,相当于 0.68 年营收已经收进来;附注两期均勾"账龄超过 1 年的重要合同负债 不适用",说明这笔预收没有"收了钱交付不了"的长期挂账。公司另在半年报列出中核集团、中国石油、中国铝业等新增标杆客户,但属公司单方列名、无客户方口径也无合同金额,<a class="cite" href="#ch-state">②状态</a>已把它判在传闻一侧,这里只作佐证、不进 ✓ 的证据链。侵蚀迹象只有一条要盯:移动版 MAU 3.40 亿已首次转负(-1.65%,见<a class="cite" href="#ch-state">②状态</a>)。</p>
+<p>底子这一项没有争议:资产负债率 27.79%、流动比率 3.23、净负债 -13.23 亿,有息负债仅 0.64 亿,无短期与长期借款。更关键的是负债的性质——总负债 58.03 亿里 40.02 亿是客户预付的订阅款,占 69%,那不是要还的钱,是还没确认成收入的钱。Altman Z=13.52、Piotroski F=7/9、Beneish M=-2.569 三项机械结论一致指向安全;商誉 1.85 亿仅占总资产 0.88%,无并表范围变动、无表外结构化主体。</p>
+</div></details><details class="drill"><summary>管理层没有藏这件事,但把它写在了"风险因素"之外</summary><div class="dd">
+<p>正面证据相当硬:公司把 17.56 亿的影响直接写在主要会计数据表的正下方,自注"反映公司主营业务盈利能力的经调整的归属于上市公司股东的净利润为 108,679.68 万元,同比增长 28.29%"——等于自己承认归母和扣非都不是主营盈利能力的指标;三次业绩预告全部落入区间;研发全额费用化;控股股东持股 51.38% 且质押冻结为 0;2026 年激励摊薄仅 0.22%。这些叠起来,德是过关的。</p>
+<p>扣分落在披露口径与治理结构上。2025 年报"(五)财务风险"勾的是"不适用",风险因素正式章节从头到尾没提过基金估值波动——而同期资产减值 2,056.80 万恰恰就是长期股权投资计提减值,半年报长期股权投资减值准备余额 6,277.60 万,双向波动是已发生事实而非假设;唯一的风险提示藏在 2026Q1 报告的"其他提醒事项"里。另一条在采购端:前五供应商占采购额 57.89%,第一名 2.90 亿占 26.09% 且为关联方,而客户与供应商名称已办理豁免披露,无法交叉验证。所以这一问是 ⚠️ 而非 ✓——不是不诚实,是把最大的不确定性放在了读者最不会翻的位置。</p>
+<p><strong>证据缺口</strong>:① 两只基金的底层被投企业名称与估值方法公司未披露,17.56 亿浮盈的合理性无法独立验证,且 2026H1/2026Q1 财务报表未经审计——能补上这个缺口的事件是 2026 年报的审计意见及其对长期股权投资的关键审计事项段落;② "经调整归母"口径自 2026Q1 才首次启用(2025 年报勾"非企业会计准则财务指标 不适用"),跨年可比序列须自建,故主营口径只有两点、未进面板序列。</p></div></details></div>
+</section>
+<section class="chB" id="ch-state">
+  <div class="hd"><span class="no">② 状态</span><span class="qq">在变好吗</span><span class="pill watch">↑变好但仅注意力·未确认</span></div>
+  <div class="bd"><p><strong>判定:↑变好但仅注意力·未确认——主营确实在提速,而且是三条线一起提速;但市场看到的那个 +237% 不是主营赚的,AI 新身份到今天还没有一分钱可核的收入。</strong></p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>子判定</th>
+<th>判定</th>
+<th>最硬证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>变好的引擎在加速吗</td>
+<td>✓ 实锤,全公司级</td>
+<td>营收增速连续四期抬升 +10.12% → +15.78% → +23.95% → +24.69%;三条线全部较 2025 全年提速</td>
+</tr>
+<tr>
+<td>高增速那条线撑得起故事吗</td>
+<td>⚠️ 撑不起体量</td>
+<td>WPS 365 半年 4.97 亿 (+60.84%) 只占营收 15.0%,占 60.8% 的个人业务只 +15.20%</td>
+</tr>
+<tr>
+<td>利润的改善被坐实了吗</td>
+<td>✗ 分子被冲花</td>
+<td>归母 +236.94%、扣非归母 +241.99% 都含 17.56 亿基金浮盈;公司自认的经调整归母只有 10.87 亿 (+28.29%,口径拆解见<a class="cite" href="#ch-quality">①质地</a>)</td>
+</tr>
+<tr>
+<td>预收的钱在变厚吗</td>
+<td>⚠️ 池子在厚,多年期那截在减速</td>
+<td>递延收入池 40.02 亿同比 +25.0%;多年期部分同比 +23.6%,但年末→次年 H1 环比由 +6.3% 转为 -0.8%</td>
+</tr>
+<tr>
+<td>身份换完了吗</td>
+<td>✗ 改名先行、里子未换</td>
+<td>战略口径已是「AI 办公生产力平台」,收入表里 82.6% 仍是个人订阅与传统授权</td>
+</tr>
+</tbody>
+</table></div>
+<details class="drill"><summary>实锤只有财报那一栏,AI 那一栏全是自述与转述</summary><div class="dd">
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>说法</th>
+<th>级别</th>
+<th>依据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>营收 33.13 亿 +24.69%,三条线分部收入与毛利率</td>
+<td>实锤</td>
+<td>半年报已披露数字,分部口径完整</td>
+</tr>
+<tr>
+<td>递延收入池 40.02 亿(流动 27.64 + 非流动 12.38)</td>
+<td>实锤</td>
+<td>附注两处余额,逐笔核对一致</td>
+</tr>
+<tr>
+<td>国内付费个人用户 4,825 万 (+15.44%)</td>
+<td>实锤</td>
+<td>与个人收入 +15.20% 同步,增长来自人头而非每人多付钱</td>
+</tr>
+<tr>
+<td>中核 / 中国石油 / 中国铝业等央企标杆客户</td>
+<td>传闻一侧</td>
+<td>公司单方列名,无客户官方口径、无合同金额</td>
+</tr>
+<tr>
+<td>「11 大领域 26 个场景」「数百家企业共创意向」</td>
+<td>传闻</td>
+<td>意向不是签约,无金额无客户数</td>
+</tr>
+<tr>
+<td>「AI 把估值锚从工具软件抬到办公基座」、机构平均目标价 350.78 元</td>
+<td>回声</td>
+<td>媒体与卖方转述,同一叙事多点重复</td>
+</tr>
+<tr>
+<td>WPS 365 连续六季度增速超 60% 的持续性</td>
+<td>未确认</td>
+<td>多年期预收同比只有 +23.6%,与 60% 有落差,且只有一个完整半年可比</td>
+</tr>
+</tbody>
+</table></div>
+</div></details><details class="drill"><summary>AI 投入强度这件事,官方口径给不出证据</summary><div class="dd">
+<p>科创板在研项目表本该是"AI 到底投了多少钱"最权威的地方,但表里只有一个项目(工业领域大模型开发工具),本期投入 1,667 万,仅占同期研发投入 11.518 亿的 1.45%,灵犀、WPS Comate、WPS 365 全部不在表内——这张表不能用作 AI 投入强度的证据。侧面能拿到的只有:研发强度 34.76%(见<a class="cite" href="#ch-quality">①质地</a>;-1.31pct,系收入快过投入,绝对额仍 +20.17%)、资本化投入连续三期为 0(不靠资本化粉饰利润)、研发人员占比连续两期下滑 66.93% → 65.79% → 64.09%,人力结构正从纯研发向研发加商业化迁移。公司也没披露手上签了约但还没确认的合同金额(剩余履约义务),365 这个高增速到底锁定了多久,外部无从核。</p>
+</div></details><details class="drill"><summary>变好的证据在增加,但股价的关注涨得更快</summary><div class="dd">
+<p>变好的概率真的提高了——收入连续四期加速、三条线同时提速,是独立的财报证据。但市场看到的是 +236.94% 那个数,其中七成是账面浮盈,而这笔浮盈 Q2 已回吐 -1.06 亿,当季归母因此同比 -6.38%、经调整却 +24%,两个口径方向相反。新证据大多不独立:硬的只有财报一条线,AI 侧全部是公司自述与媒体卖方转述的同一个故事,没有客户方官方背书。价格一侧,<a class="cite" href="#ch-odds">③赔率</a>的判定原话是「已被价格计入」,本节不重推估值。筹码同向:股东户数半年从 38,664 户涨到 61,128 户、户均持股单季 -25.5%,散户涌入速度远快于主营改善速度(明细见<a class="cite" href="#appx-C">附录C</a>)。</p>
+<p>股价不记得你等了多久(无记忆性):「讲了多年 AI 该兑现」「估值从高位压下来该修复」都是等待时间幻觉,反向的「位置已经跌得便宜」同样不算理由;这里唯一算数的是收入增速连续四期变正加速这条证据斜率。</p>
+</div></details><details class="drill"><summary>故事四关:前两关过了一半,后两关没过</summary><div class="dd">
+<ol>
+<li><strong>能一句话讲清吗 ✓</strong> ——"国产办公龙头 + AI 办公基座",信创与 AI 双标签,传播零门槛。</li>
+<li><strong>有真订单真利润接住吗 ⚠️ 只过一半</strong> —— WPS 365 的 4.97 亿收入、90.9% 毛利率是真的(央企标杆客户属公司单方列名·传闻一侧,不计入本关);但 AI 原生产品至今无独立收入口径,"订阅 + AI 用量"的新收费方式公司原文仍是"探索"。</li>
+<li><strong>有权威节点认证吗 ✗</strong> —— 标杆客户名单是公司单方披露,无客户口径与合同金额;卖方目标价与媒体长文属回声。就算拿到权威背书,它改变的也只是叙事与定价,不改变业务事实。</li>
+<li><strong>价格还有余地吗 ✗</strong> —— <a class="cite" href="#ch-odds">③赔率</a>的判定原话是「已被价格计入」「没有安全垫,但也还没把完美未来全买走」:余地这关没过,但也不是把完美未来全买走了那一档。本节不重推估值。</li>
+</ol>
+<p>身份上它今天仍然只是「国产办公赛道里的龙头」(P3 档),想换成的新身份是「AI 时代的办公基座」(P4 档);这次换标完成在战略表述和市场标签上,没有完成在收入结构上。底子一侧引用<a class="cite" href="#ch-quality">①质地</a>:「部分好——真护城河真主营,但本期报表利润被 17.56 亿关联方基金账面重估冲花」。</p>
+</div></details><details class="drill"><summary>该等什么:两个披露日、四件可核的事</summary><div class="dd">
+<ol>
+<li><strong>三季报(约 10 月下旬)看多年期预收</strong>:「其他非流动负债」里的多年期合同负债同比(基数 2025-09-30 的 10.53 亿)仍 ≥+20%、即 ≥12.6 亿,且 WPS 365 前三季增速仍 ≥50% → 兑现;同比掉到 +10% 以下(&lt;11.6 亿)而 365 增速同步掉到 50% 以下 → 高增速靠年付短单堆出,证伪。</li>
+<li><strong>三季报(同期)看两个利润口径的方向</strong>:Q3 单季经调整归母同比 ≥+20% → 主业没坏;掉到 10% 以下 → 主营真在减速,证伪。</li>
+<li><strong>年报(约 2027 年 3 月下旬)看口径能不能连成线</strong>:年报正式启用经调整口径、给出 2025 全年可比数,且全年经调整归母同比不低于 +28.29%(基数见<a class="cite" href="#ch-quality">①质地</a>)→ 兑现;重新勾"不适用"或只给归母 → 披露前后矛盾,证伪。</li>
+<li><strong>年报(同期)看 AI 第一次有金额</strong>:首次给出灵犀 / WPS Comate 的收入或付费客户数、共创意向转出可计数签约 → 身份切换开始兑现;仍只有场景数与意向数、分部表还是四条老线 → 身份切换未完成。</li>
+</ol></div></details></div>
+</section>
+<section class="chB" id="ch-odds">
+  <div class="hd"><span class="no">③ 赔率</span><span class="qq">贵不贵</span><span class="pill bad">已被价格计入</span></div>
+  <div class="bd"><figure class="meter" role="img" aria-label="估值尺:合理价区间 133.3-193.8元,现价 225.52元,现价是区间高端的 1.16 倍">
+  <figcaption>贵不贵:一把尺</figcaption>
+  <div class="track">
+    <span class="band" style="left:52.77%;width:23.96%"></span>
+    <span class="mark over" style="left:89.29%"></span>
+  </div>
+  <div class="scale"><span>0</span><span>253 元</span></div>
+  <div class="lg"><span><i class="sw band"></i>合理价区间 133.3–193.8 元<small>低端只认已赚到的钱 · 高端按三种前景概率加权</small></span><span><i class="sw mark"></i>现价 225.52 元<small>现价是区间高端的 1.16 倍</small></span></div>
+</figure><figure class="pfn" role="img" aria-label="股价拆两半:市值 1,046.4 亿 里, 已赚到的 F 580.2 亿 · 55.4%,为想象多付的 N 466.2 亿 · 44.6%" title="F 的口径:TTM 主营净利 18.5 亿 × 30x + 非经营资产 25.2 亿(口径推导见正文)">
+  <figcaption>股价拆两半:已赚到的 · 为想象多付的</figcaption>
+  <div class="bar">
+    <span class="sg f" style="flex-basis:calc(55.40% - 1px)"></span>
+    <span class="sg n" style="flex-basis:calc(44.60% - 1px)"></span>
+  </div>
+  <div class="lg"><span><i class="sw f"></i>已赚到的 F 580.2 亿 · 55.4%</span><span><i class="sw n"></i>为想象多付的 N 466.2 亿 · 44.6%<small>市场已收费的义务,不是白送的彩票</small></span></div>
+</figure><p><strong>判定:已被价格计入——现价 225.52 元站在合理价区间 [133.3 元, 193.8 元] 之外,是高端的 1.16 倍、低端的 1.69 倍。没有安全垫,但也还没把完美未来全买走。</strong></p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>子判定</th>
+<th>判定</th>
+<th>最硬证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>拿哪个利润当估值的分母</td>
+<td>公开 PE_TTM 29.0x 失真,真实约 56.6x</td>
+<td>TTM 归母 36.07 亿里 19.46 亿是两只关联方基金的权益法账面重估(2026H1 17.56 亿 + 2025H2 约 1.90 亿,报告期新增投资 0 元),扣非口径同样不剔除;公司自注"反映主营盈利能力的是经调整归母 10.87 亿、+28.29%"(<a class="cite" href="#ch-quality">①质地</a>已拆)</td>
+</tr>
+<tr>
+<td>已赚到的 vs 为想象多付的(P=F+N)</td>
+<td>为想象多付的 466 亿占 45%,是义务不是彩票</td>
+<td>已赚到的 F≈580 亿 = TTM 主营净利 18.5 亿 × 30x + 非经营资产 25.2 亿;那 466 亿要兑现须新增约 52 亿稳态收入,是 WPS 365 当前 TTM 收入 9.1 亿的 5.7 倍</td>
+</tr>
+<tr>
+<td>现价要求未来做到什么(反向 DCF)</td>
+<td>过度乐观,三件事必须同时成立</td>
+<td>现价隐含 5 年收入 CAGR 19.0% + 终局主营净利率 30% + 五年后仍给 30x 退出;退出压到 22x 则要求 CAGR 升到 26.0%</td>
+</tr>
+<tr>
+<td>分业务各算各的、值多少(分部 SOTP)</td>
+<td>只认已兑现收入 = 133.3 元/股</td>
+<td>四条线 TTM 收入 65.84 亿按各自 8.0x / 14.0x / 9.0x / 5.0x 得 593.4 亿,再加净现金与基金实投成本</td>
+</tr>
+<tr>
+<td>估值红旗对赔率的作用</td>
+<td>PB 6.94x 低估了错配程度</td>
+<td>净资产含基金账面 33.78 亿 vs 累计实投 12.00 亿;剔税后超额约 19.6 亿,PB 升到约 7.98x,而净资产回报率理论只配 1.90x</td>
+</tr>
+</tbody>
+</table></div>
+<details class="drill"><summary>估值基数只能用经调整线:归母和扣非这次一起失效</summary><div class="dd">
+<p>2026H1 的 19.14 亿投资收益里 17.56 亿是两只关联方私募基金的权益法账面重估(构成与性质见<a class="cite" href="#ch-quality">①质地</a>),报告期新增投资 0 元;权益法投资收益按会计准则属经常性损益,所以<strong>扣非归母 24.87 亿被一样冲花</strong>,常年有效的"用扣非就安全"在这一期失效。公司自己启用的经调整口径(剔股份支付 + 剔基金收益 + 剔对应税影响)是 2026Q1 才首次启用,2025 年报勾的是"不适用",跨年序列须自建。我自建的 TTM 口径是<strong>更保守的一档</strong>:归母 36.07 亿 − 基金浮盈 19.46 亿 + 对应所得税 1.89 亿 = <strong>主营净利 18.5 亿</strong>(股份支付 2.6 亿不加回,它是真实成本);按公司经调整口径则为 21.0 亿。对应真实 PE 分别是 56.6x 与 49.8x,而不是指标表上的 29.0x。</p>
+<blockquote>
+<p>以下是复算底稿,只想看结论的读者可跳过——结论就一句:36.07 − 19.46 + 1.89 = <strong>18.50 亿</strong>。</p>
+</blockquote>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>减项</th>
+<th>TTM 合计</th>
+<th>2026H1</th>
+<th>2025H2 怎么来的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基金权益法浮盈</td>
+<td>19.46 亿</td>
+<td>17.56 亿(<a class="cite" href="#ch-quality">①质地</a>已拆)</td>
+<td>约 1.90 亿 = 2025 全年两只基金合计利润影响 1.76 亿 − 2025H1 利润表权益法那一行的 −0.14 亿(自算,公司只按半年/整年披露)</td>
+</tr>
+<tr>
+<td>对应所得税(加回)</td>
+<td>1.89 亿</td>
+<td>1.71 亿(<a class="cite" href="#ch-quality">①质地</a>已拆)</td>
+<td>约 0.18 亿 = 按 2026H1 同一有效税率 9.7%(1.71 ÷ 17.56)推算(自算)</td>
+</tr>
+</tbody>
+</table></div>
+<p>基金专项表与利润表口径轧差约 0.05 亿(<a class="cite" href="#ch-quality">①质地</a>已就此拆过账),不改变 18.5 亿这个量级,也不改变下面任何一个锚。</p>
+<p>口径命名上跟<a class="cite" href="#ch-quality">①质地</a>对齐:同样叫<strong>主营口径净利率</strong>,但我用的是<strong>更严的一档</strong>——①的 32.8% 是公司经调整口径(加回股份支付)下的 2026H1 数,本节下文的 28.1% 是 TTM 主营净利 18.5 亿 ÷ TTM 收入 65.84 亿、股份支付不加回。同名两档松紧不同,不是谁算错了。</p>
+</div></details><details class="drill"><summary>低端只认已经收到的四条线收入:133.3 元/股,现价是它的 1.69 倍</summary><div class="dd">
+<p>这家轻资产没有清算地板可言(固定资产 4.46 亿、商誉 1.85 亿合计占总资产 3.0%(<a class="cite" href="#ch-quality">①质地</a>)),净资产又被基金浮盈顶高,所以低端不拿净资产当底:按四条业务线各自的 TTM 收入(2025H2+2026H1 自算)给同业口径 EV/Sales,再加回净现金与两只基金的累计实投成本,账面重估部分一律不认。</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>分部</th>
+<th style="text-align: right;">TTM 收入(2025H2+2026H1 自算)</th>
+<th style="text-align: center;">倍数</th>
+<th style="text-align: right;">估值</th>
+<th>倍数理由与证伪指标</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WPS 个人业务</td>
+<td style="text-align: right;">38.92 亿</td>
+<td style="text-align: center;">8.0x</td>
+<td style="text-align: right;">311.4 亿</td>
+<td>C 端年费订阅, 毛利 79.6%(<a class="cite" href="#ch-quality">①质地</a>)、收入增速 15% 量级(<a class="cite" href="#ch-state">②状态</a>), 给 A 股软件同业 EV/Sales 中位 4.6x 的约 1.7 倍;证伪——国内累计年度付费个人用户增速跌破 10%(现 4,825 万 / +15.44%)(<a class="cite" href="#ch-state">②状态</a>), 或移动端月活连续两期负增长</td>
+</tr>
+<tr>
+<td>WPS 365 业务</td>
+<td style="text-align: right;">9.08 亿</td>
+<td style="text-align: center;">14.0x</td>
+<td style="text-align: right;">127.1 亿</td>
+<td>按席位年度订阅、毛利 90.9%(<a class="cite" href="#ch-quality">①质地</a>), 2026H1 收入 +60.84%(<a class="cite" href="#ch-state">②状态</a>), 取软件行业 EV/Revenue 上限 10x 再给增速溢价;证伪——收入同比增速跌破 40%(<a class="cite" href="#ch-state">②状态</a>), 或合同负债非流动部分继续零增长</td>
+</tr>
+<tr>
+<td>WPS 软件业务</td>
+<td style="text-align: right;">16.42 亿</td>
+<td style="text-align: center;">9.0x</td>
+<td style="text-align: right;">147.8 亿</td>
+<td>毛利 94.8% 全集团最高(<a class="cite" href="#ch-quality">①质地</a>)但属信创场地/数量授权、非席位续费, 对订阅线给折让;证伪——收入增速跌回 2025 全年的 +15.24% 以下(<a class="cite" href="#ch-state">②状态</a>)</td>
+</tr>
+<tr>
+<td>其他</td>
+<td style="text-align: right;">1.42 亿</td>
+<td style="text-align: center;">5.0x</td>
+<td style="text-align: right;">7.1 亿</td>
+<td>口径杂项、占收入不足 3%, 给同业下沿;证伪——收入转为负增长(<a class="cite" href="#ch-state">②状态</a>)</td>
+</tr>
+<tr>
+<td><strong>企业价值 593.4 亿 + 净现金 25.2 亿 = 股权 618.6 亿 ÷ 4.6401 亿股</strong></td>
+<td style="text-align: right;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: right;"><strong>= 133.3 元/股</strong></td>
+<td>净负债为负 = 净现金 13.2 + 基金按实投成本 12.0;隐含混合 EV/Sales 9.0x</td>
+</tr>
+</tbody>
+</table></div>
+</div></details><details class="drill"><summary>高端把成长给足也只到 193.8 元/股,现价已在高端之上</summary><div class="dd">
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>折现率分项</th>
+<th style="text-align: right;">值</th>
+<th>依据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无风险利率</td>
+<td style="text-align: right;">1.8%</td>
+<td>十年期国债收益率量级</td>
+</tr>
+<tr>
+<td>股权风险溢价</td>
+<td style="text-align: right;">5.5%</td>
+<td>A 股大市值成熟标的口径</td>
+</tr>
+<tr>
+<td>单一产品线与 AI 变现执行风险</td>
+<td style="text-align: right;">2.2%</td>
+<td>收入 99% 以上来自办公软件一条线,「订阅+AI 用量」收费尚在探索阶段</td>
+</tr>
+<tr>
+<td><strong>合计折现率</strong></td>
+<td style="text-align: right;"><strong>9.5%</strong></td>
+<td>终值走退出倍数法、不单列永续增长;基准 30x 退出对应隐含永续 g 约 6%,低于 9.5% 折现率</td>
+</tr>
+</tbody>
+</table></div>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>情景</th>
+<th style="text-align: center;">概率</th>
+<th style="text-align: center;">收入 5 年 CAGR</th>
+<th style="text-align: center;">成熟净利率</th>
+<th style="text-align: center;">退出 PE</th>
+<th style="text-align: right;">折现值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>乐观</td>
+<td style="text-align: center;">25%</td>
+<td style="text-align: center;">22%</td>
+<td style="text-align: center;">33%</td>
+<td style="text-align: center;">35x</td>
+<td style="text-align: right;">1,469 亿</td>
+</tr>
+<tr>
+<td>基准</td>
+<td style="text-align: center;">50%</td>
+<td style="text-align: center;">15%</td>
+<td style="text-align: center;">30%</td>
+<td style="text-align: center;">30x</td>
+<td style="text-align: right;">891 亿</td>
+</tr>
+<tr>
+<td>悲观</td>
+<td style="text-align: center;">25%</td>
+<td style="text-align: center;">6%</td>
+<td style="text-align: center;">24%</td>
+<td style="text-align: center;">18x</td>
+<td style="text-align: right;">345 亿</td>
+</tr>
+<tr>
+<td><strong>概率加权 899.0 亿 ÷ 4.6401 亿股(收入基准 TTM 65.84 亿;现值 = 期间利润现值 + 终值现值 + 非经营资产 25.2 亿)</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: right;"><strong>= 193.8 元/股</strong></td>
+</tr>
+</tbody>
+</table></div>
+</div></details><details class="drill"><summary>现价隐含的三件事:19% 增速、30% 终局利润率、五年后还给 30 倍</summary><div class="dd">
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>隐含假设</th>
+<th>隐含值</th>
+<th>历史与同业参照</th>
+<th>可信?</th>
+<th>证伪条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>未来 5 年收入 CAGR</td>
+<td>19.0%</td>
+<td>自身三年复合 15.1%、2025 全年 +15.78%、2026H1 +24.69%(<a class="cite" href="#ch-state">②状态</a>)</td>
+<td>勉强</td>
+<td>任一完整年度收入同比回落到 15% 以下</td>
+</tr>
+<tr>
+<td>终局主营净利率</td>
+<td>30%</td>
+<td>现为 28.1%(主营口径净利率·严档,18.5 ÷ 65.84),须再提 2pct;研发强度仍有 34.76%(<a class="cite" href="#ch-quality">①质地</a>)</td>
+<td>偏紧</td>
+<td>研发 + 销售费用率合计回升 2pct 以上</td>
+</tr>
+<tr>
+<td>五年后退出倍数</td>
+<td>30x</td>
+<td>软件行业 EV/EBITDA 基准区间 20-30x,届时体量翻倍、增速自然落到 10% 量级</td>
+<td>过度乐观</td>
+<td>退出改按 22x,现价就要求 CAGR 升到 26.0%</td>
+</tr>
+</tbody>
+</table></div>
+<p>三条必须同时成立才对得起现价,任一条退让都撑不住 → <strong>过度乐观</strong>;但还不是"买完完美未来",因为现价只高出概率加权高端 16%,不是几倍。</p>
+<p>30x 这个倍数在本节出现两次、结论一褒一贬,先说它的依据从哪来:<strong>不是同业 PE 对标</strong>。本节自己那条 🟠 红旗已经判定对标表的 PE 列口径不可用(五家同业净利率 −25.4%~+8.5%、分母近零,正 PE 只有三家(<a class="cite" href="#appx-B">附录B</a>)),不能反手拿一把刚否掉的尺子,去量全节承重最重的那个数。给「已赚到的」18.5 亿主营净利配 30x,依据是三条能各自核到的基本面:</p>
+<ul>
+<li><strong>增速档位(自身口径)</strong>:主营口径净利 2026H1 9.28 亿 vs 上年同期 7.61 亿、+22%,收入仍在 15% 以上复合(<a class="cite" href="#ch-state">②状态</a>)—— 30x 对应 PEG 约 1.4,是「按今天这档增速」的价,没给 AI 叙事留任何位置(叙事全部落在 N 的 466 亿里)。</li>
+<li><strong>现金流与负债结构</strong>:毛利率 84.9%(<a class="cite" href="#appx-B">附录B</a> 毛利率列,不是 PE 列)、无有息负债、净现金 13.2 亿、递延收入池 40.02 亿 = 已预收 0.68 年收入(<a class="cite" href="#appx-A">附录A</a>),不必再叠偿债折让或周期折让。</li>
+<li><strong>与本节自身参数自洽</strong>:30x ≈ 1 ÷ (9.5% − 6%),正是下面那张折现率表的 9.5% 与基准情景隐含永续增长 6% 推出来的稳态倍数,不是外挂进来的一个数。</li>
+</ul>
+<p>反向 DCF 判"过度乐观"的不是 30x 本身,而是<strong>五年后仍给 30x</strong>:那时收入体量已翻倍、增速自然落到 10% 量级,PEG 从 1.4 跳到 3 上下,增速换了档、倍数却不换。证伪线也就落在这里——任一完整年度主营口径净利增速跌到 10% 以下,30x 这一档就撑不住,F 与 N 都得重算。</p>
+</div></details><details class="drill"><summary>叙事溢价这一年在被挤出,不是在堆积——但绝对位置仍高于两端</summary><div class="dd">
+<p>一年前与今天,按同一口径拆开:</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>一年前</th>
+<th>今天</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>市值</td>
+<td>约 1,455 亿(自算:股价 314 元附近 × 4.64 亿股)</td>
+<td>1,046 亿</td>
+</tr>
+<tr>
+<td>已赚到的(F)</td>
+<td>约 528 亿(自算,同口径回溯)</td>
+<td>580 亿</td>
+</tr>
+<tr>
+<td>为想象多付的(N)</td>
+<td>约 927 亿</td>
+<td>466 亿</td>
+</tr>
+<tr>
+<td>N 占市值</td>
+<td>约 64%</td>
+<td>45%</td>
+</tr>
+</tbody>
+</table></div>
+<p>已赚到的这一年真的在长:主营净利同口径 2026H1 9.28 亿 vs 上年同期 7.61 亿、+22%。<strong>已赚到的那部分在变大、为想象多付的那部分在变小</strong>(记号:F′/F 为正、N′/N 为负),是赔率在改善的方向;但改善之后的绝对位置仍在合理价区间两端之上,不能因为压缩已经发生就认定便宜。为想象多付的这 466 亿,性质是<strong>市场已经收了费的义务</strong>:对应新增约 52 亿稳态收入,等于要求"WPS 365 + AI 用量计费"在五年内做到今天 365 收入的 5.7 倍,做不到就杀估值,不是白送的彩票。</p>
+<p>把三件套连起来看:这不是一家被市场忽略的公司,而是一家被市场按「办公软件龙头顺利长成 AI 生产力平台」定价的公司。好消息是这份溢价正在被挤出而不是继续堆高,坏消息是挤到今天,买入价仍然落在两把尺子之外——每一条兑现路径的打折都得由持有人自己承担,而不是由价格提前替他承担。</p>
+</div></details><details class="drill"><summary>三条估值红旗:错配被浮盈掩盖、股息给不了保护、PB 低位不等于便宜</summary><div class="dd">
+<ul>
+<li><strong>PB 与净资产回报率严重错配(🟠)</strong>:PB 6.94x vs 回报率 15.2% 理论配的 1.90x。要紧的是这条被<strong>低估</strong>了——净资产里含两只基金账面 33.78 亿、累计实投仅 12.00 亿,剔除税后超额约 19.6 亿后 PB 约 7.98x,错配倍数从 3.7 倍升到 4.2 倍。</li>
+<li><strong>股息率 0.40%(🟡)</strong>:2025 年度股利 5.80 亿已于 2026 年 7 月付讫,公司净现金且递延收入池 40.02 亿(<a class="cite" href="#appx-A">附录A</a>),低股息是选择不是被迫;但对赔率的意义是明确的——下跌时没有股息托底。</li>
+<li><strong>PB 处近 1 年 9% 分位(🟢)</strong>:脚本读作"估值偏低、可能有机会",这个读法要修正:窗口只有 1 年,区间上沿 14.51x 是 2025 年的高估值,且分母被浮盈顶高;剔除后的 7.98x 落在区间下四分之一。它的正确含义是"估值压缩已经走完大半",不是"已经便宜"。</li>
+</ul>
+</div></details><details class="drill"><summary>这一年价格怎么变的:是跌出来的,接盘的是散户</summary><div class="dd">
+<p>近 1 年 -28.18%、近 20 日 -12.79%,收盘价跌破 MA120、均线空头排列;同期股东户数 +34.22%、大宗交易折价 14.17%。也就是说这一年的价格变化(记号 ΔP)是跌出来的不是涨出来的,承接筹码的是散户不是机构,拥挤度与筹码明细见<a class="cite" href="#appx-C">附录C</a>。</p></div></details></div>
+</section>
+<section class="chB" id="ch-path">
+  <div class="hd"><span class="no">④ 路径</span><span class="qq">扛得住吗</span><span class="pill bad">高尾险·不可承受</span></div>
+  <div class="bd"><figure class="ladder" role="img" aria-label="左尾深度阶梯:基金浮盈持续转负,市场把估值基数改按主营口径读 −14%、AI 办公与 WPS 365 的放量故事不兑现,叙事溢价 466 亿(③赔率)回吐 −41%、个人订阅渗透触顶(付费用户增速跌破 10%、移动端 MAU 持续下滑),占 SOTP 一半的个人业务倍数被下修到同业中位 −54%、替代品或格局剧变(公司自己勾选的行业风险)+ 增速与利润率同时失速 −67%">
+  <figcaption>左尾有多深:兑现之前最坏要扛多少</figcaption>
+  <ol class="rungs">
+    <li title="基金浮盈持续转负,市场把估值基数改按主营口径读 → 回吐到③合理价高端 —— 跌至③赔率合理价高端 193.8 元 vs 现价 225.52 元"><span class="lb">基金浮盈持续转负,市场把估值基数改按主营口径读</span><span class="tr"><i style="width:20.9%"></i></span><b class="dv">−14%</b></li>
+    <li title="AI 办公与 WPS 365 的放量故事不兑现,叙事溢价 466 亿(③赔率)回吐 → 只认四条线已收到的收入 —— 跌至③赔率合理价低端(只认已兑现收入的 SOTP)133.3 元 vs 现价 225.52 元"><span class="lb">AI 办公与 WPS 365 的放量故事不兑现</span><span class="tr"><i style="width:61.2%"></i></span><b class="dv">−41%</b></li>
+    <li title="个人订阅渗透触顶(付费用户增速跌破 10%、移动端 MAU 持续下滑),占 SOTP 一半的个人业务倍数被下修到同业中位 —— 个人业务 EV/Sales 由 8.0x 降到 A 股软件同业中位 4.6x(③赔率口径),SOTP 权益 618.6 亿 → 486.3 亿 → 每股 104.8 元"><span class="lb">个人订阅渗透触顶</span><span class="tr"><i style="width:80.6%"></i></span><b class="dv">−54%</b></li>
+    <li title="替代品或格局剧变(公司自己勾选的行业风险)+ 增速与利润率同时失速 → 落入③悲观情景 —— ③赔率悲观情景现值 345 亿 ÷ 4.6401 亿股 = 每股 74.3 元 vs 现价 225.52 元"><span class="lb">替代品或格局剧变(公司自己勾选的行业风险)</span><span class="tr"><i style="width:100.0%"></i></span><b class="dv">−67%</b></li>
+  </ol>
+  <p class="foot">另有 3 条左尾量不到价格(只判得出量级),逐条见本章正文的左尾清单。</p>
+</figure><p><strong>判定:高尾险·不可承受——公司本身不会死,但持有人一路上没有护栏。</strong>净现金 13.23 亿、有息负债 0.64 亿、控股股东质押冻结 0(<a class="cite" href="#ch-quality">①质地</a>子判定④⑤),企业层面不存在偿债或控制权的毁灭性左尾;可持有人这一侧,四级台阶最深 −67%,而下面接着的是每股 5.4 元的硬资产和 0.40% 的股息。</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>子判定</th>
+<th>判定</th>
+<th>最硬证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>左尾有多深</td>
+<td>四级台阶,最深 −67%</td>
+<td>悲观情景现值 345 亿 → 每股 74.3 元(<a class="cite" href="#ch-odds">③赔率</a>);硬资产每股仅 5.4 元,固定资产 + 商誉合计占总资产 3.0%</td>
+</tr>
+<tr>
+<td>跌起来会不会被放大</td>
+<td>高信仰 5/7,是放大器</td>
+<td>单季户数 +34.22%、户均持股 −25.50%、大宗折价 −14.17%,同时前十大占 61.3% 使流通承接盘更薄</td>
+</tr>
+<tr>
+<td>这段苦有没有回报补偿</td>
+<td>没有,期望 −14.1%</td>
+<td>三情景概率加权每股 193.8 元(③同源口径)低于现价;Q2 部分兑现的是最浅一级(−14%,基金浮盈反向),更深三级尚未触发</td>
+</tr>
+</tbody>
+</table></div>
+<details class="drill"><summary>四级台阶:−14% / −41% / −54% / −67%,每下一级都是估值的事,不是资产的事</summary><div class="dd">
+<p>这家公司的左尾形态很干净:<strong>没有一条来自债务、质押、担保、占款、对赌或诉讼</strong>——有息负债 0.64 亿、控股股东质押冻结 0、总负债 58.03 亿里 40.02 亿是预收的订阅款(<a class="cite" href="#ch-quality">①质地</a>子判定⑤)。左尾<strong>全部来自估值</strong>,而估值的四级台阶分别由四件事触发:基金浮盈继续反向(−14%)、AI 与 365 放量故事不兑现(−41%)、个人订阅渗透触顶把 SOTP 里占一半的那块下修(−54%)、增速与利润率同时失速落入悲观情景(−67%)。</p>
+<p>第一级<strong>已经开始走了</strong>:Q1 权益法 +18.62 亿,到 H1 只剩 +17.56 亿,Q2 单季是 −1.058 亿,单季归母因此同比 −6.38%。公司在 2026Q1「其他提醒事项」里自己写过"不排除未来季度相关投资收益出现较大波动乃至单季亏损",Q2 就兑现了一部分;更早的证据是 2025 年报资产减值 −2,056.80 万(见<a class="cite" href="#ch-quality">①质地</a>)——官方说明正是"长期股权投资计提减值准备",半年报长投减值准备余额 6,277.60 万。<strong>这个组合能大幅浮盈、也已实际计提过减值,双向波动是已发生事实而非假设</strong>。但年报与半年报的正式「风险因素」章节至今没有这一条,2025 年报「(五)财务风险」勾的是"√不适用"。</p>
+<p><strong>另有 3 条左尾量不到价格,但必须记名</strong>(左尾阶梯图脚指向的就是下面这张表):</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>左尾</th>
+<th>量级</th>
+<th>为何量不到价格</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>两只关联方基金账面 33.78 亿全额回吐至累计实投成本 12.00 亿</td>
+<td>抹掉净资产 150.77 亿的 14.4%,相当于 TTM 归母 36.07 亿的 60%</td>
+<td><a class="cite" href="#ch-odds">③赔率</a>低端已按实投成本入账,回吐打的是净资产与利润,不再额外压估值锚</td>
+</tr>
+<tr>
+<td>散户高位接盘的筹码结构遇利空而踩踏</td>
+<td>单季户数 +34.22%、户均持股 −25.50%、大宗折价 −14.17%、融资余额 47.57 亿≈市值 4.5%</td>
+<td>是放大器,只改下跌的速度与倍数,没有独立的价格深度</td>
+</tr>
+<tr>
+<td>跌下去没有资产价值接住</td>
+<td>可验证硬资产(货币资金 13.88 亿 + 基金实投 12.00 亿 − 有息负债 0.64 亿)每股 5.4 元 = 现价 2.4%;固定资产 4.46 亿 + 商誉 1.85 亿占总资产 3.0%</td>
+<td>不是清算预测,是说地板在很远的下面;净资产 150.77 亿里 33.78 亿本身就是不可验证的账面重估,所以深度只能由③合理价区间定</td>
+</tr>
+</tbody>
+</table></div>
+</div></details><details class="drill"><summary>高信仰体检 5/7:上涨时是信仰复利机器,下跌时是组合波动放大器</summary><div class="dd">
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>体检项</th>
+<th style="text-align: center;">命中</th>
+<th>依据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>高估值</td>
+<td style="text-align: center;">✓</td>
+<td>现价 225.52 元站在③合理价区间 [133.3, 193.8] 之外</td>
+</tr>
+<tr>
+<td>高波动</td>
+<td style="text-align: center;">✓</td>
+<td>近 60 日区间 200.0–289.3 元(振幅 44.7%),近 1 年 −28.18%、近 20 日 −12.79%</td>
+</tr>
+<tr>
+<td>高叙事弹性</td>
+<td style="text-align: center;">✓</td>
+<td>叙事溢价 466 亿占市值 45%(<a class="cite" href="#ch-odds">③赔率</a>),性质是市场已收费的义务</td>
+</tr>
+<tr>
+<td>高散户占比</td>
+<td style="text-align: center;">✓</td>
+<td>单季户数 +34.22%、户均持股 −25.50%,筹码分散判定 🔴(<a class="cite" href="#appx-C">附录C</a>)</td>
+</tr>
+<tr>
+<td>高媒体热度</td>
+<td style="text-align: center;">✓</td>
+<td>券商平均目标价 350.78 元(见<a class="cite" href="#ch-state">②状态</a>)高出现价 55.5%,财经媒体正反两侧持续覆盖</td>
+</tr>
+<tr>
+<td>期权与杠杆活跃</td>
+<td style="text-align: center;">✗</td>
+<td>科创板无个股期权;融资余额 47.57 亿相对近 60 日中位仅 −2.49%,平稳</td>
+</tr>
+<tr>
+<td>关键人物依赖</td>
+<td style="text-align: center;">✗</td>
+<td>控股股东持股 51.38%、质押标记冻结均为 0(<a class="cite" href="#ch-quality">①质地</a>子判定④);无单一关键人物绑定披露</td>
+</tr>
+</tbody>
+</table></div>
+<p>命中 5 项,而且命中的恰好是<strong>下跌时互相点火</strong>的那五项:估值没有垫、故事弹性大、拿股票的是刚进来的散户、卖方目标价与现价差 55.5% 的预期落差随时会被修正。两项没命中的是好消息——没有期权与融资杠杆的强制平仓链条,也没有一个人走了公司就散的风险,所以这五项放大的是<strong>波动</strong>,不是<strong>毁灭</strong>。这正是判"高尾险"而不是"归零风险"的分界。</p>
+</div></details><details class="drill"><summary>概率加权期望 −14.1%:方向就算对,路上的苦也没有回报补偿</summary><div class="dd">
+<p>用<a class="cite" href="#ch-odds">③赔率</a>的同一套情景(不另起一套,现值口径见③):</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>情景</th>
+<th>每股</th>
+<th>涨跌</th>
+<th>概率</th>
+<th>时间窗</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>乐观</td>
+<td>316.6 元</td>
+<td>+40.4%</td>
+<td>25%</td>
+<td>12–24 个月</td>
+</tr>
+<tr>
+<td>基准</td>
+<td>192.0 元</td>
+<td>−14.9%</td>
+<td>50%</td>
+<td>12–18 个月</td>
+</tr>
+<tr>
+<td>悲观</td>
+<td>74.3 元</td>
+<td>−67.0%</td>
+<td>25%</td>
+<td>12 个月</td>
+</tr>
+</tbody>
+</table></div>
+<p>概率加权每股 193.8 元:<strong>承受 −67% 的尾部,换来的期望收益是 −14.1%——期望是负的</strong>。</p>
+<p>三项成本分开看。<strong>中途最大回撤</strong>:即便终点走乐观,基准路径上先跌到③低端 133.3 元(−41%)是常规而非意外——因为估值基数之争(真实 TTM 主营 PE 56.6x vs 行情口径 29.0x,<a class="cite" href="#ch-odds">③赔率</a>)只要在 Q3 或年报被坐实一次,市场就会一次性改口径重定价。<strong>时间与机会成本</strong>:466 亿叙事溢价要兑现须新增约 52 亿稳态收入(<a class="cite" href="#ch-odds">③赔率</a>),按 WPS 365 当前 +60.84% 的增速外推也要四年以上;期间股息率 0.40%,等待几乎零现金补偿。<strong>假阳性成本</strong>:把 2026Q1 那份 +241.99% 的扣非增速当成经营实锤追进去,Q2 已经给出答案(单季归母 −6.38%);"基金收益转负 + 估值基数改口径 + 散户筹码踩踏"三重杀叠在一起,代价就是台阶最深那一级。</p>
+<p>上面 9 条证伪条件全部写成了指标 + 阈值 + 时间窗,下一次复查逐条核销;目前 1 条已命中(单季权益法转负)、8 条尚不可判,最近的核销点是 2026Q3 报告。</p></div></details></div>
+</section>
+<section class="chB" id="ch-decision">
+  <div class="hd"><span class="no">⑤ 怎么办</span><span class="qq">行动档位与证伪</span><span class="pill watch">先观察等证据临界</span></div>
+  <div class="bd"><p><strong>判定:先观察等证据临界——现价 0 仓位,等三季报的两条硬数据 + 价格回到合理价区间以内。</strong></p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>项</th>
+<th>结论</th>
+<th>依据(引用)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>状态 在变好吗</td>
+<td>↑变好但仅注意力·未确认</td>
+<td><a class="cite" href="#ch-state">②状态</a>的判定:主营三条线一起提速是实锤,但利润改善被基金浮盈冲花、AI 新身份没有一分钱可核收入</td>
+</tr>
+<tr>
+<td>赔率 贵不贵</td>
+<td>已被价格计入</td>
+<td><a class="cite" href="#ch-odds">③赔率</a>的判定;合理价区间 133.3~193.8 元(<a class="cite" href="#ch-odds">③赔率</a>),两端同向</td>
+</tr>
+<tr>
+<td>路径 扛得住吗</td>
+<td>高尾险·不可承受</td>
+<td><a class="cite" href="#ch-path">④路径</a>的判定:公司本身不会死,但持有人一路上没有护栏,高信仰 5/7</td>
+</tr>
+<tr>
+<td>好公司?</td>
+<td>部分是</td>
+<td><a class="cite" href="#ch-quality">①质地</a>的判定:部分好——真护城河真主营,本期报表利润被基金账面重估冲花</td>
+</tr>
+<tr>
+<td>怎么办</td>
+<td>等证据临界 · 0 仓位</td>
+<td>三格相乘无一为正;右尾确认五项只过两项(见下表)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>为什么落在"等"而不是"避",也不是"赌"。</strong> 三格里没有一格是正的:主业在提速(收入 +24.69%,<a class="cite" href="#ch-state">②状态</a>)但最关键的利润改善没被坐实;价格已经把改善买走(叙事溢价 466 亿占市值 45%,<a class="cite" href="#ch-odds">③赔率</a>);下跌路上没有护栏(期望回报 −14.1%、最深一级 −67%,<a class="cite" href="#ch-path">④路径</a>)。三格全弱通常指向回避,但这里的"高尾险"是估值回吐型,不是企业毁灭型——没有有息债务压力、没有控股股东质押、没有停业级诉讼,公司大概率不会死,死的是买贵的人的收益率。所以标的本身不必划掉,划掉的只是"现在这个价"。</p>
+<p><strong>右尾怎么处理。</strong> 右尾是真的存在:6.76 亿设备的装机基座、按席位收费的政企订阅、90% 以上的分部毛利(<a class="cite" href="#ch-quality">①质地</a>),一旦 AI 变现跑通,它有"越大越强"的形态。但右尾纪律要的是"被证据确认时才敢给足合法仓",而此刻确认它的两根柱子——自我造血的现金流、真实可查的 AI 收入——一根都没立起来,同时估值起点还偏高。右尾大而未确认时本可以用期权小仓加硬止损来表达,但那要求至少估值起点不吃亏;这里起点已经在合理价区间之上,小仓博右尾会变成用溢价买尚未存在的收入。所以这一轮的正确表达是空仓等待,把选择权留在手里,而不是先上车再说。</p>
+<p>右尾要成立,得同时看五件事,现在只过了两件:</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>右尾要件</th>
+<th>现状</th>
+<th>依据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>需求真实、还能往外延展</td>
+<td>✓</td>
+<td>付费个人用户 4,825 万、WPS 365 收入 +60.84%(<a class="cite" href="#ch-state">②状态</a>)</td>
+</tr>
+<tr>
+<td>有难被替代的提价权</td>
+<td>✓</td>
+<td>毛利率 84.90%,五年稳定在 84.8~86.8%(<a class="cite" href="#ch-quality">①质地</a>)</td>
+</tr>
+<tr>
+<td>自己造得出现金</td>
+<td>✗</td>
+<td>经营现金流只有报表净利的 0.26 倍,对主营净利也只有 0.59 倍(<a class="cite" href="#ch-quality">①质地</a>)</td>
+</tr>
+<tr>
+<td>利润率还在往上走</td>
+<td>✗</td>
+<td>主营净利率 32.8%,上年同期 31.9%,几乎原地(<a class="cite" href="#ch-quality">①质地</a>)</td>
+</tr>
+<tr>
+<td>买入起点不吃亏</td>
+<td>✗</td>
+<td>现价 225.52 元高于合理价区间 133.3~193.8 元两端(<a class="cite" href="#ch-odds">③赔率</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>什么情况下我错了。</strong> 如果三季报的多年期预收同比重新站上 +20% 且 WPS 365 增速守住 50%,同时年报真给出灵犀 / WPS Comate 的可计数收入,那"注意力先行"的判断就被推翻,该等的事情等到了,届时按价格条件重新落档。反方向的错法写在退出线里,其中第一条已经触发一次。</p>
+<p>信仰陷阱五条,逐条自查:</p>
+<ol>
+<li>没把"好公司"直接当成"好股票"——①判它部分好,但三格乘下来仍然是否。✓</li>
+<li>没把 AI 这个远期可能性算进今天的价值——它至今没有一分钱可查收入,只能记在"还没发生的事"那一栏。✓</li>
+<li>没把基金浮盈转负当成一时噪音——它是已经发生的反证,写在退出线第一条。✓</li>
+<li>没把等待当成免费——等的是有日子、有截止的两份财报(三季报、年报),不是无限期挂着。✓</li>
+<li>仓位不按信念大小给——0 仓位的理由是右尾五件只过两件,不是"我不看好它"。✓</li>
+</ol></div>
+</section>
+
+<!-- ============================================================
+     附录 A-E — 证据底稿(全表下沉, 宽表在横滚容器内)
+     ============================================================ -->
+<div class="secl" id="appendices"><span class="t">附录 · 证据底稿</span></div>
+<div class="appxnav">
+  <a class="ap" href="#appx-A"><b>附录A</b>财务与经营明细</a>
+  <a class="ap" href="#appx-B"><b>附录B</b>行业与对标明细</a>
+  <a class="ap" href="#appx-C"><b>附录C</b>舆情、资金与技术面底稿</a>
+  <a class="ap" href="#appx-D"><b>附录D</b>红旗总清单</a>
+  <a class="ap" href="#appx-E"><b>附录E</b>数据来源与信息缺口</a>
+</div>
+<section class="appx" id="appx-A">
+  <h2>附录A 财务与经营明细</h2>
+  <h3>数据快照: 金山办公 (688111.SH)</h3>
+<p><strong>生成日期</strong>: 2026-09-16<br />
+<strong>数据源</strong>: <code>C:\Users\tinyb\.claude\output\金山办公\raw_data</code> (Tushare parquet)</p>
+<blockquote>
+<p>本文是报告<strong><a class="cite" href="#appx-A">附录A</a> 财务与经营明细</strong>的底稿, 全部由脚本从 Tushare parquet 直接拼装, 无 LLM 参与。正文只写结论并引用这里的数字, 明细一律留在附录 —— 同一个数字只有一个家。</p>
+</blockquote>
+<hr />
+<h4>§1 数据完整度</h4>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>表</th>
+<th style="text-align: right;">行数</th>
+<th style="text-align: center;">end_date 区间</th>
+<th style="text-align: center;"><strong>最新期</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>income</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: center;">20211231 ~ 20260630</td>
+<td style="text-align: center;"><strong>20260630</strong></td>
+</tr>
+<tr>
+<td>balancesheet</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: center;">20191231 ~ 20260630</td>
+<td style="text-align: center;"><strong>20260630</strong></td>
+</tr>
+<tr>
+<td>cashflow</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: center;">20211231 ~ 20260630</td>
+<td style="text-align: center;"><strong>20260630</strong></td>
+</tr>
+<tr>
+<td>fina_indicator</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: center;">20220331 ~ 20260630</td>
+<td style="text-align: center;"><strong>20260630</strong></td>
+</tr>
+<tr>
+<td>daily</td>
+<td style="text-align: right;">725</td>
+<td style="text-align: center;">20230918 ~ 20260915</td>
+<td style="text-align: center;"><strong>20260915</strong></td>
+</tr>
+<tr>
+<td>daily_basic</td>
+<td style="text-align: right;">267</td>
+<td style="text-align: center;">20250812 ~ 20260915</td>
+<td style="text-align: center;"><strong>20260915</strong></td>
+</tr>
+<tr>
+<td>top10_holders</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: center;">20220331 ~ 20260630</td>
+<td style="text-align: center;"><strong>20260630</strong></td>
+</tr>
+<tr>
+<td>top10_floatholders</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: center;">20220331 ~ 20260630</td>
+<td style="text-align: center;"><strong>20260630</strong></td>
+</tr>
+<tr>
+<td>pledge_detail</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>forecast_vip</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: center;">20190930 ~ 20260630</td>
+<td style="text-align: center;"><strong>20260630</strong></td>
+</tr>
+<tr>
+<td>express_vip</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: center;">20191231 ~ 20251231</td>
+<td style="text-align: center;"><strong>20251231</strong></td>
+</tr>
+<tr>
+<td>stk_holdernumber</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: center;">20211231 ~ 20260630</td>
+<td style="text-align: center;"><strong>20260630</strong></td>
+</tr>
+<tr>
+<td>fina_mainbz</td>
+<td style="text-align: right;">98</td>
+<td style="text-align: center;">20220630 ~ 20260630</td>
+<td style="text-align: center;"><strong>20260630</strong></td>
+</tr>
+<tr>
+<td>dividend</td>
+<td style="text-align: right;">43</td>
+<td style="text-align: center;">20191231 ~ 20260630</td>
+<td style="text-align: center;"><strong>20260630</strong></td>
+</tr>
+<tr>
+<td>repurchase</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: center;">20240221 ~ 20260723</td>
+<td style="text-align: center;"><strong>20260723</strong></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h4>§2 最新期完整快照</h4>
+<h5>2.1 利润表关键科目 (来自 income.parquet 最新行 end_date=20260630)</h5>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>科目</th>
+<th style="text-align: right;">最新期数值</th>
+<th style="text-align: right;">上年同期</th>
+<th style="text-align: center;">YoY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>营业收入</td>
+<td style="text-align: right;">33.1326 亿</td>
+<td style="text-align: right;">26.5712 亿</td>
+<td style="text-align: center;">+24.69%</td>
+</tr>
+<tr>
+<td>营业成本</td>
+<td style="text-align: right;">5.0046 亿</td>
+<td style="text-align: right;">3.9772 亿</td>
+<td style="text-align: center;">+25.83%</td>
+</tr>
+<tr>
+<td>销售费用</td>
+<td style="text-align: right;">5.9786 亿</td>
+<td style="text-align: right;">4.7848 亿</td>
+<td style="text-align: center;">+24.95%</td>
+</tr>
+<tr>
+<td>管理费用</td>
+<td style="text-align: right;">2.7713 亿</td>
+<td style="text-align: right;">2.1882 亿</td>
+<td style="text-align: center;">+26.65%</td>
+</tr>
+<tr>
+<td>研发费用</td>
+<td style="text-align: right;">11.5183 亿</td>
+<td style="text-align: right;">9.5853 亿</td>
+<td style="text-align: center;">+20.17%</td>
+</tr>
+<tr>
+<td>财务费用</td>
+<td style="text-align: right;">0.84 万</td>
+<td style="text-align: right;">-432.28 万</td>
+<td style="text-align: center;">-100.19%</td>
+</tr>
+<tr>
+<td>税金及附加</td>
+<td style="text-align: right;">2,878.91 万</td>
+<td style="text-align: right;">2,624.75 万</td>
+<td style="text-align: center;">+9.68%</td>
+</tr>
+<tr>
+<td>资产减值损失</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">-16.60 万</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>信用减值损失</td>
+<td style="text-align: right;">-993.40 万</td>
+<td style="text-align: right;">-313.12 万</td>
+<td style="text-align: center;">+217.26%</td>
+</tr>
+<tr>
+<td>公允价值变动</td>
+<td style="text-align: right;">-547.28 万</td>
+<td style="text-align: right;">-516.82 万</td>
+<td style="text-align: center;">+5.89%</td>
+</tr>
+<tr>
+<td>投资收益</td>
+<td style="text-align: right;">191,390.45 万</td>
+<td style="text-align: right;">13,343.92 万</td>
+<td style="text-align: center;">+1334.29%</td>
+</tr>
+<tr>
+<td>营业利润</td>
+<td style="text-align: right;">27.4461 亿</td>
+<td style="text-align: right;">7.7606 亿</td>
+<td style="text-align: center;">+253.66%</td>
+</tr>
+<tr>
+<td>营业外收入</td>
+<td style="text-align: right;">2,051.46 万</td>
+<td style="text-align: right;">508.23 万</td>
+<td style="text-align: center;">+303.65%</td>
+</tr>
+<tr>
+<td>营业外支出</td>
+<td style="text-align: right;">56.52 万</td>
+<td style="text-align: right;">128.39 万</td>
+<td style="text-align: center;">-55.98%</td>
+</tr>
+<tr>
+<td>利润总额</td>
+<td style="text-align: right;">27.6456 亿</td>
+<td style="text-align: right;">7.7985 亿</td>
+<td style="text-align: center;">+254.50%</td>
+</tr>
+<tr>
+<td>所得税</td>
+<td style="text-align: right;">24,696.90 万</td>
+<td style="text-align: right;">4,724.85 万</td>
+<td style="text-align: center;">+422.70%</td>
+</tr>
+<tr>
+<td>净利润</td>
+<td style="text-align: right;">25.1759 亿</td>
+<td style="text-align: right;">7.3261 亿</td>
+<td style="text-align: center;">+243.65%</td>
+</tr>
+<tr>
+<td>归母净利润</td>
+<td style="text-align: right;">25.1759 亿</td>
+<td style="text-align: right;">7.4720 亿</td>
+<td style="text-align: center;">+236.94%</td>
+</tr>
+<tr>
+<td>基本 EPS(元)</td>
+<td style="text-align: right;">5.44</td>
+<td style="text-align: right;">1.62</td>
+<td style="text-align: center;">+235.80%</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>口径提示:「自由现金流(数据商口径)」是 Tushare <code>cashflow.free_cashflow</code> 字段;<code>metrics.json</code> 里的 <code>free_cashflow_latest</code> 是<strong>经营现金流 − 购建固定资产支付的现金</strong>自算的。两者常差一截(华特 2026H1:0.12 亿 vs 0.67 亿),引用时写明用的是哪一个。</p>
+</blockquote>
+<h5>2.2 资产负债表关键科目 (来自 balancesheet.parquet 最新行 end_date=20260630)</h5>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>科目</th>
+<th style="text-align: right;">最新期数值</th>
+<th style="text-align: right;">上年同期</th>
+<th style="text-align: center;">YoY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>总资产</td>
+<td style="text-align: right;">208.7967 亿</td>
+<td style="text-align: right;">164.2671 亿</td>
+<td style="text-align: center;">+27.11%</td>
+</tr>
+<tr>
+<td>总负债</td>
+<td style="text-align: right;">58.0293 亿</td>
+<td style="text-align: right;">47.9036 亿</td>
+<td style="text-align: center;">+21.14%</td>
+</tr>
+<tr>
+<td>所有者权益合计</td>
+<td style="text-align: right;">150.7674 亿</td>
+<td style="text-align: right;">116.3636 亿</td>
+<td style="text-align: center;">+29.57%</td>
+</tr>
+<tr>
+<td>货币资金</td>
+<td style="text-align: right;">13.8778 亿</td>
+<td style="text-align: right;">10.7874 亿</td>
+<td style="text-align: center;">+28.65%</td>
+</tr>
+<tr>
+<td>应收账款</td>
+<td style="text-align: right;">7.5509 亿</td>
+<td style="text-align: right;">5.3879 亿</td>
+<td style="text-align: center;">+40.15%</td>
+</tr>
+<tr>
+<td>存货</td>
+<td style="text-align: right;">0.0040 亿</td>
+<td style="text-align: right;">0.0081 亿</td>
+<td style="text-align: center;">-50.90%</td>
+</tr>
+<tr>
+<td>固定资产</td>
+<td style="text-align: right;">4.4607 亿</td>
+<td style="text-align: right;">4.4775 亿</td>
+<td style="text-align: center;">-0.37%</td>
+</tr>
+<tr>
+<td>在建工程</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>无形资产</td>
+<td style="text-align: right;">0.6563 亿</td>
+<td style="text-align: right;">0.8118 亿</td>
+<td style="text-align: center;">-19.15%</td>
+</tr>
+<tr>
+<td>商誉</td>
+<td style="text-align: right;">1.8467 亿</td>
+<td style="text-align: right;">1.8467 亿</td>
+<td style="text-align: center;">+0.00%</td>
+</tr>
+<tr>
+<td>短期借款</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>应付票据</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>应付账款</td>
+<td style="text-align: right;">4.9448 亿</td>
+<td style="text-align: right;">5.1826 亿</td>
+<td style="text-align: center;">-4.59%</td>
+</tr>
+<tr>
+<td>合同负债(预收/递延收入)</td>
+<td style="text-align: right;">27.6422 亿</td>
+<td style="text-align: right;">21.9946 亿</td>
+<td style="text-align: center;">+25.68%</td>
+</tr>
+<tr>
+<td>合同资产</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">0.0010 亿</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>递延收益(流动)</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>递延收益(非流动)</td>
+<td style="text-align: right;">0.1141 亿</td>
+<td style="text-align: right;">0.0212 亿</td>
+<td style="text-align: center;">+439.12%</td>
+</tr>
+<tr>
+<td>其他流动负债(可能含合同负债, 回附注核)</td>
+<td style="text-align: right;">0.7526 亿</td>
+<td style="text-align: right;">0.8014 亿</td>
+<td style="text-align: center;">-6.10%</td>
+</tr>
+<tr>
+<td>其他非流动负债(可能含多年期合同负债, 回附注核)</td>
+<td style="text-align: right;">12.3815 亿</td>
+<td style="text-align: right;">10.0188 亿</td>
+<td style="text-align: center;">+23.58%</td>
+</tr>
+<tr>
+<td>长期借款</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>总股本(万股)</td>
+<td style="text-align: right;">46,401.34 万股</td>
+<td style="text-align: right;">46,317.93 万股</td>
+<td style="text-align: center;">+0.18%</td>
+</tr>
+</tbody>
+</table></div>
+<h5>2.3 现金流量表 (来自 cashflow.parquet 最新行 end_date=20260630)</h5>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>科目</th>
+<th style="text-align: right;">最新期数值</th>
+<th style="text-align: right;">上年同期</th>
+<th style="text-align: center;">YoY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>净利润(对账)</td>
+<td style="text-align: right;">25.1759 亿</td>
+<td style="text-align: right;">7.3261 亿</td>
+<td style="text-align: center;">+243.65%</td>
+</tr>
+<tr>
+<td>销售商品收到现金</td>
+<td style="text-align: right;">34.8857 亿</td>
+<td style="text-align: right;">28.7159 亿</td>
+<td style="text-align: center;">+21.49%</td>
+</tr>
+<tr>
+<td>购买商品支付现金</td>
+<td style="text-align: right;">5.9815 亿</td>
+<td style="text-align: right;">5.0530 亿</td>
+<td style="text-align: center;">+18.38%</td>
+</tr>
+<tr>
+<td>支付税费</td>
+<td style="text-align: right;">5.4606 亿</td>
+<td style="text-align: right;">2.9536 亿</td>
+<td style="text-align: center;">+84.88%</td>
+</tr>
+<tr>
+<td>经营活动现金流净额</td>
+<td style="text-align: right;">6.4269 亿</td>
+<td style="text-align: right;">7.3835 亿</td>
+<td style="text-align: center;">-12.96%</td>
+</tr>
+<tr>
+<td>购建固定资产支付现金</td>
+<td style="text-align: right;">0.4470 亿</td>
+<td style="text-align: right;">0.5951 亿</td>
+<td style="text-align: center;">-24.89%</td>
+</tr>
+<tr>
+<td>投资支付现金</td>
+<td style="text-align: right;">84.6094 亿</td>
+<td style="text-align: right;">51.0480 亿</td>
+<td style="text-align: center;">+65.74%</td>
+</tr>
+<tr>
+<td>投资活动现金流净额</td>
+<td style="text-align: right;">1.7433 亿</td>
+<td style="text-align: right;">-2.5998 亿</td>
+<td style="text-align: center;">-167.05%</td>
+</tr>
+<tr>
+<td>借款收到现金</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>偿还债务支付现金</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>分配股利偿付利息现金</td>
+<td style="text-align: right;">2.5042 亿</td>
+<td style="text-align: right;">0.6642 亿</td>
+<td style="text-align: center;">+277.05%</td>
+</tr>
+<tr>
+<td>筹资活动现金流净额</td>
+<td style="text-align: right;">-1.1885 亿</td>
+<td style="text-align: right;">-2.9783 亿</td>
+<td style="text-align: center;">-60.09%</td>
+</tr>
+<tr>
+<td>自由现金流(数据商口径)</td>
+<td style="text-align: right;">-15.7369 亿</td>
+<td style="text-align: right;">7.4629 亿</td>
+<td style="text-align: center;">-310.87%</td>
+</tr>
+<tr>
+<td>固定资产折旧</td>
+<td style="text-align: right;">0.2689 亿</td>
+<td style="text-align: right;">0.2250 亿</td>
+<td style="text-align: center;">+19.52%</td>
+</tr>
+<tr>
+<td>无形资产摊销</td>
+<td style="text-align: right;">884.92 万</td>
+<td style="text-align: right;">971.52 万</td>
+<td style="text-align: center;">-8.91%</td>
+</tr>
+</tbody>
+</table></div>
+<h5>2.4 财务指标 (来自 fina_indicator.parquet 最新行 end_date=20260630)</h5>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>指标</th>
+<th style="text-align: right;">数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EPS(元/股)</td>
+<td style="text-align: right;">5.4400</td>
+</tr>
+<tr>
+<td>营收 / 股(元)</td>
+<td style="text-align: right;">7.1404</td>
+</tr>
+<tr>
+<td>经营现金流 / 股(元)</td>
+<td style="text-align: right;">1.3851</td>
+</tr>
+<tr>
+<td>毛利率(%)</td>
+<td style="text-align: right;">84.8953</td>
+</tr>
+<tr>
+<td>毛利额(元)</td>
+<td style="text-align: right;">2812804491.5100</td>
+</tr>
+<tr>
+<td>净利率(%)</td>
+<td style="text-align: right;">75.9854</td>
+</tr>
+<tr>
+<td>ROE(%, 非加权 — 与<a class="cite" href="#appx-B">附录B</a> 同业表同口径)</td>
+<td style="text-align: right;">18.0278</td>
+</tr>
+<tr>
+<td>加权平均 ROE(%, 年报正文口径)</td>
+<td style="text-align: right;">17.7600</td>
+</tr>
+<tr>
+<td>ROE(扣非, %, 非加权)</td>
+<td style="text-align: right;">17.8114</td>
+</tr>
+<tr>
+<td>ROA(%)</td>
+<td style="text-align: right;">14.1478</td>
+</tr>
+<tr>
+<td>投入资本回报率(%)</td>
+<td style="text-align: right;">17.9417</td>
+</tr>
+<tr>
+<td>资产负债率(%)</td>
+<td style="text-align: right;">27.7923</td>
+</tr>
+<tr>
+<td>流动比率</td>
+<td style="text-align: right;">3.2268</td>
+</tr>
+<tr>
+<td>速动比率</td>
+<td style="text-align: right;">3.2267</td>
+</tr>
+<tr>
+<td>总资产周转率</td>
+<td style="text-align: right;">0.1698</td>
+</tr>
+<tr>
+<td>应收账款周转率</td>
+<td style="text-align: right;">4.7625</td>
+</tr>
+<tr>
+<td>有息负债(元)</td>
+<td style="text-align: right;">64391524.6300</td>
+</tr>
+<tr>
+<td>净负债(元)</td>
+<td style="text-align: right;">-1323384725.9700</td>
+</tr>
+<tr>
+<td>产权比率</td>
+<td style="text-align: right;">0.3849</td>
+</tr>
+<tr>
+<td>稀释 EPS(元/股)</td>
+<td style="text-align: right;">5.4100</td>
+</tr>
+<tr>
+<td>每股净资产</td>
+<td style="text-align: right;">32.4920</td>
+</tr>
+<tr>
+<td>本季度 ROE(%)</td>
+<td style="text-align: right;">2.1348</td>
+</tr>
+<tr>
+<td>本季度净利率(%)</td>
+<td style="text-align: right;">18.9661</td>
+</tr>
+<tr>
+<td>本季度毛利率(%)</td>
+<td style="text-align: right;">83.2837</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h4>§3 多年趋势完整表</h4>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th style="text-align: center;">期末</th>
+<th style="text-align: right;">营收(亿)</th>
+<th style="text-align: center;">营收 YoY</th>
+<th style="text-align: right;">毛利率%</th>
+<th style="text-align: right;">净利率%</th>
+<th style="text-align: right;">归母净利(亿)</th>
+<th style="text-align: center;">净利 YoY</th>
+<th style="text-align: right;">ROE%(非加权)</th>
+<th style="text-align: right;">资产负债率%</th>
+<th style="text-align: right;">OCF(亿)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">20260630</td>
+<td style="text-align: right;">33.13</td>
+<td style="text-align: center;">+24.69%</td>
+<td style="text-align: right;">84.90</td>
+<td style="text-align: right;">75.99</td>
+<td style="text-align: right;">25.1759</td>
+<td style="text-align: center;">+236.94%</td>
+<td style="text-align: right;">18.03</td>
+<td style="text-align: right;">27.79</td>
+<td style="text-align: right;">6.4269</td>
+</tr>
+<tr>
+<td style="text-align: center;">20260331</td>
+<td style="text-align: right;">16.13</td>
+<td style="text-align: center;">+23.95%</td>
+<td style="text-align: right;">86.59</td>
+<td style="text-align: right;">136.07</td>
+<td style="text-align: right;">21.9516</td>
+<td style="text-align: center;">+444.97%</td>
+<td style="text-align: right;">15.69</td>
+<td style="text-align: right;">25.16</td>
+<td style="text-align: right;">0.5973</td>
+</tr>
+<tr>
+<td style="text-align: center;">20251231</td>
+<td style="text-align: right;">59.29</td>
+<td style="text-align: center;">+15.78%</td>
+<td style="text-align: right;">85.95</td>
+<td style="text-align: right;">30.73</td>
+<td style="text-align: right;">18.3647</td>
+<td style="text-align: center;">+11.63%</td>
+<td style="text-align: right;">15.17</td>
+<td style="text-align: right;">29.20</td>
+<td style="text-align: right;">25.0150</td>
+</tr>
+<tr>
+<td style="text-align: center;">20250930</td>
+<td style="text-align: right;">41.78</td>
+<td style="text-align: center;">+15.21%</td>
+<td style="text-align: right;">85.55</td>
+<td style="text-align: right;">27.85</td>
+<td style="text-align: right;">11.7844</td>
+<td style="text-align: center;">+13.32%</td>
+<td style="text-align: right;">10.04</td>
+<td style="text-align: right;">27.08</td>
+<td style="text-align: right;">12.7659</td>
+</tr>
+<tr>
+<td style="text-align: center;">20250630</td>
+<td style="text-align: right;">26.57</td>
+<td style="text-align: center;">+10.12%</td>
+<td style="text-align: right;">85.03</td>
+<td style="text-align: right;">27.57</td>
+<td style="text-align: right;">7.4720</td>
+<td style="text-align: center;">+3.57%</td>
+<td style="text-align: right;">6.50</td>
+<td style="text-align: right;">29.16</td>
+<td style="text-align: right;">7.3835</td>
+</tr>
+<tr>
+<td style="text-align: center;">20250331</td>
+<td style="text-align: right;">13.01</td>
+<td style="text-align: center;">+6.22%</td>
+<td style="text-align: right;">85.96</td>
+<td style="text-align: right;">30.30</td>
+<td style="text-align: right;">4.0281</td>
+<td style="text-align: center;">+9.75%</td>
+<td style="text-align: right;">3.48</td>
+<td style="text-align: right;">25.64</td>
+<td style="text-align: right;">0.3522</td>
+</tr>
+<tr>
+<td style="text-align: center;">20241231</td>
+<td style="text-align: right;">51.21</td>
+<td style="text-align: center;">+12.40%</td>
+<td style="text-align: right;">85.14</td>
+<td style="text-align: right;">32.32</td>
+<td style="text-align: right;">16.4508</td>
+<td style="text-align: center;">+24.84%</td>
+<td style="text-align: right;">15.44</td>
+<td style="text-align: right;">28.13</td>
+<td style="text-align: right;">21.9557</td>
+</tr>
+<tr>
+<td style="text-align: center;">20240930</td>
+<td style="text-align: right;">36.27</td>
+<td style="text-align: center;">+10.90%</td>
+<td style="text-align: right;">85.10</td>
+<td style="text-align: right;">28.67</td>
+<td style="text-align: right;">10.3988</td>
+<td style="text-align: center;">+16.41%</td>
+<td style="text-align: right;">10.07</td>
+<td style="text-align: right;">26.54</td>
+<td style="text-align: right;">10.7949</td>
+</tr>
+<tr>
+<td style="text-align: center;">20240630</td>
+<td style="text-align: right;">24.13</td>
+<td style="text-align: center;">+11.09%</td>
+<td style="text-align: right;">84.92</td>
+<td style="text-align: right;">29.92</td>
+<td style="text-align: right;">7.2144</td>
+<td style="text-align: center;">+20.38%</td>
+<td style="text-align: right;">7.10</td>
+<td style="text-align: right;">26.90</td>
+<td style="text-align: right;">6.2833</td>
+</tr>
+<tr>
+<td style="text-align: center;">20240331</td>
+<td style="text-align: right;">12.25</td>
+<td style="text-align: center;">+16.54%</td>
+<td style="text-align: right;">84.80</td>
+<td style="text-align: right;">29.82</td>
+<td style="text-align: right;">3.6702</td>
+<td style="text-align: center;">+37.31%</td>
+<td style="text-align: right;">3.62</td>
+<td style="text-align: right;">26.11</td>
+<td style="text-align: right;">1.5344</td>
+</tr>
+<tr>
+<td style="text-align: center;">20231231</td>
+<td style="text-align: right;">45.56</td>
+<td style="text-align: center;">+17.27%</td>
+<td style="text-align: right;">85.30</td>
+<td style="text-align: right;">28.85</td>
+<td style="text-align: right;">13.1774</td>
+<td style="text-align: center;">+17.92%</td>
+<td style="text-align: right;">14.11</td>
+<td style="text-align: right;">28.30</td>
+<td style="text-align: right;">20.5755</td>
+</tr>
+<tr>
+<td style="text-align: center;">20230930</td>
+<td style="text-align: right;">32.70</td>
+<td style="text-align: center;">+16.99%</td>
+<td style="text-align: right;">85.65</td>
+<td style="text-align: right;">27.13</td>
+<td style="text-align: right;">8.9327</td>
+<td style="text-align: center;">+9.86%</td>
+<td style="text-align: right;">9.82</td>
+<td style="text-align: right;">25.76</td>
+<td style="text-align: right;">9.3937</td>
+</tr>
+<tr>
+<td style="text-align: center;">20230630</td>
+<td style="text-align: right;">21.72</td>
+<td style="text-align: center;">+21.25%</td>
+<td style="text-align: right;">86.07</td>
+<td style="text-align: right;">27.42</td>
+<td style="text-align: right;">5.9932</td>
+<td style="text-align: center;">+15.32%</td>
+<td style="text-align: right;">6.72</td>
+<td style="text-align: right;">28.27</td>
+<td style="text-align: right;">5.9550</td>
+</tr>
+<tr>
+<td style="text-align: center;">20230331</td>
+<td style="text-align: right;">10.51</td>
+<td style="text-align: center;">+21.11%</td>
+<td style="text-align: right;">86.82</td>
+<td style="text-align: right;">25.25</td>
+<td style="text-align: right;">2.6729</td>
+<td style="text-align: center;">+6.58%</td>
+<td style="text-align: right;">3.01</td>
+<td style="text-align: right;">25.19</td>
+<td style="text-align: right;">1.2579</td>
+</tr>
+<tr>
+<td style="text-align: center;">20221231</td>
+<td style="text-align: right;">38.85</td>
+<td style="text-align: center;">+18.44%</td>
+<td style="text-align: right;">85.00</td>
+<td style="text-align: right;">29.11</td>
+<td style="text-align: right;">11.1753</td>
+<td style="text-align: center;">+7.33%</td>
+<td style="text-align: right;">13.59</td>
+<td style="text-align: right;">27.03</td>
+<td style="text-align: right;">16.0292</td>
+</tr>
+<tr>
+<td style="text-align: center;">20220930</td>
+<td style="text-align: right;">27.95</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">85.08</td>
+<td style="text-align: right;">29.54</td>
+<td style="text-align: right;">8.1313</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">10.10</td>
+<td style="text-align: right;">24.78</td>
+<td style="text-align: right;">8.6036</td>
+</tr>
+<tr>
+<td style="text-align: center;">20220630</td>
+<td style="text-align: right;">17.92</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">85.11</td>
+<td style="text-align: right;">29.53</td>
+<td style="text-align: right;">5.1971</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">6.60</td>
+<td style="text-align: right;">25.86</td>
+<td style="text-align: right;">6.1684</td>
+</tr>
+<tr>
+<td style="text-align: center;">20220331</td>
+<td style="text-align: right;">8.68</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">86.53</td>
+<td style="text-align: right;">29.44</td>
+<td style="text-align: right;">2.5078</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">3.19</td>
+<td style="text-align: right;">24.52</td>
+<td style="text-align: right;">1.5349</td>
+</tr>
+<tr>
+<td style="text-align: center;">20211231</td>
+<td style="text-align: right;">32.80</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">10.4125</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">18.6430</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>共 19 期, 最新期 20260630;ROE 列取自 <code>fina_indicator.roe</code>(非加权, 与<a class="cite" href="#appx-B">附录B</a> 自动同业表同口径);年报惯用的加权平均 ROE 见 §2.4。</em></p>
+<hr />
+<h4>§4 业绩预告 vs 实际兑现对比 (★ 若 actual 已存在, 主报告必须用 actual, 禁止用预告口径)</h4>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th style="text-align: center;">公告日</th>
+<th style="text-align: center;">报告期</th>
+<th style="text-align: center;">类型</th>
+<th style="text-align: right;">预告净利区间(万)</th>
+<th style="text-align: right;"><strong>实际归母净利(★ income)</strong></th>
+<th style="text-align: center;">兑现状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">20260729</td>
+<td style="text-align: center;">20260630</td>
+<td style="text-align: center;">预增</td>
+<td style="text-align: right;">231,619 ~ 271,900</td>
+<td style="text-align: right;"><strong>251,759.43 万</strong></td>
+<td style="text-align: center;">✅ 落入区间</td>
+</tr>
+<tr>
+<td style="text-align: center;">20260414</td>
+<td style="text-align: center;">20260331</td>
+<td style="text-align: center;">预增</td>
+<td style="text-align: right;">202,165 ~ 230,732</td>
+<td style="text-align: right;"><strong>219,516.39 万</strong></td>
+<td style="text-align: center;">✅ 落入区间</td>
+</tr>
+<tr>
+<td style="text-align: center;">20240104</td>
+<td style="text-align: center;">20231231</td>
+<td style="text-align: center;">略增</td>
+<td style="text-align: right;">123,547 ~ 136,551</td>
+<td style="text-align: right;"><strong>131,773.70 万</strong></td>
+<td style="text-align: center;">✅ 落入区间</td>
+</tr>
+<tr>
+<td style="text-align: center;">20210127</td>
+<td style="text-align: center;">20201231</td>
+<td style="text-align: center;">预增</td>
+<td style="text-align: right;">80,116 ~ 92,133</td>
+<td style="text-align: right;">未发布 / 待披露</td>
+<td style="text-align: center;">未发布</td>
+</tr>
+<tr>
+<td style="text-align: center;">20191030</td>
+<td style="text-align: center;">20190930</td>
+<td style="text-align: center;">续盈</td>
+<td style="text-align: right;">18,550 ~ 21,956</td>
+<td style="text-align: right;">未发布 / 待披露</td>
+<td style="text-align: center;">未发布</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>某期实际数已披露(实际栏非 "待披露")时以实际数为准; 预告只作兑现度对照 —— 判断链里预告属未确认证据, 不能当已实现业绩用。</em></p>
+<hr />
+<h4>§5 完整十大股东表 (最近 4 期)</h4>
+<h5>报告期: 20260630</h5>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>股东</th>
+<th style="text-align: right;">持股数(万股)</th>
+<th style="text-align: right;">持股比例(%)</th>
+<th style="text-align: right;">占流通比例(%)</th>
+<th style="text-align: right;">期间变动(万股)</th>
+<th style="text-align: center;">股东类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>KingsoftWPSCorporationLimited</td>
+<td style="text-align: right;">23,838.74</td>
+<td style="text-align: right;">51.38</td>
+<td style="text-align: right;">51.38</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">一般企业</td>
+</tr>
+<tr>
+<td>2</td>
+<td>天津奇文五维企业管理咨询合伙企业(有限合伙)</td>
+<td style="text-align: right;">1,793.27</td>
+<td style="text-align: right;">3.86</td>
+<td style="text-align: right;">3.86</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>3</td>
+<td>香港中央结算有限公司</td>
+<td style="text-align: right;">831.97</td>
+<td style="text-align: right;">1.79</td>
+<td style="text-align: right;">1.79</td>
+<td style="text-align: right;">+2.33</td>
+<td style="text-align: center;">一般企业</td>
+</tr>
+<tr>
+<td>4</td>
+<td>招商银行股份有限公司-华夏上证科创板50成份交易型开放式指数证券投资基金</td>
+<td style="text-align: right;">418.36</td>
+<td style="text-align: right;">0.90</td>
+<td style="text-align: right;">0.90</td>
+<td style="text-align: right;">-15.14</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+<tr>
+<td>5</td>
+<td>天津奇文四维企业管理咨询合伙企业(有限合伙)</td>
+<td style="text-align: right;">349.74</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>6</td>
+<td>天津奇文七维企业管理咨询合伙企业(有限合伙)</td>
+<td style="text-align: right;">315.02</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>7</td>
+<td>中国银行股份有限公司-嘉实中证软件服务交易型开放式指数证券投资基金</td>
+<td style="text-align: right;">264.21</td>
+<td style="text-align: right;">0.57</td>
+<td style="text-align: right;">0.57</td>
+<td style="text-align: right;">-2.33</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+<tr>
+<td>8</td>
+<td>中国工商银行股份有限公司-易方达上证科创板50成份交易型开放式指数证券投资基金</td>
+<td style="text-align: right;">258.07</td>
+<td style="text-align: right;">0.56</td>
+<td style="text-align: right;">0.56</td>
+<td style="text-align: right;">+0.71</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+<tr>
+<td>9</td>
+<td>上海伊洛私募基金管理有限公司-华中12号伊洛私募证券投资基金</td>
+<td style="text-align: right;">227.27</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">其他金融产品</td>
+</tr>
+<tr>
+<td>10</td>
+<td>中国工商银行股份有限公司-易方达中证人工智能主题交易型开放式指数证券投资基金</td>
+<td style="text-align: right;">145.82</td>
+<td style="text-align: right;">0.31</td>
+<td style="text-align: right;">0.31</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+</tbody>
+</table></div>
+<h5>报告期: 20260626</h5>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>股东</th>
+<th style="text-align: right;">持股数(万股)</th>
+<th style="text-align: right;">持股比例(%)</th>
+<th style="text-align: right;">占流通比例(%)</th>
+<th style="text-align: right;">期间变动(万股)</th>
+<th style="text-align: center;">股东类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>KingsoftWPSCorporationLimited</td>
+<td style="text-align: right;">23,838.74</td>
+<td style="text-align: right;">51.38</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">一般企业</td>
+</tr>
+<tr>
+<td>2</td>
+<td>天津奇文五维企业管理咨询合伙企业(有限合伙)</td>
+<td style="text-align: right;">1,793.27</td>
+<td style="text-align: right;">3.86</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>3</td>
+<td>香港中央结算有限公司</td>
+<td style="text-align: right;">829.63</td>
+<td style="text-align: right;">1.79</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">-66.52</td>
+<td style="text-align: center;">一般企业</td>
+</tr>
+<tr>
+<td>4</td>
+<td>招商银行股份有限公司-华夏上证科创板50成份交易型开放式指数证券投资基金</td>
+<td style="text-align: right;">433.50</td>
+<td style="text-align: right;">0.93</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">-367.27</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+<tr>
+<td>5</td>
+<td>天津奇文四维企业管理咨询合伙企业(有限合伙)</td>
+<td style="text-align: right;">349.74</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>6</td>
+<td>天津奇文七维企业管理咨询合伙企业(有限合伙)</td>
+<td style="text-align: right;">315.02</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>7</td>
+<td>中国银行股份有限公司-嘉实中证软件服务交易型开放式指数证券投资基金</td>
+<td style="text-align: right;">266.54</td>
+<td style="text-align: right;">0.57</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">-0.17</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+<tr>
+<td>8</td>
+<td>中国工商银行股份有限公司-易方达上证科创板50成份交易型开放式指数证券投资基金</td>
+<td style="text-align: right;">257.37</td>
+<td style="text-align: right;">0.55</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">-179.12</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+<tr>
+<td>9</td>
+<td>上海伊洛私募基金管理有限公司-华中12号伊洛私募证券投资基金</td>
+<td style="text-align: right;">227.27</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">其他金融产品</td>
+</tr>
+<tr>
+<td>10</td>
+<td>上海伊洛私募基金管理有限公司-君行23号伊洛私募证券投资基金</td>
+<td style="text-align: right;">184.52</td>
+<td style="text-align: right;">0.40</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">其他金融产品</td>
+</tr>
+</tbody>
+</table></div>
+<h5>报告期: 20260331</h5>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>股东</th>
+<th style="text-align: right;">持股数(万股)</th>
+<th style="text-align: right;">持股比例(%)</th>
+<th style="text-align: right;">占流通比例(%)</th>
+<th style="text-align: right;">期间变动(万股)</th>
+<th style="text-align: center;">股东类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>KingsoftWPSCorporationLimited</td>
+<td style="text-align: right;">23,838.74</td>
+<td style="text-align: right;">51.45</td>
+<td style="text-align: right;">51.45</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">一般企业</td>
+</tr>
+<tr>
+<td>2</td>
+<td>天津奇文五维企业管理咨询合伙企业(有限合伙)</td>
+<td style="text-align: right;">1,793.27</td>
+<td style="text-align: right;">3.87</td>
+<td style="text-align: right;">3.87</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>3</td>
+<td>香港中央结算有限公司</td>
+<td style="text-align: right;">896.15</td>
+<td style="text-align: right;">1.93</td>
+<td style="text-align: right;">1.93</td>
+<td style="text-align: right;">-61.26</td>
+<td style="text-align: center;">一般企业</td>
+</tr>
+<tr>
+<td>4</td>
+<td>招商银行股份有限公司-华夏上证科创板50成份交易型开放式指数证券投资基金</td>
+<td style="text-align: right;">800.77</td>
+<td style="text-align: right;">1.73</td>
+<td style="text-align: right;">1.73</td>
+<td style="text-align: right;">-103.12</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+<tr>
+<td>5</td>
+<td>中国工商银行股份有限公司-易方达上证科创板50成份交易型开放式指数证券投资基金</td>
+<td style="text-align: right;">436.49</td>
+<td style="text-align: right;">0.94</td>
+<td style="text-align: right;">0.94</td>
+<td style="text-align: right;">-407.88</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+<tr>
+<td>6</td>
+<td>天津奇文四维企业管理咨询合伙企业(有限合伙)</td>
+<td style="text-align: right;">349.74</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>7</td>
+<td>天津奇文七维企业管理咨询合伙企业(有限合伙)</td>
+<td style="text-align: right;">315.02</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>8</td>
+<td>平安资管-招商银行-平安资产开阳5号资产管理产品</td>
+<td style="text-align: right;">290.92</td>
+<td style="text-align: right;">0.63</td>
+<td style="text-align: right;">0.63</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">保险资管产品</td>
+</tr>
+<tr>
+<td>9</td>
+<td>中国银行股份有限公司-嘉实中证软件服务交易型开放式指数证券投资基金</td>
+<td style="text-align: right;">266.71</td>
+<td style="text-align: right;">0.58</td>
+<td style="text-align: right;">0.58</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+<tr>
+<td>10</td>
+<td>瞿明淑</td>
+<td style="text-align: right;">249.43</td>
+<td style="text-align: right;">0.54</td>
+<td style="text-align: right;">0.54</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+</tbody>
+</table></div>
+<h5>报告期: 20251231</h5>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>股东</th>
+<th style="text-align: right;">持股数(万股)</th>
+<th style="text-align: right;">持股比例(%)</th>
+<th style="text-align: right;">占流通比例(%)</th>
+<th style="text-align: right;">期间变动(万股)</th>
+<th style="text-align: center;">股东类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>KingsoftWPSCorporationLimited</td>
+<td style="text-align: right;">23,838.74</td>
+<td style="text-align: right;">51.47</td>
+<td style="text-align: right;">51.47</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">一般企业</td>
+</tr>
+<tr>
+<td>2</td>
+<td>天津奇文五维企业管理咨询合伙企业(有限合伙)</td>
+<td style="text-align: right;">1,793.27</td>
+<td style="text-align: right;">3.87</td>
+<td style="text-align: right;">3.87</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>3</td>
+<td>香港中央结算有限公司</td>
+<td style="text-align: right;">957.41</td>
+<td style="text-align: right;">2.07</td>
+<td style="text-align: right;">2.07</td>
+<td style="text-align: right;">-70.20</td>
+<td style="text-align: center;">一般企业</td>
+</tr>
+<tr>
+<td>4</td>
+<td>招商银行股份有限公司-华夏上证科创板50成份交易型开放式指数证券投资基金</td>
+<td style="text-align: right;">903.90</td>
+<td style="text-align: right;">1.95</td>
+<td style="text-align: right;">1.95</td>
+<td style="text-align: right;">+84.58</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+<tr>
+<td>5</td>
+<td>中国工商银行股份有限公司-易方达上证科创板50成份交易型开放式指数证券投资基金</td>
+<td style="text-align: right;">844.37</td>
+<td style="text-align: right;">1.82</td>
+<td style="text-align: right;">1.82</td>
+<td style="text-align: right;">+7.19</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+<tr>
+<td>6</td>
+<td>中国工商银行-上证50交易型开放式指数证券投资基金</td>
+<td style="text-align: right;">426.13</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">-15.10</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+<tr>
+<td>7</td>
+<td>中国工商银行股份有限公司-华泰柏瑞沪深300交易型开放式指数证券投资基金</td>
+<td style="text-align: right;">386.17</td>
+<td style="text-align: right;">0.83</td>
+<td style="text-align: right;">0.83</td>
+<td style="text-align: right;">-22.80</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+<tr>
+<td>8</td>
+<td>天津奇文四维企业管理咨询合伙企业(有限合伙)</td>
+<td style="text-align: right;">349.74</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>9</td>
+<td>天津奇文七维企业管理咨询合伙企业(有限合伙)</td>
+<td style="text-align: right;">315.02</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>10</td>
+<td>中国建设银行股份有限公司-易方达沪深300交易型开放式指数发起式证券投资基金</td>
+<td style="text-align: right;">274.61</td>
+<td style="text-align: right;">0.59</td>
+<td style="text-align: right;">0.59</td>
+<td style="text-align: right;">-10.29</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>共 4 期 × ≤10 行/期, 可按期对比持股变动。</em></p>
+<hr />
+<h4>§6 完整十大流通股东表 (最近 4 期)</h4>
+<h5>报告期: 20260630</h5>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>股东</th>
+<th style="text-align: right;">持股数(万股)</th>
+<th style="text-align: right;">持股比例(%)</th>
+<th style="text-align: right;">占流通比例(%)</th>
+<th style="text-align: right;">期间变动(万股)</th>
+<th style="text-align: center;">股东类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>KingsoftWPSCorporationLimited</td>
+<td style="text-align: right;">23,838.74</td>
+<td style="text-align: right;">51.38</td>
+<td style="text-align: right;">51.38</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">一般企业</td>
+</tr>
+<tr>
+<td>2</td>
+<td>天津奇文五维企业管理咨询合伙企业(有限合伙)</td>
+<td style="text-align: right;">1,793.27</td>
+<td style="text-align: right;">3.86</td>
+<td style="text-align: right;">3.86</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>3</td>
+<td>香港中央结算有限公司</td>
+<td style="text-align: right;">831.97</td>
+<td style="text-align: right;">1.79</td>
+<td style="text-align: right;">1.79</td>
+<td style="text-align: right;">+2.33</td>
+<td style="text-align: center;">一般企业</td>
+</tr>
+<tr>
+<td>4</td>
+<td>招商银行股份有限公司-华夏上证科创板50成份交易型开放式指数证券投资基金</td>
+<td style="text-align: right;">418.36</td>
+<td style="text-align: right;">0.90</td>
+<td style="text-align: right;">0.90</td>
+<td style="text-align: right;">-15.14</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+<tr>
+<td>5</td>
+<td>天津奇文四维企业管理咨询合伙企业(有限合伙)</td>
+<td style="text-align: right;">349.74</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>6</td>
+<td>天津奇文七维企业管理咨询合伙企业(有限合伙)</td>
+<td style="text-align: right;">315.02</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>7</td>
+<td>中国银行股份有限公司-嘉实中证软件服务交易型开放式指数证券投资基金</td>
+<td style="text-align: right;">264.21</td>
+<td style="text-align: right;">0.57</td>
+<td style="text-align: right;">0.57</td>
+<td style="text-align: right;">-2.33</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+<tr>
+<td>8</td>
+<td>中国工商银行股份有限公司-易方达上证科创板50成份交易型开放式指数证券投资基金</td>
+<td style="text-align: right;">258.07</td>
+<td style="text-align: right;">0.56</td>
+<td style="text-align: right;">0.56</td>
+<td style="text-align: right;">+0.71</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+<tr>
+<td>9</td>
+<td>上海伊洛私募基金管理有限公司-华中12号伊洛私募证券投资基金</td>
+<td style="text-align: right;">227.27</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">其他金融产品</td>
+</tr>
+<tr>
+<td>10</td>
+<td>中国工商银行股份有限公司-易方达中证人工智能主题交易型开放式指数证券投资基金</td>
+<td style="text-align: right;">145.82</td>
+<td style="text-align: right;">0.31</td>
+<td style="text-align: right;">0.31</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+</tbody>
+</table></div>
+<h5>报告期: 20260626</h5>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>股东</th>
+<th style="text-align: right;">持股数(万股)</th>
+<th style="text-align: right;">持股比例(%)</th>
+<th style="text-align: right;">占流通比例(%)</th>
+<th style="text-align: right;">期间变动(万股)</th>
+<th style="text-align: center;">股东类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>KingsoftWPSCorporationLimited</td>
+<td style="text-align: right;">23,838.74</td>
+<td style="text-align: right;">51.38</td>
+<td style="text-align: right;">51.38</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">一般企业</td>
+</tr>
+<tr>
+<td>2</td>
+<td>天津奇文五维企业管理咨询合伙企业(有限合伙)</td>
+<td style="text-align: right;">1,793.27</td>
+<td style="text-align: right;">3.86</td>
+<td style="text-align: right;">3.86</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>3</td>
+<td>香港中央结算有限公司</td>
+<td style="text-align: right;">829.63</td>
+<td style="text-align: right;">1.79</td>
+<td style="text-align: right;">1.79</td>
+<td style="text-align: right;">-66.52</td>
+<td style="text-align: center;">一般企业</td>
+</tr>
+<tr>
+<td>4</td>
+<td>招商银行股份有限公司-华夏上证科创板50成份交易型开放式指数证券投资基金</td>
+<td style="text-align: right;">433.50</td>
+<td style="text-align: right;">0.93</td>
+<td style="text-align: right;">0.93</td>
+<td style="text-align: right;">-367.27</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+<tr>
+<td>5</td>
+<td>天津奇文四维企业管理咨询合伙企业(有限合伙)</td>
+<td style="text-align: right;">349.74</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>6</td>
+<td>天津奇文七维企业管理咨询合伙企业(有限合伙)</td>
+<td style="text-align: right;">315.02</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>7</td>
+<td>中国银行股份有限公司-嘉实中证软件服务交易型开放式指数证券投资基金</td>
+<td style="text-align: right;">266.54</td>
+<td style="text-align: right;">0.57</td>
+<td style="text-align: right;">0.57</td>
+<td style="text-align: right;">-0.17</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+<tr>
+<td>8</td>
+<td>中国工商银行股份有限公司-易方达上证科创板50成份交易型开放式指数证券投资基金</td>
+<td style="text-align: right;">257.37</td>
+<td style="text-align: right;">0.55</td>
+<td style="text-align: right;">0.55</td>
+<td style="text-align: right;">-179.12</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+<tr>
+<td>9</td>
+<td>上海伊洛私募基金管理有限公司-华中12号伊洛私募证券投资基金</td>
+<td style="text-align: right;">227.27</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">其他金融产品</td>
+</tr>
+<tr>
+<td>10</td>
+<td>上海伊洛私募基金管理有限公司-君行23号伊洛私募证券投资基金</td>
+<td style="text-align: right;">184.52</td>
+<td style="text-align: right;">0.40</td>
+<td style="text-align: right;">0.40</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">其他金融产品</td>
+</tr>
+</tbody>
+</table></div>
+<h5>报告期: 20260331</h5>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>股东</th>
+<th style="text-align: right;">持股数(万股)</th>
+<th style="text-align: right;">持股比例(%)</th>
+<th style="text-align: right;">占流通比例(%)</th>
+<th style="text-align: right;">期间变动(万股)</th>
+<th style="text-align: center;">股东类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>KingsoftWPSCorporationLimited</td>
+<td style="text-align: right;">23,838.74</td>
+<td style="text-align: right;">51.45</td>
+<td style="text-align: right;">51.45</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">一般企业</td>
+</tr>
+<tr>
+<td>2</td>
+<td>天津奇文五维企业管理咨询合伙企业(有限合伙)</td>
+<td style="text-align: right;">1,793.27</td>
+<td style="text-align: right;">3.87</td>
+<td style="text-align: right;">3.87</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>3</td>
+<td>香港中央结算有限公司</td>
+<td style="text-align: right;">896.15</td>
+<td style="text-align: right;">1.93</td>
+<td style="text-align: right;">1.93</td>
+<td style="text-align: right;">-61.26</td>
+<td style="text-align: center;">一般企业</td>
+</tr>
+<tr>
+<td>4</td>
+<td>招商银行股份有限公司-华夏上证科创板50成份交易型开放式指数证券投资基金</td>
+<td style="text-align: right;">800.77</td>
+<td style="text-align: right;">1.73</td>
+<td style="text-align: right;">1.73</td>
+<td style="text-align: right;">-103.12</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+<tr>
+<td>5</td>
+<td>中国工商银行股份有限公司-易方达上证科创板50成份交易型开放式指数证券投资基金</td>
+<td style="text-align: right;">436.49</td>
+<td style="text-align: right;">0.94</td>
+<td style="text-align: right;">0.94</td>
+<td style="text-align: right;">-407.88</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+<tr>
+<td>6</td>
+<td>天津奇文四维企业管理咨询合伙企业(有限合伙)</td>
+<td style="text-align: right;">349.74</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>7</td>
+<td>天津奇文七维企业管理咨询合伙企业(有限合伙)</td>
+<td style="text-align: right;">315.02</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>8</td>
+<td>平安资管-招商银行-平安资产开阳5号资产管理产品</td>
+<td style="text-align: right;">290.92</td>
+<td style="text-align: right;">0.63</td>
+<td style="text-align: right;">0.63</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">保险资管产品</td>
+</tr>
+<tr>
+<td>9</td>
+<td>中国银行股份有限公司-嘉实中证软件服务交易型开放式指数证券投资基金</td>
+<td style="text-align: right;">266.71</td>
+<td style="text-align: right;">0.58</td>
+<td style="text-align: right;">0.58</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+<tr>
+<td>10</td>
+<td>瞿明淑</td>
+<td style="text-align: right;">249.43</td>
+<td style="text-align: right;">0.54</td>
+<td style="text-align: right;">0.54</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: center;">自然人</td>
+</tr>
+</tbody>
+</table></div>
+<h5>报告期: 20251231</h5>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>股东</th>
+<th style="text-align: right;">持股数(万股)</th>
+<th style="text-align: right;">持股比例(%)</th>
+<th style="text-align: right;">占流通比例(%)</th>
+<th style="text-align: right;">期间变动(万股)</th>
+<th style="text-align: center;">股东类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>KingsoftWPSCorporationLimited</td>
+<td style="text-align: right;">23,838.74</td>
+<td style="text-align: right;">51.47</td>
+<td style="text-align: right;">51.47</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">一般企业</td>
+</tr>
+<tr>
+<td>2</td>
+<td>天津奇文五维企业管理咨询合伙企业(有限合伙)</td>
+<td style="text-align: right;">1,793.27</td>
+<td style="text-align: right;">3.87</td>
+<td style="text-align: right;">3.87</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>3</td>
+<td>香港中央结算有限公司</td>
+<td style="text-align: right;">957.41</td>
+<td style="text-align: right;">2.07</td>
+<td style="text-align: right;">2.07</td>
+<td style="text-align: right;">-70.20</td>
+<td style="text-align: center;">一般企业</td>
+</tr>
+<tr>
+<td>4</td>
+<td>招商银行股份有限公司-华夏上证科创板50成份交易型开放式指数证券投资基金</td>
+<td style="text-align: right;">903.90</td>
+<td style="text-align: right;">1.95</td>
+<td style="text-align: right;">1.95</td>
+<td style="text-align: right;">+84.58</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+<tr>
+<td>5</td>
+<td>中国工商银行股份有限公司-易方达上证科创板50成份交易型开放式指数证券投资基金</td>
+<td style="text-align: right;">844.37</td>
+<td style="text-align: right;">1.82</td>
+<td style="text-align: right;">1.82</td>
+<td style="text-align: right;">+7.19</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+<tr>
+<td>6</td>
+<td>中国工商银行-上证50交易型开放式指数证券投资基金</td>
+<td style="text-align: right;">426.13</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">-15.10</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+<tr>
+<td>7</td>
+<td>中国工商银行股份有限公司-华泰柏瑞沪深300交易型开放式指数证券投资基金</td>
+<td style="text-align: right;">386.17</td>
+<td style="text-align: right;">0.83</td>
+<td style="text-align: right;">0.83</td>
+<td style="text-align: right;">-22.80</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+<tr>
+<td>8</td>
+<td>天津奇文四维企业管理咨询合伙企业(有限合伙)</td>
+<td style="text-align: right;">349.74</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>9</td>
+<td>天津奇文七维企业管理咨询合伙企业(有限合伙)</td>
+<td style="text-align: right;">315.02</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">+0.00</td>
+<td style="text-align: center;">投资公司</td>
+</tr>
+<tr>
+<td>10</td>
+<td>中国建设银行股份有限公司-易方达沪深300交易型开放式指数发起式证券投资基金</td>
+<td style="text-align: right;">274.61</td>
+<td style="text-align: right;">0.59</td>
+<td style="text-align: right;">0.59</td>
+<td style="text-align: right;">-10.29</td>
+<td style="text-align: center;">开放式投资基金</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>共 4 期 × ≤10 行/期, 可按期对比持股变动。</em></p>
+<hr />
+<h4>§7 质押 / 冻结明细 (active 状态)</h4>
+<p>(无质押数据)</p>
+<hr />
+<h4>§8 股东户数变化时序</h4>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th style="text-align: center;">报告期</th>
+<th style="text-align: right;">户数</th>
+<th style="text-align: center;">环比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">20260630</td>
+<td style="text-align: right;">61,128</td>
+<td style="text-align: center;">+34.22%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20260331</td>
+<td style="text-align: right;">45,543</td>
+<td style="text-align: center;">-0.79%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20260228</td>
+<td style="text-align: right;">45,905</td>
+<td style="text-align: center;">+18.73%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20251231</td>
+<td style="text-align: right;">38,664</td>
+<td style="text-align: center;">+11.06%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20250930</td>
+<td style="text-align: right;">34,814</td>
+<td style="text-align: center;">+14.09%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20250630</td>
+<td style="text-align: right;">30,514</td>
+<td style="text-align: center;">+2.78%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20250331</td>
+<td style="text-align: right;">29,688</td>
+<td style="text-align: center;">+23.06%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20250228</td>
+<td style="text-align: right;">24,124</td>
+<td style="text-align: center;">-0.22%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20241231</td>
+<td style="text-align: right;">24,176</td>
+<td style="text-align: center;">+5.87%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20240930</td>
+<td style="text-align: right;">22,835</td>
+<td style="text-align: center;">+18.82%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20240630</td>
+<td style="text-align: right;">19,218</td>
+<td style="text-align: center;">+13.93%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20240331</td>
+<td style="text-align: right;">16,868</td>
+<td style="text-align: center;">+1.95%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20240229</td>
+<td style="text-align: right;">16,545</td>
+<td style="text-align: center;">+17.36%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20231231</td>
+<td style="text-align: right;">14,098</td>
+<td style="text-align: center;">-1.01%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20230930</td>
+<td style="text-align: right;">14,242</td>
+<td style="text-align: center;">-4.90%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20230630</td>
+<td style="text-align: right;">14,976</td>
+<td style="text-align: center;">+9.23%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20230331</td>
+<td style="text-align: right;">13,710</td>
+<td style="text-align: center;">-7.83%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20230228</td>
+<td style="text-align: right;">14,875</td>
+<td style="text-align: center;">+7.07%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20221231</td>
+<td style="text-align: right;">13,893</td>
+<td style="text-align: center;">-2.27%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20220930</td>
+<td style="text-align: right;">14,216</td>
+<td style="text-align: center;">-16.47%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20220630</td>
+<td style="text-align: right;">17,019</td>
+<td style="text-align: center;">+0.95%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20220331</td>
+<td style="text-align: right;">16,859</td>
+<td style="text-align: center;">-1.99%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20220228</td>
+<td style="text-align: right;">17,202</td>
+<td style="text-align: center;">+1.58%</td>
+</tr>
+<tr>
+<td style="text-align: center;">20211231</td>
+<td style="text-align: right;">16,934</td>
+<td style="text-align: center;">–</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>★ 户数变化是主力吸筹/出货的核心信号: 户数↓ + 户均↑ = 机构吸筹; 户数↑ + 户均↓ = 机构退出 (capital_flow.md §3 已自动判定)。</em></p>
+<hr />
+<h4>§9 限售股解禁日历 (未来 12 个月) ★ v5.1.2 新增</h4>
+<p>(无解禁数据,可能是该公司近 12 月无解禁,或 Tushare 接口未返回)</p>
+<hr />
+<p><em>由 <code>scripts/data_snapshot.py</code> 自动生成 (确定性 Python 拼装, LLM 不参与)。挂载为报告<a class="cite" href="#appx-A">附录A</a>; 判断链五节点引用其中数字时带出处, 明细不复制进正文。</em></p>
+</section>
+<section class="appx" id="appx-B">
+  <h2>附录B 行业与对标明细</h2>
+  <blockquote>
+<p>⚠️ <strong>口径提示</strong>:本表的同业是采集脚本按行业分类<strong>自动选</strong>的 —— 对细分行业的公司,可能选到与本公司<strong>零业务重合</strong>的对照物,那样算出的估值分位<strong>不作数</strong>;本附录若另有人工补采的「真实同业」小节,<strong>以那一节为准</strong>。另:本表<strong>本公司</strong>那一行的盈利能力列取自脚本抓到的「最新披露期」,期别<strong>可能早于本报告基准日</strong>,本公司的盈利能力以<strong><a class="cite" href="#appx-A">附录A</a> 的趋势表</strong>与正文为准。</p>
+</blockquote>
+<h3>可比公司对标: 金山办公 (688111.SH)</h3>
+<p><strong>行业分类</strong> (Tushare industry): <strong>软件服务</strong><br />
+<strong>Peer 选取规则</strong>: <strong>人工指定</strong>(<code>--peer-codes</code>)—— 不按行业分类自动选<br />
+<strong>财务截至</strong>: 最新披露期 · <strong>行情截至</strong>: 20260915</p>
+<h4>§1 对比表</h4>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th style="text-align: center;">ts_code</th>
+<th style="text-align: center;">公司</th>
+<th style="text-align: center;">细分行业</th>
+<th style="text-align: center;">市值(亿)</th>
+<th style="text-align: center;">PE TTM</th>
+<th style="text-align: center;">PB</th>
+<th style="text-align: center;">PS TTM</th>
+<th style="text-align: center;">财务期别</th>
+<th style="text-align: center;">ROE(%, 非加权)</th>
+<th style="text-align: center;">毛利率(%)</th>
+<th style="text-align: center;">净利率(%)</th>
+<th style="text-align: center;">资产负债率(%)</th>
+<th style="text-align: center;">营收 YoY(%)</th>
+<th style="text-align: center;">股息率(%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>688111.SH</strong> ⭐</td>
+<td style="text-align: center;"><strong>金山办公</strong></td>
+<td style="text-align: center;">软件服务</td>
+<td style="text-align: center;">1,046.44</td>
+<td style="text-align: center;">29.01</td>
+<td style="text-align: center;">6.94</td>
+<td style="text-align: center;">15.89</td>
+<td style="text-align: center;">20260630</td>
+<td style="text-align: center;">18.03</td>
+<td style="text-align: center;">84.90</td>
+<td style="text-align: center;">75.99</td>
+<td style="text-align: center;">27.79</td>
+<td style="text-align: center;">0.00</td>
+<td style="text-align: center;">0.40</td>
+</tr>
+<tr>
+<td style="text-align: center;">600588.SH</td>
+<td style="text-align: center;">用友网络</td>
+<td style="text-align: center;">软件服务</td>
+<td style="text-align: center;">320.51</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">4.77</td>
+<td style="text-align: center;">3.44</td>
+<td style="text-align: center;">20260630</td>
+<td style="text-align: center;">-12.97</td>
+<td style="text-align: center;">50.89</td>
+<td style="text-align: center;">-25.43</td>
+<td style="text-align: center;">60.97</td>
+<td style="text-align: center;">4.08</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td style="text-align: center;">002410.SZ</td>
+<td style="text-align: center;">广联达</td>
+<td style="text-align: center;">软件服务</td>
+<td style="text-align: center;">138.27</td>
+<td style="text-align: center;">37.54</td>
+<td style="text-align: center;">2.36</td>
+<td style="text-align: center;">2.34</td>
+<td style="text-align: center;">20260630</td>
+<td style="text-align: center;">3.36</td>
+<td style="text-align: center;">88.82</td>
+<td style="text-align: center;">8.49</td>
+<td style="text-align: center;">35.33</td>
+<td style="text-align: center;">0.00</td>
+<td style="text-align: center;">1.78</td>
+</tr>
+<tr>
+<td style="text-align: center;">300624.SZ</td>
+<td style="text-align: center;">万兴科技</td>
+<td style="text-align: center;">软件服务</td>
+<td style="text-align: center;">95.82</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">9.96</td>
+<td style="text-align: center;">6.48</td>
+<td style="text-align: center;">20260630</td>
+<td style="text-align: center;">-6.95</td>
+<td style="text-align: center;">86.63</td>
+<td style="text-align: center;">-9.74</td>
+<td style="text-align: center;">38.22</td>
+<td style="text-align: center;">-7.09</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td style="text-align: center;">688083.SH</td>
+<td style="text-align: center;">中望软件</td>
+<td style="text-align: center;">软件服务</td>
+<td style="text-align: center;">84.53</td>
+<td style="text-align: center;">151.23</td>
+<td style="text-align: center;">3.24</td>
+<td style="text-align: center;">9.19</td>
+<td style="text-align: center;">20260630</td>
+<td style="text-align: center;">-0.65</td>
+<td style="text-align: center;">95.99</td>
+<td style="text-align: center;">-5.16</td>
+<td style="text-align: center;">15.37</td>
+<td style="text-align: center;">7.92</td>
+<td style="text-align: center;">0.71</td>
+</tr>
+<tr>
+<td style="text-align: center;">688095.SH</td>
+<td style="text-align: center;">福昕软件</td>
+<td style="text-align: center;">软件服务</td>
+<td style="text-align: center;">51.13</td>
+<td style="text-align: center;">104.20</td>
+<td style="text-align: center;">1.96</td>
+<td style="text-align: center;">4.59</td>
+<td style="text-align: center;">20260630</td>
+<td style="text-align: center;">0.53</td>
+<td style="text-align: center;">91.58</td>
+<td style="text-align: center;">-1.78</td>
+<td style="text-align: center;">25.95</td>
+<td style="text-align: center;">0.00</td>
+<td style="text-align: center;">0.53</td>
+</tr>
+</tbody>
+</table></div>
+<h4>§2 目标公司在 peer 中的分位</h4>
+<p>下表显示 金山办公 相对 peer group 的分位 (1=最好/最高, 0=最差/最低):</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>指标</th>
+<th style="text-align: center;">目标值</th>
+<th style="text-align: center;">Peer 中位数</th>
+<th style="text-align: center;">分位 (high=好)</th>
+<th>解读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ROE(%, 非加权)</td>
+<td style="text-align: center;">18.03</td>
+<td style="text-align: center;">-0.65</td>
+<td style="text-align: center;"><strong>100%</strong> 🟢 领先</td>
+<td>ROE 越高盈利能力越强</td>
+</tr>
+<tr>
+<td>毛利率(%)</td>
+<td style="text-align: center;">84.90</td>
+<td style="text-align: center;">88.82</td>
+<td style="text-align: center;"><strong>20%</strong> ⚠️ 低于中位</td>
+<td>毛利率越高议价能力越强</td>
+</tr>
+<tr>
+<td>净利率(%)</td>
+<td style="text-align: center;">75.99</td>
+<td style="text-align: center;">-5.16</td>
+<td style="text-align: center;"><strong>100%</strong> 🟢 领先</td>
+<td>净利率越高经营效率越高</td>
+</tr>
+<tr>
+<td>资产负债率(%)</td>
+<td style="text-align: center;">27.79</td>
+<td style="text-align: center;">35.33</td>
+<td style="text-align: center;"><strong>60%</strong> ✅ 便宜</td>
+<td>负债率低则财务稳健</td>
+</tr>
+<tr>
+<td>PE TTM</td>
+<td style="text-align: center;">29.01</td>
+<td style="text-align: center;">104.20</td>
+<td style="text-align: center;"><strong>100%</strong> 🟢 最便宜</td>
+<td>PE 低估值便宜 (但要看是否真便宜还是破落)</td>
+</tr>
+<tr>
+<td>PB</td>
+<td style="text-align: center;">6.94</td>
+<td style="text-align: center;">3.24</td>
+<td style="text-align: center;"><strong>20%</strong> ⚠️ 偏贵</td>
+<td>PB 低估值便宜</td>
+</tr>
+<tr>
+<td>营收 YoY(%)</td>
+<td style="text-align: center;">0.00</td>
+<td style="text-align: center;">0.00</td>
+<td style="text-align: center;"><strong>20%</strong> ⚠️ 低于中位</td>
+<td>营收高增长支撑估值</td>
+</tr>
+</tbody>
+</table></div>
+<h4>§3 对比洞察</h4>
+<p>✅ <strong>PE 显著低于 peer 中位数</strong> (29.0x vs 104.2x × 0.7),估值折让 &gt; 30%</p>
+<h4>§4 行业全员估值分布 (v5.1.2,行业 软件服务 共 6 家)</h4>
+<p>对比维度从 5 家 peer 扩展到<strong>全行业上市公司</strong>:</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>指标</th>
+<th style="text-align: center;">行业最便宜</th>
+<th style="text-align: center;">25 分位</th>
+<th style="text-align: center;">中位数</th>
+<th style="text-align: center;">75 分位</th>
+<th style="text-align: center;">行业最贵</th>
+<th style="text-align: center;">目标值</th>
+<th style="text-align: center;">目标分位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PB</td>
+<td style="text-align: center;">1.96</td>
+<td style="text-align: center;">2.36</td>
+<td style="text-align: center;">4.77</td>
+<td style="text-align: center;">6.94</td>
+<td style="text-align: center;">9.96</td>
+<td style="text-align: center;"><strong>6.94</strong></td>
+<td style="text-align: center;"><strong>66.7%</strong></td>
+</tr>
+<tr>
+<td>PS_TTM</td>
+<td style="text-align: center;">2.34</td>
+<td style="text-align: center;">3.44</td>
+<td style="text-align: center;">6.48</td>
+<td style="text-align: center;">9.19</td>
+<td style="text-align: center;">15.89</td>
+<td style="text-align: center;"><strong>15.89</strong></td>
+<td style="text-align: center;"><strong>83.3%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>信号判定</strong>(行业全员分位):<br />
+- ⚠️ PB 高于行业 60%(分位 67%)<br />
+- 🔴 PS_TTM 在行业最贵 20%(分位 83%)</p>
+<blockquote>
+<p>说明: 分位 0% = 行业最便宜(最低 PE/PB),100% = 最贵。5 家 peer 是市值最近的同类对比,而行业全员包括所有同行业上市公司,能识别 ‘市值偏离 peer 但仍在行业中位’ 的情况。</p>
+</blockquote>
+<hr />
+<p><em>由 <code>scripts/peer_collector.py</code> 自动生成(含行业全员分布),挂载为报告<a class="cite" href="#appx-B">附录B</a> 行业与对标明细</em><br />
+<em>海外同业(如全球龙头)不在 Tushare 池内,需要时在本文件末尾另起「§3.5 …补充」—— <a class="cite" href="#appx-B">附录B</a> 只挂载本文件,补充对标写在这里就会一起出现</em></p>
+<hr />
+<h4>附:对照组的选取理由(人工指定,非自动)</h4>
+<p><strong>为什么弃用自动选取结果</strong>:按行业分类("软件服务")自动选出的是润泽科技、科大讯飞、同花顺、南网数字、深信服。这五家与金山办公的业务重合度都很低,其中润泽科技是 IDC/数据中心运营商,重资产、靠机柜折旧和电力成本吃饭,与本公司固定资产仅占总资产 2.14% 的订阅制软件结构正好相反;南网数字是电网系统集成商,收入确认方式是项目制而非订阅;同花顺是金融信息服务;深信服主体仍是网络安全软硬件。用这组做估值分位,方向可能与真同业相反。自动版结果留存在 <code>peer_analysis_auto.md</code> 供对照。</p>
+<p><strong>改用的五家及理由</strong>:</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>公司</th>
+<th>选取理由</th>
+<th>重合维度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>福昕软件 688095.SH</td>
+<td>文档格式(PDF)软件,与 WPS 在文档处理场景直接竞争,同样在做授权制→订阅制转型,同为科创板</td>
+<td>产品形态 · 商业模式 · 板块</td>
+</tr>
+<tr>
+<td>中望软件 688083.SH</td>
+<td>CAD 工业软件,国产替代/信创驱动逻辑与 WPS 机构授权业务同源,授权转订阅路径相同,同为科创板</td>
+<td>商业模式 · 政策驱动 · 板块</td>
+</tr>
+<tr>
+<td>万兴科技 300624.SZ</td>
+<td>消费级创意软件,订阅制收入占比高、海外收入占比高,是观察"个人订阅 + 出海"这条线最可比的对象</td>
+<td>商业模式 · 客户结构</td>
+</tr>
+<tr>
+<td>广联达 002410.SZ</td>
+<td>建筑行业软件,是 A 股最完整地走完"一次性授权→云订阅"转型的案例,合同负债在其转型期同样是核心先行指标,对本公司最有方法论参照价值</td>
+<td>商业模式 · 先行指标结构</td>
+</tr>
+<tr>
+<td>用友网络 600588.SH</td>
+<td>ERP 云订阅,机构级订阅客户结构与 WPS 365 接近,可对照组织级办公/管理软件的付费能力与续费表现</td>
+<td>客户结构 · 订阅模式</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>使用这张表时的两处修正</strong>:</p>
+<ol>
+<li>本公司"净利率 75.99%"与"PE TTM 29.01"含 2026 年上半年约 19.14 亿元一次性基金投资收益。据此得出的"peer 中最便宜(100% 分位)"结论不成立,剔除后可比 PE 显著高于 29 倍。</li>
+<li>"营收 YoY"一列中本公司、广联达、福昕均显示 0.00,系该字段在半年度期次缺失所致,<strong>不是真实零增长</strong>(本公司 2026 年上半年营收实际同比 +24.69%)。该列不可直接采信。</li>
+</ol>
+</section>
+<section class="appx" id="appx-C">
+  <h2>附录C 舆情、资金与技术面底稿</h2>
+  <h3>主力控盘与资金流向分析: 金山办公 (688111.SH)</h3>
+<p><strong>生成日期</strong>: 2026-09-16<br />
+<strong>数据窗口</strong>: 近 60 日 (两融/陆股通/主力资金) / 近 30 日 (龙虎榜)<br />
+<strong>v4.5 口径说明</strong>: 控盘指标用 <strong>top10_holders(含限售)</strong> 作为主口径, 旧版 top10_float(仅流通) 的 22.61% 等数字降为补充(对限售比例高的公司会严重低估真实控盘)。</p>
+<h4>§1 控盘综合判定 (Top 一眼可见)</h4>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>信号</th>
+<th>解读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主力控盘度 (总股本口径)</td>
+<td>🔴 高度控盘</td>
+<td>前 10 大全体股东(含限售)合计 <strong>61.3%</strong></td>
+</tr>
+<tr>
+<td>★ 实控人家族合计持股</td>
+<td>数据不足</td>
+<td>–</td>
+</tr>
+<tr>
+<td>筹码集中度 (流通股动态)</td>
+<td>🔴 筹码分散 (散户涌入, 机构退出)</td>
+<td>户数变化 34.22%</td>
+</tr>
+<tr>
+<td>陆股通(北向)</td>
+<td>数据不足</td>
+<td>持仓 N/A% / 20 日变化 N/App</td>
+</tr>
+<tr>
+<td>两融杠杆</td>
+<td>⚪ 两融余额平稳</td>
+<td>融资余额 475664.77 万元, 相对近 60 日中位 -2.49%</td>
+</tr>
+<tr>
+<td>主力资金流</td>
+<td>⚪ 主力资金近 20 日拉锯</td>
+<td>近 20 日净流入天数 8 / 20</td>
+</tr>
+<tr>
+<td>龙虎榜机构</td>
+<td>⚪ 近 30 日无龙虎榜机构席位上榜</td>
+<td>近 30 日上榜 0 次</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>口径补充</strong>: 前 10 大<strong>流通</strong>股东合计 占<strong>总股本</strong> 61.3% / 占<strong>流通股本</strong> 61.3%。当 top10_all 与 top10_float 差距大, 意味着实控人大量限售股尚未解锁(典型上市 3 年内公司)。</p>
+<h4>§2 前十大全体股东 (含限售, 年报/季报披露)</h4>
+<p><strong>披露期</strong>: 20260630<br />
+<strong>前 10 大合计占总股本</strong>: <strong>61.3%</strong> (🔴 高度控盘)</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>股东</th>
+<th style="text-align: center;">持股数(万股)</th>
+<th style="text-align: center;">占总股本(%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KingsoftWPSCorporationLimited</td>
+<td style="text-align: center;">23,839</td>
+<td style="text-align: center;">51.38</td>
+</tr>
+<tr>
+<td>天津奇文五维企业管理咨询合伙企业(有限合伙)</td>
+<td style="text-align: center;">1,793</td>
+<td style="text-align: center;">3.86</td>
+</tr>
+<tr>
+<td>香港中央结算有限公司</td>
+<td style="text-align: center;">832</td>
+<td style="text-align: center;">1.79</td>
+</tr>
+<tr>
+<td>招商银行股份有限公司-华夏上证科创板50成份交易型开放式指数证券投资基金</td>
+<td style="text-align: center;">418</td>
+<td style="text-align: center;">0.90</td>
+</tr>
+<tr>
+<td>天津奇文四维企业管理咨询合伙企业(有限合伙)</td>
+<td style="text-align: center;">350</td>
+<td style="text-align: center;">0.75</td>
+</tr>
+<tr>
+<td>天津奇文七维企业管理咨询合伙企业(有限合伙)</td>
+<td style="text-align: center;">315</td>
+<td style="text-align: center;">0.68</td>
+</tr>
+<tr>
+<td>中国银行股份有限公司-嘉实中证软件服务交易型开放式指数证券投资基金</td>
+<td style="text-align: center;">264</td>
+<td style="text-align: center;">0.57</td>
+</tr>
+<tr>
+<td>中国工商银行股份有限公司-易方达上证科创板50成份交易型开放式指数证券投资基金</td>
+<td style="text-align: center;">258</td>
+<td style="text-align: center;">0.56</td>
+</tr>
+<tr>
+<td>上海伊洛私募基金管理有限公司-华中12号伊洛私募证券投资基金</td>
+<td style="text-align: center;">227</td>
+<td style="text-align: center;">0.49</td>
+</tr>
+<tr>
+<td>中国工商银行股份有限公司-易方达中证人工智能主题交易型开放式指数证券投资基金</td>
+<td style="text-align: center;">146</td>
+<td style="text-align: center;">0.31</td>
+</tr>
+</tbody>
+</table></div>
+<h4>§3 筹码集中度 2×2 矩阵</h4>
+<p><strong>当前期</strong>: 20260630 · 户数 <strong>61,128</strong><br />
+<strong>环比</strong>: +34.22%<br />
+<strong>户均持股</strong>: 3,691 股 · 环比 -25.50%</p>
+<p><strong>判定</strong>: 🔴 筹码分散 (散户涌入, 机构退出)</p>
+<blockquote>
+<p>经典 2×2 矩阵: 户数↓ + 户均↑ = 筹码集中(机构吸筹);  户数↑ + 户均↓ = 筹码分散(机构退出)</p>
+</blockquote>
+<h4>§4 陆股通(北向)持仓趋势</h4>
+<p><strong>最新持仓比例</strong>: N/A% (N/A)<br />
+<strong>20 日变化</strong>: N/A pp · <strong>60 日变化</strong>: N/A pp<br />
+<strong>判定</strong>: 数据不足</p>
+<h4>§5 两融杠杆 (融资余额)</h4>
+<p><strong>最新融资余额</strong>: 475,665 万元<br />
+<strong>相对近 60 日中位数</strong>: -2.5%<br />
+<strong>判定</strong>: ⚪ 两融余额平稳</p>
+<h4>§6 主力资金流向 (近 20 日)</h4>
+<p><strong>近 20 日主力净流入天数</strong>: 8 / 20 (40.0%)<br />
+<strong>净流入累计</strong>: -6,920 万元<br />
+<strong>判定</strong>: ⚪ 主力资金近 20 日拉锯</p>
+<blockquote>
+<p>口径: 主力 = 超大单 + 大单 (<code>buy_elg_amount + buy_lg_amount</code>)  ·  散户 = 中小单  ·  净流入 &gt; 0 表示主力净买入</p>
+</blockquote>
+<h4>§7 龙虎榜与机构席位 (近 30 日)</h4>
+<p><em>近 30 日未上榜龙虎榜</em></p>
+<h4>§8 大宗交易 (近 60 日 — 比龙虎榜信号更干净)</h4>
+<p><strong>成交次数</strong>: 2 笔<br />
+<strong>累计成交额</strong>: 686.61 万元<br />
+<strong>平均折溢价</strong>: -14.17% (vs 当日收盘价)</p>
+<p><strong>信号</strong>: 🔴 大宗交易显著折价 -14.2% — 抛售压力 / 机构低吸</p>
+<p><strong>近 5 笔明细</strong>:</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>日期</th>
+<th>价格</th>
+<th>成交量(股)</th>
+<th>成交额(万)</th>
+<th>买方营业部</th>
+<th>卖方营业部</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20260827</td>
+<td>219.79</td>
+<td>0.91</td>
+<td>200.01</td>
+<td>东方财富证券股份有限公司拉萨团结路第二证券营业部</td>
+<td>东方财富证券股份有限公司北京航丰路证券营业部</td>
+</tr>
+<tr>
+<td>20260814</td>
+<td>203.6</td>
+<td>2.39</td>
+<td>486.6</td>
+<td>东方财富证券股份有限公司拉萨团结路第二证券营业部</td>
+<td>东方财富证券股份有限公司北京航丰路证券营业部</td>
+</tr>
+</tbody>
+</table></div>
+<h4>§9 北向资金加权建仓成本 (v5.1.2 新增)</h4>
+<p><em>北向资金成本无法推导 (hk_hold 或 daily_basic 数据不足)</em></p>
+<h4>§10 综合控盘警示</h4>
+<ul>
+<li>🔴 <strong>前十大合计 61.3%</strong> — 流通盘极度集中, 股价受大股东行为主导, 中小股东议价权弱</li>
+<li>🔴 <strong>筹码分散</strong> — 户数增加 &gt;5%, 散户涌入, 机构可能正在退出</li>
+<li>🔴 <strong>大宗交易显著折价 -14.2%</strong> — 大额持有者抛售,关注未来 1-2 周抛压</li>
+</ul>
+<hr />
+<p><em>由 <code>scripts/capital_flow.py</code> 自动生成 (v5.1.2: 10 段)</em><br />
+<em>数据源: Tushare (moneyflow / hk_hold / margin_detail / top_list / top_inst / block_trade / top10_floatholders / stk_holdernumber + daily_basic)</em><br />
+<em>挂载为报告<a class="cite" href="#appx-C">附录C</a> 舆情与资金底稿。判断链里<a class="cite" href="#ch-path">④路径</a>用它判拥挤度与波动放大、<a class="cite" href="#ch-state">②状态</a>用它判注意力先行——资金面属传闻一侧证据,不作基本面改善的实锤</em></p>
+<h3>舆情底稿</h3>
+<p>采集时点: 2026-09-16 · 标的: 金山办公 (688111.SH) · 收盘 225.52 元 (20260915) · 市值 1,046 亿元</p>
+<p>本底稿由公开检索汇总,所有观点均为第三方表述,不代表本报告立场。资金面与舆情属"传闻一侧"证据,不作基本面改善的实锤。</p>
+<h4>一、近 12 个月重大事项与公告</h4>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>日期</th>
+<th>事项</th>
+<th>要点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-08-19/20</td>
+<td>2026 年半年度报告</td>
+<td>营收 33.13 亿元 (+24.69%);归母净利 25.18 亿元 (+236.94%);公司口径"经调整归母净利"10.87 亿元 (+28.29%)</td>
+</tr>
+<tr>
+<td>2026-07-29</td>
+<td>半年度业绩预告(自愿性披露)</td>
+<td>预告归母净利同比增长 210%–264%,公司明确归因于"部分对外投资基金项目实现较好投资回报"</td>
+</tr>
+<tr>
+<td>2026-06-29</td>
+<td>回购预案</td>
+<td>拟回购金额上限 5 亿元,价格上限 352.11 元/股</td>
+</tr>
+<tr>
+<td>2026-07-07 / 07-23</td>
+<td>回购实施</td>
+<td>两笔合计约 1.20 亿元,成交价区间 205.71–230.00 元</td>
+</tr>
+<tr>
+<td>2026-04-24</td>
+<td>2026 年一季报</td>
+<td>归母净利 21.95 亿元,同比增长约 4–4.7 倍,同样由投资收益驱动</td>
+</tr>
+<tr>
+<td>2026-03-26</td>
+<td>2025 年年度报告</td>
+<td>营收 59.29 亿元;归母净利 18.36 亿元;信永中和出具标准无保留意见</td>
+</tr>
+<tr>
+<td>2026-03-26</td>
+<td>"提质增效重回报"行动方案</td>
+<td>2026 年度方案随年报同步披露</td>
+</tr>
+</tbody>
+</table></div>
+<h4>二、看好派(≥3 条)</h4>
+<ol>
+<li><strong>订阅先行指标仍在加速</strong> —— 半年报披露合同负债(待履行合同义务)27.64 亿元,同比 +25.7%,增速略高于当期营收增速 24.69%。对订阅制公司而言,这代表已收款但尚未确认的收入池在变厚,而非靠确认存量在撑当期报表。(来源: 2026 半年报附注 / Tushare balancesheet,2026-08-19)</li>
+<li><strong>WPS 365 是目前最硬的第二增长曲线</strong> —— 半年度收入 4.97 亿元,同比 +60.84%,公司称自 2025 年起已连续六个季度增速超 60%;新增客户包含中核、中石油等大型央企,并向民企、外企、地方国企扩张。(来源: 财联社 2026-08-19;环球网/新浪财经 2026-08-19)</li>
+<li><strong>AI 被认为在重构付费逻辑而非只做功能点缀</strong> —— 品玩《从工具到基座:AI 如何重塑金山办公估值逻辑?》一文认为,AI 增值服务显著提升了此前对基础功能订阅犹豫的用户群的付费转化率,估值锚正从"工具软件"向"办公基座"迁移。(来源: pingwest.com/a/303627)</li>
+<li><strong>卖方目标价显著高于现价</strong> —— 2026-04 券商评级观察显示该股为当期目标价空间最大的标的之一(涨幅空间超 82%);后续机构平均目标价约 350.78 元,较 9 月中旬收盘价仍有较大空间。(来源: 腾讯新闻 2026-04-16 券商评级观察)</li>
+<li><strong>海外个人业务基数小但增速快</strong> —— WPS 个人业务海外收入 2,610 万美元,同比 +43.79%;WPS for Mac / for Pad 在印尼 App Store 登顶并获苹果编辑推荐。(来源: 环球网 2026-08-19)</li>
+<li><strong>社区技术派认为筹码结构偏强</strong> —— 雪球用户观点:"金山本应该被抽血的居然抗住了,还补了上面缺口,妥妥的强,底部磨的时间也够"。(来源: xueqiu.com/5646031357/401481702)</li>
+</ol>
+<h4>三、看衰派(≥3 条)</h4>
+<ol>
+<li><strong>本期利润的"含金量"争议最大</strong> —— 半年报归母净利 25.18 亿元中,投资收益贡献 19.14 亿元(几乎全部落在一季度),公司自己披露的经调整归母净利仅 10.87 亿元。以经调整口径看,增速回落到 +28.29%,与营收增速同量级,报表上 +236.94% 的观感与主业实际改善幅度差距很大。(来源: 上证报 2026-07-29 业绩预告;新浪科技《投资基金大赚!》2026-07-29)</li>
+<li><strong>基金投资收益本身被公司列为高不确定性</strong> —— 业绩预告原文提示,基金被投企业估值易受宏观经济、资本市场行情、行业周期及企业自身经营影响,存在较大不确定性。即公司未把这笔收益当作可持续盈利。(来源: 上证报 2026-07-29)</li>
+<li><strong>广告业务天花板论</strong> —— 界面新闻《用户变现能力弱,金山办公未来要去哪里寻增长?》指出:随着付费用户占比快速提升,可投放广告的用户占比反而下降,广告业务在可见期内大概率进入低增长。(来源: jiemian.com/article/4174698.html)</li>
+<li><strong>"办公订阅市场没想象中大"的质疑</strong> —— 野马财经《金山办公或将陷入低增长,再去哪里找客户?》认为其商业逻辑面临严峻挑战,个人订阅渗透接近瓶颈后增长来源存疑。(来源: yemacaijing.com/Index/view/id/38552)</li>
+<li><strong>估值高位争议长期存在</strong> —— 有报道以某期财报后 PE 达 287 倍描述其估值水平;雪球上亦有长期讨论质疑券商"营收 300 亿、利润 100 亿"的天花板假设过于乐观。(来源: 同上界面/野马报道;xueqiu.com/2318932102/195822548)</li>
+<li><strong>股东户数大幅上升,筹码在散化</strong> —— 股东户数自 2025 年末 38,664 户升至 2026 年中 61,128 户(+58%),单季(2026Q1→Q2)即 +34.2%。通常解读为散户涌入、机构相对退出,不利于股价稳定性。(来源: Tushare stk_holdernumber,截至 2026-06-30 披露)</li>
+<li><strong>大宗交易折价明显</strong> —— 近 60 日 2 笔大宗交易合计 686.61 万元,平均折价 -14.17%,买卖双方均为东方财富系营业部。金额不大,但折价幅度显著。(来源: Tushare block_trade,20260814 / 20260827)</li>
+</ol>
+<h4>四、行业与政策背景</h4>
+<ul>
+<li><strong>信创进入全面攻坚期</strong>:2026 年多份行业指南显示,政企数据安全合规要求趋严,对"全域兼容、安全自主、低门槛低成本"的国产办公与 AI Agent 平台需求强,这是 WPS 365 拿下央企客户的政策底色。</li>
+<li><strong>AI Agent 落地存在共性障碍</strong>:行业材料反映近六成企业在选型时遇到模型单一、技能无法定制、不符合本地化政策、跨办公渠道不兼容等问题;并指出国产办公与行政软件普遍缺乏标准化 OpenAPI 接口,API 生态碎片化。这既是 WPS 作为"基座"的机会,也是落地周期被拉长的风险。</li>
+<li><strong>协同办公赛道竞争者众</strong>:致远互联称其 AI 协同运营平台市占约 28.1%;科大讯飞星火企业智能体平台主打政企端云协同与纯端侧隔离。加上飞书、钉钉、腾讯文档等大厂产品,组织级办公入口的争夺并未结束。</li>
+</ul>
+<h4>五、本底稿的可信度提示</h4>
+<ul>
+<li>上述社区观点(雪球/股吧)为个人投资者公开发言,情绪属性强,仅作分歧分布的样本,不具备数据效力。</li>
+<li>卖方目标价 350.78 元为公开检索所得的机构平均值,未逐家核验各家发布日期与假设,若要引用需用年报/招股书及原始研报复核。</li>
+<li>未能取得 2026 年 9 月最近两周的股吧/雪球逐条讨论(平台需登录且反爬),因此"当下情绪温度"一项证据强度偏弱。</li>
+</ul>
+<h3>技术分析: 688111.SH</h3>
+<p><strong>收盘日期</strong>: 20260915 · <strong>收盘价</strong>: 225.52 元</p>
+<h4>§1 技术面综合判定</h4>
+<p><strong>结论</strong>: 🔴 技术面偏空 (多重卖出信号)</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>信号</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>均线排列</td>
+<td>空头排列 🔴</td>
+<td>MA5/20/60/120 = 228.47/237.22/238.44/240.09</td>
+</tr>
+<tr>
+<td>中长期趋势</td>
+<td>长期弱势 🔴</td>
+<td>收盘 vs MA60/MA120</td>
+</tr>
+<tr>
+<td>MACD</td>
+<td>无交叉 ⚪</td>
+<td>DIFF=-4.972 / DEA=-3.31 / 零轴上方=False</td>
+</tr>
+<tr>
+<td>RSI(14)</td>
+<td>中性 ⚪</td>
+<td>42.8</td>
+</tr>
+<tr>
+<td>布林带位置</td>
+<td>中轨之下 (偏弱)</td>
+<td>上轨 250.93 / 中 237.22 / 下 223.52</td>
+</tr>
+<tr>
+<td>成交量</td>
+<td>缩量 (0.4x) 🟡</td>
+<td>当日/60日均量 = 0.38x</td>
+</tr>
+</tbody>
+</table></div>
+<h4>§2 价格位置 (近期表现 + 支撑阻力)</h4>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>指标</th>
+<th style="text-align: center;">数值</th>
+<th style="text-align: center;">当前价距离</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>近 20 日涨跌</td>
+<td style="text-align: center;">-12.79%</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>近 60 日涨跌</td>
+<td style="text-align: center;">4.68%</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>近 1 年涨跌</td>
+<td style="text-align: center;">-28.18%</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>近 60 日最低 (支撑)</td>
+<td style="text-align: center;">200.0 元</td>
+<td style="text-align: center;">上方 11.32%</td>
+</tr>
+<tr>
+<td>近 60 日最高 (阻力)</td>
+<td style="text-align: center;">289.3 元</td>
+<td style="text-align: center;">下方 28.28%</td>
+</tr>
+<tr>
+<td>近 120 日最低</td>
+<td style="text-align: center;">200.0 元</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>近 120 日最高</td>
+<td style="text-align: center;">289.3 元</td>
+<td style="text-align: center;">–</td>
+</tr>
+</tbody>
+</table></div>
+<h4>§3 技术面警示 (供 Phase 3 §九 消费)</h4>
+<h5>🔴 看空信号</h5>
+<ul>
+<li>均线空头排列</li>
+<li>收盘价跌破 MA120 长期均线</li>
+</ul>
+<h4>§4 这几个价位怎么用(<strong>档位只归<a class="cite" href="#ch-decision">⑤决策</a></strong>)</h4>
+<p>本节只说技术面<strong>现在是什么状态</strong>、价位在哪里。要不要买、买多少、什么时候卖,全链只有<a class="cite" href="#ch-decision">⑤决策</a>能说 —— 这里给的是它和<a class="cite" href="#ch-path">④路径</a>引用的坐标,不是建议。</p>
+<p><strong>技术面与估值锚的四种组合各自意味着什么</strong>(读法,不是指令):<br />
+- 估值锚看涨 + 技术面偏空 → 判断与价格暂不同向;⑤若要等,等的是价格向锚靠拢<br />
+- 估值锚看涨 + 技术面偏多 → 两侧同向,拥挤度与回撤风险归<a class="cite" href="#ch-path">④路径</a>判<br />
+- 估值锚看跌 + 技术面偏空 → 两侧同向向下,④的左尾深度是这里的量级来源<br />
+- 估值锚看跌 + 技术面偏多 → 价格与判断背离,属情绪侧;资金面证据见<a class="cite" href="#appx-C">附录C</a> 前几节</p>
+<p><strong>支撑阻力位是坐标,不是扳机</strong>:<br />
+- 当前价 225.52 元,近 60 日支撑 200.0 元(相距 11.32%)<br />
+- 近 60 日阻力 289.3 元(上方 28.28%)<br />
+- 这两个价位供<a class="cite" href="#ch-path">④路径</a>量左尾深度、<a class="cite" href="#ch-decision">⑤决策</a>写价格条件时引用,本节不判它们该触发什么动作</p>
+<hr />
+<p><em>由 <code>scripts/technical_analysis.py</code> 自动生成</em><br />
+<em>数据源: Phase 1 <code>daily.parquet</code> (Tushare 日线, 近 3 年)</em><br />
+<em>供 Phase 3 §五 估值、赔率与定价充分度 (5.6) 的 <code>### 技术面位置</code> 子节消费</em></p>
+</section>
+<section class="appx" id="appx-D">
+  <h2>附录D 红旗总清单</h2>
+  <p>本清单合并两个来源:自动审计跑出来的信号,与分析各章时人工补提的疑点。首页 Top3 与全文红标都从这里来。</p>
+<p><strong>合计 22 条</strong> — 级别:🟠 8 · 🟡 8 · 🟢 4 · ℹ️ 2;来源:自动审计 13 · 人工复核 9</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>级别</th>
+<th>标题</th>
+<th>证据</th>
+<th>来源</th>
+<th>归属节点</th>
+<th>关联指标</th>
+<th>id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🟠</td>
+<td>投资收益占营业利润过高</td>
+<td>20260630: 投资收益类 19.08亿 / 营业利润 27.45亿, 上年同期 17%</td>
+<td>自动审计</td>
+<td><a class="cite" href="#ch-quality">①质地</a></td>
+<td>non_operating</td>
+<td><a id="flag-buffett-quality-c95859"></a><code>buffett-quality-c95859</code></td>
+</tr>
+<tr>
+<td>🟠</td>
+<td>PB vs ROE 严重错配</td>
+<td>市净率 6.94 倍;按净资产回报率 15.2% 应配约 1.90 倍(回报率÷8%),现价是它的 3.7 倍</td>
+<td>自动审计</td>
+<td><a class="cite" href="#ch-odds">③赔率</a></td>
+<td>pb</td>
+<td><a id="flag-valuation-e82fbf"></a><code>valuation-e82fbf</code></td>
+</tr>
+<tr>
+<td>🟠</td>
+<td>公允价值变动大额负值</td>
+<td>最新期公允价值变动 -0.121亿</td>
+<td>自动审计</td>
+<td><a class="cite" href="#ch-quality">①质地</a></td>
+<td>related_party</td>
+<td><a id="flag-related-party-exposure-c5ca8c"></a><code>related-party-exposure-c5ca8c</code></td>
+</tr>
+<tr>
+<td>🟠</td>
+<td>撑起本期利润的关联方基金浮盈不可验证且未经审计</td>
+<td>进利润表的 17.56 亿权益法收益基本全部来自两只关联方私募基金(北京顺金顺赢合营 99.9986% 贡献 15.38 亿、深圳顺赢联营 58.8235% 贡献 2.23 亿,基金专项披露表合计 17.61 亿,轧差 -496 万为其他联营企业亏损),报告期内投资金额 0.00 元属纯存量重估,底层被投企业名称与估值方法均未披露,且 2026H1/2026Q1 财务报表未经审计</td>
+<td>人工复核</td>
+<td><a class="cite" href="#ch-quality">①质地</a></td>
+<td>net_margin、roe、invest_income</td>
+<td><a id="flag-fund-equity-method-opaque"></a><code>fund-equity-method-opaque</code></td>
+</tr>
+<tr>
+<td>🟠</td>
+<td>前五供应商占采购 57.89%,第一名为关联方</td>
+<td>2025 年报前五供应商合计 6.44 亿占采购额 57.89%,其中第一名 2.90 亿占 26.09% 且为关联方;客户与供应商名称已办理豁免披露,无法交叉验证</td>
+<td>人工复核</td>
+<td><a class="cite" href="#ch-quality">①质地</a></td>
+<td>gross_margin</td>
+<td><a id="flag-supplier-concentration-related-party"></a><code>supplier-concentration-related-party</code></td>
+</tr>
+<tr>
+<td>🟠</td>
+<td>公开 PE 与净利率口径失真,同业「最便宜」结论不成立</td>
+<td>指标与行情口径 PE_TTM 29.0x 的 TTM 分母全额含 19.46 亿基金权益法浮盈(2026H1 17.56 亿 + 2025H2 约 1.90 亿);净利率 75.99% 是 2026H1 单期口径、含的是其中的 17.56 亿,两个数含的不是同一笔金额。剔除后真实 TTM 主营 PE 约 56.6x(按公司经调整口径 49.8x)、TTM 主营净利率 28.1%,对标表「PE 在 peer 中最便宜」不成立</td>
+<td>人工复核</td>
+<td><a class="cite" href="#ch-odds">③赔率</a></td>
+<td>pe_ttm、net_margin</td>
+<td><a id="flag-odds-pe-ttm-distorted"></a><code>odds-pe-ttm-distorted</code></td>
+</tr>
+<tr>
+<td>🟠</td>
+<td>撑起本期利润的基金已开始反向,而正式风险章节至今未列示</td>
+<td>2026Q2 单季权益法投资收益 −1.058 亿、单季归母同比 −6.38%,2025 年报资产减值 −2,056.80 万即长期股权投资计提减值、半年报长投减值准备余额 6,277.60 万(炎黄盈动 1,810.26 万等)—— 双向波动是已发生事实;但 2025 年报「(五)财务风险 √不适用」,年报与半年报「风险因素」章节从未提及基金估值波动,唯一提示藏在 2026Q1「其他提醒事项」</td>
+<td>人工复核</td>
+<td><a class="cite" href="#ch-path">④路径</a></td>
+<td>invest_income、non_operating</td>
+<td><a id="flag-path-fund-reversal-partially-realized"></a><code>path-fund-reversal-partially-realized</code></td>
+</tr>
+<tr>
+<td>🟠</td>
+<td>散户单季涌入 34.2% 叠加大宗折价 14.17%,承接结构脆弱</td>
+<td>股东户数 2026Q1→Q2 由 45,543 增至 61,128(+34.22%)、户均持股 −25.50%;近 60 日 2 笔大宗交易平均折价 −14.17% 且买卖双方同为东方财富系营业部;前十大股东合计持股 61.3%,真正能承接抛压的流通盘更薄</td>
+<td>人工复核</td>
+<td><a class="cite" href="#ch-path">④路径</a></td>
+<td>holder_count</td>
+<td><a id="flag-path-retail-influx-crowding"></a><code>path-retail-influx-crowding</code></td>
+</tr>
+<tr>
+<td>🟡</td>
+<td>股东户数变化</td>
+<td>20260331: 45543 → 20260630: 61128（+34.2%）</td>
+<td>自动审计</td>
+<td><a class="cite" href="#ch-path">④路径</a></td>
+<td>holder_count</td>
+<td><a id="flag-shareholder-flow-047ab1"></a><code>shareholder-flow-047ab1</code></td>
+</tr>
+<tr>
+<td>🟡</td>
+<td>长期户数上升（筹码分散）</td>
+<td>20251231: 38664 → 20260630: 61128</td>
+<td>自动审计</td>
+<td><a class="cite" href="#ch-path">④路径</a></td>
+<td>holder_count</td>
+<td><a id="flag-shareholder-flow-69ab57"></a><code>shareholder-flow-69ab57</code></td>
+</tr>
+<tr>
+<td>🟡</td>
+<td>预告区间过宽</td>
+<td>最新预告区间宽度 53.91pp</td>
+<td>自动审计</td>
+<td><a class="cite" href="#ch-state">②状态</a></td>
+<td>forecast</td>
+<td><a id="flag-forecast-anomaly-715e77"></a><code>forecast-anomaly-715e77</code></td>
+</tr>
+<tr>
+<td>🟡</td>
+<td>股息率极低</td>
+<td>当前股息率 0.40%</td>
+<td>自动审计</td>
+<td><a class="cite" href="#ch-odds">③赔率</a></td>
+<td>dividend_yield</td>
+<td><a id="flag-valuation-7ebcbf"></a><code>valuation-7ebcbf</code></td>
+</tr>
+<tr>
+<td>🟡</td>
+<td>持 33.78 亿长期股权投资却勾选"财务风险不适用"</td>
+<td>2025 年报风险因素"(五)财务风险 □适用 √不适用",基金估值波动风险在年报与半年报正式风险章节均未出现,唯一提示藏在 2026Q1"其他提醒事项"</td>
+<td>人工复核</td>
+<td><a class="cite" href="#ch-quality">①质地</a></td>
+<td>roe</td>
+<td><a id="flag-risk-disclosure-mismatch-financial-risk"></a><code>risk-disclosure-mismatch-financial-risk</code></td>
+</tr>
+<tr>
+<td>🟡</td>
+<td>多年期预收增速落后 WPS 365 一大截,且 RPO 未披露无法验证锁定期</td>
+<td>藏在其他非流动负债里的多年期合同负债 2026H1 同比 +23.6%(10.02→12.38 亿),明显落后同期 WPS 365 收入 +60.84%,且同一季节位的年末→次年 H1 环比由 +6.3% 转为 -0.8%(12.48→12.38 亿),多年期新签在减速;半年报附注 61「履约义务的说明」「分摊至剩余履约义务的说明」均勾「不适用」,RPO 无从取得,365 增速锁定了多久外部不可验证</td>
+<td>人工复核</td>
+<td><a class="cite" href="#ch-state">②状态</a></td>
+<td>contract_liab</td>
+<td><a id="flag-state-deferred-revenue-divergence"></a><code>state-deferred-revenue-divergence</code></td>
+</tr>
+<tr>
+<td>🟡</td>
+<td>AI 主线既无收入口径也无投入口径,科创板在研项目表不能当证据用</td>
+<td>科创板在研项目表只列 1 个项目(工业领域大模型开发工具),2026H1 本期投入 1,667 万,仅占同期研发投入 11.518 亿的 1.45%,灵犀 / WPS Comate / WPS 365 全部不在表内;AI 原生产品至今无独立收入金额或付费客户数披露,支撑「AI 办公基座」新身份的只有场景数与共创意向数</td>
+<td>人工复核</td>
+<td><a class="cite" href="#ch-state">②状态</a></td>
+<td>rd_expense</td>
+<td><a id="flag-state-ai-revenue-not-disclosed"></a><code>state-ai-revenue-not-disclosed</code></td>
+</tr>
+<tr>
+<td>🟡</td>
+<td>净资产含 21.78 亿不可验证的基金账面重估</td>
+<td>两只关联方基金账面 33.78 亿 vs 累计实投 12.00 亿、报告期新增投资 0 元,底层标的名称与估值方法均未披露;PB 分母因此被顶高,剔除后 PB 由 6.94x 升至约 7.98x</td>
+<td>人工复核</td>
+<td><a class="cite" href="#ch-odds">③赔率</a></td>
+<td>pb</td>
+<td><a id="flag-odds-nav-unverifiable-markup"></a><code>odds-nav-unverifiable-markup</code></td>
+</tr>
+<tr>
+<td>🟢</td>
+<td>F=7/9</td>
+<td>NI &gt; 0=✓(NI=1836468727.81) | ROA &gt; 0=✓(ROA≈0.101) | OCF &gt; 0=✓(OCF=2501503094.95) | OCF &gt; NI=✓(OCF=2501503094.95, NI=1836468727.81) | ROA↑=✗(0.103→0.101) | 资产负债率↓=✗(0.281→0.292) | 流动比率↑=✓(1.763→2.843) | 毛利率↑=✓(0.851→0.859) | 资产周转率↑=✓(0.322→0.327)</td>
+<td>自动审计</td>
+<td><a class="cite" href="#ch-quality">①质地</a></td>
+<td>f_score</td>
+<td><a id="flag-piotroski-f-score-09f5a0"></a><code>piotroski-f-score-09f5a0</code></td>
+</tr>
+<tr>
+<td>🟢</td>
+<td>M=-2.569</td>
+<td>DSRI=1.09|GMI=0.99|AQI=0.60|SGI=1.16|TATA=-0.037|LVGI=1.04</td>
+<td>自动审计</td>
+<td><a class="cite" href="#ch-quality">①质地</a></td>
+<td>m_score</td>
+<td><a id="flag-beneish-m-score-3f3e2d"></a><code>beneish-m-score-3f3e2d</code></td>
+</tr>
+<tr>
+<td>🟢</td>
+<td>Z=13.520</td>
+<td>营运资本/TA=0.400|RE/TA=0.370|EBIT/TA=0.107|MV/TL=19.735|S/TA=0.327</td>
+<td>自动审计</td>
+<td><a class="cite" href="#ch-quality">①质地</a></td>
+<td>z_score</td>
+<td><a id="flag-altman-z-score-d676ac"></a><code>altman-z-score-d676ac</code></td>
+</tr>
+<tr>
+<td>🟢</td>
+<td>PB 历史分位</td>
+<td>当前 PB=6.94，近 1 年范围 [6.13, 14.51]</td>
+<td>自动审计</td>
+<td><a class="cite" href="#ch-odds">③赔率</a></td>
+<td>pb</td>
+<td><a id="flag-valuation-31faed"></a><code>valuation-31faed</code></td>
+</tr>
+<tr>
+<td>ℹ️</td>
+<td>最新ROE 分解</td>
+<td>净利率=30.976% × 资产周转=0.327 × 权益乘数=1.41</td>
+<td>自动审计</td>
+<td><a class="cite" href="#ch-quality">①质地</a></td>
+<td>roe</td>
+<td><a id="flag-dupont-96a180"></a><code>dupont-96a180</code></td>
+</tr>
+<tr>
+<td>ℹ️</td>
+<td>上期ROE 分解</td>
+<td>净利率=32.125% × 资产周转=0.322 × 权益乘数=1.40</td>
+<td>自动审计</td>
+<td><a class="cite" href="#ch-quality">①质地</a></td>
+<td>roe</td>
+<td><a id="flag-dupont-ea2893"></a><code>dupont-ea2893</code></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="appx" id="appx-E">
+  <h2>附录E 数据来源与信息缺口</h2>
+  <h3>数据来源与信息缺口</h3>
+<p>标的: 金山办公 (688111.SH,上交所科创板) · 采集时点: 2026-09-16 · 本底稿由数据采集环节生成。</p>
+<h4>一、数据来源与口径</h4>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>来源</th>
+<th>内容</th>
+<th>覆盖区间 / 时间戳</th>
+<th>口径说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tushare Pro</td>
+<td>income / balancesheet / cashflow / fina_indicator</td>
+<td>20211231 ~ 20260630</td>
+<td>均取 report_type=1 合并报表;季报为<strong>累计口径</strong>,非单季</td>
+</tr>
+<tr>
+<td>Tushare Pro</td>
+<td>daily / daily_basic</td>
+<td>20230918 ~ 20260915</td>
+<td>后复权行情;PE/PB/PS 为 TTM 口径</td>
+</tr>
+<tr>
+<td>Tushare Pro</td>
+<td>top10_holders / top10_floatholders / stk_holdernumber</td>
+<td>20220331 ~ 20260630</td>
+<td>最新披露期 2026-06-30</td>
+</tr>
+<tr>
+<td>Tushare Pro</td>
+<td>fina_mainbz</td>
+<td>20220630 ~ 20260630</td>
+<td>按产品(P)与地区(D)双维度,存在口径重叠(见缺口 7)</td>
+</tr>
+<tr>
+<td>Tushare Pro</td>
+<td>moneyflow / moneyflow_hsgt / margin_detail / block_trade</td>
+<td>近 60 交易日</td>
+<td>12 个资金类接口命中 10 个</td>
+</tr>
+<tr>
+<td>Tushare Pro</td>
+<td>dividend / repurchase / forecast_vip / express_vip</td>
+<td>20191231 ~ 20260723</td>
+<td>回购含预案与实施两类记录</td>
+</tr>
+<tr>
+<td>定期报告 PDF</td>
+<td>2025 年年度报告(262 页)· 2026 年半年度报告(199 页)· 2026 年一季报(13 页)</td>
+<td>披露日 2026-03-26 / 2026-08-20 / 2026-04-24</td>
+<td>经东方财富公告镜像取得,非交易所原站</td>
+</tr>
+<tr>
+<td>公开检索</td>
+<td>公告解读、券商观点、社区讨论、行业政策</td>
+<td>2026-04 ~ 2026-09</td>
+<td>详见舆情底稿</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>审计意见</strong>: 2025 年年报由信永中和会计师事务所(特殊普通合伙)出具标准无保留意见。</p>
+<h4>二、信息缺口清单</h4>
+<h5>缺口 1(高优先级) —— 合同负债不在常规财务字段表内,需单独补采</h5>
+<p>这是本次最要紧的一处。公司是订阅制,<strong>合同负债(递延收入)是其最重要的先行指标之一</strong>,但常规抓取的资产负债表字段表里<strong>没有 <code>contract_liab</code> 这一列</strong>;表内与之最接近的 <code>adv_receipts</code>(预收款项)在 23 期中仅 1 期非空,因为 2020 年新收入准则后预收款项已重分类至合同负债。若只看常规字段表,会得出"该公司没有预收/递延科目"的错误结论。</p>
+<p>已通过单独调用补齐,数据落在 <code>raw_data/contract_liab_supplement.csv</code>,并与年报附注逐笔交叉验证一致(年报第 194 页"38、合同负债":期末 2,598,812,963.28 元 / 期初 2,135,535,896.03 元,与补采数值完全吻合):</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>报告期</th>
+<th style="text-align: right;">合同负债(亿元)</th>
+<th style="text-align: right;">同比</th>
+<th style="text-align: right;">环比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024-12-31</td>
+<td style="text-align: right;">21.36</td>
+<td style="text-align: right;">+12.9%</td>
+<td style="text-align: right;">+7.3%</td>
+</tr>
+<tr>
+<td>2025-06-30</td>
+<td style="text-align: right;">21.99</td>
+<td style="text-align: right;">+15.6%</td>
+<td style="text-align: right;">+5.0%</td>
+</tr>
+<tr>
+<td>2025-12-31</td>
+<td style="text-align: right;">25.99</td>
+<td style="text-align: right;">+21.7%</td>
+<td style="text-align: right;">+11.4%</td>
+</tr>
+<tr>
+<td>2026-03-31</td>
+<td style="text-align: right;">26.04</td>
+<td style="text-align: right;">+24.3%</td>
+<td style="text-align: right;">+0.2%</td>
+</tr>
+<tr>
+<td>2026-06-30</td>
+<td style="text-align: right;">27.64</td>
+<td style="text-align: right;">+25.7%</td>
+<td style="text-align: right;">+6.1%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>两点需注意</strong>:其一,合同负债同比增速(+25.7%)略高于当期营收增速(+24.69%),订阅收入池仍在变厚;其二,年报附注"(2) 账龄超过 1 年的重要合同负债"勾选"□适用 √不适用",即递延收入基本为一年内履约,说明其订阅以年付为主、无长周期预收沉淀 —— 这一点靠字段表看不出来,只能读附注。<br />
+<strong>遗留风险</strong>:该科目未被纳入常规校验与红旗规则,若后续期次未再手工补采,趋势会断档。</p>
+<h5>缺口 2(高优先级) —— 本期利润被一次性基金投资收益严重扭曲,自动指标未识别</h5>
+<p>2026 年上半年归母净利 25.18 亿元(+236.94%),但其中投资收益 19.14 亿元,且几乎全部发生在一季度(一季度投资收益 19.37 亿元,二季度为小额负数)。公司自行披露的"经调整归母净利"为 10.87 亿元(+28.29%)。剔除投资收益后的营业利润约 8.31 亿元,对比上年同期约 6.43 亿元,增幅约 +29%,与经调整口径互相印证。</p>
+<p>由此产生的失真已在自动产出的数据中出现,引用时必须手工修正:<br />
+- 净利率:2026Q1 显示 <strong>136.07%</strong>、2026H1 显示 <strong>75.99%</strong> —— 均为累计口径下含一次性收益的结果,不可作为经营利润率使用;<br />
+- 同业对标表中,本公司 PE TTM 29.01 被标为"peer 中最便宜(100% 分位)",但该 PE 的分母含约 19 亿元一次性收益。按剔除后的口径粗算,可比 PE 显著高于 29 倍,"最便宜"的结论方向可能相反;<br />
+- 自动红旗清单 12 条中<strong>没有一条</strong>指向这笔一次性收益(其杜邦分解用的是 2025 年年度口径,净利率 30.98%,未触发)。</p>
+<p><strong>需用年报/半年报附注复核</strong>:投资收益的具体基金标的、公允价值计量层级与后续可回转性。本次未取得该级别明细。</p>
+<h5>缺口 3(中优先级) —— 轻资产结构的资本开支与无形资产口径未取全</h5>
+<p>固定资产 4.46 亿元占总资产 208.80 亿元,仅 <strong>2.14%</strong>,确为极轻资产结构。但常规字段表中无 <code>r_and_d</code>(资本化研发)、<code>intan_assets</code> 的构成明细,年报正文检索"客户关系"零命中、"商誉"命中 13 页但未取得明细表。因此<strong>无法判断其无形资产中有多少来自并购、有多少为资本化开发支出</strong>。对轻资产公司,这一项直接影响利润质量判断。需用年报附注复核。</p>
+<h5>缺口 4(中优先级) —— 募集资金使用进展:披露为"不适用",而非工具漏抓</h5>
+<p>自动抽取标记该节 <code>found=false</code> 并附注"只命中疑似目录页"。经翻原文核实:2025 年年报第 92 页确有"十四、募集资金使用进展说明"标题,正文内容为"□适用 √不适用"。<strong>即公司确已披露该节,只是勾选不适用</strong>,并非隐瞒,也不是工具漏抓 —— 但工具给出的原因描述("只命中目录页")是错的,若照搬会误判。</p>
+<h5>缺口 5(中优先级) —— 主要子公司业绩表被工具漏抓,内容实际存在且重要</h5>
+<p>同样标记 <code>found=false</code>+"只命中疑似目录页",但 2025 年年报第 45 页"(七) 主要控股参股公司分析"勾选"√适用",并附有完整表格:珠海金山办公软件有限公司(子公司,总资产 110.89 亿元、营收 45.20 亿元、净利 13.42 亿元)、武汉金山办公软件有限公司(总资产 22.50 亿元、营收 12.30 亿元、净利 2.62 亿元)。<strong>这是工具没抓到,不等于公司没披露。</strong> 珠海主体营收 45.20 亿元对照合并口径 59.29 亿元,占比约 76%,是理解其主体架构的关键信息,本次未纳入结构化产物。</p>
+<h5>缺口 6(中优先级) —— 龙虎榜/机构席位与北向成本:区分"没有"与"没调通"</h5>
+<p>资金类 12 个接口命中 10 个。逐项性质如下,不可一概写成"无":<br />
+- <code>top_list</code> / <code>top_inst</code> 返回 0 行:该接口仅在个股实际上榜时返回数据,<strong>0 行等同"近 30 日未上榜"</strong>,属真实的"没有";<br />
+- <code>hk_hold</code> 仅返回 1 行,导致北向加权建仓成本无法推导,自动产出写作"数据不足"。这一条属于<strong>"没取到"而非"没有"</strong> —— 该股港股通持股本身存在(前十大股东中香港中央结算有限公司持股 1.79%),只是持仓时序未取全;<br />
+- <code>share_float</code>(限售解禁)与 <code>anns</code>(公告流水)均返回 0 行,自动产出中未来 12 个月解禁日历为空。<strong>这属于接口未返回,不能据此断定未来无解禁</strong>,需以交易所披露为准;<br />
+- <code>block_trade</code> 本次<strong>正常调通</strong>(2 笔),折价 -14.17% 的结论有数据支撑;<br />
+- 需说明:资金类产出的"采集降级"小节仅在接口<strong>抛异常</strong>时才会出现,本次两个未命中接口是"返回空结果"而非报错,因此该小节未生成。空结果与降级的区分需人工判读,不能依赖自动标注。</p>
+<h5>缺口 7(中优先级) —— 分部收入存在口径重叠,直接加总会重复计算</h5>
+<p>最新期分部数据同时包含产品维度与地区维度,且地区维度出现同义重复("境外"与"国外"均为 2.10 亿元、"境内"与"中国大陆"均为 31.03 亿元)。产品维度为:WPS 个人业务 20.14 亿元、WPS 软件业务 7.22 亿元、WPS 365 业务 4.97 亿元、其他 0.80 亿元。<strong>引用时须指明维度,不可跨维度加总。</strong></p>
+<h5>缺口 8(低优先级) —— 同业自动选取失效,已人工替换</h5>
+<p>按行业分类自动选出的对照组为润泽科技(IDC/数据中心,重资产)、科大讯飞、同花顺、南网数字、深信服 —— 与订阅制办公软件业务重合度低,尤以润泽科技为反例(资产结构与本公司正相反)。已改为人工指定的五家真同业重跑,自动版结果保留在 <code>peer_analysis_auto.md</code> 供对照。选取理由见同业对标文件。<strong>残留问题</strong>:对比表中本公司与广联达、福昕的"营收 YoY"均显示 0.00,系该字段在半年度期次缺失所致,非真实零增长(本公司半年报营收实际同比 +24.69%),该列不可直接采信。</p>
+<h5>缺口 9(低优先级) —— 交易所与信息披露原站直连失败,PDF 取自第三方镜像</h5>
+<p>巨潮资讯静态文件返回 403,交易所公告查询接口对本标的返回空结果,两者均为反爬/接口限制。三份定期报告最终经东方财富公告镜像取得,<strong>文件内容与页码已与公开披露的页数(年报 262 页 / 半年报 199 页)核对一致</strong>,但仍属二手来源,关键数字引用时建议回到交易所原站二次确认。</p>
+<h5>缺口 10(低优先级) —— 尚未取得的其他信息</h5>
+<ul>
+<li>付费用户数、ARPU、续费率/流失率等订阅制核心运营指标:公司未在结构化数据中提供,需从年报"管理层讨论与分析"正文人工提取;</li>
+<li>2026 年 9 月最近两周的社区情绪逐条数据:平台需登录,未取得;</li>
+<li>投资基金持仓明细与公允价值计量层级:未取得,需用年报附注复核;</li>
+<li>股权激励/股份支付费用的分期摊销表:公司"经调整净利"定义中包含该项,但本次未取得逐期金额。</li>
+</ul>
+<h4>三、已完成的交叉验证</h4>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>来源 A</th>
+<th>来源 B</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>合同负债 2025 年末</td>
+<td>补采接口 25.99 亿元</td>
+<td>年报第 194 页附注 2,598,812,963.28 元</td>
+<td>完全一致</td>
+</tr>
+<tr>
+<td>营收 2026H1</td>
+<td>结构化数据 33.13 亿元</td>
+<td>半年报及多家媒体报道 33.13 亿元</td>
+<td>一致</td>
+</tr>
+<tr>
+<td>归母净利 2026H1</td>
+<td>结构化数据 25.18 亿元</td>
+<td>半年报 25.18 亿元(+236.94%)</td>
+<td>一致</td>
+</tr>
+<tr>
+<td>经调整净利 2026H1</td>
+<td>无结构化字段</td>
+<td>公司披露 10.87 亿元(+28.29%)</td>
+<td>仅单一来源,采信公司口径</td>
+</tr>
+<tr>
+<td>年报页数</td>
+<td>下载文件 262 页</td>
+<td>公开披露"1 / 262"</td>
+<td>一致,确认文件未被截断</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+
+<footer>
+  本报告由 Claude Code company-analysis skill v8.0 生成 · 判断链五节点 + 红旗两源制装配<br>
+  数据源：Tushare Pro / yfinance / 巨潮资讯 PDF / WebSearch · 不构成投资建议<br>
+  <a href="https://github.com/leafpaper/claude-company-analysis">skill 代码</a> · <a href="https://github.com/leafpaper/Inves-Report">报告归档</a>
+</footer>
+
+</div>
+
+<script>
+/* 渐进披露: 每章一个「展开全部 / 收起」控件; 打印与站内搜索前自动全展开。 */
+(function(){
+  var secs = document.querySelectorAll('section.chB');
+  Array.prototype.forEach.call(secs, function(sec){
+    var ds = sec.querySelectorAll('details.drill');
+    if (!ds.length) return;                       /* ⑤怎么办没有折叠段, 不加控件 */
+    var bar = document.createElement('div');
+    bar.className = 'foldbar';
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    function sync(){
+      var anyClosed = Array.prototype.some.call(ds, function(d){ return !d.open; });
+      btn.textContent = anyClosed ? '展开全部 ' + ds.length + ' 段' : '收起全部';
+      btn.setAttribute('aria-expanded', anyClosed ? 'false' : 'true');
+    }
+    btn.addEventListener('click', function(){
+      var anyClosed = Array.prototype.some.call(ds, function(d){ return !d.open; });
+      Array.prototype.forEach.call(ds, function(d){ d.open = anyClosed; });
+      sync();
+    });
+    Array.prototype.forEach.call(ds, function(d){ d.addEventListener('toggle', sync); });
+    sync();
+    var bd = sec.querySelector('.bd');
+    var first = bd && bd.querySelector('details.drill');
+    if (first) bd.insertBefore(bar, first);
+    bar.appendChild(btn);
+  });
+  /* 打印: 全部展开, 否则纸上会缺内容 */
+  function openAll(){
+    Array.prototype.forEach.call(document.querySelectorAll('details.drill'), function(d){ d.open = true; });
+  }
+  window.addEventListener('beforeprint', openAll);
+  /* 直接命中折叠段内的锚点时自动展开 */
+  function revealHash(){
+    if (!location.hash) return;
+    var t = document.querySelector(location.hash);
+    while (t) { if (t.tagName === 'DETAILS') t.open = true; t = t.parentElement; }
+  }
+  window.addEventListener('hashchange', revealHash);
+  revealHash();
+})();
+
+/* 明暗主题: 默认跟随系统(不写 data-theme), 手动切换后记住选择。 */
+(function(){
+  var KEY = 'ca-theme', root = document.documentElement, btn = document.getElementById('themetoggle');
+  try { var saved = localStorage.getItem(KEY); if (saved) root.setAttribute('data-theme', saved); } catch (e) {}
+  function current(){
+    var explicit = root.getAttribute('data-theme');
+    if (explicit) return explicit;
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  btn && btn.addEventListener('click', function(){
+    var next = current() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem(KEY, next); } catch (e) {}
+    btn.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
+  });
+})();
+</script>
+</body>
+</html>
