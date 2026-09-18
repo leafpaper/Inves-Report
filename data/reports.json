@@ -3,6 +3,57 @@
   "last_updated": "2026-09-18",
   "reports": [
     {
+      "slug": "002475_立讯精密",
+      "ticker": "002475.SZ",
+      "name": "立讯精密",
+      "name_cn": "立讯精密",
+      "sector": "–",
+      "market": "a",
+      "report_date": "2026-09-18",
+      "version": "v8.0",
+      "composite_score": null,
+      "verdict": "先观察等证据临界——现价 0 仓位,不开期权仓,等三季报与价格一起到位",
+      "verdict_tone": "neutral",
+      "quality_field": "部分好",
+      "action_gear": "等证据临界",
+      "next_disclosure_date": "",
+      "review_hint": "",
+      "valuation_tag": "估值锚 23.5-43.7 元",
+      "one_liner": "现在不该买:100 万元全额持币、一股不持,等 10 月下旬的三季报和一个更便宜的价格同时到位再说。 立讯精密是全球最大的消费电子代工与连接器厂之一,一半以上的收入来自同一个北美大客户,今年又多了汽车线束和 AI 数据中心两条腿。 最要命的一句是:上半年收入涨了 40%,扣非利润只涨了 6.5%,而且近四个季度的扣非利润里有近四成不是主营挣的,是一批连名字都没披露的参股公司分来的。 两套算法给出的合理价上限是 43.7 元,现价 52.13 元已经把还没发生的 AI 故事提前买走了一大半,而万一故事不兑现,往下的空间比往上大得多。 所以空着手等:等三季报看利润和现金流能不能跟上收入,等公司把「",
+      "metrics": [
+        {
+          "label": "行动档位",
+          "value": "等证据临界",
+          "tone": "neutral"
+        },
+        {
+          "label": "质地",
+          "value": "部分好",
+          "tone": "neutral"
+        },
+        {
+          "label": "贵不贵",
+          "value": "已被价格计入",
+          "tone": "neutral"
+        }
+      ],
+      "expected_return_short": "",
+      "badges": [
+        {
+          "label": "先观察等证据临界——现价 0 仓位,不开期权仓,等三季报与价格一起到位",
+          "variant": "amber"
+        },
+        {
+          "label": "质地 部分好",
+          "variant": "amber"
+        },
+        {
+          "label": "赔率 已被价格计入",
+          "variant": "amber"
+        }
+      ]
+    },
+    {
       "slug": "688111_金山办公",
       "ticker": "688111.SH",
       "name": "金山办公",
